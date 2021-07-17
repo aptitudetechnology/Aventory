@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('address')->nullable();
@@ -23,7 +23,16 @@ class CreateCompaniesTable extends Migration
             $table->boolean('mailing_same_as_primary')->nullable();
             $table->string('mailing_address')->nullable();
             $table->string('mailing_city')->nullable();
-            
+            $table->string('mailing_state')->nullable();
+            $table->string('mailing_zip')->nullable();
+            $table->text('notes')->nullable();
+            $table->boolean('is_retail')->nullable();
+            $table->boolean('hide_customer')->nullable();
+            $table->boolean('no_auto_discount')->nullable();
+            $table->decimal('tax_percentage', 9,2)->nullable();
+            $table->boolean('reseller_permit_on_file')->default(false);
+            $table->date('reseller_permit_expiration')->nullable();
+            $table->unsignedTinyInteger('discount_override')->default(0);
             $table->timestamps();
         });
     }
@@ -35,6 +44,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('customers');
     }
 }
