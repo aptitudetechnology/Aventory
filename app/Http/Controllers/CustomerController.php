@@ -10,21 +10,22 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $customers = $request->user()->currentTeam->customers;
+        return  inertia('Customers/Index', $customers);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
     public function create()
     {
-        //
+        return inertia('Customers/Create');
     }
 
     /**

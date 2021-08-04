@@ -41,4 +41,9 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    public function customers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Customer::class);
+    }
 }
