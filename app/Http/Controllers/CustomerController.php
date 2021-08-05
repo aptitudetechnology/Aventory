@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $customers = $request->user()->currentTeam->customers;
-        return  inertia('Customers/Index', $customers);
+        return  inertia('Customers/Index', ['customers' => $customers]);
     }
 
     /**
@@ -36,7 +37,54 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->toArray(), [
+            'name' => ['required', 'string', 'max:255'],
+            'address' => ['nullable', 'string'],
+            'city' => ['nullable', 'string'],
+            'state' => ['nullable', 'string'],
+            'zip' => ['nullable', 'string'],
+            'mailing_address' => ['nullable', 'string'],
+            'mailing_city' => ['nullable', 'string'],
+            'mailing_state' => ['nullable', 'string'],
+            'mailing_zip' => ['nullable', 'string'],
+            'notes' => ['nullable', 'string'],
+        ])->validateWithBag('createCustomer');
+
+        $customer = $request->user()->currentTeam->customers()->create(
+            [
+                'name' => $request->name,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+                'mailing_same_as_primary' => $request->mailing_same_as_primary,
+                'notes' => $request->notes,
+                'is_retail' => $request->is_retail,
+                'no_auto_discount' => $request->no_auto_discount,
+                'tax_percentage' => $request->tax_percentage,
+                'discount_override' => $request->discount_override,
+                'reseller_permit_on_file' =>  $request->reseller_permit_expiration ? true : false,
+                'reseller_permit_expiration' => $request->reseller_permit_expiration,
+            ]
+        );
+        if ($request->mailing_same_as_primary) {
+            $customer->update(
+                [
+                    'mailing_address' => $request->address,
+                    'mailing_city' => $request->city,
+                    'mailing_state' => $request->state,
+                    'mailing_zip' => $request->zip
+                ]
+            );
+        } else {
+            $customer->update([
+                'mailing_address' => $request->mailing_address,
+                'mailing_city' => $request->mailing_city,
+                'mailing_state' => $request->mailing_state,
+                'mailing_zip' => $request->mailing_zip
+            ]);
+        }
+        return redirect(route('customers.index'));
     }
 
     /**

@@ -1,6 +1,6 @@
 <template>
-  <button
-    :type="type"
+  <inertia-link
+    :href="href"
     class="
       inline-flex
       items-center
@@ -16,20 +16,19 @@
       hover:bg-indigo-700
       focus:outline-none
       focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
-      disabled:opacity-25
       transition
     "
   >
     <slot></slot>
-  </button>
+  </inertia-link>
 </template>
 
 <script>
 export default {
   props: {
-    type: {
+    href: {
       type: String,
-      default: "submit",
+      default: "#",
     },
   },
 };
