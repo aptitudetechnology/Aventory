@@ -371,16 +371,12 @@ export default {
 
   methods: {
     updateCustomer() {
-      this.form
-        .patch(route("customers.update", this.customer.id), {
-          errorBag: "updateCustomer",
-          preserveScroll: true,
-        })
-        .then(() => {
-          this.form.reset();
-        });
+      this.form.patch(route("customers.update", this.customer.id), {
+        errorBag: "updateCustomer",
+        preserveScroll: false,
+        preserveState: false,
+      });
     },
-    resellerOnFile() {},
   },
 };
 </script>

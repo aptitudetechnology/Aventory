@@ -93,9 +93,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Request $request, Customer $customer)
     {
-        return inertia('Customers/Show', ['customer' => $customer]);
+        $customers = $request->user()->currentTeam->customers;
+        return inertia('Customers/Show', ['customer' => $customer, 'customers' => $customers]);
     }
 
     /**
@@ -104,9 +105,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Request $request, Customer $customer)
     {
-        return inertia('Customers/Edit', ['customer' => $customer]);
+        $customers = $request->user()->currentTeam->customers;
+        return inertia('Customers/Edit', ['customer' => $customer, 'customers' => $customers]);
     }
 
     /**
@@ -165,7 +167,8 @@ class CustomerController extends Controller
                 'mailing_zip' => $request->mailing_zip
             ]);
         }
-        return redirect(route('customers.show', $customer->id));
+        $request->session()->flash('success', 'Yeah! Customer was updated.');
+        return redirect(route('customers.show', $customer->id))->banner('Yeah! Successfully saved customer.', 'error');
     }
 
     /**
