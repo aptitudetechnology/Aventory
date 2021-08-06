@@ -1882,6 +1882,10 @@ select {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
 }
+.text-3xl {
+	font-size: 1.875rem;
+	line-height: 2.25rem;
+}
 .font-medium {
 	font-weight: 500;
 }
@@ -2600,6 +2604,12 @@ select {
 		margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 	}
 
+	.sm\:truncate {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
 	.sm\:rounded-lg {
 		border-radius: 0.5rem;
 	}
@@ -2667,6 +2677,16 @@ select {
 		font-size: 0.875rem;
 		line-height: 1.25rem;
 	}
+
+	.sm\:text-3xl {
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+	}
+
+	.sm\:text-4xl {
+		font-size: 2.25rem;
+		line-height: 2.5rem;
+	}
 }
 @media (min-width: 768px) {
 
@@ -2726,8 +2746,16 @@ select {
 		flex-direction: column;
 	}
 
+	.md\:items-center {
+		align-items: center;
+	}
+
 	.md\:justify-end {
 		justify-content: flex-end;
+	}
+
+	.md\:justify-between {
+		justify-content: space-between;
 	}
 
 	.md\:gap-6 {

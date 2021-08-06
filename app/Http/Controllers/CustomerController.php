@@ -24,9 +24,10 @@ class CustomerController extends Controller
      *
      * @return \Inertia\Response|\Inertia\ResponseFactory
      */
-    public function create()
+    public function create(Request $request)
     {
-        return inertia('Customers/Create');
+        $customers = $request->user()->currentTeam->customers;
+        return inertia('Customers/Create', ['customers' => $customers]);
     }
 
     /**
@@ -105,10 +106,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Customer $customer)
+    public function edit(Customer $customer)
     {
-        $customers = $request->user()->currentTeam->customers;
-        return inertia('Customers/Edit', ['customer' => $customer, 'customers' => $customers]);
+        return redirect(route('customers.show', $customer->id));
     }
 
     /**

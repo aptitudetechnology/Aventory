@@ -2,7 +2,7 @@
   <div>
     <form
       @submit.prevent="updateCustomer"
-      class="p-6 space-y-8 divide-y divide-gray-200"
+      class="space-y-8 py-8 divide-y divide-gray-200"
     >
       <div class="grid gap-4">
         <div class="col-span-3">
@@ -16,6 +16,15 @@
             autocomplete="organization"
           />
           <jet-input-error :message="form.errors.name" class="mt-2" />
+        </div>
+        <div class="col-span-3">
+          <jet-label for="notes" value="Customer Notes" />
+          <text-area-input
+            id="notes"
+            class="mt-1 block w-full"
+            v-model="form.notes"
+          />
+          <jet-input-error :message="form.errors.notes" class="mt-2" />
         </div>
       </div>
       <div class="grid gap-4">
@@ -289,15 +298,6 @@
             :message="form.errors.reseller_permit_expiration"
             class="mt-2"
           />
-        </div>
-        <div class="col-span-3">
-          <jet-label for="notes" value="Customer Notes" />
-          <text-area-input
-            id="notes"
-            class="mt-1 block w-full"
-            v-model="form.notes"
-          />
-          <jet-input-error :message="form.errors.notes" class="mt-2" />
         </div>
       </div>
 

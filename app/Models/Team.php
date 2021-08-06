@@ -44,6 +44,6 @@ class Team extends JetstreamTeam
 
     public function customers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Customer::class);
+        return $this->hasMany(Customer::class)->orderBy('name');
     }
 }

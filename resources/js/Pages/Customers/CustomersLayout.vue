@@ -1,5 +1,5 @@
 <template>
-  <new-app-layout>
+  <app-layout>
     <div class="flex-1 relative z-0 flex overflow-hidden">
       <main
         class="
@@ -13,6 +13,9 @@
       >
         <!-- Start main area-->
         <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+          <header v-if="$slots.header">
+            <slot name="header"></slot>
+          </header>
           <slot></slot>
         </div>
         <!-- End main area -->
@@ -132,11 +135,11 @@
         :href="route('customers.create')"
       />
     </div>
-  </new-app-layout>
+  </app-layout>
 </template>
 
 <script>
-import NewAppLayout from "@/Layouts/NewAppLayout";
+import AppLayout from "@/Layouts/AppLayout";
 import { PlusIcon } from "@heroicons/vue/solid";
 import EmptyState from "@/Components/EmptyState";
 import ButtonLink from "@/Components/ButtonLink";
@@ -146,7 +149,7 @@ import { FilterIcon, SearchIcon } from "@heroicons/vue/solid";
 export default {
   components: {
     EmptyState,
-    NewAppLayout,
+    AppLayout,
     PlusIcon,
     ButtonLink,
     CreateCustomerForm,
