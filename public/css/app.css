@@ -1062,17 +1062,6 @@ select {
 .prose > :last-child {
 	margin-bottom: 0;
 }
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border-width: 0;
-}
 .pointer-events-none {
 	pointer-events: none;
 }
@@ -1118,9 +1107,6 @@ select {
 }
 .col-span-3 {
 	grid-column: span 3 / span 3;
-}
-.col-start-2 {
-	grid-column-start: 2;
 }
 .mx-auto {
 	margin-left: auto;
@@ -1346,14 +1332,6 @@ select {
 	--tw-translate-x: 0px;
 	transform: var(--tw-transform);
 }
-.translate-x-6 {
-	--tw-translate-x: 1.5rem;
-	transform: var(--tw-transform);
-}
-.translate-x-1 {
-	--tw-translate-x: 0.25rem;
-	transform: var(--tw-transform);
-}
 .scale-95 {
 	--tw-scale-x: .95;
 	--tw-scale-y: .95;
@@ -1430,15 +1408,15 @@ select {
 	margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
-.space-x-3 > :not([hidden]) ~ :not([hidden]) {
-	--tw-space-x-reverse: 0;
-	margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-	margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
 .space-y-8 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-y-reverse: 0;
 	margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-x-reverse: 0;
+	margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+	margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .divide-y > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-y-reverse: 0;
@@ -2136,20 +2114,8 @@ select {
 		grid-column: span 4 / span 4;
 	}
 
-	.sm\:col-span-3 {
-		grid-column: span 3 / span 3;
-	}
-
 	.sm\:col-span-1 {
 		grid-column: span 1 / span 1;
-	}
-
-	.sm\:col-start-3 {
-		grid-column-start: 3;
-	}
-
-	.sm\:col-start-2 {
-		grid-column-start: 2;
 	}
 
 	.sm\:mx-0 {
