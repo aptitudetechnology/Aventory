@@ -2,14 +2,11 @@
   <app-layout>
     <div class="flex-1 relative z-0 flex overflow-hidden">
       <main
-        class="
-          flex-1
-          relative
-          z-0
-          overflow-y-auto
-          focus:outline-none
-          md:order-last
-        "
+        :class="[
+          route().current('customers.index')
+            ? 'hidden lg:block flex-1 relative z-0 overflow-y-auto focus:outline-none md:order-last'
+            : 'flex-1 relative z-0 overflow-y-auto focus:outline-none md:order-last',
+        ]"
       >
         <!-- Start main area-->
         <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
@@ -22,20 +19,28 @@
       </main>
       <!-- Start secondary column (hidden on smaller screens) -->
       <aside
-        class="
-          hidden
-          xl:order-first
-          xl:flex xl:flex-col
-          flex-shrink-0
-          w-96
-          border-r border-gray-200
-        "
+        :class="[
+          route().current('customers.index')
+            ? 'flex flex-col w-full'
+            : 'hidden',
+          'xl:order-first xl:flex xl:flex-col flex-shrink-0 lg:w-96 border-r border-gray-200',
+        ]"
       >
         <div class="px-6 pt-6 pb-4">
-          <h2 class="text-lg font-medium text-gray-900">Customer Directory</h2>
-          <p class="mt-1 text-sm text-gray-600">
-            Search {{ customers.length }} Customers
-          </p>
+          <div class="flex justify-between items-center">
+            <div>
+              <h2 class="text-lg font-medium text-gray-900">
+                Customer Directory
+              </h2>
+              <p class="mt-1 text-sm text-gray-600">
+                Search {{ customers.length }} Customers
+              </p>
+            </div>
+            <button-link :href="route('customers.create')"
+              >New Customer</button-link
+            >
+          </div>
+
           <form class="mt-6 flex space-x-4" action="#">
             <div class="flex-1 min-w-0">
               <label for="search" class="sr-only">Search</label>

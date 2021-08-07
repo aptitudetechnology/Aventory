@@ -5,9 +5,6 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
           {{ customer.name }}
         </h2>
-        <button-link :href="route('customers.create')"
-          >New Customer</button-link
-        >
       </div>
     </template>
     <update-customer-form :customer="customer" />
