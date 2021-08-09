@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -38,6 +39,8 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Customer::class);
+
         Validator::make($request->toArray(), [
             'name' => ['required', 'string', 'max:255'],
             'address' => ['nullable', 'string'],
@@ -96,6 +99,7 @@ class CustomerController extends Controller
      */
     public function show(Request $request, Customer $customer)
     {
+        Gate::authorize('view', $customer);
         $customers = $request->user()->currentTeam->customers;
         return inertia('Customers/Show', ['customer' => $customer, 'customers' => $customers]);
     }
@@ -108,6 +112,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
+        Gate::authorize('update', $customer);
         return redirect(route('customers.show', $customer->id));
     }
 
@@ -120,6 +125,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
+        Gate::authorize('update', $customer);
         Validator::make($request->toArray(), [
             'name' => ['required', 'string', 'max:255'],
             'address' => ['nullable', 'string'],
@@ -179,6 +185,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
+        Gate::authorize('delete', $customer);
         $customer->delete();
         session()->flash('flash.banner', 'The customer was deleted');
         session()->flash('flash.bannerStyle', 'danger');
