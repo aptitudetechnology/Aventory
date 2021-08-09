@@ -1,7 +1,7 @@
 <template>
-  <div class="md:col-span-2 flex justify-between">
-    <div class="px-4">
-      <h3 class="text-lg font-medium text-gray-900">
+  <div class="flex justify-between border-b border-gray-100 pb-4 mb-4">
+    <div>
+      <h3 class="text-xl font-medium text-gray-900">
         <slot name="title"></slot>
       </h3>
 
@@ -10,7 +10,7 @@
       </p>
     </div>
 
-    <div class="px-4">
+    <div>
       <slot name="aside"></slot>
     </div>
   </div>
