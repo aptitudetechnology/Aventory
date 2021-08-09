@@ -1,12 +1,5 @@
 <template>
   <customers-layout>
-    <template #header>
-      <div class="md:flex md:items-center md:justify-between">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ customer.name }}
-        </h2>
-      </div>
-    </template>
     <update-customer-form :customer="customer" />
   </customers-layout>
 </template>
