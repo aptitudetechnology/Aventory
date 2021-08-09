@@ -8,38 +8,20 @@
             : 'flex-1 relative z-0 overflow-y-auto focus:outline-none md:order-last',
         ]"
       >
-        <!-- Start main area-->
-        <div class="absolute inset-0 py-6 sm:px-6 lg:px-8">
+        <div class="py-6 sm:px-6 lg:px-8">
           <nav
             v-if="!route().current('customers.index')"
             aria-label="Breadcrumb"
             class="xl:hidden"
           >
-            <div class="sm:pb-4 px-2">
-              <inertia-link
-                :href="route('customers.index')"
-                class="
-                  -ml-1
-                  inline-flex
-                  items-center
-                  space-x-3
-                  text-sm
-                  font-medium
-                  text-blue-gray-900
-                "
-              >
-                <ChevronLeftIcon
-                  class="h-5 w-5 text-blue-gray-400"
-                  aria-hidden="true"
-                />
-                <span>Customers</span>
-              </inertia-link>
+            <div class="px-4 md:pb-2">
+              <back-link :href="route('customers.index')">Customers</back-link>
             </div>
           </nav>
-          <header v-if="$slots.header">
-            <slot name="header"></slot>
-          </header>
-          <slot></slot>
+          <!-- Main Content -->
+          <div class="py-2">
+            <slot></slot>
+          </div>
         </div>
         <!-- End main area -->
       </main>
@@ -174,6 +156,7 @@ import ButtonLink from "@/Components/ButtonLink";
 import CreateCustomerForm from "./CreateCustomerForm";
 import { XIcon } from "@heroicons/vue/outline";
 import { FilterIcon, SearchIcon, ChevronLeftIcon } from "@heroicons/vue/solid";
+import BackLink from "@/Components/BackLink";
 export default {
   components: {
     EmptyState,
@@ -185,6 +168,7 @@ export default {
     FilterIcon,
     XIcon,
     ChevronLeftIcon,
+    BackLink,
   },
   computed: {
     customers() {

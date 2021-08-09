@@ -1823,6 +1823,15 @@ select {
 .pb-10 {
 	padding-bottom: 2.5rem;
 }
+.pb-2 {
+	padding-bottom: 0.5rem;
+}
+.pr-6 {
+	padding-right: 1.5rem;
+}
+.pr-8 {
+	padding-right: 2rem;
+}
 .text-left {
 	text-align: left;
 }
@@ -2592,6 +2601,10 @@ select {
 		padding-bottom: 0.25rem;
 	}
 
+	.sm\:pb-2 {
+		padding-bottom: 0.5rem;
+	}
+
 	.sm\:text-left {
 		text-align: left;
 	}
@@ -2669,6 +2682,14 @@ select {
 
 	.md\:border-l {
 		border-left-width: 1px;
+	}
+
+	.md\:pb-4 {
+		padding-bottom: 1rem;
+	}
+
+	.md\:pb-2 {
+		padding-bottom: 0.5rem;
 	}
 }
 @media (min-width: 1024px) {
