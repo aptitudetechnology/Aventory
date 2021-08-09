@@ -85,7 +85,7 @@ class CustomerController extends Controller
                 'mailing_zip' => $request->mailing_zip
             ]);
         }
-        return redirect(route('customers.index'));
+        return redirect(route('customers.show', $customer->id))->banner('Successfully saved new customer.');;
     }
 
     /**
@@ -168,7 +168,7 @@ class CustomerController extends Controller
             ]);
         }
         $request->session()->flash('success', 'Yeah! Customer was updated.');
-        return redirect(route('customers.show', $customer->id))->banner('Yeah! Successfully saved customer.', 'error');
+        return redirect(route('customers.show', $customer->id))->banner('Yeah! Successfully saved customer.');
     }
 
     /**
