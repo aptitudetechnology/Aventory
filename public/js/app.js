@@ -39644,6 +39644,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
+/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
+/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["customer"],
+  components: {
+    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_3__.default
+  },
+  data: function data() {
+    return {
+      confirmingCustomerDeletion: false,
+      deleting: false,
+      form: this.$inertia.form()
+    };
+  },
+  methods: {
+    confirmCustomerDeletion: function confirmCustomerDeletion() {
+      this.confirmingCustomerDeletion = true;
+    },
+    deleteCustomer: function deleteCustomer() {
+      this.form["delete"](route("customers.destroy", this.customer), {
+        errorBag: "deleteCustomer"
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/Edit.vue?vue&type=script&lang=js":
 /*!***************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/Edit.vue?vue&type=script&lang=js ***!
@@ -39655,14 +39703,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _CustomersLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomersLayout */ "./resources/js/Pages/Customers/CustomersLayout.vue");
+/* harmony import */ var _CustomersLayout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomersLayout.vue */ "./resources/js/Pages/Customers/CustomersLayout.vue");
 /* harmony import */ var _Pages_Customers_UpdateCustomerForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Customers/UpdateCustomerForm */ "./resources/js/Pages/Customers/UpdateCustomerForm.vue");
+/* harmony import */ var _Components_ButtonLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/ButtonLink */ "./resources/js/Components/ButtonLink.vue");
+/* harmony import */ var _DeleteCustomerForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DeleteCustomerForm.vue */ "./resources/js/Pages/Customers/DeleteCustomerForm.vue");
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    CustomersLayout: _CustomersLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    UpdateCustomerForm: _Pages_Customers_UpdateCustomerForm__WEBPACK_IMPORTED_MODULE_1__.default
+    CustomersLayout: _CustomersLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    UpdateCustomerForm: _Pages_Customers_UpdateCustomerForm__WEBPACK_IMPORTED_MODULE_1__.default,
+    ButtonLink: _Components_ButtonLink__WEBPACK_IMPORTED_MODULE_2__.default,
+    DeleteCustomerForm: _DeleteCustomerForm_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   props: {
     customer: Object
@@ -39711,6 +39765,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CustomersLayout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomersLayout.vue */ "./resources/js/Pages/Customers/CustomersLayout.vue");
 /* harmony import */ var _Pages_Customers_UpdateCustomerForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Customers/UpdateCustomerForm */ "./resources/js/Pages/Customers/UpdateCustomerForm.vue");
 /* harmony import */ var _Components_ButtonLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/ButtonLink */ "./resources/js/Components/ButtonLink.vue");
+/* harmony import */ var _DeleteCustomerForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DeleteCustomerForm.vue */ "./resources/js/Pages/Customers/DeleteCustomerForm.vue");
+
 
 
 
@@ -39718,7 +39774,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CustomersLayout: _CustomersLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     UpdateCustomerForm: _Pages_Customers_UpdateCustomerForm__WEBPACK_IMPORTED_MODULE_1__.default,
-    ButtonLink: _Components_ButtonLink__WEBPACK_IMPORTED_MODULE_2__.default
+    ButtonLink: _Components_ButtonLink__WEBPACK_IMPORTED_MODULE_2__.default,
+    DeleteCustomerForm: _DeleteCustomerForm_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   props: {
     customer: Object
@@ -44677,20 +44734,142 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["href"])])])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End secondary column ")], 2
-      /* CLASS */
-      ), $options.customers.length < 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_empty_state, {
-        key: 0,
+      ))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_empty_state, {
+        key: 1,
         heading: "No Customers",
         subtitle: "Get started by creating a new customer.",
         "button-text": "New Customer",
         href: _ctx.route('customers.create')
       }, null, 8
       /* PROPS */
-      , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
+      , ["href"]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End secondary column ")], 2
+      /* CLASS */
+      )])];
     }),
     _: 3
     /* FORWARDED */
+
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=template&id=c2d4c860":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=template&id=c2d4c860 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Customer ");
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete this customer. ");
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "max-w-xl text-sm text-gray-600"
+}, " Once a customer is deleted, you will be unable to create orders for this customer. Past orders will still be displayed for the customer. ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  "class": "mt-5"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Customer ");
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Customer ");
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete this customer? ");
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cancel ");
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Customer ");
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_danger_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-danger-button");
+
+  var _component_jet_secondary_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-secondary-button");
+
+  var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
+
+  var _component_jet_action_section = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-action-section");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_action_section, null, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_1];
+    }),
+    description: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_2];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
+        onClick: $options.confirmCustomerDeletion
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_5];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClick"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Customer Confirmation Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_confirmation_modal, {
+        show: $data.confirmingCustomerDeletion,
+        onClose: _cache[2] || (_cache[2] = function ($event) {
+          return $data.confirmingCustomerDeletion = false;
+        })
+      }, {
+        title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_6];
+        }),
+        content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_7];
+        }),
+        footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
+            onClick: _cache[1] || (_cache[1] = function ($event) {
+              return $data.confirmingCustomerDeletion = false;
+            })
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_8];
+            }),
+            _: 1
+            /* STABLE */
+
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
+            "class": ["ml-2", {
+              'opacity-25': $data.form.processing
+            }],
+            onClick: $options.deleteCustomer,
+            disabled: $data.form.processing
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_9];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["onClick", "class", "disabled"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["show"])];
+    }),
+    _: 1
+    /* STABLE */
 
   });
 }
@@ -44713,11 +44892,17 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_update_customer_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-customer-form");
 
+  var _component_delete_customer_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-customer-form");
+
   var _component_customers_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("customers-layout");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_customers_layout, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_customer_form, {
+        customer: $props.customer
+      }, null, 8
+      /* PROPS */
+      , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_customer_form, {
         customer: $props.customer
       }, null, 8
       /* PROPS */
@@ -44768,12 +44953,19 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_update_customer_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-customer-form");
 
+  var _component_delete_customer_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("delete-customer-form");
+
   var _component_customers_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("customers-layout");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_customers_layout, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_customer_form, {
         customer: $props.customer
+      }, null, 8
+      /* PROPS */
+      , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delete_customer_form, {
+        customer: $props.customer,
+        "class": "mt-6"
       }, null, 8
       /* PROPS */
       , ["customer"])];
@@ -73190,6 +73382,32 @@ _CustomersLayout_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.defaul
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Customers/DeleteCustomerForm.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/Pages/Customers/DeleteCustomerForm.vue ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteCustomerForm_vue_vue_type_template_id_c2d4c860__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteCustomerForm.vue?vue&type=template&id=c2d4c860 */ "./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=template&id=c2d4c860");
+/* harmony import */ var _DeleteCustomerForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteCustomerForm.vue?vue&type=script&lang=js */ "./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=script&lang=js");
+
+
+
+_DeleteCustomerForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _DeleteCustomerForm_vue_vue_type_template_id_c2d4c860__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_DeleteCustomerForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Customers/DeleteCustomerForm.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteCustomerForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Customers/Edit.vue":
 /*!***********************************************!*\
   !*** ./resources/js/Pages/Customers/Edit.vue ***!
@@ -74322,6 +74540,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=script&lang=js":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=script&lang=js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteCustomerForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteCustomerForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteCustomerForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Customers/Edit.vue?vue&type=script&lang=js":
 /*!***********************************************************************!*\
   !*** ./resources/js/Pages/Customers/Edit.vue?vue&type=script&lang=js ***!
@@ -75330,6 +75564,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=template&id=c2d4c860":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=template&id=c2d4c860 ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteCustomerForm_vue_vue_type_template_id_c2d4c860__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DeleteCustomerForm_vue_vue_type_template_id_c2d4c860__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DeleteCustomerForm.vue?vue&type=template&id=c2d4c860 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Customers/DeleteCustomerForm.vue?vue&type=template&id=c2d4c860");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Customers/Edit.vue?vue&type=template&id=5c6b30e6":
 /*!*****************************************************************************!*\
   !*** ./resources/js/Pages/Customers/Edit.vue?vue&type=template&id=5c6b30e6 ***!
@@ -75903,6 +76153,8 @@ var map = {
 	"./Customers/CreateCustomerForm.vue": "./resources/js/Pages/Customers/CreateCustomerForm.vue",
 	"./Customers/CustomersLayout": "./resources/js/Pages/Customers/CustomersLayout.vue",
 	"./Customers/CustomersLayout.vue": "./resources/js/Pages/Customers/CustomersLayout.vue",
+	"./Customers/DeleteCustomerForm": "./resources/js/Pages/Customers/DeleteCustomerForm.vue",
+	"./Customers/DeleteCustomerForm.vue": "./resources/js/Pages/Customers/DeleteCustomerForm.vue",
 	"./Customers/Edit": "./resources/js/Pages/Customers/Edit.vue",
 	"./Customers/Edit.vue": "./resources/js/Pages/Customers/Edit.vue",
 	"./Customers/Index": "./resources/js/Pages/Customers/Index.vue",

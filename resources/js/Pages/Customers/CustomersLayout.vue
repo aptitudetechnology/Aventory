@@ -134,16 +134,16 @@
               </li>
             </ul>
           </div>
+          <empty-state
+            v-else
+            heading="No Customers"
+            subtitle="Get started by creating a new customer."
+            button-text="New Customer"
+            :href="route('customers.create')"
+          />
         </div>
         <!-- End secondary column -->
       </aside>
-      <empty-state
-        v-if="customers.length < 1"
-        heading="No Customers"
-        subtitle="Get started by creating a new customer."
-        button-text="New Customer"
-        :href="route('customers.create')"
-      />
     </div>
   </app-layout>
 </template>

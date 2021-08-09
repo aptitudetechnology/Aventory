@@ -179,6 +179,9 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        session()->flash('flash.banner', 'The customer was deleted');
+        session()->flash('flash.bannerStyle', 'danger');
+        return redirect(route('customers.index'));
     }
 }
