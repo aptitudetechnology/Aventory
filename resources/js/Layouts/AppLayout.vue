@@ -124,7 +124,10 @@
               >
               <nav-link
                 :href="route('customers.index')"
-                :current="route().current('customers.*')"
+                :current="
+                  route().current('customers.*') ||
+                  route().current('archived-customers.*')
+                "
                 >Customers</nav-link
               >
             </nav>
