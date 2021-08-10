@@ -1,7 +1,11 @@
 <template>
   <customers-layout>
     <update-customer-form :customer="customer" />
-    <delete-customer-form :customer="customer" class="mt-6" />
+    <delete-customer-form
+      v-if="!customer.deleted_at"
+      :customer="customer"
+      class="mt-6"
+    />
   </customers-layout>
 </template>
 

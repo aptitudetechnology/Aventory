@@ -17,6 +17,7 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $customers = $request->user()->currentTeam->customers;
+
         return  inertia('Customers/Index', ['customers' => $customers]);
     }
 
@@ -97,8 +98,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Customer $customer)
+    public function show(Request $request, $customerId)
     {
+        $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('view', $customer);
         $customers = $request->user()->currentTeam->customers;
         return inertia('Customers/Show', ['customer' => $customer, 'customers' => $customers]);
@@ -110,8 +112,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($customerId)
     {
+        $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('update', $customer);
         return redirect(route('customers.show', $customer->id));
     }
@@ -123,8 +126,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $customerId)
     {
+        $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('update', $customer);
         Validator::make($request->toArray(), [
             'name' => ['required', 'string', 'max:255'],
@@ -180,7 +184,7 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  $customerId
      * @return \Illuminate\Http\Response
      */
     public function destroy(Customer $customer)

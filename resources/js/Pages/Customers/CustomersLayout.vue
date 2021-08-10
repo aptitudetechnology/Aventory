@@ -3,7 +3,8 @@
     <div class="flex-1 relative z-0 flex overflow-hidden">
       <main
         :class="[
-          route().current('customers.index')
+          route().current('customers.index') ||
+          route().current('archived-customers.index')
             ? 'hidden lg:block flex-1 relative z-0 overflow-y-auto focus:outline-none md:order-last'
             : 'flex-1 relative z-0 overflow-y-auto focus:outline-none md:order-last',
         ]"
@@ -28,7 +29,8 @@
       <!-- Start secondary column (hidden on smaller screens) -->
       <aside
         :class="[
-          route().current('customers.index')
+          route().current('customers.index') ||
+          route().current('archived-customers.index')
             ? 'flex flex-col w-full'
             : 'hidden',
           'xl:order-first xl:flex xl:flex-col flex-shrink-0 lg:w-96 border-r border-gray-200',
@@ -88,6 +90,18 @@
               </div>
             </div>
           </form>
+          <div class="py-4 flex">
+            <tab-link
+              :href="route('customers.index')"
+              :current="route().current('customers.*')"
+              >Active</tab-link
+            >
+            <tab-link
+              :href="route('archived-customers.index')"
+              :current="route().current('archived-customers.*')"
+              >Archived</tab-link
+            >
+          </div>
         </div>
 
         <div class="flex-1 min-h-0 overflow-y-auto">
@@ -114,7 +128,11 @@
                 >
                   <div class="flex-1 min-w-0">
                     <inertia-link
-                      :href="route('customers.show', customer.id)"
+                      :href="
+                        customer.deleted_at
+                          ? route('archived-customers.show', customer.id)
+                          : route('customers.show', customer.id)
+                      "
                       class="focus:outline-none"
                     >
                       <!-- Extend touch target to entire panel -->
@@ -134,6 +152,7 @@
               </li>
             </ul>
           </div>
+
           <empty-state
             v-else
             heading="No Customers"
@@ -157,6 +176,7 @@ import CreateCustomerForm from "./CreateCustomerForm";
 import { XIcon } from "@heroicons/vue/outline";
 import { FilterIcon, SearchIcon, ChevronLeftIcon } from "@heroicons/vue/solid";
 import BackLink from "@/Components/BackLink";
+import TabLink from "../../Components/TabLink.vue";
 export default {
   components: {
     EmptyState,
@@ -169,6 +189,7 @@ export default {
     XIcon,
     ChevronLeftIcon,
     BackLink,
+    TabLink,
   },
   computed: {
     customers() {

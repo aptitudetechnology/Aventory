@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +29,12 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+/**This needs to be before the customers resource as will return 403 if after. */
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/customers/archived', [ArchivedCustomersController::class, 'index'])->name('archived-customers.index');
+    Route::get('/customers/archived/{customerId}', [ArchivedCustomersController::class, 'show'])->name('archived-customers.show');
+    Route::post('/customers/archived/{customerId}', [ArchivedCustomersController::class, 'store'])->name('archived-customers.restore');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('customers', CustomerController::class);
