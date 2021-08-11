@@ -116,9 +116,6 @@ export default {
     customersLength: function () {
       return this.customers.length;
     },
-    searchRegex: function () {
-      return new RegExp(this.search.toLowerCase());
-    },
   },
   data() {
     return {
@@ -130,8 +127,8 @@ export default {
     updateCustomers() {
       this.filteredCustomers = this.customers.filter((customer) => {
         if (
-          customer.name.toLowerCase().match(this.searchRegex) ||
-          customer.state?.toLowerCase().match(this.searchRegex)
+          customer.name.toLowerCase().includes(this.search.toLowerCase()) ||
+          customer.state?.toLowerCase().includes(this.search.toLowerCase())
         ) {
           return true;
         } else {

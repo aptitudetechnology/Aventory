@@ -39746,9 +39746,6 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     customersLength: function customersLength() {
       return this.customers.length;
-    },
-    searchRegex: function searchRegex() {
-      return new RegExp(this.search.toLowerCase());
     }
   },
   data: function data() {
@@ -39764,7 +39761,7 @@ __webpack_require__.r(__webpack_exports__);
       this.filteredCustomers = this.customers.filter(function (customer) {
         var _customer$state;
 
-        if (customer.name.toLowerCase().match(_this.searchRegex) || (_customer$state = customer.state) !== null && _customer$state !== void 0 && _customer$state.toLowerCase().match(_this.searchRegex)) {
+        if (customer.name.toLowerCase().includes(_this.search.toLowerCase()) || (_customer$state = customer.state) !== null && _customer$state !== void 0 && _customer$state.toLowerCase().includes(_this.search.toLowerCase())) {
           return true;
         } else {
           return false;
@@ -41003,7 +41000,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
     href: $props.href,
-    "class": "\n      -ml-1\n      inline-flex\n      items-center\n      space-x-3\n      text-sm\n      font-medium\n      text-blue-gray-900\n    "
+    "class": "\r\n      -ml-1\r\n      inline-flex\r\n      items-center\r\n      space-x-3\r\n      text-sm\r\n      font-medium\r\n      text-blue-gray-900\r\n    "
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ChevronLeftIcon, {
@@ -41039,7 +41036,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
     href: $props.href,
-    "class": "\n      inline-flex\n      items-center\n      px-4\n      py-2\n      border border-transparent\n      shadow-sm\n      text-sm\n      font-medium\n      rounded-md\n      text-white\n      bg-indigo-600\n      hover:bg-indigo-700\n      focus:outline-none\n      focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\n      transition\n    "
+    "class": "\r\n      inline-flex\r\n      items-center\r\n      px-4\r\n      py-2\r\n      border border-transparent\r\n      shadow-sm\r\n      text-sm\r\n      font-medium\r\n      rounded-md\r\n      text-white\r\n      bg-indigo-600\r\n      hover:bg-indigo-700\r\n      focus:outline-none\r\n      focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\r\n      transition\r\n    "
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")];
@@ -41224,7 +41221,7 @@ var _hoisted_4 = {
   "class": "relative rounded-md shadow-sm"
 };
 var _hoisted_5 = {
-  "class": "\n            absolute\n            inset-y-0\n            left-0\n            pl-3\n            flex\n            items-center\n            pointer-events-none\n          "
+  "class": "\r\n            absolute\r\n            inset-y-0\r\n            left-0\r\n            pl-3\r\n            flex\r\n            items-center\r\n            pointer-events-none\r\n          "
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SearchIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SearchIcon");
@@ -41244,7 +41241,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "search",
     id: "search",
     autocomplete: "off",
-    "class": "\n            focus:ring-indigo-500\n            focus:border-indigo-500\n            block\n            w-full\n            pl-10\n            sm:text-sm\n            border-gray-300\n            rounded-md\n          ",
+    "class": "\r\n            focus:ring-indigo-500\r\n            focus:border-indigo-500\r\n            block\r\n            w-full\r\n            pl-10\r\n            sm:text-sm\r\n            border-gray-300\r\n            rounded-md\r\n          ",
     placeholder: $props.placeholder
   }, null, 8
   /* PROPS */
@@ -41323,7 +41320,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("textarea", {
-    "class": "\n      border-gray-300\n      focus:border-indigo-300\n      focus:ring focus:ring-indigo-200 focus:ring-opacity-50\n      rounded-md\n      shadow-sm\n    ",
+    "class": "\r\n      border-gray-300\r\n      focus:border-indigo-300\r\n      focus:ring focus:ring-indigo-200 focus:ring-opacity-50\r\n      rounded-md\r\n      shadow-sm\r\n    ",
     value: $props.modelValue,
     onInput: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$emit('update:modelValue', $event.target.value);
@@ -41619,7 +41616,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     type: "button",
-    "class": ["\n                -mr-1\n                flex\n                p-2\n                rounded-md\n                focus:outline-none\n                sm:-mr-2\n                transition\n              ", {
+    "class": ["\r\n                -mr-1\r\n                flex\r\n                p-2\r\n                rounded-md\r\n                focus:outline-none\r\n                sm:-mr-2\r\n                transition\r\n              ", {
       'hover:bg-indigo-600 focus:bg-indigo-600': $options.style == 'success',
       'hover:bg-red-600 focus:bg-red-600': $options.style == 'danger'
     }],
@@ -41652,7 +41649,7 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     type: $props.type,
-    "class": "\n      inline-flex\n      items-center\n      px-4\n      py-2\n      border border-transparent\n      shadow-sm\n      text-sm\n      font-medium\n      rounded-md\n      text-white\n      bg-indigo-600\n      hover:bg-indigo-700\n      focus:outline-none\n      focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\n      disabled:opacity-25\n      transition\n    "
+    "class": "\r\n      inline-flex\r\n      items-center\r\n      px-4\r\n      py-2\r\n      border border-transparent\r\n      shadow-sm\r\n      text-sm\r\n      font-medium\r\n      rounded-md\r\n      text-white\r\n      bg-indigo-600\r\n      hover:bg-indigo-700\r\n      focus:outline-none\r\n      focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\r\n      disabled:opacity-25\r\n      transition\r\n    "
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 8
   /* PROPS */
   , ["type"]);
@@ -42065,7 +42062,7 @@ var _hoisted_3 = {
 };
 var _hoisted_4 = {
   key: 0,
-  "class": "\n            flex\n            items-center\n            justify-end\n            px-4\n            py-3\n            bg-gray-50\n            text-right\n            sm:px-6\n            shadow\n            sm:rounded-bl-md sm:rounded-br-md\n          "
+  "class": "\r\n            flex\r\n            items-center\r\n            justify-end\r\n            px-4\r\n            py-3\r\n            bg-gray-50\r\n            text-right\r\n            sm:px-6\r\n            shadow\r\n            sm:rounded-bl-md sm:rounded-br-md\r\n          "
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_section_title = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-title");
@@ -42477,7 +42474,7 @@ var _hoisted_1 = {
   "class": "h-screen flex overflow-hidden bg-gray-50"
 };
 var _hoisted_2 = {
-  "class": "\n              relative\n              flex-1 flex flex-col\n              max-w-xs\n              w-full\n              pt-5\n              pb-4\n              bg-white\n            "
+  "class": "\r\n              relative\r\n              flex-1 flex flex-col\r\n              max-w-xs\r\n              w-full\r\n              pt-5\r\n              pb-4\r\n              bg-white\r\n            "
 };
 var _hoisted_3 = {
   "class": "absolute top-0 right-0 -mr-12 pt-2"
@@ -42524,7 +42521,7 @@ var _hoisted_12 = {
   "class": "flex flex-col w-64"
 };
 var _hoisted_13 = {
-  "class": "\n            flex flex-col flex-grow\n            border-r border-gray-200\n            pt-5\n            pb-4\n            bg-white\n            overflow-y-auto\n          "
+  "class": "\r\n            flex flex-col flex-grow\r\n            border-r border-gray-200\r\n            pt-5\r\n            pb-4\r\n            bg-white\r\n            overflow-y-auto\r\n          "
 };
 var _hoisted_14 = {
   "class": "flex items-center flex-shrink-0 px-4"
@@ -42544,7 +42541,7 @@ var _hoisted_19 = {
   "class": "flex flex-col w-0 flex-1 overflow-hidden"
 };
 var _hoisted_20 = {
-  "class": "\n          relative\n          z-10\n          flex-shrink-0 flex\n          justify-between\n          md:justify-end\n          h-16\n          bg-white\n          shadow\n        "
+  "class": "\r\n          relative\r\n          z-10\r\n          flex-shrink-0 flex\r\n          justify-between\r\n          md:justify-end\r\n          h-16\r\n          bg-white\r\n          shadow\r\n        "
 };
 
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
@@ -42567,7 +42564,7 @@ var _hoisted_25 = {
 };
 var _hoisted_26 = {
   type: "button",
-  "class": "\n                        inline-flex\n                        items-center\n                        px-3\n                        py-2\n                        border border-transparent\n                        text-sm\n                        leading-4\n                        font-medium\n                        rounded-md\n                        text-gray-500\n                        bg-white\n                        hover:bg-gray-50\n                        hover:text-gray-700\n                        focus:outline-none\n                        focus:bg-gray-50\n                        active:bg-gray-50\n                        transition\n                      "
+  "class": "\r\n                        inline-flex\r\n                        items-center\r\n                        px-3\r\n                        py-2\r\n                        border border-transparent\r\n                        text-sm\r\n                        leading-4\r\n                        font-medium\r\n                        rounded-md\r\n                        text-gray-500\r\n                        bg-white\r\n                        hover:bg-gray-50\r\n                        hover:text-gray-700\r\n                        focus:outline-none\r\n                        focus:bg-gray-50\r\n                        active:bg-gray-50\r\n                        transition\r\n                      "
 };
 
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
@@ -42634,7 +42631,7 @@ var _hoisted_37 = {
 };
 var _hoisted_38 = {
   key: 0,
-  "class": "\n                      flex\n                      text-sm\n                      border-2 border-transparent\n                      rounded-full\n                      focus:outline-none\n                      focus:border-gray-300\n                      transition\n                    "
+  "class": "\r\n                      flex\r\n                      text-sm\r\n                      border-2 border-transparent\r\n                      rounded-full\r\n                      focus:outline-none\r\n                      focus:border-gray-300\r\n                      transition\r\n                    "
 };
 var _hoisted_39 = {
   key: 1,
@@ -42642,7 +42639,7 @@ var _hoisted_39 = {
 };
 var _hoisted_40 = {
   type: "button",
-  "class": "\n                        inline-flex\n                        items-center\n                        px-3\n                        py-2\n                        border border-transparent\n                        text-sm\n                        leading-4\n                        font-medium\n                        rounded-md\n                        text-gray-500\n                        bg-white\n                        hover:text-gray-700\n                        focus:outline-none\n                        transition\n                      "
+  "class": "\r\n                        inline-flex\r\n                        items-center\r\n                        px-3\r\n                        py-2\r\n                        border border-transparent\r\n                        text-sm\r\n                        leading-4\r\n                        font-medium\r\n                        rounded-md\r\n                        text-gray-500\r\n                        bg-white\r\n                        hover:text-gray-700\r\n                        focus:outline-none\r\n                        transition\r\n                      "
 };
 
 var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
@@ -42754,7 +42751,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                   return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-                    "class": "\n                    ml-1\n                    flex\n                    items-center\n                    justify-center\n                    h-10\n                    w-10\n                    rounded-full\n                    focus:outline-none\n                    focus:ring-2 focus:ring-inset focus:ring-white\n                  ",
+                    "class": "\r\n                    ml-1\r\n                    flex\r\n                    items-center\r\n                    justify-center\r\n                    h-10\r\n                    w-10\r\n                    rounded-full\r\n                    focus:outline-none\r\n                    focus:ring-2 focus:ring-inset focus:ring-white\r\n                  ",
                     onClick: _cache[1] || (_cache[1] = function ($event) {
                       return $data.sidebarOpen = false;
                     })
@@ -42847,7 +42844,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "current"])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("nav", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Mobile Menu Button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-    "class": "\n            px-4\n            border-r border-gray-200\n            text-gray-500\n            focus:outline-none\n            focus:ring-2 focus:ring-inset focus:ring-indigo-500\n            md:hidden\n          ",
+    "class": "\r\n            px-4\r\n            border-r border-gray-200\r\n            text-gray-500\r\n            focus:outline-none\r\n            focus:ring-2 focus:ring-inset focus:ring-indigo-500\r\n            md:hidden\r\n          ",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $data.sidebarOpen = true;
     })
@@ -45732,7 +45729,7 @@ var _hoisted_26 = {
 };
 
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "\n                  absolute\n                  inset-y-0\n                  right-0\n                  pr-3\n                  flex\n                  items-center\n                  pointer-events-none\n                "
+  "class": "\r\n                  absolute\r\n                  inset-y-0\r\n                  right-0\r\n                  pr-3\r\n                  flex\r\n                  items-center\r\n                  pointer-events-none\r\n                "
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-500 sm:text-sm"
 }, " % ")], -1
@@ -45747,7 +45744,7 @@ var _hoisted_29 = {
 };
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "\n                  absolute\n                  inset-y-0\n                  right-0\n                  pr-3\n                  flex\n                  items-center\n                  pointer-events-none\n                "
+  "class": "\r\n                  absolute\r\n                  inset-y-0\r\n                  right-0\r\n                  pr-3\r\n                  flex\r\n                  items-center\r\n                  pointer-events-none\r\n                "
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-500 sm:text-sm"
 }, " % ")], -1
@@ -48843,7 +48840,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.bg-gray-100[data-v-317d1a6e] {\n        background-color: #f7fafc;\n        background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\n        border-color: #edf2f7;\n        border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\n        color: #cbd5e0;\n        color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\n        color: #a0aec0;\n        color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\n        color: #718096;\n        color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\n        color: #4a5568;\n        color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\n        color: #1a202c;\n        color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\n            background-color: #2d3748;\n            background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\n            background-color: #1a202c;\n            background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\n            border-color: #4a5568;\n            border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\n            color: #fff;\n            color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\n            color: #cbd5e0;\n            color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.bg-gray-100[data-v-317d1a6e] {\r\n        background-color: #f7fafc;\r\n        background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\r\n        border-color: #edf2f7;\r\n        border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\r\n        color: #cbd5e0;\r\n        color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\r\n        color: #a0aec0;\r\n        color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\r\n        color: #718096;\r\n        color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\r\n        color: #4a5568;\r\n        color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\r\n        color: #1a202c;\r\n        color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\r\n            background-color: #2d3748;\r\n            background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\r\n            background-color: #1a202c;\r\n            background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\r\n            border-color: #4a5568;\r\n            border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\r\n            color: #fff;\r\n            color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\r\n            color: #cbd5e0;\r\n            color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

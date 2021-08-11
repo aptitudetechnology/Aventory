@@ -98,9 +98,8 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $customerId)
+    public function show(Request $request, Customer $customer)
     {
-        $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('view', $customer);
         $customers = $request->user()->currentTeam->customers;
         return inertia('Customers/Show', ['customer' => $customer, 'customers' => $customers]);
@@ -112,9 +111,8 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit($customerId)
+    public function edit(Customer $customer)
     {
-        $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('update', $customer);
         return redirect(route('customers.show', $customer->id));
     }
@@ -126,9 +124,8 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $customerId)
+    public function update(Request $request, Customer $customer)
     {
-        $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('update', $customer);
         Validator::make($request->toArray(), [
             'name' => ['required', 'string', 'max:255'],
