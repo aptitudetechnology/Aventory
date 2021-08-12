@@ -1420,6 +1420,10 @@ select {
 	--tw-translate-x: 1.25rem;
 	transform: var(--tw-transform);
 }
+.rotate-90 {
+	--tw-rotate: 90deg;
+	transform: var(--tw-transform);
+}
 .scale-95 {
 	--tw-scale-x: .95;
 	--tw-scale-y: .95;
@@ -1811,6 +1815,9 @@ select {
 }
 .pr-3 {
 	padding-right: 0.75rem;
+}
+.pr-2 {
+	padding-right: 0.5rem;
 }
 .text-left {
 	text-align: left;
@@ -2319,6 +2326,10 @@ select {
 .group:hover .group-hover\:text-gray-700 {
 	--tw-text-opacity: 1;
 	color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+.group:hover .group-hover\:text-gray-400 {
+	--tw-text-opacity: 1;
+	color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
 @media (min-width: 640px) {
 
