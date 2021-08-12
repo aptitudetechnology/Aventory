@@ -15,6 +15,7 @@ class CreateCustomerPriceLevelsTable extends Migration
     {
         Schema::create('customer_price_levels', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('description')->nullable();
             $table->smallInteger('percentage_more')->default(0);
