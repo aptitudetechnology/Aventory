@@ -19,7 +19,6 @@ class CreateCustomerPriceLevelsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->smallInteger('percentage_more')->default(0);
-            $table->float('dollar_amount_more')->default(0.00);
             $table->timestamps();
         });
     }

@@ -14,7 +14,8 @@ class CustomerPriceLevelController extends Controller
      */
     public function index()
     {
-        //
+        $priceLevels = auth()->user()->currentTeam->priceLevels;
+        return inertia('PriceLevels/Index', ['priceLevels' => $priceLevels]);
     }
 
     /**
@@ -24,7 +25,8 @@ class CustomerPriceLevelController extends Controller
      */
     public function create()
     {
-        //
+        $priceLevels = auth()->user()->currentTeam->priceLevels;
+        return inertia('PriceLevels/Create', ['priceLevels' => $priceLevels]);
     }
 
     /**
@@ -35,7 +37,14 @@ class CustomerPriceLevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $priceLevel = $request->user()->currentTeam->priceLevels()->create(
+            [
+                'name' => $request->name,
+                'description' => $request->description,
+                'percentage_more' => $request->percentage_more,
+            ]
+        );
+        return redirect(route('price-levels.index'));
     }
 
     /**
