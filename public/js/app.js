@@ -45557,7 +45557,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         max: "100",
         min: "0",
         placeholder: "0",
-        "class": "mt-1 block w-full",
+        "class": "mt-1 block w-full pr-10",
         modelValue: $data.form.discount_override,
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return $data.form.discount_override = $event;

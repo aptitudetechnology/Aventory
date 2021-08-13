@@ -271,7 +271,7 @@
                 max="100"
                 min="0"
                 placeholder="0"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full pr-10"
                 v-model="form.discount_override"
               />
               <div

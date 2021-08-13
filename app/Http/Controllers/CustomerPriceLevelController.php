@@ -27,6 +27,7 @@ class CustomerPriceLevelController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', CustomerPriceLevel::class);
         $priceLevels = $this->getPriceLevels();
         return inertia('PriceLevels/Create', ['priceLevels' => $priceLevels]);
     }
@@ -39,6 +40,8 @@ class CustomerPriceLevelController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', CustomerPriceLevel::class);
+
         Validator::make($request->toArray(), [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
@@ -63,6 +66,8 @@ class CustomerPriceLevelController extends Controller
      */
     public function show(CustomerPriceLevel $customerPriceLevel)
     {
+        Gate::authorize('view', $customerPriceLevel);
+
         $priceLevels = $this->getPriceLevels();
         return inertia('PriceLevels/Show', ['priceLevels' => $priceLevels, 'priceLevel' => $customerPriceLevel]);
     }
@@ -87,6 +92,8 @@ class CustomerPriceLevelController extends Controller
      */
     public function update(Request $request, CustomerPriceLevel $customerPriceLevel)
     {
+        Gate::authorize('update', $customerPriceLevel);
+
         Validator::make($request->toArray(), [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
@@ -111,7 +118,10 @@ class CustomerPriceLevelController extends Controller
      */
     public function destroy(CustomerPriceLevel $customerPriceLevel)
     {
-        //
+        Gate::authorize('delete', $customerPriceLevel);
+
+        $customerPriceLevel->delete();
+        return redirect(route('customer-price-levels.index'))->banner('Price level deleted.');
     }
 
     public function getPriceLevels()
