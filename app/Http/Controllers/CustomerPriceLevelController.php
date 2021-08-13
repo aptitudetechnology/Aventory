@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
 use App\Models\CustomerPriceLevel;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class CustomerPriceLevelController extends Controller
      */
     public function index()
     {
-        $priceLevels = auth()->user()->currentTeam->priceLevels;
+        $priceLevels = $this->getPriceLevels();
         return inertia('PriceLevels/Index', ['priceLevels' => $priceLevels]);
     }
 
@@ -25,7 +27,7 @@ class CustomerPriceLevelController extends Controller
      */
     public function create()
     {
-        $priceLevels = auth()->user()->currentTeam->priceLevels;
+        $priceLevels = $this->getPriceLevels();
         return inertia('PriceLevels/Create', ['priceLevels' => $priceLevels]);
     }
 
@@ -37,6 +39,12 @@ class CustomerPriceLevelController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::make($request->toArray(), [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'percentage_more' => ['required', 'numeric'],
+        ])->validateWithBag('createPriceLevel');
+
         $priceLevel = $request->user()->currentTeam->priceLevels()->create(
             [
                 'name' => $request->name,
@@ -44,7 +52,7 @@ class CustomerPriceLevelController extends Controller
                 'percentage_more' => $request->percentage_more,
             ]
         );
-        return redirect(route('price-levels.index'));
+        return redirect(route('customer-price-levels.index'))->banner('Successfully added price level.');
     }
 
     /**
@@ -55,7 +63,8 @@ class CustomerPriceLevelController extends Controller
      */
     public function show(CustomerPriceLevel $customerPriceLevel)
     {
-        //
+        $priceLevels = $this->getPriceLevels();
+        return inertia('PriceLevels/Show', ['priceLevels' => $priceLevels, 'priceLevel' => $customerPriceLevel]);
     }
 
     /**
@@ -66,7 +75,7 @@ class CustomerPriceLevelController extends Controller
      */
     public function edit(CustomerPriceLevel $customerPriceLevel)
     {
-        //
+        return redirect(route('customer-price-levels.show', $customerPriceLevel->id));
     }
 
     /**
@@ -78,7 +87,20 @@ class CustomerPriceLevelController extends Controller
      */
     public function update(Request $request, CustomerPriceLevel $customerPriceLevel)
     {
-        //
+        Validator::make($request->toArray(), [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'percentage_more' => ['required', 'numeric'],
+        ])->validateWithBag('createPriceLevel');
+
+        $customerPriceLevel->update(
+            [
+                'name' => $request->name,
+                'description' => $request->description,
+                'percentage_more' => $request->percentage_more,
+            ]
+        );
+        return redirect(route('customer-price-levels.index'))->banner('Price level successfully updated.');
     }
 
     /**
@@ -90,5 +112,10 @@ class CustomerPriceLevelController extends Controller
     public function destroy(CustomerPriceLevel $customerPriceLevel)
     {
         //
+    }
+
+    public function getPriceLevels()
+    {
+        return auth()->user()->currentTeam->priceLevels;
     }
 }
