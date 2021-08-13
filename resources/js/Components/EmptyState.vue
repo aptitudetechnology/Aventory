@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="text-center p-6">
     <svg
       class="mx-auto h-12 w-12 text-gray-400"
       fill="none"
@@ -20,7 +20,7 @@
       {{ subtitle }}
     </p>
     <div class="mt-6">
-      <button-link :href="route('customers.create')">
+      <button-link :href="href">
         <PlusIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
         {{ buttonText }}
       </button-link>
