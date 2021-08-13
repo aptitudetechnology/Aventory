@@ -38,7 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/customers/archived/{customerId}', [ArchivedCustomersController::class, 'show'])->name('archived-customers.show');
     Route::post('/customers/archived/{customerId}', [ArchivedCustomersController::class, 'store'])->name('archived-customers.restore');
 
-    Route::resource('customers/price-levels', CustomerPriceLevelController::class);
+    Route::resource('customer-price-levels', CustomerPriceLevelController::class);
 
     Route::resource('customers', CustomerController::class);
 });

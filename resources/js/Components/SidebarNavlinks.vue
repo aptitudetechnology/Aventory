@@ -8,7 +8,7 @@
       :current="
         route().current('customers.*') ||
         route().current('archived-customers.*') ||
-        route().current('price-levels.*')
+        route().current('customer-price-levels.*')
       "
     >
       <nav-link
@@ -20,8 +20,8 @@
         >Customer Directory</nav-link
       >
       <nav-link
-        :href="route('price-levels.index')"
-        :current="route().current('price-levels.*')"
+        :href="route('customer-price-levels.index')"
+        :current="route().current('customer-price-levels.*')"
         >Customer Price Levels</nav-link
       >
     </sidebar-dropdown>

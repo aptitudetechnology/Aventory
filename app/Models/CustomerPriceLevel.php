@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CustomerPriceLevel extends Model
 {
     use HasFactory;
-    protected $hidden = [];
     protected $guarded = [];
 
     public function team(): BelongsTo

@@ -1,12 +1,12 @@
 <template>
-  <page-aside :showOnMobile="route().current('price-levels.index')">
+  <page-aside :showOnMobile="route().current('customer-price-levels.index')">
     <template v-slot:header>
       <div class="flex justify-between items-center">
         <div>
           <h2 class="text-lg font-medium text-gray-900">Price Levels</h2>
           <p class="mt-1 text-sm text-gray-600">View your price levels.</p>
         </div>
-        <button-link :href="route('price-levels.create')"
+        <button-link :href="route('customer-price-levels.create')"
           >New Level</button-link
         >
       </div>
@@ -16,8 +16,8 @@
       <ul class="divide-y divide-gray-200">
         <li v-for="level in priceLevels" :key="level.id" class="bg-white">
           <aside-link
-            :href="route('price-levels.show', level.id)"
-            :current="route().current('price-levels.show', level.id)"
+            :href="route('customer-price-levels.show', level.id)"
+            :current="route().current('customer-price-levels.show', level.id)"
           >
             <div class="flex-1 min-w-0">
               <div class="focus:outline-none">
@@ -39,11 +39,13 @@
       </ul>
     </div>
     <empty-state
-      v-if="priceLevels.length < 1 && route().current('price-levels.index')"
+      v-if="
+        priceLevels.length < 1 && route().current('customer-price-levels.index')
+      "
       heading="No Price Levels"
       subtitle="Get started by creating a new price level."
       button-text="New Price Level"
-      :href="route('price-levels.create')"
+      :href="route('customer-price-levels.create')"
     />
   </page-aside>
 </template>

@@ -4,7 +4,7 @@
       <main-area :dontShowOnMobile="isIndex">
         <nav v-if="!isIndex" aria-label="Breadcrumb" class="xl:hidden">
           <div class="px-4 md:pb-2">
-            <back-link :href="route('price-levels.index')"
+            <back-link :href="route('customer-price-levels.index')"
               >Price Levels</back-link
             >
           </div>

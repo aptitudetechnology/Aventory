@@ -102,7 +102,7 @@ export default {
 
   methods: {
     createCustomer() {
-      this.form.post(route("price-levels.store"), {
+      this.form.post(route("customer-price-levels.store"), {
         errorBag: "createPriceLevel",
         preserveScroll: true,
       });
