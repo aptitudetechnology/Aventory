@@ -5,7 +5,7 @@
       'xl:order-first xl:flex xl:flex-col flex-shrink-0 lg:w-96 border-r border-gray-200 bg-white',
     ]"
   >
-    <div class="px-6 pt-6 pb-4">
+    <div class="p-6 border-b border-gray-100">
       <slot name="header"></slot>
     </div>
 
