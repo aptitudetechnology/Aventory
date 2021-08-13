@@ -23,6 +23,9 @@
         @input="updateCustomers"
         placeholder="Search by customer name or state."
       />
+    </template>
+
+    <div class="bg-white">
       <tab-container>
         <tab-link
           :href="route('customers.index')"
@@ -35,38 +38,25 @@
           >Archived</tab-link
         >
       </tab-container>
-    </template>
-
-    <div v-if="customersLength > 0" class="bg-white">
       <ul class="divide-y divide-gray-200">
         <li
           v-for="customer in filteredCustomers"
           :key="customer.id"
           class="bg-white"
         >
-          <div
-            class="
-              relative
-              px-6
-              py-5
-              flex
-              items-center
-              space-x-3
-              hover:bg-gray-50
-              focus-within:ring-2
-              focus-within:ring-inset
-              focus-within:ring-indigo-500
+          <aside-link
+            :href="
+              customer.deleted_at
+                ? route('archived-customers.show', customer.id)
+                : route('customers.show', customer.id)
+            "
+            :current="
+              route().current('customers.show', customer.id) ||
+              route().current('archived-customers.show', customer.id)
             "
           >
             <div class="flex-1 min-w-0">
-              <inertia-link
-                :href="
-                  customer.deleted_at
-                    ? route('archived-customers.show', customer.id)
-                    : route('customers.show', customer.id)
-                "
-                class="focus:outline-none"
-              >
+              <div class="focus:outline-none">
                 <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true" />
                 <p class="text-sm font-medium text-gray-900">
@@ -75,12 +65,19 @@
                 <p v-if="customer.state" class="text-sm text-gray-500 truncate">
                   {{ customer.state }}
                 </p>
-              </inertia-link>
+              </div>
             </div>
-          </div>
+          </aside-link>
         </li>
       </ul>
     </div>
+    <empty-state
+      v-if="customersLength < 1 && route().current('customers.index')"
+      heading="No Customers"
+      subtitle="Get started by creating a new customer."
+      button-text="New Customer"
+      :href="route('customers.create')"
+    />
   </page-aside>
 </template>
 <script>
@@ -89,8 +86,18 @@ import TabContainer from "../../Components/TabContainer.vue";
 import TabLink from "../../Components/TabLink";
 import SearchInput from "../../Components/SearchInput.vue";
 import PageAside from "../../Components/PageAside.vue";
+import AsideLink from "../../Components/AsideLink.vue";
+import EmptyState from "../../Components/EmptyState.vue";
 export default {
-  components: { PageAside, ButtonLink, TabContainer, TabLink, SearchInput },
+  components: {
+    PageAside,
+    AsideLink,
+    ButtonLink,
+    TabContainer,
+    TabLink,
+    SearchInput,
+    EmptyState,
+  },
   props: {
     customers: Array,
   },

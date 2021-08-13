@@ -387,7 +387,6 @@ export default {
         preserveScroll: true,
       });
     },
-    resellerOnFile() {},
   },
 };
 </script>
