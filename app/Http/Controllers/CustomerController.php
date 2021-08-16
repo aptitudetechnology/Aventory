@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Customer;
+use App\Models\CustomerPriceLevel;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $customers = $request->user()->currentTeam->customers;
+        $customers = $this->getCustomers();
 
         return  inertia('Customers/Index', ['customers' => $customers]);
     }
@@ -28,8 +29,9 @@ class CustomerController extends Controller
      */
     public function create(Request $request)
     {
-        $customers = $request->user()->currentTeam->customers;
-        return inertia('Customers/Create', ['customers' => $customers]);
+        $customers = $this->getCustomers();
+        $priceLevels = $this->getPriceLevels();
+        return inertia('Customers/Create', ['customers' => $customers, 'priceLevels' => $priceLevels]);
     }
 
     /**
@@ -53,11 +55,13 @@ class CustomerController extends Controller
             'mailing_state' => ['nullable', 'string'],
             'mailing_zip' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
+            'price_level_id' => ['exists:customer_price_levels,id']
         ])->validateWithBag('createCustomer');
 
         $customer = $request->user()->currentTeam->customers()->create(
             [
                 'name' => $request->name,
+                'customer_price_level_id' => $request->price_level_id,
                 'address' => $request->address,
                 'city' => $request->city,
                 'state' => $request->state,
@@ -101,8 +105,12 @@ class CustomerController extends Controller
     public function show(Request $request, Customer $customer)
     {
         Gate::authorize('view', $customer);
-        $customers = $request->user()->currentTeam->customers;
-        return inertia('Customers/Show', ['customer' => $customer, 'customers' => $customers]);
+        $customers = $this->getCustomers();
+
+        $priceLevels = $this->getPriceLevels();
+        $priceLevel = CustomerPriceLevel::find($customer->customer_price_level_id);
+
+        return inertia('Customers/Show', ['customer' => $customer, 'customers' => $customers, 'priceLevels' => $priceLevels, 'priceLevel' => $priceLevel]);
     }
 
     /**
@@ -191,5 +199,15 @@ class CustomerController extends Controller
         session()->flash('flash.banner', 'The customer was deleted');
         session()->flash('flash.bannerStyle', 'danger');
         return redirect(route('customers.index'));
+    }
+
+    public function getCustomers()
+    {
+        return auth()->user()->currentTeam->customers;
+    }
+
+    public function getPriceLevels()
+    {
+        return auth()->user()->currentTeam->priceLevels;
     }
 }
