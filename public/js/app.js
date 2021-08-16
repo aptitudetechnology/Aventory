@@ -38315,31 +38315,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/headlessui.esm.js");
-/* harmony import */ var _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @heroicons/vue/solid */ "./node_modules/@heroicons/vue/solid/esm/index.js");
-
+/* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/headlessui.esm.js");
+/* harmony import */ var _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @heroicons/vue/solid */ "./node_modules/@heroicons/vue/solid/esm/index.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Listbox: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.Listbox,
-    ListboxButton: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.ListboxButton,
-    ListboxLabel: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.ListboxLabel,
-    ListboxOption: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.ListboxOption,
-    ListboxOptions: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.ListboxOptions,
-    CheckIcon: _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_2__.CheckIcon,
-    SelectorIcon: _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_2__.SelectorIcon
+    Listbox: _headlessui_vue__WEBPACK_IMPORTED_MODULE_0__.Listbox,
+    ListboxButton: _headlessui_vue__WEBPACK_IMPORTED_MODULE_0__.ListboxButton,
+    ListboxLabel: _headlessui_vue__WEBPACK_IMPORTED_MODULE_0__.ListboxLabel,
+    ListboxOption: _headlessui_vue__WEBPACK_IMPORTED_MODULE_0__.ListboxOption,
+    ListboxOptions: _headlessui_vue__WEBPACK_IMPORTED_MODULE_0__.ListboxOptions,
+    CheckIcon: _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_1__.CheckIcon,
+    SelectorIcon: _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_1__.SelectorIcon
   },
   props: {
     items: Array,
-    selectedItem: Object,
+    selectedItem: Object | Boolean,
     labelValue: {
       type: String,
       "default": "Select Option"
     }
   },
-  emits: ["update:selectedItem"],
   data: function data() {
     return {
       selectItems: this.items,
@@ -39833,6 +39830,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       price_level: null,
+      priceLevels: this.$page.props.priceLevels,
       form: this.$inertia.form({
         _method: "POST",
         name: "",
@@ -39854,11 +39852,6 @@ __webpack_require__.r(__webpack_exports__);
         reseller_permit_expiration: null
       })
     };
-  },
-  computed: {
-    priceLevels: function priceLevels() {
-      return this.$page.props.priceLevels;
-    }
   },
   watch: {
     price_level: function price_level() {
@@ -40218,10 +40211,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      priceLevel: this.$page.props.priceLevel,
+      priceLevels: this.$page.props.priceLevels,
+      price_level: this.$page.props.priceLevel,
       form: this.$inertia.form({
         _method: "PATCH",
         name: this.customer.name,
+        price_level_id: this.customer.customer_price_level_id,
         address: this.customer.address,
         city: this.customer.city,
         state: this.customer.state,
@@ -40241,14 +40236,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: ["customer"],
-  computed: {
-    priceLevels: function priceLevels() {
-      return this.$page.props.priceLevels;
-    }
-  },
   watch: {
     price_level: function price_level() {
-      this.priceLevel ? this.form.price_level_id = this.priceLevel.id : this.form.price_level_id = null;
+      this.price_level ? this.form.price_level_id = this.price_level.id : this.form.price_level_id = null;
     }
   },
   methods: {
@@ -41881,9 +41871,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     modelValue: _ctx.selected,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.selected = $event;
-    }),
-    onInput: _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.$emit('update:selectedItem', $event.target.value);
     })
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -43365,7 +43352,7 @@ var _hoisted_1 = {
   "class": "h-screen flex overflow-hidden bg-gray-50"
 };
 var _hoisted_2 = {
-  "class": "\n              relative\n              flex-1 flex flex-col\n              max-w-xs\n              w-full\n              pt-5\n              pb-4\n              bg-white\n            "
+  "class": "\r\n              relative\r\n              flex-1 flex flex-col\r\n              max-w-xs\r\n              w-full\r\n              pt-5\r\n              pb-4\r\n              bg-white\r\n            "
 };
 var _hoisted_3 = {
   "class": "absolute top-0 right-0 -mr-12 pt-2"
@@ -43405,7 +43392,7 @@ var _hoisted_9 = {
   "class": "flex flex-col w-64"
 };
 var _hoisted_10 = {
-  "class": "\n            flex flex-col flex-grow\n            border-r border-gray-200\n            pt-5\n            pb-4\n            bg-white\n            overflow-y-auto\n          "
+  "class": "\r\n            flex flex-col flex-grow\r\n            border-r border-gray-200\r\n            pt-5\r\n            pb-4\r\n            bg-white\r\n            overflow-y-auto\r\n          "
 };
 var _hoisted_11 = {
   "class": "flex items-center flex-shrink-0 px-4"
@@ -43417,7 +43404,7 @@ var _hoisted_13 = {
   "class": "flex flex-col w-0 flex-1 overflow-hidden"
 };
 var _hoisted_14 = {
-  "class": "\n          relative\n          z-10\n          flex-shrink-0 flex\n          justify-between\n          md:justify-end\n          h-16\n          bg-white\n          shadow\n        "
+  "class": "\r\n          relative\r\n          z-10\r\n          flex-shrink-0 flex\r\n          justify-between\r\n          md:justify-end\r\n          h-16\r\n          bg-white\r\n          shadow\r\n        "
 };
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
@@ -43440,7 +43427,7 @@ var _hoisted_19 = {
 };
 var _hoisted_20 = {
   type: "button",
-  "class": "\n                        inline-flex\n                        items-center\n                        px-3\n                        py-2\n                        border border-transparent\n                        text-sm\n                        leading-4\n                        font-medium\n                        rounded-md\n                        text-gray-500\n                        bg-white\n                        hover:bg-gray-50\n                        hover:text-gray-700\n                        focus:outline-none\n                        focus:bg-gray-50\n                        active:bg-gray-50\n                        transition\n                      "
+  "class": "\r\n                        inline-flex\r\n                        items-center\r\n                        px-3\r\n                        py-2\r\n                        border border-transparent\r\n                        text-sm\r\n                        leading-4\r\n                        font-medium\r\n                        rounded-md\r\n                        text-gray-500\r\n                        bg-white\r\n                        hover:bg-gray-50\r\n                        hover:text-gray-700\r\n                        focus:outline-none\r\n                        focus:bg-gray-50\r\n                        active:bg-gray-50\r\n                        transition\r\n                      "
 };
 
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
@@ -43507,7 +43494,7 @@ var _hoisted_31 = {
 };
 var _hoisted_32 = {
   key: 0,
-  "class": "\n                      flex\n                      text-sm\n                      border-2 border-transparent\n                      rounded-full\n                      focus:outline-none\n                      focus:border-gray-300\n                      transition\n                    "
+  "class": "\r\n                      flex\r\n                      text-sm\r\n                      border-2 border-transparent\r\n                      rounded-full\r\n                      focus:outline-none\r\n                      focus:border-gray-300\r\n                      transition\r\n                    "
 };
 var _hoisted_33 = {
   key: 1,
@@ -43515,7 +43502,7 @@ var _hoisted_33 = {
 };
 var _hoisted_34 = {
   type: "button",
-  "class": "\n                        inline-flex\n                        items-center\n                        px-3\n                        py-2\n                        border border-transparent\n                        text-sm\n                        leading-4\n                        font-medium\n                        rounded-md\n                        text-gray-500\n                        bg-white\n                        hover:text-gray-700\n                        focus:outline-none\n                        transition\n                      "
+  "class": "\r\n                        inline-flex\r\n                        items-center\r\n                        px-3\r\n                        py-2\r\n                        border border-transparent\r\n                        text-sm\r\n                        leading-4\r\n                        font-medium\r\n                        rounded-md\r\n                        text-gray-500\r\n                        bg-white\r\n                        hover:text-gray-700\r\n                        focus:outline-none\r\n                        transition\r\n                      "
 };
 
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
@@ -43627,7 +43614,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                   return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-                    "class": "\n                    ml-1\n                    flex\n                    items-center\n                    justify-center\n                    h-10\n                    w-10\n                    rounded-full\n                    focus:outline-none\n                    focus:ring-2 focus:ring-inset focus:ring-white\n                  ",
+                    "class": "\r\n                    ml-1\r\n                    flex\r\n                    items-center\r\n                    justify-center\r\n                    h-10\r\n                    w-10\r\n                    rounded-full\r\n                    focus:outline-none\r\n                    focus:ring-2 focus:ring-inset focus:ring-white\r\n                  ",
                     onClick: _cache[1] || (_cache[1] = function ($event) {
                       return $data.sidebarOpen = false;
                     })
@@ -43672,7 +43659,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_sidebar_navlinks)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("nav", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Mobile Menu Button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-    "class": "\n            px-4\n            border-r border-gray-200\n            text-gray-500\n            focus:outline-none\n            focus:ring-2 focus:ring-inset focus:ring-indigo-500\n            md:hidden\n          ",
+    "class": "\r\n            px-4\r\n            border-r border-gray-200\r\n            text-gray-500\r\n            focus:outline-none\r\n            focus:ring-2 focus:ring-inset focus:ring-indigo-500\r\n            md:hidden\r\n          ",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $data.sidebarOpen = true;
     })
@@ -45686,9 +45673,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [$options.priceLevels.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_select_box, {
+      , ["message"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [$data.priceLevels.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_select_box, {
         key: 0,
-        items: $options.priceLevels,
+        items: $data.priceLevels,
         modelValue: $data.price_level,
         "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
           return $data.price_level = $event;
@@ -46905,17 +46892,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [$options.priceLevels.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_select_box, {
+      , ["message"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [$data.priceLevels.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_select_box, {
         key: 0,
-        items: $options.priceLevels,
-        modelValue: $data.priceLevel,
+        items: $data.priceLevels,
+        selectedItem: $data.price_level,
+        modelValue: $data.price_level,
         "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-          return $data.priceLevel = $event;
+          return $data.price_level = $event;
         }),
         labelValue: "Customer Price Level"
       }, null, 8
       /* PROPS */
-      , ["items", "modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+      , ["items", "selectedItem", "modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
         message: $data.form.errors.price_level_id,
         "class": "mt-2"
       }, null, 8

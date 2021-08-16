@@ -181,7 +181,8 @@
             <select-box
               v-if="priceLevels.length > 0"
               :items="priceLevels"
-              v-model="priceLevel"
+              :selectedItem="price_level"
+              v-model="price_level"
               labelValue="Customer Price Level"
             />
             <jet-input-error
@@ -369,10 +370,12 @@ export default {
 
   data() {
     return {
-      priceLevel: this.$page.props.priceLevel,
+      priceLevels: this.$page.props.priceLevels,
+      price_level: this.$page.props.priceLevel,
       form: this.$inertia.form({
         _method: "PATCH",
         name: this.customer.name,
+        price_level_id: this.customer.customer_price_level_id,
         address: this.customer.address,
         city: this.customer.city,
         state: this.customer.state,
@@ -393,16 +396,10 @@ export default {
   },
   props: ["customer"],
 
-  computed: {
-    priceLevels() {
-      return this.$page.props.priceLevels;
-    },
-  },
-
   watch: {
     price_level: function () {
-      this.priceLevel
-        ? (this.form.price_level_id = this.priceLevel.id)
+      this.price_level
+        ? (this.form.price_level_id = this.price_level.id)
         : (this.form.price_level_id = null);
     },
   },

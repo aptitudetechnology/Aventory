@@ -55,7 +55,7 @@ class CustomerController extends Controller
             'mailing_state' => ['nullable', 'string'],
             'mailing_zip' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
-            'price_level_id' => ['exists:customer_price_levels,id']
+            'price_level_id' => ['exists:customer_price_levels,id', 'nullable']
         ])->validateWithBag('createCustomer');
 
         $customer = $request->user()->currentTeam->customers()->create(
@@ -146,6 +146,7 @@ class CustomerController extends Controller
             'mailing_state' => ['nullable', 'string'],
             'mailing_zip' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
+            'price_level_id' => ['exists:customer_price_levels,id', 'nullable']
         ])->validateWithBag('updateCustomer');
 
         $customer->update(
@@ -155,6 +156,7 @@ class CustomerController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
+                'customer_price_level_id' => $request->price_level_id,
                 'mailing_same_as_primary' => $request->mailing_same_as_primary,
                 'notes' => $request->notes,
                 'is_retail' => $request->is_retail,

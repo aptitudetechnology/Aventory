@@ -368,6 +368,7 @@ export default {
   data() {
     return {
       price_level: null,
+      priceLevels: this.$page.props.priceLevels,
       form: this.$inertia.form({
         _method: "POST",
         name: "",
@@ -389,11 +390,6 @@ export default {
         reseller_permit_expiration: null,
       }),
     };
-  },
-  computed: {
-    priceLevels() {
-      return this.$page.props.priceLevels;
-    },
   },
   watch: {
     price_level: function () {

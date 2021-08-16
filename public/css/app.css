@@ -1648,10 +1648,6 @@ select {
 	--tw-border-opacity: 1;
 	border-color: rgba(99, 102, 241, var(--tw-border-opacity));
 }
-.border-gray-50 {
-	--tw-border-opacity: 1;
-	border-color: rgba(249, 250, 251, var(--tw-border-opacity));
-}
 .bg-white {
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
@@ -1829,15 +1825,6 @@ select {
 .pl-10 {
 	padding-left: 2.5rem;
 }
-.pr-3 {
-	padding-right: 0.75rem;
-}
-.pb-6 {
-	padding-bottom: 1.5rem;
-}
-.pb-0 {
-	padding-bottom: 0px;
-}
 .pr-10 {
 	padding-right: 2.5rem;
 }
@@ -1846,6 +1833,9 @@ select {
 }
 .pr-9 {
 	padding-right: 2.25rem;
+}
+.pr-3 {
+	padding-right: 0.75rem;
 }
 .text-left {
 	text-align: left;
@@ -2099,11 +2089,11 @@ select {
 .duration-300 {
 	transition-duration: 300ms;
 }
-.duration-1000 {
-	transition-duration: 1000ms;
-}
 .duration-100 {
 	transition-duration: 100ms;
+}
+.duration-1000 {
+	transition-duration: 1000ms;
 }
 .ease-in-out {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2129,10 +2119,6 @@ select {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(236, 72, 153, var(--tw-ring-opacity));
 }
-.focus-within\:ring-indigo-500:focus-within {
-	--tw-ring-opacity: 1;
-	--tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
-}
 .focus-within\:ring-offset-2:focus-within {
 	--tw-ring-offset-width: 2px;
 }
@@ -2143,10 +2129,6 @@ select {
 .hover\:border-gray-400:hover {
 	--tw-border-opacity: 1;
 	border-color: rgba(156, 163, 175, var(--tw-border-opacity));
-}
-.hover\:border-indigo-500:hover {
-	--tw-border-opacity: 1;
-	border-color: rgba(99, 102, 241, var(--tw-border-opacity));
 }
 .hover\:bg-indigo-600:hover {
 	--tw-bg-opacity: 1;
@@ -2690,10 +2672,6 @@ select {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
-	.md\:grid-cols-4 {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-	}
-
 	.md\:justify-end {
 		justify-content: flex-end;
 	}
@@ -2755,12 +2733,12 @@ select {
 }
 @media (min-width: 1280px) {
 
-	.xl\:order-first {
-		order: -9999;
-	}
-
 	.xl\:order-last {
 		order: 9999;
+	}
+
+	.xl\:order-first {
+		order: -9999;
 	}
 
 	.xl\:flex {
