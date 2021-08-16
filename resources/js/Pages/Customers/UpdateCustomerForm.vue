@@ -178,6 +178,16 @@
           </div>
 
           <div class="grid gap-4 col-span-3">
+            <select-box
+              v-if="priceLevels.length > 0"
+              :items="priceLevels"
+              v-model="priceLevel"
+              labelValue="Customer Price Level"
+            />
+            <jet-input-error
+              :message="form.errors.price_level_id"
+              class="mt-2"
+            />
             <SwitchGroup
               as="div"
               class="flex items-center justify-start col-span-3 sm:col-span-1"
@@ -339,7 +349,7 @@ import {
   SwitchLabel,
 } from "@headlessui/vue";
 import TextAreaInput from "../../Components/TextAreaInput.vue";
-
+import SelectBox from "../../Components/SelectBox.vue";
 export default {
   components: {
     JetActionMessage,
@@ -354,10 +364,12 @@ export default {
     SwitchGroup,
     SwitchLabel,
     TextAreaInput,
+    SelectBox,
   },
 
   data() {
     return {
+      priceLevel: this.$page.props.priceLevel,
       form: this.$inertia.form({
         _method: "PATCH",
         name: this.customer.name,
@@ -380,6 +392,20 @@ export default {
     };
   },
   props: ["customer"],
+
+  computed: {
+    priceLevels() {
+      return this.$page.props.priceLevels;
+    },
+  },
+
+  watch: {
+    price_level: function () {
+      this.priceLevel
+        ? (this.form.price_level_id = this.priceLevel.id)
+        : (this.form.price_level_id = null);
+    },
+  },
 
   methods: {
     updateCustomer() {

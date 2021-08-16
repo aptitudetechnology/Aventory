@@ -178,6 +178,13 @@
           </div>
 
           <div class="grid gap-4 col-span-3">
+            <select-box
+              v-if="priceLevels.length > 0"
+              :items="priceLevels"
+              v-model="price_level"
+              labelValue="Customer Price Level"
+            />
+            <jet-input-error :message="form.errors.price_level" class="mt-2" />
             <SwitchGroup
               as="div"
               class="flex items-center justify-start col-span-3 sm:col-span-1"
@@ -271,7 +278,7 @@
                 max="100"
                 min="0"
                 placeholder="0"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full pr-10"
                 v-model="form.discount_override"
               />
               <div
@@ -339,6 +346,7 @@ import {
   SwitchLabel,
 } from "@headlessui/vue";
 import TextAreaInput from "../../Components/TextAreaInput.vue";
+import SelectBox from "../../Components/SelectBox.vue";
 
 export default {
   components: {
@@ -354,10 +362,12 @@ export default {
     SwitchGroup,
     SwitchLabel,
     TextAreaInput,
+    SelectBox,
   },
 
   data() {
     return {
+      price_level: null,
       form: this.$inertia.form({
         _method: "POST",
         name: "",
@@ -365,6 +375,7 @@ export default {
         city: "",
         state: "",
         zip: "",
+        price_level_id: null,
         mailing_same_as_primary: true,
         mailing_address: "",
         mailing_city: "",
@@ -379,6 +390,18 @@ export default {
       }),
     };
   },
+  computed: {
+    priceLevels() {
+      return this.$page.props.priceLevels;
+    },
+  },
+  watch: {
+    price_level: function () {
+      this.price_level
+        ? (this.form.price_level_id = this.price_level.id)
+        : (this.form.price_level_id = null);
+    },
+  },
 
   methods: {
     createCustomer() {
@@ -387,7 +410,6 @@ export default {
         preserveScroll: true,
       });
     },
-    resellerOnFile() {},
   },
 };
 </script>

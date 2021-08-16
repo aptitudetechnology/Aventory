@@ -76,18 +76,7 @@
               />
             </div>
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
-              <nav class="px-2 space-y-1">
-                <nav-link
-                  :href="route('dashboard')"
-                  :current="route().current('dashboard')"
-                  >Dashboard</nav-link
-                >
-                <nav-link
-                  :href="route('customers.index')"
-                  :current="route().current('customers.*')"
-                  >Customers</nav-link
-                >
-              </nav>
+              <sidebar-navlinks />
             </div>
           </div>
         </TransitionChild>
@@ -116,21 +105,7 @@
             </inertia-link>
           </div>
           <div class="mt-5 flex-grow flex flex-col">
-            <nav class="flex-1 px-2 bg-white space-y-1">
-              <nav-link
-                :href="route('dashboard')"
-                :current="route().current('dashboard')"
-                >Dashboard</nav-link
-              >
-              <nav-link
-                :href="route('customers.index')"
-                :current="
-                  route().current('customers.*') ||
-                  route().current('archived-customers.*')
-                "
-                >Customers</nav-link
-              >
-            </nav>
+            <sidebar-navlinks />
           </div>
         </div>
       </div>
@@ -397,7 +372,7 @@ import JetDropdown from "@/Jetstream/Dropdown";
 import JetDropdownLink from "@/Jetstream/DropdownLink";
 import JetNavLink from "@/Jetstream/NavLink";
 import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
-import NavLink from "@/Components/NavLink.vue";
+import SidebarNavlinks from "@/Components/SidebarNavlinks.vue";
 
 export default {
   components: {
@@ -419,7 +394,7 @@ export default {
     JetDropdownLink,
     JetNavLink,
     JetResponsiveNavLink,
-    NavLink,
+    SidebarNavlinks,
   },
 
   data() {

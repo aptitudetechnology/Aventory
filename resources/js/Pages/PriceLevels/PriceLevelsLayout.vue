@@ -4,13 +4,8 @@
       <main-area :dontShowOnMobile="isIndex">
         <nav v-if="!isIndex" aria-label="Breadcrumb" class="xl:hidden">
           <div class="px-4 md:pb-2">
-            <back-link
-              v-if="route().current('customers.*')"
-              :href="route('customers.index')"
-              >Customers</back-link
-            >
-            <back-link v-else :href="route('archived-customers.index')"
-              >Archived Customers</back-link
+            <back-link :href="route('customer-price-levels.index')"
+              >Price Levels</back-link
             >
           </div>
         </nav>
@@ -20,7 +15,7 @@
         </div>
       </main-area>
       <!-- Start secondary column (hidden on smaller screens) -->
-      <customers-aside :customers="customers" />
+      <price-levels-aside :priceLevels="priceLevels" />
     </div>
   </app-layout>
 </template>
@@ -28,25 +23,22 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import BackLink from "@/Components/BackLink";
-import CustomersAside from "@/Pages/Customers/CustomersAside";
+import PriceLevelsAside from "./PriceLevelsAside.vue";
 import MainArea from "../../Components/MainArea.vue";
 
 export default {
   components: {
-    CustomersAside,
+    PriceLevelsAside,
     AppLayout,
     BackLink,
     MainArea,
   },
   computed: {
-    customers() {
-      return this.$page.props.customers;
+    priceLevels() {
+      return this.$page.props.priceLevels;
     },
     isIndex() {
-      return (
-        route().current("customers.index") ||
-        route().current("archived-customers.index")
-      );
+      return route().current("price-levels.index");
     },
   },
 };
