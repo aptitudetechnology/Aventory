@@ -129,7 +129,7 @@ return [
     | or wish to improve static analysis.
     |
     */
-    'generate_fqcn_route' => false,
+    'generate_fqcn_route' => true,
 
     /*
     |--------------------------------------------------------------------------
