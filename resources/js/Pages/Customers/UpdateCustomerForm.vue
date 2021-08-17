@@ -327,8 +327,11 @@
     <template #actions>
       <jet-button
         type="submit"
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
+        :class="[
+          { 'opacity-25': form.processing },
+          { 'opacity-25': !form.isDirty },
+        ]"
+        :disabled="form.processing || !form.isDirty"
         >Save Customer</jet-button
       >
     </template>

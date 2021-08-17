@@ -47054,10 +47054,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     actions: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
         type: "submit",
-        "class": {
+        "class": [{
           'opacity-25': $data.form.processing
-        },
-        disabled: $data.form.processing
+        }, {
+          'opacity-25': !$data.form.isDirty
+        }],
+        disabled: $data.form.processing || !$data.form.isDirty
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_32];
