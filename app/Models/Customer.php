@@ -23,6 +23,7 @@ class Customer extends Model
         'no_auto_discount' => 'boolean',
         'reseller_permit_on_file' => 'boolean'
     ];
+    protected $with = ['contacts'];
 
     protected $guarded = [];
 
