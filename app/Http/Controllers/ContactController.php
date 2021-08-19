@@ -15,9 +15,6 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        $contacts = Contact::all();
-
-        return view('contact.index', compact('contacts'));
     }
 
     /**
@@ -26,7 +23,6 @@ class ContactController extends Controller
      */
     public function create(Request $request)
     {
-        return view('contact.create');
     }
 
     /**
@@ -35,11 +31,12 @@ class ContactController extends Controller
      */
     public function store(ContactStoreRequest $request)
     {
-        $contact = Contact::create($request->validated());
+        $contact = auth()->user()->currentTeam->contacts()->create($request->validated());
 
         $request->session()->flash('contact.id', $contact->id);
-
-        return redirect()->route('contact.index');
+        if ($request->customer_id) {
+            return redirect(route('customers.show', $request->customer_id))->banner('Contact Saved');
+        }
     }
 
     /**
@@ -49,7 +46,6 @@ class ContactController extends Controller
      */
     public function show(Request $request, Contact $contact)
     {
-        return view('contact.show', compact('contact'));
     }
 
     /**
@@ -59,7 +55,6 @@ class ContactController extends Controller
      */
     public function edit(Request $request, Contact $contact)
     {
-        return view('contact.edit', compact('contact'));
     }
 
     /**
@@ -72,8 +67,6 @@ class ContactController extends Controller
         $contact->update($request->validated());
 
         $request->session()->flash('contact.id', $contact->id);
-
-        return redirect()->route('contact.index');
     }
 
     /**
@@ -84,7 +77,5 @@ class ContactController extends Controller
     public function destroy(Request $request, Contact $contact)
     {
         $contact->delete();
-
-        return redirect()->route('contact.index');
     }
 }
