@@ -27,13 +27,13 @@ class ContactUpdateRequest extends FormRequest
             'team_id' => ['required', 'integer', 'exists:teams,id'],
             'customer_id' => ['nullable', 'integer', 'exists:customers,id'],
             'first_name' => ['required', 'string', 'max:50'],
-            'last_name' => ['string', 'max:50'],
-            'email' => ['email', 'max:150'],
-            'phone_1' => ['string', 'max:20'],
-            'phone_2' => ['string', 'max:20'],
-            'cell_phone' => ['string', 'max:20'],
-            'fax' => ['string', 'max:20'],
-            'notes' => ['string', 'max:8000'],
+            'last_name' => ['nullable', 'string', 'max:50'],
+            'email' => ['nullable', 'email', 'max:150'],
+            'phone_1' => ['nullable', 'string', 'max:20'],
+            'phone_2' => ['nullable', 'string', 'max:20'],
+            'cell_phone' => ['nullable', 'string', 'max:20'],
+            'fax' => ['nullable', 'string', 'max:20'],
+            'notes' => ['nullable', 'string', 'max:8000'],
         ];
     }
 }
