@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -41,4 +42,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('customer-price-levels', CustomerPriceLevelController::class);
 
     Route::resource('customers', CustomerController::class);
+
+    Route::resource('contact', ContactController::class);
 });
