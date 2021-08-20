@@ -101,7 +101,6 @@ class VendorController extends Controller
 
         $this->updateMailingAddress($vendor, $request);
 
-        $request->session()->flash('success', 'Yeah! Vendor was updated.');
         return redirect(route('vendors.show', $vendor->id))->banner('Yeah! Successfully saved vendor.');
     }
 

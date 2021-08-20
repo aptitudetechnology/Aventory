@@ -1,6 +1,6 @@
 <template>
   <jet-action-section>
-    <template #title> Delete Vendors </template>
+    <template #title> Delete Vendor </template>
 
     <template #description> Delete this vendor. </template>
 
@@ -77,7 +77,7 @@ export default {
     },
 
     deleteVendor() {
-      this.form.delete(route("vendors.destroy", this.vendors), {
+      this.form.delete(route("vendors.destroy", this.vendor), {
         errorBag: "deleteVendor",
       });
     },

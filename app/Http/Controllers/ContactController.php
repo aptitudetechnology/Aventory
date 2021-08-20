@@ -62,6 +62,8 @@ class ContactController extends Controller
     {
         if ($contact->customer_id) {
             return redirect(route('customers.show', $contact->customer_id));
+        } elseif ($contact->vendor_id) {
+            return redirect(route('vendors.show', $contact->vendor_id));
         }
     }
 }

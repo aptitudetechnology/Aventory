@@ -1,11 +1,6 @@
 <template>
   <jet-form-section @submitted="updateVendor">
-    <template #title>Create a Vendor</template>
-
-    <template #description>
-      Create a new vendor to purchase products from.
-    </template>
-
+    <template #title>{{ vendor.name }}</template>
     <template #form>
       <div class="col-span-6">
         <div class="grid gap-4">
@@ -208,8 +203,8 @@
     <template #actions>
       <jet-button
         type="submit"
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
+        :class="{ 'opacity-25': form.processing || !form.isDirty }"
+        :disabled="form.processing || !form.isDirty"
         >Save Vendor</jet-button
       >
     </template>
@@ -254,7 +249,7 @@ export default {
   data() {
     return {
       form: this.$inertia.form({
-        _method: "POST",
+        _method: "PATCH",
         name: this.vendor.name,
         vendor_code: this.vendor.vendor_code,
         address: this.vendor.address,
@@ -265,7 +260,7 @@ export default {
         mailing_address: this.vendor.mailing_address,
         mailing_city: this.vendor.mailing_city,
         mailing_state: this.vendor.mailing_state,
-        mailing_zip: thsi.vendor.mailing_zip,
+        mailing_zip: this.vendor.mailing_zip,
         notes: this.vendor.notes,
         use_for_block_transfers: this.vendor.use_for_block_transfers,
       }),
@@ -274,7 +269,7 @@ export default {
 
   methods: {
     updateVendor() {
-      this.form.post(route("vendors.update", this.vendor), {
+      this.form.patch(route("vendors.update", this.vendor), {
         errorBag: "updateVendor",
         preserveScroll: true,
       });

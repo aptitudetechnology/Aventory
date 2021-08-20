@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vendor extends Model
 {
     use HasFactory;
-
+    protected $with = ['contacts'];
     /**
      * The attributes that are mass assignable.
      *
