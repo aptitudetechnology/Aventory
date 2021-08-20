@@ -66,7 +66,7 @@ class ContactController extends Controller
     {
         $contact->update($request->validated());
 
-        $request->session()->flash('contact.id', $contact->id);
+        return redirect(route('customers.show', $contact->customer->id))->banner('Saved changes to contact.');
     }
 
     /**
@@ -77,5 +77,6 @@ class ContactController extends Controller
     public function destroy(Request $request, Contact $contact)
     {
         $contact->delete();
+        return redirect(route('customers.show', $contact->customer_id))->banner('Deleted Contact.');
     }
 }

@@ -24,7 +24,6 @@ class ContactUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
             'customer_id' => ['nullable', 'integer', 'exists:customers,id'],
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['nullable', 'string', 'max:50'],

@@ -6,18 +6,19 @@
     "
   >
     <template v-slot:header>
-      <div class="flex justify-between items-center">
-        <div>
-          <h2 class="text-lg font-medium text-gray-900">Customer Directory</h2>
-          <p v-if="customersLength > 0" class="mt-1 text-sm text-gray-600">
-            Search {{ customersLength }}
-            {{ customersLength > 1 ? "Customers" : "Customer" }}
-          </p>
-        </div>
-        <button-link :href="route('customers.create')"
-          >New Customer</button-link
+      <jet-section-title>
+        <template #title>Customer Directory</template>
+        <template v-if="customersLength > 0" #description
+          >Search {{ customersLength }}
+          {{ customersLength > 1 ? "Customers" : "Customer" }}</template
         >
-      </div>
+
+        <template #aside
+          ><button-link :href="route('customers.create')"
+            >New Customer</button-link
+          ></template
+        >
+      </jet-section-title>
       <search-input
         v-model="search"
         @input="updateCustomers"
@@ -88,6 +89,7 @@ import SearchInput from "../../Components/SearchInput.vue";
 import PageAside from "../../Components/PageAside.vue";
 import AsideLink from "../../Components/AsideLink.vue";
 import EmptyState from "../../Components/EmptyState.vue";
+import JetSectionTitle from "../../Jetstream/SectionTitle.vue";
 export default {
   components: {
     PageAside,
@@ -97,6 +99,7 @@ export default {
     TabLink,
     SearchInput,
     EmptyState,
+    JetSectionTitle,
   },
   props: {
     customers: Array,
