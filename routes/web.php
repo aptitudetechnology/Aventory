@@ -43,5 +43,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('customers', CustomerController::class);
 
-    Route::resource('contacts', ContactController::class);
+    Route::resource('contacts', ContactController::class)->only(['store', 'update', 'destroy']);
 });

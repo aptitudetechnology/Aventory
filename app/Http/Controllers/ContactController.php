@@ -6,24 +6,10 @@ use App\Http\Requests\ContactStoreRequest;
 use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ContactController extends Controller
 {
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-    }
 
     /**
      * @param \App\Http\Requests\ContactStoreRequest $request
@@ -31,31 +17,17 @@ class ContactController extends Controller
      */
     public function store(ContactStoreRequest $request)
     {
+        Gate::authorize('create', Contact::class);
         $contact = auth()->user()->currentTeam->contacts()->create($request->validated());
 
         $request->session()->flash('contact.id', $contact->id);
         if ($request->customer_id) {
-            return redirect(route('customers.show', $request->customer_id))->banner('Contact Saved');
+            session()->flash('flash.banner', 'Created new contact!');
+            session()->flash('flash.bannerStyle', 'success');
+            return redirect(route('customers.show', $request->customer_id));
         }
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Contact $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request, Contact $contact)
-    {
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Contact $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request, Contact $contact)
-    {
-    }
 
     /**
      * @param \App\Http\Requests\ContactUpdateRequest $request
@@ -64,9 +36,11 @@ class ContactController extends Controller
      */
     public function update(ContactUpdateRequest $request, Contact $contact)
     {
+        Gate::authorize('update', $contact);
         $contact->update($request->validated());
-
-        return redirect(route('customers.show', $contact->customer->id))->banner('Saved changes to contact.');
+        session()->flash('flash.banner', 'Saved changes to contact.');
+        session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('customers.show', $contact->customer->id));
     }
 
     /**
@@ -76,7 +50,10 @@ class ContactController extends Controller
      */
     public function destroy(Request $request, Contact $contact)
     {
+        Gate::authorize('delete', $contact);
         $contact->delete();
-        return redirect(route('customers.show', $contact->customer_id))->banner('Deleted Contact.');
+        session()->flash('flash.banner', 'Deleted contact.');
+        session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('customers.show', $contact->customer_id));
     }
 }
