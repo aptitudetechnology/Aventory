@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
@@ -45,6 +46,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('contacts', ContactController::class)->only(['store', 'update', 'destroy']);
 
+    /**This needs to be before the vendors resource as will return 403 if after. */
+    Route::get('/vendors/archived', [ArchivedVendorsController::class, 'index'])->name('archived-vendors.index');
+    Route::get('/vendors/archived/{vendorId}', [ArchivedVendorsController::class, 'show'])->name('archived-vendors.show');
+    Route::post('/vendors/archived/{vendorId}', [ArchivedVendorsController::class, 'store'])->name('archived-vendors.restore');
 
-    Route::resource('vendor', App\Http\Controllers\VendorController::class);
+    Route::resource('vendors', App\Http\Controllers\VendorController::class);
 });

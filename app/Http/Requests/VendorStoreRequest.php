@@ -24,7 +24,6 @@ class VendorStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
             'name' => ['required', 'string'],
             'vendor_code' => ['string', 'max:50'],
             'address' => ['string'],

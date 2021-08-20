@@ -5,86 +5,142 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VendorStoreRequest;
 use App\Http\Requests\VendorUpdateRequest;
 use App\Models\Vendor;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class VendorController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * Display a listing of the resource.
+     *
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
     public function index(Request $request)
     {
-        $vendors = Vendor::all();
+        $vendors = $this->getVendors();
 
-        return view('vendor.index', compact('vendors'));
+        return  inertia('Vendors/Index', ['vendors' => $vendors]);
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * Show the form for creating a new resource.
+     *
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
     public function create(Request $request)
     {
-        return view('vendor.create');
+        $vendors = $this->getVendors();
+        $priceLevels = $this->getPriceLevels();
+        return inertia('Vendors/Create', [
+            'vendors' => $vendors,
+            'priceLevels' => $priceLevels
+        ]);
     }
 
     /**
-     * @param \App\Http\Requests\VendorStoreRequest $request
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(VendorStoreRequest $request)
     {
-        $vendor = Vendor::create($request->validated());
+        $vendor = $request->user()
+            ->currentTeam->vendors()
+            ->create($request->validated());
 
-        $request->session()->flash('vendor.id', $vendor->id);
+        $this->updateMailingAddress($vendor, $request);
 
-        return redirect()->route('vendor.index');
+        return redirect(route('vendors.show', $vendor->id))->banner('Successfully saved new vendor.');;
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Vendor $vendor
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Vendor $vendor)
     {
-        return view('vendor.show', compact('vendor'));
+        Gate::authorize('view', $vendor);
+        $vendors = $this->getvendors();
+
+        $priceLevels = $this->getPriceLevels();
+        $priceLevel = $vendor->priceLevel;
+
+        return inertia('Vendors/Show', [
+            'vendor' => $vendor,
+            'vendors' => $vendors,
+            'priceLevels' => $priceLevels,
+            'priceLevel' => $priceLevel
+        ]);
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Vendor $vendor
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Vendor $vendor)
+    public function edit(Vendor $vendor)
     {
-        return view('vendor.edit', compact('vendor'));
+        Gate::authorize('update', $vendor);
+        return redirect(route('vendors.show', $vendor->id));
     }
 
     /**
-     * @param \App\Http\Requests\VendorUpdateRequest $request
-     * @param \App\Models\Vendor $vendor
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
     public function update(VendorUpdateRequest $request, Vendor $vendor)
     {
         $vendor->update($request->validated());
 
-        $request->session()->flash('vendor.id', $vendor->id);
+        $this->updateMailingAddress($vendor, $request);
 
-        return redirect()->route('vendor.index');
+        $request->session()->flash('success', 'Yeah! Vendor was updated.');
+        return redirect(route('vendors.show', $vendor->id))->banner('Yeah! Successfully saved vendor.');
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Vendor $vendor
+     * Remove the specified resource from storage.
+     *
+     * @param  $vendorId
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Vendor $vendor)
+    public function destroy(Vendor $vendor)
     {
+        Gate::authorize('delete', $vendor);
         $vendor->delete();
+        session()->flash('flash.banner', 'The vendor was deleted');
+        session()->flash('flash.bannerStyle', 'danger');
+        return redirect(route('vendors.index'));
+    }
 
-        return redirect()->route('vendor.index');
+    public function getVendors()
+    {
+        return auth()->user()->currentTeam->vendors;
+    }
+
+    public function getPriceLevels()
+    {
+        return auth()->user()->currentTeam->priceLevels;
+    }
+
+    public function updateMailingAddress($vendor, $request)
+    {
+        if ($request->mailing_same_as_primary) {
+            $vendor->update(
+                [
+                    'mailing_address' => $request->address,
+                    'mailing_city' => $request->city,
+                    'mailing_state' => $request->state,
+                    'mailing_zip' => $request->zip
+                ]
+            );
+        }
     }
 }

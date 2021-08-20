@@ -48,6 +48,11 @@ class Team extends JetstreamTeam
         return $this->hasMany(Customer::class)->orderBy('name');
     }
 
+    public function vendors(): HasMany
+    {
+        return $this->hasMany(Vendor::class)->orderBy('name');
+    }
+
     public function priceLevels(): HasMany
     {
         return $this->hasMany(customerPriceLevel::class);
