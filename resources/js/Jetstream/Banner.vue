@@ -108,9 +108,18 @@ export default {
     style() {
       return this.$page.props.jetstream.flash?.bannerStyle || "success";
     },
+    requestDate() {
+      return this.$page.props.requestDate;
+    },
 
     message() {
       return this.$page.props.jetstream.flash?.banner || "";
+    },
+  },
+
+  watch: {
+    requestDate() {
+      this.show = true;
     },
   },
 };

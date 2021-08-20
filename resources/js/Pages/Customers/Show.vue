@@ -1,11 +1,16 @@
 <template>
   <customers-layout>
-    <update-customer-form :customer="customer" />
-    <delete-customer-form
-      v-if="!customer.deleted_at"
-      :customer="customer"
-      class="mt-6"
-    />
+    <div>
+      <div class="lg:grid lg:grid-cols-8 gap-4">
+        <div class="lg:col-span-5 mb-6">
+          <update-customer-form :customer="customer" />
+        </div>
+        <div class="lg:col-span-3">
+          <contact-aside :customer="customer" />
+        </div>
+      </div>
+      <delete-customer-form :customer="customer" />
+    </div>
   </customers-layout>
 </template>
 
@@ -14,12 +19,14 @@ import CustomersLayout from "./CustomersLayout.vue";
 import UpdateCustomerForm from "@/Pages/Customers/UpdateCustomerForm";
 import ButtonLink from "@/Components/ButtonLink";
 import DeleteCustomerForm from "./DeleteCustomerForm.vue";
+import ContactAside from "../Contacts/ContactAside.vue";
 export default {
   components: {
     CustomersLayout,
     UpdateCustomerForm,
     ButtonLink,
     DeleteCustomerForm,
+    ContactAside,
   },
   props: {
     customer: Object,

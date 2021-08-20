@@ -1125,8 +1125,14 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
+.col-span-4 {
+	grid-column: span 4 / span 4;
+}
 .col-span-3 {
 	grid-column: span 3 / span 3;
+}
+.col-span-2 {
+	grid-column: span 2 / span 2;
 }
 .mx-auto {
 	margin-left: auto;
@@ -1464,6 +1470,12 @@ select {
 .grid-cols-1 {
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 }
+.grid-cols-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .flex-col {
 	flex-direction: column;
 }
@@ -1503,6 +1515,10 @@ select {
 }
 .gap-y-8 {
 	row-gap: 2rem;
+}
+.gap-x-6 {
+	-moz-column-gap: 1.5rem;
+	     column-gap: 1.5rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
@@ -1647,10 +1663,6 @@ select {
 .border-indigo-500 {
 	--tw-border-opacity: 1;
 	border-color: rgba(99, 102, 241, var(--tw-border-opacity));
-}
-.border-gray-50 {
-	--tw-border-opacity: 1;
-	border-color: rgba(249, 250, 251, var(--tw-border-opacity));
 }
 .bg-white {
 	--tw-bg-opacity: 1;
@@ -1829,15 +1841,6 @@ select {
 .pl-10 {
 	padding-left: 2.5rem;
 }
-.pr-3 {
-	padding-right: 0.75rem;
-}
-.pb-6 {
-	padding-bottom: 1.5rem;
-}
-.pb-0 {
-	padding-bottom: 0px;
-}
 .pr-10 {
 	padding-right: 2.5rem;
 }
@@ -1846,6 +1849,9 @@ select {
 }
 .pr-9 {
 	padding-right: 2.25rem;
+}
+.pr-3 {
+	padding-right: 0.75rem;
 }
 .text-left {
 	text-align: left;
@@ -2099,11 +2105,11 @@ select {
 .duration-300 {
 	transition-duration: 300ms;
 }
-.duration-1000 {
-	transition-duration: 1000ms;
-}
 .duration-100 {
 	transition-duration: 100ms;
+}
+.duration-1000 {
+	transition-duration: 1000ms;
 }
 .ease-in-out {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2129,10 +2135,6 @@ select {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(236, 72, 153, var(--tw-ring-opacity));
 }
-.focus-within\:ring-indigo-500:focus-within {
-	--tw-ring-opacity: 1;
-	--tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
-}
 .focus-within\:ring-offset-2:focus-within {
 	--tw-ring-offset-width: 2px;
 }
@@ -2143,10 +2145,6 @@ select {
 .hover\:border-gray-400:hover {
 	--tw-border-opacity: 1;
 	border-color: rgba(156, 163, 175, var(--tw-border-opacity));
-}
-.hover\:border-indigo-500:hover {
-	--tw-border-opacity: 1;
-	border-color: rgba(99, 102, 241, var(--tw-border-opacity));
 }
 .hover\:bg-indigo-600:hover {
 	--tw-bg-opacity: 1;
@@ -2623,6 +2621,11 @@ select {
 		padding-right: 5rem;
 	}
 
+	.sm\:px-4 {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
 	.sm\:pt-0 {
 		padding-top: 0px;
 	}
@@ -2690,10 +2693,6 @@ select {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
-	.md\:grid-cols-4 {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-	}
-
 	.md\:justify-end {
 		justify-content: flex-end;
 	}
@@ -2720,12 +2719,28 @@ select {
 		grid-column: span 4 / span 4;
 	}
 
+	.lg\:col-span-2 {
+		grid-column: span 2 / span 2;
+	}
+
+	.lg\:col-span-5 {
+		grid-column: span 5 / span 5;
+	}
+
+	.lg\:col-span-3 {
+		grid-column: span 3 / span 3;
+	}
+
 	.lg\:block {
 		display: block;
 	}
 
 	.lg\:flex {
 		display: flex;
+	}
+
+	.lg\:grid {
+		display: grid;
 	}
 
 	.lg\:hidden {
@@ -2740,12 +2755,36 @@ select {
 		width: 24rem;
 	}
 
+	.lg\:w-3\/12 {
+		width: 25%;
+	}
+
+	.lg\:w-4\/12 {
+		width: 33.333333%;
+	}
+
+	.lg\:w-80 {
+		width: 20rem;
+	}
+
+	.lg\:w-auto {
+		width: auto;
+	}
+
 	.lg\:flex-shrink-0 {
 		flex-shrink: 0;
 	}
 
 	.lg\:grid-cols-3 {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.lg\:grid-cols-6 {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+
+	.lg\:grid-cols-8 {
+		grid-template-columns: repeat(8, minmax(0, 1fr));
 	}
 
 	.lg\:px-8 {
@@ -2755,12 +2794,12 @@ select {
 }
 @media (min-width: 1280px) {
 
-	.xl\:order-first {
-		order: -9999;
-	}
-
 	.xl\:order-last {
 		order: 9999;
+	}
+
+	.xl\:order-first {
+		order: -9999;
 	}
 
 	.xl\:flex {
@@ -2769,6 +2808,18 @@ select {
 
 	.xl\:hidden {
 		display: none;
+	}
+
+	.xl\:w-3\/4 {
+		width: 75%;
+	}
+
+	.xl\:w-1\/4 {
+		width: 25%;
+	}
+
+	.xl\:w-auto {
+		width: auto;
 	}
 
 	.xl\:flex-col {

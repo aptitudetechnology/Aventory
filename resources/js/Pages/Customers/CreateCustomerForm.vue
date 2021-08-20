@@ -368,6 +368,7 @@ export default {
   data() {
     return {
       price_level: null,
+      priceLevels: this.$page.props.priceLevels,
       form: this.$inertia.form({
         _method: "POST",
         name: "",
@@ -375,7 +376,7 @@ export default {
         city: "",
         state: "",
         zip: "",
-        price_level_id: null,
+        customer_price_level_id: null,
         mailing_same_as_primary: true,
         mailing_address: "",
         mailing_city: "",
@@ -390,16 +391,11 @@ export default {
       }),
     };
   },
-  computed: {
-    priceLevels() {
-      return this.$page.props.priceLevels;
-    },
-  },
   watch: {
     price_level: function () {
       this.price_level
-        ? (this.form.price_level_id = this.price_level.id)
-        : (this.form.price_level_id = null);
+        ? (this.form.customer_price_level_id = this.price_level.id)
+        : (this.form.customer_price_level_id = null);
     },
   },
 

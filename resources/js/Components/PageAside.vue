@@ -2,7 +2,7 @@
   <aside
     :class="[
       showOnMobile ? 'flex flex-col w-full' : 'hidden',
-      'xl:order-first xl:flex xl:flex-col flex-shrink-0 lg:w-96 border-r border-gray-200 bg-white',
+      'xl:order-first xl:flex xl:flex-col flex-shrink-0 xl:w-auto border-r border-gray-200 bg-white',
     ]"
   >
     <div class="p-6 border-b border-gray-100">

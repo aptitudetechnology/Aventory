@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
-use App\Models\CustomerPriceLevel;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
@@ -31,7 +31,10 @@ class CustomerController extends Controller
     {
         $customers = $this->getCustomers();
         $priceLevels = $this->getPriceLevels();
-        return inertia('Customers/Create', ['customers' => $customers, 'priceLevels' => $priceLevels]);
+        return inertia('Customers/Create', [
+            'customers' => $customers,
+            'priceLevels' => $priceLevels
+        ]);
     }
 
     /**
@@ -40,59 +43,14 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCustomerRequest $request)
     {
-        Gate::authorize('create', Customer::class);
+        $customer = $request->user()
+            ->currentTeam->customers()
+            ->create($request->validated());
 
-        Validator::make($request->toArray(), [
-            'name' => ['required', 'string', 'max:255'],
-            'address' => ['nullable', 'string'],
-            'city' => ['nullable', 'string'],
-            'state' => ['nullable', 'string'],
-            'zip' => ['nullable', 'string'],
-            'mailing_address' => ['nullable', 'string'],
-            'mailing_city' => ['nullable', 'string'],
-            'mailing_state' => ['nullable', 'string'],
-            'mailing_zip' => ['nullable', 'string'],
-            'notes' => ['nullable', 'string'],
-            'price_level_id' => ['exists:customer_price_levels,id']
-        ])->validateWithBag('createCustomer');
+        $this->updateMailingAddress($customer, $request);
 
-        $customer = $request->user()->currentTeam->customers()->create(
-            [
-                'name' => $request->name,
-                'customer_price_level_id' => $request->price_level_id,
-                'address' => $request->address,
-                'city' => $request->city,
-                'state' => $request->state,
-                'zip' => $request->zip,
-                'mailing_same_as_primary' => $request->mailing_same_as_primary,
-                'notes' => $request->notes,
-                'is_retail' => $request->is_retail,
-                'no_auto_discount' => $request->no_auto_discount,
-                'tax_percentage' => $request->tax_percentage,
-                'discount_override' => $request->discount_override,
-                'reseller_permit_on_file' =>  $request->reseller_permit_expiration ? true : false,
-                'reseller_permit_expiration' => $request->reseller_permit_expiration,
-            ]
-        );
-        if ($request->mailing_same_as_primary) {
-            $customer->update(
-                [
-                    'mailing_address' => $request->address,
-                    'mailing_city' => $request->city,
-                    'mailing_state' => $request->state,
-                    'mailing_zip' => $request->zip
-                ]
-            );
-        } else {
-            $customer->update([
-                'mailing_address' => $request->mailing_address,
-                'mailing_city' => $request->mailing_city,
-                'mailing_state' => $request->mailing_state,
-                'mailing_zip' => $request->mailing_zip
-            ]);
-        }
         return redirect(route('customers.show', $customer->id))->banner('Successfully saved new customer.');;
     }
 
@@ -108,9 +66,14 @@ class CustomerController extends Controller
         $customers = $this->getCustomers();
 
         $priceLevels = $this->getPriceLevels();
-        $priceLevel = CustomerPriceLevel::find($customer->customer_price_level_id);
+        $priceLevel = $customer->priceLevel;
 
-        return inertia('Customers/Show', ['customer' => $customer, 'customers' => $customers, 'priceLevels' => $priceLevels, 'priceLevel' => $priceLevel]);
+        return inertia('Customers/Show', [
+            'customer' => $customer,
+            'customers' => $customers,
+            'priceLevels' => $priceLevels,
+            'priceLevel' => $priceLevel
+        ]);
     }
 
     /**
@@ -132,56 +95,12 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        Gate::authorize('update', $customer);
-        Validator::make($request->toArray(), [
-            'name' => ['required', 'string', 'max:255'],
-            'address' => ['nullable', 'string'],
-            'city' => ['nullable', 'string'],
-            'state' => ['nullable', 'string'],
-            'zip' => ['nullable', 'string'],
-            'mailing_address' => ['nullable', 'string'],
-            'mailing_city' => ['nullable', 'string'],
-            'mailing_state' => ['nullable', 'string'],
-            'mailing_zip' => ['nullable', 'string'],
-            'notes' => ['nullable', 'string'],
-        ])->validateWithBag('updateCustomer');
+        $customer->update($request->validated());
 
-        $customer->update(
-            [
-                'name' => $request->name,
-                'address' => $request->address,
-                'city' => $request->city,
-                'state' => $request->state,
-                'zip' => $request->zip,
-                'mailing_same_as_primary' => $request->mailing_same_as_primary,
-                'notes' => $request->notes,
-                'is_retail' => $request->is_retail,
-                'no_auto_discount' => $request->no_auto_discount,
-                'tax_percentage' => $request->tax_percentage,
-                'discount_override' => $request->discount_override,
-                'reseller_permit_on_file' =>  $request->reseller_permit_expiration ? true : false,
-                'reseller_permit_expiration' => $request->reseller_permit_expiration,
-            ]
-        );
-        if ($request->mailing_same_as_primary) {
-            $customer->update(
-                [
-                    'mailing_address' => $request->address,
-                    'mailing_city' => $request->city,
-                    'mailing_state' => $request->state,
-                    'mailing_zip' => $request->zip
-                ]
-            );
-        } else {
-            $customer->update([
-                'mailing_address' => $request->mailing_address,
-                'mailing_city' => $request->mailing_city,
-                'mailing_state' => $request->mailing_state,
-                'mailing_zip' => $request->mailing_zip
-            ]);
-        }
+        $this->updateMailingAddress($customer, $request);
+
         $request->session()->flash('success', 'Yeah! Customer was updated.');
         return redirect(route('customers.show', $customer->id))->banner('Yeah! Successfully saved customer.');
     }
@@ -209,5 +128,19 @@ class CustomerController extends Controller
     public function getPriceLevels()
     {
         return auth()->user()->currentTeam->priceLevels;
+    }
+
+    public function updateMailingAddress($customer, $request)
+    {
+        if ($request->mailing_same_as_primary) {
+            $customer->update(
+                [
+                    'mailing_address' => $request->address,
+                    'mailing_city' => $request->city,
+                    'mailing_state' => $request->state,
+                    'mailing_zip' => $request->zip
+                ]
+            );
+        }
     }
 }

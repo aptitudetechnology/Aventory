@@ -6,6 +6,7 @@ use App\Policies\CustomerPolicy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customer extends Model
@@ -22,6 +23,7 @@ class Customer extends Model
         'no_auto_discount' => 'boolean',
         'reseller_permit_on_file' => 'boolean'
     ];
+    protected $with = ['contacts'];
 
     protected $guarded = [];
 
@@ -32,6 +34,11 @@ class Customer extends Model
 
     public function priceLevel(): BelongsTo
     {
-        return $this->belongsTo(CustomerPriceLevel::class);
+        return $this->belongsTo(CustomerPriceLevel::class, 'customer_price_level_id');
+    }
+
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
     }
 }

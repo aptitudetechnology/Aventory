@@ -1,10 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <Listbox
-    as="div"
-    v-model="selected"
-    @input="$emit('update:selectedItem', $event.target.value)"
-  >
+  <Listbox as="div" v-model="selected">
     <ListboxLabel class="block text-sm font-medium text-gray-700">
       {{ labelValue }}
     </ListboxLabel>
@@ -123,7 +119,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import {
   Listbox,
   ListboxButton,
@@ -145,10 +140,9 @@ export default {
   },
   props: {
     items: Array,
-    selectedItem: Object,
+    selectedItem: Object | Boolean,
     labelValue: { type: String, default: "Select Option" },
   },
-  emits: ["update:selectedItem"],
   data: function () {
     return {
       selectItems: this.items,
