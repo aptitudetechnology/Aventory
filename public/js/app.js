@@ -38499,10 +38499,18 @@ __webpack_require__.r(__webpack_exports__);
 
       return ((_this$$page$props$jet = this.$page.props.jetstream.flash) === null || _this$$page$props$jet === void 0 ? void 0 : _this$$page$props$jet.bannerStyle) || "success";
     },
+    requestDate: function requestDate() {
+      return this.$page.props.requestDate;
+    },
     message: function message() {
       var _this$$page$props$jet2;
 
       return ((_this$$page$props$jet2 = this.$page.props.jetstream.flash) === null || _this$$page$props$jet2 === void 0 ? void 0 : _this$$page$props$jet2.banner) || "";
+    }
+  },
+  watch: {
+    requestDate: function requestDate() {
+      this.show = true;
     }
   }
 });
@@ -42718,7 +42726,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     type: "button",
-    "class": ["\r\n                -mr-1\r\n                flex\r\n                p-2\r\n                rounded-md\r\n                focus:outline-none\r\n                sm:-mr-2\r\n                transition\r\n              ", {
+    "class": ["\n                -mr-1\n                flex\n                p-2\n                rounded-md\n                focus:outline-none\n                sm:-mr-2\n                transition\n              ", {
       'hover:bg-indigo-600 focus:bg-indigo-600': $options.style == 'success',
       'hover:bg-red-600 focus:bg-red-600': $options.style == 'danger'
     }],
