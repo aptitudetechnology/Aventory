@@ -5,7 +5,7 @@
       'flex-1 relative z-0 overflow-y-auto focus:outline-none md:order-last',
     ]"
   >
-    <div class="py-6 sm:px-6 lg:px-8">
+    <div class="py-6 sm:px-6">
       <slot></slot>
     </div>
   </main>

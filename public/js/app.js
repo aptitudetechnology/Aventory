@@ -41913,7 +41913,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "py-6 sm:px-6 lg:px-8"
+  "class": "py-6 sm:px-6"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("main", {
@@ -41979,7 +41979,7 @@ var _hoisted_2 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("aside", {
-    "class": [$props.showOnMobile ? 'flex flex-col w-full' : 'hidden', 'xl:order-first xl:flex xl:flex-col flex-shrink-0 lg:w-96 border-r border-gray-200 bg-white']
+    "class": [$props.showOnMobile ? 'flex flex-col w-full' : 'hidden', 'xl:order-first xl:flex xl:flex-col flex-shrink-0 xl:w-auto border-r border-gray-200 bg-white']
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])], 2
   /* CLASS */
   );
@@ -43527,7 +43527,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex justify-between items-center border-b border-gray-100 pb-4 mb-4"
+  "class": "\n      flex\n      justify-between\n      items-center\n      space-x-4\n      border-b border-gray-100\n      pb-4\n      mb-4\n    "
 };
 var _hoisted_2 = {
   "class": "text-xl font-medium text-gray-900"
@@ -47464,13 +47464,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "xl:flex gap-x-6"
+  "class": "lg:grid lg:grid-cols-8 gap-4"
 };
 var _hoisted_2 = {
-  "class": "xl:w-3/4 mb-6"
+  "class": "lg:col-span-5 mb-6"
 };
 var _hoisted_3 = {
-  "class": "xl:w-1/4"
+  "class": "lg:col-span-3"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_update_customer_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-customer-form");

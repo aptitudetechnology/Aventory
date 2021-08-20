@@ -1,11 +1,11 @@
 <template>
   <customers-layout>
     <div>
-      <div class="xl:flex gap-x-6">
-        <div class="xl:w-3/4 mb-6">
+      <div class="lg:grid lg:grid-cols-8 gap-4">
+        <div class="lg:col-span-5 mb-6">
           <update-customer-form :customer="customer" />
         </div>
-        <div class="xl:w-1/4">
+        <div class="lg:col-span-3">
           <contact-aside :customer="customer" />
         </div>
       </div>
