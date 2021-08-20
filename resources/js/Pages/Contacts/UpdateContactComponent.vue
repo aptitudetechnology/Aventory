@@ -5,7 +5,8 @@
       class="
         relative
         py-5
-        px-3
+        px-4
+        sm:px-6
         flex
         items-center
         space-x-3

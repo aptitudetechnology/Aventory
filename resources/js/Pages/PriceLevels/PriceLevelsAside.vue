@@ -1,15 +1,16 @@
 <template>
   <page-aside :showOnMobile="route().current('customer-price-levels.index')">
     <template v-slot:header>
-      <div class="flex justify-between items-center">
-        <div>
-          <h2 class="text-lg font-medium text-gray-900">Price Levels</h2>
-          <p class="mt-1 text-sm text-gray-600">View your price levels.</p>
-        </div>
-        <button-link :href="route('customer-price-levels.create')"
-          >New Level</button-link
+      <jet-section-title>
+        <template #title>Price Levels</template>
+        <template #description>View your price levels.</template>
+
+        <template #aside
+          ><button-link :href="route('customer-price-levels.create')"
+            >New Level</button-link
+          ></template
         >
-      </div>
+      </jet-section-title>
     </template>
 
     <div class="bg-white">
@@ -54,12 +55,14 @@ import ButtonLink from "../../Components/ButtonLink";
 import PageAside from "../../Components/PageAside.vue";
 import AsideLink from "../../Components/AsideLink.vue";
 import EmptyState from "../../Components/EmptyState.vue";
+import JetSectionTitle from "../../Jetstream/SectionTitle.vue";
 export default {
   components: {
     PageAside,
     AsideLink,
     ButtonLink,
     EmptyState,
+    JetSectionTitle,
   },
   props: {
     priceLevels: Array,

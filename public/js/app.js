@@ -40677,6 +40677,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_PageAside_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/PageAside.vue */ "./resources/js/Components/PageAside.vue");
 /* harmony import */ var _Components_AsideLink_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/AsideLink.vue */ "./resources/js/Components/AsideLink.vue");
 /* harmony import */ var _Components_EmptyState_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/EmptyState.vue */ "./resources/js/Components/EmptyState.vue");
+/* harmony import */ var _Jetstream_SectionTitle_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Jetstream/SectionTitle.vue */ "./resources/js/Jetstream/SectionTitle.vue");
+
 
 
 
@@ -40686,7 +40688,8 @@ __webpack_require__.r(__webpack_exports__);
     PageAside: _Components_PageAside_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     AsideLink: _Components_AsideLink_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     ButtonLink: _Components_ButtonLink__WEBPACK_IMPORTED_MODULE_0__.default,
-    EmptyState: _Components_EmptyState_vue__WEBPACK_IMPORTED_MODULE_3__.default
+    EmptyState: _Components_EmptyState_vue__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetSectionTitle: _Jetstream_SectionTitle_vue__WEBPACK_IMPORTED_MODULE_4__.default
   },
   props: {
     priceLevels: Array
@@ -42492,7 +42495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "md:grid lg:grid-cols-3 md:gap-6"
+  "class": "md:grid md:gap-6"
 };
 var _hoisted_2 = {
   "class": "mt-5 md:mt-0 md:col-span-2"
@@ -45392,12 +45395,15 @@ var _hoisted_1 = {
   "class": "my-5 md:mt-0"
 };
 var _hoisted_2 = {
-  "class": "px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg"
+  "class": "py-5 bg-white shadow sm:rounded-lg overflow-hidden"
+};
+var _hoisted_3 = {
+  "class": "px-4 sm:px-6"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Contacts");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Contacts");
 
-var _hoisted_4 = {
+var _hoisted_5 = {
   "class": "divide-y divide-gray-200 mt-4"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -45407,9 +45413,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_update_contact_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-contact-component");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_title, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_title, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
     title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [_hoisted_4];
     }),
     _: 2
     /* DYNAMIC */
@@ -45425,7 +45431,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : undefined]), 1024
   /* DYNAMIC_SLOTS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.contacts, function (contact) {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.contacts, function (contact) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_update_contact_component, {
       key: contact.id,
       contact: contact
@@ -45436,6 +45442,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )), !$props.customer.contacts.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_create_contact_component, {
     key: 0,
+    "class": "px-4 sm:px-6",
     customer: $props.customer
   }, null, 8
   /* PROPS */
@@ -45954,7 +45961,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $data.updatingContact = true;
     }),
-    "class": "\n        relative\n        py-5\n        px-3\n        flex\n        items-center\n        space-x-3\n        hover:bg-gray-50\n        cursor-pointer\n      "
+    "class": "\n        relative\n        py-5\n        px-4\n        sm:px-6\n        flex\n        items-center\n        space-x-3\n        hover:bg-gray-50\n        cursor-pointer\n      "
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Extend touch target to entire panel "), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.name), 1
   /* TEXT */
   ), $props.contact.phone_1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.contact.phone_1), 1
@@ -48491,17 +48498,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "flex justify-between items-center"
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
-  "class": "text-lg font-medium text-gray-900"
-}, "Price Levels"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
-  "class": "mt-1 text-sm text-gray-600"
-}, "View your price levels.")], -1
-/* HOISTED */
-);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Price Levels");
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("View your price levels.");
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("New Level");
 
@@ -48535,6 +48535,8 @@ var _hoisted_10 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_button_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("button-link");
 
+  var _component_jet_section_title = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-title");
+
   var _component_aside_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("aside-link");
 
   var _component_empty_state = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("empty-state");
@@ -48545,18 +48547,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     showOnMobile: _ctx.route().current('customer-price-levels.index')
   }, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_button_link, {
-        href: _ctx.route('customer-price-levels.create')
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_3];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_title, null, {
+        title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_1];
+        }),
+        description: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_2];
+        }),
+        aside: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_button_link, {
+            href: _ctx.route('customer-price-levels.create')
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_3];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["href"])];
         }),
         _: 1
         /* STABLE */
 
-      }, 8
-      /* PROPS */
-      , ["href"])])];
+      })];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.priceLevels, function (level) {

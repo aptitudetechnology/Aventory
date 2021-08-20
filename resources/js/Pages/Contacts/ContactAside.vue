@@ -1,12 +1,15 @@
 <template>
   <div class="my-5 md:mt-0">
-    <div class="px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg">
-      <jet-section-title>
-        <template #title>Contacts</template>
-        <template v-if="customer.contacts.length" #aside
-          ><create-contact-component :customer="customer"
-        /></template>
-      </jet-section-title>
+    <div class="py-5 bg-white shadow sm:rounded-lg overflow-hidden">
+      <div class="px-4 sm:px-6">
+        <jet-section-title>
+          <template #title>Contacts</template>
+          <template v-if="customer.contacts.length" #aside
+            ><create-contact-component :customer="customer"
+          /></template>
+        </jet-section-title>
+      </div>
+
       <div class="divide-y divide-gray-200 mt-4">
         <update-contact-component
           v-for="contact in customer.contacts"
@@ -14,6 +17,7 @@
           :contact="contact"
         />
         <create-contact-component
+          class="px-4 sm:px-6"
           v-if="!customer.contacts.length"
           :customer="customer"
         />
