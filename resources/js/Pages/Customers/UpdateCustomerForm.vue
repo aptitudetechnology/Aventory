@@ -186,7 +186,7 @@
               labelValue="Customer Price Level"
             />
             <jet-input-error
-              :message="form.errors.price_level_id"
+              :message="form.errors.customer_price_level_id"
               class="mt-2"
             />
             <SwitchGroup
@@ -378,7 +378,7 @@ export default {
       form: this.$inertia.form({
         _method: "PATCH",
         name: this.customer.name,
-        price_level_id: this.customer.customer_price_level_id,
+        customer_price_level_id: this.customer.customer_price_level_id,
         address: this.customer.address,
         city: this.customer.city,
         state: this.customer.state,
@@ -402,8 +402,8 @@ export default {
   watch: {
     price_level: function () {
       this.price_level
-        ? (this.form.price_level_id = this.price_level.id)
-        : (this.form.price_level_id = null);
+        ? (this.form.customer_price_level_id = this.price_level.id)
+        : (this.form.customer_price_level_id = null);
     },
   },
 

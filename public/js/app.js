@@ -40097,7 +40097,7 @@ __webpack_require__.r(__webpack_exports__);
         city: "",
         state: "",
         zip: "",
-        price_level_id: null,
+        customer_price_level_id: null,
         mailing_same_as_primary: true,
         mailing_address: "",
         mailing_city: "",
@@ -40114,7 +40114,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     price_level: function price_level() {
-      this.price_level ? this.form.price_level_id = this.price_level.id : this.form.price_level_id = null;
+      this.price_level ? this.form.customer_price_level_id = this.price_level.id : this.form.customer_price_level_id = null;
     }
   },
   methods: {
@@ -40448,7 +40448,7 @@ __webpack_require__.r(__webpack_exports__);
       form: this.$inertia.form({
         _method: "PATCH",
         name: this.customer.name,
-        price_level_id: this.customer.customer_price_level_id,
+        customer_price_level_id: this.customer.customer_price_level_id,
         address: this.customer.address,
         city: this.customer.city,
         state: this.customer.state,
@@ -40470,7 +40470,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["customer"],
   watch: {
     price_level: function price_level() {
-      this.price_level ? this.form.price_level_id = this.price_level.id : this.form.price_level_id = null;
+      this.price_level ? this.form.customer_price_level_id = this.price_level.id : this.form.customer_price_level_id = null;
     }
   },
   methods: {
@@ -47938,7 +47938,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["items", "selectedItem", "modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.form.errors.price_level_id,
+        message: $data.form.errors.customer_price_level_id,
         "class": "mt-2"
       }, null, 8
       /* PROPS */

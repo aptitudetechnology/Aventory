@@ -34,7 +34,7 @@ class Customer extends Model
 
     public function priceLevel(): BelongsTo
     {
-        return $this->belongsTo(CustomerPriceLevel::class);
+        return $this->belongsTo(CustomerPriceLevel::class, 'customer_price_level_id');
     }
 
     public function contacts(): HasMany

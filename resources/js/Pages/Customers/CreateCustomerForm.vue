@@ -376,7 +376,7 @@ export default {
         city: "",
         state: "",
         zip: "",
-        price_level_id: null,
+        customer_price_level_id: null,
         mailing_same_as_primary: true,
         mailing_address: "",
         mailing_city: "",
@@ -394,8 +394,8 @@ export default {
   watch: {
     price_level: function () {
       this.price_level
-        ? (this.form.price_level_id = this.price_level.id)
-        : (this.form.price_level_id = null);
+        ? (this.form.customer_price_level_id = this.price_level.id)
+        : (this.form.customer_price_level_id = null);
     },
   },
 
