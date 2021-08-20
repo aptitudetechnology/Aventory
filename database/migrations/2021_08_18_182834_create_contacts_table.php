@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('customer_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('customer_id')->nullable()->constrained()->onDelete('set null')->cascadeOnUpdate();
             $table->string('first_name', 50);
             $table->string('last_name', 50)->nullable();
             $table->string('email', 150)->nullable();

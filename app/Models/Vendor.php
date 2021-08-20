@@ -49,15 +49,7 @@ class Vendor extends Model
      */
     public function team()
     {
-        return $this->belongsTo(\App\Models\Team::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function team()
-    {
-        return $this->belongsTo(\App\Models\Team::class);
+        return $this->belongsTo(Team::class);
     }
 
     /**
@@ -65,6 +57,6 @@ class Vendor extends Model
      */
     public function contacts()
     {
-        return $this->hasMany(\App\Models\Contact::class);
+        return $this->hasMany(Contact::class);
     }
 }
