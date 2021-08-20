@@ -17,15 +17,12 @@ class ContactController extends Controller
      */
     public function store(ContactStoreRequest $request)
     {
-        Gate::authorize('create', Contact::class);
         $contact = auth()->user()->currentTeam->contacts()->create($request->validated());
 
-        $request->session()->flash('contact.id', $contact->id);
-        if ($request->customer_id) {
-            session()->flash('flash.banner', 'Created new contact!');
-            session()->flash('flash.bannerStyle', 'success');
-            return redirect(route('customers.show', $request->customer_id));
-        }
+        session()->flash('flash.banner', 'Created new contact!');
+        session()->flash('flash.bannerStyle', 'success');
+
+        return $this->redirectRoute($contact);
     }
 
 
@@ -36,11 +33,12 @@ class ContactController extends Controller
      */
     public function update(ContactUpdateRequest $request, Contact $contact)
     {
-        Gate::authorize('update', $contact);
         $contact->update($request->validated());
+
         session()->flash('flash.banner', 'Saved changes to contact.');
         session()->flash('flash.bannerStyle', 'success');
-        return redirect(route('customers.show', $contact->customer->id));
+
+        return $this->redirectRoute($contact);
     }
 
     /**
@@ -51,9 +49,19 @@ class ContactController extends Controller
     public function destroy(Request $request, Contact $contact)
     {
         Gate::authorize('delete', $contact);
+
         $contact->delete();
+
         session()->flash('flash.banner', 'Deleted contact.');
         session()->flash('flash.bannerStyle', 'success');
-        return redirect(route('customers.show', $contact->customer_id));
+
+        return $this->redirectRoute($contact);
+    }
+
+    public function redirectRoute($contact)
+    {
+        if ($contact->customer_id) {
+            return redirect(route('customers.show', $contact->customer_id));
+        }
     }
 }
