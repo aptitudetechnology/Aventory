@@ -159,7 +159,7 @@ export default {
     JetSecondaryButton,
     TextAreaInput,
   },
-  props: { customer: Object },
+  props: { customer: Object, vendor: Object },
 
   data() {
     return {
@@ -167,6 +167,7 @@ export default {
       form: this.$inertia.form({
         _method: "POST",
         customer_id: this.customer ? this.customer.id : null,
+        vendor_id: this.vendor ? this.vendor.id : null,
         first_name: "",
         last_name: null,
         notes: null,

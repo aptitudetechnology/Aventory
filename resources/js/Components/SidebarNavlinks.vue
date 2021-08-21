@@ -25,6 +25,11 @@
         >Customer Price Levels</nav-link
       >
     </sidebar-dropdown>
+    <nav-link
+      :href="route('vendors.index')"
+      :current="route().current('vendors.*')"
+      >Vendors</nav-link
+    >
   </nav>
 </template>
 <script>

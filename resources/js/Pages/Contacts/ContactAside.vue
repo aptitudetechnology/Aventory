@@ -4,13 +4,18 @@
       <div class="px-4 sm:px-6">
         <jet-section-title>
           <template #title>Contacts</template>
-          <template v-if="customer.contacts.length" #aside
-            ><create-contact-component :customer="customer"
+          <template
+            v-if="
+              (customer && customer.contacts.length) ||
+              (vendor && vendor.contacts.length)
+            "
+            #aside
+            ><create-contact-component :customer="customer" :vendor="vendor"
           /></template>
         </jet-section-title>
       </div>
 
-      <div class="divide-y divide-gray-200 mt-4">
+      <div v-if="customer" class="divide-y divide-gray-200 mt-4">
         <update-contact-component
           v-for="contact in customer.contacts"
           :key="contact.id"
@@ -22,6 +27,18 @@
           :customer="customer"
         />
       </div>
+      <div v-if="vendor" class="divide-y divide-gray-200 mt-4">
+        <update-contact-component
+          v-for="contact in vendor.contacts"
+          :key="contact.id"
+          :contact="contact"
+        />
+        <create-contact-component
+          class="px-4 sm:px-6"
+          v-if="!vendor.contacts.length"
+          :vendor="vendor"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -31,7 +48,7 @@ import CreateContactComponent from "./CreateContactComponent.vue";
 import JetDialogModel from "../../Jetstream/DialogModal.vue";
 import UpdateContactComponent from "./UpdateContactComponent.vue";
 export default {
-  props: { customer: Object },
+  props: { customer: Object, vendor: Object },
   components: {
     JetSectionTitle,
     CreateContactComponent,

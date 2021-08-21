@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Contact;
+use App\Models\Vendor;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ContactStoreRequest extends FormRequest
@@ -14,7 +15,7 @@ class ContactStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('create', Contact::class);
+        return $this->user()->can('create', Contact::class) || $this->user()->can('create', Vendor::class);
     }
 
     /**
@@ -26,6 +27,7 @@ class ContactStoreRequest extends FormRequest
     {
         return [
             'customer_id' => ['nullable', 'integer', 'exists:customers,id'],
+            'vendor_id' => ['nullable', 'integer', 'exists:vendors,id'],
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['nullable', 'string', 'max:50'],
             'email' => ['nullable', 'email', 'max:150'],

@@ -193,6 +193,7 @@ export default {
       form: this.$inertia.form({
         _method: "PATCH",
         customer_id: this.contact.customer_id,
+        vendor_id: this.contact.vendor_id,
         first_name: this.contact.first_name,
         last_name: this.contact.last_name,
         notes: this.contact.notes,

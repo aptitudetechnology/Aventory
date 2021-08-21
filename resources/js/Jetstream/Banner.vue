@@ -117,10 +117,21 @@ export default {
     },
   },
 
+  methods: {
+    hideBanner() {
+      setTimeout(() => (this.show = false), 4000);
+    },
+  },
+
   watch: {
     requestDate() {
       this.show = true;
+      this.hideBanner();
     },
+  },
+
+  mounted() {
+    this.hideBanner();
   },
 };
 </script>

@@ -13,7 +13,7 @@ class ContactUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('update', $this->contact);
+        return $this->user()->can('update', $this->contact) || $this->user()->can('update', $this->vendor);
     }
 
     /**
@@ -25,6 +25,7 @@ class ContactUpdateRequest extends FormRequest
     {
         return [
             'customer_id' => ['nullable', 'integer', 'exists:customers,id'],
+            'vendor_id' => ['nullable', 'integer', 'exists:vendors,id'],
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['nullable', 'string', 'max:50'],
             'email' => ['nullable', 'email', 'max:150'],
