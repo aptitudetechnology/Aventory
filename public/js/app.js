@@ -38508,10 +38508,23 @@ __webpack_require__.r(__webpack_exports__);
       return ((_this$$page$props$jet2 = this.$page.props.jetstream.flash) === null || _this$$page$props$jet2 === void 0 ? void 0 : _this$$page$props$jet2.banner) || "";
     }
   },
+  methods: {
+    hideBanner: function hideBanner() {
+      var _this = this;
+
+      setTimeout(function () {
+        return _this.show = false;
+      }, 4000);
+    }
+  },
   watch: {
     requestDate: function requestDate() {
       this.show = true;
+      this.hideBanner();
     }
+  },
+  mounted: function mounted() {
+    this.hideBanner();
   }
 });
 
@@ -53119,7 +53132,7 @@ var _hoisted_3 = {
   "class": "px-4 md:pb-2"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("vendors");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Vendors");
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Archived vendors");
 
