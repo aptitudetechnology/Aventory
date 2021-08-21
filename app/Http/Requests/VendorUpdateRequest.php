@@ -24,20 +24,22 @@ class VendorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
             'name' => ['required', 'string'],
-            'vendor_code' => ['string', 'max:50'],
-            'address' => ['string'],
-            'city' => ['string', 'max:50'],
-            'state' => ['string', 'max:50'],
-            'zip' => ['string', 'max:20'],
-            'mailing_same_as_primary' => ['required'],
-            'mailing_address' => ['string'],
-            'mailing_city' => ['string', 'max:50'],
-            'mailing_state' => ['string', 'max:50'],
-            'mailing_zip' => ['string', 'max:20'],
-            'notes' => ['string', 'max:8000'],
-            'use_for_block_transfers' => ['required'],
+            'vendor_code' => ['nullable', 'string', 'max:50'],
+            'address' => ['nullable', 'string'],
+            'city' => ['nullable', 'string', 'max:50'],
+            'state' => ['nullable', 'string', 'max:50'],
+            'zip' => ['nullable', 'string', 'max:20'],
+            'mailing_same_as_primary' => ['nullable', 'required'],
+            'mailing_address' => ['nullable', 'string'],
+            'mailing_city' => ['nullable', 'string', 'max:50'],
+            'mailing_state' => ['nullable', 'string', 'max:50'],
+            'mailing_zip' => ['nullable', 'string', 'max:20'],
+            'notes' => ['nullable', 'string', 'max:8000'],
+            'use_for_block_transfers' => [
+                'boolean',
+                'required'
+            ],
         ];
     }
 }

@@ -7,7 +7,7 @@
             <back-link
               v-if="route().current('vendors.*')"
               :href="route('vendors.index')"
-              >vendors</back-link
+              >Vendors</back-link
             >
             <back-link v-else :href="route('archived-vendors.index')"
               >Archived vendors</back-link
