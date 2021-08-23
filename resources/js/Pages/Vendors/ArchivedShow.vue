@@ -4,13 +4,13 @@
     <details-section>
       <template #header>{{ vendor.name }}</template>
       <div class="sm:col-span-2">
-        <dt class="text-sm font-medium text-gray-500">vendor name</dt>
+        <dt class="text-sm font-medium text-gray-500">Vendor name</dt>
         <dd class="mt-1 text-sm text-gray-900">
           {{ vendor.name }}
         </dd>
       </div>
       <div class="sm:col-span-1">
-        <dt class="text-sm font-medium text-gray-500">vendor Address</dt>
+        <dt class="text-sm font-medium text-gray-500">Vendor Address</dt>
         <dd class="mt-1 text-sm text-gray-900">{{ vendor.address }}</dd>
         <dd class="mt-1 text-sm text-gray-900">
           {{ vendor.city }} {{ vendor.state }} {{ vendor.zip }}
