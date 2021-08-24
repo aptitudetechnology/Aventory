@@ -38,23 +38,6 @@ class Plant extends Model
         'product_id' => 'integer',
     ];
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function team()
-    {
-        return $this->belongsTo(\App\Models\Team::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function product()
-    {
-        return $this->belongsTo(\App\Models\Product::class);
-    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
