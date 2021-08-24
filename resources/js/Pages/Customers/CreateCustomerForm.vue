@@ -247,7 +247,7 @@
                 min="0.00"
                 step=".01"
                 placeholder="0.00"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full pr-8"
                 v-model="form.tax_percentage"
               />
               <div
@@ -278,7 +278,7 @@
                 max="100"
                 min="0"
                 placeholder="0"
-                class="mt-1 block w-full pr-10"
+                class="mt-1 block w-full pr-8"
                 v-model="form.discount_override"
               />
               <div

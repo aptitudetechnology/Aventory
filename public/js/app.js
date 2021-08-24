@@ -47372,7 +47372,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         min: "0.00",
         step: ".01",
         placeholder: "0.00",
-        "class": "mt-1 block w-full",
+        "class": "mt-1 block w-full pr-8",
         modelValue: $data.form.tax_percentage,
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return $data.form.tax_percentage = $event;
@@ -47393,7 +47393,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         max: "100",
         min: "0",
         placeholder: "0",
-        "class": "mt-1 block w-full pr-10",
+        "class": "mt-1 block w-full pr-8",
         modelValue: $data.form.discount_override,
         "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
           return $data.form.discount_override = $event;
@@ -48572,7 +48572,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         min: "0.00",
         step: ".01",
         placeholder: "0.00",
-        "class": "mt-1 block w-full",
+        "class": "mt-1 block w-full pr-8",
         modelValue: $data.form.tax_percentage,
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return $data.form.tax_percentage = $event;
@@ -48593,7 +48593,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         max: "100",
         min: "0",
         placeholder: "0",
-        "class": "mt-1 block w-full",
+        "class": "mt-1 block w-full pr-8",
         modelValue: $data.form.discount_override,
         "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
           return $data.form.discount_override = $event;
