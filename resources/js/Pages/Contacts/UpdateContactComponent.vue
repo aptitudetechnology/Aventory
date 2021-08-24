@@ -152,6 +152,7 @@
           >
           <jet-button
             type="submit"
+            v-on:keyup.enter="submit"
             @click="updateContact"
             :class="{ 'opacity-25': form.processing || !form.isDirty }"
             :disabled="form.processing || !form.isDirty"

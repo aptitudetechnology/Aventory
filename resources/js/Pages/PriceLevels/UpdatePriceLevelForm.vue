@@ -58,6 +58,7 @@
     <template #actions>
       <jet-button
         type="submit"
+        v-on:keyup.enter="submit"
         :class="{ 'opacity-25': form.processing }"
         :disabled="form.processing"
         >Save Price Level</jet-button
@@ -102,10 +103,13 @@ export default {
   },
   methods: {
     updateCustomer() {
-      this.form.patch(route("customer-price-levels.update", this.priceLevel.id), {
-        errorBag: "updatePriceLevel",
-        preserveScroll: true,
-      });
+      this.form.patch(
+        route("customer-price-levels.update", this.priceLevel.id),
+        {
+          errorBag: "updatePriceLevel",
+          preserveScroll: true,
+        }
+      );
     },
   },
 };
