@@ -323,7 +323,6 @@
     <template #actions>
       <jet-button
         type="submit"
-        v-on:keyup.enter="submit"
         :class="{ 'opacity-25': form.processing }"
         :disabled="form.processing"
         >Save Customer</jet-button

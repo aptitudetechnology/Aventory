@@ -127,7 +127,6 @@
           >
           <jet-button
             type="submit"
-            v-on:keyup.enter="submit"
             @click="createContact"
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
