@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Feature extends Model
 {
     use HasFactory;
 
@@ -16,10 +16,7 @@ class Product extends Model
      */
     protected $fillable = [
         'team_id',
-        'category_id',
         'name',
-        'type',
-        'description',
     ];
 
     /**
@@ -30,7 +27,6 @@ class Product extends Model
     protected $casts = [
         'id' => 'integer',
         'team_id' => 'integer',
-        'category_id' => 'integer',
     ];
 
 
@@ -45,32 +41,16 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
-    {
-        return $this->belongsTo(\App\Models\Category::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function team()
     {
         return $this->belongsTo(\App\Models\Team::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function category()
+    public function plants()
     {
-        return $this->belongsTo(\App\Models\Category::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function plant()
-    {
-        return $this->hasOne(\App\Models\Plant::class);
+        return $this->belongsToMany(\App\Models\Plant::class);
     }
 }
