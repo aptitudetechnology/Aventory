@@ -53,10 +53,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('vendors', App\Http\Controllers\VendorController::class);
 
+    /**This needs to be before the products resource as will return 403 if after. */
+    Route::get('/products/archived', [ArchivedVendorsController::class, 'index'])->name('archived-products.index');
+    Route::get('/products/archived/{productId}', [ArchivedVendorsController::class, 'show'])->name('archived-products.show');
+    Route::post('/products/archived/{productId}', [ArchivedVendorsController::class, 'store'])->name('archived-products.restore');
+
     Route::resource('products', App\Http\Controllers\ProductController::class);
+FeatureController::class);
 
-    Route::resource('features', App\Http\Controllers\FeatureController::class);
-
+    Route::resource('features', App\Http\Controllers\
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
 
     Route::resource('plants', App\Http\Controllers\PlantController::class);
