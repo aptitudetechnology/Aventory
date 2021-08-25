@@ -113,7 +113,7 @@
             </Switch>
           </SwitchGroup>
         </div>
-        <div v-if="!form.mailing_same_as_primary" class="grid gap-4">
+        <div v-show="!form.mailing_same_as_primary" class="grid gap-4">
           <div class="col-span-3 pt-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               Mailing Address
@@ -136,7 +136,7 @@
           <div class="col-span-3 sm:col-span-1">
             <jet-label for="mailing_city" value="Mailing City" />
             <jet-input
-              id="city"
+              id="mailing_city"
               type="text"
               class="mt-1 block w-full"
               v-model="form.mailing_city"
@@ -410,9 +410,8 @@ export default {
   methods: {
     updateCustomer() {
       this.form.patch(route("customers.update", this.customer.id), {
-        errorBag: "updateCustomer",
         preserveScroll: false,
-        preserveState: false,
+        preserveState: true,
       });
     },
   },

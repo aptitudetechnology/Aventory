@@ -136,7 +136,7 @@
           <div class="col-span-3 sm:col-span-1">
             <jet-label for="mailing_city" value="Mailing City" />
             <jet-input
-              id="city"
+              id="mailing_city"
               type="text"
               class="mt-1 block w-full"
               v-model="form.mailing_city"
