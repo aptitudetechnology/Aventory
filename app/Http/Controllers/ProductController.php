@@ -15,9 +15,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::all();
+        $products = $request->user()->currentTeam->products;
 
-        return view('product.index', compact('products'));
+        return inertia('Products/Index', compact('products'));
     }
 
     /**
