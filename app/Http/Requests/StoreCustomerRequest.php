@@ -39,7 +39,7 @@ class StoreCustomerRequest extends FormRequest
             'customer_price_level_id' => ['exists:customer_price_levels,id', 'nullable'],
             'is_retail' => ['nullable', 'boolean'],
             'no_auto_discount' => ['nullable', 'boolean'],
-            'tax_percentage' => ['nullable', 'float'],
+            'tax_percentage' => ['nullable', 'numeric'],
             'discount_override' => ['nullable', 'integer'],
             'reseller_permit_expiration' => ['nullable', 'date']
         ];
