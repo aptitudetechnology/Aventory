@@ -15,9 +15,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $request->user()->currentTeam->products;
-
-        return inertia('Products/Index', compact('products'));
+        return inertia('Products/Index');
     }
 
     /**
@@ -26,7 +24,7 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        return view('product.create');
+        return inertia('Products/Create');
     }
 
     /**

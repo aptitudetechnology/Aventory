@@ -24,7 +24,6 @@ class ProductStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
             'category_id' => ['integer', 'exists:categories,id'],
             'name' => ['required', 'string'],
             'type' => ['required', 'in:plant,inventory,non-inventory,service'],

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\ApiCategoriesController;
+use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\ArchivedCustomersController;
@@ -66,4 +68,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
 
     Route::resource('plants', App\Http\Controllers\PlantController::class);
+
+
+
+    Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
+    Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
 });
