@@ -1,6 +1,10 @@
 <template>
   <div class="grid gap-4">
-    <select-box :items="categories" v-model="category" labelValue="Category" />
+    <select-box
+      :items="categories"
+      v-model="selectedCategory"
+      labelValue="Category"
+    />
   </div>
 </template>
 <script>
@@ -12,7 +16,7 @@ export default {
   data() {
     return {
       categories: [],
-      category: null,
+      selectedCategory: null,
     };
   },
   mounted() {

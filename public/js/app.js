@@ -40887,7 +40887,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: [],
-      category: null
+      selectedCategory: null
     };
   },
   mounted: function mounted() {
@@ -49839,9 +49839,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_select_box, {
     items: $data.categories,
-    modelValue: $data.category,
+    modelValue: $data.selectedCategory,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.category = $event;
+      return $data.selectedCategory = $event;
     }),
     labelValue: "Category"
   }, null, 8
