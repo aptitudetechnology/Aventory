@@ -52,13 +52,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/vendors/archived/{vendorId}', [ArchivedVendorsController::class, 'store'])->name('archived-vendors.restore');
 
     Route::resource('vendors', App\Http\Controllers\VendorController::class);
+
+    Route::resource('products', App\Http\Controllers\ProductController::class);
+
+    Route::resource('features', App\Http\Controllers\FeatureController::class);
+
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+
+    Route::resource('plants', App\Http\Controllers\PlantController::class);
 });
-
-
-Route::resource('product', App\Http\Controllers\ProductController::class);
-
-Route::resource('feature', App\Http\Controllers\FeatureController::class);
-
-Route::resource('category', App\Http\Controllers\CategoryController::class);
-
-Route::resource('plant', App\Http\Controllers\PlantController::class);
