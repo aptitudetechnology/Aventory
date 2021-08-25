@@ -20,7 +20,7 @@
         </div>
       </main-area>
       <!-- Start secondary column (hidden on smaller screens) -->
-      <products-aside :products="products" />
+      <products-aside />
     </div>
   </app-layout>
 </template>
@@ -39,9 +39,6 @@ export default {
     MainArea,
   },
   computed: {
-    products() {
-      return this.$page.props.products;
-    },
     isIndex() {
       return (
         route().current("products.index") ||

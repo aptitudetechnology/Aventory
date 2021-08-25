@@ -101,9 +101,6 @@ export default {
     EmptyState,
     JetSectionTitle,
   },
-  props: {
-    products: Array,
-  },
   computed: {
     productsLength: function () {
       return this.products.length;
@@ -111,9 +108,15 @@ export default {
   },
   data() {
     return {
+      products: [],
       search: "",
       filteredProducts: this.products,
     };
+  },
+  mounted() {
+    axios.get(route("api.products")).then((response) => {
+      this.products = response.data;
+    });
   },
   methods: {
     updateProducts() {
