@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\CustomerController;
@@ -54,9 +55,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('vendors', App\Http\Controllers\VendorController::class);
 
     /**This needs to be before the products resource as will return 403 if after. */
-    Route::get('/products/archived', [ArchivedVendorsController::class, 'index'])->name('archived-products.index');
-    Route::get('/products/archived/{productId}', [ArchivedVendorsController::class, 'show'])->name('archived-products.show');
-    Route::post('/products/archived/{productId}', [ArchivedVendorsController::class, 'store'])->name('archived-products.restore');
+    Route::get('/products/archived', [ArchivedProductsController::class, 'index'])->name('archived-products.index');
+    Route::get('/products/archived/{productId}', [ArchivedProductsController::class, 'show'])->name('archived-products.show');
+    Route::post('/products/archived/{productId}', [ArchivedProductsController::class, 'store'])->name('archived-products.restore');
 
     Route::resource('products', App\Http\Controllers\ProductController::class);
 
