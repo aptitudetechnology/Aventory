@@ -24,11 +24,10 @@ class ProductUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
-            'category_id' => ['integer', 'exists:categories,id'],
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
             'name' => ['required', 'string'],
             'type' => ['required', 'in:plant,inventory,non-inventory,service'],
-            'description' => ['string', 'max:8000'],
+            'description' => ['nullable', 'string', 'max:8000'],
         ];
     }
 }

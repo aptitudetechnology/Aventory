@@ -1,5 +1,5 @@
 <template>
-  <div class="grid gap-4">
+  <div class="grid gap-4 col-span-3">
     <select-box
       :items="categories"
       v-model="selectedCategory"

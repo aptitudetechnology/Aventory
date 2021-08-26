@@ -73,7 +73,12 @@
       </ul>
     </div>
     <empty-state
-      v-if="productsLength < 1 && route().current('products.index')"
+      v-if="
+        productsLength < 1 &&
+        route().current('products.index') &&
+        loading == false &&
+        errored == false
+      "
       heading="No Products"
       subtitle="Get started by creating a new product."
       button-text="New Product"
@@ -108,15 +113,25 @@ export default {
   },
   data() {
     return {
+      loading: true,
+      errored: false,
       products: [],
       search: "",
-      filteredProducts: this.products,
+      filteredProducts: [],
     };
   },
   mounted() {
-    axios.get(route("api.products")).then((response) => {
-      this.products = response.data;
-    });
+    axios
+      .get(route("api.products"))
+      .then((response) => {
+        this.products = response.data;
+        this.updateProducts();
+      })
+      .catch((error) => {
+        console.log(error);
+        this.errored = true;
+      })
+      .finally(() => (this.loading = false));
   },
   methods: {
     updateProducts() {

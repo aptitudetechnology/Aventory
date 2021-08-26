@@ -9,7 +9,9 @@
       <template #form>
         <div v-if="form.type" class="col-span-6">
           <div class="grid gap-4">
-            <back-link href="">Back to choose product type</back-link>
+            <back-link :href="route('products.create')"
+              >Back to choose product type</back-link
+            >
             <div class="col-span-3">
               <jet-label for="name" value="Product Name" />
               <jet-input
@@ -22,8 +24,13 @@
               />
               <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
-            <category-selector v-model="selectedCategory" />
-            <jet-input-error :message="form.errors.category_id" class="mt-2" />
+            <div class="col-span-3">
+              <category-selector v-model="selectedCategory" />
+              <jet-input-error
+                :message="form.errors.category_id"
+                class="mt-2"
+              />
+            </div>
             <div class="col-span-3">
               <jet-label for="description" value="Product Description" />
               <text-area-input
@@ -102,11 +109,12 @@
         </div>
       </template>
 
-      <template v-if="form.type" #actions>
+      <template #actions>
         <jet-button
+          v-show="form.type"
           type="submit"
-          :class="{ 'opacity-25': form.processing }"
-          :disabled="form.processing"
+          :class="{ 'opacity-25': form.processing || !form.name }"
+          :disabled="form.processing || !form.name"
           >Save Product</jet-button
         >
       </template>

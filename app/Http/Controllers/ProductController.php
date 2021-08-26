@@ -33,11 +33,11 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $product = Product::create($request->validated());
+        $product = auth()->user()->currentTeam->products()->create($request->validated());
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductController extends Controller
      */
     public function show(Request $request, Product $product)
     {
-        return view('product.show', compact('product'));
+        return inertia('Products/Show', compact('product'));
     }
 
     /**
@@ -71,7 +71,7 @@ class ProductController extends Controller
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 
     /**
