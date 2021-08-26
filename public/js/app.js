@@ -39977,7 +39977,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     name: function name() {
-      return this.contact.first_name + " " + this.contact.last_name;
+      return this.contact.last_name ? this.contact.first_name + " " + this.contact.last_name : this.contact.first_name;
     }
   },
   methods: {
@@ -41108,33 +41108,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      loading: true,
-      errored: false,
-      products: [],
+      products: this.$page.props.products,
       search: "",
-      filteredProducts: []
+      filteredProducts: this.$page.props.products
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get(route("api.products")).then(function (response) {
-      _this.products = response.data;
-
-      _this.updateProducts();
-    })["catch"](function (error) {
-      console.log(error);
-      _this.errored = true;
-    })["finally"](function () {
-      return _this.loading = false;
-    });
   },
   methods: {
     updateProducts: function updateProducts() {
-      var _this2 = this;
+      var _this = this;
 
       this.filteredProducts = this.products.filter(function (product) {
-        if (product.name.toLowerCase().includes(_this2.search.toLowerCase())) {
+        if (product.name.toLowerCase().includes(_this.search.toLowerCase())) {
           return true;
         } else {
           return false;
@@ -46558,7 +46542,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dialog_modal, {
     show: $data.creatingContact,
-    onClose: _cache[12] || (_cache[12] = function ($event) {
+    onClose: _cache[13] || (_cache[13] = function ($event) {
       return $data.creatingContact = false;
     })
   }, {
@@ -46572,7 +46556,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         onSubmit: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.createContact && $options.createContact.apply($options, arguments);
-        }, ["prevent"]))
+        }, ["prevent"])),
+        onKeyup: _cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function () {
+          return $options.createContact && $options.createContact.apply($options, arguments);
+        }, ["enter"]))
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "first_name",
         value: "First Name"
@@ -46731,7 +46718,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
         type: "button",
-        onClick: _cache[11] || (_cache[11] = function ($event) {
+        onClick: _cache[12] || (_cache[12] = function ($event) {
           return $data.creatingContact = false;
         })
       }, {
@@ -46977,7 +46964,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dialog_modal, {
     show: $data.updatingContact,
-    onClose: _cache[12] || (_cache[12] = function ($event) {
+    onClose: _cache[13] || (_cache[13] = function ($event) {
       return $data.updatingContact = false;
     })
   }, {
@@ -46995,7 +46982,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         onSubmit: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.updateContact && $options.updateContact.apply($options, arguments);
-        }, ["prevent"]))
+        }, ["prevent"])),
+        onKeyup: _cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function () {
+          return $options.updateContact && $options.updateContact.apply($options, arguments);
+        }, ["enter"]))
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "first_name",
         value: "First Name"
@@ -47154,7 +47144,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_secondary_button, {
         type: "button",
-        onClick: _cache[11] || (_cache[11] = function ($event) {
+        onClick: _cache[12] || (_cache[12] = function ($event) {
           return $data.updatingContact = false;
         })
       }, {
@@ -50388,7 +50378,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $data.search = $event;
         }),
         onInput: $options.updateProducts,
-        placeholder: "Search by product name or state."
+        placeholder: "Search products"
       }, null, 8
       /* PROPS */
       , ["modelValue", "onInput"])];
@@ -50448,7 +50438,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["href", "current"])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])]), $options.productsLength < 1 && _ctx.route().current('products.index') && $data.loading == false && $data.errored == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_empty_state, {
+      ))])]), $options.productsLength < 1 && _ctx.route().current('products.index') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_empty_state, {
         key: 0,
         heading: "No Products",
         subtitle: "Get started by creating a new product.",

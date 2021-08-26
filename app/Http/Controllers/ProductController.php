@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return inertia('Products/Index');
+        $products = $this->getProducts();
+        return inertia('Products/Index', compact('products'));
     }
 
     /**
@@ -24,7 +25,8 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        return inertia('Products/Create');
+        $products = $this->getProducts();
+        return inertia('Products/Create', compact('products'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ProductController extends Controller
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->banner('Saved product successfully.');
     }
 
     /**
@@ -47,7 +49,8 @@ class ProductController extends Controller
      */
     public function show(Request $request, Product $product)
     {
-        return inertia('Products/Show', compact('product'));
+        $products = $this->getProducts();
+        return inertia('Products/Show', compact(['product', 'products']));
     }
 
     /**
@@ -71,7 +74,7 @@ class ProductController extends Controller
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->banner('Saved changes to product successfully.');
     }
 
     /**
@@ -84,5 +87,10 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('product.index');
+    }
+
+    public function getProducts()
+    {
+        return auth()->user()->currentTeam->products;
     }
 }

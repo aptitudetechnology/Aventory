@@ -9,7 +9,7 @@
       </template>
 
       <template #content>
-        <form @submit.prevent="createContact">
+        <form @submit.prevent="createContact" @keyup.enter="createContact">
           <div class="col-span-6">
             <div class="grid gap-4">
               <div class="col-span-4 sm:col-span-2">

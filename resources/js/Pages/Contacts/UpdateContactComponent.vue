@@ -34,7 +34,7 @@
         <delete-contact-component :contact="contact"
       /></template>
       <template #content>
-        <form @submit.prevent="updateContact">
+        <form @submit.prevent="updateContact" @keyup.enter="updateContact">
           <div class="col-span-6">
             <div class="grid gap-4">
               <div class="col-span-4 sm:col-span-2">
@@ -207,7 +207,9 @@ export default {
   },
   computed: {
     name() {
-      return this.contact.first_name + " " + this.contact.last_name;
+      return this.contact.last_name
+        ? this.contact.first_name + " " + this.contact.last_name
+        : this.contact.first_name;
     },
   },
 

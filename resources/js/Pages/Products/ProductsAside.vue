@@ -22,7 +22,7 @@
       <search-input
         v-model="search"
         @input="updateProducts"
-        placeholder="Search by product name or state."
+        placeholder="Search products"
       />
     </template>
 
@@ -73,12 +73,7 @@
       </ul>
     </div>
     <empty-state
-      v-if="
-        productsLength < 1 &&
-        route().current('products.index') &&
-        loading == false &&
-        errored == false
-      "
+      v-if="productsLength < 1 && route().current('products.index')"
       heading="No Products"
       subtitle="Get started by creating a new product."
       button-text="New Product"
@@ -113,25 +108,10 @@ export default {
   },
   data() {
     return {
-      loading: true,
-      errored: false,
-      products: [],
+      products: this.$page.props.products,
       search: "",
-      filteredProducts: [],
+      filteredProducts: this.$page.props.products,
     };
-  },
-  mounted() {
-    axios
-      .get(route("api.products"))
-      .then((response) => {
-        this.products = response.data;
-        this.updateProducts();
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      })
-      .finally(() => (this.loading = false));
   },
   methods: {
     updateProducts() {
