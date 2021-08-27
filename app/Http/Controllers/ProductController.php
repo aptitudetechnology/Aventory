@@ -35,11 +35,28 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $product = auth()->user()->currentTeam->products()->create($request->validated());
+        $product = auth()->user()->currentTeam->products()->create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'type' => $request->type
+        ]);
+        if ($request->type == "plant") {
+            $product->plant()->create([
+                'scientific_name' => $request->scientific_name,
+                'common_name' => $request->common_name,
+                'zone' => $request->zone,
+                'height' => $request->height,
+                'spread' => $request->spread,
+                'bloom_color' => $request->bloom_color,
+                'fall_color' => $request->fall_color,
+                'growth_rate' => $request->growth_rate
+            ]);
+        }
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('products.index')->banner('Saved product successfully.');
+        return redirect()->route('products.show', $product)->banner('Saved product successfully.');
     }
 
     /**
@@ -70,11 +87,29 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, Product $product)
     {
-        $product->update($request->validated());
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'type' => $request->type
+        ]);
+        if ($product->type == "plant") {
+            $product->plant()->update([
+                'scientific_name' => $request->scientific_name,
+                'common_name' => $request->common_name,
+                'zone' => $request->zone,
+                'height' => $request->height,
+                'spread' => $request->spread,
+                'bloom_color' => $request->bloom_color,
+                'fall_color' => $request->fall_color,
+                'growth_rate' => $request->growth_rate
+            ]);
+        }
+
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('products.index')->banner('Saved changes to product successfully.');
+        return redirect()->route('products.show', $product)->banner('Saved changes to product successfully.');
     }
 
     /**

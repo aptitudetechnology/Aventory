@@ -17,7 +17,6 @@ class CreatePlantsTable extends Migration
 
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate()->unique();
             $table->string('scientific_name');
             $table->string('common_name');

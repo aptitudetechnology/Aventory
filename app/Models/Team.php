@@ -75,7 +75,7 @@ class Team extends JetstreamTeam
 
     public function plants(): HasMany
     {
-        return $this->hasMany(Plant::class)->orderBy('scientific_name');
+        return $this->hasManyThrough(Plant::class, 'products')->orderBy('scientific_name');
     }
 
     public function features(): HasMany
