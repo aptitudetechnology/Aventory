@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Models\Contact;
 use App\Models\Product;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -25,7 +27,10 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
+        Gate::authorize('create', Contact::class);
+
         $products = $this->getProducts();
+
         return inertia('Products/Create', compact('products'));
     }
 
@@ -41,6 +46,7 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'type' => $request->type
         ]);
+
         if ($request->type == "plant") {
             $product->plant()->create([
                 'scientific_name' => $request->scientific_name,
@@ -66,19 +72,13 @@ class ProductController extends Controller
      */
     public function show(Request $request, Product $product)
     {
+        Gate::authorize('view', $product);
+
         $products = $this->getProducts();
+
         return inertia('Products/Show', compact(['product', 'products']));
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request, Product $product)
-    {
-        return view('product.edit', compact('product'));
-    }
 
     /**
      * @param \App\Http\Requests\ProductUpdateRequest $request
@@ -119,9 +119,11 @@ class ProductController extends Controller
      */
     public function destroy(Request $request, Product $product)
     {
+        Gate::authorize('delete', $product);
+
         $product->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('products.index')->banner('Deleted Product.');
     }
 
     public function getProducts()

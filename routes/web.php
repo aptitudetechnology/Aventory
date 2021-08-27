@@ -61,7 +61,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/products/archived/{productId}', [ArchivedProductsController::class, 'show'])->name('archived-products.show');
     Route::post('/products/archived/{productId}', [ArchivedProductsController::class, 'store'])->name('archived-products.restore');
 
-    Route::resource('products', App\Http\Controllers\ProductController::class);
+    Route::resource('products', App\Http\Controllers\ProductController::class)->except(['edit']);
 
     Route::resource('features', App\Http\Controllers\FeatureController::class);
 
