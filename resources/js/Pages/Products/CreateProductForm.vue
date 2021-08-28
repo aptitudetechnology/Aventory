@@ -25,7 +25,11 @@
               <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
             <div class="col-span-3">
-              <category-selector v-model="selectedCategory" />
+              <select-box
+                :items="categories"
+                v-model="selectedCategory"
+                labelValue="Category"
+              />
               <jet-input-error
                 :message="form.errors.category_id"
                 class="mt-2"
@@ -77,7 +81,11 @@
                 />
               </div>
               <div class="col-span-3">
-                <category-selector v-model="selectedCategory" />
+                <select-box
+                  :items="categories"
+                  v-model="selectedCategory"
+                  labelValue="Category"
+                />
                 <jet-input-error
                   :message="form.errors.category_id"
                   class="mt-2"
@@ -280,7 +288,6 @@ import {
   RadioGroupLabel,
   RadioGroupOption,
 } from "@headlessui/vue";
-import CategorySelector from "./CategorySelector.vue";
 const types = [
   {
     name: "Plant",
@@ -323,12 +330,12 @@ export default {
     RadioGroupDescription,
     RadioGroupLabel,
     RadioGroupOption,
-    CategorySelector,
   },
 
   data() {
     return {
       selectedCategory: null,
+      categories: this.$page.props.categories,
       selectedType: null,
       types: types,
       form: this.$inertia.form({

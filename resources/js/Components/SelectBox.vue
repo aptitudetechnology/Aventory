@@ -81,7 +81,7 @@
           </ListboxOption>
           <ListboxOption
             as="template"
-            v-for="item in selectItems"
+            v-for="item in items"
             :key="item.id"
             :value="item"
             v-slot="{ active, selected }"
@@ -145,7 +145,6 @@ export default {
   },
   data: function () {
     return {
-      selectItems: this.items,
       selected: this.selectedItem,
     };
   },

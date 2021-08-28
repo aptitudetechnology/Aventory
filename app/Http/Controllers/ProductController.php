@@ -30,8 +30,8 @@ class ProductController extends Controller
         Gate::authorize('create', Contact::class);
 
         $products = $this->getProducts();
-
-        return inertia('Products/Create', compact('products'));
+        $categories = $this->getCategories();
+        return inertia('Products/Create', compact('products', 'categories'));
     }
 
     /**
@@ -75,8 +75,8 @@ class ProductController extends Controller
         Gate::authorize('view', $product);
 
         $products = $this->getProducts();
-
-        return inertia('Products/Show', compact(['product', 'products']));
+        $categories = $this->getCategories();
+        return inertia('Products/Show', compact('product', 'products', 'categories'));
     }
 
 
@@ -126,8 +126,13 @@ class ProductController extends Controller
         return redirect()->route('products.index')->banner('Deleted Product.');
     }
 
-    public function getProducts()
+    protected function getProducts()
     {
         return auth()->user()->currentTeam->products;
+    }
+
+    protected function getCategories()
+    {
+        return auth()->user()->currentTeam->categories;
     }
 }

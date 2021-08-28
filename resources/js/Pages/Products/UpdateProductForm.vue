@@ -21,7 +21,12 @@
               <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
             <div class="col-span-3">
-              <category-selector v-model="selectedCategory" />
+              <select-box
+                :items="categories"
+                v-model="selectedCategory"
+                :selectedItem="selectedCategory"
+                labelValue="Category"
+              />
               <jet-input-error
                 :message="form.errors.category_id"
                 class="mt-2"
@@ -73,7 +78,12 @@
                 />
               </div>
               <div class="col-span-3">
-                <category-selector v-model="selectedCategory" />
+                <select-box
+                  :items="categories"
+                  v-model="selectedCategory"
+                  :selectedItem="selectedCategory"
+                  labelValue="Category"
+                />
                 <jet-input-error
                   :message="form.errors.category_id"
                   class="mt-2"
@@ -206,7 +216,7 @@ import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
 import TextAreaInput from "../../Components/TextAreaInput.vue";
 
-import CategorySelector from "./CategorySelector.vue";
+import SelectBox from "@/Components/SelectBox";
 
 export default {
   components: {
@@ -218,12 +228,13 @@ export default {
     JetLabel,
     JetSecondaryButton,
     TextAreaInput,
-    CategorySelector,
+    SelectBox,
   },
   props: { product: Object },
   data() {
     return {
-      selectedCategory: null,
+      selectedCategory: this.product.category,
+      categories: this.$page.props.categories,
       form: this.$inertia.form({
         _method: "PATCH",
         name: this.product.name,

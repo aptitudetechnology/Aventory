@@ -1,5 +1,5 @@
 <template>
-  <jet-form-section @submitted="updateCustomer">
+  <jet-form-section @submitted="updatePriceLevel">
     <template #title>{{ priceLevel.name }}</template>
 
     <template #description>
@@ -101,7 +101,7 @@ export default {
     };
   },
   methods: {
-    updateCustomer() {
+    updatePriceLevel() {
       this.form.patch(
         route("customer-price-levels.update", this.priceLevel.id),
         {

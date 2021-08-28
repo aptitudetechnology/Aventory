@@ -13,10 +13,13 @@ export default {
   components: {
     SelectBox,
   },
+  props: {
+    category: Object,
+  },
   data() {
     return {
       categories: [],
-      selectedCategory: null,
+      selectedCategory: this.category,
     };
   },
   mounted() {

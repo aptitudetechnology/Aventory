@@ -6,6 +6,7 @@ use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
@@ -15,9 +16,9 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::all();
+        $categories = $this->getCategories();
 
-        return view('category.index', compact('categories'));
+        return inertia('Categories/Index', compact('categories'));
     }
 
     /**
@@ -26,7 +27,9 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        return view('category.create');
+        $categories = $this->getCategories();
+
+        return inertia('Categories/Create', compact('categories'));
     }
 
     /**
@@ -35,11 +38,11 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        $category = Category::create($request->validated());
+        $category = auth()->user()->currentTeam->categories()->create($request->validated());
 
         $request->session()->flash('category.id', $category->id);
 
-        return redirect()->route('category.index');
+        return redirect()->route('categories.index')->banner('New Category created! Yeah, good job!');
     }
 
     /**
@@ -49,7 +52,10 @@ class CategoryController extends Controller
      */
     public function show(Request $request, Category $category)
     {
-        return view('category.show', compact('category'));
+        Gate::authorize('view', $category);
+        $categories = $this->getCategories();
+
+        return inertia('Categories/Show', compact('category', 'categories'));
     }
 
     /**
@@ -59,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Request $request, Category $category)
     {
-        return view('category.edit', compact('category'));
+        return redirect(route('categories.show', $category));
     }
 
     /**
@@ -73,7 +79,7 @@ class CategoryController extends Controller
 
         $request->session()->flash('category.id', $category->id);
 
-        return redirect()->route('category.index');
+        return redirect()->route('categories.show', $category)->banner('Woohoo, yes, you did it! Successfully saved category.');
     }
 
     /**
@@ -83,8 +89,14 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request, Category $category)
     {
+        Gate::authorize('delete', $category);
         $category->delete();
 
-        return redirect()->route('category.index');
+        return redirect()->route('categories.index')->banner('Category was deleted!');
+    }
+
+    protected function getCategories()
+    {
+        return auth()->user()->currentTeam->categories;
     }
 }
