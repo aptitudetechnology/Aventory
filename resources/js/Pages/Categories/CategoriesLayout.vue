@@ -4,9 +4,7 @@
       <main-area :dontShowOnMobile="isIndex">
         <nav v-if="!isIndex" aria-label="Breadcrumb" class="xl:hidden">
           <div class="px-4 md:pb-2">
-            <back-link :href="route('categories.index')"
-              >Categories</back-link
-            >
+            <back-link :href="route('categories.index')">Categories</back-link>
           </div>
         </nav>
         <!-- Main Content -->
@@ -24,7 +22,7 @@
 import AppLayout from "@/Layouts/AppLayout";
 import BackLink from "@/Components/BackLink";
 import CategoriesAside from "./CategoriesAside.vue";
-import MainArea from "../../Components/MainArea.vue";
+import MainArea from "@Components/MainArea.vue";
 
 export default {
   components: {

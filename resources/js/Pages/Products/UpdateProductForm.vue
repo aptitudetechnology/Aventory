@@ -214,9 +214,9 @@ import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
-import TextAreaInput from "../../Components/TextAreaInput.vue";
+import TextAreaInput from "@Components/TextAreaInput.vue";
 
-import SelectBox from "@/Components/SelectBox";
+import SelectBox from "@Components/SelectBox.vue";
 
 export default {
   components: {

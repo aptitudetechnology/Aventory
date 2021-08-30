@@ -49,11 +49,11 @@
   </page-aside>
 </template>
 <script>
-import ButtonLink from "../../Components/ButtonLink";
-import PageAside from "../../Components/PageAside.vue";
-import AsideLink from "../../Components/AsideLink.vue";
-import EmptyState from "../../Components/EmptyState.vue";
-import JetSectionTitle from "../../Jetstream/SectionTitle.vue";
+import ButtonLink from "@Components/ButtonLink";
+import PageAside from "@Components/PageAside.vue";
+import AsideLink from "@Components/AsideLink.vue";
+import EmptyState from "@Components/EmptyState.vue";
+import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 export default {
   components: {
     PageAside,

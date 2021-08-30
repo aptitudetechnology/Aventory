@@ -146,7 +146,7 @@ import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
-import TextAreaInput from "../../Components/TextAreaInput.vue";
+import TextAreaInput from "@Components/TextAreaInput.vue";
 
 export default {
   components: {

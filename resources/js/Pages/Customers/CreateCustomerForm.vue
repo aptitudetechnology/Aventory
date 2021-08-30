@@ -345,8 +345,8 @@ import {
   SwitchGroup,
   SwitchLabel,
 } from "@headlessui/vue";
-import TextAreaInput from "../../Components/TextAreaInput.vue";
-import SelectBox from "../../Components/SelectBox.vue";
+import TextAreaInput from "@Components/TextAreaInput.vue";
+import SelectBox from "@Components/SelectBox.vue";
 
 export default {
   components: {

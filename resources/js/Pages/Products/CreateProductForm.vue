@@ -279,9 +279,9 @@ import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
-import TextAreaInput from "../../Components/TextAreaInput.vue";
-import SelectBox from "../../Components/SelectBox.vue";
-import BackLink from "../../Components/BackLink";
+import TextAreaInput from "@Components/TextAreaInput.vue";
+import SelectBox from "@Components/SelectBox.vue";
+import BackLink from "@Components/BackLink";
 import {
   RadioGroup,
   RadioGroupDescription,
