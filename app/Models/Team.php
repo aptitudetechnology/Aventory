@@ -65,7 +65,7 @@ class Team extends JetstreamTeam
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class)->orderBy('name');
+        return $this->hasMany(Product::class)->orderBy('type')->orderBy('name');
     }
 
     public function categories(): HasMany
