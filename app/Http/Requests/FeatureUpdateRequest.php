@@ -13,7 +13,7 @@ class FeatureUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('update', $this->feature);
     }
 
     /**
@@ -24,7 +24,6 @@ class FeatureUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
             'name' => ['required', 'string'],
         ];
     }

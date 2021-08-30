@@ -8,6 +8,7 @@ use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PlantFeaturesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -69,6 +70,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('plants', App\Http\Controllers\PlantController::class);
 
+    Route::patch('plant-features/{plant}', [PlantFeaturesController::class, 'update'])->name('plant-features.update');
 
 
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
