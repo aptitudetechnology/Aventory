@@ -69,11 +69,9 @@
               </div>
             </TransitionChild>
             <div class="flex-shrink-0 flex items-center px-4">
-              <img
-                class="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-green-600-mark-gray-800-text.svg"
-                alt="Workflow"
-              />
+              <inertia-link :href="route('dashboard')">
+                <jet-application-mark class="block h-9 w-auto" />
+              </inertia-link>
             </div>
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
               <sidebar-navlinks />
@@ -87,7 +85,7 @@
     </TransitionRoot>
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:flex-shrink-0">
-      <div class="flex flex-col w-64">
+      <div class="flex flex-col w-72">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div
           class="
@@ -101,7 +99,7 @@
         >
           <div class="flex items-center flex-shrink-0 px-4">
             <inertia-link :href="route('dashboard')">
-              <jet-application-mark class="block h-9 w-auto" />
+              <jet-application-mark class="block w-auto" />
             </inertia-link>
           </div>
           <div class="mt-5 flex-grow flex flex-col">
