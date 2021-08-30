@@ -1,5 +1,5 @@
 <template>
-  <jet-form-section @submitted="updateCustomer">
+  <jet-form-section @submitted="updatePriceLevel">
     <template #title>{{ priceLevel.name }}</template>
 
     <template #description>
@@ -58,8 +58,8 @@
     <template #actions>
       <jet-button
         type="submit"
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
+        :class="{ 'opacity-25': form.processing || !form.isDirty }"
+        :disabled="form.processing || !form.isDirty"
         >Save Price Level</jet-button
       >
     </template>
@@ -75,7 +75,7 @@ import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
-import TextAreaInput from "../../Components/TextAreaInput.vue";
+import TextAreaInput from "@Components/TextAreaInput.vue";
 
 export default {
   components: {
@@ -101,11 +101,14 @@ export default {
     };
   },
   methods: {
-    updateCustomer() {
-      this.form.patch(route("customer-price-levels.update", this.priceLevel.id), {
-        errorBag: "updatePriceLevel",
-        preserveScroll: true,
-      });
+    updatePriceLevel() {
+      this.form.patch(
+        route("customer-price-levels.update", this.priceLevel.id),
+        {
+          errorBag: "updatePriceLevel",
+          preserveScroll: true,
+        }
+      );
     },
   },
 };

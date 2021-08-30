@@ -1,5 +1,5 @@
 <template>
-  <jet-form-section @submitted="createCustomer">
+  <jet-form-section @submitted="createPriceLevel">
     <template #title>Create a Price Level</template>
 
     <template #description>
@@ -75,7 +75,7 @@ import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
-import TextAreaInput from "../../Components/TextAreaInput.vue";
+import TextAreaInput from "@Components/TextAreaInput.vue";
 
 export default {
   components: {
@@ -101,7 +101,7 @@ export default {
   },
 
   methods: {
-    createCustomer() {
+    createPriceLevel() {
       this.form.post(route("customer-price-levels.store"), {
         errorBag: "createPriceLevel",
         preserveScroll: true,

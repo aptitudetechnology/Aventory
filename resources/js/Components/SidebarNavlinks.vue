@@ -25,6 +25,32 @@
         >Customer Price Levels</nav-link
       >
     </sidebar-dropdown>
+
+    <sidebar-dropdown
+      dropdown_text="Products"
+      :current="
+        route().current('products.*') ||
+        route().current('plants.*') ||
+        route().current('features.*') ||
+        route().current('categories.*')
+      "
+    >
+      <nav-link
+        :href="route('products.index')"
+        :current="route().current('products.*')"
+        >Products</nav-link
+      >
+      <nav-link
+        :href="route('categories.index')"
+        :current="route().current('categories.*')"
+        >Categories</nav-link
+      >
+      <nav-link
+        :href="route('features.index')"
+        :current="route().current('features.*')"
+        >Plant Features</nav-link
+      >
+    </sidebar-dropdown>
     <nav-link
       :href="route('vendors.index')"
       :current="route().current('vendors.*')"

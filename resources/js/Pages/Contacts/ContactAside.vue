@@ -43,9 +43,9 @@
   </div>
 </template>
 <script>
-import JetSectionTitle from "../../Jetstream/SectionTitle.vue";
+import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 import CreateContactComponent from "./CreateContactComponent.vue";
-import JetDialogModel from "../../Jetstream/DialogModal.vue";
+import JetDialogModel from "@/Jetstream/DialogModal.vue";
 import UpdateContactComponent from "./UpdateContactComponent.vue";
 export default {
   props: { customer: Object, vendor: Object },

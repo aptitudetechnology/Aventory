@@ -47,8 +47,8 @@
             <Switch
               v-model="form.use_for_block_transfers"
               :class="[
-                form.use_for_block_transfers ? 'bg-indigo-600' : 'bg-gray-200',
-                'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
+                form.use_for_block_transfers ? 'bg-green-600' : 'bg-gray-200',
+                'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
               ]"
             >
               <span
@@ -129,8 +129,8 @@
             <Switch
               v-model="form.mailing_same_as_primary"
               :class="[
-                form.mailing_same_as_primary ? 'bg-indigo-600' : 'bg-gray-200',
-                'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
+                form.mailing_same_as_primary ? 'bg-green-600' : 'bg-gray-200',
+                'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
               ]"
             >
               <span
@@ -168,7 +168,7 @@
           <div class="col-span-3 sm:col-span-1">
             <jet-label for="mailing_city" value="Mailing City" />
             <jet-input
-              id="city"
+              id="mailing_city"
               type="text"
               class="mt-1 block w-full"
               v-model="form.mailing_city"
@@ -230,8 +230,8 @@ import {
   SwitchGroup,
   SwitchLabel,
 } from "@headlessui/vue";
-import TextAreaInput from "../../Components/TextAreaInput.vue";
-import SelectBox from "../../Components/SelectBox.vue";
+import TextAreaInput from "@Components/TextAreaInput.vue";
+import SelectBox from "@Components/SelectBox.vue";
 
 export default {
   components: {

@@ -62,4 +62,24 @@ class Team extends JetstreamTeam
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class)->orderBy('name');
+    }
+
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class)->orderBy('name');
+    }
+
+    public function plants(): HasMany
+    {
+        return $this->hasManyThrough(Plant::class, 'products')->orderBy('scientific_name');
+    }
+
+    public function features(): HasMany
+    {
+        return $this->hasMany(Feature::class);
+    }
 }

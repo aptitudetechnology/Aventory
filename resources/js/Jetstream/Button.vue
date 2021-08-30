@@ -12,10 +12,10 @@
       font-medium
       rounded-md
       text-white
-      bg-indigo-600
-      hover:bg-indigo-700
+      bg-green-600
+      hover:bg-green-700
       focus:outline-none
-      focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+      focus:ring-2 focus:ring-offset-2 focus:ring-green-500
       disabled:opacity-25
       transition
     "

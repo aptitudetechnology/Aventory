@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ApiCategoriesController;
+use App\Http\Controllers\Api\ApiProductsController;
+use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\CustomerController;
@@ -52,4 +55,22 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/vendors/archived/{vendorId}', [ArchivedVendorsController::class, 'store'])->name('archived-vendors.restore');
 
     Route::resource('vendors', App\Http\Controllers\VendorController::class);
+
+    /**This needs to be before the products resource as will return 403 if after. */
+    Route::get('/products/archived', [ArchivedProductsController::class, 'index'])->name('archived-products.index');
+    Route::get('/products/archived/{productId}', [ArchivedProductsController::class, 'show'])->name('archived-products.show');
+    Route::post('/products/archived/{productId}', [ArchivedProductsController::class, 'store'])->name('archived-products.restore');
+
+    Route::resource('products', App\Http\Controllers\ProductController::class)->except(['edit']);
+
+    Route::resource('features', App\Http\Controllers\FeatureController::class);
+
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+
+    Route::resource('plants', App\Http\Controllers\PlantController::class);
+
+
+
+    Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
+    Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
 });

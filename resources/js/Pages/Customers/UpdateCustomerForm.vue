@@ -97,8 +97,8 @@
             <Switch
               v-model="form.mailing_same_as_primary"
               :class="[
-                form.mailing_same_as_primary ? 'bg-indigo-600' : 'bg-gray-200',
-                'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
+                form.mailing_same_as_primary ? 'bg-green-600' : 'bg-gray-200',
+                'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
               ]"
             >
               <span
@@ -113,7 +113,7 @@
             </Switch>
           </SwitchGroup>
         </div>
-        <div v-if="!form.mailing_same_as_primary" class="grid gap-4">
+        <div v-show="!form.mailing_same_as_primary" class="grid gap-4">
           <div class="col-span-3 pt-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               Mailing Address
@@ -136,7 +136,7 @@
           <div class="col-span-3 sm:col-span-1">
             <jet-label for="mailing_city" value="Mailing City" />
             <jet-input
-              id="city"
+              id="mailing_city"
               type="text"
               class="mt-1 block w-full"
               v-model="form.mailing_city"
@@ -201,8 +201,8 @@
               <Switch
                 v-model="form.no_auto_discount"
                 :class="[
-                  form.no_auto_discount ? 'bg-indigo-600' : 'bg-gray-200',
-                  'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
+                  form.no_auto_discount ? 'bg-green-600' : 'bg-gray-200',
+                  'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
                 ]"
               >
                 <span
@@ -226,8 +226,8 @@
               <Switch
                 v-model="form.is_retail"
                 :class="[
-                  form.is_retail ? 'bg-indigo-600' : 'bg-gray-200',
-                  'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
+                  form.is_retail ? 'bg-green-600' : 'bg-gray-200',
+                  'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
                 ]"
               >
                 <span
@@ -251,7 +251,7 @@
                 min="0.00"
                 step=".01"
                 placeholder="0.00"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full pr-8"
                 v-model="form.tax_percentage"
               />
               <div
@@ -282,7 +282,7 @@
                 max="100"
                 min="0"
                 placeholder="0"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full pr-8"
                 v-model="form.discount_override"
               />
               <div
@@ -352,8 +352,8 @@ import {
   SwitchGroup,
   SwitchLabel,
 } from "@headlessui/vue";
-import TextAreaInput from "../../Components/TextAreaInput.vue";
-import SelectBox from "../../Components/SelectBox.vue";
+import TextAreaInput from "@Components/TextAreaInput.vue";
+import SelectBox from "@Components/SelectBox.vue";
 export default {
   components: {
     JetActionMessage,
@@ -410,9 +410,8 @@ export default {
   methods: {
     updateCustomer() {
       this.form.patch(route("customers.update", this.customer.id), {
-        errorBag: "updateCustomer",
         preserveScroll: false,
-        preserveState: false,
+        preserveState: true,
       });
     },
   },
