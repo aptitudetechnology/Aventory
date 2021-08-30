@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Feature;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FeatureStoreRequest extends FormRequest
@@ -13,7 +14,7 @@ class FeatureStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('create', Feature::class);
     }
 
     /**
@@ -24,7 +25,6 @@ class FeatureStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
             'name' => ['required', 'string'],
         ];
     }

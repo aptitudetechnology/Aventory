@@ -80,6 +80,6 @@ class Team extends JetstreamTeam
 
     public function features(): HasMany
     {
-        return $this->hasMany(Feature::class);
+        return $this->hasMany(Feature::class)->orderBy('name');
     }
 }

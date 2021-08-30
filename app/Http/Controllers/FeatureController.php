@@ -6,6 +6,7 @@ use App\Http\Requests\FeatureStoreRequest;
 use App\Http\Requests\FeatureUpdateRequest;
 use App\Models\Feature;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class FeatureController extends Controller
 {
@@ -15,9 +16,9 @@ class FeatureController extends Controller
      */
     public function index(Request $request)
     {
-        $features = Feature::all();
+        $features = $this->getFeatures($request);
 
-        return view('feature.index', compact('features'));
+        return inertia('Features/Index', compact('features'));
     }
 
     /**
@@ -26,7 +27,11 @@ class FeatureController extends Controller
      */
     public function create(Request $request)
     {
-        return view('feature.create');
+        Gate::authorize('create', Feature::class);
+
+        $features = $this->getFeatures($request);
+
+        return inertia('Features/Create', compact('features'));
     }
 
     /**
@@ -35,11 +40,11 @@ class FeatureController extends Controller
      */
     public function store(FeatureStoreRequest $request)
     {
-        $feature = Feature::create($request->validated());
+        $feature = $request->user()->currentTeam->features()->create($request->validated());
 
         $request->session()->flash('feature.id', $feature->id);
 
-        return redirect()->route('feature.index');
+        return redirect()->route('features.index')->banner('Sweet! Successfully created a new plant feature.');
     }
 
     /**
@@ -49,7 +54,11 @@ class FeatureController extends Controller
      */
     public function show(Request $request, Feature $feature)
     {
-        return view('feature.show', compact('feature'));
+        Gate::authorize('view', $feature);
+
+        $features = $this->getFeatures($request);
+
+        return inertia('Features/Show', compact('feature', 'features'));
     }
 
     /**
@@ -59,7 +68,7 @@ class FeatureController extends Controller
      */
     public function edit(Request $request, Feature $feature)
     {
-        return view('feature.edit', compact('feature'));
+        return redirect()->route('features.show', $feature);
     }
 
     /**
@@ -73,7 +82,7 @@ class FeatureController extends Controller
 
         $request->session()->flash('feature.id', $feature->id);
 
-        return redirect()->route('feature.index');
+        return redirect()->route('features.show', $feature)->banner('Good Job! Feature was updated.');
     }
 
     /**
@@ -83,8 +92,15 @@ class FeatureController extends Controller
      */
     public function destroy(Request $request, Feature $feature)
     {
+        Gate::authorize('delete', $feature);
+
         $feature->delete();
 
-        return redirect()->route('feature.index');
+        return redirect()->route('features.index')->banner('Deleted a feature!');
+    }
+
+    protected function getFeatures($request)
+    {
+        return $request->user()->currentTeam->features;
     }
 }
