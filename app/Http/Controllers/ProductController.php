@@ -76,7 +76,9 @@ class ProductController extends Controller
 
         $products = $this->getProducts();
         $categories = $this->getCategories();
-        return inertia('Products/Show', compact('product', 'products', 'categories'));
+        $features = $request->user()->currentTeam->features;
+
+        return inertia('Products/Show', compact('product', 'products', 'categories', 'features'));
     }
 
 
