@@ -71,7 +71,7 @@
             <div class="flex-shrink-0 flex items-center px-4">
               <img
                 class="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                src="https://tailwindui.com/img/logos/workflow-logo-green-600-mark-gray-800-text.svg"
                 alt="Workflow"
               />
             </div>
@@ -131,7 +131,7 @@
             border-r border-gray-200
             text-gray-500
             focus:outline-none
-            focus:ring-2 focus:ring-inset focus:ring-indigo-500
+            focus:ring-2 focus:ring-inset focus:ring-green-500
             md:hidden
           "
           @click="sidebarOpen = true"

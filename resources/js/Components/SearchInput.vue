@@ -25,8 +25,8 @@
           id="search"
           autocomplete="off"
           class="
-            focus:ring-indigo-500
-            focus:border-indigo-500
+            focus:ring-green-500
+            focus:border-green-500
             block
             w-full
             pl-10
