@@ -91,7 +91,6 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'category_id' => $request->category_id,
-            'type' => $request->type
         ]);
         if ($product->type == "plant") {
             $product->plant()->update([
