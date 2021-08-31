@@ -1142,6 +1142,10 @@ select {
 	margin-top: 1.25rem;
 	margin-bottom: 1.25rem;
 }
+.-my-2 {
+	margin-top: -0.5rem;
+	margin-bottom: -0.5rem;
+}
 .ml-3 {
 	margin-left: 0.75rem;
 }
@@ -1391,6 +1395,9 @@ select {
 .min-w-0 {
 	min-width: 0px;
 }
+.min-w-full {
+	min-width: 100%;
+}
 .max-w-screen-xl {
 	max-width: 1280px;
 }
@@ -1411,6 +1418,9 @@ select {
 }
 .max-w-prose {
 	max-width: 65ch;
+}
+.max-w-screen-sm {
+	max-width: 640px;
 }
 .flex-1 {
 	flex: 1 1 0%;
@@ -1598,6 +1608,9 @@ select {
 .overflow-hidden {
 	overflow: hidden;
 }
+.overflow-x-auto {
+	overflow-x: auto;
+}
 .overflow-y-auto {
 	overflow-y: auto;
 }
@@ -1776,6 +1789,10 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(236, 253, 245, var(--tw-bg-opacity));
 }
+.bg-green-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -1919,6 +1936,9 @@ select {
 .pr-3 {
 	padding-right: 0.75rem;
 }
+.pb-2 {
+	padding-bottom: 0.5rem;
+}
 .text-left {
 	text-align: left;
 }
@@ -1927,6 +1947,9 @@ select {
 }
 .text-right {
 	text-align: right;
+}
+.align-middle {
+	vertical-align: middle;
 }
 .font-sans {
 	font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -2069,6 +2092,10 @@ select {
 .text-green-900 {
 	--tw-text-opacity: 1;
 	color: rgba(6, 78, 59, var(--tw-text-opacity));
+}
+.text-green-800 {
+	--tw-text-opacity: 1;
+	color: rgba(6, 95, 70, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;
@@ -2283,6 +2310,10 @@ select {
 .hover\:text-gray-900:hover {
 	--tw-text-opacity: 1;
 	color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+.hover\:text-indigo-900:hover {
+	--tw-text-opacity: 1;
+	color: rgba(49, 46, 129, var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
 	z-index: 10;
@@ -2513,6 +2544,11 @@ select {
 	.sm\:-my-px {
 		margin-top: -1px;
 		margin-bottom: -1px;
+	}
+
+	.sm\:-mx-6 {
+		margin-left: -1.5rem;
+		margin-right: -1.5rem;
 	}
 
 	.sm\:ml-3 {
@@ -2839,6 +2875,11 @@ select {
 
 	.lg\:col-span-3 {
 		grid-column: span 3 / span 3;
+	}
+
+	.lg\:-mx-8 {
+		margin-left: -2rem;
+		margin-right: -2rem;
 	}
 
 	.lg\:block {
