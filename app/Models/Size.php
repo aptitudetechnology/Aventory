@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Size extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $with = ['next_size'];
     /**
      * The attributes that are mass assignable.
      *
