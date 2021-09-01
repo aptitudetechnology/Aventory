@@ -39,25 +39,18 @@
                 </th>
               </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="size in sizes" :key="size.id">
-                <td
-                  class="
-                    px-6
-                    py-4
-                    whitespace-nowrap
-                    text-sm
-                    font-medium
-                    text-gray-900
-                  "
-                >
-                  <update-size-form :size="size" />
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ size.next_size ? size.next_size.name : "" }}
-                </td>
-              </tr>
-            </tbody>
+            <draggable
+              tag="tbody"
+              v-model="sizes"
+              item-key="id"
+              class="bg-white divide-y divide-gray-200"
+            >
+              <template #item="{ element }">
+                <tr>
+                  <update-size-form :size="element" />
+                </tr>
+              </template>
+            </draggable>
           </table>
         </div>
       </div>
@@ -75,11 +68,13 @@
 <script>
 import EmptyState from "@/Components/EmptyState.vue";
 import UpdateSizeForm from "./UpdateSizeForm.vue";
+import draggable from "vuedraggable";
 export default {
-  components: { EmptyState, UpdateSizeForm },
+  components: { EmptyState, UpdateSizeForm, draggable },
   data() {
     return {
       sizes: this.$page.props.sizes,
+      drag: false,
     };
   },
 };
