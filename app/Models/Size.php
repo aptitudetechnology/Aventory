@@ -4,11 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Size extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Order by sort_num by default
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('sort_num', 'asc');
+        });
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +28,7 @@ class Size extends Model
     protected $fillable = [
         'name',
         'next_size_id',
+        'sort_num'
     ];
 
     /**
@@ -27,6 +39,7 @@ class Size extends Model
     protected $casts = [
         'id' => 'integer',
         'next_size_id' => 'integer',
+        'sort_num' => 'integer'
     ];
 
 
