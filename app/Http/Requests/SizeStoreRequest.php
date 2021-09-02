@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Size;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SizeStoreRequest extends FormRequest
@@ -13,7 +14,7 @@ class SizeStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('create', Size::class);
     }
 
     /**

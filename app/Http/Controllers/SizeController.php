@@ -6,6 +6,7 @@ use App\Http\Requests\SizeStoreRequest;
 use App\Http\Requests\SizeUpdateRequest;
 use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SizeController extends Controller
 {
@@ -26,6 +27,8 @@ class SizeController extends Controller
      */
     public function create(Request $request)
     {
+        Gate::authorize('create', Size::class);
+
         return inertia('Sizes/Create');
     }
 
@@ -61,13 +64,17 @@ class SizeController extends Controller
      */
     public function updateOrder(Request $request)
     {
-        foreach ($request->sizes as $newSize) {
-            $size = Size::find($newSize['id']);
+        foreach ($request->sizes as $updatedSize) {
+            $size = Size::find($updatedSize['id']);
+
+            Gate::authorize('update', $size);
+
             $size->update([
-                'sort_num' => $newSize['sort_num']
+                'sort_num' => $updatedSize['sort_num']
             ]);
         }
         session()->flash('flash.banner', 'Great work! Updated sort.');
+
         return redirect()->route('sizes.index');
     }
 
@@ -78,6 +85,7 @@ class SizeController extends Controller
      */
     public function destroy(Request $request, Size $size)
     {
+        Gate::authorize('delete', $size);
         $size->delete();
 
         return redirect()->route('sizes.index')->banner('Size removed.');

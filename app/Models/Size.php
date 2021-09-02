@@ -50,4 +50,9 @@ class Size extends Model
     {
         return $this->belongsTo(\App\Models\Size::class);
     }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }
