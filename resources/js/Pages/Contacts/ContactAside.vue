@@ -45,20 +45,13 @@
 <script>
 import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 import CreateContactComponent from "./CreateContactComponent.vue";
-import JetDialogModel from "@/Jetstream/DialogModal.vue";
 import UpdateContactComponent from "./UpdateContactComponent.vue";
 export default {
   props: { customer: Object, vendor: Object },
   components: {
     JetSectionTitle,
     CreateContactComponent,
-    JetDialogModel,
     UpdateContactComponent,
-  },
-  data() {
-    return {
-      creatingCustomer: true,
-    };
   },
 };
 </script>
