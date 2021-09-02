@@ -24,7 +24,6 @@
           focus:outline-none
           focus:ring-1 focus:ring-green-500
           focus:border-green-500
-          sm:text-sm
         "
       >
         <span v-if="selected" class="block truncate text-gray-900">{{

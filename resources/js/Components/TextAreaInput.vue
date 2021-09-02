@@ -2,8 +2,9 @@
   <textarea
     class="
       border-gray-300
-      focus:border-green-300
-      focus:ring focus:ring-green-200 focus:ring-opacity-50
+      focus:outline-none
+      focus:ring-1 focus:ring-green-500
+      focus:border-green-500
       rounded-md
       shadow-sm
     "
