@@ -51,9 +51,9 @@ export default {
   data() {
     return {
       sizes: this.$page.props.sizes,
-      selectedSize: this.$page.props.sizes.filter(
+      selectedSize: this.$page.props.sizes.find(
         (size) => size.id == this.size.next_size_id
-      )[0],
+      ),
       form: this.$inertia.form({
         _method: "POST",
         name: this.size.name,
