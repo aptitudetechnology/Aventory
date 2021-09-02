@@ -43,26 +43,6 @@ class SizeController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Size $size
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request, Size $size)
-    {
-        return view('size.show', compact('size'));
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Size $size
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request, Size $size)
-    {
-        return view('size.edit', compact('size'));
-    }
-
-    /**
      * @param \App\Http\Requests\SizeUpdateRequest $request
      * @param \App\Models\Size $size
      * @return \Illuminate\Http\Response
@@ -77,6 +57,21 @@ class SizeController extends Controller
     }
 
     /**
+     * Update all the order_nums to order sizes
+     */
+    public function updateOrder(Request $request)
+    {
+        foreach ($request->sizes as $newSize) {
+            $size = Size::find($newSize['id']);
+            $size->update([
+                'sort_num' => $newSize['sort_num']
+            ]);
+        }
+        session()->flash('flash.banner', 'Great work! Updated sort.');
+        return redirect()->route('sizes.index');
+    }
+
+    /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Size $size
      * @return \Illuminate\Http\Response
@@ -85,7 +80,7 @@ class SizeController extends Controller
     {
         $size->delete();
 
-        return redirect()->route('size.index');
+        return redirect()->route('sizes.index')->banner('Size removed.');
     }
 
     public function getSizes($request)

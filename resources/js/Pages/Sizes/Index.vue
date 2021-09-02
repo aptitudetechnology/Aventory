@@ -3,7 +3,7 @@
     <div class="flex-1 relative z-0 flex overflow-hidden">
       <main-area :dontShowOnMobile="false">
         <div class="py-2">
-          <div class="pb-4">
+          <div class="pb-4 px-6">
             <button-link :href="route('sizes.create')">New Size</button-link>
           </div>
 
