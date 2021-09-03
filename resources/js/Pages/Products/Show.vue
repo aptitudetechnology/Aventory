@@ -23,7 +23,7 @@ import DeleteProductForm from "./DeleteProductForm.vue";
 import PlantFeatures from "./PlantFeatures.vue";
 import ProductsLayout from "./ProductsLayout.vue";
 import UpdateProductForm from "./UpdateProductForm.vue";
-import ProductPricing from "./Pricing/ProductPricing.vue";
+import ProductPricing from "@/Pages/Pricing/ProductPricing.vue";
 
 export default {
   components: {

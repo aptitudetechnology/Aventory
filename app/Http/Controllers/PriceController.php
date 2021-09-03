@@ -31,6 +31,6 @@ class PriceController extends Controller
 
         $request->session()->flash('baseprice.id', $price->id);
 
-        return redirect()->route('products.show', $price->product)->banner('Updated Price!');
+        return redirect()->back()->banner('Updated Price!');
     }
 }
