@@ -110,7 +110,7 @@
               </div>
 
               <div class="grid gap-4 col-span-3 grid-cols-3">
-                <div class="col-span-1">
+                <div class="col-span-3 sm:col-span-1">
                   <jet-label for="zone">Growing Zone</jet-label>
                   <jet-input
                     id="zone"
@@ -121,7 +121,7 @@
                   />
                   <jet-input-error :message="form.errors.zone" class="mt-2" />
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 sm:col-span-1">
                   <jet-label for="height">Mature Height</jet-label>
                   <jet-input
                     id="height"
@@ -133,7 +133,7 @@
                   />
                   <jet-input-error :message="form.errors.height" class="mt-2" />
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 sm:col-span-1">
                   <jet-label for="spread">Mature Spread</jet-label>
                   <jet-input
                     id="spread"
@@ -145,7 +145,7 @@
                   />
                   <jet-input-error :message="form.errors.spread" class="mt-2" />
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 sm:col-span-1">
                   <jet-label for="bloom_color">Bloom Color</jet-label>
                   <jet-input
                     id="bloom_color"
@@ -159,7 +159,7 @@
                     class="mt-2"
                   />
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 sm:col-span-1">
                   <jet-label for="fall_color">Fall Color</jet-label>
                   <jet-input
                     id="fall_color"
@@ -173,7 +173,7 @@
                     class="mt-2"
                   />
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 sm:col-span-1">
                   <jet-label for="growth_rate">Growth Rate</jet-label>
                   <jet-input
                     id="growth_rate"

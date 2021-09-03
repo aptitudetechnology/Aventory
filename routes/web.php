@@ -5,10 +5,12 @@ use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\ArchivedCustomersController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlantFeaturesController;
+use App\Http\Controllers\SizeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -72,6 +74,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::patch('plant-features/{plant}', [PlantFeaturesController::class, 'update'])->name('plant-features.update');
 
+    Route::resource('sizes', App\Http\Controllers\SizeController::class)->only(['create', 'index', 'store', 'update', 'destroy']);
+    Route::put('size-order', [SizeController::class, 'updateOrder'])->name('sizes.updateOrder');
+
+    Route::resource('prices', PriceController::class)->only(['store', 'update', 'destroy']);
 
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');

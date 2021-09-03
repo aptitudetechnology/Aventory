@@ -1,7 +1,10 @@
 <template>
   <categories-layout>
-    <update-category-form :category="category" />
-    <delete-category-form :category="category" class="py-6" />
+    <div class="space-y-6">
+      <update-category-form :category="category" />
+      <ProductPricing :category="category" />
+      <delete-category-form :category="category" />
+    </div>
   </categories-layout>
 </template>
 
@@ -9,11 +12,13 @@
 import CategoriesLayout from "./CategoriesLayout.vue";
 import UpdateCategoryForm from "./UpdateCategoryForm.vue";
 import DeleteCategoryForm from "./DeleteCategoryForm.vue";
+import ProductPricing from "@/Pages/Pricing/ProductPricing.vue";
 export default {
   components: {
     CategoriesLayout,
     UpdateCategoryForm,
     DeleteCategoryForm,
+    ProductPricing,
   },
   props: {
     category: Object,

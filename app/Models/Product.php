@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $with = ['plant', 'category'];
+    protected $with = ['plant', 'category', 'prices'];
     /**
      * The attributes that are mass assignable.
      *
@@ -50,5 +50,15 @@ class Product extends Model
     public function plant()
     {
         return $this->hasOne(\App\Models\Plant::class);
+    }
+
+    public function prices()
+    {
+        return $this->hasMany(Price::class);
+    }
+
+    public function sizes()
+    {
+        return $this->belongsToMany(Size::class, 'prices');
     }
 }

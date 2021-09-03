@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-
+    protected $with = ['prices'];
     /**
      * The attributes that are mass assignable.
      *
@@ -40,5 +40,16 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany(\App\Models\Product::class);
+    }
+
+    public function prices()
+    {
+        return $this->hasMany(Price::class);
+    }
+
+
+    public function sizes()
+    {
+        return $this->belongsToMany(Size::class, 'prices');
     }
 }

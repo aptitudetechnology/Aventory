@@ -135,8 +135,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'size_id' => [
+            'unique' => 'This size has already been assigned a price.',
         ],
     ],
 
@@ -151,6 +151,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'size_id' => 'size',
+    ],
 
 ];

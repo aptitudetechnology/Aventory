@@ -54,8 +54,9 @@ class CategoryController extends Controller
     {
         Gate::authorize('view', $category);
         $categories = $this->getCategories();
+        $sizes = $request->user()->currentTeam->sizes;
 
-        return inertia('Categories/Show', compact('category', 'categories'));
+        return inertia('Categories/Show', compact('category', 'categories', 'sizes'));
     }
 
     /**

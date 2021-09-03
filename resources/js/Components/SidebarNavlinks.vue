@@ -27,12 +27,13 @@
     </sidebar-dropdown>
 
     <sidebar-dropdown
-      dropdown_text="Products"
+      dropdown_text="Products & Pricing"
       :current="
         route().current('products.*') ||
         route().current('plants.*') ||
         route().current('features.*') ||
-        route().current('categories.*')
+        route().current('categories.*') ||
+        route().current('sizes.*')
       "
     >
       <nav-link
@@ -41,9 +42,14 @@
         >Products</nav-link
       >
       <nav-link
+        :href="route('sizes.index')"
+        :current="route().current('sizes.*')"
+        >Product Sizes</nav-link
+      >
+      <nav-link
         :href="route('categories.index')"
         :current="route().current('categories.*')"
-        >Categories</nav-link
+        >Product Categories</nav-link
       >
       <nav-link
         :href="route('features.index')"

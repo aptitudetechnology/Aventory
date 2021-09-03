@@ -1,7 +1,10 @@
 
 <template>
   <Listbox as="div" v-model="selected">
-    <ListboxLabel class="block text-sm font-medium text-gray-700">
+    <ListboxLabel
+      v-if="showLabel"
+      class="block text-sm font-medium text-gray-700"
+    >
       {{ labelValue }}
     </ListboxLabel>
     <div class="mt-1 relative">
@@ -21,11 +24,12 @@
           focus:outline-none
           focus:ring-1 focus:ring-green-500
           focus:border-green-500
-          sm:text-sm
         "
       >
-        <span v-if="selected" class="block truncate">{{ selected.name }}</span>
-        <span v-else class="block truncate">Please select an option</span>
+        <span v-if="selected" class="block truncate text-gray-900">{{
+          selected.name
+        }}</span>
+        <span v-else class="block truncate">Select</span>
         <span
           class="
             absolute
@@ -142,6 +146,7 @@ export default {
     items: Array,
     selectedItem: Object | Boolean,
     labelValue: { type: String, default: "Select Option" },
+    showLabel: { type: Boolean, default: true },
   },
   data: function () {
     return {
