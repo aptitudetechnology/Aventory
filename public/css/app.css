@@ -1391,13 +1391,13 @@ select {
 .min-w-0 {
 	min-width: 0px;
 }
+.min-w-full {
+	min-width: 100%;
+}
 .min-w-max {
 	min-width: -webkit-max-content;
 	min-width: -moz-max-content;
 	min-width: max-content;
-}
-.min-w-full {
-	min-width: 100%;
 }
 .max-w-screen-xl {
 	max-width: 1280px;
@@ -1937,9 +1937,6 @@ select {
 }
 .pr-3 {
 	padding-right: 0.75rem;
-}
-.pl-8 {
-	padding-left: 2rem;
 }
 .pl-6 {
 	padding-left: 1.5rem;
@@ -2663,14 +2660,6 @@ select {
 
 	.sm\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.sm\:grid-cols-3 {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.sm\:grid-cols-4 {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
 	.sm\:flex-row {
