@@ -48,7 +48,7 @@
             />
             <jet-input-error :message="form.errors.address" class="mt-2" />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="city" value="City" />
             <jet-input
               id="city"
@@ -59,7 +59,7 @@
             />
             <jet-input-error :message="form.errors.city" class="mt-2" />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="state" value="State" />
             <jet-input
               id="state"
@@ -70,7 +70,7 @@
             />
             <jet-input-error :message="form.errors.state" class="mt-2" />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="zip" value="Zip" />
             <jet-input
               id="zip"
@@ -133,7 +133,7 @@
               class="mt-2"
             />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="mailing_city" value="Mailing City" />
             <jet-input
               id="mailing_city"
@@ -144,7 +144,7 @@
             />
             <jet-input-error :message="form.errors.mailing_city" class="mt-2" />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="mailing_state" value="Mailing State" />
             <jet-input
               id="mailing_state"
@@ -158,7 +158,7 @@
               class="mt-2"
             />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="mailing_zip" value="Mailing Zip" />
             <jet-input
               id="mailing_zip"
@@ -241,7 +241,7 @@
             </SwitchGroup>
           </div>
 
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="tax_percentage" value="Tax Rate (Override)" />
             <div class="relative">
               <jet-input
@@ -273,7 +273,7 @@
               class="mt-2"
             />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label for="discount_override" value="Discount % (Override)" />
             <div class="relative">
               <jet-input
@@ -304,7 +304,7 @@
               class="mt-2"
             />
           </div>
-          <div class="col-span-3 sm:col-span-1">
+          <div class="col-span-3 md:col-span-1">
             <jet-label
               for="reseller_permit_expiration"
               value="Reseller Permit Expiration"
