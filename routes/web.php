@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\ArchivedCustomersController;
-use App\Http\Controllers\BasePriceController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
 use App\Http\Controllers\ContactController;
@@ -77,7 +77,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('sizes', App\Http\Controllers\SizeController::class)->only(['create', 'index', 'store', 'update', 'destroy']);
     Route::put('size-order', [SizeController::class, 'updateOrder'])->name('sizes.updateOrder');
 
-    Route::post('base-prices', [BasePriceController::class, 'store'])->name('base-prices.store');
+    Route::resource('prices', PriceController::class)->only(['store', 'update', 'delete']);
 
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');

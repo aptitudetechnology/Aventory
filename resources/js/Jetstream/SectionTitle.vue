@@ -1,14 +1,9 @@
 <template>
   <div
-    class="
-      flex
-      justify-between
-      items-center
-      space-x-4
-      border-b border-gray-100
-      pb-4
-      mb-4
-    "
+    :class="[
+      showBorder ? 'border-b border-gray-100 mb-4' : '',
+      'flex justify-between items-center space-x-4  pb-4',
+    ]"
   >
     <div>
       <h3 class="text-xl font-medium text-gray-900">
@@ -25,3 +20,13 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    showBorder: {
+      type: Boolean,
+      default: true,
+    },
+  },
+};
+</script>

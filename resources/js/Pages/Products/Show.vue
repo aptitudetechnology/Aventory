@@ -1,20 +1,24 @@
 <template>
   <products-layout>
-    <div class="space-y-6">
-      <div class="lg:grid lg:grid-cols-8 gap-4">
-        <div class="lg:col-span-5 mb-6">
-          <update-product-form :product="product" />
-        </div>
-        <div class="lg:col-span-3">
-          <product-pricing :product="product" />
-        </div>
-      </div>
+    <div v-if="!editingPricing" class="space-y-6">
+      <jet-button @click="editingPricing = true" class="ml-4 sm:ml-0"
+        >Edit Pricing</jet-button
+      >
+      <update-product-form :product="product" />
+
       <plant-features v-if="product.plant" :plant="product.plant" />
       <delete-product-form :product="product" />
+    </div>
+    <div v-else class="space-y-6">
+      <jet-button @click="editingPricing = false" class="ml-4 sm:ml-0"
+        >Back to Details</jet-button
+      >
+      <product-pricing :product="product" :category="category" />
     </div>
   </products-layout>
 </template>
 <script>
+import JetButton from "@/Jetstream/Button.vue";
 import DeleteProductForm from "./DeleteProductForm.vue";
 import PlantFeatures from "./PlantFeatures.vue";
 import ProductsLayout from "./ProductsLayout.vue";
@@ -23,15 +27,24 @@ import ProductPricing from "./Pricing/ProductPricing.vue";
 
 export default {
   components: {
+    JetButton,
     ProductsLayout,
     UpdateProductForm,
     DeleteProductForm,
     PlantFeatures,
     ProductPricing,
   },
+  data() {
+    return {
+      editingPricing: false,
+    };
+  },
   computed: {
     product() {
       return this.$page.props.product;
+    },
+    category() {
+      return this.$page.props.category;
     },
   },
 };
