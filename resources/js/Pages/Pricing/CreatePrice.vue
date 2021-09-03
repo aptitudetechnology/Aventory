@@ -1,14 +1,16 @@
 <template>
   <div>
-    <jet-button @click="creatingProductPrice = true">New Price</jet-button>
+    <jet-button @click="creatingProductPrice = true"
+      >New Size & Price</jet-button
+    >
     <jet-dialog-modal
       :show="creatingProductPrice"
       @close="creatingProductPrice = false"
     >
-      <template #title>Create a Price</template>
+      <template #title>Create a Size and Price</template>
 
       <template #description>
-        Create a new custom base price for your product.
+        Add a size for this product, and give it a base price.
       </template>
 
       <template #content>
@@ -151,7 +153,9 @@ export default {
   },
   watch: {
     selectedSize() {
-      this.form.size_id = this.selectedSize.id;
+      if (this.selectedSize) {
+        this.form.size_id = this.selectedSize.id;
+      }
     },
   },
 
@@ -162,6 +166,7 @@ export default {
         preserveState: true,
         onSuccess: () => {
           this.form.reset();
+          this.selectedSize = null;
           this.creatingProductPrice = false;
         },
       });
