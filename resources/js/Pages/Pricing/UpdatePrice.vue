@@ -5,7 +5,7 @@
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
       <jet-label for="unit_price" class="sr-only" value="Unit Price" />
-      <div class="mt-1 relative rounded-md shadow-sm">
+      <div class="mt-1 relative max-w-xs rounded-md shadow-sm">
         <div
           class="
             absolute
@@ -33,11 +33,20 @@
     </td>
 
     <td class="px-6 py-4 whitespace-nowrap">
-      <jet-checkbox
-        @change="updateProductPrice"
-        v-model="form.show_on_availability"
-        :checked="form.show_on_availability"
-      />
+      <div class="flex space-x-4">
+        <jet-checkbox
+          @change="updateProductPrice"
+          v-model="form.show_on_availability"
+          :checked="form.show_on_availability"
+          :id="'show_on_availability' + price.id"
+        />
+        <JetLabel :for="'show_on_availability' + price.id">{{
+          form.show_on_availability ? "Yes" : "No"
+        }}</JetLabel>
+      </div>
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap">
+      <DeletePrice :price="price" />
     </td>
   </tr>
 </template>
@@ -48,6 +57,7 @@ import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import JetCheckbox from "@/Jetstream/Checkbox.vue";
+import DeletePrice from "./DeletePrice.vue";
 export default {
   components: {
     JetButton,
@@ -55,6 +65,7 @@ export default {
     JetInputError,
     JetLabel,
     JetCheckbox,
+    DeletePrice,
   },
   props: { price: Object },
 

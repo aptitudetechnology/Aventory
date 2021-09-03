@@ -77,7 +77,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('sizes', App\Http\Controllers\SizeController::class)->only(['create', 'index', 'store', 'update', 'destroy']);
     Route::put('size-order', [SizeController::class, 'updateOrder'])->name('sizes.updateOrder');
 
-    Route::resource('prices', PriceController::class)->only(['store', 'update', 'delete']);
+    Route::resource('prices', PriceController::class)->only(['store', 'update', 'destroy']);
 
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');

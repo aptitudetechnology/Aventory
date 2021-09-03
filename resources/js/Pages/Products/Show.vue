@@ -1,18 +1,22 @@
 <template>
   <products-layout>
-    <div v-if="!editingPricing" class="space-y-6">
-      <jet-button @click="editingPricing = true" class="ml-4 sm:ml-0"
-        >Edit Pricing</jet-button
+    <template #nav>
+      <jet-button v-if="!editingPricing" @click="editingPricing = true"
+        >Edit Sizes & Pricing</jet-button
       >
+
+      <jet-button v-else @click="editingPricing = false"
+        >Back to Details</jet-button
+      >
+    </template>
+
+    <div v-if="!editingPricing" class="space-y-6">
       <update-product-form :product="product" />
 
       <plant-features v-if="product.plant" :plant="product.plant" />
       <delete-product-form :product="product" />
     </div>
     <div v-else class="space-y-6">
-      <jet-button @click="editingPricing = false" class="ml-4 sm:ml-0"
-        >Back to Details</jet-button
-      >
       <product-pricing :product="product" :category="category" />
     </div>
   </products-layout>

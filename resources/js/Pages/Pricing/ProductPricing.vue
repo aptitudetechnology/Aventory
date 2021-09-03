@@ -6,7 +6,7 @@
     >
       <div class="px-4 sm:px-6">
         <jet-section-title :showBorder="false">
-          <template #title>Custom Product Pricing</template>
+          <template #title>Custom Product Sizes and Pricing</template>
           <template v-if="product.prices.length" #aside
             ><CreatePrice :product="product"
           /></template>
@@ -25,7 +25,7 @@
     >
       <div class="px-4 sm:px-6">
         <jet-section-title :showBorder="false">
-          <template #title>Category Pricing</template>
+          <template #title>Category Sizes and Pricing</template>
           <template v-if="category.prices.length" #aside
             ><CreatePrice :category="category"
           /></template>

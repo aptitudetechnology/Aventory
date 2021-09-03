@@ -26,8 +26,6 @@ class PriceUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => ['nullable', 'exists:products,id'],
-            'category_id' => ['nullable', 'exists:categories,id'],
             'size_id' => ['required', 'exists:sizes,id'],
             'unit_price' => ['required', 'numeric'],
             'show_on_availability' => ['boolean']

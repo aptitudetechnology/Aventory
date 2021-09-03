@@ -26,11 +26,23 @@ class PriceStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => ['nullable', 'exists:products,id'],
+            'product_id' => ['nullable', 'exists:products,id',],
             'category_id' => ['nullable', 'exists:categories,id'],
-            'size_id' => ['required', 'exists:sizes,id'],
+            'size_id' => [
+                'required', 'exists:sizes,id',
+                $this->uniqueSize()
+            ],
             'unit_price' => ['required', 'numeric'],
             'show_on_availability' => ['boolean']
         ];
+    }
+
+    protected function uniqueSize()
+    {
+        if ($this->product_id) {
+            return Rule::unique('prices', 'size_id')->where('product_id', $this->product_id);
+        } else {
+            return Rule::unique('prices', 'size_id')->where('category_id', $this->category_id);
+        }
     }
 }

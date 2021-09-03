@@ -2,8 +2,12 @@
   <app-layout>
     <div class="flex-1 relative z-0 flex overflow-hidden">
       <main-area :dontShowOnMobile="isIndex">
-        <nav v-if="!isIndex" aria-label="Breadcrumb" class="xl:hidden">
-          <div class="px-4 md:pb-2">
+        <nav
+          v-if="!isIndex"
+          aria-label="Breadcrumb"
+          class="px-4 md:pb-2 flex items-center justify-between"
+        >
+          <div class="xl:hidden">
             <back-link
               v-if="route().current('products.*')"
               :href="route('products.index')"
@@ -13,6 +17,7 @@
               >Archived Products</back-link
             >
           </div>
+          <slot name="nav"></slot>
         </nav>
         <!-- Main Content -->
         <div class="py-2">
