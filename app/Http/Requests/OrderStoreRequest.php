@@ -26,9 +26,8 @@ class OrderStoreRequest extends FormRequest
         return [
             'date' => ['required', 'date'],
             'vendor_id' => ['required', 'integer', 'exists:vendors,id'],
+            'order_number' => ['string', 'nullable'],
             'user_id' => ['integer', 'exists:users,id'],
-            'team_id' => ['required', 'integer', 'exists:teams,id'],
-            'order_number' => ['string'],
         ];
     }
 }

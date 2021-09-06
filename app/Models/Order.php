@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    protected $with = ['vendor', 'user'];
 
+    protected $appends = ["vendor_name"];
     /**
      * The attributes that are mass assignable.
      *
@@ -29,7 +31,7 @@ class Order extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'date' => 'date',
+        'date' => 'date:Y-m-d',
         'vendor_id' => 'integer',
         'user_id' => 'integer',
         'team_id' => 'integer',
@@ -42,6 +44,11 @@ class Order extends Model
     public function vendor()
     {
         return $this->belongsTo(\App\Models\Vendor::class);
+    }
+
+    public function getVendorNameAttribute()
+    {
+        return $this->vendor->name;
     }
 
     /**

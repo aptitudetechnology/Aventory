@@ -6,6 +6,7 @@ use App\Http\Requests\OrderStoreRequest;
 use App\Http\Requests\OrderUpdateRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
@@ -15,9 +16,9 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = Order::all();
+        $orders = $this->getOrders();
 
-        return view('order.index', compact('orders'));
+        return inertia('Orders/Index', compact('orders'));
     }
 
     /**
@@ -26,7 +27,10 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        return view('order.create');
+        Gate::authorize('create', Order::class);
+        $orders = $this->getOrders();
+        $vendors = $this->getVendors();
+        return inertia('Orders/Create', compact('orders', 'vendors'));
     }
 
     /**
@@ -35,11 +39,13 @@ class OrderController extends Controller
      */
     public function store(OrderStoreRequest $request)
     {
-        $order = Order::create($request->validated());
+        Gate::authorize('create', Order::class);
+
+        $order = $request->user()->currentTeam->orders()->create($request->validated());
 
         $request->session()->flash('order.id', $order->id);
 
-        return redirect()->route('order.index');
+        return redirect()->route('orders.show', $order)->banner('Great! Created order. Now add order items.');
     }
 
     /**
@@ -49,7 +55,12 @@ class OrderController extends Controller
      */
     public function show(Request $request, Order $order)
     {
-        return view('order.show', compact('order'));
+        Gate::authorize('view', $order);
+
+        $orders = $this->getOrders();
+        $vendors = $this->getVendors();
+
+        return inertia('Orders/Show', compact('orders', 'vendors', 'order'));
     }
 
     /**
@@ -59,7 +70,7 @@ class OrderController extends Controller
      */
     public function edit(Request $request, Order $order)
     {
-        return view('order.edit', compact('order'));
+        return redirect()->route('orders.show', $order);
     }
 
     /**
@@ -69,11 +80,13 @@ class OrderController extends Controller
      */
     public function update(OrderUpdateRequest $request, Order $order)
     {
+        Gate::authorize('update', $order);
+
         $order->update($request->validated());
 
         $request->session()->flash('order.id', $order->id);
 
-        return redirect()->route('order.index');
+        return redirect()->route('orders.show', $order)->banner('Updated order!');
     }
 
     /**
@@ -83,8 +96,19 @@ class OrderController extends Controller
      */
     public function destroy(Request $request, Order $order)
     {
+        Gate::authorize('delete', $order);
         $order->delete();
 
-        return redirect()->route('order.index');
+        return redirect()->route('orders.index')->banner('Deleted Order!');
+    }
+
+    protected function getOrders()
+    {
+        return auth()->user()->currentTeam->orders;
+    }
+
+    protected function getVendors()
+    {
+        return auth()->user()->currentTeam->vendors;
     }
 }

@@ -60,7 +60,11 @@
 
     <sidebar-dropdown
       dropdown_text="Inventory In"
-      :current="route().current('vendors.*') || route().current('orders.*')"
+      :current="
+        route().current('vendors.*') ||
+        route().current('archived-vendors.*') ||
+        route().current('orders.*')
+      "
     >
       <nav-link
         :href="route('orders.index')"
@@ -69,7 +73,9 @@
       >
       <nav-link
         :href="route('vendors.index')"
-        :current="route().current('vendors.*')"
+        :current="
+          route().current('vendors.*') || route().current('archived-vendors.*')
+        "
         >Vendors</nav-link
       >
     </sidebar-dropdown>

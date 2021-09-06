@@ -153,6 +153,9 @@ return [
 
     'attributes' => [
         'size_id' => 'size',
+        'vendor_id' => 'vendor',
+        'customer_id' => 'customer',
+        'product_id' => 'product',
     ],
 
 ];

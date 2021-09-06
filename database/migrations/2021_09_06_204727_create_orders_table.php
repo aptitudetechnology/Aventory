@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->date('date');
             $table->foreignId('vendor_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null')->cascadeOnUpdate();
             $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('order_number')->nullable();
             $table->timestamps();

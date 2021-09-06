@@ -64,28 +64,4 @@ class OrderItem extends Model
     {
         return $this->belongsTo(\App\Models\Size::class);
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function order()
-    {
-        return $this->belongsTo(\App\Models\Order::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function product()
-    {
-        return $this->belongsTo(\App\Models\Product::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function size()
-    {
-        return $this->belongsTo(\App\Models\Size::class);
-    }
 }
