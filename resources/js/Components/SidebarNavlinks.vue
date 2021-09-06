@@ -57,11 +57,22 @@
         >Plant Features</nav-link
       >
     </sidebar-dropdown>
-    <nav-link
-      :href="route('vendors.index')"
-      :current="route().current('vendors.*')"
-      >Vendors</nav-link
+
+    <sidebar-dropdown
+      dropdown_text="Inventory In"
+      :current="route().current('vendors.*') || route().current('orders.*')"
     >
+      <nav-link
+        :href="route('orders.index')"
+        :current="route().current('orders.*')"
+        >Orders</nav-link
+      >
+      <nav-link
+        :href="route('vendors.index')"
+        :current="route().current('vendors.*')"
+        >Vendors</nav-link
+      >
+    </sidebar-dropdown>
   </nav>
 </template>
 <script>
