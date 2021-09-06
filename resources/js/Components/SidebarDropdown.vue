@@ -1,5 +1,10 @@
 <template>
-  <Disclosure as="div" class="space-y-1" v-slot="{ open }">
+  <Disclosure
+    as="div"
+    class="space-y-1"
+    v-slot="{ open }"
+    :defaultOpen="current"
+  >
     <DisclosureButton
       :class="[
         current ? 'bg-gray-50' : 'hover:bg-gray-50 hover:text-gray-900',
