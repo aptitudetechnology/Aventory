@@ -70,8 +70,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
 
-    Route::resource('plants', App\Http\Controllers\PlantController::class);
-
     Route::patch('plant-features/{plant}', [PlantFeaturesController::class, 'update'])->name('plant-features.update');
 
     Route::resource('sizes', App\Http\Controllers\SizeController::class)->only(['create', 'index', 'store', 'update', 'destroy']);
