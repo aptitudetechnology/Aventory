@@ -81,4 +81,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
+
+    Route::resource('orders', App\Http\Controllers\OrderController::class);
+
+    Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class);
 });
