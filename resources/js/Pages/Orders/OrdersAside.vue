@@ -110,7 +110,7 @@ export default {
         if (
           order.vendor_name.toLowerCase().includes(lowerSearch) ||
           order.date?.includes(lowerSearch) ||
-          order.order_number?.includes(lowerSearch)
+          order.order_number?.toLowerCase().includes(lowerSearch)
         ) {
           return true;
         } else {

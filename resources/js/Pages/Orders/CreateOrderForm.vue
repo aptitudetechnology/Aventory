@@ -78,7 +78,7 @@ export default {
       orderVendor: null,
       form: this.$inertia.form({
         _method: "POST",
-        date: "",
+        date: null,
         vendor_id: null,
         order_number: null,
         user_id: this.$page.props.user.id,

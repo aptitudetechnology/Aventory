@@ -27,7 +27,7 @@ class OrderUpdateRequest extends FormRequest
             'date' => ['required', 'date'],
             'vendor_id' => ['required', 'integer', 'exists:vendors,id'],
             'user_id' => ['integer', 'exists:users,id'],
-            'order_number' => ['string'],
+            'order_number' => ['string', 'nullable'],
         ];
     }
 }
