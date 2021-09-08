@@ -4,11 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class OrderItem extends Model
 {
     use HasFactory;
+    protected static function boot()
+    {
+        parent::boot();
 
+        // Order by sort_num by default
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy(Product::select('name')->whereColumn('products.id', 'order_items.product_id'));
+        });
+    }
+
+    protected $with = ['product', 'size'];
     /**
      * The attributes that are mass assignable.
      *
