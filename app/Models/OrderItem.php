@@ -19,7 +19,7 @@ class OrderItem extends Model
         });
     }
 
-    protected $with = ['product', 'size'];
+    protected $with = ['product:id,name', 'size:id,name'];
     /**
      * The attributes that are mass assignable.
      *

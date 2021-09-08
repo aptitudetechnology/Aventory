@@ -3,6 +3,9 @@
     <template #title>Order Items</template>
     <template #aside> <create-order-item :order="order" /> </template>
     <template #content>
+      <div class="flex pb-4" v-if="selected.length">
+        <jet-button>Print Selected</jet-button>
+      </div>
       <div
         class="
           grid
@@ -51,6 +54,7 @@
 import JetActionSection from "@/Jetstream/ActionSection.vue";
 import JetCheckbox from "@/Jetstream/Checkbox.vue";
 import JetLabel from "@/Jetstream/Label.vue";
+import JetButton from "@/Jetstream/Button.vue";
 
 import CreateOrderItem from "./CreateOrderItem.vue";
 import OrderLineItem from "./OrderLineItem.vue";
@@ -69,6 +73,7 @@ export default {
     JetActionSection,
     JetCheckbox,
     JetLabel,
+    JetButton,
 
     CreateOrderItem,
     OrderLineItem,
