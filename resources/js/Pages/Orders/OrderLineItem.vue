@@ -1,7 +1,18 @@
 <template>
-  <div class="grid gap-4 grid-cols-8 md:grid-cols-11 py-2">
-    <div></div>
-    <div title="Product Name" class="truncate col-span-4">
+  <div class="grid gap-4 grid-cols-2 md:grid-cols-11 py-2">
+    <div>
+      <jet-label class="sr-only" :for="'item-selected' + form.id"
+        >Select</jet-label
+      >
+      <jet-check-box
+        :id="'item-selected' + form.id"
+        @change="$emit('selected')"
+        :value="form.id"
+        v-model="selected"
+        :checked="selected"
+      ></jet-check-box>
+    </div>
+    <div title="Product Name" class="truncate col-span-2 md:col-span-4">
       {{ form.product.name }}
     </div>
     <div class="px-1" title="Product Size">{{ form.size.name }}</div>
@@ -13,7 +24,11 @@
       ${{ form.unit_price }}
     </div>
     <div class="px-1">
+      <jet-label class="sr-only" :for="'item-recieved' + form.id"
+        >Item Received</jet-label
+      >
       <jet-check-box
+        :id="'item-recieved' + form.id"
         @change="itemReceived"
         v-model="form.received"
         :checked="form.received"
@@ -27,20 +42,31 @@
 </template>
 
 <script>
-import EditOrderItem from "./EditOrderItem.vue";
 import JetCheckBox from "@/Jetstream/Checkbox.vue";
+import JetLabel from "@/Jetstream/Label.vue";
+
+import EditOrderItem from "./EditOrderItem.vue";
 export default {
   props: {
     item: Object,
+    itemSelected: Boolean,
   },
   data() {
     return {
+      selected: this.itemSelected,
       form: this.$inertia.form(this.item),
     };
   },
   components: {
     JetCheckBox,
+    JetLabel,
+
     EditOrderItem,
+  },
+  watch: {
+    itemSelected() {
+      this.selected = this.itemSelected;
+    },
   },
   methods: {
     itemReceived() {

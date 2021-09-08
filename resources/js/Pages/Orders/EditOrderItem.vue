@@ -194,7 +194,7 @@ export default {
   methods: {
     updateOrderItem() {
       this.form.patch(route("order-item.update", this.orderItem), {
-        preserveScroll: false,
+        preserveScroll: true,
         preserveState: false,
       });
     },

@@ -17,7 +17,14 @@
           tracking-wider
         "
       >
-        <div></div>
+        <div>
+          <jet-label class="sr-only" for="select-all">Select all</jet-label
+          ><jet-checkbox
+            id="select-all"
+            v-model="allSelected"
+            @change="toggleAllSelected"
+          />
+        </div>
         <div class="col-span-4 truncate">Product Name</div>
         <div class="truncate">Size</div>
 
@@ -29,9 +36,11 @@
       </div>
       <div class="divide-gray-50 divide-y">
         <order-line-item
+          @selected="toggleSelected(item)"
           v-for="item in orderItems"
           :key="item.id"
           :item="item"
+          :itemSelected="isItemSelected(item)"
         />
       </div>
     </template>
@@ -40,14 +49,51 @@
 
 <script>
 import JetActionSection from "@/Jetstream/ActionSection.vue";
+import JetCheckbox from "@/Jetstream/Checkbox.vue";
+import JetLabel from "@/Jetstream/Label.vue";
+
 import CreateOrderItem from "./CreateOrderItem.vue";
 import OrderLineItem from "./OrderLineItem.vue";
+
 export default {
   props: { order: Object, orderItems: Array },
+
+  data() {
+    return {
+      allSelected: false,
+      selected: [],
+    };
+  },
+
   components: {
     JetActionSection,
+    JetCheckbox,
+    JetLabel,
+
     CreateOrderItem,
     OrderLineItem,
+  },
+
+  methods: {
+    toggleSelected(item) {
+      if (this.selected.includes(item.id)) {
+        this.selected = this.selected.filter((id) => id != item.id);
+      } else {
+        this.selected.push(item.id);
+      }
+    },
+
+    isItemSelected(item) {
+      return this.selected.includes(item.id);
+    },
+
+    toggleAllSelected() {
+      if (this.allSelected) {
+        this.selected = this.orderItems.map((item) => item.id);
+      } else {
+        this.selected = [];
+      }
+    },
   },
 };
 </script>
