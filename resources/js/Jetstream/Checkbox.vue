@@ -2,6 +2,7 @@
   <input
     type="checkbox"
     :value="value"
+    :disabled="disabled"
     v-model="proxyChecked"
     class="
       rounded
@@ -21,6 +22,10 @@ export default {
   props: {
     checked: {
       type: [Array, Boolean],
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
       default: false,
     },
     value: {
