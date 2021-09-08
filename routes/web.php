@@ -82,5 +82,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('orders', App\Http\Controllers\OrderController::class);
 
-    Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class);
+    Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'delete'])->shallow();
 });
