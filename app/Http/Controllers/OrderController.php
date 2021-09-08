@@ -58,9 +58,12 @@ class OrderController extends Controller
         Gate::authorize('view', $order);
 
         $orders = $this->getOrders();
+        $orderItems = $order->orderItems;
         $vendors = $this->getVendors();
+        $products = $request->user()->currentTeam->products()->where('type', 'plant')->get();
+        $sizes = $request->user()->currentTeam->sizes;
 
-        return inertia('Orders/Show', compact('orders', 'vendors', 'order'));
+        return inertia('Orders/Show', compact('orders', 'vendors', 'order', 'products', 'sizes', 'orderItems'));
     }
 
     /**
