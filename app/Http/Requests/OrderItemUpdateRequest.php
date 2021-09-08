@@ -24,14 +24,12 @@ class OrderItemUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'order_id' => ['required', 'integer', 'exists:orders,id'],
             'product_id' => ['required', 'integer', 'exists:products,id'],
             'size_id' => ['integer', 'exists:sizes,id'],
             'unit_price' => ['required', 'numeric'],
             'quantity_ordered' => ['required', 'integer'],
             'quantity_confirmed' => ['required', 'integer'],
-            'received' => ['required'],
-            'printed' => ['required'],
+            'received' => ['boolean']
         ];
     }
 }
