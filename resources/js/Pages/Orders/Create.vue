@@ -1,16 +1,17 @@
 <template>
-  <orders-layout>
-    <create-order-form />
-  </orders-layout>
+    <orders-layout>
+        <create-order-form />
+    </orders-layout>
 </template>
 
 <script>
-import CreateOrderForm from "./CreateOrderForm";
 import OrdersLayout from "./OrdersLayout.vue";
+
+import CreateOrderForm from "./Components/CreateOrderForm";
 export default {
-  components: {
-    CreateOrderForm,
-    OrdersLayout,
-  },
+    components: {
+        OrdersLayout,
+        CreateOrderForm,
+    },
 };
 </script>
