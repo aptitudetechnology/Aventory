@@ -1523,6 +1523,12 @@ select {
 .grid-cols-9 {
 	grid-template-columns: repeat(9, minmax(0, 1fr));
 }
+.grid-cols-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-cols-5 {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+}
 .flex-col {
 	flex-direction: column;
 }
@@ -1627,6 +1633,9 @@ select {
 }
 .overflow-hidden {
 	overflow: hidden;
+}
+.overflow-x-auto {
+	overflow-x: auto;
 }
 .overflow-y-auto {
 	overflow-y: auto;
@@ -1749,6 +1758,10 @@ select {
 .border-green-200 {
 	--tw-border-opacity: 1;
 	border-color: rgba(167, 243, 208, var(--tw-border-opacity));
+}
+.border-gray-50 {
+	--tw-border-opacity: 1;
+	border-color: rgba(249, 250, 251, var(--tw-border-opacity));
 }
 .bg-white {
 	--tw-bg-opacity: 1;
@@ -2113,6 +2126,10 @@ select {
 .text-green-900 {
 	--tw-text-opacity: 1;
 	color: rgba(6, 78, 59, var(--tw-text-opacity));
+}
+.text-gray-50 {
+	--tw-text-opacity: 1;
+	color: rgba(249, 250, 251, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;
@@ -2892,6 +2909,11 @@ select {
 	.md\:pb-2 {
 		padding-bottom: 0.5rem;
 	}
+
+	.md\:text-base {
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
 }
 @media (min-width: 1024px) {
 
@@ -2937,6 +2959,10 @@ select {
 
 	.lg\:grid-cols-3 {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.lg\:grid-cols-11 {
+		grid-template-columns: repeat(11, minmax(0, 1fr));
 	}
 
 	.lg\:px-8 {

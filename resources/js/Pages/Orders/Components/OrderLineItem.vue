@@ -1,6 +1,6 @@
 <template>
-  <div class="grid gap-4 grid-cols-2 md:grid-cols-11 py-2">
-    <div>
+  <div class="grid gap-4 grid-cols-5 md:grid-cols-11 py-2 items-center">
+    <div class="col-span-2 md:col-span-4 flex items-center">
       <jet-label class="sr-only" :for="'item-selected' + form.id"
         >Select</jet-label
       >
@@ -11,19 +11,38 @@
         v-model="selected"
         :checked="selected"
       ></jet-check-box>
+      <div title="Product Name" class="ml-6 truncate">
+        {{ form.product.name }}
+      </div>
     </div>
-    <div title="Product Name" class="truncate col-span-2 md:col-span-4">
-      {{ form.product.name }}
+
+    <div
+      class="px-1 text-sm text-gray-500 tracking-wider uppercase"
+      title="Product Size"
+    >
+      {{ form.size.name }}
     </div>
-    <div class="px-1" title="Product Size">{{ form.size.name }}</div>
-    <div class="px-1" title="Quantity Confirmed">
+    <div
+      class="px-1 text-sm text-gray-500 tracking-wider uppercase"
+      title="Quantity Confirmed"
+    >
       {{ form.quantity_confirmed }}
     </div>
 
-    <div class="px-1 hidden md:block" title="Unit Price">
-      ${{ form.unit_price }}
+    <div
+      class="
+        px-1
+        hidden
+        md:block
+        text-sm text-gray-500
+        tracking-wider
+        uppercase
+      "
+      title="Unit Price"
+    >
+      $ {{ form.unit_price }}
     </div>
-    <div class="px-1">
+    <div class="px-1 hidden md:block">
       <jet-label class="sr-only" :for="'item-recieved' + form.id"
         >Item Received</jet-label
       >
