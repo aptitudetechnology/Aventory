@@ -6,8 +6,9 @@
 
     <template #content>
       <div class="max-w-xl text-sm text-gray-600">
-        Once a order is deleted, you will be unable to bring product in from
-        this order. Past orders will still contain this order information.
+        If this order is deleted, all associated order items, and inventory
+        already added will be removed. Only delete this order if you are sure
+        you want to remove all inventory and items associated with this order.
       </div>
 
       <div class="mt-5">
@@ -53,7 +54,7 @@ import JetDangerButton from "@/Jetstream/DangerButton";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
 export default {
-  props: { order: Object },
+  props: ["order"],
 
   components: {
     JetActionSection,
