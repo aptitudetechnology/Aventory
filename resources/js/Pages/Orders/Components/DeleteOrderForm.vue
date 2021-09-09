@@ -5,7 +5,7 @@
     <template #description> Delete this order. </template>
 
     <template #content>
-      <div class="max-w-xl text-sm text-gray-600">
+      <div class="text-sm text-gray-600">
         If this order is deleted, all associated order items, and inventory
         already added will be removed. Only delete this order if you are sure
         you want to remove all inventory and items associated with this order.

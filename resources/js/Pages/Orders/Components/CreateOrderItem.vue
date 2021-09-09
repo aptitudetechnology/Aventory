@@ -135,20 +135,22 @@
           <jet-secondary-button type="button" @click="creatingOrderItem = false"
             >Cancel</jet-secondary-button
           >
-          <jet-button
-            type="submit"
-            @click="createOrderItem"
-            :class="{ 'opacity-25': form.processing }"
-            :disabled="form.processing"
-            >Save and add another Item</jet-button
-          >
-          <jet-button
-            type="submit"
-            @click="saveAndClose"
-            :class="{ 'opacity-25': form.processing }"
-            :disabled="form.processing"
-            >Save and Close</jet-button
-          >
+          <div>
+            <jet-button
+              type="submit"
+              @click="createOrderItem"
+              :class="[{ 'opacity-25': form.processing }, 'mr-2']"
+              :disabled="form.processing"
+              >Save and add another Item</jet-button
+            >
+            <jet-button
+              type="submit"
+              @click="saveAndClose"
+              :class="{ 'opacity-25': form.processing }"
+              :disabled="form.processing"
+              >Save and Close</jet-button
+            >
+          </div>
         </div>
       </template>
     </jet-dialog-modal>

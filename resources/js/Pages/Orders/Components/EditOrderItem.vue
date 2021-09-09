@@ -5,12 +5,9 @@
       :show="updatingOrderItem"
       @close="updatingOrderItem = false"
     >
-      <template #title>Add an order item.</template>
+      <template #title>Edit</template>
 
-      <template #description>
-        Add a new order item. Then, you can add this item to inventory and print
-        tags.
-      </template>
+      <template #description> Edit this order item. </template>
 
       <template #content>
         <form

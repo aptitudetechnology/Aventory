@@ -7,6 +7,7 @@ use App\Http\Requests\OrderItemUpdateRequest;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class OrderItemController extends Controller
 {
@@ -17,6 +18,8 @@ class OrderItemController extends Controller
      */
     public function store(OrderItemStoreRequest $request, Order $order)
     {
+        Gate::authorize('update', $order);
+
         $orderItem = $order->orderItems()->create($request->validated());
 
         $request->session()->flash('orderItem.id', $orderItem->id);
@@ -31,6 +34,8 @@ class OrderItemController extends Controller
      */
     public function update(OrderItemUpdateRequest $request, OrderItem $orderItem)
     {
+        Gate::authorize('update', $orderItem->order);
+
         $orderItem->update($request->validated());
 
         $request->session()->flash('orderItem.id', $orderItem->id);
@@ -45,8 +50,10 @@ class OrderItemController extends Controller
      */
     public function destroy(Request $request, OrderItem $orderItem)
     {
+        Gate::authorize('update', $orderItem->order);
+
         $orderItem->delete();
 
-        return redirect()->route('orderItem.index');
+        return redirect()->back()->banner('Items removed!');
     }
 }
