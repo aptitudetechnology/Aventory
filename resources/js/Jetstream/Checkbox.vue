@@ -4,14 +4,11 @@
     :value="value"
     :disabled="disabled"
     v-model="proxyChecked"
-    class="
-      rounded
-      border-gray-300
-      text-green-600
-      shadow-sm
-      focus:border-none
-      focus:ring focus:ring-green-200 focus:ring-opacity-50
-    "
+    :class="[
+      'focus:ring-' + color + '-200',
+      'text-' + color + '-600',
+      'rounded border-gray-300 shadow-sm focus:border-none focus:ring   focus:ring-opacity-50 ',
+    ]"
   />
 </template>
 
@@ -20,6 +17,10 @@ export default {
   emits: ["update:checked"],
 
   props: {
+    color: {
+      default: "green",
+      type: String,
+    },
     checked: {
       type: [Array, Boolean],
       default: false,

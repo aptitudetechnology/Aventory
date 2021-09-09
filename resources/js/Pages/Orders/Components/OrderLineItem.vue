@@ -50,6 +50,7 @@
         :id="'item-recieved' + form.id"
         @change="itemReceived"
         v-model="form.received"
+        color="gray"
         :checked="form.received"
       ></jet-check-box>
     </div>
