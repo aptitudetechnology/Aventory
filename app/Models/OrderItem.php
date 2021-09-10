@@ -34,6 +34,8 @@ class OrderItem extends Model
         'quantity_confirmed',
         'received',
         'printed',
+        'in_inventory',
+        'ready_date'
     ];
 
     /**
@@ -49,6 +51,8 @@ class OrderItem extends Model
         'unit_price' => 'double',
         'received' => 'boolean',
         'printed' => 'boolean',
+        'in_inventory' => 'boolean',
+        'ready_date' => 'date'
     ];
 
 
