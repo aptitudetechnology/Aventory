@@ -24,14 +24,8 @@ class InventoryStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'order_item_id' => ['required', 'integer', 'exists:order_items,id'],
-            'product_id' => ['required', 'integer', 'exists:products,id'],
-            'original_size_id' => ['required', 'integer', 'exists:original_sizes,id'],
-            'size_id' => ['required', 'integer', 'exists:sizes,id'],
-            'quantity' => ['required', 'integer'],
-            'type' => ['required', 'in:group,individual'],
-            'block_id' => ['integer', 'exists:blocks,id'],
-            'place_id' => ['integer', 'exists:places,id'],
+            'selectedItems' => ['required', 'array'],
+            'type' => ['required', 'in:individual,group']
         ];
     }
 }
