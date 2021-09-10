@@ -27,6 +27,7 @@
             <jet-label class="sr-only" for="select-all">Select all</jet-label
             ><jet-checkbox
               id="select-all"
+              :checked="allSelected"
               v-model="allSelected"
               @change="toggleAllSelected"
             />
@@ -82,6 +83,16 @@ export default {
 
     CreateOrderItem,
     OrderLineItem,
+  },
+  watch: {
+    selected() {
+      //watches selected to uncheck the select all checkbox if selected is empty
+      let selectedLength = this.selected.length;
+
+      if (selectedLength === 0) {
+        this.allSelected = false;
+      }
+    },
   },
 
   methods: {

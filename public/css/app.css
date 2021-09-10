@@ -1520,12 +1520,6 @@ select {
 .grid-cols-2 {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.grid-cols-9 {
-	grid-template-columns: repeat(9, minmax(0, 1fr));
-}
-.grid-cols-4 {
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-}
 .grid-cols-5 {
 	grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -1633,9 +1627,6 @@ select {
 }
 .overflow-hidden {
 	overflow: hidden;
-}
-.overflow-x-auto {
-	overflow-x: auto;
 }
 .overflow-y-auto {
 	overflow-y: auto;
@@ -2127,10 +2118,6 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(6, 78, 59, var(--tw-text-opacity));
 }
-.text-gray-50 {
-	--tw-text-opacity: 1;
-	color: rgba(249, 250, 251, var(--tw-text-opacity));
-}
 .underline {
 	text-decoration: underline;
 }
@@ -2457,6 +2444,11 @@ select {
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
 	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
+.focus\:ring-0:focus {
+	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
 .focus\:ring-inset:focus {
 	--tw-ring-inset: inset;
 }
@@ -2492,9 +2484,8 @@ select {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(236, 72, 153, var(--tw-ring-opacity));
 }
-.focus\:ring-green-200:focus {
-	--tw-ring-opacity: 1;
-	--tw-ring-color: rgba(167, 243, 208, var(--tw-ring-opacity));
+.focus\:ring-current:focus {
+	--tw-ring-color: currentColor;
 }
 .focus\:ring-opacity-50:focus {
 	--tw-ring-opacity: 0.5;
@@ -2909,11 +2900,6 @@ select {
 	.md\:pb-2 {
 		padding-bottom: 0.5rem;
 	}
-
-	.md\:text-base {
-		font-size: 1rem;
-		line-height: 1.5rem;
-	}
 }
 @media (min-width: 1024px) {
 
@@ -2959,10 +2945,6 @@ select {
 
 	.lg\:grid-cols-3 {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.lg\:grid-cols-11 {
-		grid-template-columns: repeat(11, minmax(0, 1fr));
 	}
 
 	.lg\:px-8 {

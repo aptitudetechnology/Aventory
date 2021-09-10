@@ -5,9 +5,8 @@
     :disabled="disabled"
     v-model="proxyChecked"
     :class="[
-      'focus:ring-' + color + '-200',
+      'rounded border-gray-300 shadow-sm focus:border-none focus:ring-1 focus:ring-current focus:ring-opacity-50 cursor-pointer',
       'text-' + color + '-600',
-      'rounded border-gray-300 shadow-sm focus:border-none focus:ring   focus:ring-opacity-50 ',
     ]"
   />
 </template>
