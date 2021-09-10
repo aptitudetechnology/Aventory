@@ -84,3 +84,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
 });
+
+
+Route::resource('inventory', App\Http\Controllers\InventoryController::class);
+
+Route::resource('nursery-location', App\Http\Controllers\NurseryLocationController::class);
+
+Route::resource('block', App\Http\Controllers\BlockController::class);
