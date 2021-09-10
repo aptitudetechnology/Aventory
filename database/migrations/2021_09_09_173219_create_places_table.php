@@ -35,6 +35,8 @@ class CreatePlacesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('places');
+        Schema::enableForeignKeyConstraints();
     }
 }

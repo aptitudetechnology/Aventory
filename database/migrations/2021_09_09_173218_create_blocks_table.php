@@ -17,6 +17,7 @@ class CreateBlocksTable extends Migration
 
         Schema::create('blocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->foreignId('nursery_location_id')->nullable()->constrained()->onDelete('set null')->cascadeOnUpdate();
             $table->boolean('has_places');
@@ -33,6 +34,8 @@ class CreateBlocksTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('blocks');
+        Schema::enableForeignKeyConstraints();
     }
 }

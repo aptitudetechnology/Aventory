@@ -18,6 +18,7 @@ class CreateInventoriesTable extends Migration
 
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('order_item_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('original_size_id')->nullable()->constrained('sizes')->onDelete('set null')->cascadeOnUpdate();
@@ -40,6 +41,8 @@ class CreateInventoriesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('inventories');
+        Schema::enableForeignKeyConstraints();
     }
 }

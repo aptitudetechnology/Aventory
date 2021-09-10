@@ -17,6 +17,7 @@ class CreateNurseryLocationsTable extends Migration
 
         Schema::create('nursery_locations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->string('address')->nullable();
             $table->string('city')->nullable();
@@ -35,6 +36,8 @@ class CreateNurseryLocationsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('nursery_locations');
+        Schema::enableForeignKeyConstraints();
     }
 }
