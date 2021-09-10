@@ -41,14 +41,6 @@ class Block extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function nurseryLocation()
-    {
-        return $this->belongsTo(\App\Models\NurseryLocation::class);
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function places()

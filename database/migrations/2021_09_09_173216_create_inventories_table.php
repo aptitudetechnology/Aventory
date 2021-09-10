@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
 
 class CreateInventoriesTable extends Migration
@@ -19,12 +20,13 @@ class CreateInventoriesTable extends Migration
             $table->id();
             $table->foreignId('order_item_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('original_size_id')->constrained('sizes')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('size_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('original_size_id')->nullable()->constrained('sizes')->onDelete('set null')->cascadeOnUpdate();
+            $table->foreignId('size_id')->nullable()->constrained()->onDelete('set null')->cascadeOnUpdate();
             $table->integer('quantity')->default(1);
-            $table->enum('type', ["group","individual"]);
-            $table->foreignId('block_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('place_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->enum('type', ["group", "individual"]);
+            $table->foreignId('block_id')->nullable()->constrained()->onDelete('set null')->cascadeOnUpdate();
+            $table->foreignId('place_id')->nullable()->constrained()->onDelete('set null')->cascadeOnUpdate();
+            $table->date('ready_date')->useCurrent();
             $table->timestamps();
         });
 

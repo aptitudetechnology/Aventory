@@ -23,7 +23,9 @@ class Inventory extends Model
         'type',
         'block_id',
         'place_id',
+        'ready_date'
     ];
+
 
     /**
      * The attributes that should be cast to native types.
@@ -38,6 +40,7 @@ class Inventory extends Model
         'size_id' => 'integer',
         'block_id' => 'integer',
         'place_id' => 'integer',
+        'ready_date' => 'datetime'
     ];
 
 
@@ -57,13 +60,6 @@ class Inventory extends Model
         return $this->belongsTo(\App\Models\Product::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function size()
-    {
-        return $this->belongsTo(\App\Models\Size::class);
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -81,21 +77,6 @@ class Inventory extends Model
         return $this->belongsTo(\App\Models\Place::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function orderItem()
-    {
-        return $this->belongsTo(\App\Models\OrderItem::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function product()
-    {
-        return $this->belongsTo(\App\Models\Product::class);
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -111,21 +92,5 @@ class Inventory extends Model
     public function size()
     {
         return $this->belongsTo(\App\Models\Size::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function block()
-    {
-        return $this->belongsTo(\App\Models\Block::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function place()
-    {
-        return $this->belongsTo(\App\Models\Place::class);
     }
 }

@@ -21,6 +21,8 @@ class CreatePlacesTable extends Migration
             $table->integer('row_number');
             $table->integer('plant_number');
             $table->timestamps();
+
+            $table->unique(['block_id', 'row_number', 'plant_number']);
         });
 
         Schema::enableForeignKeyConstraints();

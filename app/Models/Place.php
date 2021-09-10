@@ -39,13 +39,6 @@ class Place extends Model
         return $this->belongsTo(\App\Models\Block::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function block()
-    {
-        return $this->belongsTo(\App\Models\Block::class);
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

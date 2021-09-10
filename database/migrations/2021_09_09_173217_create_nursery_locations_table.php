@@ -21,6 +21,7 @@ class CreateNurseryLocationsTable extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
+            $table->string('zip')->nullable();
             $table->timestamps();
         });
 
