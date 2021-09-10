@@ -4,7 +4,7 @@
     <template #aside> <create-order-item :order="order" /> </template>
     <template #content>
       <div class="flex pb-4" v-if="selected.length">
-        <jet-button>Print Selected</jet-button>
+        <AddOrderItemsToInventory :selectedItems="selected" />
       </div>
       <div>
         <div
@@ -64,7 +64,7 @@ import JetButton from "@/Jetstream/Button.vue";
 
 import CreateOrderItem from "./CreateOrderItem.vue";
 import OrderLineItem from "./OrderLineItem.vue";
-
+import AddOrderItemsToInventory from "./AddOrderItemsToInventory.vue";
 export default {
   props: { order: Object, orderItems: Array },
 
@@ -83,6 +83,7 @@ export default {
 
     CreateOrderItem,
     OrderLineItem,
+    AddOrderItemsToInventory,
   },
   watch: {
     selected() {
