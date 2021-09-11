@@ -5,6 +5,8 @@
         <jet-section-title>
           <template #title><slot name="title"></slot></template>
           <template #description><slot name="description"></slot></template>
+
+          <template #aside><slot name="aside"></slot></template>
         </jet-section-title>
         <slot name="content"></slot>
       </div>

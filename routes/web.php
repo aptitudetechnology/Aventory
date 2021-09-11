@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlantFeaturesController;
+use App\Http\Controllers\RemoveOrderItemFromInventory;
 use App\Http\Controllers\SizeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -70,8 +71,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
 
-    Route::resource('plants', App\Http\Controllers\PlantController::class);
-
     Route::patch('plant-features/{plant}', [PlantFeaturesController::class, 'update'])->name('plant-features.update');
 
     Route::resource('sizes', App\Http\Controllers\SizeController::class)->only(['create', 'index', 'store', 'update', 'destroy']);
@@ -81,4 +80,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
+
+    Route::resource('orders', App\Http\Controllers\OrderController::class);
+
+    Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
+
+
+    Route::resource('inventory', App\Http\Controllers\InventoryController::class);
+
+    Route::resource('nursery-location', App\Http\Controllers\NurseryLocationController::class);
+
+    Route::resource('block', App\Http\Controllers\BlockController::class);
+
+    Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
 });

@@ -5,7 +5,7 @@
       <div class="col-span-6">
         <div class="grid gap-4">
           <div class="col-span-3">
-            <jet-label for="name" value="Customer Name" />
+            <jet-label for="name" value="Vendor Name" />
             <jet-input
               id="name"
               type="text"
@@ -17,7 +17,7 @@
             <jet-input-error :message="form.errors.name" class="mt-2" />
           </div>
           <div class="col-span-3">
-            <jet-label for="notes" value="Customer Notes" />
+            <jet-label for="notes" value="Vendor Notes" />
             <text-area-input
               id="notes"
               class="mt-1 block w-full"
@@ -117,8 +117,8 @@
                 >Mailing same as primary</SwitchLabel
               >
               <SwitchDescription as="span" class="text-sm text-gray-500"
-                >Indicate whether the mailing address of this customer is the
-                same as the primary address.</SwitchDescription
+                >Indicate whether the mailing address of this vendor is the same
+                as the primary address.</SwitchDescription
               >
             </span>
             <Switch

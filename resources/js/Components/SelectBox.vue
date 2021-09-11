@@ -153,5 +153,10 @@ export default {
       selected: this.selectedItem,
     };
   },
+  watch: {
+    selectedItem() {
+      this.selected = this.selectedItem;
+    },
+  },
 };
 </script>

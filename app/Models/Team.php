@@ -87,4 +87,14 @@ class Team extends JetstreamTeam
     {
         return $this->hasMany(Size::class);
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function inventories(): HasMany
+    {
+        return $this->hasMany(Inventory::class);
+    }
 }

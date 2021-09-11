@@ -1,30 +1,33 @@
 <template>
-  <app-layout>
-    <div class="flex-1 relative z-0 flex overflow-hidden">
-      <main-area :dontShowOnMobile="false">
-        <div class="py-2">
-          <div class="sm:pb-4 px-6">
-            <back-link :href="route('sizes.index')">Sizes</back-link>
-          </div>
-          <create-size-form class="max-w-screen-sm" />
+    <app-layout>
+        <div class="flex-1 relative z-0 flex overflow-hidden">
+            <main-area :dontShowOnMobile="false">
+                <div class="py-2">
+                    <div class="sm:pb-4 px-6">
+                        <back-link :href="route('sizes.index')"
+                            >Sizes</back-link
+                        >
+                    </div>
+                    <create-size-form class="max-w-screen-sm" />
+                </div>
+            </main-area>
         </div>
-      </main-area>
-    </div>
-  </app-layout>
+    </app-layout>
 </template>
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import MainArea from "@Components/MainArea.vue";
-import CreateSizeForm from "./CreateSizeForm.vue";
 import BackLink from "@Components/BackLink";
+
+import CreateSizeForm from "./CreateSizeForm.vue";
 export default {
-  components: {
-    AppLayout,
-    MainArea,
-    CreateSizeForm,
-    BackLink,
-  },
-  computed: {},
+    components: {
+        AppLayout,
+        MainArea,
+        CreateSizeForm,
+        BackLink,
+    },
+    computed: {},
 };
 </script>
