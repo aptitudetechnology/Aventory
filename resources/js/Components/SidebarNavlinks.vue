@@ -79,6 +79,22 @@
         >Vendors</nav-link
       >
     </sidebar-dropdown>
+
+    <sidebar-dropdown
+      dropdown_text="Locations"
+      :current="route().current('locations.*') || route().current('blocks.*')"
+    >
+      <nav-link
+        :href="route('locations.index')"
+        :current="route().current('locations.*')"
+        >Nursery Locations</nav-link
+      >
+      <nav-link
+        :href="route('blocks.index')"
+        :current="route().current('blocks.*')"
+        >Blocks</nav-link
+      >
+    </sidebar-dropdown>
   </nav>
 </template>
 <script>

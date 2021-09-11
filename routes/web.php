@@ -88,9 +88,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('inventory', App\Http\Controllers\InventoryController::class);
 
-    Route::resource('nursery-location', App\Http\Controllers\NurseryLocationController::class);
-
-    Route::resource('block', App\Http\Controllers\BlockController::class);
-
     Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
+
+    Route::resource('locations', App\Http\Controllers\NurseryLocationController::class);
+
+    Route::resource('blocks', App\Http\Controllers\BlockController::class);
 });

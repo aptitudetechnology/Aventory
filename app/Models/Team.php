@@ -97,4 +97,9 @@ class Team extends JetstreamTeam
     {
         return $this->hasMany(Inventory::class);
     }
+
+    public function nurseryLocations(): HasMany
+    {
+        return $this->hasMany(NurseryLocation::class);
+    }
 }

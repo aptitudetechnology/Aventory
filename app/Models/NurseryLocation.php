@@ -40,4 +40,12 @@ class NurseryLocation extends Model
     {
         return $this->hasMany(\App\Models\Block::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function team()
+    {
+        return $this->belongsTo(\App\Models\Team::class);
+    }
 }
