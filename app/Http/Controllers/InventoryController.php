@@ -7,6 +7,7 @@ use App\Http\Requests\InventoryUpdateRequest;
 use App\Models\Inventory;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class InventoryController extends Controller
 {
@@ -39,6 +40,8 @@ class InventoryController extends Controller
         $orderItems = OrderItem::whereIn('id', $request->selectedItems)->get();
 
         foreach ($orderItems as $item) {
+            Gate::authorize('update', $item->order);
+
             if ($request->type == 'group') {
                 $item->addToGroupInventory();
             } elseif ($request->type == 'individual') {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class RemoveOrderItemFromInventory extends Controller
 {
@@ -16,6 +17,9 @@ class RemoveOrderItemFromInventory extends Controller
     public function __invoke(Request $request)
     {
         $orderItem = OrderItem::find($request->item_id);
+
+        Gate::authorize('update', $orderItem->order);
+
         $orderItem->removeFromInventory();
         return redirect()->back()->banner('Item removed from inventory.');
     }
