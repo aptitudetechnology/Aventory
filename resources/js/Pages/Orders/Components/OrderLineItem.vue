@@ -1,5 +1,5 @@
 <template>
-  <div class="grid gap-4 grid-cols-5 md:grid-cols-11 py-2 items-center">
+  <div class="grid gap-4 grid-cols-5 md:grid-cols-10 py-2 items-center">
     <div class="col-span-2 md:col-span-4 flex items-center">
       <jet-label class="sr-only" :for="'item-selected' + form.id"
         >Select</jet-label
@@ -58,7 +58,9 @@
     <div class="px-1 hidden md:block">
       <jet-check-box :disabled="true" :checked="form.printed"></jet-check-box>
     </div>
-    <div v-if="item.in_inventory">In Inventory</div>
+    <div v-if="item.in_inventory">
+      <RemoveItemFromInventory :item="item" />
+    </div>
     <div v-else class="flex">
       <DeleteOrderItem :item="item" />
 
@@ -68,18 +70,23 @@
 </template>
 
 <script>
+import Check from "@heroicons/vue/outline/CheckIcon";
 import JetCheckBox from "@/Jetstream/Checkbox.vue";
 import JetLabel from "@/Jetstream/Label.vue";
 
 import EditOrderItem from "./EditOrderItem.vue";
 import DeleteOrderItem from "./DeleteOrderItem.vue";
+import RemoveItemFromInventory from "./RemoveItemFromInventory.vue";
 export default {
   components: {
+    Check,
+
     JetCheckBox,
     JetLabel,
 
     EditOrderItem,
     DeleteOrderItem,
+    RemoveItemFromInventory,
   },
   props: {
     item: Object,

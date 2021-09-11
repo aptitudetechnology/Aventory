@@ -21,7 +21,7 @@
             grid
             gap-4
             grid-cols-5
-            md:grid-cols-11
+            md:grid-cols-10
             items-center
             border-b border-gray-50
           "

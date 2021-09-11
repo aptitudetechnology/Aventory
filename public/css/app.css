@@ -2887,6 +2887,10 @@ select {
 		grid-template-columns: repeat(11, minmax(0, 1fr));
 	}
 
+	.md\:grid-cols-10 {
+		grid-template-columns: repeat(10, minmax(0, 1fr));
+	}
+
 	.md\:justify-end {
 		justify-content: flex-end;
 	}

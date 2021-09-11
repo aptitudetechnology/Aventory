@@ -7,8 +7,9 @@
       <template #title>Add these items to inventory.</template>
 
       <template #description>
-        Once you add these items to inventory, you can print tags. You won't be
-        able to make changes to these items once added to inventory.
+        Once you add these items to inventory, you can print their tags. You
+        won't be able to make changes to these items once added to inventory
+        unless you remove them from inventory.
       </template>
 
       <template #content>

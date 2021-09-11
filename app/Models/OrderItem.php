@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -60,6 +61,15 @@ class OrderItem extends Model
         $this->update([
             'in_inventory' => true,
             'received' => true
+        ]);
+    }
+
+    public function removeFromInventory()
+    {
+        DB::table('inventories')->where('order_item_id', $this->id)->delete();
+
+        $this->update([
+            'in_inventory' => false,
         ]);
     }
 
