@@ -50,6 +50,7 @@
         :id="'item-recieved' + form.id"
         @change="itemReceived"
         v-model="form.received"
+        :disabled="item.in_inventory"
         color="gray"
         :checked="form.received"
       ></jet-check-box>
@@ -57,8 +58,10 @@
     <div class="px-1 hidden md:block">
       <jet-check-box :disabled="true" :checked="form.printed"></jet-check-box>
     </div>
-    <div class="flex">
+    <div v-if="item.in_inventory">In Inventory</div>
+    <div v-else class="flex">
       <DeleteOrderItem :item="item" />
+
       <edit-order-item title="Edit" :orderItem="item"></edit-order-item>
     </div>
   </div>

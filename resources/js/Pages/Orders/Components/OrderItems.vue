@@ -4,7 +4,10 @@
     <template #aside> <create-order-item :order="order" /> </template>
     <template #content>
       <div class="flex pb-4" v-if="selected.length">
-        <AddOrderItemsToInventory :selectedItems="selected" />
+        <AddOrderItemsToInventory
+          v-if="itemsNotInInventory"
+          :selectedItems="selected"
+        />
       </div>
       <div>
         <div
@@ -68,13 +71,6 @@ import AddOrderItemsToInventory from "./AddOrderItemsToInventory.vue";
 export default {
   props: { order: Object, orderItems: Array },
 
-  data() {
-    return {
-      allSelected: false,
-      selected: [],
-    };
-  },
-
   components: {
     JetActionSection,
     JetCheckbox,
@@ -84,6 +80,19 @@ export default {
     CreateOrderItem,
     OrderLineItem,
     AddOrderItemsToInventory,
+  },
+
+  data() {
+    return {
+      allSelected: false,
+      selected: [],
+    };
+  },
+
+  computed: {
+    itemsNotInInventory() {
+      return this.orderItems.map((item) => item.in_inventory).includes(false);
+    },
   },
   watch: {
     selected() {

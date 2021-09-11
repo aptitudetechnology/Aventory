@@ -47,7 +47,7 @@
               </div>
             </div>
 
-            <div class="grid gap-4 sm:grid-cols-3">
+            <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
               <div class="sm:col-span-1">
                 <jet-label for="quantity_ordered" value="Quantity Ordered" />
                 <jet-input
@@ -100,9 +100,29 @@
                   class="mt-2"
                 />
               </div>
+              <div class="sm:col-span-1">
+                <jet-label for="ready_date" value="Ready Date" />
+                <jet-input
+                  id="ready_date"
+                  type="date"
+                  class="mt-1 block w-full"
+                  v-model="form.ready_date"
+                  required
+                />
+                <jet-input-error
+                  v-if="!form.ready_date"
+                  :message="form.errors.ready_date"
+                  class="mt-2"
+                />
+              </div>
               <SwitchGroup
                 as="div"
-                class="flex items-center justify-start col-span-3 sm:col-span-1"
+                class="
+                  flex
+                  items-center
+                  justify-start
+                  sm:col-span-1 sm:col-span-1
+                "
               >
                 <SwitchLabel
                   as="span"
@@ -131,7 +151,7 @@
       </template>
 
       <template #footer>
-        <div class="flex justify-between w-full">
+        <div class="flex justify-between items-center w-full">
           <jet-secondary-button type="button" @click="creatingOrderItem = false"
             >Cancel</jet-secondary-button
           >
@@ -139,7 +159,10 @@
             <jet-button
               type="submit"
               @click="createOrderItem"
-              :class="[{ 'opacity-25': form.processing }, 'mr-2']"
+              :class="[
+                { 'opacity-25': form.processing },
+                ' mb-2 sm:mb-0 sm:mr-2',
+              ]"
               :disabled="form.processing"
               >Save and add another Item</jet-button
             >
@@ -207,6 +230,7 @@ export default {
         quantity_ordered: null,
         quantity_confirmed: null,
         unit_price: 0.0,
+        ready_date: null,
         received: true,
       }),
     };

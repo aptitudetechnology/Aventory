@@ -18,6 +18,7 @@
               <RadioGroupLabel class="sr-only">
                 Type of inventory
               </RadioGroupLabel>
+              <JetInputError :message="form.errors.type" />
               <div class="bg-white rounded-md -space-y-px">
                 <RadioGroupOption
                   as="template"
@@ -165,7 +166,7 @@ export default {
     addInventory() {
       this.form.post(route("inventory.store"), {
         preserveScroll: true,
-        preserveState: false,
+        preserveState: true,
       });
     },
   },

@@ -55,6 +55,56 @@ class OrderItem extends Model
         'ready_date' => 'date'
     ];
 
+    protected function addedToInventory()
+    {
+        $this->update([
+            'in_inventory' => true,
+            'received' => true
+        ]);
+    }
+
+    public function addToGroupInventory()
+    {
+        if ($this->in_inventory) {
+            return;
+        } else {
+            auth()->user()->currentTeam->inventories()->create([
+                'order_item_id' => $this->id,
+                'product_id' => $this->product_id,
+                'original_size_id' => $this->size_id,
+                'size_id' => $this->size_id,
+                'quantity' => $this->quantity_confirmed,
+                'type' => 'group',
+                'ready_date' => $this->ready_date
+            ]);
+
+            $this->addedToInventory();
+        }
+    }
+
+    public function addToIndividualInventory()
+    {
+        if ($this->in_inventory) {
+            return;
+        } else {
+            $currentTeam = auth()->user()->currentTeam;
+            $item = 1;
+            while ($item++ <= $this->quantity_confirmed) {
+                $currentTeam->inventories()->create([
+                    'order_item_id' => $this->id,
+                    'product_id' => $this->product_id,
+                    'original_size_id' => $this->size_id,
+                    'size_id' => $this->size_id,
+                    'quantity' => 1,
+                    'type' => 'individual',
+                    'ready_date' => $this->ready_date
+                ]);
+            }
+
+            $this->addedToInventory();
+        }
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

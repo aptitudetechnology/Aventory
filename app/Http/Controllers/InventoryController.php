@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventoryStoreRequest;
 use App\Http\Requests\InventoryUpdateRequest;
 use App\Models\Inventory;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
@@ -35,11 +36,17 @@ class InventoryController extends Controller
      */
     public function store(InventoryStoreRequest $request)
     {
-        $inventory = Inventory::create($request->validated());
+        $orderItems = OrderItem::whereIn('id', $request->selectedItems)->get();
 
-        $request->session()->flash('inventory.id', $inventory->id);
+        foreach ($orderItems as $item) {
+            if ($request->type == 'group') {
+                $item->addToGroupInventory();
+            } elseif ($request->type == 'individual') {
+                $item->addToIndividualInventory();
+            }
+        }
 
-        return redirect()->route('inventory.index');
+        return redirect()->back()->banner('Items added to inventory!');
     }
 
     /**

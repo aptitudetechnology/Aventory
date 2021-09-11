@@ -29,7 +29,8 @@ class OrderItemUpdateRequest extends FormRequest
             'unit_price' => ['required', 'numeric'],
             'quantity_ordered' => ['required', 'integer'],
             'quantity_confirmed' => ['required', 'integer'],
-            'received' => ['boolean']
+            'received' => ['boolean'],
+            'ready_date' => ['required', 'date']
         ];
     }
 }
