@@ -19,6 +19,7 @@ class CreateNurseryLocationsTable extends Migration
             $table->id();
             $table->foreignId('team_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
+            $table->string('location_code')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();

@@ -25,9 +25,11 @@ class NurseryLocationStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'address' => ['string'],
-            'city' => ['string'],
-            'state' => ['string'],
+            'location_code' => ['nullable', 'string'],
+            'address' => ['nullable', 'string'],
+            'city' => ['nullable', 'string'],
+            'state' => ['nullable', 'string'],
+            'zip' => ['nullable', 'string']
         ];
     }
 }
