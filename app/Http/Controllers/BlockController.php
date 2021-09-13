@@ -15,9 +15,9 @@ class BlockController extends Controller
      */
     public function index(Request $request)
     {
-        $blocks = Block::all();
+        $blocks = $this->getBlocks();
 
-        return view('block.index', compact('blocks'));
+        return inertia('Blocks/Index', compact('blocks'));
     }
 
     /**
@@ -26,7 +26,10 @@ class BlockController extends Controller
      */
     public function create(Request $request)
     {
-        return view('block.create');
+        $blocks = $this->getBlocks();
+        $locations = auth()->user()->currentTeam->nurseryLocations;
+
+        return inertia('Blocks/Create', compact('blocks', 'locations'));
     }
 
     /**
@@ -86,5 +89,10 @@ class BlockController extends Controller
         $block->delete();
 
         return redirect()->route('block.index');
+    }
+
+    protected function getBlocks()
+    {
+        return auth()->user()->currentTeam->blocks;
     }
 }

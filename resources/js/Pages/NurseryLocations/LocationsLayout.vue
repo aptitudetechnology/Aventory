@@ -9,9 +9,6 @@
               :href="route('locations.index')"
               >Locations</back-link
             >
-            <back-link v-else :href="route('archived-locations.index')"
-              >Archived locations</back-link
-            >
           </div>
         </nav>
         <!-- Main Content -->
@@ -43,10 +40,7 @@ export default {
       return this.$page.props.locations;
     },
     isIndex() {
-      return (
-        route().current("locations.index") ||
-        route().current("archived-locations.index")
-      );
+      return route().current("locations.index");
     },
   },
 };

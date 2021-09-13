@@ -102,4 +102,9 @@ class Team extends JetstreamTeam
     {
         return $this->hasMany(NurseryLocation::class);
     }
+
+    public function blocks(): HasMany
+    {
+        return $this->hasMany(Block::class);
+    }
 }
