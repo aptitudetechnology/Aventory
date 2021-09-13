@@ -17,7 +17,10 @@
         <li v-for="location in locations" :key="location.id" class="bg-white">
           <aside-link
             :href="route('locations.show', location.id)"
-            :current="route().current('locations.show', location.id)"
+            :current="
+              route().current('locations.show', location.id) ||
+              route().current('locations.edit', location.id)
+            "
           >
             <div class="flex-1 min-w-0">
               <div class="focus:outline-none">

@@ -1,7 +1,11 @@
 <template>
   <jet-form-section @submitted="updateLocation">
     <template #title>{{ location.name }}</template>
-
+    <template #aside
+      ><button-link :href="route('locations.show', location)"
+        >View Blocks</button-link
+      ></template
+    >
     <template #form>
       <div class="grid col-span-6 gap-4">
         <div class="grid grid-cols-6 gap-2">
@@ -103,7 +107,7 @@ import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 import TextAreaInput from "@Components/TextAreaInput.vue";
 import SelectBox from "@Components/SelectBox.vue";
-
+import ButtonLink from "@Components/ButtonLink.vue";
 export default {
   components: {
     JetActionMessage,
@@ -115,6 +119,7 @@ export default {
     JetSecondaryButton,
     TextAreaInput,
     SelectBox,
+    ButtonLink,
   },
   props: { location: Object },
 

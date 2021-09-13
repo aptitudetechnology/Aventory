@@ -69,8 +69,8 @@ class NurseryLocationController extends Controller
     public function edit(Request $request, NurseryLocation $location)
     {
         Gate::authorize('update', $location);
-
-        return inertia('NurseryLocations/Show', compact('location', 'locations'));
+        $locations = $this->getLocations();
+        return inertia('NurseryLocations/Edit', compact('location', 'locations'));
     }
 
     /**
