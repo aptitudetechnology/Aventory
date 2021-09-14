@@ -215,7 +215,7 @@
                     checked
                       ? 'bg-green-50 border-green-200 z-10'
                       : 'border-gray-200',
-                    'relative border p-4 flex cursor-pointer focus:outline-none',
+                    'relative border p-4 flex flex-shrink-0 cursor-pointer focus:outline-none',
                   ]"
                 >
                   <span
@@ -224,7 +224,7 @@
                         ? 'bg-green-600 border-transparent'
                         : 'bg-white border-gray-300',
                       active ? 'ring-2 ring-offset-2 ring-green-500' : '',
-                      'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center',
+                      'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex flex-shrink-0 items-center justify-center',
                     ]"
                     aria-hidden="true"
                   >

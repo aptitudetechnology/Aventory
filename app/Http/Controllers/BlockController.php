@@ -38,11 +38,11 @@ class BlockController extends Controller
      */
     public function store(BlockStoreRequest $request)
     {
-        $block = Block::create($request->validated());
+        $block = $request->user()->currentTeam->blocks()->create($request->validated());
 
         $request->session()->flash('block.id', $block->id);
 
-        return redirect()->route('block.index');
+        return redirect()->route('blocks.show', $block)->banner("Created new block!");
     }
 
     /**
@@ -52,7 +52,9 @@ class BlockController extends Controller
      */
     public function show(Request $request, Block $block)
     {
-        return view('block.show', compact('block'));
+        $blocks = $this->getBlocks();
+        $locations = auth()->user()->currentTeam->nurseryLocations;
+        return inertia('Blocks/Edit', compact('block', 'blocks', 'locations'));
     }
 
     /**
@@ -76,7 +78,7 @@ class BlockController extends Controller
 
         $request->session()->flash('block.id', $block->id);
 
-        return redirect()->route('block.index');
+        return redirect()->route('blocks.index')->banner("Updated Block!");
     }
 
     /**
@@ -88,7 +90,7 @@ class BlockController extends Controller
     {
         $block->delete();
 
-        return redirect()->route('block.index');
+        return redirect()->route('blocks.index');
     }
 
     protected function getBlocks()

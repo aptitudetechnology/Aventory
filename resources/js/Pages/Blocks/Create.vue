@@ -1,6 +1,6 @@
 <template>
   <blocks-layout>
-    <create-block-form />
+    <create-block-form class="max-w-screen-md" />
   </blocks-layout>
 </template>
 

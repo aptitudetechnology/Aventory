@@ -1,15 +1,11 @@
 <template>
   <jet-form-section @submitted="updateBlock">
     <template #title>{{ block.name }}</template>
-    <template #aside
-      ><button-link :href="route('blocks.show', block)"
-        >View Blocks</button-link
-      ></template
-    >
+
     <template #form>
       <div class="grid col-span-6 gap-4">
-        <div class="grid grid-cols-6 gap-2">
-          <div class="col-span-4 sm:col-span-5">
+        <div class="grid grid-cols-6 gap-4">
+          <div class="col-span-6">
             <jet-label for="name" value="Block Name" />
             <jet-input
               id="name"
@@ -17,68 +13,52 @@
               class="mt-1 block w-full"
               v-model="form.name"
               required
-              autocomplete="organization"
+              autocomplete="off"
             />
             <jet-input-error :message="form.errors.name" class="mt-2" />
           </div>
-          <div class="col-span-2 sm:col-span-1">
-            <jet-label for="block_code" value="Code" />
-            <jet-input
-              id="block_code"
-              type="text"
-              class="mt-1 block w-full"
-              v-model="form.block_code"
-              required
-              autocomplete="off"
+          <div class="col-span-5">
+            <SelectBox
+              :items="locations"
+              :selectedItem="selectedLocation"
+              v-model="selectedLocation"
+              labelValue="Select Nursery Location"
             />
-            <jet-input-error :message="form.errors.block_code" class="mt-2" />
-          </div>
-        </div>
-        <div class="grid gap-4">
-          <div class="col-span-3">
-            <jet-label for="address" value="Street Address" />
-            <jet-input
-              id="address"
-              type="text"
-              class="mt-1 block w-full"
-              v-model="form.address"
-              autocomplete="address"
+            <jet-input-error
+              :message="form.errors.nursery_location_id"
+              class="mt-2"
             />
-            <jet-input-error :message="form.errors.address" class="mt-2" />
           </div>
-          <div class="col-span-3 sm:col-span-1">
-            <jet-label for="city" value="City" />
-            <jet-input
-              id="city"
-              type="text"
-              class="mt-1 block w-full"
-              v-model="form.city"
-              autocomplete="address-level2"
-            />
-            <jet-input-error :message="form.errors.city" class="mt-2" />
-          </div>
-          <div class="col-span-3 sm:col-span-1">
-            <jet-label for="state" value="State" />
-            <jet-input
-              id="state"
-              type="text"
-              class="mt-1 block w-full"
-              v-model="form.state"
-              autocomplete="address-level1"
-            />
-            <jet-input-error :message="form.errors.state" class="mt-2" />
-          </div>
-          <div class="col-span-3 sm:col-span-1">
-            <jet-label for="zip" value="Zip" />
-            <jet-input
-              id="zip"
-              type="text"
-              class="mt-1 block w-full"
-              v-model="form.zip"
-              autocomplete="postal-code"
-            />
-            <jet-input-error :message="form.errors.zip" class="mt-2" />
-          </div>
+
+          <SwitchGroup
+            as="div"
+            class="flex items-center justify-between col-span-6"
+          >
+            <span class="flex-grow flex flex-col mr-2">
+              <SwitchLabel as="span" class="text-sm font-medium text-gray-900"
+                >Has Places?</SwitchLabel
+              >
+              <SwitchDescription as="span" class="text-sm text-gray-500"
+                >Indicate whether this block has individual places for storing
+                inventory by row and pot number.</SwitchDescription
+              >
+            </span>
+            <Switch
+              v-model="form.has_places"
+              :class="[
+                form.has_places ? 'bg-green-600' : 'bg-gray-200',
+                'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
+              ]"
+            >
+              <span
+                aria-hidden="true"
+                :class="[
+                  form.has_places ? 'translate-x-5' : 'translate-x-0',
+                  'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
+                ]"
+              />
+            </Switch>
+          </SwitchGroup>
         </div>
       </div>
     </template>
@@ -95,43 +75,54 @@
 </template>
 
 <script>
+import {
+  Switch,
+  SwitchDescription,
+  SwitchGroup,
+  SwitchLabel,
+} from "@headlessui/vue";
+
 import JetButton from "@/Jetstream/Button";
 import JetFormSection from "@/Jetstream/FormSection";
 import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
-import JetActionMessage from "@/Jetstream/ActionMessage";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton";
-import TextAreaInput from "@Components/TextAreaInput.vue";
 import SelectBox from "@Components/SelectBox.vue";
-import ButtonLink from "@Components/ButtonLink.vue";
 export default {
   components: {
-    JetActionMessage,
+    Switch,
+    SwitchDescription,
+    SwitchGroup,
+    SwitchLabel,
     JetButton,
     JetFormSection,
     JetInput,
     JetInputError,
     JetLabel,
-    JetSecondaryButton,
-    TextAreaInput,
+
     SelectBox,
-    ButtonLink,
   },
   props: { block: Object },
 
   data() {
     return {
+      locations: this.$page.props.locations,
+      selectedLocation: this.$page.props.locations.find(
+        (location) => location.id == this.block.nursery_location_id
+      ),
       form: this.$inertia.form({
         _method: "PATCH",
         name: this.block.name,
-        block_code: this.block.block_code,
-        address: this.block.address,
-        city: this.block.city,
-        state: this.block.state,
-        zip: this.block.zip,
+        has_places: this.block.has_places,
+        nursery_location_id: this.block.nursery_location_id,
       }),
     };
+  },
+
+  watch: {
+    selectedLocation(location) {
+      this.form.nursery_location_id = location.id;
+    },
   },
 
   methods: {
