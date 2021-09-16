@@ -6,6 +6,7 @@ use App\Http\Requests\BlockStoreRequest;
 use App\Http\Requests\BlockUpdateRequest;
 use App\Models\Block;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class BlockController extends Controller
 {
@@ -15,6 +16,8 @@ class BlockController extends Controller
      */
     public function index(Request $request)
     {
+        Gate::authorize('viewAny', Block::class);
+
         $blocks = $this->getBlocks();
 
         return inertia('Blocks/Index', compact('blocks'));
@@ -26,6 +29,8 @@ class BlockController extends Controller
      */
     public function create(Request $request)
     {
+        Gate::authorize('create', Block::class);
+
         $blocks = $this->getBlocks();
         $locations = auth()->user()->currentTeam->nurseryLocations;
 
@@ -38,6 +43,8 @@ class BlockController extends Controller
      */
     public function store(BlockStoreRequest $request)
     {
+        Gate::authorize('create', Block::class);
+
         $block = $request->user()->currentTeam->blocks()->create($request->validated());
 
         $request->session()->flash('block.id', $block->id);
@@ -52,6 +59,8 @@ class BlockController extends Controller
      */
     public function show(Request $request, Block $block)
     {
+        Gate::authorize('view', $block);
+
         $blocks = $this->getBlocks();
         $places = $block->places;
         $locations = auth()->user()->currentTeam->nurseryLocations;
@@ -65,7 +74,7 @@ class BlockController extends Controller
      */
     public function edit(Request $request, Block $block)
     {
-        return view('block.edit', compact('block'));
+        return redirect()->route('blocks.show', $block);
     }
 
     /**
@@ -75,6 +84,7 @@ class BlockController extends Controller
      */
     public function update(BlockUpdateRequest $request, Block $block)
     {
+        Gate::authorize('update', $block);
         $block->update($request->validated());
 
         $request->session()->flash('block.id', $block->id);
@@ -89,6 +99,8 @@ class BlockController extends Controller
      */
     public function destroy(Request $request, Block $block)
     {
+        Gate::authorize('delete', $block);
+
         $block->delete();
 
         return redirect()->route('blocks.index');

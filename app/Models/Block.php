@@ -30,6 +30,11 @@ class Block extends Model
         'has_places' => 'boolean',
     ];
 
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
