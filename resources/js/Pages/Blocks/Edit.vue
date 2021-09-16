@@ -12,7 +12,7 @@
 import BlocksLayout from "./BlocksLayout.vue";
 import UpdateBlockForm from "./UpdateBlockForm";
 import DeleteBlockForm from "./DeleteBlockForm.vue";
-import BlockPlaces from "./BlockPlaces.vue";
+import BlockPlaces from "./Places/BlockPlaces.vue";
 export default {
   components: {
     BlocksLayout,

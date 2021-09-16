@@ -95,5 +95,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('blocks', App\Http\Controllers\BlockController::class);
 
-    Route::resource('places', PlaceController::class);
+    Route::post('places', [PlaceController::class, 'store'])->name('places.store');
+    Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 });

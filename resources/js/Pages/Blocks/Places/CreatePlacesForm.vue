@@ -116,11 +116,7 @@ export default {
     createPlaces() {
       this.form.post(route("places.store"), {
         preserveScroll: false,
-        preserveState: true,
-        onSuccess: () => {
-          this.form.reset();
-          this.creatingPlaces = false;
-        },
+        preserveState: false,
       });
     },
   },

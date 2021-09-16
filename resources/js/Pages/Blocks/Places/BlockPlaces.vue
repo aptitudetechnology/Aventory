@@ -5,10 +5,16 @@
       ><create-places-form :block="block"></create-places-form
     ></template>
     <div v-if="places.length" class="col-span-6">
-      <div class="grid grid-cols-2 gap-2 py-2 border-b border-gray-50">
+      <div class="grid grid-cols-2 gap-4 py-2 mb-2 border-b border-gray-50">
         <h3 class="px-2">Row Number</h3>
-
-        <h3 class="px-2">Plant Place</h3>
+        <div class="flex items-center justify-between space-x-2">
+          <h3 class="px-2">Plant Places</h3>
+          <change-num-places-in-row-form
+            :block="block"
+            :row_number="selectedRow"
+            :num_plants="plantsLength"
+          />
+        </div>
       </div>
       <div class="grid grid-cols-2 gap-4 col-span-6">
         <div>
@@ -40,10 +46,12 @@
 <script>
 import DetailsSection from "@Components/DetailsSection.vue";
 import CreatePlacesForm from "./CreatePlacesForm.vue";
+import ChangeNumPlacesInRowForm from "./ChangeNumPlacesInRowForm.vue";
 export default {
   components: {
     DetailsSection,
     CreatePlacesForm,
+    ChangeNumPlacesInRowForm,
   },
   props: {
     block: Object,
@@ -63,6 +71,9 @@ export default {
           (place) => place.row_number == this.selectedRow
         );
       }
+    },
+    plantsLength() {
+      return this.plants.length;
     },
     rows() {
       if (this.places.length) {
