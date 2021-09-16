@@ -130,12 +130,7 @@
               </div>
               <SwitchGroup
                 as="div"
-                class="
-                  flex
-                  items-center
-                  justify-start
-                  sm:col-span-1 sm:col-span-1
-                "
+                class="flex items-center justify-start sm:col-span-1"
               >
                 <SwitchLabel
                   as="span"
