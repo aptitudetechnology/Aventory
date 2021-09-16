@@ -2,7 +2,7 @@
   <blocks-layout>
     <div class="space-y-6">
       <update-block-form :block="block" />
-      <block-places :block="block" />
+      <block-places v-if="block.has_places" :block="block" />
       <delete-block-form :block="block" />
     </div>
   </blocks-layout>

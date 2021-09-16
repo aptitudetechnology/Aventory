@@ -89,7 +89,7 @@ class BlockController extends Controller
 
         $request->session()->flash('block.id', $block->id);
 
-        return redirect()->route('blocks.index')->banner("Updated Block!");
+        return redirect()->back()->banner("Updated Block!");
     }
 
     /**

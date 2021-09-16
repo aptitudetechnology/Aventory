@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PlaceStoreRequest;
 use App\Http\Requests\PlaceUpdateRequest;
+use App\Models\Block;
 use App\Models\Place;
 use App\Models\Plant;
+use Illuminate\Support\Facades\Gate;
 
 class PlaceController extends Controller
 {
 
     public function store(PlaceStoreRequest $request)
     {
+        $block = Block::find($request->block_id);
+        Gate::authorize('update', $block);
+
         $rowNumber = $request->starting_row_num;
 
         for ($row = 1; $row <= $request->num_rows; $row++) {
@@ -31,6 +36,9 @@ class PlaceController extends Controller
 
     public function update(PlaceUpdateRequest $request)
     {
+        $block = Block::find($request->block_id);
+        Gate::authorize('update', $block);
+
         $currentPlaces = Place::where('block_id', $request->block_id)->where('row_number', $request->row_number)->get();
 
         for ($plant = 1; $plant <= $request->num_places; $plant++) {

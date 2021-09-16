@@ -1,8 +1,8 @@
 <template>
   <div>
-    <jet-button @click="creatingPlaces = true">New</jet-button>
+    <jet-button @click="creatingPlaces = true">Add Places</jet-button>
     <jet-dialog-modal :show="creatingPlaces" @close="creatingPlaces = false">
-      <template #title>Create Places</template>
+      <template #title>Add Plant Places</template>
 
       <template #description>
         Create places in block {{ block.name }} to assign individual inventory
