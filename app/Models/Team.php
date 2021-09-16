@@ -105,6 +105,6 @@ class Team extends JetstreamTeam
 
     public function blocks(): HasMany
     {
-        return $this->hasMany(Block::class);
+        return $this->hasMany(Block::class)->orderBy('name');
     }
 }
