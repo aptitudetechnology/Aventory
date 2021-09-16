@@ -1125,17 +1125,20 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
+.col-span-5 {
+	grid-column: span 5 / span 5;
+}
 .col-span-3 {
 	grid-column: span 3 / span 3;
 }
 .col-span-4 {
 	grid-column: span 4 / span 4;
 }
-.col-span-1 {
-	grid-column: span 1 / span 1;
-}
 .col-span-2 {
 	grid-column: span 2 / span 2;
+}
+.col-span-1 {
+	grid-column: span 1 / span 1;
 }
 .mx-auto {
 	margin-left: auto;
@@ -1426,6 +1429,9 @@ select {
 .max-w-prose {
 	max-width: 65ch;
 }
+.max-w-screen-md {
+	max-width: 768px;
+}
 .max-w-screen-sm {
 	max-width: 640px;
 }
@@ -1562,6 +1568,9 @@ select {
 .gap-1 {
 	gap: 0.25rem;
 }
+.gap-2 {
+	gap: 0.5rem;
+}
 .gap-5 {
 	gap: 1.25rem;
 }
@@ -1606,6 +1615,11 @@ select {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(1rem * var(--tw-space-x-reverse));
 	margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-x-reverse: 0;
+	margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+	margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .-space-y-px > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-y-reverse: 0;
@@ -2552,6 +2566,10 @@ select {
 		grid-column: span 2 / span 2;
 	}
 
+	.sm\:col-span-5 {
+		grid-column: span 5 / span 5;
+	}
+
 	.sm\:col-span-3 {
 		grid-column: span 3 / span 3;
 	}
@@ -2881,10 +2899,6 @@ select {
 
 	.md\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.md\:grid-cols-11 {
-		grid-template-columns: repeat(11, minmax(0, 1fr));
 	}
 
 	.md\:grid-cols-10 {

@@ -6,6 +6,7 @@ use App\Http\Requests\BlockStoreRequest;
 use App\Http\Requests\BlockUpdateRequest;
 use App\Models\Block;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class BlockController extends Controller
 {
@@ -15,9 +16,11 @@ class BlockController extends Controller
      */
     public function index(Request $request)
     {
-        $blocks = Block::all();
+        Gate::authorize('viewAny', Block::class);
 
-        return view('block.index', compact('blocks'));
+        $blocks = $this->getBlocks();
+
+        return inertia('Blocks/Index', compact('blocks'));
     }
 
     /**
@@ -26,7 +29,12 @@ class BlockController extends Controller
      */
     public function create(Request $request)
     {
-        return view('block.create');
+        Gate::authorize('create', Block::class);
+
+        $blocks = $this->getBlocks();
+        $locations = auth()->user()->currentTeam->nurseryLocations;
+
+        return inertia('Blocks/Create', compact('blocks', 'locations'));
     }
 
     /**
@@ -35,11 +43,13 @@ class BlockController extends Controller
      */
     public function store(BlockStoreRequest $request)
     {
-        $block = Block::create($request->validated());
+        Gate::authorize('create', Block::class);
+
+        $block = $request->user()->currentTeam->blocks()->create($request->validated());
 
         $request->session()->flash('block.id', $block->id);
 
-        return redirect()->route('block.index');
+        return redirect()->route('blocks.show', $block)->banner("Created new block!");
     }
 
     /**
@@ -49,7 +59,12 @@ class BlockController extends Controller
      */
     public function show(Request $request, Block $block)
     {
-        return view('block.show', compact('block'));
+        Gate::authorize('view', $block);
+
+        $blocks = $this->getBlocks();
+        $places = $block->places;
+        $locations = auth()->user()->currentTeam->nurseryLocations;
+        return inertia('Blocks/Edit', compact('block', 'blocks', 'locations', 'places'));
     }
 
     /**
@@ -59,7 +74,7 @@ class BlockController extends Controller
      */
     public function edit(Request $request, Block $block)
     {
-        return view('block.edit', compact('block'));
+        return redirect()->route('blocks.show', $block);
     }
 
     /**
@@ -69,11 +84,12 @@ class BlockController extends Controller
      */
     public function update(BlockUpdateRequest $request, Block $block)
     {
+        Gate::authorize('update', $block);
         $block->update($request->validated());
 
         $request->session()->flash('block.id', $block->id);
 
-        return redirect()->route('block.index');
+        return redirect()->back()->banner("Updated Block!");
     }
 
     /**
@@ -83,8 +99,15 @@ class BlockController extends Controller
      */
     public function destroy(Request $request, Block $block)
     {
+        Gate::authorize('delete', $block);
+
         $block->delete();
 
-        return redirect()->route('block.index');
+        return redirect()->route('blocks.index');
+    }
+
+    protected function getBlocks()
+    {
+        return auth()->user()->currentTeam->blocks;
     }
 }

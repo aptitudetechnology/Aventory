@@ -6,18 +6,20 @@ use App\Http\Requests\NurseryLocationStoreRequest;
 use App\Http\Requests\NurseryLocationUpdateRequest;
 use App\Models\NurseryLocation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class NurseryLocationController extends Controller
 {
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $nurseryLocations = NurseryLocation::all();
+        $locations = $this->getLocations();
 
-        return view('nurseryLocation.index', compact('nurseryLocations'));
+        return inertia('NurseryLocations/Index', compact('locations'));
     }
 
     /**
@@ -26,7 +28,10 @@ class NurseryLocationController extends Controller
      */
     public function create(Request $request)
     {
-        return view('nurseryLocation.create');
+        Gate::authorize('create', NurseryLocation::class);
+
+        $locations = $this->getLocations();
+        return inertia('NurseryLocations/Create', compact('locations'));
     }
 
     /**
@@ -35,11 +40,13 @@ class NurseryLocationController extends Controller
      */
     public function store(NurseryLocationStoreRequest $request)
     {
-        $nurseryLocation = NurseryLocation::create($request->validated());
+        Gate::authorize('create', NurseryLocation::class);
+
+        $nurseryLocation = auth()->user()->currentTeam->nurseryLocations()->create($request->validated());
 
         $request->session()->flash('nurseryLocation.id', $nurseryLocation->id);
 
-        return redirect()->route('nurseryLocation.index');
+        return redirect()->route('locations.index');
     }
 
     /**
@@ -47,44 +54,57 @@ class NurseryLocationController extends Controller
      * @param \App\Models\NurseryLocation $nurseryLocation
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, NurseryLocation $nurseryLocation)
+    public function show(Request $request, NurseryLocation $location)
     {
-        return view('nurseryLocation.show', compact('nurseryLocation'));
+        Gate::authorize('view', $location);
+        $locations = $this->getLocations();
+        return inertia('NurseryLocations/Show', compact('location', 'locations'));
     }
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\NurseryLocation $nurseryLocation
+     * @param \App\Models\NurseryLocation $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, NurseryLocation $nurseryLocation)
+    public function edit(Request $request, NurseryLocation $location)
     {
-        return view('nurseryLocation.edit', compact('nurseryLocation'));
+        Gate::authorize('update', $location);
+        $locations = $this->getLocations();
+        return inertia('NurseryLocations/Edit', compact('location', 'locations'));
     }
 
     /**
      * @param \App\Http\Requests\NurseryLocationUpdateRequest $request
-     * @param \App\Models\NurseryLocation $nurseryLocation
+     * @param \App\Models\NurseryLocation $location
      * @return \Illuminate\Http\Response
      */
-    public function update(NurseryLocationUpdateRequest $request, NurseryLocation $nurseryLocation)
+    public function update(NurseryLocationUpdateRequest $request, NurseryLocation $location)
     {
-        $nurseryLocation->update($request->validated());
+        Gate::authorize('update', $location);
 
-        $request->session()->flash('nurseryLocation.id', $nurseryLocation->id);
+        $location->update($request->validated());
 
-        return redirect()->route('nurseryLocation.index');
+        $request->session()->flash('location.id', $location->id);
+
+        return redirect()->route('locations.index');
     }
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\NurseryLocation $nurseryLocation
+     * @param \App\Models\NurseryLocation $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, NurseryLocation $nurseryLocation)
+    public function destroy(Request $request, NurseryLocation $location)
     {
-        $nurseryLocation->delete();
+        Gate::authorize('delete', $location);
 
-        return redirect()->route('nurseryLocation.index');
+        $location->delete();
+
+        return redirect()->route('locations.index');
+    }
+
+    protected function getLocations()
+    {
+        return auth()->user()->currentTeam->nurseryLocations;
     }
 }

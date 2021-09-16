@@ -1,8 +1,8 @@
 <template>
   <div
     :class="[
-      showBorder ? 'border-b border-gray-100 mb-4' : '',
-      'flex justify-between items-center space-x-4  pb-4',
+      showBorder ? 'border-b border-gray-100 mb-2' : '',
+      'flex justify-between items-center space-x-4  pb-2',
     ]"
   >
     <div>

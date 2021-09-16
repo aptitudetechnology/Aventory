@@ -55,7 +55,7 @@ class Team extends JetstreamTeam
 
     public function priceLevels(): HasMany
     {
-        return $this->hasMany(customerPriceLevel::class);
+        return $this->hasMany(CustomerPriceLevel::class);
     }
 
     public function contacts(): HasMany
@@ -96,5 +96,15 @@ class Team extends JetstreamTeam
     public function inventories(): HasMany
     {
         return $this->hasMany(Inventory::class);
+    }
+
+    public function nurseryLocations(): HasMany
+    {
+        return $this->hasMany(NurseryLocation::class);
+    }
+
+    public function blocks(): HasMany
+    {
+        return $this->hasMany(Block::class);
     }
 }

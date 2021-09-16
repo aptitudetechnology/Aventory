@@ -8,8 +8,8 @@
 
       <template #form>
         <div v-if="form.type" class="col-span-6">
-          <back-link :href="route('products.create')" class="mb-6"
-            >Back to choose product type</back-link
+          <back-button type="button" @click="selectedType = null" class="mb-6"
+            >Back to choose product type</back-button
           >
           <div class="grid gap-4" v-if="form.type != 'plant'">
             <div class="col-span-3">
@@ -215,7 +215,7 @@
                     checked
                       ? 'bg-green-50 border-green-200 z-10'
                       : 'border-gray-200',
-                    'relative border p-4 flex cursor-pointer focus:outline-none',
+                    'relative border p-4 flex flex-shrink-0 cursor-pointer focus:outline-none',
                   ]"
                 >
                   <span
@@ -224,7 +224,7 @@
                         ? 'bg-green-600 border-transparent'
                         : 'bg-white border-gray-300',
                       active ? 'ring-2 ring-offset-2 ring-green-500' : '',
-                      'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center',
+                      'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex flex-shrink-0 items-center justify-center',
                     ]"
                     aria-hidden="true"
                   >
@@ -281,7 +281,7 @@ import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
 import TextAreaInput from "@Components/TextAreaInput.vue";
 import SelectBox from "@Components/SelectBox.vue";
-import BackLink from "@Components/BackLink";
+import BackButton from "@Components/BackButton";
 import {
   RadioGroup,
   RadioGroupDescription,
@@ -324,7 +324,7 @@ export default {
     JetLabel,
     JetSecondaryButton,
     TextAreaInput,
-    BackLink,
+    BackButton,
     SelectBox,
     RadioGroup,
     RadioGroupDescription,
@@ -359,8 +359,12 @@ export default {
     name() {
       this.form.name = this.name;
     },
-    selectedType() {
-      this.form.type = this.selectedType.value;
+    selectedType(type) {
+      if (type) {
+        this.form.type = type.value;
+      } else {
+        this.form.type = null;
+      }
     },
     selectedCategory() {
       this.form.category_id = this.selectedCategory.id;

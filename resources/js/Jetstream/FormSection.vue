@@ -12,6 +12,7 @@
             <jet-section-title class="col-span-6">
               <template #title><slot name="title"></slot></template>
               <template #description><slot name="description"></slot></template>
+              <template #aside><slot name="aside" /></template>
             </jet-section-title>
             <slot name="form"></slot>
           </div>

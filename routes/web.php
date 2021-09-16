@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlantFeaturesController;
 use App\Http\Controllers\RemoveOrderItemFromInventory;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\PlaceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -88,9 +89,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('inventory', App\Http\Controllers\InventoryController::class);
 
-    Route::resource('nursery-location', App\Http\Controllers\NurseryLocationController::class);
-
-    Route::resource('block', App\Http\Controllers\BlockController::class);
-
     Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
+
+    Route::resource('locations', App\Http\Controllers\NurseryLocationController::class);
+
+    Route::resource('blocks', App\Http\Controllers\BlockController::class);
+
+    Route::post('places', [PlaceController::class, 'store'])->name('places.store');
+    Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 });

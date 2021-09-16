@@ -3,7 +3,7 @@
   <Listbox as="div" v-model="selected">
     <ListboxLabel
       v-if="showLabel"
-      class="block text-sm font-medium text-gray-700"
+      class="block text-sm font-medium text-gray-900 mr-4 cursor-pointer"
     >
       {{ labelValue }}
     </ListboxLabel>

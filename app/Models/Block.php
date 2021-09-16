@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Block extends Model
 {
     use HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -30,6 +29,11 @@ class Block extends Model
         'nursery_location_id' => 'integer',
         'has_places' => 'boolean',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 
 
     /**
