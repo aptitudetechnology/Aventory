@@ -16,7 +16,7 @@
         >
           <div class="col-span-6 grid gap-4">
             <div class="grid gap-4 sm:grid-cols-2">
-              <div class="sm:col-span-1">
+              <div class="sm:col-span-2 min-w-0">
                 <select-box
                   labelValue="Product"
                   :items="products"
@@ -26,6 +26,19 @@
                 <jet-input-error
                   v-if="!form.product_id"
                   :message="form.errors.product_id"
+                  class="mt-2"
+                />
+              </div>
+              <div class="sm:col-span-1">
+                <select-box
+                  labelValue="Purchase Size"
+                  :items="sizes"
+                  :selectedItem="selectedOriginalSize"
+                  v-model="selectedOriginalSize"
+                />
+                <jet-input-error
+                  v-if="!form.size_id"
+                  :message="form.errors.size_id"
                   class="mt-2"
                 />
               </div>
@@ -44,7 +57,7 @@
               </div>
             </div>
 
-            <div class="grid gap-4 sm:grid-cols-3">
+            <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
               <div class="sm:col-span-1">
                 <jet-label for="quantity_ordered" value="Quantity Ordered" />
                 <jet-input
@@ -80,6 +93,7 @@
                   class="mt-2"
                 />
               </div>
+
               <div class="sm:col-span-1">
                 <jet-label for="unit_price" value="Unit Price" />
                 <jet-input
@@ -96,6 +110,48 @@
                   class="mt-2"
                 />
               </div>
+            </div>
+            <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+              <div class="sm:col-span-1">
+                <jet-label for="ready_date" value="Ready Date" />
+                <jet-input
+                  id="ready_date"
+                  type="date"
+                  class="mt-1 block w-full"
+                  v-model="form.ready_date"
+                  required
+                />
+                <jet-input-error
+                  v-if="!form.ready_date"
+                  :message="form.errors.ready_date"
+                  class="mt-2"
+                />
+              </div>
+              <SwitchGroup
+                as="div"
+                class="flex justify-start items-center sm:col-span-1"
+              >
+                <SwitchLabel
+                  as="span"
+                  class="text-sm font-medium text-gray-900 mr-4"
+                  >Received?</SwitchLabel
+                >
+                <Switch
+                  v-model="form.received"
+                  :class="[
+                    form.received ? 'bg-green-600' : 'bg-gray-200',
+                    'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
+                  ]"
+                >
+                  <span
+                    aria-hidden="true"
+                    :class="[
+                      form.received ? 'translate-x-5' : 'translate-x-0',
+                      'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
+                    ]"
+                  />
+                </Switch>
+              </SwitchGroup>
             </div>
           </div>
         </form>
@@ -164,6 +220,9 @@ export default {
       selectedProduct: this.$page.props.products.find(
         (product) => product.id == this.orderItem.product_id
       ),
+      selectedOriginalSize: this.$page.props.sizes.find(
+        (size) => size.id == this.orderItem.original_size_id
+      ),
       selectedSize: this.$page.props.sizes.find(
         (size) => size.id == this.orderItem.size_id
       ),
@@ -179,9 +238,19 @@ export default {
         this.form.product_id = null;
       }
     },
-    selectedSize() {
-      if (this.selectedSize) {
-        this.form.size_id = this.selectedSize.id;
+    selectedOriginalSize(size) {
+      if (size) {
+        this.form.original_size_id = size.id;
+        if (!this.selectedSize) {
+          this.selectedSize = size;
+        }
+      } else {
+        this.form.original_size_id = null;
+      }
+    },
+    selectedSize(size) {
+      if (size) {
+        this.form.size_id = size.id;
       } else {
         this.form.size_id = null;
       }

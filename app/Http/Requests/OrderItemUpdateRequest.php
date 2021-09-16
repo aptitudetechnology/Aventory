@@ -25,7 +25,8 @@ class OrderItemUpdateRequest extends FormRequest
     {
         return [
             'product_id' => ['required', 'integer', 'exists:products,id'],
-            'size_id' => ['integer', 'exists:sizes,id'],
+            'original_size_id' => ['required', 'integer', 'exists:sizes,id'],
+            'size_id' => ['required', 'integer', 'exists:sizes,id'],
             'unit_price' => ['required', 'numeric'],
             'quantity_ordered' => ['required', 'integer'],
             'quantity_confirmed' => ['required', 'integer'],

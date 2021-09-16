@@ -25,6 +25,7 @@ class OrderItemStoreRequest extends FormRequest
     {
         return [
             'product_id' => ['required', 'integer', 'exists:products,id'],
+            'original_size_id' => ['required', 'integer', 'exists:sizes,id'],
             'size_id' => ['required', 'integer', 'exists:sizes,id'],
             'unit_price' => ['required', 'numeric'],
             'quantity_ordered' => ['required', 'integer'],

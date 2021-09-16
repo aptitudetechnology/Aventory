@@ -166,8 +166,7 @@ export default {
   methods: {
     addInventory() {
       this.form.post(route("inventory.store"), {
-        preserveScroll: true,
-        preserveState: true,
+        preserveState: false,
       });
     },
   },

@@ -8,7 +8,7 @@
       <div class="grid grid-cols-2 gap-4 py-2 mb-2 border-b border-gray-50">
         <h3 class="px-2">Row Number</h3>
         <div class="flex items-center justify-between space-x-2">
-          <h3 class="px-2">Plant Places</h3>
+          <h3 class="px-2">{{ plantsLength }} Plant Places</h3>
           <change-num-places-in-row-form
             :block="block"
             :row_number="selectedRow"

@@ -29,6 +29,7 @@ class OrderItem extends Model
     protected $fillable = [
         'order_id',
         'product_id',
+        'original_size_id',
         'size_id',
         'unit_price',
         'quantity_ordered',
@@ -48,12 +49,13 @@ class OrderItem extends Model
         'id' => 'integer',
         'order_id' => 'integer',
         'product_id' => 'integer',
+        'original_size_id' => 'integer',
         'size_id' => 'integer',
         'unit_price' => 'double',
         'received' => 'boolean',
         'printed' => 'boolean',
         'in_inventory' => 'boolean',
-        'ready_date' => 'date'
+        'ready_date' => 'date:Y-m-d'
     ];
 
     protected function addedToInventory()
@@ -81,7 +83,7 @@ class OrderItem extends Model
             auth()->user()->currentTeam->inventories()->create([
                 'order_item_id' => $this->id,
                 'product_id' => $this->product_id,
-                'original_size_id' => $this->size_id,
+                'original_size_id' => $this->original_size_id,
                 'size_id' => $this->size_id,
                 'quantity' => $this->quantity_confirmed,
                 'type' => 'group',
@@ -103,7 +105,7 @@ class OrderItem extends Model
                 $currentTeam->inventories()->create([
                     'order_item_id' => $this->id,
                     'product_id' => $this->product_id,
-                    'original_size_id' => $this->size_id,
+                    'original_size_id' => $this->original_size_id,
                     'size_id' => $this->size_id,
                     'quantity' => 1,
                     'type' => 'individual',

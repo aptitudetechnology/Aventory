@@ -19,7 +19,7 @@
         >
           <div class="col-span-6 grid gap-4">
             <div class="grid gap-4 sm:grid-cols-2">
-              <div class="sm:col-span-1">
+              <div class="sm:col-span-2 min-w-0">
                 <select-box
                   labelValue="Product"
                   :items="products"
@@ -29,6 +29,19 @@
                 <jet-input-error
                   v-if="!form.product_id"
                   :message="form.errors.product_id"
+                  class="mt-2"
+                />
+              </div>
+              <div class="sm:col-span-1">
+                <select-box
+                  labelValue="Purchase Size"
+                  :items="sizes"
+                  :selectedItem="selectedOriginalSize"
+                  v-model="selectedOriginalSize"
+                />
+                <jet-input-error
+                  v-if="!form.size_id"
+                  :message="form.errors.size_id"
                   class="mt-2"
                 />
               </div>
@@ -221,11 +234,13 @@ export default {
       products: this.$page.props.products,
       sizes: this.$page.props.sizes,
       selectedProduct: null,
+      selectedOriginalSize: null,
       selectedSize: null,
       creatingOrderItem: false,
       form: this.$inertia.form({
         _method: "POST",
         product_id: null,
+        original_size_id: null,
         size_id: null,
         quantity_ordered: null,
         quantity_confirmed: null,
@@ -243,9 +258,19 @@ export default {
         this.form.product_id = null;
       }
     },
-    selectedSize() {
-      if (this.selectedSize) {
-        this.form.size_id = this.selectedSize.id;
+    selectedOriginalSize(size) {
+      if (size) {
+        this.form.original_size_id = size.id;
+        if (!this.selectedSize) {
+          this.selectedSize = size;
+        }
+      } else {
+        this.form.original_size_id = null;
+      }
+    },
+    selectedSize(size) {
+      if (size) {
+        this.form.size_id = size.id;
       } else {
         this.form.size_id = null;
       }

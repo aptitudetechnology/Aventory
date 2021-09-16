@@ -26,7 +26,7 @@
           focus:border-green-500
         "
       >
-        <span v-if="selected" class="block truncate text-gray-900">{{
+        <span v-if="selected" class="block truncate text-gray-900 max-w-full">{{
           selected.name
         }}</span>
         <span v-else class="block truncate">Select</span>
