@@ -6,9 +6,9 @@
 
     <template #content>
       <div class="max-w-xl text-sm text-gray-600">
-        Once a block is deleted, all blocks in this block will be deleted, and
-        all inventory in blocks at this nursery block will given an unnasigned
-        block.
+        Once a block is deleted, all places in this block will be deleted, and
+        all inventory assigned to this block will be given an unnasigned
+        location.
       </div>
 
       <div class="mt-5">

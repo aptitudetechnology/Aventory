@@ -2,6 +2,7 @@
   <blocks-layout>
     <div class="space-y-6">
       <update-block-form :block="block" />
+      <block-places :block="block" />
       <delete-block-form :block="block" />
     </div>
   </blocks-layout>
@@ -11,11 +12,13 @@
 import BlocksLayout from "./BlocksLayout.vue";
 import UpdateBlockForm from "./UpdateBlockForm";
 import DeleteBlockForm from "./DeleteBlockForm.vue";
+import BlockPlaces from "./BlockPlaces.vue";
 export default {
   components: {
     BlocksLayout,
     UpdateBlockForm,
     DeleteBlockForm,
+    BlockPlaces,
   },
   props: {
     block: Object,
