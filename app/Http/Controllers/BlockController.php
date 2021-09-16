@@ -53,8 +53,9 @@ class BlockController extends Controller
     public function show(Request $request, Block $block)
     {
         $blocks = $this->getBlocks();
+        $places = $block->places;
         $locations = auth()->user()->currentTeam->nurseryLocations;
-        return inertia('Blocks/Edit', compact('block', 'blocks', 'locations'));
+        return inertia('Blocks/Edit', compact('block', 'blocks', 'locations', 'places'));
     }
 
     /**

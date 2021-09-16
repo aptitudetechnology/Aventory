@@ -1,7 +1,7 @@
 
 <template>
   <details-section>
-    <template #header>{{ location.name }}</template>
+    <template #title>{{ location.name }}</template>
     <template #aside
       ><button-link :href="route('locations.edit', location)"
         >Edit Details</button-link

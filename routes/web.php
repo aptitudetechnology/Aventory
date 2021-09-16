@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlantFeaturesController;
 use App\Http\Controllers\RemoveOrderItemFromInventory;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\PlaceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -93,4 +94,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('locations', App\Http\Controllers\NurseryLocationController::class);
 
     Route::resource('blocks', App\Http\Controllers\BlockController::class);
+
+    Route::resource('places', PlaceController::class);
 });
