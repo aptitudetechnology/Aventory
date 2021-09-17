@@ -15,6 +15,15 @@
       <template #content>
         <form @submit.prevent="addInventory" @keydown.enter="addInventory">
           <div class="col-span-6 grid gap-4">
+            <div>
+              <h2 class="text-lg leading-6 font-medium text-gray-900">
+                Inventory Type
+              </h2>
+              <p class="mt-1 text-sm text-gray-500">
+                Choose how these items will be stored in inventory. Within a
+                group, or individually.
+              </p>
+            </div>
             <RadioGroup v-model="selectedType">
               <RadioGroupLabel class="sr-only">
                 Type of inventory
@@ -76,6 +85,21 @@
                 </RadioGroupOption>
               </div>
             </RadioGroup>
+            <div>
+              <h2 class="text-lg leading-6 font-medium text-gray-900">
+                Block Location
+              </h2>
+              <p class="mt-1 text-sm text-gray-500">
+                Here you can add a block location for these items. This will
+                give group inventory their location, and individual inventory a
+                block location until they are given a place.
+              </p>
+            </div>
+            <select-box
+              :items="blocks"
+              labelValue="Select Block location"
+              v-model="selectedBlock"
+            />
           </div>
         </form>
       </template>
@@ -115,6 +139,8 @@ import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
+import SelectBox from "@Components/SelectBox.vue";
+
 const types = [
   {
     name: "Individual",
@@ -142,24 +168,35 @@ export default {
     JetInputError,
     JetLabel,
     JetSecondaryButton,
+    SelectBox,
   },
   props: { selectedItems: Array },
 
   data() {
     return {
+      blocks: this.$page.props.blocks,
+      selectedBlock: null,
       addingInventory: false,
       types: types,
       selectedType: null,
       form: this.$inertia.form({
         _method: "POST",
         type: null,
+        block_id: null,
         selectedItems: this.selectedItems,
       }),
     };
   },
   watch: {
-    selectedType() {
-      this.form.type = this.selectedType.value;
+    selectedType(type) {
+      this.form.type = type.value;
+    },
+    selectedBlock(block) {
+      if (block) {
+        this.form.block_id = block.id;
+      } else {
+        this.form.block_id = null;
+      }
     },
   },
 
