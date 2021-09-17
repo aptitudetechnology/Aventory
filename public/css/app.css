@@ -1241,14 +1241,14 @@ select {
 .-mb-px {
 	margin-bottom: -1px;
 }
-.mb-2 {
-	margin-bottom: 0.5rem;
-}
 .mt-0\.5 {
 	margin-top: 0.125rem;
 }
 .mt-0 {
 	margin-top: 0px;
+}
+.mb-2 {
+	margin-bottom: 0.5rem;
 }
 .block {
 	display: block;
