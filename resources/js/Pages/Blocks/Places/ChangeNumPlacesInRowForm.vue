@@ -1,7 +1,7 @@
 <template>
   <div>
     <jet-button @click="creatingPlaces = true"
-      >Edit {{ row_number }}</jet-button
+      >Edit Row {{ row_number }}</jet-button
     >
     <jet-dialog-modal :show="creatingPlaces" @close="creatingPlaces = false">
       <template #title>Edit Row</template>
