@@ -75,7 +75,7 @@ class OrderItem extends Model
         ]);
     }
 
-    public function addToGroupInventory()
+    public function addToGroupInventory($blockId)
     {
         if ($this->in_inventory) {
             return;
@@ -85,6 +85,7 @@ class OrderItem extends Model
                 'product_id' => $this->product_id,
                 'original_size_id' => $this->original_size_id,
                 'size_id' => $this->size_id,
+                'block_id' => $blockId,
                 'quantity' => $this->quantity_confirmed,
                 'type' => 'group',
                 'ready_date' => $this->ready_date
@@ -94,7 +95,7 @@ class OrderItem extends Model
         }
     }
 
-    public function addToIndividualInventory()
+    public function addToIndividualInventory($blockId)
     {
         if ($this->in_inventory) {
             return;
@@ -107,6 +108,7 @@ class OrderItem extends Model
                     'product_id' => $this->product_id,
                     'original_size_id' => $this->original_size_id,
                     'size_id' => $this->size_id,
+                    'block_id' => $blockId,
                     'quantity' => 1,
                     'type' => 'individual',
                     'ready_date' => $this->ready_date

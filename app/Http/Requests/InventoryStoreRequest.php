@@ -25,7 +25,8 @@ class InventoryStoreRequest extends FormRequest
     {
         return [
             'selectedItems' => ['required', 'array', 'exists:order_items,id'],
-            'type' => ['required', 'in:individual,group']
+            'type' => ['required', 'in:individual,group'],
+            'block_id' => ['nullable', 'exists:blocks,id']
         ];
     }
 }

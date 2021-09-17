@@ -43,9 +43,9 @@ class InventoryController extends Controller
             Gate::authorize('update', $item->order);
 
             if ($request->type == 'group') {
-                $item->addToGroupInventory();
+                $item->addToGroupInventory($request->block_id);
             } elseif ($request->type == 'individual') {
-                $item->addToIndividualInventory();
+                $item->addToIndividualInventory($request->block_id);
             }
         }
 

@@ -1,8 +1,10 @@
 <template>
   <jet-action-section>
-    <template #title> Delete Order </template>
+    <template #title> Delete Order</template>
 
-    <template #description> Delete this order. </template>
+    <template #description>
+      Delete this order, order items, and associated inventory.
+    </template>
 
     <template #content>
       <div class="text-sm text-gray-600">
@@ -25,7 +27,8 @@
         <template #title> Delete Order </template>
 
         <template #content>
-          Are you sure you want to delete this order?
+          Are you sure you want to delete this order? There will be no way to
+          recover it, or inventory associated!
         </template>
 
         <template #footer>
