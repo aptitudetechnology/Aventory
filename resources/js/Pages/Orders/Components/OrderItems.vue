@@ -3,11 +3,12 @@
     <template #title>Order Items</template>
     <template #aside> <create-order-item :order="order" /> </template>
     <template #content>
-      <div class="flex pb-4" v-if="selected.length">
+      <div class="flex pb-4 space-x-4" v-if="selected.length">
         <AddOrderItemsToInventory
           v-if="itemsNotInInventory"
           :selectedItems="selected"
         />
+        <PrintOrderItemsInventory :selectedItems="selected" />
       </div>
       <div>
         <div
@@ -68,6 +69,7 @@ import JetButton from "@/Jetstream/Button.vue";
 import CreateOrderItem from "./CreateOrderItem.vue";
 import OrderLineItem from "./OrderLineItem.vue";
 import AddOrderItemsToInventory from "./AddOrderItemsToInventory.vue";
+import PrintOrderItemsInventory from "./PrintOrderItemsInventory.vue";
 export default {
   props: { order: Object, orderItems: Array },
 
@@ -80,6 +82,7 @@ export default {
     CreateOrderItem,
     OrderLineItem,
     AddOrderItemsToInventory,
+    PrintOrderItemsInventory,
   },
 
   data() {
