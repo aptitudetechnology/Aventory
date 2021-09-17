@@ -18,4 +18,4 @@ createApp({
     .use(InertiaPlugin)
     .mount(el);
 
-InertiaProgress.init({ delay: 250, color: '#29d', showSpinner: true, includeCSS: true });
+InertiaProgress.init({ delay: 250, color: '#29d', showSpinner: true, includeCSS: false });
