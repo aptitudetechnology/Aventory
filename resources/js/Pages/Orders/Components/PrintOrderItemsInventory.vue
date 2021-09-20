@@ -13,6 +13,7 @@ export default {
 
   data() {
     return {
+      tags: null,
       form: this.$inertia.form({
         _method: "POST",
         order_items: this.selectedItems,
@@ -22,9 +23,7 @@ export default {
 
   methods: {
     printTags() {
-      this.form.post(route("print-items-tags"), {
-        preserveState: false,
-      });
+      axios.post(route("print-items-tags"), this.form).then((response) => {});
     },
   },
 };

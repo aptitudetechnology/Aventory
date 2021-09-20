@@ -1286,6 +1286,9 @@ select {
 .mb-2 {
 	margin-bottom: 0.5rem;
 }
+.mr-20 {
+	margin-right: 5rem;
+}
 .block {
 	display: block;
 }
@@ -1888,6 +1891,15 @@ select {
 }
 .bg-opacity-75 {
 	--tw-bg-opacity: 0.75;
+}
+.bg-cover {
+	background-size: cover;
+}
+.bg-center {
+	background-position: center;
+}
+.bg-no-repeat {
+	background-repeat: no-repeat;
 }
 .stroke-current {
 	stroke: currentColor;
