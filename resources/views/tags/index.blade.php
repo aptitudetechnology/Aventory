@@ -50,11 +50,23 @@
     }
 
     .code {
-      margin-left: auto;
-      margin-right: auto;
-      width: 100px;
+      margin-bottom: -5px;
       text-align: center;
       vertical-align: middle;
+    }
+
+    .type {
+      text-align: center;
+      position: absolute;
+      top: 10;
+      right: 0;
+      transform: rotate(-90deg);
+    }
+
+    .barcode {
+      margin-right: auto;
+      margin-left: auto;
+      width: 115px;
     }
 
     .h1 {
@@ -70,45 +82,50 @@
 <body>
   <table width="100%" style="width:100%;">
 
-    @foreach ($inventories->chunk(4) as $page)
+    @foreach ($inventories as $inventory)
+    @for($tag = 1; $tag <=$inventory->quantity; $tag ++)
+      <tr>
+        <td width="30%"></td>
+        <td width="30%">
+          <div style="position:relative">
+            @if($inventory->type == "group")
+            <div class="type">Group</div>
+            @endif
+            <div class="h1 mr-20">
+              <b>{{$inventory->product->name}}</b>
+              <div class="py-5">
+                <span class="mr-20">Zone: {{ $inventory->product->plant->zone }} </span>
+                <span class="mr-20">Height: {{ $inventory->product->plant->height }} </span>
+                <span>Spread: {{ $inventory->product->plant->spread }}</span>
+              </div>
 
-    @foreach ($page as $inventory)
-    <tr>
-      <td width="30%"></td>
-      <td width="30%">
-        <div class="h1">
-          <b>{{$inventory->product->name}}</b>
-          <div class="py-5">
-            <span class="mr-20">Zone: {{ $inventory->product->plant->zone }} </span>
-            <span class="mr-20">Height: {{ $inventory->product->plant->height }} </span>
-            <span>Spread: {{ $inventory->product->plant->spread }}</span>
+              <div>{{ $team->name }}</div>
+            </div>
+
           </div>
 
-          <div>{{ $team->name }}</div>
-        </div>
 
 
-      </td>
-      <td width="20%">
-        <div class="code h1">
-          <div>{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'CODABAR', 2,40) !!}</div>
-          <div>{{ $inventory->id }}</div>
-        </div>
-      </td>
+        </td>
+        <td width="20%">
+          <div class="code h1">
+            <div class="barcode">{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'C39', .9,40) !!}</div>
+            <div>{{ $inventory->id }}</div>
+          </div>
+
+        </td>
 
 
-      <td width="20%">
-        <div class="code h1">
-          <div>{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'CODABAR', 2,40) !!}</div>
-          <div>{{ $inventory->id }}</div>
-        </div>
-      </td>
+        <td width="20%">
+          <div class="code h1">
+            <div class="barcode">{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'C39', .9,40) !!}</div>
+            <div>{{ $inventory->id }}</div>
+          </div>
+        </td>
 
-    </tr>
-    @endforeach
-
-
-    @endforeach
+      </tr>
+      @endfor
+      @endforeach
   </table>
 
 </body>

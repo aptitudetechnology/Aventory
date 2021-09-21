@@ -86,7 +86,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('orders', App\Http\Controllers\OrderController::class);
 
     Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
-    Route::post('print-items-tags', PrintTagController::class)->name('print-items-tags');
+    Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
 
     Route::resource('inventory', App\Http\Controllers\InventoryController::class);
 

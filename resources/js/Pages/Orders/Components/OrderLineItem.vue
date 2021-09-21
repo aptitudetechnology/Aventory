@@ -56,7 +56,7 @@
       ></jet-check-box>
     </div>
     <div class="px-1 hidden md:block">
-      <jet-check-box :disabled="true" :checked="form.printed"></jet-check-box>
+      <jet-check-box :disabled="true" :checked="item.printed"></jet-check-box>
     </div>
     <div v-if="item.in_inventory">
       <RemoveItemFromInventory :item="item" />

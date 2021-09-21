@@ -8,7 +8,10 @@
           v-if="itemsNotInInventory"
           :selectedItems="selected"
         />
-        <PrintOrderItemsInventory :selectedItems="selected" />
+        <PrintOrderItemsInventory
+          v-if="itemsInInventory"
+          :order_items="selected"
+        />
       </div>
       <div>
         <div
@@ -94,7 +97,16 @@ export default {
 
   computed: {
     itemsNotInInventory() {
-      return this.orderItems.map((item) => item.in_inventory).includes(false);
+      return this.orderItems
+        .filter((item) => this.selected.includes(item.id))
+        .map((item) => item.in_inventory)
+        .includes(false);
+    },
+    itemsInInventory() {
+      return this.orderItems
+        .filter((item) => this.selected.includes(item.id))
+        .map((item) => item.in_inventory)
+        .includes(true);
     },
   },
   watch: {
