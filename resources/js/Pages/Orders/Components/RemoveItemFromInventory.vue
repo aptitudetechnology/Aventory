@@ -87,7 +87,6 @@ export default {
 
   methods: {
     removeItemFromInventory() {
-      console.log(this.item.id);
       this.form.delete(route("delete-inventory-order-item"), {
         preserveScroll: true,
         preserveState: false,

@@ -3,10 +3,14 @@
     <template #title>Order Items</template>
     <template #aside> <create-order-item :order="order" /> </template>
     <template #content>
-      <div class="flex pb-4" v-if="selected.length">
+      <div class="flex pb-4 space-x-4" v-if="selected.length">
         <AddOrderItemsToInventory
           v-if="itemsNotInInventory"
           :selectedItems="selected"
+        />
+        <PrintOrderItemsInventory
+          v-if="itemsInInventory"
+          :order_items="selected"
         />
       </div>
       <div>
@@ -68,6 +72,7 @@ import JetButton from "@/Jetstream/Button.vue";
 import CreateOrderItem from "./CreateOrderItem.vue";
 import OrderLineItem from "./OrderLineItem.vue";
 import AddOrderItemsToInventory from "./AddOrderItemsToInventory.vue";
+import PrintOrderItemsInventory from "./PrintOrderItemsInventory.vue";
 export default {
   props: { order: Object, orderItems: Array },
 
@@ -80,6 +85,7 @@ export default {
     CreateOrderItem,
     OrderLineItem,
     AddOrderItemsToInventory,
+    PrintOrderItemsInventory,
   },
 
   data() {
@@ -91,7 +97,16 @@ export default {
 
   computed: {
     itemsNotInInventory() {
-      return this.orderItems.map((item) => item.in_inventory).includes(false);
+      return this.orderItems
+        .filter((item) => this.selected.includes(item.id))
+        .map((item) => item.in_inventory)
+        .includes(false);
+    },
+    itemsInInventory() {
+      return this.orderItems
+        .filter((item) => this.selected.includes(item.id))
+        .map((item) => item.in_inventory)
+        .includes(true);
     },
   },
   watch: {

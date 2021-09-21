@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerPriceLevelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlantFeaturesController;
 use App\Http\Controllers\RemoveOrderItemFromInventory;
+use App\Http\Controllers\PrintTagController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
 use Illuminate\Foundation\Application;
@@ -85,7 +86,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('orders', App\Http\Controllers\OrderController::class);
 
     Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
-
+    Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
 
     Route::resource('inventory', App\Http\Controllers\InventoryController::class);
 

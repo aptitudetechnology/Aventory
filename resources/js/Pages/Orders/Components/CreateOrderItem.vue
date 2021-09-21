@@ -204,6 +204,7 @@ import {
   SwitchGroup,
   SwitchLabel,
 } from "@headlessui/vue";
+import { Inertia } from "@inertiajs/inertia";
 
 export default {
   components: {
@@ -285,7 +286,7 @@ export default {
           this.form.reset();
           this.selectedSize = null;
           this.selectedProduct = null;
-
+          Inertia.reload();
           if (this.addAnother == false) {
             this.creatingOrderItem = false;
           }

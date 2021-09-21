@@ -72,6 +72,7 @@ class OrderItem extends Model
 
         $this->update([
             'in_inventory' => false,
+            'printed' => false
         ]);
     }
 

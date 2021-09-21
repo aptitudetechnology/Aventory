@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     use HasFactory;
-
+    protected $with = ['product'];
     /**
      * The attributes that are mass assignable.
      *
