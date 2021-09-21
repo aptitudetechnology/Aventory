@@ -783,39 +783,6 @@ select {
 [type='file']:focus {
 	outline: 1px auto -webkit-focus-ring-color;
 }
-.container {
-	width: 100%;
-}
-@media (min-width: 640px) {
-
-	.container {
-		max-width: 640px;
-	}
-}
-@media (min-width: 768px) {
-
-	.container {
-		max-width: 768px;
-	}
-}
-@media (min-width: 1024px) {
-
-	.container {
-		max-width: 1024px;
-	}
-}
-@media (min-width: 1280px) {
-
-	.container {
-		max-width: 1280px;
-	}
-}
-@media (min-width: 1536px) {
-
-	.container {
-		max-width: 1536px;
-	}
-}
 .prose {
 	color: #374151;
 	max-width: 65ch;
@@ -1250,11 +1217,8 @@ select {
 .mb-4 {
 	margin-bottom: 1rem;
 }
-.mb-20 {
-	margin-bottom: 5rem;
-}
-.mr-4 {
-	margin-right: 1rem;
+.mr-20 {
+	margin-right: 5rem;
 }
 .-mt-px {
 	margin-top: -1px;
@@ -1264,6 +1228,9 @@ select {
 }
 .-mr-12 {
 	margin-right: -3rem;
+}
+.mr-4 {
+	margin-right: 1rem;
 }
 .-mr-3 {
 	margin-right: -0.75rem;
@@ -1285,9 +1252,6 @@ select {
 }
 .mb-2 {
 	margin-bottom: 0.5rem;
-}
-.mr-20 {
-	margin-right: 5rem;
 }
 .block {
 	display: block;
@@ -1458,9 +1422,6 @@ select {
 }
 .max-w-xl {
 	max-width: 36rem;
-}
-.max-w-lg {
-	max-width: 32rem;
 }
 .max-w-6xl {
 	max-width: 72rem;
@@ -1838,6 +1799,10 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
 }
+.bg-gray-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
+}
 .bg-indigo-600 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
@@ -1857,10 +1822,6 @@ select {
 .bg-gray-50 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
-}
-.bg-gray-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
 }
 .bg-indigo-50 {
 	--tw-bg-opacity: 1;

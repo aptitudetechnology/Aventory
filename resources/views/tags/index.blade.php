@@ -7,28 +7,46 @@
   <style>
     @page {
       margin: 0px;
+      padding: 0px;
     }
 
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    table {
+      table-layout: fixed;
+      border: outset 0pt;
+      border-spacing: 0pt;
+    }
+
+    tbody {
+      border-spacing: 0pt;
+    }
+
+
+    tr {
+      padding: 0px;
       margin: 0px;
+      border: outset 0pt;
     }
 
-    .details {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .py-5 {
-      padding-top: 3px;
-      padding-bottom: 3px;
+    td {
+      height: 72pt;
+      margin: 0pt;
+      border: 0pt;
+      vertical-align: middle;
     }
 
     .mr-20 {
       margin-right: 20px;
     }
 
-    .w-full {
-      width: 100%;
+    .py-5 {
+      padding-top: 5px;
+      padding-bottom: 5px
     }
 
     .code {
@@ -39,20 +57,26 @@
       vertical-align: middle;
     }
 
+    .h1 {
+      font-size: 10pt;
+      vertical-align: middle;
+      line-height: normal;
+    }
+
   </style>
 
 </head>
 
 <body>
-
   <table width="100%" style="width:100%;">
-    @foreach ($inventories->chunk(4) as $page)
-    @foreach ($page as $inventory)
 
-    <tr height="25%">
+    @foreach ($inventories->chunk(4) as $page)
+
+    @foreach ($page as $inventory)
+    <tr>
       <td width="30%"></td>
       <td width="30%">
-        <div class="py-5">
+        <div class="h1">
           <b>{{$inventory->product->name}}</b>
           <div class="py-5">
             <span class="mr-20">Zone: {{ $inventory->product->plant->zone }} </span>
@@ -66,29 +90,27 @@
 
       </td>
       <td width="20%">
-        <div class="code py-5">
-          <div class="mx-auto">{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'CODABAR', 2,40) !!}</div>
-          <div>{{ $inventory->id }}</div>
-        </div>
-      </td>
-
-
-      <td width="20%">
-        <div class="code py-5">
+        <div class="code h1">
           <div>{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'CODABAR', 2,40) !!}</div>
           <div>{{ $inventory->id }}</div>
         </div>
       </td>
 
 
+      <td width="20%">
+        <div class="code h1">
+          <div>{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'CODABAR', 2,40) !!}</div>
+          <div>{{ $inventory->id }}</div>
+        </div>
+      </td>
+
     </tr>
-
-
     @endforeach
 
-    <div class="page-break"></div>
+
     @endforeach
   </table>
+
 </body>
 
 </html>
