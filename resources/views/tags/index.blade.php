@@ -4,7 +4,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <title>Tags</title>
+
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+
     @page {
       margin: 0px;
       padding: 0px;
@@ -50,7 +53,6 @@
     }
 
     .code {
-      margin-bottom: -5px;
       text-align: center;
       vertical-align: middle;
     }
@@ -64,9 +66,12 @@
     }
 
     .barcode {
-      margin-right: auto;
-      margin-left: auto;
-      width: 115px;
+      font-family: 'Libre Barcode 39 Text', cursive;
+      font-size: 50px;
+      line-height: 50px;
+      text-align: center;
+      vertical-align: middle;
+      margin-top: -20px;
     }
 
     .h1 {
@@ -108,19 +113,15 @@
 
         </td>
         <td width="20%">
-          <div class="code h1">
-            <div class="barcode">{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'C39', .9,40) !!}</div>
-            <div>{{ $inventory->id }}</div>
+          <div class="code">
+            <div class="barcode">{{$inventory->id}}</div>
           </div>
 
         </td>
 
 
         <td width="20%">
-          <div class="code h1">
-            <div class="barcode">{!! DNS1D::getBarcodeHTML(strval($inventory->id), 'C39', .9,40) !!}</div>
-            <div>{{ $inventory->id }}</div>
-          </div>
+          <div class="barcode">{{$inventory->id}}</div>
         </td>
 
       </tr>
