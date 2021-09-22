@@ -95,6 +95,11 @@
         >Blocks</nav-link
       >
     </sidebar-dropdown>
+    <nav-link
+      :href="route('inventory.index')"
+      :current="route().current('inventory.*')"
+      >Inventory</nav-link
+    >
   </nav>
 </template>
 <script>
