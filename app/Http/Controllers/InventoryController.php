@@ -58,6 +58,7 @@ class InventoryController extends Controller
     public function show(Request $request, Inventory $inventory)
     {
         $sizes = $request->user()->currentTeam->sizes;
+        $inventory->load('block', 'place');
         return inertia('Inventory/Show', compact('inventory', 'sizes'));
     }
 
