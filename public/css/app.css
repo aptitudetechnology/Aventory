@@ -1444,6 +1444,12 @@ select {
 .max-w-screen-sm {
 	max-width: 640px;
 }
+.max-w-screen-lg {
+	max-width: 1024px;
+}
+.max-w-lg {
+	max-width: 32rem;
+}
 .flex-1 {
 	flex: 1 1 0%;
 }

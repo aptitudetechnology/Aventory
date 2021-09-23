@@ -24,6 +24,7 @@
           name="search"
           id="search"
           autocomplete="off"
+          :autofocus="autofocus"
           class="
             focus:ring-green-500
             focus:border-green-500
@@ -53,10 +54,10 @@ export default {
   props: {
     modelValue: String,
     placeholder: { type: String, default: "Search" },
+    autofocus: { type: Boolean, default: false },
   },
 
   emits: ["update:modelValue"],
-
   methods: {
     focus() {
       this.$refs.input.focus();

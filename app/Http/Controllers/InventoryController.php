@@ -17,9 +17,7 @@ class InventoryController extends Controller
      */
     public function index(Request $request)
     {
-        $inventories = Inventory::all();
-
-        return view('inventory.index', compact('inventories'));
+        return inertia('Inventory/Index');
     }
 
     /**
@@ -59,7 +57,8 @@ class InventoryController extends Controller
      */
     public function show(Request $request, Inventory $inventory)
     {
-        return view('inventory.show', compact('inventory'));
+        $sizes = $request->user()->currentTeam->sizes;
+        return inertia('Inventory/Show', compact('inventory', 'sizes'));
     }
 
     /**

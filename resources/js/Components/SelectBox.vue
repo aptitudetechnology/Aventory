@@ -7,7 +7,7 @@
     >
       {{ labelValue }}
     </ListboxLabel>
-    <div class="mt-1 relative">
+    <div class="mt-1 relative w-full">
       <ListboxButton
         class="
           bg-white
