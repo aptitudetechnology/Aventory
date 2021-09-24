@@ -20,10 +20,10 @@
           :value="modelValue"
           @input="$emit('update:modelValue', $event.target.value)"
           ref="input"
-          type="search"
+          :type="type"
           name="search"
           id="search"
-          autocomplete="off"
+          :autocomplete="autocomplete"
           :autofocus="autofocus"
           class="
             focus:ring-green-500
@@ -55,6 +55,8 @@ export default {
     modelValue: String,
     placeholder: { type: String, default: "Search" },
     autofocus: { type: Boolean, default: false },
+    autocomplete: { type: String, default: "off" },
+    type: { type: String, default: "search" },
   },
 
   emits: ["update:modelValue"],

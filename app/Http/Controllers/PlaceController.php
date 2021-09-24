@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Gate;
 
 class PlaceController extends Controller
 {
+    public function index(Request $request, Block $block)
+    {
+        $places = cache()->rememberForever($block->id . 'places', function () use($block) {
+            return $block->places;
+        }); 
+
+        return response()->json($places)->header('Cache-Control', 'public, max_age=60');
+    }
 
     public function store(PlaceStoreRequest $request)
     {

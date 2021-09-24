@@ -60,7 +60,8 @@ class InventoryController extends Controller
     {
         $sizes = $request->user()->currentTeam->sizes;
         $inventory->load('block', 'place');
-        return inertia('Inventory/Show', compact('inventory', 'sizes'));
+        $blocks = $request->user()->currentTeam->blocks->where('nursery_location_id', $inventory->nursery_location_id);
+        return inertia('Inventory/Show', compact('inventory', 'sizes', 'blocks'));
     }
 
     /**
@@ -84,7 +85,7 @@ class InventoryController extends Controller
 
         $request->session()->flash('inventory.id', $inventory->id);
 
-        return redirect()->route('inventory.index');
+        return redirect()->back()->banner('Great! Updated item.');
     }
 
     /**

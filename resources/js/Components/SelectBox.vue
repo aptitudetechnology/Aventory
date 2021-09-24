@@ -27,7 +27,7 @@
         "
       >
         <span v-if="selected" class="block truncate text-gray-900 max-w-full">{{
-          selected.name
+          selected[nameValue]
         }}</span>
         <span v-else class="block truncate">Select</span>
         <span
@@ -102,7 +102,7 @@
                   'block truncate',
                 ]"
               >
-                {{ item.name }}
+                {{ item[nameValue] }}
               </span>
 
               <span
@@ -147,6 +147,7 @@ export default {
     selectedItem: Object | Boolean,
     labelValue: { type: String, default: "Select Option" },
     showLabel: { type: Boolean, default: true },
+    nameValue: { type: String, default: "name" },
   },
   data: function () {
     return {

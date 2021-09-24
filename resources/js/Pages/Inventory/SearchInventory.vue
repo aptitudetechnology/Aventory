@@ -7,7 +7,6 @@
       v-model="id"
       class="mt-0 w-full"
       placeholder="Search by plant id"
-      :autofocus="true"
     />
     <jet-button type="submit" :disabled="!id">Search</jet-button>
   </form>
@@ -44,6 +43,12 @@ export default {
         preserveScroll: true,
       });
     },
+  },
+  mounted() {
+    const searchBar = document.getElementById("search");
+    if (searchBar) {
+      searchBar.focus();
+    }
   },
 };
 </script>

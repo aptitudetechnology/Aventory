@@ -26,12 +26,13 @@ class InventoryUpdateRequest extends FormRequest
         return [
             'order_item_id' => ['required', 'integer', 'exists:order_items,id'],
             'product_id' => ['required', 'integer', 'exists:products,id'],
-            'original_size_id' => ['required', 'integer', 'exists:original_sizes,id'],
+            'original_size_id' => ['required', 'integer', 'exists:sizes,id'],
             'size_id' => ['required', 'integer', 'exists:sizes,id'],
             'quantity' => ['required', 'integer'],
             'type' => ['required', 'in:group,individual'],
-            'block_id' => ['integer', 'exists:blocks,id'],
-            'place_id' => ['integer', 'exists:places,id'],
+            'nursery_location_id' => ['required', 'exists:nursery_locations,id'],
+            'block_id' => ['nullable','integer', 'exists:blocks,id'],
+            'place_id' => ['nullable','integer', 'exists:places,id'],
         ];
     }
 }
