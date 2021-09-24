@@ -35,15 +35,16 @@ class InventoryController extends Controller
      */
     public function store(InventoryStoreRequest $request)
     {
+        
         $orderItems = OrderItem::whereIn('id', $request->selectedItems)->get();
 
         foreach ($orderItems as $item) {
             Gate::authorize('update', $item->order);
 
             if ($request->type == 'group') {
-                $item->addToGroupInventory($request->block_id);
+                $item->addToGroupInventory($request->block_id, $request->nursery_location_id);
             } elseif ($request->type == 'individual') {
-                $item->addToIndividualInventory($request->block_id);
+                $item->addToIndividualInventory($request->block_id, $request->nursery_location_id);
             }
         }
 

@@ -63,7 +63,8 @@ class OrderController extends Controller
         $products = $request->user()->currentTeam->products()->where('type', 'plant')->get();
         $sizes = $request->user()->currentTeam->sizes;
         $blocks = $request->user()->currentTeam->blocks;
-        return inertia('Orders/Show', compact('orders', 'vendors', 'order', 'products', 'sizes', 'orderItems', 'blocks'));
+        $nurseryLocations = $request->user()->currentTeam->nurseryLocations;
+        return inertia('Orders/Show', compact('orders', 'vendors', 'order', 'products', 'sizes', 'orderItems', 'blocks', 'nurseryLocations'));
     }
 
     /**

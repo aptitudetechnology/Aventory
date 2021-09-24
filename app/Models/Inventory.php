@@ -21,6 +21,7 @@ class Inventory extends Model
         'size_id',
         'quantity',
         'type',
+        'nursery_location_id',
         'block_id',
         'place_id',
         'ready_date'
@@ -38,6 +39,7 @@ class Inventory extends Model
         'product_id' => 'integer',
         'original_size_id' => 'integer',
         'size_id' => 'integer',
+        'nursery_location_id' => 'integer',
         'block_id' => 'integer',
         'place_id' => 'integer',
         'ready_date' => 'datetime'
