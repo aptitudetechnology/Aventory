@@ -64,11 +64,11 @@ class BlockController extends Controller
         Gate::authorize('view', $block);
 
         $blocks = $this->getBlocks();
-        $expire = Carbon::now()->addMinutes(10);
         
-        $places = cache()->remember($block->id . 'places', $expire, function () use($block) {
+        $places = cache()->rememberForever($block->id . 'places', function () use($block) {
             return $block->places;
         }); 
+        
         $locations = auth()->user()->currentTeam->nurseryLocations;
         return inertia('Blocks/Edit', compact('block', 'blocks', 'locations', 'places'));
     }
