@@ -31,6 +31,8 @@ class PlaceController extends Controller
             $rowNumber += 1;
         }
 
+        cache()->forget($block->id . 'places');
+
         return redirect()->back()->banner('Added places to block!');
     }
 
@@ -52,6 +54,7 @@ class PlaceController extends Controller
         if ($currentPlaces->count() > $request->num_places) {
             $currentPlaces->where('plant_number', '>', $request->num_places)->each->delete();
         }
+        cache()->forget($block->id . 'places');
 
         return redirect()->back()->banner('Updated row');
     }
