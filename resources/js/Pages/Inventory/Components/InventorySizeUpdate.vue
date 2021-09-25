@@ -72,6 +72,7 @@ export default {
       selectedSize: this.sizes.find(
         (size) => size.id == this.inventory.size_id
       ),
+      form: this.$inertia.form(this.inventory),
     };
   },
   computed: {
@@ -136,6 +137,10 @@ export default {
         }
         this.recentSizes.push(value);
       }
+      if (value) {
+        this.form.size_id = value.id;
+        this.updateSize();
+      }
     },
   },
 
@@ -145,6 +150,9 @@ export default {
     },
     currentSize(size) {
       return this.selectedSize.id == size.id;
+    },
+    updateSize() {
+      this.form.patch(route("inventory.update", this.inventory));
     },
   },
 };
