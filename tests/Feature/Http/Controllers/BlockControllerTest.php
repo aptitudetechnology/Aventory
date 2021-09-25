@@ -4,10 +4,13 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Block;
 use App\Models\NurseryLocation;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use JMac\Testing\Traits\AdditionalAssertions;
 use Tests\TestCase;
+
+use Inertia\Testing\Assert;
 
 /**
  * @see \App\Http\Controllers\BlockController
@@ -21,13 +24,19 @@ class BlockControllerTest extends TestCase
      */
     public function index_displays_view()
     {
-        $blocks = Block::factory()->count(3)->create();
+        $user = User::factory()->withPersonalTeam()->create();
 
-        $response = $this->get(route('block.index'));
+        // $user->currentTeam->blocks()->attach(
+        //     $blocks = Block::factory()->count(3)->create()
+        // );
+        
+
+        $response = $this->actingAs($user)->get(route('blocks.index'));
 
         $response->assertOk();
-        $response->assertViewIs('block.index');
-        $response->assertViewHas('blocks');
+        $response->assertInertia(function (Assert $page) {
+            $page->component('Blocks/Index');
+        });
     }
 
 

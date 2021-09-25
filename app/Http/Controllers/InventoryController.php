@@ -84,7 +84,7 @@ class InventoryController extends Controller
     {
         $place = Place::find($request->place_id);
 
-        if($place && $place->inventory && $place->inventory != $inventory){
+        if($place && $place->inventory && $place->inventory->id != $inventory->id){
             $place->inventory->update(['place_id' => null]);
         }
 
