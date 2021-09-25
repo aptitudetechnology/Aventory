@@ -1444,11 +1444,11 @@ select {
 .max-w-screen-md {
 	max-width: 768px;
 }
-.max-w-lg {
-	max-width: 32rem;
-}
 .max-w-screen-sm {
 	max-width: 640px;
+}
+.max-w-lg {
+	max-width: 32rem;
 }
 .flex-1 {
 	flex: 1 1 0%;
@@ -2714,10 +2714,6 @@ select {
 		margin-left: 1.5rem;
 	}
 
-	.sm\:ml-0 {
-		margin-left: 0px;
-	}
-
 	.sm\:-mt-16 {
 		margin-top: -4rem;
 	}
@@ -2750,12 +2746,12 @@ select {
 		height: 2.5rem;
 	}
 
-	.sm\:h-20 {
-		height: 5rem;
-	}
-
 	.sm\:h-32 {
 		height: 8rem;
+	}
+
+	.sm\:h-20 {
+		height: 5rem;
 	}
 
 	.sm\:w-10 {
@@ -2936,10 +2932,6 @@ select {
 
 	.sm\:text-left {
 		text-align: left;
-	}
-
-	.sm\:text-right {
-		text-align: right;
 	}
 
 	.sm\:text-sm {
