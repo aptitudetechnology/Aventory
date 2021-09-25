@@ -17,12 +17,13 @@
         {{ inventory.place.plant_number }}
       </p>
       <jet-button v-if="nextLocation" @click="assignNextPlace"
-        >Next Row:{{ nextLocation.row_number }} Plant:
-        {{ nextLocation.plant_number }}</jet-button
+        >Next Place: {{ nextLocation.plant_number }}</jet-button
       >
     </div>
 
-    <p v-else class="color-red-500">Place Unasigned</p>
+    <p v-else-if="inventory.block.has_places" class="color-red-500">
+      Place Unasigned
+    </p>
 
     <jet-dialog-modal
       :show="editingInventoryLocation"
@@ -205,11 +206,15 @@ export default {
   methods: {
     assignNextPlace() {
       new Promise((resolve, reject) => {
-        this.place = this.nextLocation;
-        resolve();
+        if (this.nextLocation) {
+          this.place = this.nextLocation;
+          resolve();
+        } else {
+          reject("There are no more places in this row.");
+        }
       })
-        .catch(() => {
-          Inertia.reload();
+        .catch((error) => {
+          console.error(error);
         })
         .then(() => {
           this.updateInventoryLocation();

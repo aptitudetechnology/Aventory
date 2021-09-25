@@ -6,6 +6,7 @@ use App\Http\Requests\InventoryStoreRequest;
 use App\Http\Requests\InventoryUpdateRequest;
 use App\Models\Inventory;
 use App\Models\OrderItem;
+use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -81,6 +82,12 @@ class InventoryController extends Controller
      */
     public function update(InventoryUpdateRequest $request, Inventory $inventory)
     {
+        $place = Place::find($request->place_id);
+
+        if($place && $place->inventory != $inventory){
+            $place->inventory->update(['place_id' => null]);
+        }
+
         $inventory->update($request->validated());
 
         $request->session()->flash('inventory.id', $inventory->id);
