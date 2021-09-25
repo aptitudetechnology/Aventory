@@ -38,7 +38,7 @@
         v-for="recent in recentSizes"
         :key="recent.id + 'recent'"
         @click="autosizeSize = recent"
-        :disabled="this.autosizeSize.id == recent.id"
+        :disabled="autosizeSize?.id == recent.id"
         >{{ recent.name }}</JetButton
       >
     </div>
