@@ -41,7 +41,7 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('inventory/*')) {
-                return back()->dangerBanner('Record not found.');
+                return redirect()->route('inventory.index')->dangerBanner('Record not found please try again.');
             }
         });
     }

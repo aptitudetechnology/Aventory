@@ -1,6 +1,14 @@
 <template>
-  <div class="py-4 grid gap-4">
+  <div class="py-4 grid gap-3">
     <h2 class="text-xl">Plant Size</h2>
+    <p
+      v-if="autosizedNotice.message"
+      :class="[
+        autosizedNotice.wasAutosized ? 'text-green-600' : 'text-red-500',
+      ]"
+    >
+      {{ autosizedNotice.message }}
+    </p>
     <div class="flex items-center space-x-4">
       <select-box
         class="w-full flex items-center space-x-2"
@@ -71,7 +79,10 @@ export default {
         autosizeSize: null,
         recentSizes: [],
       },
-
+      autosizedNotice: {
+        wasAutosized: true,
+        message: null,
+      },
       selectedSize: this.sizes.find(
         (size) => size.id == this.inventory.size_id
       ),
@@ -102,7 +113,32 @@ export default {
       } catch (error) {
         localStorage.removeItem("sizeData");
       }
+
+      //update size if autosize is set
+      if (this.sizeData.autosize && this.sizeData.autosizeSize) {
+        if (localStorage.lastProductId == this.inventory.product_id) {
+          new Promise((resolve, reject) => {
+            this.selectedSize = this.sizeData.autosizeSize;
+            resolve();
+          }).then(() => {
+            this.updateSize();
+            this.autosizedNotice = {
+              wasAutosized: true,
+              message: "Autosized to " + this.selectedSize.name,
+            };
+          });
+        } else {
+          this.sizeData.autosize = false;
+          this.autosizedNotice = {
+            wasAutosized: false,
+            message: "New Product. Size was not autosized",
+          };
+        }
+      }
     }
+  },
+  beforeUnmount() {
+    localStorage.lastProductId = this.inventory.product_id;
   },
   watch: {
     //Set local storage state.
@@ -126,6 +162,7 @@ export default {
         this.form.size_id = value.id;
         this.updateSize();
       }
+      this.autosizedNotice.message = null;
     },
   },
 
