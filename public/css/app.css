@@ -1325,6 +1325,9 @@ select {
 .h-full {
 	height: 100%;
 }
+.h-3 {
+	height: 0.75rem;
+}
 .max-h-60 {
 	max-height: 15rem;
 }
@@ -1406,6 +1409,9 @@ select {
 .w-1 {
 	width: 0.25rem;
 }
+.w-3 {
+	width: 0.75rem;
+}
 .min-w-0 {
 	min-width: 0px;
 }
@@ -1452,6 +1458,9 @@ select {
 }
 .flex-1 {
 	flex: 1 1 0%;
+}
+.flex-none {
+	flex: none;
 }
 .flex-shrink-0 {
 	flex-shrink: 0;
@@ -1663,6 +1672,9 @@ select {
 .divide-gray-50 > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-opacity: 1;
 	border-color: rgba(249, 250, 251, var(--tw-divide-opacity));
+}
+.justify-self-end {
+	justify-self: end;
 }
 .overflow-auto {
 	overflow: auto;

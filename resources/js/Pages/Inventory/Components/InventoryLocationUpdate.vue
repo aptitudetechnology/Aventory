@@ -8,17 +8,29 @@
     </div>
 
     <p v-if="inventory.block">Block: {{ inventory.block.name }}</p>
-    <div
-      v-if="inventory.block && inventory.place"
-      class="flex items-center justify-between space-x-2"
-    >
+    <p v-else class="text-red-500">Location Unasigned!</p>
+    <div v-if="inventory.block && inventory.place">
       <p>
         Place: Row number: {{ inventory.place.row_number }} Plant Number:
         {{ inventory.place.plant_number }}
       </p>
-      <jet-button v-if="nextLocation" @click="assignNextPlace"
-        >Next Place: {{ nextLocation.plant_number }}</jet-button
+    </div>
+    <div
+      v-if="inventory.block && inventory.place"
+      class="flex items-center justify-between space-x-2 w-full"
+    >
+      <jet-button
+        :disabled="!previousLocation"
+        @click="assignNextPlace(previousLocation)"
+        class="flex-shrink-0 pl-2"
+        ><ChevronLeftIcon class="w-4 h-4 mr-2" /> Previous</jet-button
       >
+      <jet-button
+        :disabled="!nextLocation"
+        @click="assignNextPlace(nextLocation)"
+        class="flex-shrink-0 pr-2"
+        >Next<ChevronRightIcon class="w-4 h-4 ml-2"
+      /></jet-button>
     </div>
 
     <p
@@ -118,14 +130,17 @@
 
 <script>
 import EditIcon from "@heroicons/vue/outline/PencilIcon";
+import ChevronLeftIcon from "@heroicons/vue/outline/ChevronLeftIcon";
+import ChevronRightIcon from "@heroicons/vue/outline/ChevronRightIcon";
 import JetButton from "@/Jetstream/Button.vue";
 import JetInputError from "@/Jetstream/InputError.vue";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
 import JetDialogModal from "@/Jetstream/DialogModal.vue";
 import SelectBox from "@Components/SelectBox.vue";
-import { Inertia } from "@inertiajs/inertia";
 export default {
   components: {
+    ChevronLeftIcon,
+    ChevronRightIcon,
     JetDialogModal,
     EditIcon,
     JetInputError,
@@ -204,13 +219,23 @@ export default {
         })[0];
       }
     },
+    previousLocation() {
+      if (this.place) {
+        return this.places.filter((place) => {
+          return (
+            place.plant_number === this.place.plant_number - 1 &&
+            place.row_number === this.place.row_number
+          );
+        })[0];
+      }
+    },
   },
 
   methods: {
-    assignNextPlace() {
+    assignNextPlace(location) {
       new Promise((resolve, reject) => {
-        if (this.nextLocation) {
-          this.place = this.nextLocation;
+        if (location) {
+          this.place = location;
           resolve();
         } else {
           reject("There are no more places in this row.");
