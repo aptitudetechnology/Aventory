@@ -14,6 +14,7 @@
 
 
 <script>
+import { Inertia } from "@inertiajs/inertia";
 import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
@@ -32,16 +33,12 @@ export default {
   data() {
     return {
       id: "",
-      form: this.$inertia.form({}),
     };
   },
 
   methods: {
     searchInventory() {
-      this.form.get(route("inventory.show", this.id), {
-        errorBag: "searchInventory",
-        preserveScroll: true,
-      });
+      Inertia.get(route("inventory.show", this.id));
     },
   },
   mounted() {
