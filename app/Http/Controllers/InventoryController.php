@@ -6,6 +6,7 @@ use App\Http\Requests\InventoryStoreRequest;
 use App\Http\Requests\InventoryUpdateRequest;
 use App\Models\Inventory;
 use App\Models\OrderItem;
+use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -17,9 +18,7 @@ class InventoryController extends Controller
      */
     public function index(Request $request)
     {
-        $inventories = Inventory::all();
-
-        return view('inventory.index', compact('inventories'));
+        return inertia('Inventory/Index');
     }
 
     /**
@@ -37,15 +36,16 @@ class InventoryController extends Controller
      */
     public function store(InventoryStoreRequest $request)
     {
+        
         $orderItems = OrderItem::whereIn('id', $request->selectedItems)->get();
 
         foreach ($orderItems as $item) {
             Gate::authorize('update', $item->order);
 
             if ($request->type == 'group') {
-                $item->addToGroupInventory($request->block_id);
+                $item->addToGroupInventory($request->block_id, $request->nursery_location_id);
             } elseif ($request->type == 'individual') {
-                $item->addToIndividualInventory($request->block_id);
+                $item->addToIndividualInventory($request->block_id, $request->nursery_location_id);
             }
         }
 
@@ -59,7 +59,10 @@ class InventoryController extends Controller
      */
     public function show(Request $request, Inventory $inventory)
     {
-        return view('inventory.show', compact('inventory'));
+        $sizes = $request->user()->currentTeam->sizes;
+        $inventory->load('block', 'place');
+        $blocks = $request->user()->currentTeam->blocks->where('nursery_location_id', $inventory->nursery_location_id);
+        return inertia('Inventory/Show', compact('inventory', 'sizes', 'blocks'));
     }
 
     /**
@@ -79,11 +82,17 @@ class InventoryController extends Controller
      */
     public function update(InventoryUpdateRequest $request, Inventory $inventory)
     {
+        $place = Place::find($request->place_id);
+
+        if($place && $place->inventory && $place->inventory->id != $inventory->id){
+            $place->inventory->update(['place_id' => null]);
+        }
+
         $inventory->update($request->validated());
 
         $request->session()->flash('inventory.id', $inventory->id);
 
-        return redirect()->route('inventory.index');
+        return redirect()->back()->banner('Great! Updated item.');
     }
 
     /**

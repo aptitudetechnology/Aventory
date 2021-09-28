@@ -7,6 +7,8 @@ use App\Http\Requests\BlockUpdateRequest;
 use App\Models\Block;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Carbon;
 
 class BlockController extends Controller
 {
@@ -62,7 +64,11 @@ class BlockController extends Controller
         Gate::authorize('view', $block);
 
         $blocks = $this->getBlocks();
-        $places = $block->places;
+        
+        $places = cache()->rememberForever($block->id . 'places', function () use($block) {
+            return $block->places;
+        }); 
+        
         $locations = auth()->user()->currentTeam->nurseryLocations;
         return inertia('Blocks/Edit', compact('block', 'blocks', 'locations', 'places'));
     }

@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Gate;
 
 class PlaceController extends Controller
 {
+    public function index(Request $request, Block $block)
+    {
+        $places = cache()->rememberForever($block->id . 'places', function () use($block) {
+            return $block->places;
+        }); 
+
+        return response()->json($places)->header('Cache-Control', 'public, max_age=60');
+    }
 
     public function store(PlaceStoreRequest $request)
     {
@@ -30,6 +38,8 @@ class PlaceController extends Controller
             }
             $rowNumber += 1;
         }
+
+        cache()->forget($block->id . 'places');
 
         return redirect()->back()->banner('Added places to block!');
     }
@@ -52,6 +62,7 @@ class PlaceController extends Controller
         if ($currentPlaces->count() > $request->num_places) {
             $currentPlaces->where('plant_number', '>', $request->num_places)->each->delete();
         }
+        cache()->forget($block->id . 'places');
 
         return redirect()->back()->banner('Updated row');
     }

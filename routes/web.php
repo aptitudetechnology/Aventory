@@ -96,6 +96,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('blocks', App\Http\Controllers\BlockController::class);
 
+    Route::get('api/{block}/places/', [PlaceController::class, 'index'])->name('api.places.index');
     Route::post('places', [PlaceController::class, 'store'])->name('places.store');
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 });

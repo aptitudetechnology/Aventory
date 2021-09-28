@@ -20,10 +20,11 @@
           :value="modelValue"
           @input="$emit('update:modelValue', $event.target.value)"
           ref="input"
-          type="search"
+          :type="type"
           name="search"
           id="search"
-          autocomplete="off"
+          :autocomplete="autocomplete"
+          :autofocus="autofocus"
           class="
             focus:ring-green-500
             focus:border-green-500
@@ -53,10 +54,12 @@ export default {
   props: {
     modelValue: String,
     placeholder: { type: String, default: "Search" },
+    autofocus: { type: Boolean, default: false },
+    autocomplete: { type: String, default: "off" },
+    type: { type: String, default: "search" },
   },
 
   emits: ["update:modelValue"],
-
   methods: {
     focus() {
       this.$refs.input.focus();

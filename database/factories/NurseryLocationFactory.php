@@ -26,7 +26,7 @@ class NurseryLocationFactory extends Factory
             'name' => $this->faker->name,
             'address' => $this->faker->word,
             'city' => $this->faker->city,
-            'state' => $this->faker->word,
+            'state' => $this->faker->word, 
         ];
     }
 }

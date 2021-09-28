@@ -34,8 +34,12 @@
         </div>
         <div>
           <div class="max-h-96 overflow-auto">
-            <div v-for="plant in plants" :key="plant.id" class="p-2">
-              {{ plant.plant_number }}
+            <div
+              v-for="placeNumber in rowPlaceNumbers"
+              :key="placeNumber.id"
+              class="p-2"
+            >
+              {{ placeNumber.plant_number }}
             </div>
           </div>
         </div>
@@ -65,7 +69,7 @@ export default {
     };
   },
   computed: {
-    plants() {
+    rowPlaceNumbers() {
       if (this.places.length) {
         return this.places.filter(
           (place) => place.row_number == this.selectedRow
@@ -73,7 +77,7 @@ export default {
       }
     },
     plantsLength() {
-      return this.plants.length;
+      return this.rowPlaceNumbers.length;
     },
     rows() {
       if (this.places.length) {

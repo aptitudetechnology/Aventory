@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -37,5 +38,30 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            if ($request->is('inventory/*')) {
+                return redirect()->route('inventory.index')->dangerBanner('Record not found please try again.');
+            }
+        });
+    }
+
+    /**
+     * Prepare exception for rendering.
+     *
+     * @param  \Throwable  $e
+     * @return \Throwable
+     */
+    public function render($request, Throwable $e)
+    {
+        $response = parent::render($request, $e);
+
+        if ($response->status() === 419) {
+            return back()->with([
+                'message' => 'The page expired, please try again.',
+            ]);
+        }
+
+        return $response;
     }
 }

@@ -24,7 +24,7 @@ class PrintTagController extends Controller
         $team = auth()->user()->currentTeam;
 
         $paperSize = [0, 0, 288, 720];
-        $tags = PDF::setOptions(['dpi' => 72, 'defaultFont' => 'sans-serif'])
+        $tags = PDF::setOptions(['dpi' => 72, 'defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->loadview('tags.index', compact('inventories', 'team'))
             ->setPaper($paperSize, 'landscape');
 
