@@ -1,131 +1,140 @@
 <template>
-  <div class="py-4 grid gap-4">
-    <div class="flex flex-wrap items-center justify-between">
-      <h2 class="text-xl">Inventory Location</h2>
-      <jet-button @click="editingInventoryLocation = true" class="ml-auto pl-2"
-        ><EditIcon class="w-4 h-4 mr-2"></EditIcon> Edit</jet-button
-      >
-    </div>
-
-    <p v-if="inventory.block">Block: {{ inventory.block.name }}</p>
-    <p v-else class="text-red-500">Location Unasigned!</p>
-    <div v-if="inventory.block && inventory.place">
-      <p>
-        Place: Row number: {{ inventory.place.row_number }} Plant Number:
-        {{ inventory.place.plant_number }}
-      </p>
-    </div>
-    <div
-      v-if="inventory.block && inventory.place"
-      class="flex items-center justify-between space-x-2 w-full"
-    >
-      <jet-button
-        :disabled="!previousLocation"
-        @click="assignNextPlace(previousLocation)"
-        class="flex-shrink-0 pl-2"
-        ><ChevronLeftIcon class="w-4 h-4 mr-2" /> Previous</jet-button
-      >
-      <jet-button
-        :disabled="!nextLocation"
-        @click="assignNextPlace(nextLocation)"
-        class="flex-shrink-0 pr-2"
-        >Next<ChevronRightIcon class="w-4 h-4 ml-2"
-      /></jet-button>
-    </div>
-
-    <p
-      v-else-if="inventory.block && inventory.block.has_places"
-      class="color-red-500"
-    >
-      Place Unasigned
-    </p>
-
-    <jet-dialog-modal
-      :show="editingInventoryLocation"
-      @close="editingInventoryLocation = false"
-    >
-      <template #title>Edit Inventory Location</template>
-
-      <template #description> Update this inventory location.</template>
-
-      <template #content>
-        <form
-          @submit.prevent="updateInventoryLocation"
-          @keydown.enter="updateInventoryLocation"
-        >
-          <div class="col-span-6 grid gap-4">
-            <div class="grid gap-4 sm:grid-cols-2">
-              <div class="sm:col-span-2">
-                <select-box
-                  labelValue="Block Location"
-                  :items="blocks"
-                  :selectedItem="selectedBlock"
-                  v-model="selectedBlock"
-                />
-                <jet-input-error
-                  v-if="!form.block_id"
-                  :message="form.errors.block_id"
-                  class="mt-2"
-                />
-              </div>
-            </div>
-            <div
-              v-if="selectedBlock?.has_places && !loading"
-              class="grid gap-4 sm:grid-cols-2"
-            >
-              <div class="sm:col-span-1">
-                <select-box
-                  labelValue="Row Number"
-                  :items="rows"
-                  :selectedItem="row"
-                  v-model="row"
-                />
-                <jet-input-error
-                  v-if="!form.block_id"
-                  :message="form.errors.block_id"
-                  class="mt-2"
-                />
-              </div>
-              <div class="sm:col-span-1">
-                <select-box
-                  labelValue="Plant Number"
-                  :items="rowPlantNumbers"
-                  :selectedItem="place"
-                  v-model="place"
-                  nameValue="plant_number"
-                />
-                <jet-input-error
-                  v-if="!form.block_id"
-                  :message="form.errors.block_id"
-                  class="mt-2"
-                />
-              </div>
-            </div>
-            <div v-if="loading" class="text-sm">Loading Places...</div>
-          </div>
-        </form>
-      </template>
-
-      <template #footer>
-        <div class="flex justify-between items-center w-full">
-          <jet-secondary-button
-            type="button"
-            @click="editingInventoryLocation = false"
-            >Cancel</jet-secondary-button
-          >
-          <div>
+    <div class="py-4 grid gap-4">
+        <div class="flex flex-wrap items-center justify-between">
+            <h2 class="text-xl">Inventory Location</h2>
             <jet-button
-              type="submit"
-              @click="updateInventoryLocation"
-              :class="{ 'opacity-25': form.processing }"
-              :disabled="form.processing"
-              >Save Location</jet-button
+                @click="editingInventoryLocation = true"
+                class="ml-auto pl-2"
+                ><EditIcon class="w-4 h-4 mr-2"></EditIcon> Edit</jet-button
             >
-          </div>
         </div>
-      </template>
-    </jet-dialog-modal>
-  </div>
+
+        <p v-if="inventory.block">Block: {{ inventory.block.name }}</p>
+        <p v-else class="text-red-500">Location Unasigned!</p>
+        <div v-if="inventory.block && inventory.place">
+            <p>
+                Place: Row number: {{ inventory.place.row_number }} Plant
+                Number:
+                {{ inventory.place.plant_number }}
+            </p>
+            <jet-checkbox
+                :checked="locationData.autoLocate"
+                v-model="locationData.autoLocate"
+            />
+        </div>
+        <div
+            v-if="inventory.block && inventory.place"
+            class="flex items-center justify-between space-x-2 w-full"
+        >
+            <jet-button
+                :disabled="!locationData.previousPlace"
+                @click="assignNextPlace(locationData.previousPlace)"
+                class="flex-shrink-0 pl-2"
+                ><ChevronLeftIcon class="w-4 h-4 mr-2" /> Previous</jet-button
+            >
+            <jet-button
+                :disabled="!locationData.nextPlace"
+                @click="assignNextPlace(locationData.nextPlace)"
+                class="flex-shrink-0 pr-2"
+                >Next<ChevronRightIcon class="w-4 h-4 ml-2"
+            /></jet-button>
+        </div>
+
+        <p
+            v-else-if="inventory.block && inventory.block.has_places"
+            class="color-red-500"
+        >
+            Place Unasigned
+        </p>
+
+        <jet-dialog-modal
+            :show="editingInventoryLocation"
+            @close="editingInventoryLocation = false"
+        >
+            <template #title>Edit Inventory Location</template>
+
+            <template #description> Update this inventory location.</template>
+
+            <template #content>
+                <form
+                    @submit.prevent="updateInventoryLocation"
+                    @keydown.enter="updateInventoryLocation"
+                >
+                    <div class="col-span-6 grid gap-4">
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="sm:col-span-2">
+                                <select-box
+                                    labelValue="Block Location"
+                                    :items="blocks"
+                                    :selectedItem="selectedBlock"
+                                    v-model="selectedBlock"
+                                />
+                                <jet-input-error
+                                    v-if="!form.block_id"
+                                    :message="form.errors.block_id"
+                                    class="mt-2"
+                                />
+                            </div>
+                        </div>
+                        <div
+                            v-if="selectedBlock?.has_places && !loading"
+                            class="grid gap-4 sm:grid-cols-2"
+                        >
+                            <div class="sm:col-span-1">
+                                <select-box
+                                    labelValue="Row Number"
+                                    :items="rows"
+                                    :selectedItem="row"
+                                    v-model="row"
+                                />
+                                <jet-input-error
+                                    v-if="!form.block_id"
+                                    :message="form.errors.block_id"
+                                    class="mt-2"
+                                />
+                            </div>
+                            <div class="sm:col-span-1">
+                                <select-box
+                                    labelValue="Plant Number"
+                                    :items="rowPlantNumbers"
+                                    :selectedItem="place"
+                                    v-model="place"
+                                    nameValue="plant_number"
+                                />
+                                <jet-input-error
+                                    v-if="!form.block_id"
+                                    :message="form.errors.block_id"
+                                    class="mt-2"
+                                />
+                            </div>
+                        </div>
+                        <div v-if="loading" class="text-sm">
+                            Loading Places...
+                        </div>
+                    </div>
+                </form>
+            </template>
+
+            <template #footer>
+                <div class="flex justify-between items-center w-full">
+                    <jet-secondary-button
+                        type="button"
+                        @click="editingInventoryLocation = false"
+                        >Cancel</jet-secondary-button
+                    >
+                    <div>
+                        <jet-button
+                            type="submit"
+                            @click="updateInventoryLocation"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                            >Save Location</jet-button
+                        >
+                    </div>
+                </div>
+            </template>
+        </jet-dialog-modal>
+    </div>
 </template>
 
 <script>
@@ -134,139 +143,184 @@ import ChevronLeftIcon from "@heroicons/vue/outline/ChevronLeftIcon";
 import ChevronRightIcon from "@heroicons/vue/outline/ChevronRightIcon";
 import JetButton from "@/Jetstream/Button.vue";
 import JetInputError from "@/Jetstream/InputError.vue";
+import JetCheckbox from "@/Jetstream/Checkbox.vue";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
 import JetDialogModal from "@/Jetstream/DialogModal.vue";
 import SelectBox from "@Components/SelectBox.vue";
 export default {
-  components: {
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    JetDialogModal,
-    EditIcon,
-    JetInputError,
-    JetButton,
-    JetSecondaryButton,
-    SelectBox,
-  },
-  props: {
-    inventory: Object,
-  },
-  data() {
-    return {
-      loading: false,
-      editingInventoryLocation: false,
-      selectedBlock: this.inventory.block,
-      blocks: this.$page.props.blocks,
-      row: this.inventory.place
-        ? { name: this.inventory.place.row_number }
-        : null,
-      place: this.inventory.place,
-      places: [],
-      form: this.$inertia.form(this.inventory),
-    };
-  },
+    components: {
+        ChevronLeftIcon,
+        ChevronRightIcon,
+        JetDialogModal,
+        EditIcon,
+        JetInputError,
+        JetCheckbox,
+        JetButton,
+        JetSecondaryButton,
+        SelectBox,
+    },
+    props: {
+        inventory: Object,
+    },
+    data() {
+        return {
+            loading: false,
+            locationData: {
+                nextPlace: null,
+                previousPlace: null,
+                autoLocate: true,
+                autoLocateToNext: true,
+                autoLocateToPrevious: false,
+            },
+            editingInventoryLocation: false,
+            selectedBlock: this.inventory.block,
+            blocks: this.$page.props.blocks,
+            row: this.inventory.place
+                ? { name: this.inventory.place.row_number }
+                : null,
+            place: this.inventory.place,
+            places: [],
+            form: this.$inertia.form(this.inventory),
+        };
+    },
 
-  watch: {
-    selectedBlock(block) {
-      if (block) {
-        this.form.block_id = block.id;
-        this.row = null;
-        this.place = null;
-        this.getPlaces(block);
-      } else {
-        this.form.block_id = null;
-      }
+    watch: {
+        locationData: {
+            handler(value) {
+                localStorage.setItem("locationData", JSON.stringify(value));
+            },
+            deep: true,
+        },
+        selectedBlock(block) {
+            if (block) {
+                this.form.block_id = block.id;
+                this.row = null;
+                this.place = null;
+                this.getPlaces(block);
+            } else {
+                this.form.block_id = null;
+            }
+        },
+        row() {
+            this.place = null;
+        },
+        place(place) {
+            if (place) {
+                this.form.place_id = place.id;
+                this.updateNextandPrevious();
+            } else {
+                this.form.place_id = null;
+            }
+        },
     },
-    row() {
-      this.place = null;
-    },
-    place(place) {
-      if (place) {
-        this.form.place_id = place.id;
-      } else {
-        this.form.place_id = null;
-      }
-    },
-  },
-  mounted() {
-    if (this.selectedBlock?.has_places) {
-      this.getPlaces(this.selectedBlock);
-    }
-  },
-
-  computed: {
-    rows() {
-      return [...new Set(this.places.map((place) => place.row_number))].map(
-        (row) => {
-          let obj = {};
-          obj.name = row;
-          return obj;
+    mounted() {
+        if (this.selectedBlock?.has_places) {
+            this.getPlaces(this.selectedBlock);
         }
-      );
-    },
-    rowPlantNumbers() {
-      if (this.places.length && this.row) {
-        return this.places.filter((place) => place.row_number == this.row.name);
-      }
-    },
-    nextLocation() {
-      if (this.place) {
-        return this.places.filter((place) => {
-          return (
-            place.plant_number === this.place.plant_number + 1 &&
-            place.row_number === this.place.row_number
-          );
-        })[0];
-      }
-    },
-    previousLocation() {
-      if (this.place) {
-        return this.places.filter((place) => {
-          return (
-            place.plant_number === this.place.plant_number - 1 &&
-            place.row_number === this.place.row_number
-          );
-        })[0];
-      }
-    },
-  },
 
-  methods: {
-    assignNextPlace(location) {
-      new Promise((resolve, reject) => {
-        if (location) {
-          this.place = location;
-          resolve();
-        } else {
-          reject("There are no more places in this row.");
+        if (localStorage.getItem("locationData")) {
+            try {
+                this.locationData = JSON.parse(
+                    localStorage.getItem("locationData")
+                );
+                if (this.locationData.autoLocate) {
+                    if (
+                        this.locationData.autoLocateToNext &&
+                        this.locationData.nextPlace
+                    ) {
+                        this.form.block_id =
+                            this.locationData.nextPlace.block_id;
+                        this.form.place_id = this.locationData.nextPlace.id;
+                    } else if (this.locationData.previousPlace) {
+                        this.form.block_id =
+                            this.locationData.previousPlace.block_id;
+                        this.form.place_id = this.locationData.previousPlace.id;
+                    }
+
+                    this.updateInventoryLocation();
+                }
+            } catch (e) {
+                localStorage.removeItem("locationData");
+            }
         }
-      })
-        .catch((error) => {
-          console.error(error);
-        })
-        .then(() => {
-          this.updateInventoryLocation();
-        });
     },
-    updateInventoryLocation() {
-      this.form.patch(route("inventory.update", this.inventory), {
-        onSuccess: (page) => (this.editingInventoryLocation = false),
-      });
-    },
-    getPlaces(block) {
-      this.loading = true;
-      axios
-        .get(route("api.places.index", block))
 
-        .then((res) => {
-          this.places = res.data;
-          this.loading = false;
-        })
-
-        .catch((error) => {
-          console.error(error.message);
-        });
+    computed: {
+        rows() {
+            return [
+                ...new Set(this.places.map((place) => place.row_number)),
+            ].map((row) => {
+                let obj = {};
+                obj.name = row;
+                return obj;
+            });
+        },
+        rowPlantNumbers() {
+            if (this.places.length && this.row) {
+                return this.places.filter(
+                    (place) => place.row_number == this.row.name
+                );
+            }
+        },
     },
-  },
+
+    methods: {
+        updateNextandPrevious() {
+            if (this.place) {
+                this.locationData.previousPlace = this.places.filter(
+                    (place) => {
+                        return (
+                            place.plant_number ===
+                                this.place.plant_number - 1 &&
+                            place.row_number === this.place.row_number
+                        );
+                    }
+                )[0];
+
+                this.locationData.nextPlace = this.places.filter((place) => {
+                    return (
+                        place.plant_number === this.place.plant_number + 1 &&
+                        place.row_number === this.place.row_number
+                    );
+                })[0];
+            }
+        },
+        assignNextPlace(location) {
+            new Promise((resolve, reject) => {
+                if (location) {
+                    this.place = location;
+                    resolve();
+                } else {
+                    reject("There are no more places in this row.");
+                }
+            })
+                .catch((error) => {
+                    console.error(error);
+                })
+                .then(() => {
+                    this.updateInventoryLocation();
+                });
+        },
+        updateInventoryLocation() {
+            this.form.patch(route("inventory.update", this.inventory), {
+                onSuccess: (page) => (this.editingInventoryLocation = false),
+            });
+        },
+        getPlaces(block) {
+            this.loading = true;
+            axios
+                .get(route("api.places.index", block))
+
+                .then((res) => {
+                    this.places = res.data;
+                    this.loading = false;
+                    this.updateNextandPrevious();
+                })
+
+                .catch((error) => {
+                    console.error(error.message);
+                });
+        },
+    },
 };
 </script>
