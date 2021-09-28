@@ -7,7 +7,8 @@
     <jet-input
       id="quantity"
       type="number"
-      v-model="quantity"
+      @change="updateInventory"
+      v-model="form.quantity"
       class="block w-full"
     />
   </div>
@@ -22,8 +23,13 @@ export default {
   },
   data() {
     return {
-      quantity: this.inventory.quantity,
+      form: this.$inertia.form(this.inventory),
     };
+  },
+  methods: {
+    updateInventory() {
+      this.form.patch(route("inventory.update", this.inventory));
+    },
   },
 };
 </script>

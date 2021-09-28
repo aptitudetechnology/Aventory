@@ -114,14 +114,17 @@ export default {
         localStorage.removeItem("sizeData");
       }
 
-      //update size if autosize is set
-      if (this.sizeData.autosize && this.sizeData.autosizeSize) {
+      //update size if autosize is set and last inventory item is not the same as current (if a user refreshes page ect).
+      if (
+        this.sizeData.autosize &&
+        this.sizeData.autosizeSize &&
+        this.inventory.id != localStorage.lastInventoryId
+      ) {
         if (localStorage.lastProductId == this.inventory.product_id) {
           new Promise((resolve, reject) => {
             this.selectedSize = this.sizeData.autosizeSize;
             resolve();
           }).then(() => {
-            this.updateSize();
             this.autosizedNotice = {
               wasAutosized: true,
               message: "Autosized to " + this.selectedSize.name,

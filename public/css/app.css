@@ -2717,6 +2717,10 @@ select {
 		margin-left: 1.5rem;
 	}
 
+	.sm\:ml-0 {
+		margin-left: 0px;
+	}
+
 	.sm\:-mt-16 {
 		margin-top: -4rem;
 	}
@@ -2749,12 +2753,12 @@ select {
 		height: 2.5rem;
 	}
 
-	.sm\:h-32 {
-		height: 8rem;
-	}
-
 	.sm\:h-20 {
 		height: 5rem;
+	}
+
+	.sm\:h-32 {
+		height: 8rem;
 	}
 
 	.sm\:w-10 {
@@ -2935,6 +2939,10 @@ select {
 
 	.sm\:text-left {
 		text-align: left;
+	}
+
+	.sm\:text-right {
+		text-align: right;
 	}
 
 	.sm\:text-sm {
