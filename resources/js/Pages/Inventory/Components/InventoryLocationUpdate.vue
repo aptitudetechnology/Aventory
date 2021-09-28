@@ -264,10 +264,6 @@ export default {
     },
   },
   mounted() {
-    if (this.selectedBlock?.has_places) {
-      this.getPlaces(this.selectedBlock);
-    }
-
     if (localStorage.getItem("locationData")) {
       try {
         this.locationData = JSON.parse(localStorage.getItem("locationData"));
@@ -319,6 +315,9 @@ export default {
       } catch (e) {
         localStorage.removeItem("locationData");
       }
+    }
+    if (this.selectedBlock?.has_places) {
+      this.getPlaces(this.selectedBlock);
     }
   },
 
