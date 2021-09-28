@@ -35,10 +35,10 @@
         class="flex space-between-4 items-center"
       >
         <jet-label
-          >Autolocate to next
+          >Autolocate to previous
           <input
             type="radio"
-            v-bind:value="true"
+            v-bind:value="false"
             v-model="locationData.autoLocateToNext"
             class="
               ml-2
@@ -52,10 +52,10 @@
           />
         </jet-label>
         <jet-label
-          >Autolocate to previous
+          >Autolocate to next
           <input
             type="radio"
-            v-bind:value="false"
+            v-bind:value="true"
             v-model="locationData.autoLocateToNext"
             class="
               ml-2
