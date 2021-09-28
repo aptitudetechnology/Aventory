@@ -8,6 +8,7 @@
       class="mt-0 w-full"
       placeholder="Search by plant id"
       title="Must be a valid id"
+      inputmode="numeric"
       pattern="\d*"
     />
     <jet-button type="submit" :disabled="!id">Search</jet-button>
