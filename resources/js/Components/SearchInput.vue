@@ -23,6 +23,9 @@
           :type="type"
           name="search"
           id="search"
+          :inputmode="inputmode"
+          :pattern="pattern"
+          :title="title"
           :autocomplete="autocomplete"
           :autofocus="autofocus"
           class="
@@ -57,6 +60,12 @@ export default {
     autofocus: { type: Boolean, default: false },
     autocomplete: { type: String, default: "off" },
     type: { type: String, default: "search" },
+    pattern: { type: String },
+    inputmode: { type: String },
+    title: {
+      type: String,
+      default: "Search",
+    },
   },
 
   emits: ["update:modelValue"],
