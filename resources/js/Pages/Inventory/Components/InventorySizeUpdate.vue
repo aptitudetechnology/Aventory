@@ -86,7 +86,9 @@ export default {
       selectedSize: this.sizes.find(
         (size) => size.id == this.inventory.size_id
       ),
-      form: this.$inertia.form(this.inventory),
+      form: this.$inertia.form({
+        size_id: this.inventory.size_id,
+      }),
     };
   },
   computed: {

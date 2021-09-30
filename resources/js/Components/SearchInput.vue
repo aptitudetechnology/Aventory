@@ -28,6 +28,7 @@
           :title="title"
           :autocomplete="autocomplete"
           :autofocus="autofocus"
+          :disabled="disabled"
           class="
             focus:ring-green-500
             focus:border-green-500
@@ -62,6 +63,7 @@ export default {
     type: { type: String, default: "search" },
     pattern: { type: String },
     inputmode: { type: String },
+    disabled: { type: Boolean, default: false },
     title: {
       type: String,
       default: "Search",

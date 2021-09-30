@@ -9,6 +9,7 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PlantFeaturesController;
 use App\Http\Controllers\RemoveOrderItemFromInventory;
 use App\Http\Controllers\PrintTagController;
@@ -30,12 +31,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect()->route('login');
 });
 
 
@@ -87,8 +83,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
     Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
-
-    Route::resource('inventory', App\Http\Controllers\InventoryController::class);
+    
+    Route::resource('inventory', InventoryController::class);
 
     Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
 

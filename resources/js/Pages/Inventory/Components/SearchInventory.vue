@@ -6,6 +6,8 @@
     <SearchInput
       v-model="id"
       class="mt-0 w-full"
+      ref="search"
+      :disabled="loading"
       placeholder="Search by plant id"
       title="Must be a valid id"
       inputmode="numeric"
@@ -36,6 +38,7 @@ export default {
   data() {
     return {
       id: "",
+      loading: false,
     };
   },
 
@@ -43,12 +46,26 @@ export default {
     searchInventory() {
       Inertia.get(route("inventory.show", this.id));
     },
+    focusSearchBar() {
+      const searchBar = document.getElementById("search");
+      if (searchBar) {
+        searchBar.focus();
+      }
+    },
+    updateLoadingState() {
+      Inertia.on("start", () => {
+        this.loading = true;
+      });
+      Inertia.on("finish", (event) => {
+        this.loading = false;
+        this.$nextTick(() => {
+          this.focusSearchBar();
+        });
+      });
+    },
   },
   mounted() {
-    const searchBar = document.getElementById("search");
-    if (searchBar) {
-      searchBar.focus();
-    }
+    this.updateLoadingState();
   },
 };
 </script>
