@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,7 @@ class Inventory extends Model
 {
     use HasFactory;
     protected $with = ['product'];
+    protected $appends = ['last_inventory_date'];
     /**
      * The attributes that are mass assignable.
      *
@@ -44,8 +46,15 @@ class Inventory extends Model
         'place_id' => 'integer',
         'ready_date' => 'datetime'
     ];
-
-
+        
+    public function getLastInventoryDateAttribute(){
+        if($this->updated_at == $this->created_at){
+            return "Never Inventoried";
+        }
+        else{
+            return $this->updated_at->diffForHumans();
+        }
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

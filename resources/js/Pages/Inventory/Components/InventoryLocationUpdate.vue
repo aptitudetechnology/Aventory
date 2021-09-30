@@ -6,14 +6,7 @@
         ><EditIcon class="w-4 h-4 mr-2"></EditIcon> Edit</jet-button
       >
     </div>
-    <p
-      v-if="autoLocateNotice.message"
-      :class="[
-        autoLocateNotice.wasAutoLocated ? 'text-green-600' : 'text-red-500',
-      ]"
-    >
-      {{ autoLocateNotice.message }}
-    </p>
+
     <p v-if="inventory.block">Block: {{ inventory.block.name }}</p>
     <p v-else class="text-red-500">Location Unasigned!</p>
     <div v-if="inventory.block && inventory.place" class="grid gap-4">
@@ -22,7 +15,7 @@
         {{ inventory.place.plant_number }}
       </p>
       <jet-label class="text-lg">
-        Autolocate?
+        {{ autolocateLabel }}
         <jet-checkbox
           :checked="locationData.autoLocate"
           v-model="locationData.autoLocate"
@@ -262,7 +255,6 @@ export default {
       }),
     };
   },
-
   watch: {
     locationData: {
       handler(value) {
@@ -324,10 +316,12 @@ export default {
             });
           });
         } else {
-          this.autoLocateNotice = {
-            wasAutoLocated: false,
-            message: "Was not autolocated. No more places in current row.",
-          };
+          this.makeAutoLocateNotice(
+            false,
+            "Was not autolocated. No more places in current row."
+          );
+          // make user set auto locate again if reached last place
+          this.locationData.autoLocate = false;
         }
       } else if (data.previousPlace) {
         this.assignBlock(data.previousPlace);
@@ -340,22 +334,24 @@ export default {
           }).then(() => {
             this.makeAutoLocateNotice(
               true,
-              `Autolocated to previous place: row# ${this.place.row_number}, plant# ${this.place.plant_number}`
+              `Autolocated to previous place: Row# ${this.place.row_number}, Plant# ${this.place.plant_number}`
             );
           });
         });
+      } else {
+        this.makeAutoLocateNotice(
+          false,
+          "Was not autolocated. Reached first place in current row."
+        );
+        // make user set auto locate again if reached first place
+        this.locationData.autoLocate = false;
       }
-    } else {
-      this.makeAutoLocateNotice(
-        false,
-        "Was not autolocated. Reached first place in current row."
-      );
     }
     if (this.selectedBlock?.has_places) {
       this.getPlaces(this.selectedBlock);
     }
   },
-  emits: ["autoLocated"],
+  emits: ["autolocated"],
 
   computed: {
     rows() {
@@ -371,6 +367,20 @@ export default {
       if (this.places.length && this.row) {
         return this.places.filter((place) => place.row_number == this.row.name);
       }
+    },
+    autolocateLabel() {
+      if (this.locationData.autoLocate) {
+        if (this.locationData.autoLocateToNext) {
+          return this.locationData.nextPlace
+            ? `Autolocate to Row: ${this.locationData.nextPlace.row_number}, Plant: ${this.locationData.nextPlace.plant_number}`
+            : "Reached last place in row.";
+        } else {
+          return this.locationData.previousPlace
+            ? `Autolocate to Row: ${this.locationData.previousPlace.row_number}, Plant: ${this.locationData.previousPlace.plant_number}`
+            : "Reached first place in row.";
+        }
+      }
+      return "Autolocate?";
     },
   },
 
@@ -399,6 +409,8 @@ export default {
       this.$nextTick(() => {
         this.updateInventoryLocation();
       });
+      this.autoLocateNotice.message = null;
+      this.$emit("autolocated", this.autoLocateNotice);
     },
     assignBlock(place) {
       this.selectedBlock = this.blocks.find(
@@ -410,7 +422,7 @@ export default {
         wasAutoLocated: wasAutoLocated,
         message: message,
       };
-      this.$emit(autoLocated, this.autoLocateNotice);
+      this.$emit("autolocated", this.autoLocateNotice);
     },
     confirm() {
       this.form.confirm_replace = true;
