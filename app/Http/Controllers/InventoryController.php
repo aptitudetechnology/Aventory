@@ -92,7 +92,7 @@ class InventoryController extends Controller
 
         $request->session()->flash('inventory.id', $inventory->id);
 
-        return redirect()->back()->banner('Great! Updated item.');
+        return back()->banner('Great! Updated item.');
     }
 
     /**
