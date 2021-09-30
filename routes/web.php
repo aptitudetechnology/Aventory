@@ -79,9 +79,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
 
+    Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
+    
     Route::resource('orders', App\Http\Controllers\OrderController::class);
 
-    Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
     Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
     
     Route::resource('inventory', InventoryController::class);
