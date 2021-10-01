@@ -156,7 +156,8 @@ export default {
 
     selectedSize(value) {
       if (
-        !this.sizeData.recentSizes.map((item) => item.id).includes(value.id)
+        !this.sizeData.recentSizes.map((item) => item.id).includes(value.id) &&
+        value
       ) {
         if (this.sizeData.recentSizes.length >= 3) {
           this.sizeData.recentSizes.shift();

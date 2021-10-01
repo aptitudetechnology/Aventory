@@ -91,8 +91,8 @@ class InventoryController extends Controller
         $inventory->update($request->validated());
 
         $request->session()->flash('inventory.id', $inventory->id);
-
-        return back()->banner('Great! Updated item.');
+        $label =  $inventory->type == 'group' ? 'grouped inventory items.' : 'inventory item.';
+        return back()->banner('Great! Updated ' . $label);
     }
 
     /**

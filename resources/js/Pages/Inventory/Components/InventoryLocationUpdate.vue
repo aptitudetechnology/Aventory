@@ -9,83 +9,90 @@
 
     <p v-if="inventory.block">Block: {{ inventory.block.name }}</p>
     <p v-else class="text-red-500">Location Unasigned!</p>
-    <div v-if="inventory.block && inventory.place" class="grid gap-4">
-      <p>
-        Place: Row number: {{ inventory.place.row_number }} Plant Number:
-        {{ inventory.place.plant_number }}
-      </p>
-      <jet-label class="text-lg">
-        {{ autolocateLabel }}
-        <jet-checkbox
-          :checked="locationData.autoLocate"
-          v-model="locationData.autoLocate"
-          class="ml-2"
-        />
-      </jet-label>
-      <div
-        v-if="locationData.autoLocate"
-        class="flex space-between-4 items-center"
-      >
-        <jet-label
-          >Autolocate to previous
-          <input
-            type="radio"
-            v-bind:value="false"
-            v-model="locationData.autoLocateToNext"
-            class="
-              ml-2
-              border-gray-300
-              shadow-sm
-              focus:border-none
-              focus:ring-1 focus:ring-current focus:ring-opacity-50
-              cursor-pointer
-              text-green-600
-            "
-          />
-        </jet-label>
-        <jet-label
-          >Autolocate to next
-          <input
-            type="radio"
-            v-bind:value="true"
-            v-model="locationData.autoLocateToNext"
-            class="
-              ml-2
-              border-gray-300
-              shadow-sm
-              focus:border-none
-              focus:ring-1 focus:ring-current focus:ring-opacity-50
-              cursor-pointer
-              text-green-600
-            "
-          />
-        </jet-label>
-      </div>
-    </div>
-    <div
-      v-if="inventory.block && inventory.place"
-      class="flex items-center justify-between space-x-2 w-full"
-    >
-      <jet-button
-        :disabled="!locationData.previousPlace"
-        @click="assignNextPlace(locationData.previousPlace)"
-        class="flex-shrink-0 pl-2"
-        ><ChevronLeftIcon class="w-4 h-4 mr-2" /> Previous</jet-button
-      >
-      <jet-button
-        :disabled="!locationData.nextPlace"
-        @click="assignNextPlace(locationData.nextPlace)"
-        class="flex-shrink-0 pr-2"
-        >Next<ChevronRightIcon class="w-4 h-4 ml-2"
-      /></jet-button>
-    </div>
-
     <p
-      v-else-if="inventory.block && inventory.block.has_places"
+      v-if="
+        inventory.block &&
+        inventory.block.has_places &&
+        !inventory.place &&
+        inventory.type != 'group'
+      "
       class="text-red-500"
     >
       Place Unasigned!
     </p>
+    <div v-if="inventory.type != 'group'">
+      <div v-if="inventory.block && inventory.place" class="grid gap-4">
+        <p>
+          Place: Row number: {{ inventory.place.row_number }} Plant Number:
+          {{ inventory.place.plant_number }}
+        </p>
+        <div
+          v-if="inventory.block && inventory.place"
+          class="flex items-center justify-between space-x-2 w-full"
+        >
+          <jet-button
+            :disabled="!locationData.previousPlace"
+            @click="assignNextPlace(locationData.previousPlace)"
+            class="flex-shrink-0 pl-2"
+            ><ChevronLeftIcon class="w-4 h-4 mr-2" /> Previous</jet-button
+          >
+          <jet-button
+            :disabled="!locationData.nextPlace"
+            @click="assignNextPlace(locationData.nextPlace)"
+            class="flex-shrink-0 pr-2"
+            >Next<ChevronRightIcon class="w-4 h-4 ml-2"
+          /></jet-button>
+        </div>
+        <jet-label class="text-lg">
+          {{ autolocateLabel }}
+          <jet-checkbox
+            :checked="locationData.autoLocate"
+            v-model="locationData.autoLocate"
+            class="ml-2"
+          />
+        </jet-label>
+        <div
+          v-if="locationData.autoLocate"
+          class="flex space-between-4 items-center"
+        >
+          <jet-label
+            >Autolocate to previous
+            <input
+              type="radio"
+              v-bind:value="false"
+              v-model="locationData.autoLocateToNext"
+              class="
+                ml-2
+                border-gray-300
+                shadow-sm
+                focus:border-none
+                focus:ring-1 focus:ring-current focus:ring-opacity-50
+                cursor-pointer
+                text-green-600
+              "
+            />
+          </jet-label>
+          <jet-label
+            >Autolocate to next
+            <input
+              type="radio"
+              v-bind:value="true"
+              v-model="locationData.autoLocateToNext"
+              class="
+                ml-2
+                border-gray-300
+                shadow-sm
+                focus:border-none
+                focus:ring-1 focus:ring-current focus:ring-opacity-50
+                cursor-pointer
+                text-green-600
+              "
+            />
+          </jet-label>
+        </div>
+      </div>
+    </div>
+
     <jet-confirmation-modal :show="confirmingReplace" @close="dontConfirm">
       <template #title
         >There is another item in this place. Are you sure you want to replace
@@ -138,39 +145,38 @@
                 />
               </div>
             </div>
-            <div
-              v-if="selectedBlock?.has_places && !loading"
-              class="grid gap-4 sm:grid-cols-2"
-            >
-              <div class="sm:col-span-1">
-                <select-box
-                  labelValue="Row Number"
-                  :items="rows"
-                  :selectedItem="row"
-                  v-model="row"
-                />
-                <jet-input-error
-                  v-if="!form.block_id"
-                  :message="form.errors.block_id"
-                  class="mt-2"
-                />
+            <div v-if="selectedBlock?.has_places && inventory.type != 'group'">
+              <div v-if="!loading" class="grid gap-4 sm:grid-cols-2">
+                <div class="sm:col-span-1">
+                  <select-box
+                    labelValue="Row Number"
+                    :items="rows"
+                    :selectedItem="row"
+                    v-model="row"
+                  />
+                  <jet-input-error
+                    v-if="!form.block_id"
+                    :message="form.errors.block_id"
+                    class="mt-2"
+                  />
+                </div>
+                <div class="sm:col-span-1">
+                  <select-box
+                    labelValue="Plant Number"
+                    :items="rowPlantNumbers"
+                    :selectedItem="place"
+                    v-model="place"
+                    nameValue="plant_number"
+                  />
+                  <jet-input-error
+                    v-if="!form.block_id"
+                    :message="form.errors.block_id"
+                    class="mt-2"
+                  />
+                </div>
               </div>
-              <div class="sm:col-span-1">
-                <select-box
-                  labelValue="Plant Number"
-                  :items="rowPlantNumbers"
-                  :selectedItem="place"
-                  v-model="place"
-                  nameValue="plant_number"
-                />
-                <jet-input-error
-                  v-if="!form.block_id"
-                  :message="form.errors.block_id"
-                  class="mt-2"
-                />
-              </div>
+              <div v-else class="text-sm">Loading Places...</div>
             </div>
-            <div v-if="loading" class="text-sm">Loading Places...</div>
           </div>
         </form>
       </template>
@@ -293,6 +299,9 @@ export default {
       } catch (e) {
         localStorage.removeItem("locationData");
       }
+    }
+    if (this.inventory.type == "group") {
+      this.locationData.autoLocate = false;
     }
     if (
       this.locationData.autoLocate &&
@@ -453,7 +462,9 @@ export default {
     getPlaces(block) {
       this.loading = true;
       axios
-        .get(route("api.places.index", block))
+        .get(route("api.places.index", block), {
+          Headers: {'Cache-Control': 'cache'}
+        })
 
         .then((res) => {
           this.places = res.data;

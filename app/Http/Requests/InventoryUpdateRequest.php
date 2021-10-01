@@ -31,7 +31,7 @@ class InventoryUpdateRequest extends FormRequest
             'nursery_location_id' => ['sometimes','required', 'exists:nursery_locations,id'],
             'block_id' => ['sometimes','nullable','integer', 'exists:blocks,id'],
             'place_id' => ['sometimes','nullable','integer', 'exists:places,id'],
-            'confirm_replace' => [Rule::requiredIf(Inventory::where('place_id', $this->place_id)->where('id', '!=', $this->id)->first() ? true : false)]
+            'confirm_replace' => [Rule::requiredIf(Inventory::whereNotNull('place_id')->where('place_id', $this->place_id)->where('id', '!=', $this->id)->first() ? true : false)]
         ];
     }
 }

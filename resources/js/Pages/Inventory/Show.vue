@@ -7,7 +7,8 @@
           <div class="py-4">
             <h1 class="text-xl">{{ inventory.product.name }}</h1>
             <p class="text-lg">
-              Plant #: <span class="text-green-600">{{ inventory.id }}</span>
+              {{ inventory.type == "group" ? "Group " : "Plant " }}#:
+              <span class="text-green-600">{{ inventory.id }}</span>
             </p>
             <p
               v-if="autoLocateNotice.message"
