@@ -86,7 +86,9 @@ export default {
       selectedSize: this.sizes.find(
         (size) => size.id == this.inventory.size_id
       ),
-      form: this.$inertia.form(this.inventory),
+      form: this.$inertia.form({
+        size_id: this.inventory.size_id,
+      }),
     };
   },
   computed: {
@@ -154,7 +156,8 @@ export default {
 
     selectedSize(value) {
       if (
-        !this.sizeData.recentSizes.map((item) => item.id).includes(value.id)
+        !this.sizeData.recentSizes.map((item) => item.id).includes(value.id) &&
+        value
       ) {
         if (this.sizeData.recentSizes.length >= 3) {
           this.sizeData.recentSizes.shift();

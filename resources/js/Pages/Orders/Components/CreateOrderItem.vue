@@ -68,7 +68,7 @@
                   type="number"
                   step="1"
                   class="mt-1 block w-full"
-                  v-model.number="form.quantity_ordered"
+                  v-model="form.quantity_ordered"
                   required
                 />
                 <jet-input-error
@@ -87,7 +87,7 @@
                   type="number"
                   step="1"
                   class="mt-1 block w-full"
-                  v-model.number="form.quantity_confirmed"
+                  v-model="form.quantity_confirmed"
                   required
                 />
                 <jet-input-error
@@ -104,7 +104,7 @@
                   type="number"
                   step="0.01"
                   class="mt-1 block w-full"
-                  v-model.number="form.unit_price"
+                  v-model="form.unit_price"
                   required
                 />
                 <jet-input-error
@@ -204,7 +204,6 @@ import {
   SwitchGroup,
   SwitchLabel,
 } from "@headlessui/vue";
-import { Inertia } from "@inertiajs/inertia";
 
 export default {
   components: {
@@ -240,7 +239,7 @@ export default {
         size_id: null,
         quantity_ordered: null,
         quantity_confirmed: null,
-        unit_price: 0.0,
+        unit_price: null,
         ready_date: null,
         received: true,
       }),
@@ -264,6 +263,9 @@ export default {
         this.form.original_size_id = null;
       }
     },
+    "form.quantity_ordered"(value) {
+      this.form.quantity_confirmed = value;
+    },
     selectedSize(size) {
       if (size) {
         this.form.size_id = size.id;
@@ -286,7 +288,6 @@ export default {
           this.form.reset();
           this.selectedSize = null;
           this.selectedProduct = null;
-          Inertia.reload();
           if (this.addAnother == false) {
             this.creatingOrderItem = false;
           }
