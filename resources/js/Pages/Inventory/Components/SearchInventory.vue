@@ -7,6 +7,7 @@
       v-model="id"
       class="mt-0 w-full"
       ref="search"
+      :autofocus="true"
       :disabled="loading"
       placeholder="Search by plant id"
       title="Must be a valid id"
@@ -46,21 +47,12 @@ export default {
     searchInventory() {
       Inertia.get(route("inventory.show", this.id));
     },
-    focusSearchBar() {
-      const searchBar = document.getElementById("search");
-      if (searchBar) {
-        searchBar.focus();
-      }
-    },
     updateLoadingState() {
       Inertia.on("start", () => {
         this.loading = true;
       });
       Inertia.on("finish", (event) => {
         this.loading = false;
-        this.$nextTick(() => {
-          this.focusSearchBar();
-        });
       });
     },
   },

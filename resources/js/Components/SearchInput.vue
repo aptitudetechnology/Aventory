@@ -27,7 +27,6 @@
           :pattern="pattern"
           :title="title"
           :autocomplete="autocomplete"
-          :autofocus="autofocus"
           :disabled="disabled"
           class="
             focus:ring-green-500
@@ -76,5 +75,10 @@ export default {
       this.$refs.input.focus();
     },
   },
+  updated(){
+    if(this.autofocus){
+      this.focus();
+    }
+  }
 };
 </script>
