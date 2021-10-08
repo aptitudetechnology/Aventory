@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiBlocksController;
 use App\Http\Controllers\Api\ApiCategoriesController;
 use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\ArchivedProductsController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\RemoveOrderItemFromInventory;
 use App\Http\Controllers\PrintTagController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ClearLocationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -85,6 +87,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
     
+    Route::get('inventory/clear-locations', [ClearLocationController::class, 'index'])->name('inventory.clear-locations');
+    Route::post('inventory/clear-locations/{block}', [ClearLocationController::class, 'clear'])->name('clear-locations.clear');
     Route::resource('inventory', InventoryController::class);
 
     Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
@@ -93,6 +97,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('blocks', App\Http\Controllers\BlockController::class);
 
+    Route::get('api/{nursery}/blocks', [ApiBlocksController::class, 'index'])->name('api.blocks.index');
     Route::get('api/{block}/places/', [PlaceController::class, 'index'])->name('api.places.index');
     Route::post('places', [PlaceController::class, 'store'])->name('places.store');
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
