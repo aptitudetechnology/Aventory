@@ -15,6 +15,7 @@ use App\Http\Controllers\RemoveOrderItemFromInventory;
 use App\Http\Controllers\PrintTagController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ClearLocationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -85,6 +86,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
     
+    Route::get('inventory/clear-locations', [ClearLocationController::class, 'index'])->name('inventory.clear-locations');
     Route::resource('inventory', InventoryController::class);
 
     Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
