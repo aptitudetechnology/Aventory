@@ -17,6 +17,7 @@ use App\Http\Controllers\PrintTagController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ClearLocationController;
+use App\Http\Controllers\ViewInventoryController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -92,6 +93,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('inventory', InventoryController::class);
 
     Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
+
+    Route::resource('view', ViewInventoryController::class)->only('show', 'index');
 
     Route::resource('locations', App\Http\Controllers\NurseryLocationController::class);
 
