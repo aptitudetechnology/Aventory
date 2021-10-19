@@ -2,13 +2,8 @@
     <products-layout>
         <details-section>
             <template #title>{{ product.name }}</template>
-            <div class="sm:col-span-2">
-                <dt class="text-sm font-medium text-gray-500">Product name</dt>
-                <dd class="mt-1 text-sm text-gray-900">
-                    {{ product.name }}
-                </dd>
-            </div>
-            <div class="sm:col-span-2">
+
+            <div class="col-span-6 sm:col-span-2">
                 <dt class="text-sm font-medium text-gray-500">Description</dt>
                 <dd class="mt-1 text-sm text-gray-900">
                     {{ product.description }}

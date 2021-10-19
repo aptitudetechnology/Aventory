@@ -94,7 +94,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
 
-    Route::resource('view', ViewInventoryController::class)->only('show', 'index');
+    Route::get('view', [ViewInventoryController::class, 'index'])->name('view.index');
+    Route::get('view/{product}', [ViewInventoryController::class, 'show'])->name('view.show');
 
     Route::resource('locations', App\Http\Controllers\NurseryLocationController::class);
 

@@ -22,7 +22,7 @@
                 </div>
             </main-area>
             <!-- Start secondary column (hidden on smaller screens) -->
-            <products-aside />
+            <view-aside />
         </div>
     </app-layout>
 </template>
@@ -30,12 +30,12 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import BackLink from "@/Components/BackLink";
-import ProductsAside from "@/Pages/View/ProductsAside";
+import ViewAside from "@/Pages/View/ViewAside";
 import MainArea from "@Components/MainArea.vue";
 
 export default {
     components: {
-        ProductsAside,
+        ViewAside,
         AppLayout,
         BackLink,
         MainArea,

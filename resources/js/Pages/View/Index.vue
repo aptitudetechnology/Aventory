@@ -1,13 +1,12 @@
 <template>
-  <products-layout> </products-layout>
+    <view-layout> </view-layout>
 </template>
 
-
 <script>
-import ProductsLayout from "./ProductsLayout.vue";
+import ViewLayout from "./ViewLayout.vue";
 export default {
-  components: {
-    ProductsLayout,
-  },
+    components: {
+        ViewLayout,
+    },
 };
 </script>

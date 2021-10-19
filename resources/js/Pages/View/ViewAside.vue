@@ -47,6 +47,13 @@
                     </aside-link>
                 </li>
             </ul>
+
+            <div class="p-6" v-if="search != '' && filteredProducts.length < 1">
+                No items match that search.
+                <span @click="search = ''" class="underline cursor-pointer"
+                    >Clear search?</span
+                >
+            </div>
         </div>
     </page-aside>
 </template>
