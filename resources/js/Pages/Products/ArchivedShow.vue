@@ -1,15 +1,6 @@
 <template>
     <products-layout>
-        <details-section>
-            <template #title>{{ product.name }}</template>
-
-            <div class="col-span-6 sm:col-span-2">
-                <dt class="text-sm font-medium text-gray-500">Description</dt>
-                <dd class="mt-1 text-sm text-gray-900">
-                    {{ product.description }}
-                </dd>
-            </div>
-        </details-section>
+        <product-details :product="product"></product-details>
         <restore-product-form
             :product="product"
             class="mt-6"
@@ -20,13 +11,13 @@
 <script>
 import { PaperClipIcon } from "@heroicons/vue/solid";
 import ProductsLayout from "./ProductsLayout.vue";
-import DetailsSection from "@/Components/DetailsSection";
+import ProductDetails from "./Components/ProductDetails";
 import RestoreProductForm from "./RestoreProductForm.vue";
 export default {
     components: {
         PaperClipIcon,
         ProductsLayout,
-        DetailsSection,
+        ProductDetails,
         RestoreProductForm,
     },
     props: { product: Object },

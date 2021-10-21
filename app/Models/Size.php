@@ -55,4 +55,9 @@ class Size extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'inventories');
+    }
 }

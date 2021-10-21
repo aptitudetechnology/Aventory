@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ViewInventoryController extends Controller
@@ -18,8 +19,11 @@ class ViewInventoryController extends Controller
     public function show(Request $request, Product $product) 
     {
         $products = $this->getProducts();
-
-        return inertia('View/Show', compact('products', 'product'));
+        $inventorySizes = $product->inventorySizes()->withCount(['products' => function($query) use ($product) {
+            $query->where('product_id', $product->id);
+        }])->get();
+         $inventory = $product->inventory;
+        return inertia('View/Show', compact('products', 'product', 'inventorySizes', 'inventory'));
     }
 
 

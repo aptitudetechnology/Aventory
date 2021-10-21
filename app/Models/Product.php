@@ -61,4 +61,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Size::class, 'prices');
     }
+    
+    public function inventory()
+    { 
+        return $this->hasMany(Inventory::class);
+    }
+
+    public function inventorySizes()
+    {
+       return $this->belongsToMany(Size::class, 'inventories')->distinct();
+    }
 }
