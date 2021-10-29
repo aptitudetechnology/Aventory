@@ -19,11 +19,10 @@ class ViewInventoryController extends Controller
     public function show(Request $request, Product $product) 
     {
         $products = $this->getProducts();
-        $inventorySizes = $product->inventorySizes()->withCount(['products' => function($query) use ($product) {
-            $query->where('product_id', $product->id);
-        }])->get();
-         $inventory = $product->inventory;
-        return inertia('View/Show', compact('products', 'product', 'inventorySizes', 'inventory'));
+        $inventorySizes = $product->inventorySizes($product)->get();
+        $inventory = $product->inventory;
+        $priceLevels = $request->user()->price_levels;
+        return inertia('View/Show', compact('products', 'product', 'inventorySizes', 'inventory', 'priceLevels'));
     }
 
 

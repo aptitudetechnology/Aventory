@@ -11,6 +11,26 @@ class CustomerPriceLevel extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'team_id',
+        'name',
+        'description',
+        'percentage_more',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'percentage_more' => 'integer',
+    ];
 
     public function team(): BelongsTo
     {

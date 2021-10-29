@@ -42,15 +42,6 @@ class Size extends Model
         'sort_num' => 'integer'
     ];
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function next_size()
-    {
-        return $this->belongsTo(\App\Models\Size::class);
-    }
-
     public function team()
     {
         return $this->belongsTo(Team::class);
@@ -59,5 +50,10 @@ class Size extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'inventories');
+    }
+
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
     }
 }
