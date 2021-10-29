@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-
 class Price extends Model
 {
     use HasFactory;
@@ -30,7 +29,6 @@ class Price extends Model
         'category_id',
         'size_id',
         'unit_price',
-        'custom_price',
         'show_on_availability'
     ];
 

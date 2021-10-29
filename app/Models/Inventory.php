@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     use HasFactory;
-    protected $with = ['product'];
+    protected $with = ['product', 'block', 'place'];
     protected $appends = ['last_inventory_date'];
     /**
      * The attributes that are mass assignable.

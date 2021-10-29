@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $with = ['plant', 'category', 'prices'];
+    protected $with = ['plant', 'category', 'prices',];
+    protected $appends = ['base_prices'];
     /**
      * The attributes that are mass assignable.
      *
@@ -57,8 +59,44 @@ class Product extends Model
         return $this->hasMany(Price::class);
     }
 
+    public function getBasePricesAttribute()
+    {
+        if($this->category){
+            return $this->prices->union($this->category->prices);
+        }
+        else{
+            return $this->prices;
+        }
+    }
+
+
     public function sizes()
     {
         return $this->belongsToMany(Size::class, 'prices');
+    }
+    
+    public function inventory()
+    { 
+        return $this->hasMany(Inventory::class);
+    }
+
+    public function availableInventory()
+    {
+        return $this->inventory()->where('ready_date', '<=', now());
+    }
+
+    public function inventorySizes()
+    {
+       return $this->belongsToMany(Size::class, 'inventories')->distinct()
+       ->withCount([
+           'inventories as total_inventory' => function($query)  {
+            $query->where('product_id', $this->id)
+            ->select(DB::raw('sum(quantity)'));}, 
+            
+            'inventories as available_count' => function($query) {
+            $query->where('product_id', $this->id)
+            ->where('ready_date', '<=', now())
+            ->select(DB::raw('sum(quantity)'));
+        }]);
     }
 }
