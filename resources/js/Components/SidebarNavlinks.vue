@@ -70,13 +70,13 @@
             :current="
                 route().current('vendors.*') ||
                 route().current('archived-vendors.*') ||
-                route().current('orders.*')
+                route().current('purchases.*')
             "
         >
             <nav-link
-                :href="route('orders.index')"
-                :current="route().current('orders.*')"
-                >Orders</nav-link
+                :href="route('purchases.index')"
+                :current="route().current('purchases.*')"
+                >Purchases</nav-link
             >
             <nav-link
                 :href="route('vendors.index')"

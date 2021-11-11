@@ -12,7 +12,7 @@ use App\Http\Controllers\CustomerPriceLevelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PlantFeaturesController;
-use App\Http\Controllers\RemoveOrderItemFromInventory;
+use App\Http\Controllers\RemovePurchaseItemFromInventory;
 use App\Http\Controllers\PrintTagController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
@@ -82,17 +82,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
 
-    Route::resource('orders.order-item', App\Http\Controllers\OrderItemController::class)->only(['store', 'update', 'destroy'])->shallow();
-    
-    Route::resource('orders', App\Http\Controllers\OrderController::class);
+    Route::resource('purchases.purchase-item', App\Http\Controllers\PurchaseItemController::class)->only(['store', 'update', 'destroy'])->shallow();
+
+    Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
 
     Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
-    
+
     Route::get('inventory/clear-locations', [ClearLocationController::class, 'index'])->name('inventory.clear-locations');
     Route::post('inventory/clear-locations/{block}', [ClearLocationController::class, 'clear'])->name('clear-locations.clear');
     Route::resource('inventory', InventoryController::class);
 
-    Route::delete('inventory-order-items', RemoveOrderItemFromInventory::class)->name('delete-inventory-order-item');
+    Route::delete('inventory-purchase-items', RemovePurchaseItemFromInventory::class)->name('delete-inventory-purchase-item');
 
     Route::get('view', [ViewInventoryController::class, 'index'])->name('view.index');
     Route::get('view/{product}', [ViewInventoryController::class, 'show'])->name('view.show');

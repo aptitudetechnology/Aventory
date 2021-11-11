@@ -88,9 +88,9 @@ class Team extends JetstreamTeam
         return $this->hasMany(Size::class);
     }
 
-    public function orders(): HasMany
+    public function purchases(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Purchase::class);
     }
 
     public function inventories(): HasMany

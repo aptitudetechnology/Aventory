@@ -17,7 +17,7 @@ class Inventory extends Model
      * @var array
      */
     protected $fillable = [
-        'order_item_id',
+        'purchase_item_id',
         'product_id',
         'original_size_id',
         'size_id',
@@ -37,7 +37,7 @@ class Inventory extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'order_item_id' => 'integer',
+        'purchase_item_id' => 'integer',
         'product_id' => 'integer',
         'original_size_id' => 'integer',
         'size_id' => 'integer',
@@ -46,21 +46,21 @@ class Inventory extends Model
         'place_id' => 'integer',
         'ready_date' => 'datetime'
     ];
-        
-    public function getLastInventoryDateAttribute(){
-        if($this->updated_at == $this->created_at){
+
+    public function getLastInventoryDateAttribute()
+    {
+        if ($this->updated_at == $this->created_at) {
             return "Never Inventoried";
-        }
-        else{
+        } else {
             return $this->updated_at->diffForHumans();
         }
     }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function orderItem()
+    public function purchaseItem()
     {
-        return $this->belongsTo(\App\Models\OrderItem::class);
+        return $this->belongsTo(\App\Models\PurchaseItem::class);
     }
 
     /**
