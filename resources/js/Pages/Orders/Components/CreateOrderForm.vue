@@ -6,7 +6,7 @@
 
         <template #form>
             <div class="col-span-6">
-                <div class="grid gap-4 sm:grid-cols-3">
+                <div class="grid gap-4 sm:grid-cols-2">
                     <div class="col-span-1">
                         <jet-label for="date" value="Order Date" />
                         <jet-input
@@ -32,19 +32,6 @@
                             class="mt-2"
                         />
                     </div>
-                    <div class="col-span-1">
-                        <jet-label for="order_number" value="Order Number" />
-                        <jet-input
-                            id="order_number"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.order_number"
-                        />
-                        <jet-input-error
-                            :message="form.errors.order_number"
-                            class="mt-2"
-                        />
-                    </div>
                 </div>
             </div>
         </template>
@@ -54,7 +41,7 @@
                 type="submit"
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
-                >Save Order</jet-button
+                >New Order</jet-button
             >
         </template>
     </jet-form-section>
@@ -87,8 +74,7 @@ export default {
                 _method: "POST",
                 date: new Date().toISOString().slice(0, -14),
                 customer_id: null,
-                order_number: null,
-                user_id: this.$page.props.user.id,
+                team_member_id: this.$page.props.user.id,
             }),
         };
     },

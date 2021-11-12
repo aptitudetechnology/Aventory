@@ -4,7 +4,7 @@
 
         <template #form>
             <div class="col-span-6">
-                <div class="grid gap-4 sm:grid-cols-3">
+                <div class="grid gap-4 sm:grid-cols-2">
                     <div class="col-span-1">
                         <jet-label for="date" value="Order Date" />
                         <jet-input
@@ -28,19 +28,6 @@
                         />
                         <jet-input-error
                             :message="form.errors.customer_id"
-                            class="mt-2"
-                        />
-                    </div>
-                    <div class="col-span-1">
-                        <jet-label for="order_number" value="Order Number" />
-                        <jet-input
-                            id="order_number"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.order_number"
-                        />
-                        <jet-input-error
-                            :message="form.errors.order_number"
                             class="mt-2"
                         />
                     </div>
@@ -91,8 +78,7 @@ export default {
                 _method: "PATCH",
                 date: this.order.date,
                 customer_id: this.order.customer_id,
-                order_number: this.order.order_number,
-                user_id: this.order.user_id,
+                team_member_id: this.order.team_member_id,
             }),
         };
     },
