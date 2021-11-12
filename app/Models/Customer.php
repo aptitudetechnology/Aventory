@@ -18,7 +18,7 @@ class Customer extends Model
      */
     protected $casts = [
         'mailing_same_as_primary' => 'boolean',
-        'is_retail' => 'boolean',
+        'is_taxable' => 'boolean',
         'no_auto_discount' => 'boolean',
         'reseller_permit_on_file' => 'boolean'
     ];
