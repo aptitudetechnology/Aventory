@@ -21,7 +21,7 @@ class Purchase extends Model
         'vendor_id',
         'user_id',
         'team_id',
-        'purchase_number',
+        'order_number',
     ];
 
     /**

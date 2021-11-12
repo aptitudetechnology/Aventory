@@ -17,7 +17,9 @@ use App\Http\Controllers\PrintTagController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ClearLocationController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ViewInventoryController;
+use App\Models\Order;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -105,4 +107,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('api/{block}/places/', [PlaceController::class, 'index'])->name('api.places.index');
     Route::post('places', [PlaceController::class, 'store'])->name('places.store');
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
+
+    Route::resource('orders', OrderController::class);
 });

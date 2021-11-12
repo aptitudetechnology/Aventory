@@ -107,4 +107,14 @@ class Team extends JetstreamTeam
     {
         return $this->hasMany(Block::class)->orderBy('name');
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class)->where('is_quote', false)->orderBy('updated_at');
+    }
+
+    public function quotes(): HasMany
+    {
+        return $this->hasMany(Order::class, 'order_id', 'id')->where('is_quote', true);
+    }
 }
