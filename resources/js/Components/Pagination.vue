@@ -127,6 +127,7 @@
                     text-sm
                     font-medium
                     text-gray-500
+                    cursor-not-allowed
                 "
             >
                 Next
