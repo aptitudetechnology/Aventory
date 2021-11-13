@@ -151,11 +151,11 @@
     </div>
 </template>
 <script>
-import TableH from "@/Components/TableH.vue";
-import TableD from "@Components/TableD.vue";
-import TableTable from "@/Components/TableTable.vue";
+import TableH from "@/Components/Tables/TableH.vue";
+import TableD from "@/Components/Tables/TableD.vue";
+import TableTable from "@/Components/Tables/TableTable.vue";
 import DetailsSection from "@Components/DetailsSection.vue";
-import TableHead from "@/Components/TableHead.vue";
+import TableHead from "@/Components/Tables/TableHead.vue";
 import SectionTitle from "@/Jetstream/SectionTitle.vue";
 export default {
     components: {

@@ -1,24 +1,20 @@
 <template>
     <app-layout>
-        <div class="flex-1 relative z-0 flex overflow-hidden">
-            <main-area :dontShowOnMobile="isIndex">
-                <nav v-if="!isIndex" aria-label="Breadcrumb" class="xl:hidden">
-                    <div class="px-4 md:pb-2">
-                        <back-link
-                            v-if="route().current('orders.*')"
-                            :href="route('orders.index')"
-                            >Orders</back-link
-                        >
-                    </div>
-                </nav>
-                <!-- Main Content -->
-                <div class="py-2">
-                    <slot></slot>
+        <main-area :dontShowOnMobile="false">
+            <nav v-if="!isIndex" aria-label="Breadcrumb">
+                <div class="px-4 md:pb-2">
+                    <back-link
+                        v-if="route().current('orders.*')"
+                        :href="route('orders.index')"
+                        >Orders</back-link
+                    >
                 </div>
-            </main-area>
-            <!-- Start secondary column (hidden on smaller screens) -->
-            <orders-aside :orders="orders" />
-        </div>
+            </nav>
+            <!-- Main Content -->
+            <div class="py-2">
+                <slot></slot>
+            </div>
+        </main-area>
     </app-layout>
 </template>
 

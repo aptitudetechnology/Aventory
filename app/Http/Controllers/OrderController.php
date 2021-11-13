@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->getOrders();
+        $orders = auth()->user()->orders()->paginate(2);
         return inertia('Orders/Index', compact('orders'));
     }
 
@@ -26,9 +26,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $orders = $this->getOrders();
         $customers = $this->getCustomers();
-        return inertia('Orders/Create', compact('orders', 'customers'));
+        return inertia('Orders/Create', compact('customers'));
     }
 
     /**
@@ -51,10 +50,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $orders = $this->getOrders();
         $customers = $this->getCustomers();
         $orderItems = $order->orderItems;
-        return inertia('Orders/Show', compact('order', 'orders', 'customers', 'orderItems'));
+        return inertia('Orders/Show', compact('order', 'customers', 'orderItems'));
     }
 
     /**
@@ -89,11 +87,6 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
-    }
-
-    protected function getOrders()
-    {
-        return auth()->user()->orders;
     }
 
     protected function getCustomers()
