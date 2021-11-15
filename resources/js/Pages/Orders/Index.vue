@@ -38,27 +38,87 @@
                 <div class="col-span-6 overflow-auto">
                     <table-table class="text-left">
                         <table-head>
-                            <table-h>Order #</table-h>
                             <table-h
-                                @click="
-                                    $inertia.get(
-                                        route('orders.index', {
-                                            orderBy: 'date',
-                                        })
-                                    )
-                                "
-                                >Date</table-h
-                            >
+                                ><div
+                                    class="
+                                        select-none
+                                        cursor-pointer
+                                        flex
+                                        items-center
+                                    "
+                                    :class="
+                                        orderBy == 'id' ? 'text-gray-900' : ''
+                                    "
+                                    @click="updateOrderBy('id')"
+                                >
+                                    Order #
+                                    <ArrowUpIcon
+                                        v-if="
+                                            orderBy == 'id' &&
+                                            orderByDirection == 'asc'
+                                        "
+                                        class="ml-2 w-3 h-3"
+                                    />
+                                    <ArrowDownIcon
+                                        v-else
+                                        class="ml-2 w-3 h-3"
+                                    /></div
+                            ></table-h>
                             <table-h
-                                @click="
-                                    $inertia.get(
-                                        route('orders.index', {
-                                            orderBy: 'customer.name',
-                                        })
-                                    )
-                                "
-                                >Customer</table-h
-                            >
+                                ><div
+                                    class="
+                                        select-none
+                                        cursor-pointer
+                                        flex
+                                        items-center
+                                    "
+                                    :class="
+                                        orderBy == 'date' ? 'text-gray-900' : ''
+                                    "
+                                    @click="updateOrderBy('date')"
+                                >
+                                    Date
+                                    <ArrowUpIcon
+                                        v-if="
+                                            orderBy == 'date' &&
+                                            orderByDirection == 'asc'
+                                        "
+                                        class="ml-2 w-3 h-3"
+                                    />
+                                    <ArrowDownIcon
+                                        v-else
+                                        class="ml-2 w-3 h-3"
+                                    /></div
+                            ></table-h>
+                            <table-h
+                                ><div
+                                    class="
+                                        select-none
+                                        cursor-pointer
+                                        flex
+                                        items-center
+                                    "
+                                    :class="
+                                        orderBy == 'customer'
+                                            ? 'text-gray-900'
+                                            : ''
+                                    "
+                                    @click="updateOrderBy('customer')"
+                                >
+                                    Customer
+                                    <ArrowUpIcon
+                                        v-if="
+                                            orderBy == 'customer' &&
+                                            orderByDirection == 'asc'
+                                        "
+                                        class="ml-2 w-3 h-3"
+                                    />
+                                    <ArrowDownIcon
+                                        v-else
+                                        class="ml-2 w-3 h-3"
+                                    />
+                                </div>
+                            </table-h>
                             <table-h>Status</table-h>
                             <table-h>Total</table-h>
                         </table-head>
@@ -95,7 +155,11 @@
 </template>
 
 <script>
-import { ExternalLinkIcon } from "@heroicons/vue/outline";
+import {
+    ExternalLinkIcon,
+    ArrowUpIcon,
+    ArrowDownIcon,
+} from "@heroicons/vue/outline";
 import OrdersLayout from "./OrdersLayout.vue";
 import ButtonLink from "@/Components/ButtonLink";
 import DetailsSection from "@/Components/DetailsSection";
@@ -112,6 +176,8 @@ import moment from "moment";
 export default {
     components: {
         ExternalLinkIcon,
+        ArrowDownIcon,
+        ArrowUpIcon,
         OrdersLayout,
         ButtonLink,
         DetailsSection,
@@ -135,6 +201,8 @@ export default {
     data() {
         return {
             search: this.filters.search || "",
+            orderBy: this.filters.orderBy || "",
+            orderByDirection: this.filters.orderByDirection || "",
         };
     },
     watch: {
@@ -144,11 +212,23 @@ export default {
     },
     methods: {
         formatDate: (value) => moment(value).format("MM/DD/YYYY"),
+        updateOrderBy(value) {
+            if (this.orderBy === value) {
+                this.orderByDirection =
+                    this.orderByDirection === "desc" ? "asc" : "desc";
+            } else {
+                this.orderBy = value;
+                this.orderByDirection = "desc";
+            }
+            this.updateSearch();
+        },
         updateSearch() {
             this.$inertia.get(
                 this.route("orders.index"),
                 {
                     search: this.search,
+                    orderBy: this.orderBy,
+                    orderByDirection: this.orderByDirection,
                 },
                 {
                     preserveState: true,

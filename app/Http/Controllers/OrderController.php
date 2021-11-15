@@ -20,9 +20,19 @@ class OrderController extends Controller
                 $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
                     $query->where('name', 'like', "%{$request->search}%");
                 });
-            })->orderBy('id', 'desc')->paginate(10);
-
-        return inertia('Orders/Index', ['orders' => $orders, 'filters' => $request->only(['search', 'orderBy'])]);
+            })
+            ->when($request->orderBy, function ($query) use ($request) {
+                if ($request->orderBy == 'customer') {
+                    $query->join('customers', 'customers.id', '=', 'orders.customer_id')
+                        ->orderBy('customers.name', $request->orderByDirection)->select('orders.*');
+                } else {
+                    $query->orderBy($request->orderBy, $request->orderByDirection);
+                }
+            }, function ($query) {
+                $query->orderBy('id', 'desc');
+            })
+            ->paginate(10);
+        return inertia('Orders/Index', ['orders' => $orders, 'filters' => $request->only(['search', 'orderBy', 'orderByDirection'])]);
     }
 
     /**

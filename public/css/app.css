@@ -1328,6 +1328,9 @@ select {
 .h-full {
 	height: 100%;
 }
+.h-3 {
+	height: 0.75rem;
+}
 .max-h-60 {
 	max-height: 15rem;
 }
@@ -1408,6 +1411,9 @@ select {
 }
 .w-1 {
 	width: 0.25rem;
+}
+.w-3 {
+	width: 0.75rem;
 }
 .min-w-0 {
 	min-width: 0px;
