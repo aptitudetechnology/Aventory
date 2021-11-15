@@ -13,10 +13,16 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = auth()->user()->orders()->paginate(2);
-        return inertia('Orders/Index', compact('orders'));
+        $orders = auth()->user()->currentTeam->orders()
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
+                    $query->where('name', 'like', "%{$request->search}%");
+                });
+            })->orderBy('id', 'desc')->paginate(10);
+
+        return inertia('Orders/Index', ['orders' => $orders, 'filters' => $request->only(['search', 'orderBy'])]);
     }
 
     /**

@@ -12,6 +12,21 @@ class Order extends Model
 
     protected $guarded = [];
 
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'date' => 'date:Y-m-d',
+        'quote_expires' => 'date:Y-m-d',
+        'customer_id' => 'integer',
+        'team_member_id' => 'integer',
+        'team_id' => 'integer',
+    ];
+
     public function team()
     {
         return $this->belongsTo(Team::class);
