@@ -1,11 +1,11 @@
 <template>
     <orders-layout>
-        <div class="flex justify-between items-center w-full pb-9 px-2 lg:px-6">
+        <div class="flex justify-between items-center w-full pb-9 px-2 lg:px-4">
             <heading-one>Orders</heading-one>
             <button-link :href="route('orders.create')">New Order</button-link>
         </div>
         <div class="grid gap-6 lg:gap-8">
-            <div class="grid gap-4 lg:gap-6 md:grid-cols-3 lg:px-4">
+            <div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900">
                 <completed-orders-card
                     :thirtyDaysCompletedOrders="23"
                     :thirtyDaysCompletedSales="23000"
@@ -14,7 +14,7 @@
                 <details-section>
                     <template #title>Pending Orders</template>
                     <div class="col-span-6">
-                        <p>23 Pending Orders</p>
+                        <p class="text-lg mb-2">23 Pending Orders</p>
                         <p>$25,000 in pending sales</p>
                     </div>
                 </details-section>
@@ -25,7 +25,7 @@
                         ><ExternalLinkIcon class="w-6 h-6 stroke-current"
                     /></template>
                     <div class="col-span-6">
-                        <p>130 Active quotes</p>
+                        <p class="text-lg mb-2">130 Active quotes</p>
                         <p>$130,000 in active quotes</p>
                     </div>
                 </details-section>
@@ -142,7 +142,9 @@
                                 <table-d>{{ order.id }}</table-d>
                                 <table-d>{{ formatDate(order.date) }}</table-d>
                                 <table-d>{{ order.customer.name }}</table-d>
-                                <table-d>{{ order.status }}</table-d>
+                                <table-d>{{
+                                    order.deliveryStatus?.name
+                                }}</table-d>
                                 <table-d>{{ order.grand_total }}</table-d>
                             </tr>
                         </tbody>

@@ -2,7 +2,9 @@
     <details-section>
         <template #title>Completed Orders, 30 Days</template>
         <div class="col-span-6">
-            <p>{{ thirtyDaysCompletedOrders }} Completed Orders</p>
+            <p class="text-lg mb-2">
+                {{ thirtyDaysCompletedOrders }} Completed Orders
+            </p>
             <p>${{ thirtyDaysCompletedSales }} in completed sales</p>
         </div>
     </details-section>

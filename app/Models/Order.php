@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $with = ['customer', 'teamMember'];
+    protected $with = ['customer', 'teamMember', 'deliveryStatus', 'paymentStatus'];
 
     protected $guarded = [];
 
@@ -45,5 +45,15 @@ class Order extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function paymentStatus()
+    {
+        return $this->belongsTo(PaymentStatus::class);
+    }
+
+    public function deliveryStatus()
+    {
+        return $this->belongsTo(DeliveryStatus::class);
     }
 }

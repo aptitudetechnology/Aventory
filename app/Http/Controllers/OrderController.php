@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderStoreRequest;
+use App\Models\Customer;
+use App\Models\DeliveryStatus;
 use App\Models\Order;
+use App\Models\PaymentStatus;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -23,8 +26,8 @@ class OrderController extends Controller
             })
             ->when($request->orderBy, function ($query) use ($request) {
                 if ($request->orderBy == 'customer') {
-                    $query->join('customers', 'customers.id', '=', 'orders.customer_id')
-                        ->orderBy('customers.name', $request->orderByDirection)->select('orders.*');
+                    $query->addSelect(['customer_name' => Customer::select('name')
+                        ->whereColumn('id', 'orders.customer_id')])->orderBy('customer_name', $request->orderByDirection);
                 } else {
                     $query->orderBy($request->orderBy, $request->orderByDirection);
                 }
@@ -55,6 +58,7 @@ class OrderController extends Controller
     public function store(OrderStoreRequest $request)
     {
         $order = auth()->user()->orders()->create($request->validated());
+
         return redirect()->route('orders.show', $order)->banner('Great work! Created order. Now add some products you sold.');
     }
 
@@ -68,7 +72,9 @@ class OrderController extends Controller
     {
         $customers = $this->getCustomers();
         $orderItems = $order->orderItems;
-        return inertia('Orders/Show', compact('order', 'customers', 'orderItems'));
+        $delivery_statuses = DeliveryStatus::all();
+        $payment_statuses = PaymentStatus::all();
+        return inertia('Orders/Show', compact('order', 'customers', 'orderItems', 'delivery_statuses', 'payment_statuses'));
     }
 
     /**

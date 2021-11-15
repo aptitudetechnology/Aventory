@@ -31,6 +31,30 @@
                             class="mt-2"
                         />
                     </div>
+                    <div class="col-span-1">
+                        <select-box
+                            labelValue="Delivery Status"
+                            :items="delivery_statuses"
+                            :selectedItem="deliveryStatus"
+                            v-model="deliveryStatus"
+                        />
+                        <jet-input-error
+                            :message="form.errors.delivery_status_id"
+                            class="mt-2"
+                        />
+                    </div>
+                    <div class="col-span-1">
+                        <select-box
+                            labelValue="Payment Status"
+                            :items="payment_statuses"
+                            :selectedItem="paymentStatus"
+                            v-model="paymentStatus"
+                        />
+                        <jet-input-error
+                            :message="form.errors.payment_status_id"
+                            class="mt-2"
+                        />
+                    </div>
                 </div>
             </div>
         </template>
@@ -71,14 +95,24 @@ export default {
     data() {
         return {
             customers: this.$page.props.customers,
+            delivery_statuses: this.$page.props.delivery_statuses,
+            payment_statuses: this.$page.props.payment_statuses,
             orderCustomer: this.$page.props.customers.find(
                 (customer) => customer.id == this.order.customer_id
+            ),
+            deliveryStatus: this.$page.props.delivery_statuses.find(
+                (status) => status.id == this.order.delivery_status_id
+            ),
+            paymentStatus: this.$page.props.payment_statuses.find(
+                (status) => status.id == this.order.payment_status_id
             ),
             form: this.$inertia.form({
                 _method: "PATCH",
                 date: this.order.date,
                 customer_id: this.order.customer_id,
                 team_member_id: this.order.team_member_id,
+                delivery_status_id: this.order.delivery_status_id,
+                payment_status_id: this.order.payment_status_id,
             }),
         };
     },
@@ -88,6 +122,20 @@ export default {
                 this.form.customer_id = this.orderCustomer.id;
             } else {
                 this.form.customer_id = null;
+            }
+        },
+        deliveryStatus() {
+            if (this.deliveryStatus) {
+                this.form.delivery_status_id = this.deliveryStatus.id;
+            } else {
+                this.form.delivery_status_id = null;
+            }
+        },
+        paymentStatus() {
+            if (this.paymentStatus) {
+                this.form.payment_status_id = this.paymentStatus.id;
+            } else {
+                this.form.payment_status_id = null;
             }
         },
     },
