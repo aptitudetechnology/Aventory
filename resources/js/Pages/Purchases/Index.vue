@@ -4,7 +4,7 @@
 
 <script>
 import PurchasesLayout from "./PurchasesLayout.vue";
-import ButtonLink from "@/Components/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink";
 export default {
     components: {
         PurchasesLayout,

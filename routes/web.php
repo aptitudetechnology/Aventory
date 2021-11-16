@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ApiBlocksController;
 use App\Http\Controllers\Api\ApiCategoriesController;
+use App\Http\Controllers\Api\ApiContactsController;
 use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
@@ -53,6 +54,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('customer-price-levels', CustomerPriceLevelController::class);
 
     Route::resource('customers', CustomerController::class);
+    Route::get('customers/{customer}/contacts', [ApiContactsController::class, 'index'])->name('customers.contacts.index');
 
     Route::resource('contacts', ContactController::class)->only(['store', 'update', 'destroy']);
 

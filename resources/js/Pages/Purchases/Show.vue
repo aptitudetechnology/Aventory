@@ -15,7 +15,7 @@
 
 <script>
 import PurchasesLayout from "./PurchasesLayout.vue";
-import ButtonLink from "@/Components/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink";
 
 import UpdatePurchaseForm from "./Components/UpdatePurchaseForm";
 import DeletePurchaseForm from "./Components/DeletePurchaseForm.vue";

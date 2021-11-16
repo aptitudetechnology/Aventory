@@ -46,7 +46,8 @@ class OrderController extends Controller
     public function create()
     {
         $customers = $this->getCustomers();
-        return inertia('Orders/Create', compact('customers'));
+        $teamMembers = auth()->user()->currentTeam->allUsers();
+        return inertia('Orders/Create', compact('customers', 'teamMembers'));
     }
 
     /**
