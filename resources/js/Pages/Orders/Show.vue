@@ -12,7 +12,7 @@
 
 <script>
 import OrdersLayout from "./OrdersLayout.vue";
-import ButtonLink from "@/Components/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink";
 
 import UpdateOrderForm from "./Components/UpdateOrderForm";
 import DeleteOrderForm from "./Components/DeleteOrderForm.vue";

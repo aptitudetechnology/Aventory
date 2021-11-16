@@ -100,7 +100,7 @@ import TableHead from "@/Components/Tables/TableHead.vue";
 import TableH from "@/Components/Tables/TableH.vue";
 import TableD from "@/Components/Tables/TableD.vue";
 import Pagination from "@/Components/Pagination.vue";
-import SearchInput from "@/Components/SearchInput.vue";
+import SearchInput from "@/Components/Forms/SearchInput.vue";
 import _debounce from "lodash/debounce";
 import moment from "moment";
 export default {

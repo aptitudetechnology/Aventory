@@ -66,7 +66,7 @@ import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 
-import SelectBox from "@Components/SelectBox.vue";
+import SelectBox from "@/Components/Forms/SelectBox.vue";
 
 export default {
     components: {

@@ -42,9 +42,9 @@ import {
     ArrowDownIcon,
 } from "@heroicons/vue/outline";
 import OrdersLayout from "./OrdersLayout.vue";
-import ButtonLink from "@/Components/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink";
 import DetailsSection from "@/Components/DetailsSection";
-import HeadingOne from "@Components/HeadingOne.vue";
+import HeadingOne from "@Components/Headings/HeadingOne.vue";
 import CompletedOrdersCard from "./Components/CompletedOrdersCard.vue";
 import ViewOrders from "./Components/ViewOrders.vue";
 export default {

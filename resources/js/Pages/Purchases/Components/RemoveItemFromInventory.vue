@@ -55,7 +55,7 @@ import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
-import RemoveButton from "@Components/RemoveButton";
+import RemoveButton from "@Components/Buttons/RemoveButton";
 
 export default {
     components: {

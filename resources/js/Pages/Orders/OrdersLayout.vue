@@ -21,7 +21,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 
-import BackLink from "@/Components/BackLink";
+import BackLink from "@/Components/Links/BackLink";
 import MainArea from "@Components/MainArea.vue";
 
 import OrdersAside from "./Components/OrdersAside";

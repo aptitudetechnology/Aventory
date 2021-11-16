@@ -128,7 +128,7 @@
     </nav>
 </template>
 <script>
-import NavLink from "./NavLink.vue";
+import NavLink from "./Links/NavLink.vue";
 import SidebarDropdown from "./SidebarDropdown.vue";
 
 export default {

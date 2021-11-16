@@ -1,6 +1,6 @@
 <template>
     <orders-layout>
-        <create-order-form />
+        <create-order-form class="max-w-screen-lg mx-auto" />
     </orders-layout>
 </template>
 

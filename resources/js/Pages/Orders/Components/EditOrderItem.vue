@@ -208,9 +208,9 @@ import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
-import TextAreaInput from "@Components/TextAreaInput.vue";
-import SelectBox from "@Components/SelectBox.vue";
-import EditButton from "@Components/EditButton.vue";
+import TextAreaInput from "@/Components/Forms/TextAreaInput.vue";
+import SelectBox from "@/Components/Forms/SelectBox.vue";
+import EditButton from "@/Components/Buttons/EditButton.vue";
 
 import {
     Switch,

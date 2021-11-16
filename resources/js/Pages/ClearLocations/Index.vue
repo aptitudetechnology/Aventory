@@ -79,7 +79,7 @@ import AppLayout from "@/Layouts/AppLayout";
 import MainArea from "@Components/MainArea.vue";
 import InventoryTabs from "@Components/InventoryTabs.vue";
 import Card from "@Components/Card.vue";
-import SelectBox from "@Components/SelectBox.vue";
+import SelectBox from "@/Components/Forms/SelectBox.vue";
 export default {
     components: {
         SectionTitle,

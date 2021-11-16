@@ -58,10 +58,10 @@
     </page-aside>
 </template>
 <script>
-import ButtonLink from "@Components/ButtonLink";
-import SearchInput from "@Components/SearchInput.vue";
+import ButtonLink from "@Components/Links/ButtonLink";
+import SearchInput from "@Components/Forms/SearchInput.vue";
 import PageAside from "@Components/PageAside.vue";
-import AsideLink from "@Components/AsideLink.vue";
+import AsideLink from "@/Components/Links/AsideLink.vue";
 import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 export default {
     components: {

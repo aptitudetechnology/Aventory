@@ -1,6 +1,6 @@
 <template>
     <div>
-        <jet-button @click="creatingPurchaseItem = true"
+        <jet-button type="button" @click="creatingPurchaseItem = true"
             >New Purchase Item</jet-button
         >
         <jet-dialog-modal
@@ -223,8 +223,8 @@ import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
-import TextAreaInput from "@Components/TextAreaInput.vue";
-import SelectBox from "@Components/SelectBox.vue";
+import TextAreaInput from "@/Components/Forms/TextAreaInput.vue";
+import SelectBox from "@/Components/Forms/SelectBox.vue";
 import {
     Switch,
     SwitchDescription,
