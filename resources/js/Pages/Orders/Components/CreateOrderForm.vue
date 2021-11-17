@@ -26,10 +26,17 @@
                         "
                     >
                         <div>
-                            <select-box
+                            <modal
+                                :show="creatingCustomer"
+                                @close="creatingCustomer = false"
+                            >
+                                <create-customer-form />
+                            </modal>
+                            <search-select-box
                                 labelValue="Customer"
                                 :items="customers"
-                                v-model="orderCustomer"
+                                @update="updateCustomer"
+                                @add="addCustomer"
                             />
                             <jet-input-error
                                 :message="order.errors.customer_id"
@@ -143,7 +150,10 @@ import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import TextAreaInput from "@Components/Forms/TextAreaInput";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
+import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 import CreateOrderItem from "./CreateOrderItem.vue";
+import Modal from "@/Components/Modal.vue";
+import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 export default {
     components: {
         JetSectionTitle,
@@ -154,12 +164,16 @@ export default {
         JetInputError,
         JetLabel,
         SelectBox,
+        SearchSelectBox,
         TextAreaInput,
         CreateOrderItem,
+        Modal,
+        CreateCustomerForm,
     },
 
     data() {
         return {
+            creatingCustomer: false,
             customers: this.$page.props.customers,
             customerContacts: [],
             teamMembers: this.$page.props.teamMembers,
@@ -181,11 +195,11 @@ export default {
         };
     },
     watch: {
-        orderCustomer() {
-            if (this.orderCustomer) {
-                this.order.customer_id = this.orderCustomer.id;
-                this.getCustomerContacts(this.orderCustomer.id);
-                this.order.is_taxable = this.orderCustomer.is_taxable;
+        orderCustomer(orderCustomer) {
+            if (orderCustomer) {
+                this.order.customer_id = orderCustomer.id;
+                this.customerContacts = orderCustomer.contacts;
+                this.order.is_taxable = orderCustomer.is_taxable;
             } else {
                 this.order.customer_id = null;
                 this.customer_contact_id = null;
@@ -214,12 +228,13 @@ export default {
                 preserveScroll: true,
             });
         },
-        getCustomerContacts(customerId) {
-            axios
-                .get(route("customers.contacts.index", customerId))
-                .then((response) => {
-                    this.customerContacts = response.data;
-                });
+        updateCustomer(customerId) {
+            this.orderCustomer = this.customers.find(
+                (customer) => customer.id === customerId
+            );
+        },
+        addCustomer(customerName) {
+            this.creatingCustomer = true;
         },
     },
 };
