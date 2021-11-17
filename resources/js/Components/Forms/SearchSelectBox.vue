@@ -191,6 +191,7 @@ export default {
         addItem() {
             if (this.search.length) {
                 this.$emit("add", this.search);
+                this.isOpen = false;
             }
         },
         clearSearch() {
