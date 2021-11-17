@@ -31,7 +31,7 @@
                     class="block truncate text-gray-900 max-w-full"
                     >{{ selected[nameValue] }}</span
                 >
-                <span v-else class="block truncate">Select</span>
+                <span v-else class="text-gray-600 block truncate">Select</span>
                 <span
                     class="
                         absolute
