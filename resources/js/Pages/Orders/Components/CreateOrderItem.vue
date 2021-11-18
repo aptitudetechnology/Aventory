@@ -4,108 +4,118 @@
             >New Order Item</jet-button
         >
         <jet-dialog-modal
+            maxWidth="4xl"
             :show="creatingOrderItem"
             @close="creatingOrderItem = false"
         >
             <template #title>Add an order item.</template>
 
             <template #content>
-                <form
-                    @submit.prevent="createOrderItem"
-                    @keydown.enter="createOrderItem"
-                >
-                    <div class="col-span-6 grid gap-4">
-                        <div class="grid gap-4 sm:grid-cols-2">
-                            <div class="sm:col-span-2 min-w-0">
-                                <select-box
-                                    labelValue="Product"
-                                    :items="products"
-                                    :selectedItem="selectedProduct"
-                                    v-model="selectedProduct"
-                                />
-                                <jet-input-error
-                                    v-if="!form.product_id"
-                                    :message="form.errors.product_id"
-                                    class="mt-2"
-                                />
-                            </div>
-                            <div class="sm:col-span-1">
-                                <select-box
-                                    labelValue="Size"
-                                    :items="sizes"
-                                    :selectedItem="selectedSize"
-                                    v-model="selectedSize"
-                                />
-                                <jet-input-error
-                                    v-if="!form.size_id"
-                                    :message="form.errors.size_id"
-                                    class="mt-2"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
-                            <div class="sm:col-span-1">
-                                <jet-label
-                                    for="quantity_ordered"
-                                    value="Quantity Ordered"
-                                />
-                                <jet-input
-                                    id="quantity_ordered"
-                                    type="number"
-                                    step="1"
-                                    class="mt-1 block w-full"
-                                    v-model="form.quantity_ordered"
-                                    required
-                                />
-                                <jet-input-error
-                                    v-if="!form.quantity_ordered"
-                                    :message="form.errors.quantity_ordered"
-                                    class="mt-2"
-                                />
-                            </div>
-                            <div class="sm:col-span-1">
-                                <jet-label
-                                    for="quantity_confirmed"
-                                    value="Quantity Confirmed"
-                                />
-                                <jet-input
-                                    id="quantity_confirmed"
-                                    type="number"
-                                    step="1"
-                                    class="mt-1 block w-full"
-                                    v-model="form.quantity_confirmed"
-                                    required
-                                />
-                                <jet-input-error
-                                    v-if="!form.quantity_confirmed"
-                                    :message="form.errors.quantity_confirmed"
-                                    class="mt-2"
-                                />
+                <div class="grid grid-cols-6 gap-4">
+                    <form
+                        @submit.prevent="createOrderItem"
+                        @keydown.enter="createOrderItem"
+                        class="col-span-4"
+                    >
+                        <div class="grid gap-4">
+                            <div class="grid gap-4 sm:grid-cols-2">
+                                <div class="sm:col-span-2 min-w-0">
+                                    <select-box
+                                        labelValue="Product"
+                                        :items="products"
+                                        :selectedItem="selectedProduct"
+                                        v-model="selectedProduct"
+                                    />
+                                    <jet-input-error
+                                        v-if="!form.product_id"
+                                        :message="form.errors.product_id"
+                                        class="mt-2"
+                                    />
+                                </div>
+                                <div class="sm:col-span-1">
+                                    <select-box
+                                        labelValue="Size"
+                                        :items="sizes"
+                                        :selectedItem="selectedSize"
+                                        v-model="selectedSize"
+                                    />
+                                    <jet-input-error
+                                        v-if="!form.size_id"
+                                        :message="form.errors.size_id"
+                                        class="mt-2"
+                                    />
+                                </div>
                             </div>
 
-                            <div class="sm:col-span-1">
-                                <jet-label
-                                    for="unit_price"
-                                    value="Unit Price"
-                                />
-                                <jet-input
-                                    id="unit_price"
-                                    type="number"
-                                    step="0.01"
-                                    class="mt-1 block w-full"
-                                    v-model="form.unit_price"
-                                    required
-                                />
-                                <jet-input-error
-                                    v-if="!form.unit_price"
-                                    :message="form.errors.unit_price"
-                                    class="mt-2"
-                                />
+                            <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
+                                <div class="sm:col-span-1">
+                                    <jet-label
+                                        for="quantity_ordered"
+                                        value="Quantity Ordered"
+                                    />
+                                    <jet-input
+                                        id="quantity_ordered"
+                                        type="number"
+                                        step="1"
+                                        class="mt-1 block w-full"
+                                        v-model="form.quantity_ordered"
+                                        required
+                                    />
+                                    <jet-input-error
+                                        v-if="!form.quantity_ordered"
+                                        :message="form.errors.quantity_ordered"
+                                        class="mt-2"
+                                    />
+                                </div>
+                                <div class="sm:col-span-1">
+                                    <jet-label
+                                        for="quantity_confirmed"
+                                        value="Quantity Confirmed"
+                                    />
+                                    <jet-input
+                                        id="quantity_confirmed"
+                                        type="number"
+                                        step="1"
+                                        class="mt-1 block w-full"
+                                        v-model="form.quantity_confirmed"
+                                        required
+                                    />
+                                    <jet-input-error
+                                        v-if="!form.quantity_confirmed"
+                                        :message="
+                                            form.errors.quantity_confirmed
+                                        "
+                                        class="mt-2"
+                                    />
+                                </div>
+
+                                <div class="sm:col-span-1">
+                                    <jet-label
+                                        for="unit_price"
+                                        value="Unit Price"
+                                    />
+                                    <jet-input
+                                        id="unit_price"
+                                        type="number"
+                                        step="0.01"
+                                        class="mt-1 block w-full"
+                                        v-model="form.unit_price"
+                                        required
+                                    />
+                                    <jet-input-error
+                                        v-if="!form.unit_price"
+                                        :message="form.errors.unit_price"
+                                        class="mt-2"
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                    <product-hold-view
+                        class="col-span-2"
+                        :product="selectedProduct"
+                    />
+                </div>
             </template>
 
             <template #footer>
@@ -150,6 +160,7 @@ import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 import TextAreaInput from "@/Components/Forms/TextAreaInput.vue";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
+import ProductHoldView from "./ProductHoldView.vue";
 import {
     Switch,
     SwitchDescription,
@@ -172,6 +183,7 @@ export default {
         JetSecondaryButton,
         TextAreaInput,
         SelectBox,
+        ProductHoldView,
     },
     props: { order: Object },
 

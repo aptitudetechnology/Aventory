@@ -2,8 +2,11 @@
     <orders-layout>
         <div>
             <div class="space-y-6">
-                <update-order-form :order="order" />
-                <order-items :order="order" :orderItems="orderItems" />
+                <update-order-form
+                    :order="order"
+                    :customers="customers"
+                    :priceLevels="priceLevels"
+                />
                 <delete-order-form :order="order" />
             </div>
         </div>
@@ -28,6 +31,8 @@ export default {
     props: {
         order: Object,
         orderItems: Array,
+        priceLevels: Array,
+        customers: Array,
     },
 };
 </script>

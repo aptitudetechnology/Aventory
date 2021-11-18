@@ -147,7 +147,7 @@ import JetLabel from "@/Jetstream/Label";
 import TextAreaInput from "@Components/Forms/TextAreaInput";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
 import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
-import Modal from "@/Components/Modal.vue";
+import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 import { Inertia } from "@inertiajs/inertia";
 export default {

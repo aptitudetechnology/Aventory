@@ -1,69 +1,142 @@
 <template>
     <jet-form-section @submitted="updateOrder">
-        <template #title>Update Order</template>
+        <template #title>Order #{{ order.id }}</template>
+        <template #aside
+            ><h3 class="uppercase text-gray-600">
+                Grand Total: ${{ toCurrency(order.grand_total) }}
+            </h3></template
+        >
 
         <template #form>
-            <div class="col-span-6">
-                <div class="grid gap-4 sm:grid-cols-2">
-                    <div class="col-span-1">
-                        <jet-label for="date" value="Order Date" />
-                        <jet-input
-                            id="date"
-                            type="date"
-                            class="mt-1 block w-full"
-                            v-model="form.date"
-                            required
-                        />
-                        <jet-input-error
-                            :message="form.errors.date"
-                            class="mt-2"
-                        />
+            <div class="col-span-6 grid gap-6">
+                <div
+                    class="
+                        grid
+                        sm:grid-cols-2
+                        lg:grid-cols-5
+                        gap-4
+                        xl:gap-x-20
+                        lg:gap-y-8
+                    "
+                >
+                    <div
+                        class="
+                            col-span-1
+                            lg:col-span-3
+                            grid
+                            gap-4
+                            lg:grid-cols-2
+                        "
+                    >
+                        <div>
+                            <modal
+                                :show="creatingCustomer"
+                                @close="creatingCustomer = false"
+                            >
+                                <create-customer-form
+                                    @created="createdCustomer"
+                                    :redirect="false"
+                                    :customerName="customerName"
+                                />
+                            </modal>
+                            <search-select-box
+                                labelValue="Customer"
+                                :items="customers"
+                                :selectedItem="orderCustomer"
+                                @update="updateCustomer"
+                                @add="addCustomer"
+                            />
+                            <jet-input-error
+                                :message="updatedOrder.errors.customer_id"
+                                class="mt-2"
+                            />
+                        </div>
+                        <div v-if="orderCustomer && customerContacts.length">
+                            <select-box
+                                labelValue="Customer Contact"
+                                :items="customerContacts"
+                                v-model="contact"
+                                :selectedItem="contact"
+                            />
+                            <jet-input-error
+                                :message="updatedOrder.errors.contact_id"
+                                class="mt-2"
+                            />
+                        </div>
+                        <div class="">
+                            <select-box
+                                labelValue="Sales Person"
+                                :items="teamMembers"
+                                :selectedItem="teamMember"
+                                v-model="teamMember"
+                            />
+                            <jet-input-error
+                                :message="updatedOrder.errors.team_member_id"
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
-                    <div class="col-span-1">
-                        <select-box
-                            labelValue="Customer"
-                            :items="customers"
-                            :selectedItem="orderCustomer"
-                            v-model="orderCustomer"
-                        />
-                        <jet-input-error
-                            :message="form.errors.customer_id"
-                            class="mt-2"
-                        />
+                    <div
+                        class="
+                            col-span-1
+                            lg:col-span-2
+                            grid
+                            gap-4
+                            lg:justify-items-end
+                        "
+                    >
+                        <div>
+                            <jet-label for="date" value="Order Date" />
+                            <jet-input
+                                id="date"
+                                type="date"
+                                class="mt-1 block w-full"
+                                v-model="updatedOrder.date"
+                                required
+                            />
+                            <jet-input-error
+                                :message="updatedOrder.errors.date"
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
-                    <div class="col-span-1">
-                        <select-box
-                            labelValue="Delivery Status"
-                            :items="delivery_statuses"
-                            :selectedItem="deliveryStatus"
-                            v-model="deliveryStatus"
-                        />
-                        <jet-input-error
-                            :message="form.errors.delivery_status_id"
-                            class="mt-2"
-                        />
-                    </div>
-                    <div class="col-span-1">
-                        <select-box
-                            labelValue="Payment Status"
-                            :items="payment_statuses"
-                            :selectedItem="paymentStatus"
-                            v-model="paymentStatus"
-                        />
-                        <jet-input-error
-                            :message="form.errors.payment_status_id"
-                            class="mt-2"
-                        />
+                    <div class="sm:col-span-2 lg:col-span-5 sm:flex">
+                        <div class="sm:w-1/4 mb-6 sm:mb-0">
+                            <jet-label class="flex items-center text-lg px-2">
+                                <jet-checkbox
+                                    class="mr-2 mb-1"
+                                    :checked="updatedOrder.is_taxable"
+                                    v-model="updatedOrder.is_taxable"
+                                />Taxable</jet-label
+                            >
+                        </div>
+                        <div class="sm:w-3/4 sm:ml-4">
+                            <jet-label for="notes" value="Order Notes" />
+                            <text-area-input
+                                id="notes"
+                                type="notes"
+                                class="mt-1 block w-full"
+                                v-model="updatedOrder.notes"
+                            />
+                            <jet-input-error
+                                :message="updatedOrder.errors.notes"
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
                 </div>
+                <order-items :order="order"></order-items>
             </div>
         </template>
 
         <template #actions>
             <jet-button
                 type="submit"
-                :class="{ 'opacity-25': form.processing || !form.isDirty }"
-                :disabled="form.processing || !form.isDirty"
+                :class="{
+                    'opacity-25':
+                        updatedOrder.processing || !updatedOrder.isDirty,
+                }"
+                :disabled="updatedOrder.processing || !updatedOrder.isDirty"
                 >Save Order</jet-button
             >
         </template>
@@ -71,81 +144,123 @@
 </template>
 
 <script>
+import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 import JetButton from "@/Jetstream/Button";
 import JetFormSection from "@/Jetstream/FormSection";
 import JetInput from "@/Jetstream/Input";
+import JetCheckbox from "@/Jetstream/Checkbox";
 import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
-
+import TextAreaInput from "@Components/Forms/TextAreaInput";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
-
+import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
+import Modal from "@/Jetstream/Modal.vue";
+import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
+import OrderItems from "@/Pages/Orders/Components/OrderItems.vue";
+import { Inertia } from "@inertiajs/inertia";
 export default {
     components: {
+        JetSectionTitle,
         JetButton,
         JetFormSection,
         JetInput,
+        JetCheckbox,
         JetInputError,
         JetLabel,
         SelectBox,
+        SearchSelectBox,
+        TextAreaInput,
+        Modal,
+        CreateCustomerForm,
+        OrderItems,
     },
     props: {
-        order: Object,
+        order: {
+            type: Object,
+            required: true,
+        },
+        customers: {
+            type: Array,
+            required: true,
+        },
+        priceLevels: {
+            type: Array,
+            required: true,
+        },
     },
 
     data() {
         return {
-            customers: this.$page.props.customers,
-            delivery_statuses: this.$page.props.delivery_statuses,
-            payment_statuses: this.$page.props.payment_statuses,
-            orderCustomer: this.$page.props.customers.find(
-                (customer) => customer.id == this.order.customer_id
+            creatingCustomer: false,
+            customerName: "",
+            customerContacts: [],
+            teamMembers: this.$page.props.teamMembers,
+            orderCustomer: this.customers.find(
+                (customer) => customer.id === this.order.customer_id
             ),
-            deliveryStatus: this.$page.props.delivery_statuses.find(
-                (status) => status.id == this.order.delivery_status_id
+            contact: this.order.contact,
+            teamMember: this.$page.props.teamMembers.find(
+                (member) => member.id === this.$page.props.user.id
             ),
-            paymentStatus: this.$page.props.payment_statuses.find(
-                (status) => status.id == this.order.payment_status_id
-            ),
-            form: this.$inertia.form({
-                _method: "PATCH",
-                date: this.order.date,
-                customer_id: this.order.customer_id,
-                team_member_id: this.order.team_member_id,
-                delivery_status_id: this.order.delivery_status_id,
-                payment_status_id: this.order.payment_status_id,
-            }),
+            updatedOrder: this.$inertia.form(this.order),
         };
     },
     watch: {
-        orderCustomer() {
-            if (this.orderCustomer) {
-                this.form.customer_id = this.orderCustomer.id;
+        orderCustomer(orderCustomer) {
+            if (orderCustomer) {
+                this.updatedOrder.customer_id = orderCustomer.id;
+                this.customerContacts = orderCustomer.contacts
+                    ? orderCustomer.contacts
+                    : [];
+                this.updatedOrder.is_taxable = orderCustomer.is_taxable;
             } else {
-                this.form.customer_id = null;
+                this.updatedOrder.customer_id = null;
+                this.customer_contact_id = null;
             }
         },
-        deliveryStatus() {
-            if (this.deliveryStatus) {
-                this.form.delivery_status_id = this.deliveryStatus.id;
+        contact(value) {
+            if (value) {
+                this.updatedOrder.contact_id = value.id;
             } else {
-                this.form.delivery_status_id = null;
+                this.updatedOrder.contact_id = null;
             }
         },
-        paymentStatus() {
-            if (this.paymentStatus) {
-                this.form.payment_status_id = this.paymentStatus.id;
+        teamMember(value) {
+            if (value) {
+                this.updatedOrder.team_member_id = value.id;
             } else {
-                this.form.payment_status_id = null;
+                this.updatedOrder.team_member_id = null;
             }
         },
     },
 
     methods: {
+        toCurrency(value) {
+            return value.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+            });
+        },
         updateOrder() {
-            this.form.patch(route("orders.update", this.order), {
+            this.updatedOrder.patch(route("orders.update", this.order.id), {
                 errorBag: "updateOrder",
                 preserveScroll: true,
             });
+        },
+        updateCustomer(customerId) {
+            this.orderCustomer = this.customers.find(
+                (customer) => customer.id == customerId
+            );
+        },
+        addCustomer(customerName) {
+            this.customerName = customerName;
+            this.creatingCustomer = true;
+        },
+        createdCustomer(newCustomer) {
+            Inertia.reload();
+            this.customers.push(newCustomer);
+            this.updateCustomer(newCustomer.id);
+            this.creatingCustomer = false;
         },
     },
 };

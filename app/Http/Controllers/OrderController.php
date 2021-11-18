@@ -77,7 +77,21 @@ class OrderController extends Controller
         $priceLevels = auth()->user()->currentTeam->priceLevels;
         $delivery_statuses = DeliveryStatus::all();
         $payment_statuses = PaymentStatus::all();
-        return inertia('Orders/Show', compact('order', 'customers', 'priceLevels', 'teamMembers', 'orderItems', 'delivery_statuses', 'payment_statuses'));
+        $products = auth()->user()->currentTeam->products;
+        $sizes = auth()->user()->currentTeam->sizes;
+        return inertia('Orders/Show', compact(
+            [
+                'order',
+                'customers',
+                'priceLevels',
+                'teamMembers',
+                'orderItems',
+                'delivery_statuses',
+                'payment_statuses',
+                'products',
+                'sizes'
+            ]
+        ));
     }
 
     /**
