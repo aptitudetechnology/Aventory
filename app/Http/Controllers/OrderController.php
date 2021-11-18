@@ -34,8 +34,11 @@ class OrderController extends Controller
             }, function ($query) {
                 $query->orderBy('id', 'desc');
             })
-            ->paginate(10);
-        return inertia('Orders/Index', ['orders' => $orders, 'filters' => $request->only(['search', 'orderBy', 'orderByDirection'])]);
+            ->paginate(10)->withQueryString();
+
+        $filters = $request->only(['search', 'orderBy', 'orderByDirection']);
+
+        return inertia('Orders/Index', compact('orders', 'filters'));
     }
 
     /**

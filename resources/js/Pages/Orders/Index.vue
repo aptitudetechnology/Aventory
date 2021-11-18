@@ -19,16 +19,7 @@
                     </div>
                 </details-section>
 
-                <details-section>
-                    <template #title>Quotes</template>
-                    <template #aside
-                        ><ExternalLinkIcon class="w-6 h-6 stroke-current"
-                    /></template>
-                    <div class="col-span-6">
-                        <p class="text-lg mb-2">130 Active quotes</p>
-                        <p>$130,000 in active quotes</p>
-                    </div>
-                </details-section>
+                <active-quotes-card />
             </div>
             <view-orders :orders="orders" :filters="filters" />
         </div>
@@ -46,6 +37,7 @@ import ButtonLink from "@/Components/Links/ButtonLink";
 import DetailsSection from "@/Components/DetailsSection";
 import HeadingOne from "@Components/Headings/HeadingOne.vue";
 import CompletedOrdersCard from "./Components/CompletedOrdersCard.vue";
+import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";
 import ViewOrders from "./Components/ViewOrders.vue";
 export default {
     components: {
@@ -57,6 +49,7 @@ export default {
         DetailsSection,
         HeadingOne,
         CompletedOrdersCard,
+        ActiveQuotesCard,
         ViewOrders,
     },
     props: {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiActiveQuotesController;
 use App\Http\Controllers\Api\ApiBlocksController;
 use App\Http\Controllers\Api\ApiCategoriesController;
 use App\Http\Controllers\Api\ApiContactsController;
@@ -71,7 +72,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/products/archived/{productId}', [ArchivedProductsController::class, 'store'])->name('archived-products.restore');
 
     Route::resource('products', App\Http\Controllers\ProductController::class)->except(['edit']);
-
+    Route::get('api/products/{product}/orders', [ApiProductsOrdersController::class, 'index'])->name('api.products.orders.index');
     Route::resource('features', App\Http\Controllers\FeatureController::class);
 
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
@@ -111,4 +112,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 
     Route::resource('orders', OrderController::class);
+
+    Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
 });

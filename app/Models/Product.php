@@ -61,10 +61,9 @@ class Product extends Model
 
     public function getBasePricesAttribute()
     {
-        if($this->category){
+        if ($this->category) {
             return $this->prices->union($this->category->prices);
-        }
-        else{
+        } else {
             return $this->prices;
         }
     }
@@ -74,9 +73,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Size::class, 'prices');
     }
-    
+
     public function inventory()
-    { 
+    {
         return $this->hasMany(Inventory::class);
     }
 
@@ -87,16 +86,28 @@ class Product extends Model
 
     public function inventorySizes()
     {
-       return $this->belongsToMany(Size::class, 'inventories')->distinct()
-       ->withCount([
-           'inventories as total_inventory' => function($query)  {
-            $query->where('product_id', $this->id)
-            ->select(DB::raw('sum(quantity)'));}, 
-            
-            'inventories as available_count' => function($query) {
-            $query->where('product_id', $this->id)
-            ->where('ready_date', '<=', now())
-            ->select(DB::raw('sum(quantity)'));
-        }]);
+        return $this->belongsToMany(Size::class, 'inventories')->distinct()
+            ->withCount([
+                'inventories as total_inventory' => function ($query) {
+                    $query->where('product_id', $this->id)
+                        ->select(DB::raw('sum(quantity)'));
+                },
+
+                'inventories as available_count' => function ($query) {
+                    $query->where('product_id', $this->id)
+                        ->where('ready_date', '<=', now())
+                        ->select(DB::raw('sum(quantity)'));
+                }
+            ]);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function quotes()
+    {
+        return $this->hasMany(Quote::class);
     }
 }

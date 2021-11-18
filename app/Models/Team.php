@@ -110,11 +110,16 @@ class Team extends JetstreamTeam
 
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class)->where('is_quote', false);
+        return $this->hasMany(Order::class);
     }
 
     public function quotes(): HasMany
     {
-        return $this->hasMany(Order::class, 'order_id', 'id')->where('is_quote', true);
+        return $this->hasMany(Quote::class);
+    }
+
+    public function activeQuotes(): HasMany
+    {
+        return $this->quotes()->where('quote_expires', '>=', now());
     }
 }
