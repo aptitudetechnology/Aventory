@@ -432,13 +432,25 @@ export default {
         SelectBox,
     },
 
+    props: {
+        customerName: {
+            type: String,
+            default: "",
+        },
+        redirect: {
+            type: Boolean,
+            default: true,
+        },
+    },
+
     data() {
         return {
             price_level: null,
             priceLevels: this.$page.props.priceLevels,
             form: this.$inertia.form({
                 _method: "POST",
-                name: "",
+                redirect: this.redirect,
+                name: this.customerName,
                 address: "",
                 city: "",
                 state: "",
@@ -468,10 +480,18 @@ export default {
 
     methods: {
         createCustomer() {
-            this.form.post(route("customers.store"), {
-                errorBag: "createCustomer",
-                preserveScroll: true,
-            });
+            if (this.redirect) {
+                this.form.post(route("customers.store"), {
+                    errorBag: "createCustomer",
+                    preserveScroll: true,
+                });
+            } else {
+                axios
+                    .post(route("customers.store"), this.form)
+                    .then((response) => {
+                        this.$emit("created", response.data);
+                    });
+            }
         },
     },
 };

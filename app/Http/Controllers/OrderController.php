@@ -47,8 +47,7 @@ class OrderController extends Controller
     {
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
-        $priceLevels = auth()->user()->currentTeam->priceLevels;
-        return inertia('Orders/Create', compact('customers', 'teamMembers', 'priceLevels'));
+        return inertia('Orders/Create', compact('customers', 'teamMembers'));
     }
 
     /**
@@ -74,9 +73,11 @@ class OrderController extends Controller
     {
         $customers = $this->getCustomers();
         $orderItems = $order->orderItems;
+        $teamMembers = auth()->user()->currentTeam->allUsers();
+        $priceLevels = auth()->user()->currentTeam->priceLevels;
         $delivery_statuses = DeliveryStatus::all();
         $payment_statuses = PaymentStatus::all();
-        return inertia('Orders/Show', compact('order', 'customers', 'orderItems', 'delivery_statuses', 'payment_statuses'));
+        return inertia('Orders/Show', compact('order', 'customers', 'priceLevels', 'teamMembers', 'orderItems', 'delivery_statuses', 'payment_statuses'));
     }
 
     /**

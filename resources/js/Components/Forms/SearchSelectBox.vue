@@ -166,7 +166,7 @@ export default {
     },
     data: function () {
         return {
-            search: "",
+            search: this.selectedItem ? this.selectedItem[this.nameValue] : "",
             searchItems: this.items,
             selected: this.selectedItem,
             isOpen: false,
@@ -206,6 +206,12 @@ export default {
         },
     },
     watch: {
+        selectedItem: function (newValue) {
+            this.selected = newValue;
+        },
+        items: function (newValue) {
+            this.searchItems = newValue;
+        },
         isOpen(isOpen) {
             if (!isOpen) {
                 if (this.selected) {

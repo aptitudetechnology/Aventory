@@ -1,6 +1,9 @@
 <template>
     <orders-layout>
-        <create-order-form class="max-w-screen-lg mx-auto" />
+        <create-order-form
+            :customers="customers"
+            class="max-w-screen-lg mx-auto"
+        />
     </orders-layout>
 </template>
 
@@ -13,5 +16,6 @@ export default {
         OrdersLayout,
         CreateOrderForm,
     },
+    props: ["customers"],
 };
 </script>

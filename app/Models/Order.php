@@ -25,6 +25,10 @@ class Order extends Model
         'customer_id' => 'integer',
         'team_member_id' => 'integer',
         'team_id' => 'integer',
+        'delivery_status_id' => 'integer',
+        'payment_status_id' => 'integer',
+        'quote_id' => 'integer',
+        'is_taxable' => 'boolean',
     ];
 
     public function team()

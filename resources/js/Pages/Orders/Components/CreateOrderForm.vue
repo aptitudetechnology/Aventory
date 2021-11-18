@@ -30,11 +30,16 @@
                                 :show="creatingCustomer"
                                 @close="creatingCustomer = false"
                             >
-                                <create-customer-form />
+                                <create-customer-form
+                                    @created="createdCustomer"
+                                    :redirect="false"
+                                    :customerName="customerName"
+                                />
                             </modal>
                             <search-select-box
                                 labelValue="Customer"
                                 :items="customers"
+                                :selectedItem="orderCustomer"
                                 @update="updateCustomer"
                                 @add="addCustomer"
                             />
@@ -74,7 +79,7 @@
                             lg:col-span-2
                             grid
                             gap-4
-                            justify-items-end
+                            lg:justify-items-end
                         "
                     >
                         <div>
@@ -117,15 +122,6 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <jet-section-title :showTitleBorder="false">
-                        <template #title>Products and Services</template>
-                    </jet-section-title>
-                    <div class="">
-                        <div v-for="item in order.items" :key="item"></div>
-                        <create-order-item :order="order" />
-                    </div>
-                </div>
             </div>
         </template>
 
@@ -151,9 +147,9 @@ import JetLabel from "@/Jetstream/Label";
 import TextAreaInput from "@Components/Forms/TextAreaInput";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
 import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
-import CreateOrderItem from "./CreateOrderItem.vue";
 import Modal from "@/Components/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
+import { Inertia } from "@inertiajs/inertia";
 export default {
     components: {
         JetSectionTitle,
@@ -166,15 +162,20 @@ export default {
         SelectBox,
         SearchSelectBox,
         TextAreaInput,
-        CreateOrderItem,
         Modal,
         CreateCustomerForm,
+    },
+    props: {
+        customers: {
+            type: Array,
+            required: true,
+        },
     },
 
     data() {
         return {
             creatingCustomer: false,
-            customers: this.$page.props.customers,
+            customerName: "",
             customerContacts: [],
             teamMembers: this.$page.props.teamMembers,
             orderCustomer: null,
@@ -198,7 +199,9 @@ export default {
         orderCustomer(orderCustomer) {
             if (orderCustomer) {
                 this.order.customer_id = orderCustomer.id;
-                this.customerContacts = orderCustomer.contacts;
+                this.customerContacts = orderCustomer.contacts
+                    ? orderCustomer.contacts
+                    : [];
                 this.order.is_taxable = orderCustomer.is_taxable;
             } else {
                 this.order.customer_id = null;
@@ -230,11 +233,18 @@ export default {
         },
         updateCustomer(customerId) {
             this.orderCustomer = this.customers.find(
-                (customer) => customer.id === customerId
+                (customer) => customer.id == customerId
             );
         },
         addCustomer(customerName) {
+            this.customerName = customerName;
             this.creatingCustomer = true;
+        },
+        createdCustomer(newCustomer) {
+            Inertia.reload();
+            this.customers.push(newCustomer);
+            this.updateCustomer(newCustomer.id);
+            this.creatingCustomer = false;
         },
     },
 };
