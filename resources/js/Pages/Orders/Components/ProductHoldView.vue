@@ -1,9 +1,34 @@
 <template>
     <div>
         <tab-container
-            ><tab-link as="button">On Hold</tab-link
-            ><tab-link as="button">Sold</tab-link></tab-container
+            ><tab-link
+                as="button"
+                :current="viewingOnHold"
+                @click="viewingOnHold = true"
+                >On Hold</tab-link
+            ><tab-link
+                as="button"
+                :current="!viewingOnHold"
+                @click="viewingOnHold = false"
+                >Sold</tab-link
+            ></tab-container
         >
+        <div>
+            <div v-if="viewingOnHold">
+                <div
+                    v-for="order in onHoldProductQuotes"
+                    :key="order.id"
+                    class="flex"
+                >
+                    {{ order.company.name }}
+                </div>
+            </div>
+            <div v-else>
+                <div v-for="order in soldProductOrders" :key="order.id">
+                    {{ order.company.name }}
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -24,6 +49,7 @@ export default {
         return {
             onHoldProductQuotes: [],
             soldProductOrders: [],
+            viewingOnHold: true,
         };
     },
     watch: {
@@ -32,7 +58,7 @@ export default {
                 axios
                     .get(route("api.products.orders.index", product))
                     .then((response) => {
-                        this.onHoldProductQuotes = response.data.onHold;
+                        this.onHoldProductQuotes = response.data.on_hold;
                         this.soldProductOrders = response.data.sold;
                     });
             }

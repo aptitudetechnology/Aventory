@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ApiBlocksController;
 use App\Http\Controllers\Api\ApiCategoriesController;
 use App\Http\Controllers\Api\ApiContactsController;
 use App\Http\Controllers\Api\ApiProductsController;
+use App\Http\Controllers\Api\ApiProductsOrdersController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\ArchivedCustomersController;

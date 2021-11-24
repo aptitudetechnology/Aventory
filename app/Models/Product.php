@@ -103,11 +103,26 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsToMany(Order::class, 'order_items', 'product_id', 'order_id');
     }
 
     public function quotes()
     {
-        return $this->hasMany(Quote::class);
+        return $this->belongsToMany(Quote::class, 'order_items', 'product_id', 'order_id');
+    }
+
+    public function activeQuotes()
+    {
+        return $this->quotes()->where('quote_expires', '>=', now());
+    }
+
+    public function activeQuotesOnHold()
+    {
+        return $this->activeQuotes()->where('hold_inventory', true);
+    }
+
+    public function pendingOrders()
+    {
+        return $this->orders()->where('completed', false);
     }
 }
