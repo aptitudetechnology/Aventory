@@ -20,12 +20,12 @@
                     :key="order.id"
                     class="flex"
                 >
-                    {{ order.company.name }}
+                    {{ order.customer.name }}
                 </div>
             </div>
             <div v-else>
                 <div v-for="order in soldProductOrders" :key="order.id">
-                    {{ order.company.name }}
+                    {{ order.customer.name }}
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ export default {
     },
     props: {
         product: {
-            type: Object | Boolean,
+            type: [Object, Boolean],
             required: false,
         },
     },

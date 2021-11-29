@@ -7,7 +7,7 @@
         <div class="divide-gray-50 divide-y">
             <order-line-item
                 @selected="toggleSelected(item)"
-                v-for="item in orderItems"
+                v-for="item in items"
                 :key="item.id"
                 :item="item"
                 :itemSelected="isItemSelected(item)"
@@ -25,7 +25,7 @@ import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 import CreateOrderItem from "./CreateOrderItem.vue";
 import OrderLineItem from "./OrderLineItem.vue";
 export default {
-    props: { order: Object, orderItems: Array },
+    props: { order: Object },
 
     components: {
         JetCheckbox,
@@ -41,6 +41,7 @@ export default {
         return {
             allSelected: false,
             selected: [],
+            items: this.$page.props.items,
         };
     },
 
@@ -70,7 +71,7 @@ export default {
 
         toggleAllSelected() {
             if (this.allSelected) {
-                this.selected = this.orderItems.map((item) => item.id);
+                this.selected = this.items.map((item) => item.id);
             } else {
                 this.selected = [];
             }

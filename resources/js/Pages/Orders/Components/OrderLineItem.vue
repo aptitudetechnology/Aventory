@@ -12,7 +12,7 @@
                 :checked="selected"
             ></jet-check-box>
             <div title="Product Name" class="ml-6 truncate">
-                {{ form.product.name }}
+                {{ form.product_name }}
             </div>
         </div>
 
@@ -20,45 +20,31 @@
             class="px-1 text-sm text-gray-500 tracking-wider uppercase"
             title="Product Size"
         >
-            {{ form.size.name }}
+            {{ form.size_name }}
         </div>
         <div
             class="px-1 text-sm text-gray-500 tracking-wider uppercase"
             title="Quantity Confirmed"
         >
-            {{ form.quantity_confirmed }}
+            {{ form.quantity }}
         </div>
 
         <div
-            class="
-                px-1
-                hidden
-                md:block
-                text-sm text-gray-500
-                tracking-wider
-                uppercase
-            "
+            class="px-1 text-sm text-gray-500 tracking-wider uppercase"
             title="Unit Price"
         >
             $ {{ form.unit_price }}
         </div>
-        <div class="px-1 hidden md:block">
+        <div class="px-1 md:block">
             <jet-label class="sr-only" :for="'item-recieved' + form.id"
-                >Item Received</jet-label
+                >No Discount</jet-label
             >
             <jet-check-box
                 :id="'item-recieved' + form.id"
                 @change="itemReceived"
                 v-model="form.received"
-                :disabled="item.in_inventory"
                 color="gray"
                 :checked="form.received"
-            ></jet-check-box>
-        </div>
-        <div class="px-1 hidden md:block">
-            <jet-check-box
-                :disabled="true"
-                :checked="item.printed"
             ></jet-check-box>
         </div>
 

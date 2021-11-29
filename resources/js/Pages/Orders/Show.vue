@@ -30,7 +30,7 @@ export default {
     },
     props: {
         order: Object,
-        orderItems: Array,
+        items: Array,
         priceLevels: Array,
         customers: Array,
     },

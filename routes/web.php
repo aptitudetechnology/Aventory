@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ApiBlocksController;
 use App\Http\Controllers\Api\ApiCategoriesController;
 use App\Http\Controllers\Api\ApiContactsController;
 use App\Http\Controllers\Api\ApiProductsController;
+use App\Http\Controllers\Api\ApiProductSizesController;
 use App\Http\Controllers\Api\ApiProductsOrdersController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ClearLocationController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ViewInventoryController;
 use App\Models\Order;
 use Illuminate\Foundation\Application;
@@ -75,6 +77,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('products', App\Http\Controllers\ProductController::class)->except(['edit']);
     Route::get('api/products/{product}/orders', [ApiProductsOrdersController::class, 'index'])->name('api.products.orders.index');
     Route::resource('features', App\Http\Controllers\FeatureController::class);
+    Route::get('api/products/{product}', [ApiProductsController::class, 'show'])->name('api.products.show');
+    // Route to get a list of product sizes
+    Route::get('api/products/{product}/sizes', [ApiProductSizesController::class, 'index'])->name('api.products.sizes.index');
 
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
 
@@ -113,6 +118,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 
     Route::resource('orders', OrderController::class);
+    Route::resource('orders/{order}/order-items', OrderItemController::class);
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
 });

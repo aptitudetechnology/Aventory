@@ -75,7 +75,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $customers = $this->getCustomers();
-        $orderItems = $order->orderItems;
+        $items = $order->items;
         $teamMembers = auth()->user()->currentTeam->allUsers();
         $priceLevels = auth()->user()->currentTeam->priceLevels;
         $delivery_statuses = DeliveryStatus::all();
@@ -88,7 +88,7 @@ class OrderController extends Controller
                 'customers',
                 'priceLevels',
                 'teamMembers',
-                'orderItems',
+                'items',
                 'delivery_statuses',
                 'payment_statuses',
                 'products',

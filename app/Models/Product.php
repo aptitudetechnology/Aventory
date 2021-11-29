@@ -68,10 +68,18 @@ class Product extends Model
         }
     }
 
-
     public function sizes()
     {
         return $this->belongsToMany(Size::class, 'prices');
+    }
+
+    public function allSizes()
+    {
+        if ($this->category) {
+            return $this->category->sizes()->union($this->sizes);
+        } else {
+            return $this->sizes();
+        }
     }
 
     public function inventory()

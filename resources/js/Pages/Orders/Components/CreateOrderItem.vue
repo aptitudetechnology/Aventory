@@ -45,46 +45,54 @@
                                         class="mt-2"
                                     />
                                 </div>
+                                <div class="sm:col-span-1 flex items-center">
+                                    <jet-checkbox
+                                        id="no_discount"
+                                        v-model="form.no_discount"
+                                        class="mr-2"
+                                    ></jet-checkbox>
+                                    <jet-label for="no_discount"
+                                        >Don't apply Discount?</jet-label
+                                    >
+                                </div>
                             </div>
 
                             <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
                                 <div class="sm:col-span-1">
                                     <jet-label
-                                        for="quantity_ordered"
+                                        for="original_quantity"
                                         value="Quantity Ordered"
                                     />
                                     <jet-input
-                                        id="quantity_ordered"
+                                        id="original_quantity"
                                         type="number"
                                         step="1"
                                         class="mt-1 block w-full"
-                                        v-model="form.quantity_ordered"
+                                        v-model="form.original_quantity"
                                         required
                                     />
                                     <jet-input-error
-                                        v-if="!form.quantity_ordered"
-                                        :message="form.errors.quantity_ordered"
+                                        v-if="!form.original_quantity"
+                                        :message="form.errors.original_quantity"
                                         class="mt-2"
                                     />
                                 </div>
                                 <div class="sm:col-span-1">
                                     <jet-label
-                                        for="quantity_confirmed"
+                                        for="quantity"
                                         value="Quantity Confirmed"
                                     />
                                     <jet-input
-                                        id="quantity_confirmed"
+                                        id="quantity"
                                         type="number"
                                         step="1"
                                         class="mt-1 block w-full"
-                                        v-model="form.quantity_confirmed"
+                                        v-model="form.quantity"
                                         required
                                     />
                                     <jet-input-error
-                                        v-if="!form.quantity_confirmed"
-                                        :message="
-                                            form.errors.quantity_confirmed
-                                        "
+                                        v-if="!form.quantity"
+                                        :message="form.errors.quantity"
                                         class="mt-2"
                                     />
                                 </div>
@@ -154,6 +162,7 @@
 import JetButton from "@/Jetstream/Button";
 import JetDialogModal from "@/Jetstream/DialogModal";
 import JetInput from "@/Jetstream/Input";
+import JetCheckbox from "@/Jetstream/Checkbox";
 import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import JetActionMessage from "@/Jetstream/ActionMessage";
@@ -178,6 +187,7 @@ export default {
         JetButton,
         JetDialogModal,
         JetInput,
+        JetCheckbox,
         JetInputError,
         JetLabel,
         JetSecondaryButton,
@@ -199,22 +209,24 @@ export default {
                 _method: "POST",
                 product_id: null,
                 size_id: null,
-                quantity_ordered: null,
-                quantity_confirmed: null,
+                original_quantity: null,
+                quantity: null,
                 unit_price: null,
+                no_discount: false,
             }),
         };
     },
     watch: {
-        selectedProduct() {
-            if (this.selectedProduct) {
-                this.form.product_id = this.selectedProduct.id;
+        selectedProduct(product) {
+            if (product) {
+                this.form.product_id = product.id;
+                this.getProductSizes(product);
             } else {
                 this.form.product_id = null;
             }
         },
-        "form.quantity_ordered"(value) {
-            this.form.quantity_confirmed = value;
+        "form.original_quantity"(value) {
+            this.form.quantity = value;
         },
         selectedSize(size) {
             if (size) {
@@ -226,12 +238,22 @@ export default {
     },
 
     methods: {
+        getProductSizes(product) {
+            axios
+                .get(route("api.products.sizes.index", product))
+                .then((response) => {
+                    this.sizes = response.data;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        },
         saveAndClose() {
             this.addAnother = false;
             this.createOrderItem();
         },
         createOrderItem() {
-            this.form.post(route("orders.order-item.store", this.order), {
+            this.form.post(route("order-items.store", this.order), {
                 preserveScroll: true,
                 preserveState: true,
                 onSuccess: () => {
