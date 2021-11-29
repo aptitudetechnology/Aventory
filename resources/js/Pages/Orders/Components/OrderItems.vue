@@ -12,8 +12,8 @@
                 :item="item"
                 :itemSelected="isItemSelected(item)"
             />
-            <create-order-item :order="order"></create-order-item>
         </div>
+        <create-order-item class="mt-4" :order="order"></create-order-item>
     </div>
 </template>
 

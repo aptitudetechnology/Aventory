@@ -118,7 +118,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 
     Route::resource('orders', OrderController::class);
-    Route::resource('orders/{order}/order-items', OrderItemController::class);
+    Route::resource('orders/{order}/order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
 });

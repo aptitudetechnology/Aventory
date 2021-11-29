@@ -1,6 +1,6 @@
 <template>
-    <div class="grid gap-4 grid-cols-5 md:grid-cols-10 py-2 items-center">
-        <div class="col-span-2 md:col-span-4 flex items-center">
+    <div class="flex space-x-6 gap-4 py-2 items-end justify-between">
+        <div class="flex items-center">
             <jet-label class="sr-only" :for="'item-selected' + form.id"
                 >Select</jet-label
             >
@@ -11,41 +11,62 @@
                 v-model="selected"
                 :checked="selected"
             ></jet-check-box>
-            <div title="Product Name" class="ml-6 truncate">
-                {{ form.product_name }}
+            <div class="ml-6">
+                <div title="Product Name" class="truncate">
+                    {{ form.product_name }}
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div
+                        class="text-sm text-gray-500 tracking-wider uppercase"
+                        title="Product Size"
+                    >
+                        Size: {{ form.size_name }}
+                    </div>
+                    <div
+                        class="
+                            px-1
+                            text-sm text-gray-500
+                            tracking-wider
+                            uppercase
+                        "
+                        title="Unit Price"
+                    >
+                        Price: {{ form.unit_price }}
+                    </div>
+                    <div
+                        class="
+                            px-1
+                            text-sm text-gray-500
+                            tracking-wider
+                            uppercase
+                        "
+                        title="Quantity Confirmed"
+                    >
+                        Qt: {{ form.quantity }}
+                    </div>
+
+                    <div class="px-1 flex items-center">
+                        <label
+                            class="
+                                px-1
+                                pr-2
+                                text-sm text-gray-500
+                                tracking-wider
+                                uppercase
+                            "
+                            :for="'item-recieved' + form.id"
+                            >No Discount:
+                        </label>
+                        <jet-check-box
+                            :id="'item-recieved' + form.id"
+                            @change="updateItem"
+                            v-model="form.no_discount"
+                            color="gray"
+                            :checked="form.no_discount"
+                        ></jet-check-box>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div
-            class="px-1 text-sm text-gray-500 tracking-wider uppercase"
-            title="Product Size"
-        >
-            {{ form.size_name }}
-        </div>
-        <div
-            class="px-1 text-sm text-gray-500 tracking-wider uppercase"
-            title="Quantity Confirmed"
-        >
-            {{ form.quantity }}
-        </div>
-
-        <div
-            class="px-1 text-sm text-gray-500 tracking-wider uppercase"
-            title="Unit Price"
-        >
-            $ {{ form.unit_price }}
-        </div>
-        <div class="px-1 md:block">
-            <jet-label class="sr-only" :for="'item-recieved' + form.id"
-                >No Discount</jet-label
-            >
-            <jet-check-box
-                :id="'item-recieved' + form.id"
-                @change="itemReceived"
-                v-model="form.received"
-                color="gray"
-                :checked="form.received"
-            ></jet-check-box>
         </div>
 
         <div class="flex">
@@ -90,8 +111,10 @@ export default {
         },
     },
     methods: {
-        itemReceived() {
-            this.form.patch(route("order-item.update", this.item));
+        updateItem() {
+            this.form.patch(
+                route("order-items.update", [this.item.order_id, this.item])
+            );
         },
     },
 };

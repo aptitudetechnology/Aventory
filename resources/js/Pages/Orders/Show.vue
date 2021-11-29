@@ -1,6 +1,6 @@
 <template>
     <orders-layout>
-        <div>
+        <div class="max-w-screen-lg">
             <div class="space-y-6">
                 <update-order-form
                     :order="order"
