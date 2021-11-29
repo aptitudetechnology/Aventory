@@ -9,6 +9,7 @@
             text-gray-500
             uppercase
             tracking-wider
+            text-left
         "
     >
         <slot></slot>

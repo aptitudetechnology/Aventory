@@ -8,11 +8,7 @@
                     {{ productsLength > 1 ? "Products" : "Product" }}</template
                 >
             </jet-section-title>
-            <search-input
-                v-model="search"
-                @input="updateProducts"
-                placeholder="Search products"
-            />
+            <search-input v-model="search" placeholder="Search products" />
         </template>
 
         <div class="bg-white">
@@ -82,6 +78,11 @@ export default {
             search: "",
             filteredProducts: this.$page.props.products,
         };
+    },
+    watch: {
+        search() {
+            this.updateProducts();
+        },
     },
     methods: {
         updateProducts() {
