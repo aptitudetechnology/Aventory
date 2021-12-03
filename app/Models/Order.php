@@ -76,4 +76,47 @@ class Order extends Model
     {
         return $this->belongsTo(Quote::class, 'from_quote_id');
     }
+
+    public function getDiscountPercentageAttribute()
+    {
+        return $this->customer->discount_override;
+    }
+
+    public function setTotalAttribute()
+    {
+        $this->attributes['total'] =
+            $this->items->reduce(function ($total, $item) {
+                return $total + ($item->line_total);
+            }, 0);
+    }
+
+    public function setTotalAfterDiscountAndWarrantyAttribute()
+    {
+        $this->attributes['total_after_discount_and_warranty'] = $this->items->reduce(function ($total, $item) {
+            return $total + ($item->line_total_after_discount);
+        }, 0) + $this->warranty_ammount;
+    }
+
+    public function setTaxAmountAttribute()
+    {
+        $this->attributes['tax_amount'] = $this->items->reduce(function ($total, $item) {
+            return $total + ($item->tax_amount);
+        }, 0);
+    }
+
+    public function setGrandTotalAttribute()
+    {
+        $this->attributes['grand_total'] = $this->total_after_discount_and_warranty + $this->tax_amount + $this->shipping_amount;
+    }
+
+
+
+    public function updateTotals()
+    {
+        $this->setTotalAttribute();
+        $this->setTotalAfterDiscountAndWarrantyAttribute();
+        $this->setTaxAmountAttribute();
+        $this->setGrandTotalAttribute();
+        $this->save();
+    }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex space-x-6 gap-4 py-2 items-end justify-between">
+    <div class="md:flex space-x-6 gap-4 py-4 items-end justify-between">
         <div class="flex items-center">
             <jet-label class="sr-only" :for="'item-selected' + form.id"
                 >Select</jet-label
@@ -12,26 +12,16 @@
                 :checked="selected"
             ></jet-check-box>
             <div class="ml-6">
-                <div title="Product Name" class="truncate">
+                <div title="Product Name" class="text-lg mb-2">
                     {{ form.product_name }}
                 </div>
-                <div class="flex items-center space-x-6">
+                <div class="grid gap-4 grid-cols-2 mr-auto">
                     <div
-                        class="text-sm text-gray-500 tracking-wider uppercase"
+                        class="text-sm tracking-wider uppercase"
                         title="Product Size"
                     >
-                        Size: {{ form.size_name }}
-                    </div>
-                    <div
-                        class="
-                            px-1
-                            text-sm text-gray-500
-                            tracking-wider
-                            uppercase
-                        "
-                        title="Unit Price"
-                    >
-                        Price: {{ form.unit_price }}
+                        {{ form.size_name }} @
+                        {{ formatMoney(form.unit_price) }}
                     </div>
                     <div
                         class="
@@ -44,35 +34,41 @@
                     >
                         Qt: {{ form.quantity }}
                     </div>
-
-                    <div class="px-1 flex items-center">
-                        <label
-                            class="
-                                px-1
-                                pr-2
-                                text-sm text-gray-500
-                                tracking-wider
-                                uppercase
-                            "
-                            :for="'item-recieved' + form.id"
-                            >No Discount:
-                        </label>
-                        <jet-check-box
-                            :id="'item-recieved' + form.id"
-                            @change="updateItem"
-                            v-model="form.no_discount"
-                            color="gray"
-                            :checked="form.no_discount"
-                        ></jet-check-box>
-                    </div>
                 </div>
             </div>
         </div>
+        <div class="flex flex-col items-end justify-items-end">
+            <div title="Line Total" class="">
+                {{ formatMoney(form.line_total) }}
+            </div>
+            <div class="flex items-center">
+                <div class="px-2 flex items-center">
+                    <label
+                        class="
+                            px-1
+                            pr-2
+                            text-xs text-gray-500
+                            tracking-wider
+                            uppercase
+                        "
+                        :for="'no_discount' + form.id"
+                        >No Discount
+                    </label>
+                    <jet-check-box
+                        :id="'no_discount' + form.id"
+                        @change="updateItem"
+                        v-model="form.no_discount"
+                        color="gray"
+                        :checked="form.no_discount"
+                    ></jet-check-box>
+                </div>
+                <DeleteOrderItem :item="item" />
 
-        <div class="flex">
-            <DeleteOrderItem :item="item" />
-
-            <edit-order-item title="Edit" :orderItem="item"></edit-order-item>
+                <edit-order-item
+                    title="Edit"
+                    :orderItem="item"
+                ></edit-order-item>
+            </div>
         </div>
     </div>
 </template>
@@ -113,7 +109,7 @@ export default {
     methods: {
         updateItem() {
             this.form.patch(
-                route("order-items.update", [this.item.order_id, this.item])
+                route("order-items.update", [this.item.order_id, this.item.id])
             );
         },
     },

@@ -44,24 +44,40 @@ export default {
             type: [Object, Boolean],
             required: false,
         },
+        size: {
+            type: [Object, Boolean],
+            required: false,
+        },
+    },
+    mounted() {
+        if (this.product) {
+            this.getQuotesAndOrdersForProduct(this.product);
+        }
     },
     data() {
         return {
             onHoldProductQuotes: [],
             soldProductOrders: [],
+            onHoldProductQuotesForSelectedSize: [],
+            soldProductOrdersForSelectedSize: [],
             viewingOnHold: true,
         };
     },
     watch: {
         product(product) {
             if (product) {
-                axios
-                    .get(route("api.products.orders.index", product))
-                    .then((response) => {
-                        this.onHoldProductQuotes = response.data.on_hold;
-                        this.soldProductOrders = response.data.sold;
-                    });
+                this.getQuotesAndOrdersForProduct(product);
             }
+        },
+    },
+    methods: {
+        getQuotesAndOrdersForProduct(product) {
+            axios
+                .get(route("api.products.orders.index", product))
+                .then((response) => {
+                    this.onHoldProductQuotes = response.data.on_hold;
+                    this.soldProductOrders = response.data.sold;
+                });
         },
     },
 };

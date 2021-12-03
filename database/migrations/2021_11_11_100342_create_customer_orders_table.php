@@ -31,7 +31,7 @@ class CreateCustomerOrdersTable extends Migration
             $table->decimal('tax_percentage', 9, 4)->nullable();
             $table->decimal('tax_amount', 10, 2)->nullable();
             $table->decimal('total_amount', 10, 2)->default(0);
-            $table->decimal('total_amount_before_discoun t', 9, 2)->default(0);
+            $table->decimal('total_amount_before_discount', 9, 2)->default(0);
             $table->decimal('grand_total', 9, 2)->default(0);
             $table->boolean('is_taxable')->default(true);
             $table->boolean('completed')->default(false);

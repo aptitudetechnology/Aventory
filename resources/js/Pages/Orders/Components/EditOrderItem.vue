@@ -89,7 +89,7 @@
                                         type="number"
                                         step="1"
                                         class="mt-1 block w-full"
-                                        v-model="form.quantity"
+                                        v-model.number="form.quantity"
                                         required
                                     />
                                     <jet-input-error
@@ -124,6 +124,7 @@
                     <product-hold-view
                         class="col-span-2"
                         :product="selectedProduct"
+                        :size="selectedSize"
                     />
                 </div>
             </template>
@@ -226,7 +227,7 @@ export default {
             this.form.patch(
                 route("order-items.update", [
                     this.orderItem.order_id,
-                    this.orderItem,
+                    this.orderItem.id,
                 ]),
                 {
                     preserveScroll: true,

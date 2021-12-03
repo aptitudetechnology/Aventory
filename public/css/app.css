@@ -1259,6 +1259,9 @@ select {
 .mr-1 {
 	margin-right: 0.25rem;
 }
+.mr-auto {
+	margin-right: auto;
+}
 .block {
 	display: block;
 }
@@ -1573,6 +1576,9 @@ select {
 }
 .justify-between {
 	justify-content: space-between;
+}
+.justify-items-end {
+	justify-items: end;
 }
 .gap-6 {
 	gap: 1.5rem;
@@ -2267,10 +2273,6 @@ select {
 }
 .ring-offset-2 {
 	--tw-ring-offset-width: 2px;
-}
-.drop-shadow-sm {
-	--tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
-	filter: var(--tw-filter);
 }
 .filter {
 	filter: var(--tw-filter);
@@ -3011,10 +3013,6 @@ select {
 
 	.lg\:col-span-3 {
 		grid-column: span 3 / span 3;
-	}
-
-	.lg\:col-span-6 {
-		grid-column: span 6 / span 6;
 	}
 
 	.lg\:block {

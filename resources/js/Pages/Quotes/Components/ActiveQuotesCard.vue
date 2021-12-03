@@ -13,9 +13,7 @@
 <script>
 import DetailsSection from "@Components/DetailsSection.vue";
 import { ExternalLinkIcon } from "@heroicons/vue/outline";
-import money from "@/utils/money";
 export default {
-    extends: money,
     components: {
         DetailsSection,
         ExternalLinkIcon,

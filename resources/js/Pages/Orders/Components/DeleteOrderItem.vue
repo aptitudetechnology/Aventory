@@ -9,8 +9,8 @@
         <template #title> Delete Item </template>
 
         <template #content>
-            Are you sure you want to delete this item? All products in inventory
-            associated to this item will be permanentaly deleted from inventory!
+            Are you sure you want to delete this item? This action cannot be
+            undone.
         </template>
 
         <template #footer>
@@ -60,10 +60,13 @@ export default {
         },
 
         deleteOrderItem() {
-            this.form.delete(route("order-item.destroy", this.item), {
-                errorBag: "deleteOrderItem",
-                preserveState: false,
-            });
+            this.form.delete(
+                route("order-items.destroy", [this.item.order_id, this.item]),
+                {
+                    errorBag: "deleteOrderItem",
+                    preserveState: false,
+                }
+            );
         },
     },
 };

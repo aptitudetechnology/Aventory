@@ -31,6 +31,7 @@ class OrderItemController extends Controller
     public function update(OrderItemStoreRequest $request, Order $order, OrderItem $item)
     {
         $item->update($request->validated());
+
         return redirect()->back()->banner('Item updated.');
     }
 
@@ -40,8 +41,10 @@ class OrderItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order, OrderItem $item)
     {
-        //
+        $item->delete();
+
+        return redirect()->back()->banner('Item deleted.');
     }
 }
