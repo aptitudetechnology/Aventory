@@ -14,7 +14,7 @@ class AddTaxableColumnToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->boolean('taxable')->default(true);
+            $table->boolean('is_taxable')->default(true);
         });
     }
 
@@ -26,7 +26,7 @@ class AddTaxableColumnToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('taxable');
+            $table->dropColumn('is_taxable');
         });
     }
 }
