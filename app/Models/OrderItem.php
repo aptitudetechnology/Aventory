@@ -68,4 +68,13 @@ class OrderItem extends Model
         }
         return $this->line_total * (1 - $this->order->discount_percentage / 100);
     }
+
+    public function getTaxAmountAttribute()
+    {
+        if ($this->product->is_taxable && $this->order->is_taxable) {
+            return $this->line_total_after_discount * $this->order->tax_percentage / 100;
+        } else {
+            return 0;
+        }
+    }
 }

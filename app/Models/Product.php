@@ -28,6 +28,7 @@ class Product extends Model
         'id' => 'integer',
         'team_id' => 'integer',
         'category_id' => 'integer',
+        'is_taxable' => 'boolean',
     ];
 
     /**

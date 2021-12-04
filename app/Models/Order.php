@@ -94,7 +94,7 @@ class Order extends Model
     {
         $this->attributes['total_after_discount_and_warranty'] = $this->items->reduce(function ($total, $item) {
             return $total + ($item->line_total_after_discount);
-        }, 0) + $this->warranty_ammount;
+        }, 0) + $this->warranty_amount;
     }
 
     public function setTaxAmountAttribute()
