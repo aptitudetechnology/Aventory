@@ -28,6 +28,7 @@
     "dependencies": {
         "@headlessui/vue": "^1.3.0",
         "@heroicons/vue": "^1.0.3",
+        "daisyui": "^1.16.2",
         "moment": "^2.29.1",
         "vue-pluralize": "0.0.2",
         "vuedraggable": "^4.1.0"

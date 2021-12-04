@@ -3,7 +3,7 @@ export default {
     formatMoney(value, currency = 'USD'){
       let formatter = new Intl.NumberFormat(['en-US'], {
         style: 'currency',
-        currency,
+        currency: currency,
         minimumFractionDigits: 2
       });
       return formatter.format(value);

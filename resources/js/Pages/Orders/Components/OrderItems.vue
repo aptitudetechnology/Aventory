@@ -46,6 +46,9 @@ export default {
     },
 
     watch: {
+        "$page.props.items"(items) {
+            this.items = items;
+        },
         selected() {
             //watches selected to uncheck the select all checkbox if selected is empty
             let selectedLength = this.selected.length;

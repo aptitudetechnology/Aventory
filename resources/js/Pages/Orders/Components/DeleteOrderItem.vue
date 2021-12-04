@@ -1,5 +1,5 @@
 <template>
-    <DeleteButton type="button" @click="confirmOrderItemDeletion" />
+    <DeleteButton type="button" @click.stop="confirmOrderItemDeletion" />
 
     <!-- Delete OrderItem Confirmation Modal -->
     <jet-confirmation-modal

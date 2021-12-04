@@ -2,8 +2,8 @@
     <jet-form-section @submitted="updateOrder">
         <template #title>Order #{{ order.id }}</template>
         <template #aside
-            ><h3 class="uppercase text-gray-600">
-                Grand Total: ${{ toCurrency(order.grand_total) }}
+            ><h3 class="uppercase text-lg">
+                Grand Total: {{ formatMoney(order.grand_total) }}
             </h3></template
         >
 
@@ -235,12 +235,6 @@ export default {
     },
 
     methods: {
-        toCurrency(value) {
-            return value.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-            });
-        },
         updateOrder() {
             this.updatedOrder.patch(route("orders.update", this.order.id), {
                 errorBag: "updateOrder",

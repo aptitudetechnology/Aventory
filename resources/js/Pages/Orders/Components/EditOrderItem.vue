@@ -1,12 +1,12 @@
 <template>
     <div>
-        <edit-button type="button" @click="updatingOrderItem = true"
+        <edit-button type="button" @click.stop="updatingOrderItem = true"
             >Edit</edit-button
         >
         <jet-dialog-modal
             :show="updatingOrderItem"
             maxWidth="4xl"
-            @close="updatingOrderItem = false"
+            @close="closeForm"
         >
             <template #title>Edit</template>
 
@@ -52,6 +52,7 @@
                                         id="no_discount"
                                         v-model="form.no_discount"
                                         class="mr-2"
+                                        :checked="form.no_discount"
                                     ></jet-checkbox>
                                     <jet-label for="no_discount"
                                         >Don't apply Discount?</jet-label
@@ -104,13 +105,11 @@
                                         for="unit_price"
                                         value="Unit Price"
                                     />
-                                    <jet-input
+                                    <money-input
                                         id="unit_price"
-                                        type="number"
-                                        step="0.01"
                                         class="mt-1 block w-full"
-                                        v-model="form.unit_price"
                                         required
+                                        v-model="form.unit_price"
                                     />
                                     <jet-input-error
                                         v-if="!form.unit_price"
@@ -131,9 +130,7 @@
 
             <template #footer>
                 <div class="flex justify-between w-full">
-                    <jet-secondary-button
-                        type="button"
-                        @click="updatingOrderItem = false"
+                    <jet-secondary-button type="button" @click="closeForm"
                         >Cancel</jet-secondary-button
                     >
                     <jet-button
@@ -162,6 +159,7 @@ import TextAreaInput from "@/Components/Forms/TextAreaInput.vue";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
 import EditButton from "@/Components/Buttons/EditButton.vue";
 import ProductHoldView from "@/Pages/Orders/Components/ProductHoldView.vue";
+import MoneyInput from "@/Components/Forms/MoneyInput.vue";
 
 import {
     Switch,
@@ -188,8 +186,9 @@ export default {
         SelectBox,
         EditButton,
         ProductHoldView,
+        MoneyInput,
     },
-    props: { orderItem: Object },
+    props: { orderItem: Object, editing: { type: Boolean, default: false } },
 
     data() {
         return {
@@ -201,11 +200,14 @@ export default {
             selectedSize: this.$page.props.sizes.find(
                 (size) => size.id == this.orderItem.size_id
             ),
-            updatingOrderItem: false,
+            updatingOrderItem: this.editing,
             form: this.$inertia.form(this.orderItem),
         };
     },
     watch: {
+        editing() {
+            this.updatingOrderItem = this.editing;
+        },
         selectedProduct() {
             if (this.selectedProduct) {
                 this.form.product_id = this.selectedProduct.id;
@@ -223,6 +225,10 @@ export default {
     },
 
     methods: {
+        closeForm() {
+            this.updatingOrderItem = false;
+            this.$emit("close");
+        },
         updateOrderItem() {
             this.form.patch(
                 route("order-items.update", [
