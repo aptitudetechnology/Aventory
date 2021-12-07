@@ -21,7 +21,9 @@ class OrderItem extends Model
         'unit_price',
         'no_discount',
     ];
-    protected $appends = ['product_name', 'size_name', 'line_total'];
+
+    protected $appends = ['product_name', 'size_name', 'line_total', 'line_total_after_discount'];
+
     protected $casts = [
         'product_id' => 'integer',
         'size_id' => 'integer',
