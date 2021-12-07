@@ -8,6 +8,7 @@ use App\Models\DeliveryStatus;
 use App\Models\Order;
 use App\Models\PaymentStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
@@ -18,6 +19,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
+
         $orders = auth()->user()->currentTeam->orders()
             ->when($request->search, function ($query) use ($request) {
                 $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
@@ -48,6 +50,7 @@ class OrderController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Order::class);
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
         return inertia('Orders/Create', compact('customers', 'teamMembers'));
@@ -61,6 +64,7 @@ class OrderController extends Controller
      */
     public function store(OrderStoreRequest $request)
     {
+        Gate::authorize('create', Order::class);
         $order = auth()->user()->orders()->create($request->validated());
 
         return redirect()->route('orders.show', $order)->banner('Great work! Created order. Now add some products you sold.');
@@ -74,6 +78,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        Gate::authorize('view', $order);
         $customers = $this->getCustomers();
         $items = $order->items;
         $teamMembers = auth()->user()->currentTeam->allUsers();
@@ -97,16 +102,6 @@ class OrderController extends Controller
         ));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -115,9 +110,11 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(OrderStoreRequest $request, Order $order)
     {
-        //
+        Gate::authorize('update', $order);
+        $order->update($request->validated());
+        return back()->banner("Great work! Updated order.");
     }
 
     /**
@@ -128,7 +125,9 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        Gate::authorize('delete', $order);
+        $order->delete();
+        return redirect()->route('orders.index')->banner('Order deleted.');
     }
 
     protected function getCustomers()
