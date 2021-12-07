@@ -13,7 +13,10 @@
                 :itemSelected="isItemSelected(item)"
             />
         </div>
-        <create-order-item class="mt-4" :order="order"></create-order-item>
+        <create-order-item
+            class="mt-4 ml-auto flex justify-end"
+            :order="order"
+        ></create-order-item>
     </div>
 </template>
 

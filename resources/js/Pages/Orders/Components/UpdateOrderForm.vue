@@ -1,152 +1,139 @@
 <template>
-    <jet-form-section @submitted="updateOrder">
-        <template #title>Order #{{ order.id }}</template>
+    <details-section>
+        <template #title
+            >Order #{{ order.id }}
+            <jet-button
+                type="submit"
+                @click="updateOrder"
+                :class="['ml-4 fixed bottom-5 right-10 z-50 md:static']"
+                v-show="updatedOrder.isDirty"
+                :disabled="updatedOrder.processing || !updatedOrder.isDirty"
+                >Save Changes</jet-button
+            ></template
+        >
         <template #aside
             ><h3 class="uppercase text-lg">
                 Grand Total: {{ formatMoney(order.grand_total) }}
-            </h3></template
-        >
+            </h3>
+        </template>
 
-        <template #form>
-            <div class="col-span-6 grid gap-6">
-                <div
-                    class="
-                        grid
-                        sm:grid-cols-2
-                        lg:grid-cols-5
-                        gap-4
-                        xl:gap-x-20
-                        lg:gap-y-8
-                    "
-                >
-                    <div
-                        class="
-                            col-span-1
-                            lg:col-span-3
-                            grid
-                            gap-4
-                            lg:grid-cols-2
-                        "
-                    >
-                        <div>
-                            <modal
-                                :show="creatingCustomer"
-                                @close="creatingCustomer = false"
-                            >
-                                <create-customer-form
-                                    @created="createdCustomer"
-                                    :redirect="false"
-                                    :customerName="customerName"
-                                />
-                            </modal>
-                            <search-select-box
-                                labelValue="Customer"
-                                :items="customers"
-                                :selectedItem="orderCustomer"
-                                @update="updateCustomer"
-                                @add="addCustomer"
+        <div class="col-span-6 grid gap-6">
+            <div
+                class="
+                    grid
+                    sm:grid-cols-2
+                    lg:grid-cols-5
+                    gap-4
+                    xl:gap-x-20
+                    lg:gap-y-8
+                "
+            >
+                <div class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2">
+                    <div>
+                        <modal
+                            :show="creatingCustomer"
+                            @close="creatingCustomer = false"
+                        >
+                            <create-customer-form
+                                @created="createdCustomer"
+                                :redirect="false"
+                                :customerName="customerName"
                             />
-                            <jet-input-error
-                                :message="updatedOrder.errors.customer_id"
-                                class="mt-2"
-                            />
-                        </div>
-                        <div v-if="orderCustomer && customerContacts.length">
-                            <select-box
-                                labelValue="Customer Contact"
-                                :items="customerContacts"
-                                v-model="contact"
-                                :selectedItem="contact"
-                            />
-                            <jet-input-error
-                                :message="updatedOrder.errors.contact_id"
-                                class="mt-2"
-                            />
-                        </div>
-                        <div class="">
-                            <select-box
-                                labelValue="Sales Person"
-                                :items="teamMembers"
-                                :selectedItem="teamMember"
-                                v-model="teamMember"
-                            />
-                            <jet-input-error
-                                :message="updatedOrder.errors.team_member_id"
-                                class="mt-2"
-                            />
-                        </div>
+                        </modal>
+                        <search-select-box
+                            labelValue="Customer"
+                            :items="customers"
+                            :selectedItem="orderCustomer"
+                            @update="updateCustomer"
+                            @add="addCustomer"
+                        />
+                        <jet-input-error
+                            :message="updatedOrder.errors.customer_id"
+                            class="mt-2"
+                        />
                     </div>
-                    <div
-                        class="
-                            col-span-1
-                            lg:col-span-2
-                            grid
-                            gap-4
-                            lg:justify-items-end
-                        "
-                    >
-                        <div>
-                            <jet-label for="date" value="Order Date" />
-                            <jet-input
-                                id="date"
-                                type="date"
-                                class="mt-1 block w-full"
-                                v-model="updatedOrder.date"
-                                required
-                            />
-                            <jet-input-error
-                                :message="updatedOrder.errors.date"
-                                class="mt-2"
-                            />
-                        </div>
+                    <div v-if="orderCustomer && customerContacts.length">
+                        <select-box
+                            labelValue="Customer Contact"
+                            :items="customerContacts"
+                            v-model="contact"
+                            :selectedItem="contact"
+                        />
+                        <jet-input-error
+                            :message="updatedOrder.errors.contact_id"
+                            class="mt-2"
+                        />
                     </div>
-                    <div class="sm:col-span-2 lg:col-span-5 sm:flex">
-                        <div class="sm:w-1/4 mb-6 sm:mb-0">
-                            <jet-label class="flex items-center text-lg px-2">
-                                <jet-checkbox
-                                    class="mr-2 mb-1"
-                                    :checked="updatedOrder.is_taxable"
-                                    v-model="updatedOrder.is_taxable"
-                                />Taxable</jet-label
-                            >
-                        </div>
-                        <div class="sm:w-3/4 sm:ml-4">
-                            <jet-label for="notes" value="Order Notes" />
-                            <text-area-input
-                                id="notes"
-                                type="notes"
-                                class="mt-1 block w-full"
-                                v-model="updatedOrder.notes"
-                            />
-                            <jet-input-error
-                                :message="updatedOrder.errors.notes"
-                                class="mt-2"
-                            />
-                        </div>
+                    <div class="">
+                        <select-box
+                            labelValue="Sales Person"
+                            :items="teamMembers"
+                            :selectedItem="teamMember"
+                            v-model="teamMember"
+                        />
+                        <jet-input-error
+                            :message="updatedOrder.errors.team_member_id"
+                            class="mt-2"
+                        />
                     </div>
                 </div>
-                <order-items :order="order"></order-items>
+                <div
+                    class="
+                        col-span-1
+                        lg:col-span-2
+                        grid
+                        gap-4
+                        lg:justify-items-end
+                    "
+                >
+                    <div>
+                        <jet-label for="date" value="Order Date" />
+                        <jet-input
+                            id="date"
+                            type="date"
+                            class="mt-1 block w-full"
+                            v-model="updatedOrder.date"
+                            required
+                        />
+                        <jet-input-error
+                            :message="updatedOrder.errors.date"
+                            class="mt-2"
+                        />
+                    </div>
+                </div>
+                <div class="sm:col-span-2 lg:col-span-5 sm:flex">
+                    <div class="sm:w-1/4 mb-6 sm:mb-0">
+                        <jet-label class="flex items-center text-lg px-2">
+                            <jet-checkbox
+                                class="mr-2 mb-1"
+                                :checked="updatedOrder.is_taxable"
+                                v-model="updatedOrder.is_taxable"
+                            />Taxable</jet-label
+                        >
+                    </div>
+                    <div class="sm:w-3/4 sm:ml-4">
+                        <jet-label for="notes" value="Order Notes" />
+                        <text-area-input
+                            id="notes"
+                            type="notes"
+                            class="mt-1 block w-full"
+                            v-model="updatedOrder.notes"
+                        />
+                        <jet-input-error
+                            :message="updatedOrder.errors.notes"
+                            class="mt-2"
+                        />
+                    </div>
+                </div>
             </div>
-        </template>
-
-        <template #actions>
-            <jet-button
-                type="submit"
-                :class="{
-                    'opacity-25':
-                        updatedOrder.processing || !updatedOrder.isDirty,
-                }"
-                :disabled="updatedOrder.processing || !updatedOrder.isDirty"
-                >Save Order</jet-button
-            >
-        </template>
-    </jet-form-section>
+            <order-items :order="order"></order-items>
+        </div>
+    </details-section>
 </template>
 
 <script>
 import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 import JetButton from "@/Jetstream/Button";
-import JetFormSection from "@/Jetstream/FormSection";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetInputError from "@/Jetstream/InputError";
@@ -157,12 +144,12 @@ import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 import OrderItems from "@/Pages/Orders/Components/OrderItems.vue";
+import DetailsSection from "@Components/DetailsSection.vue";
 import { Inertia } from "@inertiajs/inertia";
 export default {
     components: {
         JetSectionTitle,
         JetButton,
-        JetFormSection,
         JetInput,
         JetCheckbox,
         JetInputError,
@@ -173,6 +160,7 @@ export default {
         Modal,
         CreateCustomerForm,
         OrderItems,
+        DetailsSection,
     },
     props: {
         order: {
@@ -233,7 +221,6 @@ export default {
             }
         },
     },
-
     methods: {
         updateOrder() {
             this.updatedOrder.patch(route("orders.update", this.order.id), {

@@ -231,7 +231,7 @@ export default {
         },
         updateOrderItem() {
             this.form.patch(
-                route("order-items.update", [
+                route("orders.order-items.update", [
                     this.orderItem.order_id,
                     this.orderItem.id,
                 ]),

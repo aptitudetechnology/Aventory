@@ -2,16 +2,11 @@
     <jet-action-section>
         <template #title> Delete Order</template>
 
-        <template #description>
-            Delete this order, order items, and associated inventory.
-        </template>
-
         <template #content>
             <div class="text-sm text-gray-600">
-                If this order is deleted, all associated order items, and
-                inventory already added will be removed. Only delete this order
-                if you are sure you want to remove all inventory and items
-                associated with this order.
+                If this order is deleted, all associated order items, associated
+                shipments and associated invoices will be deleted. This is
+                permanent and cannot be undone.
             </div>
 
             <div class="mt-5">
@@ -29,7 +24,7 @@
 
                 <template #content>
                     Are you sure you want to delete this order? There will be no
-                    way to recover it, or inventory associated!
+                    way to recover it.
                 </template>
 
                 <template #footer>

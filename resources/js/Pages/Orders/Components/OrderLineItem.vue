@@ -3,9 +3,7 @@
         @click="editing = true"
         class="
             relative
-            md:flex
-            space-x-6
-            gap-4
+            md:flex md:space-x-6
             py-4
             px-4
             items-center
@@ -14,7 +12,7 @@
             hover:bg-gray-50
         "
     >
-        <div class="flex items-center">
+        <div class="flex items-center w-full md:w-auto">
             <div @click.stop class="flex items-center h-full">
                 <jet-label class="sr-only" :for="'item-selected' + form.id"
                     >Select</jet-label
@@ -27,11 +25,21 @@
                     :checked="selected"
                 ></jet-check-box>
             </div>
-            <div class="ml-6">
+            <div class="ml-6 w-full md:w-auto">
                 <div title="Product Name" class="text-lg">
                     {{ form.product_name }}
                 </div>
-                <div class="flex items-end -ml-2">
+                <div
+                    class="
+                        flex
+                        items-end
+                        flex-row-reverse
+                        md:flex-row md:-ml-2
+                        flex-wrap
+                        w-full
+                        md:w-auto
+                    "
+                >
                     <DeleteOrderItem :item="item" />
 
                     <edit-order-item
@@ -40,7 +48,10 @@
                         title="Edit"
                         :orderItem="item"
                     ></edit-order-item>
-                    <div @click.stop class="px-2 flex items-center py-1">
+                    <div
+                        @click.stop
+                        class="md:px-2 flex items-center py-1 mr-auto"
+                    >
                         <label
                             class="
                                 px-1
@@ -63,11 +74,22 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col items-end">
+        <div
+            class="
+                flex flex-row-reverse
+                justify-between
+                w-full
+                md:w-auto md:flex-col md:items-end
+                pl-10
+                md:pl-0 md:text-right
+            "
+        >
             <div title="Line Total" class="text-lg">
                 {{ formatMoney(form.line_total) }}
             </div>
-            <div class="flex items-center">
+            <div
+                class="flex items-center md:items-end md:justify-end flex-wrap"
+            >
                 <div
                     class="text-sm text-gray-500 tracking-wider uppercase"
                     title="Product Size"
@@ -124,7 +146,10 @@ export default {
     methods: {
         updateItem() {
             this.form.patch(
-                route("order-items.update", [this.item.order_id, this.item.id])
+                route("orders.order-items.update", [
+                    this.item.order_id,
+                    this.item.id,
+                ])
             );
         },
     },
