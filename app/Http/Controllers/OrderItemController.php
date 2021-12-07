@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderItemStoreRequest;
+use App\Http\Requests\OrderItemUpdateRequest;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class OrderItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(OrderItemStoreRequest $request, Order $order, OrderItem $item)
+    public function update(OrderItemUpdateRequest $request, Order $order, OrderItem $item)
     {
         $item->update($request->validated());
 
