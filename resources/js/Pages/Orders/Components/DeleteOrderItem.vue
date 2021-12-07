@@ -61,7 +61,10 @@ export default {
 
         deleteOrderItem() {
             this.form.delete(
-                route("order-items.destroy", [this.item.order_id, this.item]),
+                route("orders.order-items.destroy", [
+                    this.item.order_id,
+                    this.item,
+                ]),
                 {
                     errorBag: "deleteOrderItem",
                     preserveState: false,

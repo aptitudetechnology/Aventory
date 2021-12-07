@@ -253,7 +253,7 @@ export default {
             this.createOrderItem();
         },
         createOrderItem() {
-            this.form.post(route("order-items.store", this.order), {
+            this.form.post(route("orders.order-items.store", this.order), {
                 preserveScroll: true,
                 preserveState: true,
                 onSuccess: () => {

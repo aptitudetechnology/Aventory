@@ -7,6 +7,7 @@
                     :customers="customers"
                     :priceLevels="priceLevels"
                 />
+
                 <delete-order-form :order="order" />
             </div>
         </div>
