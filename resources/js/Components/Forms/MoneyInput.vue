@@ -38,7 +38,7 @@ export default {
         displayValue: {
             get: function () {
                 if (this.isInputFocused) {
-                    return this.modelValue.toString();
+                    return this.modelValue?.toString();
                 } else {
                     return this.modelValue
                         ? this.formatMoney(this.modelValue)

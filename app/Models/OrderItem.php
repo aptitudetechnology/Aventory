@@ -22,7 +22,7 @@ class OrderItem extends Model
         'no_discount',
     ];
 
-    protected $appends = ['product_name', 'size_name', 'line_total', 'line_total_after_discount'];
+    protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount'];
 
     protected $casts = [
         'product_id' => 'integer',
@@ -62,13 +62,14 @@ class OrderItem extends Model
     {
         return $this->quantity * $this->unit_price;
     }
+    public function getLineDiscountAttribute()
+    {
+        return $this->no_discount ? 0 : $this->line_total * ($this->order->discount_percentage / 100);
+    }
 
     public function getLineTotalAfterDiscountAttribute()
     {
-        if ($this->no_discount) {
-            return $this->line_total;
-        }
-        return $this->line_total * (1 - $this->order->discount_percentage / 100);
+        return $this->line_total - $this->line_discount;
     }
 
     public function getTaxAmountAttribute()

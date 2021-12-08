@@ -30,6 +30,11 @@ class OrderStoreRequest extends FormRequest
             'date' => 'required|date',
             'from_quote_id' => 'nullable|exists:orders,id',
             'notes' => 'nullable|string',
+            'shipping_method_id' => 'nullable|exists:shipping_methods,id',
+            'shipping_amount' => 'nullable|numeric',
+            'warranty_percentage' => 'nullable|numeric',
+            'is_taxable' => 'nullable|boolean',
+            'tax_percentage' => 'nullable|numeric',
         ];
     }
 }

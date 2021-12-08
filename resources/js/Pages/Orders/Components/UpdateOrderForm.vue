@@ -1,18 +1,23 @@
 <template>
     <details-section>
         <template #title
-            >Order #{{ order.id }}
-            <jet-button
+            ><span class="uppercase">{{ order.customer.name }}:</span> Order #{{
+                order.id
+            }}
+            <span
                 type="submit"
                 @click="updateOrder"
-                :class="['ml-4 fixed bottom-5 right-10 z-50 md:static']"
-                v-show="updatedOrder.isDirty"
+                :class="[
+                    'ml-4 fixed bottom-5 right-10 z-50 md:static rounded bg-white p-3 text-base',
+                ]"
+                v-show="updatedOrder.processing"
                 :disabled="updatedOrder.processing || !updatedOrder.isDirty"
-                >Save Changes</jet-button
-            ></template
+            >
+                Saving Changes...
+            </span></template
         >
         <template #aside
-            ><h3 class="uppercase text-lg">
+            ><h3 class="text-lg">
                 Grand Total: {{ formatMoney(order.grand_total) }}
             </h3>
         </template>
@@ -92,6 +97,7 @@
                             id="date"
                             type="date"
                             class="mt-1 block w-full"
+                            @blur="updateOrder"
                             v-model="updatedOrder.date"
                             required
                         />
@@ -101,21 +107,13 @@
                         />
                     </div>
                 </div>
-                <div class="sm:col-span-2 lg:col-span-5 sm:flex">
-                    <div class="sm:w-1/4 mb-6 sm:mb-0">
-                        <jet-label class="flex items-center text-lg px-2">
-                            <jet-checkbox
-                                class="mr-2 mb-1"
-                                :checked="updatedOrder.is_taxable"
-                                v-model="updatedOrder.is_taxable"
-                            />Taxable</jet-label
-                        >
-                    </div>
-                    <div class="sm:w-3/4 sm:ml-4">
+                <div class="sm:col-span-2 lg:col-span-5">
+                    <div class="">
                         <jet-label for="notes" value="Order Notes" />
                         <text-area-input
                             id="notes"
                             type="notes"
+                            @blur="updateOrder"
                             class="mt-1 block w-full"
                             v-model="updatedOrder.notes"
                         />
@@ -127,6 +125,7 @@
                 </div>
             </div>
             <order-items :order="order"></order-items>
+            <totals :order="order"></totals>
         </div>
     </details-section>
 </template>
@@ -145,6 +144,7 @@ import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 import OrderItems from "@/Pages/Orders/Components/OrderItems.vue";
 import DetailsSection from "@Components/DetailsSection.vue";
+import Totals from "@/Pages/Orders/Components/Totals.vue";
 import { Inertia } from "@inertiajs/inertia";
 export default {
     components: {
@@ -161,6 +161,7 @@ export default {
         CreateCustomerForm,
         OrderItems,
         DetailsSection,
+        Totals,
     },
     props: {
         order: {
@@ -188,7 +189,7 @@ export default {
             ),
             contact: this.order.contact,
             teamMember: this.$page.props.teamMembers.find(
-                (member) => member.id === this.$page.props.user.id
+                (member) => member.id === this.order.team_member_id
             ),
             updatedOrder: this.$inertia.form(this.order),
         };
@@ -205,6 +206,7 @@ export default {
                 this.updatedOrder.customer_id = null;
                 this.customer_contact_id = null;
             }
+            this.updateOrder();
         },
         contact(value) {
             if (value) {
@@ -212,6 +214,7 @@ export default {
             } else {
                 this.updatedOrder.contact_id = null;
             }
+            this.updateOrder();
         },
         teamMember(value) {
             if (value) {
@@ -219,13 +222,21 @@ export default {
             } else {
                 this.updatedOrder.team_member_id = null;
             }
+            this.updateOrder();
         },
     },
     methods: {
         updateOrder() {
-            this.updatedOrder.patch(route("orders.update", this.order.id), {
-                errorBag: "updateOrder",
-                preserveScroll: true,
+            this.$nextTick(() => {
+                if (this.updatedOrder.isDirty) {
+                    this.updatedOrder.patch(
+                        route("orders.update", this.order.id),
+                        {
+                            errorBag: "updateOrder",
+                            preserveScroll: true,
+                        }
+                    );
+                }
             });
         },
         updateCustomer(customerId) {

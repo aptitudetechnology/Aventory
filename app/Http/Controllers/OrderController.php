@@ -6,6 +6,8 @@ use App\Http\Requests\OrderStoreRequest;
 use App\Models\Customer;
 use App\Models\DeliveryStatus;
 use App\Models\Order;
+use App\Models\OrderStatus;
+use App\Models\ShippingMethod;
 use App\Models\PaymentStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -87,6 +89,7 @@ class OrderController extends Controller
         $payment_statuses = PaymentStatus::all();
         $products = auth()->user()->currentTeam->products;
         $sizes = auth()->user()->currentTeam->sizes;
+        $shipping_methods = ShippingMethod::all();
         return inertia('Orders/Show', compact(
             [
                 'order',
@@ -97,7 +100,8 @@ class OrderController extends Controller
                 'delivery_statuses',
                 'payment_statuses',
                 'products',
-                'sizes'
+                'sizes',
+                'shipping_methods'
             ]
         ));
     }
@@ -112,8 +116,11 @@ class OrderController extends Controller
      */
     public function update(OrderStoreRequest $request, Order $order)
     {
+
         Gate::authorize('update', $order);
         $order->update($request->validated());
+
+        $order->updateTotals();
         return back()->banner("Great work! Updated order.");
     }
 

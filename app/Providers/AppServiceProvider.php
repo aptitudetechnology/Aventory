@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
 use App\Observers\OrderItemObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Models\OrderItem;
+use App\Observers\OrderObserver;
 
 class AppServiceProvider extends ServiceProvider
 {

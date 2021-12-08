@@ -90,6 +90,19 @@ class Order extends Model
             }, 0);
     }
 
+    public function setTotalDiscountsAttribute()
+    {
+        $this->attributes['total_discounts'] =
+            $this->items->reduce(function ($total, $item) {
+                return $total + ($item->line_discount);
+            }, 0);
+    }
+
+    public function setWarrantyAmmountAttribute()
+    {
+        $this->attributes['warranty_amount'] = ($this->warranty_percentage / 100) * $this->total;
+    }
+
     public function setTotalAfterDiscountAndWarrantyAttribute()
     {
         $this->attributes['total_after_discount_and_warranty'] = $this->items->reduce(function ($total, $item) {
@@ -99,9 +112,14 @@ class Order extends Model
 
     public function setTaxAmountAttribute()
     {
-        $this->attributes['tax_amount'] = $this->items->reduce(function ($total, $item) {
+        $this->attributes['tax_amount'] = $this->is_taxable ? $this->items->reduce(function ($total, $item) {
             return $total + ($item->tax_amount);
-        }, 0);
+        }, 0) + $this->shipping_tax_amount : 0;
+    }
+
+    public function getShippingTaxAmountAttribute()
+    {
+        return ($this->tax_percentage / 100) * $this->shipping_amount;
     }
 
     public function setGrandTotalAttribute()
@@ -114,6 +132,8 @@ class Order extends Model
     public function updateTotals()
     {
         $this->setTotalAttribute();
+        $this->setWarrantyAmmountAttribute();
+        $this->setTotalDiscountsAttribute();
         $this->setTotalAfterDiscountAndWarrantyAttribute();
         $this->setTaxAmountAttribute();
         $this->setGrandTotalAttribute();
