@@ -15,12 +15,12 @@
                             id="name"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.name"
+                            v-model="newCustomer.name"
                             required
                             autocomplete="organization"
                         />
                         <jet-input-error
-                            :message="form.errors.name"
+                            :message="newCustomer.errors.name"
                             class="mt-2"
                         />
                     </div>
@@ -29,10 +29,10 @@
                         <text-area-input
                             id="notes"
                             class="mt-1 block w-full"
-                            v-model="form.notes"
+                            v-model="newCustomer.notes"
                         />
                         <jet-input-error
-                            :message="form.errors.notes"
+                            :message="newCustomer.errors.notes"
                             class="mt-2"
                         />
                     </div>
@@ -49,53 +49,53 @@
                             id="address"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.address"
+                            v-model="newCustomer.address"
                             autocomplete="address"
                         />
                         <jet-input-error
-                            :message="form.errors.address"
+                            :message="newCustomer.errors.address"
                             class="mt-2"
                         />
                     </div>
-                    <div class="col-span-3 sm:col-span-1">
+                    <div class="col-span-3 md:col-span-1">
                         <jet-label for="city" value="City" />
                         <jet-input
                             id="city"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.city"
+                            v-model="newCustomer.city"
                             autocomplete="address-level2"
                         />
                         <jet-input-error
-                            :message="form.errors.city"
+                            :message="newCustomer.errors.city"
                             class="mt-2"
                         />
                     </div>
-                    <div class="col-span-3 sm:col-span-1">
+                    <div class="col-span-3 md:col-span-1">
                         <jet-label for="state" value="State" />
                         <jet-input
                             id="state"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.state"
+                            v-model="newCustomer.state"
                             autocomplete="address-level1"
                         />
                         <jet-input-error
-                            :message="form.errors.state"
+                            :message="newCustomer.errors.state"
                             class="mt-2"
                         />
                     </div>
-                    <div class="col-span-3 sm:col-span-1">
+                    <div class="col-span-3 md:col-span-1">
                         <jet-label for="zip" value="Zip" />
                         <jet-input
                             id="zip"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.zip"
+                            v-model="newCustomer.zip"
                             autocomplete="postal-code"
                         />
                         <jet-input-error
-                            :message="form.errors.zip"
+                            :message="newCustomer.errors.zip"
                             class="mt-2"
                         />
                     </div>
@@ -103,7 +103,7 @@
                         as="div"
                         class="flex items-center justify-between col-span-3"
                     >
-                        <span class="flex-grow flex flex-col">
+                        <span class="flex-grow flex flex-col mr-4">
                             <SwitchLabel
                                 as="span"
                                 class="text-sm font-medium text-gray-900"
@@ -118,9 +118,9 @@
                             >
                         </span>
                         <Switch
-                            v-model="form.mailing_same_as_primary"
+                            v-model="newCustomer.mailing_same_as_primary"
                             :class="[
-                                form.mailing_same_as_primary
+                                newCustomer.mailing_same_as_primary
                                     ? 'bg-green-600'
                                     : 'bg-gray-200',
                                 'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
@@ -129,16 +129,19 @@
                             <span
                                 aria-hidden="true"
                                 :class="[
-                                    form.mailing_same_as_primary
+                                    newCustomer.mailing_same_as_primary
                                         ? 'translate-x-5'
                                         : 'translate-x-0',
-                                    'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
+                                    'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transnewCustomer ring-0 transition ease-in-out duration-200',
                                 ]"
                             />
                         </Switch>
                     </SwitchGroup>
                 </div>
-                <div v-if="!form.mailing_same_as_primary" class="grid gap-4">
+                <div
+                    v-show="!newCustomer.mailing_same_as_primary"
+                    class="grid gap-4"
+                >
                     <div class="col-span-3 pt-6">
                         <h3 class="text-lg leading-6 font-medium text-gray-900">
                             Mailing Address
@@ -153,53 +156,53 @@
                             id="mailing_address"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.mailing_address"
+                            v-model="newCustomer.mailing_address"
                             autocomplete="address"
                         />
                         <jet-input-error
-                            :message="form.errors.mailing_address"
+                            :message="newCustomer.errors.mailing_address"
                             class="mt-2"
                         />
                     </div>
-                    <div class="col-span-3 sm:col-span-1">
+                    <div class="col-span-3 md:col-span-1">
                         <jet-label for="mailing_city" value="Mailing City" />
                         <jet-input
                             id="mailing_city"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.mailing_city"
+                            v-model="newCustomer.mailing_city"
                             autocomplete="address-level2"
                         />
                         <jet-input-error
-                            :message="form.errors.mailing_city"
+                            :message="newCustomer.errors.mailing_city"
                             class="mt-2"
                         />
                     </div>
-                    <div class="col-span-3 sm:col-span-1">
+                    <div class="col-span-3 md:col-span-1">
                         <jet-label for="mailing_state" value="Mailing State" />
                         <jet-input
                             id="mailing_state"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.mailing_state"
+                            v-model="newCustomer.mailing_state"
                             autocomplete="address-level1"
                         />
                         <jet-input-error
-                            :message="form.errors.mailing_state"
+                            :message="newCustomer.errors.mailing_state"
                             class="mt-2"
                         />
                     </div>
-                    <div class="col-span-3 sm:col-span-1">
+                    <div class="col-span-3 md:col-span-1">
                         <jet-label for="mailing_zip" value="Mailing Zip" />
                         <jet-input
                             id="mailing_zip"
                             type="text"
                             class="mt-1 block w-full"
-                            v-model="form.mailing_zip"
+                            v-model="newCustomer.mailing_zip"
                             autocomplete="postal-code"
                         />
                         <jet-input-error
-                            :message="form.errors.mailing_zip"
+                            :message="newCustomer.errors.mailing_zip"
                             class="mt-2"
                         />
                     </div>
@@ -215,48 +218,16 @@
                         <select-box
                             v-if="priceLevels.length > 0"
                             :items="priceLevels"
+                            :selectedItem="price_level"
                             v-model="price_level"
                             labelValue="Customer Price Level"
                         />
                         <jet-input-error
-                            :message="form.errors.price_level"
+                            :message="
+                                newCustomer.errors.customer_price_level_id
+                            "
                             class="mt-2"
                         />
-                        <SwitchGroup
-                            as="div"
-                            class="
-                                flex
-                                items-center
-                                justify-start
-                                col-span-3
-                                sm:col-span-1
-                            "
-                        >
-                            <SwitchLabel
-                                as="span"
-                                class="text-sm font-medium text-gray-900 mr-4"
-                                >No Auto Discount</SwitchLabel
-                            >
-                            <Switch
-                                v-model="form.no_auto_discount"
-                                :class="[
-                                    form.no_auto_discount
-                                        ? 'bg-green-600'
-                                        : 'bg-gray-200',
-                                    'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
-                                ]"
-                            >
-                                <span
-                                    aria-hidden="true"
-                                    :class="[
-                                        form.no_auto_discount
-                                            ? 'translate-x-5'
-                                            : 'translate-x-0',
-                                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
-                                    ]"
-                                />
-                            </Switch>
-                        </SwitchGroup>
                         <SwitchGroup
                             as="div"
                             class="
@@ -273,9 +244,9 @@
                                 >Taxable?</SwitchLabel
                             >
                             <Switch
-                                v-model="form.is_taxable"
+                                v-model="newCustomer.is_taxable"
                                 :class="[
-                                    form.is_taxable
+                                    newCustomer.is_taxable
                                         ? 'bg-green-600'
                                         : 'bg-gray-200',
                                     'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
@@ -284,104 +255,162 @@
                                 <span
                                     aria-hidden="true"
                                     :class="[
-                                        form.is_taxable
+                                        newCustomer.is_taxable
                                             ? 'translate-x-5'
                                             : 'translate-x-0',
-                                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
+                                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transnewCustomer ring-0 transition ease-in-out duration-200',
                                     ]"
                                 />
                             </Switch>
                         </SwitchGroup>
-                    </div>
+                        <div class="grid gap-4 sm:grid-cols-3 col-span-3">
+                            <SwitchGroup
+                                v-show="newCustomer.is_taxable"
+                                as="div"
+                                class="
+                                    flex
+                                    items-center
+                                    justify-start
+                                    sm:col-span-2
+                                "
+                            >
+                                <div class="flex flex-col">
+                                    <SwitchLabel
+                                        as="span"
+                                        class="
+                                            text-sm
+                                            font-medium
+                                            text-gray-900
+                                            mr-4
+                                        "
+                                        >Custom Tax Rate?</SwitchLabel
+                                    >
+                                    <SwitchLabel
+                                        as="span"
+                                        class="text-sm text-gray-500"
+                                        >Indicate whether this customer has a
+                                        custom tax rate to be applied to taxable
+                                        orders and products.</SwitchLabel
+                                    >
+                                </div>
 
-                    <div class="col-span-3 sm:col-span-1">
-                        <jet-label
-                            for="tax_percentage"
-                            value="Tax Rate (Override)"
-                        />
-                        <div class="relative">
-                            <jet-input
-                                id="tax_percentage"
-                                type="number"
-                                max="100.00"
-                                min="0.00"
-                                step=".01"
-                                placeholder="0.00"
-                                class="mt-1 block w-full pr-8"
-                                v-model="form.tax_percentage"
-                            />
-                            <div
-                                class="
-                                    absolute
-                                    inset-y-0
-                                    right-0
-                                    pr-3
-                                    flex
-                                    items-center
-                                    pointer-events-none
-                                "
-                            >
-                                <span class="text-gray-500 sm:text-sm">
-                                    %
-                                </span>
+                                <Switch
+                                    v-model="hasCustomTaxRate"
+                                    :class="[
+                                        hasCustomTaxRate
+                                            ? 'bg-green-600'
+                                            : 'bg-gray-200',
+                                        'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
+                                    ]"
+                                >
+                                    <span
+                                        aria-hidden="true"
+                                        :class="[
+                                            hasCustomTaxRate
+                                                ? 'translate-x-5'
+                                                : 'translate-x-0',
+                                            'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transnewCustomer ring-0 transition ease-in-out duration-200',
+                                        ]"
+                                    />
+                                </Switch>
+                            </SwitchGroup>
+                            <div v-show="hasCustomTaxRate">
+                                <jet-label
+                                    for="tax_percentage"
+                                    value="Customer Tax Rate"
+                                />
+                                <div class="relative w-full">
+                                    <jet-input
+                                        id="tax_percentage"
+                                        type="number"
+                                        max="100.00"
+                                        min="0.00"
+                                        step=".01"
+                                        placeholder="0.00"
+                                        class="mt-1 block w-full pr-8"
+                                        v-model="newCustomer.tax_percentage"
+                                    />
+                                    <div
+                                        class="
+                                            absolute
+                                            inset-y-0
+                                            right-0
+                                            pr-3
+                                            flex
+                                            items-center
+                                            pointer-events-none
+                                        "
+                                    >
+                                        <span class="text-gray-500 sm:text-sm">
+                                            %
+                                        </span>
+                                    </div>
+                                </div>
+                                <jet-input-error
+                                    :message="newCustomer.errors.tax_percentage"
+                                    class="mt-2"
+                                />
                             </div>
                         </div>
-                        <jet-input-error
-                            :message="form.errors.tax_percentage"
-                            class="mt-2"
-                        />
                     </div>
-                    <div class="col-span-3 sm:col-span-1">
-                        <jet-label
-                            for="discount_override"
-                            value="Discount % (Override)"
-                        />
-                        <div class="relative">
-                            <jet-input
-                                id="discount_override"
-                                type="number"
-                                max="100"
-                                min="0"
-                                placeholder="0"
-                                class="mt-1 block w-full pr-8"
-                                v-model="form.discount_override"
+                    <div class="grid gap-4 sm:grid-cols-2 col-span-3">
+                        <div class="">
+                            <jet-label
+                                for="discount_percentage"
+                                value="Percentage Discount"
                             />
-                            <div
-                                class="
-                                    absolute
-                                    inset-y-0
-                                    right-0
-                                    pr-3
-                                    flex
-                                    items-center
-                                    pointer-events-none
-                                "
-                            >
-                                <span class="text-gray-500 sm:text-sm">
-                                    %
-                                </span>
+                            <div class="relative">
+                                <jet-input
+                                    id="discount_percentage"
+                                    type="number"
+                                    max="100"
+                                    min="0"
+                                    placeholder="0"
+                                    class="mt-1 block w-full pr-8"
+                                    v-model="newCustomer.discount_percentage"
+                                />
+                                <div
+                                    class="
+                                        absolute
+                                        inset-y-0
+                                        right-0
+                                        pr-3
+                                        flex
+                                        items-center
+                                        pointer-events-none
+                                    "
+                                >
+                                    <span class="text-gray-500 sm:text-sm">
+                                        %
+                                    </span>
+                                </div>
                             </div>
+                            <jet-input-error
+                                :message="
+                                    newCustomer.errors.discount_percentage
+                                "
+                                class="mt-2"
+                            />
                         </div>
-                        <jet-input-error
-                            :message="form.errors.discount_override"
-                            class="mt-2"
-                        />
-                    </div>
-                    <div class="col-span-3 sm:col-span-1">
-                        <jet-label
-                            for="reseller_permit_expiration"
-                            value="Reseller Permit Expiration"
-                        />
-                        <jet-input
-                            id="reseller_permit_expiration"
-                            type="date"
-                            class="mt-1 block w-full"
-                            v-model="form.reseller_permit_expiration"
-                        />
-                        <jet-input-error
-                            :message="form.errors.reseller_permit_expiration"
-                            class="mt-2"
-                        />
+                        <div class="">
+                            <jet-label
+                                for="reseller_permit_expiration"
+                                value="Reseller Permit Expiration"
+                            />
+                            <jet-input
+                                id="reseller_permit_expiration"
+                                type="date"
+                                class="mt-1 block w-full"
+                                v-model="newCustomer.reseller_permit_expiration"
+                            />
+                            <jet-input-error
+                                :message="
+                                    newCustomer.errors
+                                        .reseller_permit_expiration
+                                "
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -390,8 +419,8 @@
         <template #actions>
             <jet-button
                 type="submit"
-                :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
+                :class="{ 'opacity-25': newCustomer.processing }"
+                :disabled="newCustomer.processing"
                 >Save Customer</jet-button
             >
         </template>
@@ -447,7 +476,7 @@ export default {
         return {
             price_level: null,
             priceLevels: this.$page.props.priceLevels,
-            form: this.$inertia.form({
+            newCustomer: this.$inertia.form({
                 _method: "POST",
                 redirect: this.redirect,
                 name: this.customerName,
@@ -463,31 +492,42 @@ export default {
                 mailing_zip: "",
                 notes: "",
                 is_taxable: false,
-                no_auto_discount: false,
                 tax_percentage: null,
-                discount_override: 0,
+                discount_percentage: 0,
                 reseller_permit_expiration: null,
             }),
         };
     },
+    computed: {
+        hasCustomTaxRate: {
+            get() {
+                return this.newCustomer.tax_percentage !== null;
+            },
+            set(value) {
+                this.newCustomer.tax_percentage = value == true ? 8 : null;
+            },
+        },
+    },
     watch: {
         price_level: function () {
             this.price_level
-                ? (this.form.customer_price_level_id = this.price_level.id)
-                : (this.form.customer_price_level_id = null);
+                ? (this.newCustomer.customer_price_level_id =
+                      this.price_level.id)
+                : (this.newCustomer.customer_price_level_id = null);
         },
     },
 
     methods: {
         createCustomer() {
             if (this.redirect) {
-                this.form.post(route("customers.store"), {
+                this.newCustomer.post(route("customers.store"), {
                     errorBag: "createCustomer",
                     preserveScroll: true,
                 });
             } else {
+                fff;
                 axios
-                    .post(route("customers.store"), this.form)
+                    .post(route("customers.store"), this.newCustomer)
                     .then((response) => {
                         this.$emit("created", response.data);
                     });
