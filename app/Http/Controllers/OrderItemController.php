@@ -7,6 +7,7 @@ use App\Http\Requests\OrderItemUpdateRequest;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class OrderItemController extends Controller
 {
@@ -44,6 +45,8 @@ class OrderItemController extends Controller
      */
     public function destroy(Order $order, OrderItem $item)
     {
+        Gate::authorize('update', $order);
+
         $item->delete();
 
         return redirect()->back()->banner('Item deleted.');
