@@ -16,9 +16,8 @@
                 />
                 <div class="grid grid-cols-2 gap-4 items-center">
                     <jet-label for="shipping_amount">Shipping Amount</jet-label>
-                    <jet-input
+                    <money-input
                         @blur="updateOrder"
-                        type="number"
                         v-model="updatedOrder.shipping_amount"
                         id="shipping_amount"
                     />
@@ -79,13 +78,13 @@
                 "
             >
                 <div class="grid grid-cols-2 gap-4 items-center auto-cols-min">
-                    <jet-label>Product Total:</jet-label>
+                    <jet-label>Product Total</jet-label>
                     <p class="text-black">
                         {{ formatMoney(order.total) }}
                     </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 items-center">
-                    <jet-label>Discount Total:</jet-label>
+                    <jet-label>Discount Total</jet-label>
                     <p class="text-gray-600">
                         {{ formatMoney(order.total_discounts) }}
                     </p>
@@ -153,17 +152,24 @@ export default {
     data() {
         return {
             isFocused: false,
-            updatedOrder: this.$inertia.form({ ...this.order }),
+            updatedOrder: this.$inertia.form(this.order),
             shipping_method: null,
             shipping_methods: this.$page.props.shipping_methods,
         };
     },
     mounted() {
-        this.shipping_method = this.shipping_methods.find(
-            (method) => method.id === this.order.shipping_method_id
-        );
+        this.shipping_method =
+            this.shipping_methods.find(
+                (method) => method.id === this.order.shipping_method_id
+            ) ?? null;
     },
     watch: {
+        order: {
+            handler(order) {
+                this.updatedOrder = this.$inertia.form(order);
+            },
+            deep: true,
+        },
         updatedOrder: {
             handler(newValue) {
                 this.$emit("update", newValue);
@@ -173,7 +179,8 @@ export default {
     },
     methods: {
         updateShippingMethod() {
-            this.updatedOrder.shipping_method_id = this.shipping_method.id;
+            this.updatedOrder.shipping_method_id =
+                this.shipping_method.id ?? null;
             this.$nextTick(() => {
                 this.updateOrder();
             });

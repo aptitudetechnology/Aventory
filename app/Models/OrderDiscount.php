@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class OrderDiscount extends Model
+{
+    use HasFactory;
+    protected $table = 'order_discounts';
+    protected $guarded = [];
+    protected $appends = ['discount_total'];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function getDiscountTotalAttribute()
+    {
+        return $this->discount_amount != null
+            ? $this->discount_amount
+            : $this->order->total_of_items_with_discount * ($this->discount_percentage / 100);
+    }
+
+    public function getDiscountTypeAttribute()
+    {
+        return $this->discount_percentage ? 'percentage' : 'amount';
+    }
+}

@@ -7,10 +7,12 @@ import { InertiaProgress } from '@inertiajs/progress';
 import money from './utils/money';
 import JetLabel from "@/Jetstream/Label";
 import JetInput from "@/Jetstream/Input";
+import JetInputError from "@/Jetstream/InputError";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetSectionTitle from "@/Jetstream/SectionTitle";
 import JetButton from "@/Jetstream/Button";
 import SelectBox from "@Components/Forms/SelectBox";
+import DetailsSection from "@Components/DetailsSection";
 import MoneyInput from "@Components/Forms/MoneyInput";
 
 const el = document.getElementById('app');
@@ -27,7 +29,16 @@ const app = createApp({
     
 app.mixin({ 
         methods: { route }, 
-        components: { JetLabel, JetInput, JetCheckbox, JetSectionTitle, JetButton, SelectBox, MoneyInput } })
+        components: { 
+            JetLabel, 
+            JetInput, 
+            JetInputError,
+            JetCheckbox, 
+            JetSectionTitle, 
+            JetButton, 
+            SelectBox, 
+            DetailsSection,
+            MoneyInput } })
     .mixin(money)
     .use(InertiaPlugin);
 

@@ -23,9 +23,9 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ClearLocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\Api\ApiDiscountsController;
 use App\Http\Controllers\ViewInventoryController;
-use App\Models\Order;
-use Illuminate\Foundation\Application;
+
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -119,6 +119,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('orders', OrderController::class);
     Route::resource('orders.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
+    Route::apiResource('orders.discounts', ApiDiscountsController::class);
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
 });

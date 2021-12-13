@@ -27,6 +27,8 @@ class Contact extends Model
         'customer_id' => 'integer'
     ];
 
+    protected $appends = ['name'];
+
 
 
     /**
@@ -43,5 +45,10 @@ class Contact extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

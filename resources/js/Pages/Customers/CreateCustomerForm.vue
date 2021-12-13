@@ -263,7 +263,14 @@
                                 />
                             </Switch>
                         </SwitchGroup>
-                        <div class="grid gap-4 sm:grid-cols-3 col-span-3">
+                        <div
+                            class="
+                                grid
+                                gap-4
+                                sm:gap-6 sm:grid-cols-3
+                                col-span-3
+                            "
+                        >
                             <SwitchGroup
                                 v-show="newCustomer.is_taxable"
                                 as="div"

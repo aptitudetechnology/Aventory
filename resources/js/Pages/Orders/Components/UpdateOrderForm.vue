@@ -5,8 +5,6 @@
                 order.id
             }}
             <span
-                type="submit"
-                @click="updateOrder"
                 :class="[
                     'ml-4 fixed bottom-5 right-10 z-50 md:static rounded bg-white p-3 text-base',
                 ]"
@@ -57,7 +55,7 @@
                             class="mt-2"
                         />
                     </div>
-                    <div v-if="orderCustomer && customerContacts.length">
+                    <div v-show="orderCustomer && customerContacts.length">
                         <select-box
                             labelValue="Customer Contact"
                             :items="customerContacts"
@@ -125,42 +123,31 @@
                 </div>
             </div>
             <order-items :order="order"></order-items>
+            <discounts :order="order"></discounts>
             <totals :order="order"></totals>
         </div>
     </details-section>
 </template>
 
 <script>
-import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
-import JetButton from "@/Jetstream/Button";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetInputError from "@/Jetstream/InputError";
-import JetLabel from "@/Jetstream/Label";
 import TextAreaInput from "@Components/Forms/TextAreaInput";
-import SelectBox from "@/Components/Forms/SelectBox.vue";
 import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 import OrderItems from "@/Pages/Orders/Components/OrderItems.vue";
-import DetailsSection from "@Components/DetailsSection.vue";
+import Discounts from "@/Pages/Orders/Components/Discounts.vue";
 import Totals from "@/Pages/Orders/Components/Totals.vue";
+
 import { Inertia } from "@inertiajs/inertia";
+
 export default {
     components: {
-        JetSectionTitle,
-        JetButton,
-        JetInput,
-        JetCheckbox,
-        JetInputError,
-        JetLabel,
-        SelectBox,
         SearchSelectBox,
         TextAreaInput,
         Modal,
         CreateCustomerForm,
         OrderItems,
-        DetailsSection,
+        Discounts,
         Totals,
     },
     props: {
@@ -201,10 +188,11 @@ export default {
                 this.customerContacts = orderCustomer.contacts
                     ? orderCustomer.contacts
                     : [];
+                this.contact = null;
                 this.updatedOrder.is_taxable = orderCustomer.is_taxable;
             } else {
                 this.updatedOrder.customer_id = null;
-                this.customer_contact_id = null;
+                this.contact = null;
             }
             this.updateOrder();
         },

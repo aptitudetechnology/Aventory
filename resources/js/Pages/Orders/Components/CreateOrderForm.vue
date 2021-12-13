@@ -48,7 +48,7 @@
                                 class="mt-2"
                             />
                         </div>
-                        <div v-if="orderCustomer && customerContacts.length">
+                        <div v-show="orderCustomer && customerContacts.length">
                             <select-box
                                 labelValue="Customer Contact"
                                 :items="customerContacts"
@@ -202,10 +202,11 @@ export default {
                 this.customerContacts = orderCustomer.contacts
                     ? orderCustomer.contacts
                     : [];
+                this.contact = null;
                 this.order.is_taxable = orderCustomer.is_taxable;
             } else {
                 this.order.customer_id = null;
-                this.customer_contact_id = null;
+                this.contact = null;
             }
         },
         contact(value) {

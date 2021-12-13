@@ -5,17 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
     use HasFactory;
     protected $with = ['customer', 'teamMember', 'deliveryStatus', 'paymentStatus'];
+    protected $appends = ['total_of_items_with_discount'];
     protected $table = 'orders';
     protected $guarded = [];
 
     protected $attributes = [
         'is_quote' => false,
     ];
+
 
     protected static function booted()
     {
@@ -34,6 +37,7 @@ class Order extends Model
         'date' => 'date:Y-m-d',
         'quote_expires' => 'date:Y-m-d',
         'customer_id' => 'integer',
+        'contact_id' => 'integer',
         'team_member_id' => 'integer',
         'team_id' => 'integer',
         'delivery_status_id' => 'integer',
@@ -52,14 +56,33 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Get the customer that owns the order.
+     * Need to add for foreign key since the quote model is an extension of the order model.
+     */
     public function items()
     {
-        return $this->hasMany(OrderItem::class);
+
+        return $this->hasMany(OrderItem::class, 'order_id');
+    }
+
+    /**
+     * Get the discounts for the order.
+     * Need to add for foreign key since the quote model is an extension of the order model.
+     */
+    public function discounts()
+    {
+        return $this->hasMany(OrderDiscount::class, 'order_id');
     }
 
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function contact()
+    {
+        return $this->belongsTo(Contact::class);
     }
 
     public function paymentStatus()
@@ -79,7 +102,12 @@ class Order extends Model
 
     public function getDiscountPercentageAttribute()
     {
-        return $this->customer->discount_override;
+        return $this->discounts->sum('percentage');
+    }
+
+    public function getTotalOfItemsWithDiscountAttribute()
+    {
+        return $this->items()->where('no_discount', false)->sum(DB::raw('quantity * unit_price'));
     }
 
     public function setTotalAttribute()
@@ -93,8 +121,8 @@ class Order extends Model
     public function setTotalDiscountsAttribute()
     {
         $this->attributes['total_discounts'] =
-            $this->items->reduce(function ($total, $item) {
-                return $total + ($item->line_discount);
+            $this->discounts->reduce(function ($total, $item) {
+                return $total + ($item->discount_total);
             }, 0);
     }
 
@@ -105,9 +133,7 @@ class Order extends Model
 
     public function setTotalAfterDiscountAndWarrantyAttribute()
     {
-        $this->attributes['total_after_discount_and_warranty'] = $this->items->reduce(function ($total, $item) {
-            return $total + ($item->line_total_after_discount);
-        }, 0) + $this->warranty_amount;
+        $this->attributes['total_after_discount_and_warranty'] = $this->total - $this->total_discounts + $this->warranty_amount;
     }
 
     public function setTaxAmountAttribute()

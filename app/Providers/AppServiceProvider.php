@@ -28,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         OrderItem::observe(OrderItemObserver::class);
+        Order::observe(OrderObserver::class);
     }
 }
