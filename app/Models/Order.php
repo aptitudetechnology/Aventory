@@ -153,7 +153,11 @@ class Order extends Model
         $this->attributes['grand_total'] = $this->total_after_discount_and_warranty + $this->tax_amount + $this->shipping_amount;
     }
 
-
+    public function setTaxPercentage()
+    {
+        $this->attributes['tax_percentage'] = $this->customer->tax_percentage;
+        $this->save();
+    }
 
     public function updateTotals()
     {
@@ -164,5 +168,24 @@ class Order extends Model
         $this->setTaxAmountAttribute();
         $this->setGrandTotalAttribute();
         $this->save();
+    }
+
+    public function createDiscount()
+    {
+        $order = $this->fresh('customer');
+        if ($order->customer->discount_percentage) {
+            $order->discounts()->create([
+                'description' => "Discount of {$order->customer->discount_percentage}% will be applied to eligible products if paid within invoice terms.",
+                'discount_percentage' => $order->customer->discount_percentage,
+            ]);
+        }
+    }
+
+    public function updateDiscount()
+    {
+        if ($this->wasChanged('customer_id')) {
+            $this->discounts()->delete();
+            $this->createDiscount();
+        }
     }
 }

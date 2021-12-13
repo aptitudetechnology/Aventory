@@ -6,23 +6,23 @@ use App\Models\Order;
 
 class OrderObserver
 {
-    // This ensures that the observer only applies after the model is saved in database.
-    public $afterCommit = false;
+    /**
+     * Handle events after all transactions are committed.
+     *
+     * @var bool
+     */
+    public $afterCommit = true;
 
     /**
-     * When creating a new order, we create discounts for the order if the customer has a percentage discount.
-     *
+     * When creating an order, we add the discount to the order
+     * 
      * @param Order $order
      * @return void
      */
     public function created(Order $order)
     {
-        if ($order->customer->discount_percentage) {
-            $order->discounts()->create([
-                'description' => "Discount of {$order->customer->discount_percentage}% will be applied to eligible products if paid within invoice terms.",
-                'discount_percentage' => $order->customer->discount_percentage,
-            ]);
-        }
+        $order->updateTotals();
+        $order->createDiscount();
     }
 
     /**
@@ -32,13 +32,7 @@ class OrderObserver
      * @param Order $order
      * @return void
      */
-    public function saved(Order $order)
+    public function updated(Order $order)
     {
-        if ($order->wasChanged('customer_id')) {
-            $order->discounts()->whereNotNull('discount_percentage')->update([
-                'description' => "Discount of {$order->customer->discount_percentage}% will be applied to eligible products if paid within invoice terms.",
-                'discount_percentage' => $order->customer->discount_percentage,
-            ]);
-        }
     }
 }

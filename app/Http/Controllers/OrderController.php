@@ -6,7 +6,6 @@ use App\Http\Requests\OrderStoreRequest;
 use App\Models\Customer;
 use App\Models\DeliveryStatus;
 use App\Models\Order;
-use App\Models\OrderStatus;
 use App\Models\ShippingMethod;
 use App\Models\PaymentStatus;
 use Illuminate\Http\Request;
@@ -67,7 +66,10 @@ class OrderController extends Controller
     public function store(OrderStoreRequest $request)
     {
         Gate::authorize('create', Order::class);
+
         $order = auth()->user()->orders()->create($request->validated());
+
+        $order->setTaxPercentage();
 
         return redirect()->route('orders.show', $order)->banner('Great work! Created order. Now add some products you sold.');
     }
@@ -120,7 +122,9 @@ class OrderController extends Controller
         Gate::authorize('update', $order);
         $order->update($request->validated());
 
+        $order->updateDiscount();
         $order->updateTotals();
+
         return back()->banner("Great work! Updated order.");
     }
 
