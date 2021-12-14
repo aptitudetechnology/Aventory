@@ -12,9 +12,27 @@
         "
     >
         <div class="flex items-center w-full md:w-auto">
-            <div class="ml-6 w-full md:w-auto">
+            <div class="w-full md:w-auto space-y-4">
                 <div title="Discount Description" class="text-lg">
                     {{ updatedDiscount.description }}
+                </div>
+                <div @click.stop class="flex items-center h-full">
+                    <jet-label :for="'discount_applied' + discount.id"
+                        >Discount Applied</jet-label
+                    >
+                    <jet-checkbox
+                        class="
+                            px-1
+                            pr-2
+                            text-sm text-gray-500
+                            tracking-wider
+                            uppercase
+                        "
+                        :id="'discount_applied' + discount.id"
+                        @change="updateItem"
+                        v-model="updatedDiscount.discount_applied"
+                        :checked="updatedDiscount.discount_applied"
+                    ></jet-checkbox>
                 </div>
             </div>
         </div>
@@ -28,7 +46,11 @@
                 md:pl-0 md:text-right
             "
         >
-            <div title="Discount Total" class="text-lg">
+            <div
+                title="Discount Total"
+                class="text-lg"
+                :class="!updatedDiscount.discount_applied ? 'line-through' : ''"
+            >
                 {{ formatMoney(updatedDiscount.discount_total) }}
             </div>
         </div>

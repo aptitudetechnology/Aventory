@@ -122,7 +122,7 @@ class OrderController extends Controller
         Gate::authorize('update', $order);
         $order->update($request->validated());
 
-        $order->updateDiscount();
+        $order->updateDiscounts();
         $order->updateTotals();
 
         return back()->banner("Great work! Updated order.");

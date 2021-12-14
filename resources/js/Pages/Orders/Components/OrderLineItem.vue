@@ -17,13 +17,13 @@
                 <jet-label class="sr-only" :for="'item-selected' + form.id"
                     >Select</jet-label
                 >
-                <jet-check-box
+                <jet-checkbox
                     :id="'item-selected' + form.id"
                     @change="$emit('selected')"
                     :value="form.id"
                     v-model="selected"
                     :checked="selected"
-                ></jet-check-box>
+                ></jet-checkbox>
             </div>
             <div class="ml-6 w-full md:w-auto">
                 <div title="Product Name" class="text-lg">
@@ -63,13 +63,13 @@
                             :for="'no_discount' + form.id"
                             >No Discount
                         </label>
-                        <jet-check-box
+                        <jet-checkbox
                             :id="'no_discount' + form.id"
                             @change="updateItem"
                             v-model="form.no_discount"
                             color="gray"
                             :checked="form.no_discount"
-                        ></jet-check-box>
+                        ></jet-checkbox>
                     </div>
                 </div>
             </div>
@@ -111,18 +111,12 @@
 
 <script>
 import Check from "@heroicons/vue/outline/CheckIcon";
-import JetCheckBox from "@/Jetstream/Checkbox.vue";
-import JetLabel from "@/Jetstream/Label.vue";
 
 import EditOrderItem from "./EditOrderItem.vue";
 import DeleteOrderItem from "./DeleteOrderItem.vue";
 export default {
     components: {
         Check,
-
-        JetCheckBox,
-        JetLabel,
-
         EditOrderItem,
         DeleteOrderItem,
     },

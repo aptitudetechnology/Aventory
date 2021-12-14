@@ -121,7 +121,7 @@ class Order extends Model
     public function setTotalDiscountsAttribute()
     {
         $this->attributes['total_discounts'] =
-            $this->discounts->reduce(function ($total, $item) {
+            $this->discounts()->where('discount_applied', true)->get()->reduce(function ($total, $item) {
                 return $total + ($item->discount_total);
             }, 0);
     }
@@ -170,7 +170,7 @@ class Order extends Model
         $this->save();
     }
 
-    public function createDiscount()
+    public function createCustomerDiscount()
     {
         $order = $this->fresh('customer');
         if ($order->customer->discount_percentage) {
@@ -181,11 +181,11 @@ class Order extends Model
         }
     }
 
-    public function updateDiscount()
+    public function updateDiscounts()
     {
         if ($this->wasChanged('customer_id')) {
             $this->discounts()->delete();
-            $this->createDiscount();
+            $this->createCustomerDiscount();
         }
     }
 }

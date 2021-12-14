@@ -12,6 +12,12 @@ class OrderDiscount extends Model
     protected $guarded = [];
     protected $appends = ['discount_total'];
 
+    // $casts
+    protected $casts = [
+        'discount_applied' => 'boolean',
+        'discount_percentage' => 'integer',
+        'discount_total' => 'float',
+    ];
     public function order()
     {
         return $this->belongsTo(Order::class);
