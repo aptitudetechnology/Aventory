@@ -10,11 +10,9 @@ class ApiProductsOrdersController extends Controller
 {
     public function index(Product $product)
     {
-        $onHold = $product->activeQuotesOnHold()->with('items')->get();
-        $sold = $product->pendingOrders()->with('items')->get();
-        return response()->json([
-            'on_hold' => $onHold,
-            'sold' => $sold,
-        ]);
+        $onHold = $product->itemsOnHold()->select('product_id', 'quantity', 'order_id', 'size_id')->get();
+        $inventorySold = $product->itemsSold()->select('product_id', 'order_id', 'size_id', 'quantity')->get();
+
+        return response()->json(compact('onHold', 'inventorySold'));
     }
 }

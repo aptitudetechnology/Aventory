@@ -1,6 +1,6 @@
 <template>
     <div>
-        <tab-container
+        <tab-container class="px-0"
             ><tab-link
                 as="button"
                 :current="viewingOnHold"
@@ -15,18 +15,18 @@
         >
         <div>
             <div v-if="viewingOnHold">
-                <div
-                    v-for="order in onHoldProductQuotes"
-                    :key="order.id"
-                    class="flex"
-                >
-                    {{ order.customer.name }}
-                </div>
+                <product-hold-item
+                    :item="item"
+                    v-for="item in onHoldInventoryQuoteItems"
+                    :key="item.id"
+                />
             </div>
             <div v-else>
-                <div v-for="order in soldProductOrders" :key="order.id">
-                    {{ order.customer.name }}
-                </div>
+                <product-hold-item
+                    :item="item"
+                    v-for="item in soldProductOrderItems"
+                    :key="item.id"
+                />
             </div>
         </div>
     </div>
@@ -34,12 +34,18 @@
 <script>
 import TabContainer from "@Components/TabContainer.vue";
 import TabLink from "@Components/Links/TabLink.vue";
+import ProductHoldItem from "./ProductHoldItem.vue";
 export default {
     components: {
         TabContainer,
         TabLink,
+        ProductHoldItem,
     },
     props: {
+        orderId: {
+            type: Number,
+            required: true,
+        },
         product: {
             type: [Object, Boolean],
             required: false,
@@ -51,33 +57,62 @@ export default {
     },
     mounted() {
         if (this.product) {
-            this.getQuotesAndOrdersForProduct(this.product);
+            this.getSoldAndHoldInventoryItemsForProduct(this.product);
         }
     },
     data() {
         return {
-            onHoldProductQuotes: [],
-            soldProductOrders: [],
-            onHoldProductQuotesForSelectedSize: [],
-            soldProductOrdersForSelectedSize: [],
+            onHoldInventoryQuoteItems: [],
+            soldProductOrderItems: [],
+            onHoldProductInventoryForSize: [],
+            soldProductInventoryForSize: [],
             viewingOnHold: true,
         };
     },
     watch: {
         product(product) {
             if (product) {
-                this.getQuotesAndOrdersForProduct(product);
+                this.getSoldAndHoldInventoryItemsForProduct(product);
+            }
+        },
+        size(size) {
+            if (size) {
+                this.getSoldAndHoldInventoryForSize(size);
             }
         },
     },
     methods: {
-        getQuotesAndOrdersForProduct(product) {
+        getSoldAndHoldInventoryItemsForProduct(product) {
+            const filterById = (item) => item.order_id !== this.orderId;
             axios
                 .get(route("api.products.orders.index", product))
                 .then((response) => {
-                    this.onHoldProductQuotes = response.data.on_hold;
-                    this.soldProductOrders = response.data.sold;
+                    this.onHoldInventoryQuoteItems =
+                        response.data.onHold.filter(filterById);
+                    this.soldProductOrderItems =
+                        response.data.inventorySold.filter(filterById);
+                })
+                .then(() => {
+                    this.getSoldAndHoldInventoryForSize(this.size);
+                })
+                .catch((error) => {
+                    console.error(error.message);
                 });
+        },
+        getSoldAndHoldInventoryForSize(size) {
+            if (size) {
+                this.soldProductInventoryForSize =
+                    this.soldProductOrderItems.filter(
+                        (orderItem) => orderItem.size_id === size.id
+                    );
+                this.onHoldProductInventoryForSize =
+                    this.onHoldInventoryQuoteItems.filter(
+                        (orderItem) => orderItem.size_id === size.id
+                    );
+            } else {
+                this.onHoldProductInventoryForSize = [];
+                this.soldProductInventoryForSize = [];
+            }
         },
     },
 };

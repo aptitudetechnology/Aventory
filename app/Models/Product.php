@@ -115,6 +115,20 @@ class Product extends Model
         return $this->belongsToMany(Order::class, 'order_items', 'product_id', 'order_id');
     }
 
+    public function itemsOnHold()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id', 'id')
+            ->join('orders', 'orders.id', '=', 'order_items.order_id')
+            ->where('orders.is_quote', true);
+    }
+
+    public function itemsSold()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id', 'id')
+            ->join('orders', 'orders.id', '=', 'order_items.order_id')
+            ->where('orders.is_quote', false);
+    }
+
     public function quotes()
     {
         return $this->belongsToMany(Quote::class, 'order_items', 'product_id', 'order_id');
@@ -129,6 +143,8 @@ class Product extends Model
     {
         return $this->activeQuotes()->where('hold_inventory', true);
     }
+
+
 
     public function pendingOrders()
     {
