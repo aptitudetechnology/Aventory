@@ -29,8 +29,8 @@ class ApiDiscountsController extends Controller
     public function store(DiscountStoreRequest $request, Order $order)
     {
         Gate::authorize('update', $order);
-        $discount = $order->discounts()->create($request->validated());
-        return $discount;
+        $order->discounts()->create($request->validated());
+        return back()->banner('Discount added to order!');
     }
 
     /**
@@ -45,6 +45,21 @@ class ApiDiscountsController extends Controller
     {
         Gate::authorize('update', $order);
         $discount->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->banner('Discount updated!');
+    }
+
+    /**
+     * Remove the specified discount from db.
+     *
+     * @param Request $request
+     * @param Order $order
+     * @param  OrderDiscount $discount
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, Order $order, OrderDiscount $discount)
+    {
+        Gate::authorize('update', $order);
+        $discount->delete();
+        return redirect()->back()->banner('Discount deleted!');
     }
 }

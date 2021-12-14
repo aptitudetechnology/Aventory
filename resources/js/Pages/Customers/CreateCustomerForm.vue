@@ -532,7 +532,6 @@ export default {
                     preserveScroll: true,
                 });
             } else {
-                fff;
                 axios
                     .post(route("customers.store"), this.newCustomer)
                     .then((response) => {

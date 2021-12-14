@@ -1,5 +1,6 @@
 <template>
     <div
+        @click="editing = true"
         class="
             relative
             md:flex md:space-x-6
@@ -36,28 +37,23 @@
                 </div>
             </div>
         </div>
+        <edit-discount-item
+            @close="editing = false"
+            :show="editing"
+            :discount="discount"
+        />
         <div
-            class="
-                flex flex-row-reverse
-                justify-between
-                w-full
-                md:w-auto md:flex-col md:items-end
-                pl-10
-                md:pl-0 md:text-right
-            "
+            title="Discount Total"
+            class="text-lg"
+            :class="!updatedDiscount.discount_applied ? 'line-through' : ''"
         >
-            <div
-                title="Discount Total"
-                class="text-lg"
-                :class="!updatedDiscount.discount_applied ? 'line-through' : ''"
-            >
-                {{ formatMoney(updatedDiscount.discount_total) }}
-            </div>
+            {{ formatMoney(updatedDiscount.discount_total) }}
         </div>
     </div>
 </template>
 
 <script>
+import EditDiscountItem from "./DiscountEdit.vue";
 export default {
     props: {
         discount: {
@@ -65,8 +61,12 @@ export default {
             required: true,
         },
     },
+    components: {
+        EditDiscountItem,
+    },
     data() {
         return {
+            editing: false,
             updatedDiscount: this.$inertia.form(this.discount),
         };
     },

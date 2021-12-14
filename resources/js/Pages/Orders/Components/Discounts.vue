@@ -11,10 +11,16 @@
                 :discount="discount"
             />
         </div>
+        <create-order-discount
+            class="mt-4 ml-auto flex justify-end"
+            :order="order"
+        />
     </div>
 </template>
 <script>
 import DiscountItem from "./DiscountItem";
+import CreateOrderDiscount from "./DiscountCreate";
+
 export default {
     name: "Discounts",
     props: {
@@ -25,6 +31,7 @@ export default {
     },
     components: {
         DiscountItem,
+        CreateOrderDiscount,
     },
     data() {
         return {
