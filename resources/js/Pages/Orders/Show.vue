@@ -2,13 +2,13 @@
     <orders-layout>
         <div class="max-w-screen-lg">
             <div class="space-y-6">
-                <update-order-form
+                <OrderUpdate
                     :order="order"
                     :customers="customers"
                     :priceLevels="priceLevels"
                 />
 
-                <delete-order-form :order="order" />
+                <OrderDelete :order="order" />
             </div>
         </div>
     </orders-layout>
@@ -18,15 +18,15 @@
 import OrdersLayout from "./OrdersLayout.vue";
 import ButtonLink from "@/Components/Links/ButtonLink";
 
-import UpdateOrderForm from "./Components/UpdateOrderForm";
-import DeleteOrderForm from "./Components/DeleteOrderForm.vue";
-import OrderItems from "./Components/OrderItems.vue";
+import OrderUpdate from "./Components/OrderUpdate";
+import OrderDelete from "./Components/OrderDelete.vue";
+import OrderItems from "./Components/Items.vue";
 export default {
     components: {
         OrdersLayout,
-        UpdateOrderForm,
+        OrderUpdate,
         ButtonLink,
-        DeleteOrderForm,
+        OrderDelete,
         OrderItems,
     },
     props: {

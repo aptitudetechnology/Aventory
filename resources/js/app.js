@@ -7,7 +7,12 @@ import {
     plugin as InertiaPlugin,
 } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
+
+// Mixin Methods
 import money from "./utils/money";
+import popup from "./utils/popup";
+
+// Global Components
 import JetLabel from "@/Jetstream/Label";
 import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
@@ -47,6 +52,7 @@ app.mixin({
     },
 })
     .mixin(money)
+    .mixin(popup)
     .use(InertiaPlugin);
 
 app.mount(el);

@@ -38,7 +38,7 @@ import DetailsSection from "@/Components/DetailsSection";
 import HeadingOne from "@Components/Headings/HeadingOne.vue";
 import CompletedOrdersCard from "./Components/CompletedOrdersCard.vue";
 import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";
-import ViewOrders from "./Components/ViewOrders.vue";
+import ViewOrders from "./Components/OrdersView.vue";
 export default {
     components: {
         ExternalLinkIcon,
