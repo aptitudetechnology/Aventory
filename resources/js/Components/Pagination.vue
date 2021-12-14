@@ -92,7 +92,7 @@
                         font-medium
                     "
                     :class="{
-                        'border-indigo-500 text-indigo-600': link.active,
+                        'border-green-500 text-green-600': link.active,
                     }"
                 >
                     {{ link.label }}

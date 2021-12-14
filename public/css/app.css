@@ -3196,9 +3196,6 @@ html {
 .w-3 {
 	width: 0.75rem;
 }
-.w-1\/4 {
-	width: 25%;
-}
 .min-w-0 {
 	min-width: 0px;
 }
@@ -3440,11 +3437,6 @@ html {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(0.5rem * var(--tw-space-x-reverse));
 	margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.space-x-6 > :not([hidden]) ~ :not([hidden]) {
-	--tw-space-x-reverse: 0;
-	margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-	margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .divide-y > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-y-reverse: 0;
@@ -4480,10 +4472,6 @@ html {
 		grid-column: span 3 / span 3;
 	}
 
-	.sm\:m-4 {
-		margin: 1rem;
-	}
-
 	.sm\:mx-0 {
 		margin-left: 0px;
 		margin-right: 0px;
@@ -4777,10 +4765,6 @@ html {
 		margin-left: -0.5rem;
 	}
 
-	.md\:ml-auto {
-		margin-left: auto;
-	}
-
 	.md\:block {
 		display: block;
 	}
@@ -4813,12 +4797,12 @@ html {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
-	.md\:grid-cols-10 {
-		grid-template-columns: repeat(10, minmax(0, 1fr));
-	}
-
 	.md\:grid-cols-5 {
 		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+
+	.md\:grid-cols-10 {
+		grid-template-columns: repeat(10, minmax(0, 1fr));
 	}
 
 	.md\:flex-row {
