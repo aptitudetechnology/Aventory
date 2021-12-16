@@ -93,6 +93,7 @@ class Product extends Model
         return $this->inventory()->where('ready_date', '<=', now());
     }
 
+
     public function inventorySizes()
     {
         return $this->belongsToMany(Size::class, 'inventories')->distinct()
@@ -107,7 +108,42 @@ class Product extends Model
                         ->where('ready_date', '<=', now())
                         ->select(DB::raw('sum(quantity)'));
                 }
+            ])
+            ->withCasts([
+                'total_inventory' => 'integer',
+                'available_count' => 'integer',
             ]);
+    }
+
+    protected function getTotalInventoryForSize(Size $size)
+    {
+        return $this->inventorySizes()->where('size_id', $size->id)->first()->total_inventory ?? 0;
+    }
+
+    protected function getAvailableInventoryForSize(Size $size)
+    {
+        return $this->inventorySizes()->where('size_id', $size->id)->first()->available_count ?? 0;
+    }
+
+    protected function getSoldQuantities(Size $size)
+    {
+        return intval($this->itemsSold()->where('size_id', $size->id)->sum('quantity'));
+    }
+
+    protected function getOnHoldQuantities(Size $size)
+    {
+        return intval($this->itemsOnHold()->where('size_id', $size->id)->sum('quantity'));
+    }
+
+    public function getQuantities(Size $size)
+    {
+        $total = $this->getTotalInventoryForSize($size);
+        $ready = $this->getAvailableInventoryForSize($size);
+        $sold = $this->getSoldQuantities($size);
+        $onHold = $this->getOnHoldQuantities($size);
+        $available = $ready - $sold - $onHold;
+
+        return compact('total', 'ready', 'sold', 'onHold', 'available');
     }
 
     public function orders()
@@ -126,7 +162,8 @@ class Product extends Model
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'id')
             ->join('orders', 'orders.id', '=', 'order_items.order_id')
-            ->where('orders.is_quote', false);
+            ->where('orders.is_quote', false)
+            ->where('orders.completed', false);
     }
 
     public function quotes()
@@ -143,8 +180,6 @@ class Product extends Model
     {
         return $this->activeQuotes()->where('hold_inventory', true);
     }
-
-
 
     public function pendingOrders()
     {

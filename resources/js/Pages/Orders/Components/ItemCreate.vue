@@ -1,7 +1,7 @@
 <template>
     <div>
         <jet-button type="button" @click="creatingOrderItem = true"
-            >New Order Item</jet-button
+            ><PlusIcon class="w-4 h-4 mr-2" />New Order Item</jet-button
         >
         <jet-dialog-modal
             maxWidth="4xl"
@@ -177,6 +177,8 @@ import {
     SwitchLabel,
 } from "@headlessui/vue";
 
+import { PlusIcon } from "@heroicons/vue/outline";
+
 export default {
     components: {
         Switch,
@@ -186,6 +188,7 @@ export default {
         JetActionMessage,
         JetDialogModal,
         ProductHoldView,
+        PlusIcon,
     },
     props: { order: Object },
 

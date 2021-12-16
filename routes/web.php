@@ -24,6 +24,7 @@ use App\Http\Controllers\ClearLocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Api\ApiDiscountsController;
+use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
 use App\Http\Controllers\ViewInventoryController;
 
 use Illuminate\Support\Facades\Route;
@@ -122,4 +123,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::apiResource('orders.discounts', ApiDiscountsController::class);
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
+    Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');
 });

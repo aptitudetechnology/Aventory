@@ -9,11 +9,19 @@
             uppercase
             text-sm
             p-2
+            cursor-pointer
         "
     >
-        <div class="text-black">
+        <div v-if="itemIsNotInThisOrder" class="text-black">
             {{ item.is_quote ? "Quote #" : "Order #" }} {{ item.order_id }},
             {{ item.order.customer.name }}
+        </div>
+        <div v-else class="text-black">
+            {{
+                item.is_quote
+                    ? `Quote # ${item.order_id} (This Quote)`
+                    : `Order # ${item.order_id} (This Order)`
+            }}
         </div>
         <div>Qt:{{ item.quantity }}</div>
     </div>
@@ -23,6 +31,16 @@ export default {
     props: {
         item: {
             type: Object,
+            required: true,
+        },
+        orderId: {
+            type: Number,
+            required: false,
+        },
+    },
+    computed: {
+        itemIsNotInThisOrder() {
+            return this.item.order_id !== this.orderId;
         },
     },
     methods: {

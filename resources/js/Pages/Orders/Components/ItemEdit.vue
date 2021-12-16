@@ -65,25 +65,11 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="sm:text-right divide-y">
-                                    <jet-label
-                                        class="py-2 mr-0"
-                                        :value="
-                                            'Available: ' + quantityAvailable
-                                        "
-                                    />
-                                    <jet-label
-                                        class="py-2 mr-0"
-                                        :value="'On Hold: ' + quantityOnHold"
-                                    />
-                                    <jet-label
-                                        class="py-2 mr-0 font-bold text-base"
-                                        :value="
-                                            'Available For Sale: ' +
-                                            availableForSale
-                                        "
-                                    />
-                                </div>
+                                <InventoryDetail
+                                    @update="updateQuantity"
+                                    :product="selectedProduct"
+                                    :size="selectedSize"
+                                />
                             </div>
 
                             <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
@@ -217,6 +203,7 @@ import JetActionMessage from "@/Jetstream/ActionMessage";
 import EditButton from "@/Components/Buttons/EditButton.vue";
 import ProductHoldView from "@/Pages/Orders/Components/ProductHoldView.vue";
 import MoneyInput from "@/Components/Forms/MoneyInput.vue";
+import InventoryDetail from "./InventoryDetail.vue";
 
 export default {
     components: {
@@ -230,7 +217,9 @@ export default {
         EditButton,
         ProductHoldView,
         MoneyInput,
+        InventoryDetail,
     },
+
     props: { orderItem: Object, editing: { type: Boolean, default: false } },
 
     data() {
@@ -244,11 +233,9 @@ export default {
                 (size) => size.id == this.orderItem.size_id
             ),
             updatingOrderItem: this.editing,
-            quantityAvailable: 0,
-            quantityOnHold: 0,
-            availableForSale: 0,
             confirmedQuantity: false,
             confirmingQuantity: false,
+            availableForSale: 0,
             form: this.$inertia.form(this.orderItem),
         };
     },
@@ -273,12 +260,16 @@ export default {
     },
 
     methods: {
+        updateQuantity(quantityData) {
+            this.availableForSale = quantityData.availableForSale;
+        },
         viewInventory(product) {
             this.showPopup(
                 route("view.show", { id: product.id }),
                 "View Inventory"
             );
         },
+
         closeForm() {
             this.updatingOrderItem = false;
             this.$emit("close");

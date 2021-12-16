@@ -2,6 +2,13 @@
     <div>
         <jet-section-title>
             <template #title>Products and Services</template>
+            <template #aside
+                ><create-order-item
+                    v-if="items.length"
+                    class="ml-auto flex justify-end"
+                    :order="order"
+                ></create-order-item
+            ></template>
         </jet-section-title>
 
         <div class="divide-gray-50 divide-y">
@@ -14,6 +21,7 @@
             />
         </div>
         <create-order-item
+            v-if="!items.length"
             class="mt-4 ml-auto flex justify-end"
             :order="order"
         ></create-order-item>

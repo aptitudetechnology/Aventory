@@ -167,9 +167,6 @@ export default {
         selectedItem() {
             this.selected = this.selectedItem;
         },
-        selected(value) {
-            this.$emit("update", value);
-        },
     },
 };
 </script>
