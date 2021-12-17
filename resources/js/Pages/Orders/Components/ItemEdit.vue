@@ -220,10 +220,15 @@ export default {
         InventoryDetail,
     },
 
-    props: { orderItem: Object, editing: { type: Boolean, default: false } },
+    props: {
+        orderItem: Object,
+        editing: { type: Boolean, default: false },
+    },
 
     data() {
         return {
+            priceLevelId:
+                this.$page.props.order?.customer?.customer_price_level_id,
             products: this.$page.props.products,
             sizes: this.$page.props.sizes,
             selectedProduct: this.$page.props.products.find(
@@ -249,6 +254,7 @@ export default {
             } else {
                 this.form.product_id = null;
             }
+            this.getProductPrice();
         },
         selectedSize(size) {
             if (size) {
@@ -256,10 +262,32 @@ export default {
             } else {
                 this.form.size_id = null;
             }
+            this.getProductPrice();
         },
     },
 
     methods: {
+        getProductPrice() {
+            if (this.selectedProduct && this.selectedSize) {
+                axios
+                    .get(
+                        route("api.product.prices", [
+                            this.selectedProduct.id,
+                            this.selectedSize.id,
+                        ])
+                    )
+                    .then((response) => {
+                        let price = response.data.find(
+                            (price) =>
+                                price.price_level_id == this.priceLevelId ??
+                                null
+                        ).price;
+                        this.form.unit_price = price;
+                    });
+            } else {
+                this.form.unit_price = 0;
+            }
+        },
         updateQuantity(quantityData) {
             this.availableForSale = quantityData.availableForSale;
         },

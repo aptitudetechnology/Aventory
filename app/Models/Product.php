@@ -60,13 +60,18 @@ class Product extends Model
         return $this->hasMany(Price::class);
     }
 
-    public function getBasePricesAttribute()
+    public function basePrices()
     {
         if ($this->category) {
             return $this->prices->union($this->category->prices);
         } else {
             return $this->prices;
         }
+    }
+
+    public function getBasePricesAttribute()
+    {
+        return $this->basePrices();
     }
 
     public function sizes()

@@ -48,7 +48,7 @@ export default {
     },
     data() {
         return {
-            loading: true,
+            loading: false,
             error: false,
             quantities: {
                 inNursery: 0,

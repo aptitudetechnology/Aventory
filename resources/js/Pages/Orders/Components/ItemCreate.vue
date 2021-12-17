@@ -50,17 +50,29 @@
                                         :message="form.errors.size_id"
                                         class="mt-2"
                                     />
-                                </div>
-                                <div class="sm:col-span-1 flex items-center">
-                                    <jet-checkbox
-                                        id="no_discount"
-                                        v-model="form.no_discount"
-                                        class="mr-2"
-                                    ></jet-checkbox>
-                                    <jet-label for="no_discount"
-                                        >Don't apply Discount?</jet-label
+                                    <div
+                                        class="
+                                            sm:col-span-1
+                                            flex
+                                            items-center
+                                            mt-4
+                                        "
                                     >
+                                        <jet-checkbox
+                                            id="no_discount"
+                                            v-model="form.no_discount"
+                                            class="mr-2"
+                                        ></jet-checkbox>
+                                        <jet-label for="no_discount"
+                                            >Don't apply Discount?</jet-label
+                                        >
+                                    </div>
                                 </div>
+                                <InventoryDetail
+                                    @update="updateQuantity"
+                                    :product="selectedProduct"
+                                    :size="selectedSize"
+                                />
                             </div>
 
                             <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
@@ -178,6 +190,7 @@ import {
 } from "@headlessui/vue";
 
 import { PlusIcon } from "@heroicons/vue/outline";
+import InventoryDetail from "./InventoryDetail.vue";
 
 export default {
     components: {
@@ -189,17 +202,21 @@ export default {
         JetDialogModal,
         ProductHoldView,
         PlusIcon,
+        InventoryDetail,
     },
     props: { order: Object },
 
     data() {
         return {
+            priceLevelId:
+                this.$page.props.order?.customer?.customer_price_level_id,
             addAnother: true,
             products: this.$page.props.products,
             sizes: this.$page.props.sizes,
             selectedProduct: null,
             selectedSize: null,
             creatingOrderItem: false,
+            availableForSale: 0,
             form: this.$inertia.form({
                 _method: "POST",
                 product_id: null,
@@ -218,6 +235,7 @@ export default {
             } else {
                 this.form.product_id = null;
             }
+            this.getProductPrice();
         },
         "form.original_quantity"(value) {
             this.form.quantity = value;
@@ -228,10 +246,36 @@ export default {
             } else {
                 this.form.size_id = null;
             }
+            this.getProductPrice();
         },
     },
 
     methods: {
+        getProductPrice() {
+            if (this.selectedProduct && this.selectedSize) {
+                axios
+                    .get(
+                        route("api.product.prices", [
+                            this.selectedProduct.id,
+                            this.selectedSize.id,
+                        ])
+                    )
+                    .then((response) => {
+                        let price = response.data.find(
+                            (price) =>
+                                price.price_level_id == this.priceLevelId ??
+                                null
+                        ).price;
+                        this.form.unit_price = price;
+                        return;
+                    });
+            } else {
+                this.form.unit_price = 0;
+            }
+        },
+        updateQuantity(quantityData) {
+            this.availableForSale = quantityData.availableForSale;
+        },
         viewInventory(product) {
             this.showPopup(
                 route("view.show", { id: product.id }),
