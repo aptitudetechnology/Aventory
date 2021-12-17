@@ -4,7 +4,6 @@
             <template #title>Products and Services</template>
             <template #aside
                 ><create-order-item
-                    v-if="items.length"
                     class="ml-auto flex justify-end"
                     :order="order"
                 ></create-order-item
@@ -20,11 +19,6 @@
                 :itemSelected="isItemSelected(item)"
             />
         </div>
-        <create-order-item
-            v-if="!items.length"
-            class="mt-4 ml-auto flex justify-end"
-            :order="order"
-        ></create-order-item>
     </div>
 </template>
 

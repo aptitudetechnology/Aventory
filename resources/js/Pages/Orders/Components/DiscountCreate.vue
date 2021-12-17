@@ -1,7 +1,10 @@
 <template>
     <div>
-        <jet-button type="button" @click="creatingDiscount = true"
-            >New Discount</jet-button
+        <jet-button
+            type="button"
+            class="bg-yellow-500"
+            @click="creatingDiscount = true"
+            ><PlusIcon class="w-4 h-4 mr-2" />New Discount</jet-button
         >
         <jet-dialog-modal
             maxWidth="3xl"
@@ -94,11 +97,13 @@
 
 <script>
 import JetDialogModal from "@/Jetstream/DialogModal";
+import { PlusIcon } from "@heroicons/vue/outline";
 
 export default {
     props: { order: Object },
     components: {
         JetDialogModal,
+        PlusIcon,
     },
     data() {
         return {

@@ -95,7 +95,6 @@
                             id="date"
                             type="date"
                             class="mt-1 block w-full"
-                            @blur="updateOrder"
                             v-model="updatedOrder.date"
                             required
                         />
@@ -111,7 +110,6 @@
                         <text-area-input
                             id="notes"
                             type="notes"
-                            @blur="updateOrder"
                             class="mt-1 block w-full"
                             v-model="updatedOrder.notes"
                         />
@@ -139,6 +137,9 @@ import Discounts from "@/Pages/Orders/Components/Discounts.vue";
 import Totals from "@/Pages/Orders/Components/Totals.vue";
 
 import { Inertia } from "@inertiajs/inertia";
+
+// import debounce from "lodash/debounce";
+import _debounce from "lodash/debounce";
 
 export default {
     components: {
@@ -182,6 +183,14 @@ export default {
         };
     },
     watch: {
+        updatedOrder: {
+            handler: _debounce(function () {
+                if (!this.updatedOrder.processing) {
+                    this.updateOrder();
+                }
+            }, 500),
+            deep: true,
+        },
         orderCustomer(orderCustomer) {
             if (orderCustomer) {
                 this.updatedOrder.customer_id = orderCustomer.id;
@@ -194,7 +203,6 @@ export default {
                 this.updatedOrder.customer_id = null;
                 this.contact = null;
             }
-            this.updateOrder();
         },
         contact(value) {
             if (value) {
@@ -202,7 +210,6 @@ export default {
             } else {
                 this.updatedOrder.contact_id = null;
             }
-            this.updateOrder();
         },
         teamMember(value) {
             if (value) {
@@ -210,7 +217,6 @@ export default {
             } else {
                 this.updatedOrder.team_member_id = null;
             }
-            this.updateOrder();
         },
     },
     methods: {

@@ -12,12 +12,10 @@
                     :selectedItem="shipping_method"
                     :items="shipping_methods"
                     id="shipping_method"
-                    @update="updateShippingMethod"
                 />
                 <div class="grid grid-cols-2 gap-4 items-center">
                     <jet-label for="shipping_amount">Shipping Amount</jet-label>
                     <money-input
-                        @blur="updateOrder"
                         v-model="updatedOrder.shipping_amount"
                         id="shipping_amount"
                     />
@@ -29,7 +27,6 @@
                     <jet-input
                         id="warranty_percentage"
                         type="number"
-                        @blur="updateOrder"
                         v-model="updatedOrder.warranty_percentage"
                     />
                 </div>
@@ -45,7 +42,6 @@
                 >
                     <jet-label class="flex items-center text-lg">
                         <jet-checkbox
-                            @change="updateOrder"
                             class="mr-2 mb-1"
                             :checked="updatedOrder.is_taxable"
                             v-model="updatedOrder.is_taxable"
@@ -58,7 +54,6 @@
                 >
                     <jet-label for="tax_percentage">Tax Percentage</jet-label>
                     <jet-input
-                        @blur="updateOrder"
                         id="tax_percentage"
                         type="number"
                         v-model="updatedOrder.tax_percentage"
@@ -141,6 +136,7 @@
 </template>
 <script>
 import MoneyInput from "@/Components/Forms/MoneyInput.vue";
+import _debounce from "lodash/debounce";
 export default {
     components: { MoneyInput },
     props: {
@@ -164,27 +160,25 @@ export default {
             ) ?? null;
     },
     watch: {
+        shipping_method(value) {
+            this.updatedOrder.shipping_method_id = value ? value.id : null;
+        },
+        updatedOrder: {
+            handler: _debounce(function () {
+                if (!this.updatedOrder.processing) {
+                    this.updateOrder();
+                }
+            }, 500),
+            deep: true,
+        },
         order: {
             handler(order) {
                 this.updatedOrder = this.$inertia.form(order);
             },
             deep: true,
         },
-        updatedOrder: {
-            handler(newValue) {
-                this.$emit("update", newValue);
-            },
-            deep: true,
-        },
     },
     methods: {
-        updateShippingMethod() {
-            this.updatedOrder.shipping_method_id =
-                this.shipping_method.id ?? null;
-            this.$nextTick(() => {
-                this.updateOrder();
-            });
-        },
         updateOrder() {
             if (this.updatedOrder.isDirty) {
                 this.updatedOrder.patch(route("orders.update", this.order.id));

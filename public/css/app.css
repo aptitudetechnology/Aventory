@@ -3265,6 +3265,9 @@ html {
 .right-10 {
 	right: 2.5rem;
 }
+.bottom-0 {
+	bottom: 0px;
+}
 .z-0 {
 	z-index: 0;
 }
@@ -3650,6 +3653,10 @@ html {
 	--tw-translate-x: 1.25rem;
 	transform: var(--tw-transform);
 }
+.translate-y-1\/2 {
+	--tw-translate-y: 50%;
+	transform: var(--tw-transform);
+}
 .rotate-90 {
 	--tw-rotate: 90deg;
 	transform: var(--tw-transform);
@@ -4030,6 +4037,14 @@ html {
 	--tw-bg-opacity: 1;
 	background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
 }
+.bg-yellow-400 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(251, 191, 36, var(--tw-bg-opacity));
+}
+.bg-yellow-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(245, 158, 11, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -4198,6 +4213,9 @@ html {
 }
 .pb-6 {
 	padding-bottom: 1.5rem;
+}
+.pl-8 {
+	padding-left: 2rem;
 }
 .text-left {
 	text-align: left;
