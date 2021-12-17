@@ -1,24 +1,13 @@
 <template>
     <div class="relative">
-        <input
-            class="
-                pl-6
-                border-gray-300
-                focus:outline-none
-                focus:ring-1
-                focus:ring-green-500
-                focus:border-green-500
-                rounded-md
-                shadow-sm
-                w-full
-            "
+        <jet-input
             type="number"
             v-model="displayValue"
             @focus="isInputFocused = true"
             @blur="isInputFocused = false"
-            :min="min"
-            :max="max"
+            v-bind="$attrs"
             ref="input"
+            class="pl-6 w-full"
         />
         <div class="absolute top-0 bottom-0 left-0 pl-2 flex items-center">
             $
@@ -28,18 +17,18 @@
 
 <script>
 export default {
-    props: ["modelValue", "min", "max"],
+    props: {
+        modelValue: {
+            type: [Number, String],
+            default: 0,
+        },
+    },
 
     emits: ["update:modelValue"],
     data() {
         return {
             isInputFocused: false,
         };
-    },
-    methods: {
-        focus() {
-            this.$refs.input.focus();
-        },
     },
     computed: {
         displayValue: {
