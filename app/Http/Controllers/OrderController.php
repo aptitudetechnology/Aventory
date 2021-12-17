@@ -84,7 +84,7 @@ class OrderController extends Controller
     {
         Gate::authorize('view', $order);
         $customers = $this->getCustomers();
-        $items = $order->items->sortBy('product_name');
+        $items = $order->items;
         $teamMembers = auth()->user()->currentTeam->allUsers();
         $priceLevels = auth()->user()->currentTeam->priceLevels;
         $delivery_statuses = DeliveryStatus::all();

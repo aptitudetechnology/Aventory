@@ -19,6 +19,10 @@
                         v-model="updatedOrder.shipping_amount"
                         id="shipping_amount"
                     />
+                    <jet-input-error
+                        class="col-span-2"
+                        :message="updatedOrder.errors.shipping_amount"
+                    />
                 </div>
                 <div class="grid grid-cols-2 gap-4 items-center">
                     <jet-label for="warranty_percentage"
@@ -28,6 +32,10 @@
                         id="warranty_percentage"
                         type="number"
                         v-model="updatedOrder.warranty_percentage"
+                    />
+                    <jet-input-error
+                        class="col-span-2"
+                        :message="updatedOrder.errors.warranty_percentage"
                     />
                 </div>
                 <div
@@ -49,7 +57,7 @@
                     >
                 </div>
                 <div
-                    v-if="order.is_taxable"
+                    v-if="updatedOrder.is_taxable"
                     class="grid grid-cols-2 gap-4 items-center"
                 >
                     <jet-label for="tax_percentage">Tax Percentage</jet-label>
@@ -57,6 +65,10 @@
                         id="tax_percentage"
                         type="number"
                         v-model="updatedOrder.tax_percentage"
+                    />
+                    <jet-input-error
+                        class="col-span-2"
+                        :message="updatedOrder.errors.tax_percentage"
                     />
                 </div>
             </div>
@@ -137,6 +149,7 @@
 <script>
 import MoneyInput from "@/Components/Forms/MoneyInput.vue";
 import _debounce from "lodash/debounce";
+
 export default {
     components: { MoneyInput },
     props: {
@@ -148,7 +161,13 @@ export default {
     data() {
         return {
             isFocused: false,
-            updatedOrder: this.$inertia.form(this.order),
+            updatedOrder: this.$inertia.form({
+                is_taxable: this.order.is_taxable,
+                tax_percentage: this.order.tax_percentage,
+                warranty_percentage: this.order.warranty_percentage,
+                shipping_method_id: this.order.shipping_method_id,
+                shipping_amount: this.order.shipping_amount,
+            }),
             shipping_method: null,
             shipping_methods: this.$page.props.shipping_methods,
         };
@@ -163,25 +182,36 @@ export default {
         shipping_method(value) {
             this.updatedOrder.shipping_method_id = value ? value.id : null;
         },
-        updatedOrder: {
-            handler: _debounce(function () {
-                if (!this.updatedOrder.processing) {
-                    this.updateOrder();
-                }
-            }, 500),
-            deep: true,
-        },
+        "updatedOrder.shipping_method_id": _debounce(function (value) {
+            this.updateOrder();
+        }, 500),
+        "updatedOrder.is_taxable": _debounce(function () {
+            this.updateOrder();
+        }, 500),
+        "updatedOrder.warranty_percentage": _debounce(function () {
+            this.updateOrder();
+        }, 500),
+        "updatedOrder.tax_percentage": _debounce(function () {
+            this.updateOrder();
+        }, 500),
+        "updatedOrder.shipping_amount": _debounce(function () {
+            this.updateOrder();
+        }, 500),
         order: {
             handler(order) {
-                this.updatedOrder = this.$inertia.form(order);
+                if (!this.updatedOrder.isDirty) {
+                    this.updatedOrder = this.$inertia.form(order);
+                }
             },
             deep: true,
         },
     },
     methods: {
         updateOrder() {
-            if (this.updatedOrder.isDirty) {
-                this.updatedOrder.patch(route("orders.update", this.order.id));
+            if (this.updatedOrder.isDirty && !this.updatedOrder.processing) {
+                this.updatedOrder.patch(route("orders.update", this.order.id), {
+                    preserveState: true,
+                });
             }
         },
     },

@@ -17,11 +17,11 @@
                 ></template
             >
             <template #content>
-                <div class="grid grid-cols-6 gap-4">
+                <div class="grid md:grid-cols-6 gap-4">
                     <form
                         @submit.prevent="createOrderItem"
                         @keydown.enter="createOrderItem"
-                        class="col-span-4"
+                        class="md:col-span-4"
                     >
                         <div class="grid gap-4">
                             <div class="grid gap-4 sm:grid-cols-2">
@@ -138,7 +138,7 @@
                         </div>
                     </form>
                     <product-hold-view
-                        class="col-span-2"
+                        class="md:col-span-2"
                         :orderId="order.id"
                         :product="selectedProduct"
                         :size="selectedSize"

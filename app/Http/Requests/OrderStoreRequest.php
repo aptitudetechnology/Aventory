@@ -24,17 +24,17 @@ class OrderStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id' => 'required|exists:customers,id',
-            'team_member_id' => 'nullable|exists:users,id',
-            'contact_id' => 'nullable|exists:contacts,id',
-            'date' => 'required|date',
-            'from_quote_id' => 'nullable|exists:orders,id',
-            'notes' => 'nullable|string',
-            'shipping_method_id' => 'nullable|exists:shipping_methods,id',
-            'shipping_amount' => 'nullable|numeric|min:0',
-            'warranty_percentage' => 'nullable|numeric|min:0',
-            'is_taxable' => 'nullable|boolean',
-            'tax_percentage' => 'nullable|numeric|min:0',
+            'customer_id' => 'sometimes|required|exists:customers,id',
+            'team_member_id' => 'sometimes|nullable|exists:users,id',
+            'contact_id' => 'sometimes|nullable|exists:contacts,id',
+            'date' => 'sometimes|required|date',
+            'from_quote_id' => 'sometimes|nullable|exists:orders,id',
+            'notes' => 'sometimes|nullable|string',
+            'shipping_method_id' => 'sometimes|nullable|exists:shipping_methods,id',
+            'shipping_amount' => 'sometimes|nullable|numeric|min:0',
+            'warranty_percentage' => 'sometimes|nullable|numeric|min:0',
+            'is_taxable' => 'sometimes|nullable|boolean',
+            'tax_percentage' => 'sometimes|nullable|numeric|min:0',
         ];
     }
 }

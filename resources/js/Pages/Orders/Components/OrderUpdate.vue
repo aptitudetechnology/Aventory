@@ -179,18 +179,28 @@ export default {
             teamMember: this.$page.props.teamMembers.find(
                 (member) => member.id === this.order.team_member_id
             ),
-            updatedOrder: this.$inertia.form(this.order),
+            updatedOrder: this.$inertia.form({
+                customer_id: this.order.customer_id,
+                contact_id: this.order.contact_id,
+                team_member_id: this.order.team_member_id,
+                date: this.order.date,
+                notes: this.order.notes,
+            }),
         };
     },
     watch: {
-        updatedOrder: {
-            handler: _debounce(function () {
-                if (!this.updatedOrder.processing) {
-                    this.updateOrder();
-                }
-            }, 500),
-            deep: true,
-        },
+        "updatedOrder.customer_id": _debounce(function () {
+            this.updateOrder();
+        }, 500),
+        "updatedOrder.team_member_id": _debounce(function () {
+            this.updateOrder();
+        }, 500),
+        "updatedOrder.date": _debounce(function () {
+            this.updateOrder();
+        }, 1000),
+        "updatedOrder.notes": _debounce(function () {
+            this.updateOrder();
+        }, 1000),
         orderCustomer(orderCustomer) {
             if (orderCustomer) {
                 this.updatedOrder.customer_id = orderCustomer.id;
@@ -222,7 +232,10 @@ export default {
     methods: {
         updateOrder() {
             this.$nextTick(() => {
-                if (this.updatedOrder.isDirty) {
+                if (
+                    this.updatedOrder.isDirty &&
+                    !this.updatedOrder.processing
+                ) {
                     this.updatedOrder.patch(
                         route("orders.update", this.order.id),
                         {
