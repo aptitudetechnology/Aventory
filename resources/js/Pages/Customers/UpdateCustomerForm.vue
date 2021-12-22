@@ -327,33 +327,14 @@
                                     for="tax_percentage"
                                     value="Customer Tax Rate"
                                 />
-                                <div class="relative w-full">
-                                    <jet-input
-                                        id="tax_percentage"
-                                        type="number"
-                                        max="100.00"
-                                        min="0.00"
-                                        step=".01"
-                                        placeholder="0.00"
-                                        class="mt-1 block w-full pr-8"
-                                        v-model="updatedCustomer.tax_percentage"
-                                    />
-                                    <div
-                                        class="
-                                            absolute
-                                            inset-y-0
-                                            right-0
-                                            pr-3
-                                            flex
-                                            items-center
-                                            pointer-events-none
-                                        "
-                                    >
-                                        <span class="text-gray-500 sm:text-sm">
-                                            %
-                                        </span>
-                                    </div>
-                                </div>
+                                <percentage-input
+                                    id="tax_percentage"
+                                    max="100.00"
+                                    min="0.00"
+                                    step=".01"
+                                    placeholder="0.00"
+                                    v-model="updatedCustomer.tax_percentage"
+                                />
                                 <jet-input-error
                                     :message="
                                         updatedCustomer.errors.tax_percentage
@@ -369,34 +350,13 @@
                                 for="discount_percentage"
                                 value="Percentage Discount"
                             />
-                            <div class="relative">
-                                <jet-input
-                                    id="discount_percentage"
-                                    type="number"
-                                    max="100"
-                                    min="0"
-                                    placeholder="0"
-                                    class="mt-1 block w-full pr-8"
-                                    v-model="
-                                        updatedCustomer.discount_percentage
-                                    "
-                                />
-                                <div
-                                    class="
-                                        absolute
-                                        inset-y-0
-                                        right-0
-                                        pr-3
-                                        flex
-                                        items-center
-                                        pointer-events-none
-                                    "
-                                >
-                                    <span class="text-gray-500 sm:text-sm">
-                                        %
-                                    </span>
-                                </div>
-                            </div>
+                            <percentage-input
+                                id="discount_percentage"
+                                max="100.00"
+                                min="0.00"
+                                placeholder="0.00"
+                                v-model="updatedCustomer.discount_percentage"
+                            />
                             <jet-input-error
                                 :message="
                                     updatedCustomer.errors.discount_percentage

@@ -4176,14 +4176,17 @@ html {
 .pl-2 {
 	padding-left: 0.5rem;
 }
+.pr-6 {
+	padding-right: 1.5rem;
+}
+.pr-2 {
+	padding-right: 0.5rem;
+}
 .pl-10 {
 	padding-left: 2.5rem;
 }
 .pr-10 {
 	padding-right: 2.5rem;
-}
-.pr-2 {
-	padding-right: 0.5rem;
 }
 .pr-9 {
 	padding-right: 2.25rem;

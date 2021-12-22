@@ -24,6 +24,7 @@ import TextAreaInput from "@/Components/Forms/TextAreaInput";
 import SelectBox from "@Components/Forms/SelectBox";
 import DetailsSection from "@Components/DetailsSection";
 import MoneyInput from "@Components/Forms/MoneyInput";
+import PercentageInput from "@Components/Forms/PercentageInput";
 
 const el = document.getElementById("app");
 
@@ -49,6 +50,7 @@ app.mixin({
         SelectBox,
         DetailsSection,
         MoneyInput,
+        PercentageInput,
     },
 })
     .mixin(money)

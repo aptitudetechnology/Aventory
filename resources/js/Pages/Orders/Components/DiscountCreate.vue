@@ -49,10 +49,9 @@
                                 <jet-label for="percentage"
                                     >Percentage %</jet-label
                                 >
-                                <jet-input
-                                    type="number"
-                                    v-model="discount.discount_percentage"
+                                <percentage-input
                                     id="percentage"
+                                    v-model="discount.discount_percentage"
                                 />
                             </div>
                             <div
@@ -62,10 +61,9 @@
                                 <jet-label for="amount"
                                     >Discount Amount</jet-label
                                 >
-                                <jet-input
-                                    type="number"
-                                    v-model.number="discount.discount_amount"
+                                <money-input
                                     id="amount"
+                                    v-model="discount.discount_amount"
                                 />
                             </div>
                         </div>

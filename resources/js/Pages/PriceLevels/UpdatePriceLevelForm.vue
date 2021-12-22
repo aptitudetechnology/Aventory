@@ -45,16 +45,12 @@
                             for="percentage_more"
                             value="Percentage more than base price"
                         />
-                        <div class="percentage_more">
-                            <jet-input
-                                id="percentage_more"
-                                type="number"
-                                min="0"
-                                placeholder="0"
-                                class="mt-1 block w-full"
-                                v-model="form.percentage_more"
-                            />
-                        </div>
+                        <percentage-input
+                            id="percentage_more"
+                            min="0"
+                            placeholder="0"
+                            v-model="form.percentage_more"
+                        />
                         <jet-input-error
                             :message="form.errors.percentage_more"
                             class="mt-2"

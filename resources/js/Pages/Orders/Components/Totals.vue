@@ -28,9 +28,8 @@
                     <jet-label for="warranty_percentage"
                         >Warrany Percentage</jet-label
                     >
-                    <jet-input
+                    <percentage-input
                         id="warranty_percentage"
-                        type="number"
                         v-model="updatedOrder.warranty_percentage"
                     />
                     <jet-input-error
@@ -61,9 +60,8 @@
                     class="grid grid-cols-2 gap-4 items-center"
                 >
                     <jet-label for="tax_percentage">Tax Percentage</jet-label>
-                    <jet-input
+                    <percentage-input
                         id="tax_percentage"
-                        type="number"
                         v-model="updatedOrder.tax_percentage"
                     />
                     <jet-input-error

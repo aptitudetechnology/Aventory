@@ -87,8 +87,15 @@
                                         v-for="priceLevel in priceLevels"
                                         :key="priceLevel.id"
                                         :title="priceLevel.name + ' pricing'"
-                                        >${{
-                                            (priceLevel.percentage_more / 100) *
+                                        >{{
+                                            formatMoney(
+                                                (priceLevel.percentage_more /
+                                                    100) *
+                                                    getSizeBasePrice(size) +
+                                                    getSizeBasePrice(size)
+                                            )(
+                                                priceLevel.percentage_more / 100
+                                            ) *
                                                 getSizeBasePrice(size) +
                                             getSizeBasePrice(size)
                                         }}</table-d
