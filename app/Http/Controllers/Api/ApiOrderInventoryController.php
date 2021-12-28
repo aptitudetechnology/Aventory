@@ -72,7 +72,7 @@ class ApiOrderInventoryController extends Controller
             $match = $order->items()->create([
                 'product_id' => $inventory->product_id,
                 'size_id' => $inventory->size_id,
-                'unit_price' => $inventory->product->prices->where('size_id', $inventory->size_id)->first()->getPriceForLevel($order->customer->priceLevel),
+                'unit_price' => $inventory->product->getPrice($inventory->size, $order->customer),
                 'original_quantity' => $request->input('quantity'),
                 'quantity' => $request->input('quantity'),
             ]);

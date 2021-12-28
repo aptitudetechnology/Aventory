@@ -74,6 +74,20 @@ class Product extends Model
         return $this->basePrices();
     }
 
+    /**
+     * 
+     * Get price of product for size and customer.
+     */
+    public function getPrice(Size $size, Customer $customer)
+    {
+        $price = $this->basePrices()->where('size_id', $size->id)->first();
+        if ($price) {
+            return $price->getPriceForLevel($customer->price_level);
+        } else {
+            return 0;
+        }
+    }
+
     public function sizes()
     {
         return $this->belongsToMany(Size::class, 'prices');
@@ -132,12 +146,19 @@ class Product extends Model
 
     protected function getSoldQuantities(Size $size)
     {
-        return intval($this->itemsSold()->where('size_id', $size->id)->sum('quantity'));
+        return intval($this->itemsSold()
+            ->where('size_id', $size->id)
+            ->get()
+            ->reduce(function ($quantity, $item) {
+                return $quantity + $item->unmatched_quantity;
+            }, 0));
     }
 
     protected function getOnHoldQuantities(Size $size)
     {
-        return intval($this->itemsOnHold()->where('size_id', $size->id)->sum('quantity'));
+        return intval($this->itemsOnHold()
+            ->where('size_id', $size->id)
+            ->sum('quantity'));
     }
 
     public function getQuantities(Size $size)

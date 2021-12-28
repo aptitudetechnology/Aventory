@@ -101,6 +101,37 @@
                 </div>
             </div>
         </div>
+        <confirmation-modal
+            @close="creatingMatch = false"
+            :show="creatingMatch"
+        >
+            <template #title> Add Order Item? </template>
+            <template #content>
+                <span class="font-bold"
+                    >There is no matching order item for
+                    {{ inventoryItem.product.name }}.
+                </span>
+                \n Do you want to add {{ inventoryItem.product.name }} in size
+                {{ inventoryItem.size.name }} to the order?
+            </template>
+            <template #footer>
+                <div class="flex items-center justify-between">
+                    <jet-secondary-button
+                        type="button"
+                        @click="selectingMatch = false"
+                    >
+                        Cancel
+                    </jet-secondary-button>
+                    <jet-button
+                        type="submit"
+                        :disabled="!creatingMatch"
+                        @click="addInventory"
+                    >
+                        Yes, Add Item
+                    </jet-button>
+                </div>
+            </template>
+        </confirmation-modal>
         <dialog-modal @close="selectingMatch = false" :show="selectingMatch">
             <template #title>Select Match</template>
             <template #description>
@@ -156,6 +187,7 @@
 <script>
 import SearchInput from "@/Components/Forms/SearchInput.vue";
 import { ExclamationCircleIcon, CheckCircleIcon } from "@heroicons/vue/outline";
+import ConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
 import DialogModal from "@/Jetstream/DialogModal.vue";
 import RadioListSelect from "@Components/Forms/RadioListSelect.vue";
 import axios from "axios";
@@ -164,6 +196,7 @@ export default {
         SearchInput,
         ExclamationCircleIcon,
         CheckCircleIcon,
+        ConfirmationModal,
         DialogModal,
         RadioListSelect,
     },
@@ -185,6 +218,7 @@ export default {
             matches: [],
             match: null,
             selectingMatch: false,
+            creatingMatch: false,
             message: null,
             errored: false,
         };
@@ -245,6 +279,8 @@ export default {
                         this.addInventory();
                     } else if (this.matches?.length > 0) {
                         this.showMatchOptions();
+                    } else if (this.inventoryItem) {
+                        this.showAddLineItemDialog();
                     }
                 });
         },
@@ -255,6 +291,7 @@ export default {
                     this.getInventory();
                     this.item.reset();
                     this.selectingMatch = false;
+                    this.creatingMatch = false;
                     this.match = null;
                 },
             });
@@ -263,6 +300,9 @@ export default {
 
         showMatchOptions() {
             this.selectingMatch = true;
+        },
+        showAddLineItemDialog() {
+            this.creatingMatch = true;
         },
         updateMatch(match) {
             this.match = match;

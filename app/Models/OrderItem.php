@@ -63,9 +63,20 @@ class OrderItem extends Model
         return $this->belongsToMany(Inventory::class, 'inventory_archive', 'order_item_id', 'inventory_id')->as('archive')->withPivot('quantity_removed');
     }
 
+
     public function getIsMatchedAttribute()
     {
-        return $this->inventory->sum('archive.quantity_removed') >= $this->quantity;
+        return $this->matched_quantity >= $this->quantity;
+    }
+
+    public function getUnmatchedQuantityAttribute()
+    {
+        return $this->quantity - $this->matched_quantity;
+    }
+
+    public function getMatchedQuantityAttribute()
+    {
+        return $this->inventory->sum('archive.quantity_removed');
     }
 
     public function getLineTotalAttribute()
