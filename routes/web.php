@@ -25,10 +25,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Api\ApiDiscountsController;
 use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
+use App\Http\Controllers\Api\ApiOrderInventoryController;
 use App\Http\Controllers\Api\ApiProductPriceController;
 use App\Http\Controllers\ViewInventoryController;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 /*
@@ -122,6 +124,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('orders', OrderController::class);
     Route::resource('orders.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
     Route::apiResource('orders.discounts', ApiDiscountsController::class);
+    Route::apiResource('orders.inventory', ApiOrderInventoryController::class)->only(['index', 'show', 'store', 'destroy'])
+        ->missing(function (Request $request) {
+            return response()->json(['message' => "No Inventory Found for ID: {$request['inventory']}"], 200);
+        });
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');

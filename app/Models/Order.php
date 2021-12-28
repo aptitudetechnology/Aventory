@@ -65,6 +65,7 @@ class Order extends Model
         return $this->hasMany(OrderItem::class, 'order_id');
     }
 
+
     /**
      * Get the discounts for the order.
      * Need to add for foreign key since the quote model is an extension of the order model.
@@ -72,6 +73,62 @@ class Order extends Model
     public function discounts()
     {
         return $this->hasMany(OrderDiscount::class, 'order_id');
+    }
+
+    /**
+     * Get the order items inventory.
+     * Group by order item.
+     */
+    public function inventory()
+    {
+        $inventory = $this->items->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'product_name' => $item->product->name,
+                'size_name' => $item->size->name,
+                'quantity' => $item->quantity,
+                'inventory' => $item->inventory,
+            ];
+        });
+        return $inventory;
+    }
+
+    /**
+     * 
+     * Get item matched to inventory.
+     */
+    public function getItemMatchedToInventory(Inventory $inventory)
+    {
+        return $this->items->filter(function ($item) use ($inventory) {
+            return $item->inventory->contains($inventory);
+        })->first();
+    }
+
+    /*
+    * Get order item match that is same of scanned inventory.
+    */
+    public function getInventoryItemMatch(Inventory $inventory)
+    {
+        $item = $this->items
+            ->where('product_id', $inventory->product_id)
+            ->where('size_id', $inventory->size_id)
+            ->filter(function ($item) {
+                return !$item->is_matched;
+            })->first();
+        return $item;
+    }
+
+    /**
+     * Get possible order item matches that is same of scanned inventory.
+     */
+    public function getPossibleInventoryItemMatches(Inventory $inventory)
+    {
+        $items = $this->items
+            ->where('product_id', $inventory->product_id)
+            ->filter(function ($item) {
+                return !$item->is_matched;
+            });
+        return $items;
     }
 
     public function customer()

@@ -61,8 +61,12 @@ class Price extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function getPriceForLevel(CustomerPriceLevel $level)
+    public function getPriceForLevel(CustomerPriceLevel $level = null)
     {
-        return $this->unit_price * ($level->percentage_more / 100) + $this->unit_price;
+        if ($level) {
+            return $this->unit_price * ($level->percentage_more / 100) + $this->unit_price;
+        } else {
+            return $this->unit_price;
+        }
     }
 }

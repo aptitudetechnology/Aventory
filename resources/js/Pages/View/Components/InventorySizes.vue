@@ -89,15 +89,11 @@
                                         :title="priceLevel.name + ' pricing'"
                                         >{{
                                             formatMoney(
-                                                (priceLevel.percentage_more /
-                                                    100) *
-                                                    getSizeBasePrice(size) +
-                                                    getSizeBasePrice(size)
-                                            )(
-                                                priceLevel.percentage_more / 100
-                                            ) *
-                                                getSizeBasePrice(size) +
-                                            getSizeBasePrice(size)
+                                                getSizePriceForPriceLevel(
+                                                    size,
+                                                    priceLevel
+                                                )
+                                            )
                                         }}</table-d
                                     >
                                 </tr>
@@ -252,6 +248,12 @@ export default {
                 return basePrice.size_id == size.id;
             });
             return basePrice ? basePrice.unit_price : 0.0;
+        },
+        getSizePriceForPriceLevel(size, level) {
+            return (
+                (this.getSizeBasePrice(size) * level.percentage_more) / 100 +
+                this.getSizeBasePrice(size)
+            );
         },
     },
 };

@@ -8,18 +8,18 @@
                     : 'sm:rounded-md'
             "
         >
-            <div class="grid grid-cols-6 gap-4">
-                <jet-section-title
-                    class="col-span-6 mb-0"
-                    v-if="hasTitle"
-                    :showBorder="showTitleBorder"
-                >
-                    <template #title><slot name="title"></slot></template>
-                    <template #description
-                        ><slot name="description"></slot
-                    ></template>
-                    <template #aside><slot name="aside" /></template>
-                </jet-section-title>
+            <jet-section-title
+                class="mb-4"
+                v-if="hasTitle"
+                :showBorder="showTitleBorder"
+            >
+                <template #title><slot name="title"></slot></template>
+                <template #description
+                    ><slot name="description"></slot
+                ></template>
+                <template #aside><slot name="aside" /></template>
+            </jet-section-title>
+            <div class="grid gap-4">
                 <slot></slot>
             </div>
         </div>

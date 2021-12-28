@@ -24,6 +24,7 @@
                     @input="$emit('update:modelValue', $event.target.value)"
                     ref="input"
                     :type="type"
+                    v-bind="$attrs"
                     name="search"
                     id="search"
                     :inputmode="inputmode"
@@ -31,15 +32,7 @@
                     :title="title"
                     :autocomplete="autocomplete"
                     :disabled="disabled"
-                    class="
-                        focus:ring-green-500 focus:border-green-500
-                        block
-                        w-full
-                        pl-10
-                        sm:text-sm
-                        border-gray-300
-                        rounded-md
-                    "
+                    class="w-full pl-10"
                     :placeholder="placeholder"
                 />
             </div>
