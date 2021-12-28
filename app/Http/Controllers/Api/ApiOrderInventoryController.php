@@ -29,7 +29,7 @@ class ApiOrderInventoryController extends Controller
      * if the item is not able to be automatically matched to an order item, it will return a list of items that may be able to be matched.(Same product, but not the same size.)
      * 
      */
-    public function show(Order $order, Inventory $inventory)
+    public function show(Request $request, Order $order, Inventory $inventory)
     {
         Gate::authorize('update', $order);
         $message = "";
@@ -37,14 +37,14 @@ class ApiOrderInventoryController extends Controller
         $match = $order->getInventoryItemMatch($inventory);
         $possibleItemMatches = $order->getPossibleInventoryItemMatches($inventory);
         if ($orderItem) {
-            $message  = 'This item is already added to the order.';
+            $message  = "Inventory #{$inventory->id} has already been added to the order. Only re-add this item if it is for another order line item.";
             $match = null;
         } elseif ($match) {
             $message = '';
         } elseif ($possibleItemMatches->count() > 0) {
-            $message = "Please select an item to match to the order.";
+            $message = "Please select an order line item to match to {$inventory->id}.}";
         } else {
-            $message = "No items found that match the scanned item.";
+            $message = "No items found that match the scanned item. Do you want to add {$inventory->product->name} in size {$inventory->size->name} to the order?";
         }
 
         return response()->json([
@@ -66,7 +66,7 @@ class ApiOrderInventoryController extends Controller
         $inventory = Inventory::findOrFail($request->input('inventory_id'));
         $items = $order->items;
 
-        $match = $items->where('product_id', $inventory->product_id)->where('size_id', $inventory->size_id)->first();
+        $match = $items->find($request->input('order_item_id'));
 
         if (!$match) {
             $match = $order->items()->create([
@@ -78,12 +78,18 @@ class ApiOrderInventoryController extends Controller
             ]);
         }
 
-        $match->inventory()->attach($inventory->id, ['quantity_removed' => $request->input('quantity')]);
-
-        $inventory->update([
-            'quantity' => $inventory->quantity - $request->input('quantity'),
-        ]);
-
-        return back()->banner('Inventory matched to order items.');
+        if (!$match->is_matched) {
+            $match->inventory()->attach($inventory->id, [
+                'quantity_removed' => $request->input('quantity'),
+                'removed_by_id' => auth()->user()->id,
+                'reason_removed' => 'Sold',
+            ]);
+            $inventory->update([
+                'quantity' => $inventory->quantity - $request->input('quantity'),
+            ]);
+            return back()->banner('Inventory matched to order items.');
+        } else {
+            return back()->banner('This order item is already matched to inventory.');
+        }
     }
 }

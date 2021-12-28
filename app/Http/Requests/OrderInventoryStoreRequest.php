@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Inventory;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderInventoryStoreRequest extends FormRequest
@@ -25,6 +26,13 @@ class OrderInventoryStoreRequest extends FormRequest
     {
         return [
             'inventory_id' => 'required|integer|exists:inventories,id',
+            'order_item_id' => 'required|integer|exists:order_items,id',
+            'quantity' => ['required', 'integer', 'min:1', function ($attribute, $value, $fail) {
+                $inventoryItem = Inventory::find($this->inventory_id);
+                if ($inventoryItem->quantity < $value) {
+                    $fail("There are $inventoryItem->quantity available. Update quantity.");
+                }
+            }],
         ];
     }
 }

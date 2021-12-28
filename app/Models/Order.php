@@ -86,6 +86,7 @@ class Order extends Model
                 'id' => $item->id,
                 'product_name' => $item->product->name,
                 'size_name' => $item->size->name,
+                'is_matched' => $item->is_matched,
                 'quantity' => $item->quantity,
                 'inventory' => $item->inventory,
             ];

@@ -65,7 +65,7 @@ class OrderItem extends Model
 
     public function getIsMatchedAttribute()
     {
-        return $this->inventory->sum('quantity') == $this->quantity;
+        return $this->inventory->sum('archive.quantity_removed') >= $this->quantity;
     }
 
     public function getLineTotalAttribute()
