@@ -20,6 +20,7 @@ import JetCheckbox from "@/Jetstream/Checkbox";
 import JetSectionTitle from "@/Jetstream/SectionTitle";
 import JetButton from "@/Jetstream/Button";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
+import JetDangerButton from "@/Jetstream/DangerButton";
 import TextAreaInput from "@/Components/Forms/TextAreaInput";
 import SelectBox from "@Components/Forms/SelectBox";
 import DetailsSection from "@Components/DetailsSection";
@@ -46,6 +47,7 @@ app.mixin({
         JetSectionTitle,
         JetButton,
         JetSecondaryButton,
+        JetDangerButton,
         TextAreaInput,
         SelectBox,
         DetailsSection,

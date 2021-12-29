@@ -60,7 +60,14 @@ class OrderItem extends Model
 
     public function inventory()
     {
-        return $this->belongsToMany(Inventory::class, 'inventory_archive', 'order_item_id', 'inventory_id')->as('archive')->withPivot('quantity_removed');
+        return $this->belongsToMany(Inventory::class, 'inventory_archive', 'order_item_id', 'inventory_id')
+            ->as('archive')
+            ->withPivot('quantity_removed', 'removed_by_id', 'reason_removed');
+    }
+
+    public function archived()
+    {
+        return $this->hasMany(InventoryArchive::class);
     }
 
 

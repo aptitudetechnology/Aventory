@@ -88,7 +88,7 @@ class Order extends Model
                 'size_name' => $item->size->name,
                 'is_matched' => $item->is_matched,
                 'quantity' => $item->quantity,
-                'inventory' => $item->inventory,
+                'archived_inventory' => $item->archived,
             ];
         });
         return $inventory;

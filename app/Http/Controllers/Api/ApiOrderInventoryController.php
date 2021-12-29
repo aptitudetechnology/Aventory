@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InventoryArchiveStoreRequest;
 use App\Http\Requests\OrderInventoryStoreRequest;
 use App\Models\Inventory;
+use App\Models\InventoryArchive;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
@@ -42,7 +45,7 @@ class ApiOrderInventoryController extends Controller
         } elseif ($match) {
             $message = '';
         } elseif ($possibleItemMatches->count() > 0) {
-            $message = "Please select an order line item to match to {$inventory->id}.}";
+            $message = "Please select an order line item to match to {$inventory->id}.";
         } else {
             $message = "No items found that match the scanned item. Do you want to add {$inventory->product->name} in size {$inventory->size->name} to the order?";
         }
@@ -58,10 +61,10 @@ class ApiOrderInventoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Requests\OrderInventoryStoreRequest  $request
+     * @param  \Illuminate\Http\Requests\InventoryArchiveStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OrderInventoryStoreRequest $request, Order $order)
+    public function store(InventoryArchiveStoreRequest $request, Order $order)
     {
         $inventory = Inventory::findOrFail($request->input('inventory_id'));
         $items = $order->items;
@@ -73,19 +76,19 @@ class ApiOrderInventoryController extends Controller
                 'product_id' => $inventory->product_id,
                 'size_id' => $inventory->size_id,
                 'unit_price' => $inventory->product->getPrice($inventory->size, $order->customer),
-                'original_quantity' => $request->input('quantity'),
-                'quantity' => $request->input('quantity'),
+                'original_quantity' => $request->input('quantity_removed'),
+                'quantity' => $request->input('quantity_removed'),
             ]);
         }
 
         if (!$match->is_matched) {
-            $match->inventory()->attach($inventory->id, [
-                'quantity_removed' => $request->input('quantity'),
+            $match->archived()->create([
+                'order_item_id' => $match->id,
+                'inventory_id' => $inventory->id,
+                'quantity_removed' => $request->input('quantity_removed'),
                 'removed_by_id' => auth()->user()->id,
                 'reason_removed' => 'Sold',
-            ]);
-            $inventory->update([
-                'quantity' => $inventory->quantity - $request->input('quantity'),
+                'was_adjustment' => false,
             ]);
             return back()->banner('Inventory matched to order items.');
         } else {

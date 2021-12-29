@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     use HasFactory;
-    protected $with = ['product', 'block', 'place'];
+    protected $with = ['product', 'size', 'block', 'place'];
     protected $appends = ['last_inventory_date'];
     /**
      * The attributes that are mass assignable.
@@ -71,6 +71,14 @@ class Inventory extends Model
         return $this->belongsTo(\App\Models\Product::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function orderItems()
+    {
+        return $this->belongsToMany(\App\Models\OrderItem::class, 'inventory_archive', 'inventory_id', 'order_item_id');
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -103,5 +111,10 @@ class Inventory extends Model
     public function size()
     {
         return $this->belongsTo(\App\Models\Size::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(\App\Models\Team::class);
     }
 }

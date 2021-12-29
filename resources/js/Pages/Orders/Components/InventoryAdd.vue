@@ -9,7 +9,7 @@
                 <jet-input-error v-show="!selectingMatch" :message="message" />
                 <jet-input-error
                     v-show="!selectingMatch"
-                    :message="item.errors.quantity"
+                    :message="item.errors.quantity_removed"
                 />
                 <div class="flex items-end space-x-2">
                     <div class="w-1/2">
@@ -30,7 +30,7 @@
                             id="quantity"
                             type="number"
                             min="1"
-                            v-model="item.quantity"
+                            v-model="item.quantity_removed"
                             class="w-full"
                         />
                     </div>
@@ -77,23 +77,20 @@
                     <div class="truncate w-1/2">
                         {{ orderItem.product_name }}
                     </div>
-                    <div class="w-1/4">{{ `Qty: ${orderItem.quantity}` }}</div>
+                    <div class="w-1/4">
+                        {{ `Qty: ${orderItem.quantity}` }}
+                    </div>
                 </div>
                 <div class="flex flex-wrap">
-                    <span
-                        v-for="inventoryItem in orderItem.inventory"
-                        :key="inventoryItem.id"
-                        class="px-1 py-1 text-sm text-gray-700"
-                    >
-                        {{
-                            "#" +
-                            inventoryItem.id +
-                            " Qty: " +
-                            inventoryItem.archive.quantity_removed
-                        }}
-                    </span>
+                    <inventory-item
+                        v-for="archivedItem in orderItem.archived_inventory"
+                        :key="archivedItem.id"
+                        :archivedItem="archivedItem"
+                        :order="order"
+                        @update="getInventory"
+                    />
                     <div
-                        v-if="!orderItem.inventory.length"
+                        v-if="!orderItem.archived_inventory.length"
                         class="px-1 py-1 text-sm text-gray-700"
                     >
                         No Inventory matched.
@@ -107,18 +104,19 @@
         >
             <template #title> Add Order Item? </template>
             <template #content>
-                <span class="font-bold"
-                    >There is no matching order item for
+                <div class="font-bold">
+                    There is no matching order item for
                     {{ inventoryItem.product.name }}.
-                </span>
-                \n Do you want to add {{ inventoryItem.product.name }} in size
+                </div>
+                Do you want to add {{ inventoryItem.product.name }} in size
                 {{ inventoryItem.size.name }} to the order?
+                <jet-input-error :message="item.errors.quantity_removed" />
             </template>
             <template #footer>
                 <div class="flex items-center justify-between">
                     <jet-secondary-button
                         type="button"
-                        @click="selectingMatch = false"
+                        @click="creatingMatch = false"
                     >
                         Cancel
                     </jet-secondary-button>
@@ -153,13 +151,13 @@
                         @update="updateMatch"
                         class="mb-4"
                     />
-                    <jet-input-error :message="item.errors.quantity" />
+                    <jet-input-error :message="item.errors.quantity_removed" />
                     <div class="flex items-center justify-between mt-2">
                         <jet-label for="quantity">Quantity</jet-label>
                         <jet-input
                             type="number"
-                            v-model="item.quantity"
-                            :error="item.errors.quantity ? true : false"
+                            v-model="item.quantity_removed"
+                            :error="item.errors.quantity_removed ? true : false"
                         ></jet-input>
                     </div>
                 </form>
@@ -190,6 +188,7 @@ import { ExclamationCircleIcon, CheckCircleIcon } from "@heroicons/vue/outline";
 import ConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
 import DialogModal from "@/Jetstream/DialogModal.vue";
 import RadioListSelect from "@Components/Forms/RadioListSelect.vue";
+import InventoryItem from "./InventoryItem.vue";
 import axios from "axios";
 export default {
     components: {
@@ -199,6 +198,7 @@ export default {
         ConfirmationModal,
         DialogModal,
         RadioListSelect,
+        InventoryItem,
     },
     props: {
         order: {
@@ -211,7 +211,7 @@ export default {
             item: this.$inertia.form({
                 inventory_id: null,
                 order_item_id: null,
-                quantity: 1,
+                quantity_removed: 1,
             }),
             inventory: [],
             inventoryItem: null,
@@ -260,7 +260,7 @@ export default {
                         "orders.inventory.show",
                         [this.order, this.item.inventory_id],
                         {
-                            quantity: this.item.quantity,
+                            quantity: this.item.quantity_removed,
                         }
                     )
                 )
@@ -289,10 +289,11 @@ export default {
                 preserveState: true,
                 onSuccess: () => {
                     this.getInventory();
-                    this.item.reset();
                     this.selectingMatch = false;
                     this.creatingMatch = false;
                     this.match = null;
+                    this.inventoryItem = null;
+                    this.item.reset();
                 },
             });
             this.$emit("add", this.inventory);
