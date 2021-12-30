@@ -146,12 +146,9 @@ class Product extends Model
 
     protected function getSoldQuantities(Size $size)
     {
-        return intval($this->itemsSold()
-            ->where('size_id', $size->id)
-            ->get()
-            ->reduce(function ($quantity, $item) {
-                return $quantity + $item->unmatched_quantity;
-            }, 0));
+        return $this->itemsSold()->where('size_id', $size->id)->get()->reduce(function ($carry, $item) {
+            return $carry + $item->unmatched_quantity;
+        }, 0);
     }
 
     protected function getOnHoldQuantities(Size $size)
@@ -180,16 +177,14 @@ class Product extends Model
     public function itemsOnHold()
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'id')
-            ->join('orders', 'orders.id', '=', 'order_items.order_id')
-            ->where('orders.is_quote', true);
+            ->whereRelation('order', 'is_quote', true);
     }
 
     public function itemsSold()
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'id')
-            ->join('orders', 'orders.id', '=', 'order_items.order_id')
-            ->where('orders.is_quote', false)
-            ->where('orders.completed', false);
+            ->whereRelation('order', 'is_quote', false)
+            ->whereRelation('order', 'completed', false);
     }
 
     public function quotes()

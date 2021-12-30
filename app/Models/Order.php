@@ -56,14 +56,7 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the customer that owns the order.
-     * Need to add for foreign key since the quote model is an extension of the order model.
-     */
-    public function items()
-    {
-        return $this->hasMany(OrderItem::class, 'order_id');
-    }
+
 
 
     /**
@@ -88,10 +81,19 @@ class Order extends Model
                 'size_name' => $item->size->name,
                 'is_matched' => $item->is_matched,
                 'quantity' => $item->quantity,
+                'unmatched_quantity' => $item->unmatched_quantity,
                 'archived_inventory' => $item->archived,
             ];
         });
         return $inventory;
+    }
+
+    /**
+     * Get items in the order.
+     */
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id');
     }
 
     /**
@@ -108,7 +110,7 @@ class Order extends Model
     /*
     * Get order item match that is same of scanned inventory.
     */
-    public function getInventoryItemMatch(Inventory $inventory)
+    public function getPerfectInventoryMatchForItem(Inventory $inventory)
     {
         $item = $this->items
             ->where('product_id', $inventory->product_id)
@@ -124,11 +126,9 @@ class Order extends Model
      */
     public function getPossibleInventoryItemMatches(Inventory $inventory)
     {
-        $items = $this->items
-            ->where('product_id', $inventory->product_id)
-            ->filter(function ($item) {
-                return !$item->is_matched;
-            });
+        $items = $this->items()->where('product_id', $inventory->product_id)->get()->filter(function ($item) {
+            return !$item->is_matched;
+        })->flatten();
         return $items;
     }
 

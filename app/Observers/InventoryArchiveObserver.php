@@ -35,6 +35,7 @@ class InventoryArchiveObserver
         $quantityRemovedAfter = intval($inventoryArchive->quantity_removed);
         $inventoryArchive->inventory->increment('quantity', $quantityRemovedBefore - $quantityRemovedAfter);
     }
+
     /**
      * 
      * When deleting an archive, we add the inventory back to inventory.
@@ -42,7 +43,7 @@ class InventoryArchiveObserver
      * @param InventoryArchive $inventoryArchive
      * @return void
      */
-    public function deleted(InventoryArchive $inventoryArchive)
+    public function deleting(InventoryArchive $inventoryArchive)
     {
         $inventoryArchive
             ->inventory

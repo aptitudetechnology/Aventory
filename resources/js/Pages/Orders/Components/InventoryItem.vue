@@ -20,22 +20,27 @@
             </template>
             <template #content>
                 <form @keydown.enter.prevent="updateItem">
-                    <div class="mb-2">
-                        <span class="font-bold">Inventory Item:</span>
-                        {{ item.product_name }}
-                    </div>
-                    <div class="mb-2">
-                        <span class="font-bold">Inventory Size:</span>
-                        {{ item.size_name }}
-                    </div>
-                    <div class="mb-4">
-                        <span class="font-bold">Inventory ID #:</span>
-                        {{ item.inventory_id }}
+                    <div class="grid gap-4 grid-cols-2 mb-4">
+                        <jet-label class="col-span-2">
+                            <span class="font-bold">Product:</span>
+                            {{ item.product_name }}
+                        </jet-label>
+                        <jet-label>
+                            <span class="font-bold">Inventory ID #:</span>
+                            {{ item.inventory_id }}
+                        </jet-label>
+
+                        <jet-label>
+                            <span class="font-bold">Size:</span>
+                            {{ item.size_name }}
+                        </jet-label>
                     </div>
 
                     <jet-input-error :message="item.errors.quantity_removed" />
                     <div class="flex items-center justify-between">
-                        <jet-label for="quantity">Quantity</jet-label>
+                        <jet-label class="font-bold" for="quantity"
+                            >Quantity:</jet-label
+                        >
                         <jet-input
                             id="quantity"
                             type="number"

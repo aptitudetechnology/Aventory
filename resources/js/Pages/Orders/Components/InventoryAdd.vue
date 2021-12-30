@@ -102,15 +102,33 @@
             @close="creatingMatch = false"
             :show="creatingMatch"
         >
-            <template #title> Add Order Item? </template>
+            <template #title> Add {{ inventoryItem.product.name }}?</template>
             <template #content>
-                <div class="font-bold">
-                    There is no matching order item for
-                    {{ inventoryItem.product.name }}.
-                </div>
-                Do you want to add {{ inventoryItem.product.name }} in size
-                {{ inventoryItem.size.name }} to the order?
-                <jet-input-error :message="item.errors.quantity_removed" />
+                <form @keydown.enter.prevent="addInventory">
+                    <div class="font-bold">
+                        There is no matching order item for
+                        {{ inventoryItem.product.name }}.
+                    </div>
+                    Do you want to add {{ inventoryItem.product.name }} in size
+                    {{ inventoryItem.size.name }} to the order?
+                    <div class="border-t pt-4 mt-4">
+                        <jet-input-error
+                            :message="item.errors.quantity_removed"
+                        />
+                        <div class="flex items-center justify-between mt-2">
+                            <jet-label class="font-bold" for="quantity"
+                                >Quantity:</jet-label
+                            >
+                            <jet-input
+                                type="number"
+                                v-model="item.quantity_removed"
+                                :error="
+                                    item.errors.quantity_removed ? true : false
+                                "
+                            ></jet-input>
+                        </div>
+                    </div>
+                </form>
             </template>
             <template #footer>
                 <div class="flex items-center justify-between">
@@ -134,13 +152,16 @@
             <template #title>Select Match</template>
             <template #description>
                 <span>
-                    Select the order item to match
-                    {{ inventoryItem.id }} inventory item to.
+                    Select the order item to match ID #{{
+                        inventoryItem.id
+                    }}
+                    inventory item: {{ inventoryItem.product.name }} in size
+                    {{ inventoryItem.size.name }} to.
                 </span>
-                <jet-input-error :message="message" />
             </template>
             <template #content>
                 <form @keydown.enter.prevent="addInventory">
+                    <jet-input-error class="mb-4 px-1" :message="message" />
                     <RadioListSelect
                         v-model="match"
                         :label="'Select Match'"
@@ -151,14 +172,22 @@
                         @update="updateMatch"
                         class="mb-4"
                     />
-                    <jet-input-error :message="item.errors.quantity_removed" />
-                    <div class="flex items-center justify-between mt-2">
-                        <jet-label for="quantity">Quantity</jet-label>
-                        <jet-input
-                            type="number"
-                            v-model="item.quantity_removed"
-                            :error="item.errors.quantity_removed ? true : false"
-                        ></jet-input>
+                    <div class="">
+                        <jet-input-error
+                            :message="item.errors.quantity_removed"
+                        />
+                        <div class="flex items-center justify-between mt-2">
+                            <jet-label class="font-bold" for="quantity"
+                                >Quantity:</jet-label
+                            >
+                            <jet-input
+                                type="number"
+                                v-model="item.quantity_removed"
+                                :error="
+                                    item.errors.quantity_removed ? true : false
+                                "
+                            ></jet-input>
+                        </div>
                     </div>
                 </form>
             </template>
@@ -277,7 +306,7 @@ export default {
                 .finally(() => {
                     if (this.match) {
                         this.addInventory();
-                    } else if (this.matches?.length > 0) {
+                    } else if (this.matches.length > 0) {
                         this.showMatchOptions();
                     } else if (this.inventoryItem) {
                         this.showAddLineItemDialog();

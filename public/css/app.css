@@ -2106,6 +2106,21 @@ html {
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 }
+.divider {
+	display: flex;
+	align-items: center;
+	height: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.divider:after,.divider:before {
+	content: "";
+	flex-grow: 1;
+	--tw-bg-opacity: 1;
+	--tw-bg-opacity: var(--tw-border-opacity,0.1);
+	background-color: hsla(var(--bc)/var(--tw-bg-opacity,1));
+	height: .125rem;
+}
 .footer {
 	display: grid;
 	place-items: start;
@@ -2676,6 +2691,12 @@ html {
 	to {
 		background-position-y: 0;
 	}
+}
+.divider:not(:empty):before {
+	margin-right: 1rem;
+}
+.divider:not(:empty):after {
+	margin-left: 1rem;
 }
 .label a:hover {
 	--tw-text-opacity: 1;

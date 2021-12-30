@@ -37,14 +37,14 @@ class ApiOrderInventoryController extends Controller
         Gate::authorize('update', $order);
         $message = "";
         $orderItem = $order->getItemMatchedToInventory($inventory);
-        $match = $order->getInventoryItemMatch($inventory);
+        $match = $order->getPerfectInventoryMatchForItem($inventory);
         $possibleItemMatches = $order->getPossibleInventoryItemMatches($inventory);
         if ($orderItem) {
-            $message  = "Inventory #{$inventory->id} has already been added to the order. Only re-add this item if it is for another order line item.";
+            $message  = "Inventory #{$inventory->id} has already been added to the order. Only re-add this item if it is for another order line item. If it is for the same line item, just edit the quantity matched.";
             $match = null;
         } elseif ($match) {
             $message = '';
-        } elseif ($possibleItemMatches->count() > 0) {
+        } elseif (count($possibleItemMatches) > 0) {
             $message = "Please select an order line item to match to {$inventory->id}.";
         } else {
             $message = "No items found that match the scanned item. Do you want to add {$inventory->product->name} in size {$inventory->size->name} to the order?";
@@ -92,7 +92,7 @@ class ApiOrderInventoryController extends Controller
             ]);
             return back()->banner('Inventory matched to order items.');
         } else {
-            return back()->banner('This order item is already matched to inventory.');
+            return back()->dangerBanner('This order item is already matched to inventory. Update quantity of the order item before matching more inventory.');
         }
     }
 }
