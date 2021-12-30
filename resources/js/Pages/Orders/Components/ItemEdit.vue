@@ -36,7 +36,6 @@
                                         v-model="selectedProduct"
                                     />
                                     <jet-input-error
-                                        v-if="!form.product_id"
                                         :message="form.errors.product_id"
                                         class="mt-2"
                                     />
@@ -49,7 +48,6 @@
                                         v-model="selectedSize"
                                     />
                                     <jet-input-error
-                                        v-if="!form.size_id"
                                         :message="form.errors.size_id"
                                         class="mt-2"
                                     />
@@ -87,7 +85,6 @@
                                         required
                                     />
                                     <jet-input-error
-                                        v-if="!form.original_quantity"
                                         :message="form.errors.original_quantity"
                                         class="mt-2"
                                     />
@@ -106,7 +103,6 @@
                                         required
                                     />
                                     <jet-input-error
-                                        v-if="!form.quantity"
                                         :message="form.errors.quantity"
                                         class="mt-2"
                                     />
@@ -124,7 +120,6 @@
                                         v-model="form.unit_price"
                                     />
                                     <jet-input-error
-                                        v-if="!form.unit_price"
                                         :message="form.errors.unit_price"
                                         class="mt-2"
                                     />
@@ -323,7 +318,18 @@ export default {
                     ]),
                     {
                         preserveScroll: true,
-                        preserveState: false,
+                        preserveState: true,
+                        onSuccess: () => {
+                            this.confirmedQuantity = false;
+                            this.updatingOrderItem = false;
+                            this.$emit("close");
+                            this.$inertia.visit(
+                                route("orders.show", [this.orderItem.order_id]),
+                                {
+                                    preserveScroll: true,
+                                }
+                            );
+                        },
                     }
                 );
             }
