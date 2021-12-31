@@ -63,4 +63,19 @@ class User extends Authenticatable
     {
         return $this->currentTeam->priceLevels;
     }
+
+    public function customers()
+    {
+        return $this->currentTeam->customers();
+    }
+
+    public function orders()
+    {
+        return $this->currentTeam->orders();
+    }
+
+    public function quotes()
+    {
+        return $this->currentTeam->quotes();
+    }
 }

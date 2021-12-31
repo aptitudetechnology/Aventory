@@ -9,9 +9,11 @@
             rounded-md
             shadow-sm
         "
+        :class="{
+            'border-red-500': error,
+        }"
+        v-bind="$attrs"
         :value="modelValue"
-        :min="min"
-        :max="max"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"
     />
@@ -19,7 +21,10 @@
 
 <script>
 export default {
-    props: ["modelValue", "min", "max"],
+    props: {
+        modelValue: { type: [String, Boolean, Number] },
+        error: { type: Boolean, default: false },
+    },
 
     emits: ["update:modelValue"],
 

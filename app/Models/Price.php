@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+
 class Price extends Model
 {
     use HasFactory;
@@ -58,5 +59,14 @@ class Price extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getPriceForLevel(CustomerPriceLevel $level = null)
+    {
+        if ($level) {
+            return $this->unit_price * ($level->percentage_more / 100) + $this->unit_price;
+        } else {
+            return $this->unit_price;
+        }
     }
 }

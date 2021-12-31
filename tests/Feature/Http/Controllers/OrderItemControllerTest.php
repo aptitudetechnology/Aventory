@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\OrderItem;
+use App\Models\Purchase;
+use App\Models\PurchaseItem;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -11,9 +11,9 @@ use JMac\Testing\Traits\AdditionalAssertions;
 use Tests\TestCase;
 
 /**
- * @see \App\Http\Controllers\OrderItemController
+ * @see \App\Http\Controllers\PurchaseItemController
  */
-class OrderItemControllerTest extends TestCase
+class PurchaseItemControllerTest extends TestCase
 {
     use AdditionalAssertions, RefreshDatabase, WithFaker;
 
@@ -22,13 +22,13 @@ class OrderItemControllerTest extends TestCase
      */
     public function index_displays_view()
     {
-        $orderItems = OrderItem::factory()->count(3)->create();
+        $purchaseItems = PurchaseItem::factory()->count(3)->create();
 
-        $response = $this->get(route('order-item.index'));
+        $response = $this->get(route('purchase-item.index'));
 
         $response->assertOk();
-        $response->assertViewIs('orderItem.index');
-        $response->assertViewHas('orderItems');
+        $response->assertViewIs('purchaseItem.index');
+        $response->assertViewHas('purchaseItems');
     }
 
 
@@ -37,10 +37,10 @@ class OrderItemControllerTest extends TestCase
      */
     public function create_displays_view()
     {
-        $response = $this->get(route('order-item.create'));
+        $response = $this->get(route('purchase-item.create'));
 
         $response->assertOk();
-        $response->assertViewIs('orderItem.create');
+        $response->assertViewIs('purchaseItem.create');
     }
 
 
@@ -50,9 +50,9 @@ class OrderItemControllerTest extends TestCase
     public function store_uses_form_request_validation()
     {
         $this->assertActionUsesFormRequest(
-            \App\Http\Controllers\OrderItemController::class,
+            \App\Http\Controllers\PurchaseItemController::class,
             'store',
-            \App\Http\Requests\OrderItemStoreRequest::class
+            \App\Http\Requests\PurchaseItemStoreRequest::class
         );
     }
 
@@ -61,16 +61,18 @@ class OrderItemControllerTest extends TestCase
      */
     public function store_saves_and_redirects()
     {
-        $order = Order::factory()->create();
+        $purchase = Purchase::factory()->create();
         $product = Product::factory()->create();
-        $unit_price = $this->faker->randomFloat(/** double_attributes **/);
-        $quantity_ordered = $this->faker->numberBetween(-10000, 10000);
+        $unit_price = $this->faker->randomFloat(
+            /** double_attributes **/
+        );
+        $quantity_purchaseed = $this->faker->numberBetween(-10000, 10000);
         $quantity_confirmed = $this->faker->numberBetween(-10000, 10000);
         $received = $this->faker->boolean;
         $printed = $this->faker->boolean;
 
-        $response = $this->post(route('order-item.store'), [
-            'order_id' => $order->id,
+        $response = $this->post(route('purchase-item.store'), [
+            'order_id' => $purchase->id,
             'product_id' => $product->id,
             'unit_price' => $unit_price,
             'quantity_ordered' => $quantity_ordered,
@@ -79,8 +81,8 @@ class OrderItemControllerTest extends TestCase
             'printed' => $printed,
         ]);
 
-        $orderItems = OrderItem::query()
-            ->where('order_id', $order->id)
+        $purchaseItems = PurchaseItem::query()
+            ->where('purchase_id', $purchase->id)
             ->where('product_id', $product->id)
             ->where('unit_price', $unit_price)
             ->where('quantity_ordered', $quantity_ordered)
@@ -88,11 +90,11 @@ class OrderItemControllerTest extends TestCase
             ->where('received', $received)
             ->where('printed', $printed)
             ->get();
-        $this->assertCount(1, $orderItems);
-        $orderItem = $orderItems->first();
+        $this->assertCount(1, $purchaseItems);
+        $purchaseItem = $purchaseItems->first();
 
-        $response->assertRedirect(route('orderItem.index'));
-        $response->assertSessionHas('orderItem.id', $orderItem->id);
+        $response->assertRedirect(route('purchaseItem.index'));
+        $response->assertSessionHas('purchaseItem.id', $purchaseItem->id);
     }
 
 
@@ -101,13 +103,13 @@ class OrderItemControllerTest extends TestCase
      */
     public function show_displays_view()
     {
-        $orderItem = OrderItem::factory()->create();
+        $purchaseItem = PurchaseItem::factory()->create();
 
-        $response = $this->get(route('order-item.show', $orderItem));
+        $response = $this->get(route('purchase-item.show', $purchaseItem));
 
         $response->assertOk();
-        $response->assertViewIs('orderItem.show');
-        $response->assertViewHas('orderItem');
+        $response->assertViewIs('purchaseItem.show');
+        $response->assertViewHas('purchaseItem');
     }
 
 
@@ -116,13 +118,13 @@ class OrderItemControllerTest extends TestCase
      */
     public function edit_displays_view()
     {
-        $orderItem = OrderItem::factory()->create();
+        $purchaseItem = PurchaseItem::factory()->create();
 
-        $response = $this->get(route('order-item.edit', $orderItem));
+        $response = $this->get(route('purchase-item.edit', $purchaseItem));
 
         $response->assertOk();
-        $response->assertViewIs('orderItem.edit');
-        $response->assertViewHas('orderItem');
+        $response->assertViewIs('purchaseItem.edit');
+        $response->assertViewHas('purchaseItem');
     }
 
 
@@ -132,9 +134,9 @@ class OrderItemControllerTest extends TestCase
     public function update_uses_form_request_validation()
     {
         $this->assertActionUsesFormRequest(
-            \App\Http\Controllers\OrderItemController::class,
+            \App\Http\Controllers\PurchaseItemController::class,
             'update',
-            \App\Http\Requests\OrderItemUpdateRequest::class
+            \App\Http\Requests\PurchaseItemUpdateRequest::class
         );
     }
 
@@ -143,17 +145,19 @@ class OrderItemControllerTest extends TestCase
      */
     public function update_redirects()
     {
-        $orderItem = OrderItem::factory()->create();
-        $order = Order::factory()->create();
+        $purchaseItem = PurchaseItem::factory()->create();
+        $purchase = Purchase::factory()->create();
         $product = Product::factory()->create();
-        $unit_price = $this->faker->randomFloat(/** double_attributes **/);
+        $unit_price = $this->faker->randomFloat(
+            /** double_attributes **/
+        );
         $quantity_ordered = $this->faker->numberBetween(-10000, 10000);
         $quantity_confirmed = $this->faker->numberBetween(-10000, 10000);
         $received = $this->faker->boolean;
         $printed = $this->faker->boolean;
 
-        $response = $this->put(route('order-item.update', $orderItem), [
-            'order_id' => $order->id,
+        $response = $this->put(route('purchase-item.update', $purchaseItem), [
+            'purchase_id' => $purchase->id,
             'product_id' => $product->id,
             'unit_price' => $unit_price,
             'quantity_ordered' => $quantity_ordered,
@@ -162,18 +166,18 @@ class OrderItemControllerTest extends TestCase
             'printed' => $printed,
         ]);
 
-        $orderItem->refresh();
+        $purchaseItem->refresh();
 
-        $response->assertRedirect(route('orderItem.index'));
-        $response->assertSessionHas('orderItem.id', $orderItem->id);
+        $response->assertRedirect(route('purchaseItem.index'));
+        $response->assertSessionHas('purchaseItem.id', $purchaseItem->id);
 
-        $this->assertEquals($order->id, $orderItem->order_id);
-        $this->assertEquals($product->id, $orderItem->product_id);
-        $this->assertEquals($unit_price, $orderItem->unit_price);
-        $this->assertEquals($quantity_ordered, $orderItem->quantity_ordered);
-        $this->assertEquals($quantity_confirmed, $orderItem->quantity_confirmed);
-        $this->assertEquals($received, $orderItem->received);
-        $this->assertEquals($printed, $orderItem->printed);
+        $this->assertEquals($purchase->id, $purchaseItem->purchase_id);
+        $this->assertEquals($product->id, $purchaseItem->product_id);
+        $this->assertEquals($unit_price, $purchaseItem->unit_price);
+        $this->assertEquals($quantity_ordered, $purchaseItem->quantity_ordered);
+        $this->assertEquals($quantity_confirmed, $purchaseItem->quantity_confirmed);
+        $this->assertEquals($received, $purchaseItem->received);
+        $this->assertEquals($printed, $purchaseItem->printed);
     }
 
 
@@ -182,12 +186,12 @@ class OrderItemControllerTest extends TestCase
      */
     public function destroy_deletes_and_redirects()
     {
-        $orderItem = OrderItem::factory()->create();
+        $purchaseItem = PurchaseItem::factory()->create();
 
-        $response = $this->delete(route('order-item.destroy', $orderItem));
+        $response = $this->delete(route('purchase-item.destroy', $purchaseItem));
 
-        $response->assertRedirect(route('orderItem.index'));
+        $response->assertRedirect(route('purchaseItem.index'));
 
-        $this->assertDeleted($orderItem);
+        $this->assertDeleted($purchaseItem);
     }
 }

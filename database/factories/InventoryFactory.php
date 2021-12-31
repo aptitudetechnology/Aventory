@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Block;
 use App\Models\Inventory;
-use App\Models\OrderItem;
+use App\Models\PurchaseItem;
 use App\Models\Place;
 use App\Models\Product;
 use App\Models\Size;
@@ -28,12 +28,12 @@ class InventoryFactory extends Factory
     public function definition()
     {
         return [
-            'order_item_id' => OrderItem::factory(),
+            'purchase_item_id' => PurchaseItem::factory(),
             'product_id' => Product::factory(),
             'original_size_id' => Size::factory(),
             'size_id' => Size::factory(),
             'quantity' => $this->faker->numberBetween(-10000, 10000),
-            'type' => $this->faker->randomElement(["group","individual"]),
+            'type' => $this->faker->randomElement(["group", "individual"]),
             'block_id' => Block::factory(),
             'place_id' => Place::factory(),
         ];

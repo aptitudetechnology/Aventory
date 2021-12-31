@@ -51,7 +51,11 @@ class CustomerController extends Controller
 
         $this->updateMailingAddress($customer, $request);
 
-        return redirect(route('customers.show', $customer->id))->banner('Successfully saved new customer.');;
+        if ($request->redirect) {
+            return redirect(route('customers.show', $customer->id))->banner('Successfully saved new customer.');
+        } else {
+            return $customer;
+        }
     }
 
     /**
@@ -101,7 +105,6 @@ class CustomerController extends Controller
 
         $this->updateMailingAddress($customer, $request);
 
-        $request->session()->flash('success', 'Yeah! Customer was updated.');
         return redirect(route('customers.show', $customer->id))->banner('Yeah! Successfully saved customer.');
     }
 
