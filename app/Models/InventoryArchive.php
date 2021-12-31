@@ -19,7 +19,7 @@ class InventoryArchive extends Model
         'reason_removed' => 'string',
         'was_adjustment' => 'boolean',
     ];
-    protected $appends = ['product_name', 'size_name'];
+    protected $appends = ['product_name', 'size_name', 'order_item_quantity', 'inventory_is_group'];
 
     public function orderItem()
     {
@@ -54,5 +54,20 @@ class InventoryArchive extends Model
     public function getSizeNameAttribute()
     {
         return $this->size->name;
+    }
+
+    public function removedBy()
+    {
+        return $this->belongsTo(User::class, 'removed_by_id');
+    }
+
+    public function getOrderItemQuantityAttribute()
+    {
+        return $this->orderItem->quantity;
+    }
+
+    public function getInventoryIsGroupAttribute()
+    {
+        return $this->inventory->type == "group";
     }
 }

@@ -6,10 +6,11 @@
         :show="confirmingOrderItemDeletion"
         @close="confirmingOrderItemDeletion = false"
     >
-        <template #title> Delete Item </template>
+        <template #title> Remove item from order</template>
 
         <template #content>
-            Are you sure you want to delete this item? This action cannot be
+            Are you sure you want to delete this item? This will add all matched
+            inventory to this item back in inventory. This action cannot be
             undone.
         </template>
 
@@ -24,7 +25,7 @@
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
             >
-                Delete Item
+                Remove Order Item
             </jet-danger-button>
         </template>
     </jet-confirmation-modal>

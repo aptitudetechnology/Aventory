@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InventoryArchiveStoreRequest;
-use App\Http\Requests\OrderInventoryStoreRequest;
 use App\Models\Inventory;
-use App\Models\InventoryArchive;
 use App\Models\Order;
-use App\Models\OrderItem;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
@@ -39,8 +36,12 @@ class ApiOrderInventoryController extends Controller
         $orderItem = $order->getItemMatchedToInventory($inventory);
         $match = $order->getPerfectInventoryMatchForItem($inventory);
         $possibleItemMatches = $order->getPossibleInventoryItemMatches($inventory);
-        if ($orderItem) {
-            $message  = "Inventory #{$inventory->id} has already been added to the order. Only re-add this item if it is for another order line item. If it is for the same line item, just edit the quantity matched.";
+        if ($inventory->quantity < 1) {
+            $match = null;
+            $possibleItemMatches = [];
+            $inventory = null;
+            $message = "Not enough inventory to match. Please update.";
+        } else if ($orderItem) {
             $match = null;
         } elseif ($match) {
             $message = '';
@@ -81,18 +82,36 @@ class ApiOrderInventoryController extends Controller
             ]);
         }
 
+        $archived = $match->archived()->where(
+            [
+                ['order_item_id', '=', $match->id],
+                ['inventory_id', '=', $inventory->id],
+            ],
+
+        )->first();
+
+        if ($archived) {
+            $archived->increment('quantity_removed', $request->input('quantity_removed'));
+        } else {
+            $match->archived()->create(
+                [
+                    'inventory_id' => $inventory->id,
+                    'quantity_removed' => $request->input('quantity_removed'),
+                    'removed_by_id' => auth()->user()->id,
+                    'reason_removed' => 'Sold',
+                    'was_adjustment' => false,
+                ]
+            );
+        }
+
         if (!$match->is_matched) {
-            $match->archived()->create([
-                'order_item_id' => $match->id,
-                'inventory_id' => $inventory->id,
-                'quantity_removed' => $request->input('quantity_removed'),
-                'removed_by_id' => auth()->user()->id,
-                'reason_removed' => 'Sold',
-                'was_adjustment' => false,
-            ]);
             return back()->banner('Inventory matched to order items.');
         } else {
-            return back()->dangerBanner('This order item is already matched to inventory. Update quantity of the order item before matching more inventory.');
+            $match->update([
+                'quantity' => $match->matched_quantity,
+            ]);
+
+            return back()->banner('Inventory matched to order item, and the order item quantity was updated.');
         }
     }
 }

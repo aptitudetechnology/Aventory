@@ -126,9 +126,7 @@ class Order extends Model
      */
     public function getPossibleInventoryItemMatches(Inventory $inventory)
     {
-        $items = $this->items()->where('product_id', $inventory->product_id)->get()->filter(function ($item) {
-            return !$item->is_matched;
-        })->flatten();
+        $items = $this->items()->where('product_id', $inventory->product_id)->get()->append('is_matched')->flatten();
         return $items;
     }
 

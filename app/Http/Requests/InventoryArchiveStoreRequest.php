@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\Inventory;
 use App\Models\OrderItem;
+use App\Rules\InventoryOrderItemQuantityConfirm;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class InventoryArchiveStoreRequest extends FormRequest
 {
@@ -25,6 +27,7 @@ class InventoryArchiveStoreRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'inventory_id' => 'required|integer|exists:inventories,id',
             'order_item_id' => 'nullable|integer|exists:order_items,id',
@@ -39,20 +42,9 @@ class InventoryArchiveStoreRequest extends FormRequest
                 if ($inventoryArchive && $value - $inventoryArchive->quantity_removed > $inventoryItem->quantity) {
                     $fail("There are $inventoryItem->quantity of inventory item #$inventoryItem->id available to add to item. Update quantity, or edit the id.");
                 }
-
-
-                if (
-                    $inventoryArchive &&
-                    $value > $inventoryArchive->quantity_removed &&
-                    $inventoryArchive->orderItem->unmatched_quantity < $value - $inventoryArchive->quantity_removed
-                ) {
-                    $orderItem = OrderItem::find($this->order_item_id);
-                    $quantityAbleToMatch = $orderItem->unmatched_quantity + $inventoryArchive->quantity_removed;
-                    $quantityAlreadyMatched = $orderItem->matched_quantity - $inventoryArchive->quantity_removed;
-                    $fail("You cannot match more than $quantityAbleToMatch because there are only $orderItem->quantity items in this order line item and $quantityAlreadyMatched are already matched. If you want to adjust the item quantity, edit it in the order.");
-                }
             }],
             'reason_removed' => 'nullable|string|max:255',
+            'confirm_quantity' => new InventoryOrderItemQuantityConfirm($this->inventory_archive),
         ];
     }
 }

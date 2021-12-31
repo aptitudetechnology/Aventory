@@ -7,6 +7,7 @@ use App\Http\Requests\InventoryArchiveStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\InventoryArchive;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 
 class ApiInventoryArchiveController extends Controller
 {
@@ -50,7 +51,15 @@ class ApiInventoryArchiveController extends Controller
      */
     public function update(InventoryArchiveStoreRequest $request, InventoryArchive $inventoryArchive)
     {
-        $inventoryArchive->update($request->validated());
+        DB::transaction(function () use ($request, $inventoryArchive) {
+            $inventoryArchive->update($request->safe()->except(['confirm_quantity']));
+
+            $orderItem = $inventoryArchive->orderItem;
+            if ($orderItem->quantity < $orderItem->matched_quantity) {
+                $orderItem->quantity = $orderItem->matched_quantity;
+                $orderItem->save();
+            }
+        });
         return back()->banner('Inventory archive updated successfully.');
     }
 

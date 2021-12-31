@@ -22,7 +22,7 @@ class OrderItem extends Model
         'no_discount',
     ];
 
-    protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount'];
+    protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount', 'unmatched_quantity'];
 
     protected $casts = [
         'product_id' => 'integer',

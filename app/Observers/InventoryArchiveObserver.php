@@ -7,12 +7,6 @@ use App\Models\InventoryArchive;
 class InventoryArchiveObserver
 {
     /**
-     * Handle events after all transactions are committed.
-     *
-     * @var bool
-     */
-    public $afterCommit = true;
-    /**
      * When creating an inventory archive, update the inventory quantity.
      *
      * @param InventoryArchive $inventoryArchive
@@ -29,11 +23,10 @@ class InventoryArchiveObserver
      * @param InventoryArchive $inventoryArchive
      * @return void
      */
-    public function updated(InventoryArchive $inventoryArchive)
+    public function updating(InventoryArchive $inventoryArchive)
     {
-        $quantityRemovedBefore = intval($inventoryArchive->getOriginal('quantity_removed'));
-        $quantityRemovedAfter = intval($inventoryArchive->quantity_removed);
-        $inventoryArchive->inventory->increment('quantity', $quantityRemovedBefore - $quantityRemovedAfter);
+        $inventoryArchive->inventory->increment('quantity', intval($inventoryArchive->getOriginal('quantity_removed')));
+        $inventoryArchive->inventory->decrement('quantity', intval($inventoryArchive->quantity_removed));
     }
 
     /**
@@ -47,8 +40,9 @@ class InventoryArchiveObserver
     {
         $inventoryArchive
             ->inventory
-            ->update([
-                'quantity' => $inventoryArchive->inventory->quantity + $inventoryArchive->quantity_removed,
-            ]);
+            ->increment(
+                'quantity',
+                $inventoryArchive->quantity_removed
+            );
     }
 }

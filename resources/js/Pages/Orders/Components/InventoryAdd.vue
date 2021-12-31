@@ -4,34 +4,21 @@
         <div class="space-y-4 overflow-hidden max-h-screen">
             <form
                 @submit.prevent="searchInventory"
-                class="grid gap-2 sticky top-0 bg-white px-1"
+                class="grid gap-2 sticky top-0 bg-white p-1 pt-0"
             >
-                <jet-input-error v-show="!selectingMatch" :message="message" />
+                <jet-input-error v-if="!selectingMatch" :message="message" />
                 <jet-input-error
-                    v-show="!selectingMatch"
+                    v-if="!selectingMatch"
                     :message="item.errors.quantity_removed"
                 />
                 <div class="flex items-end space-x-2">
-                    <div class="w-1/2">
+                    <div>
                         <jet-label for="search">Inventory ID</jet-label>
                         <search-input
-                            id="search"
-                            ref="search"
                             @focus.native="$event.target.select()"
                             :placeholder="'Search by Inventory ID'"
                             required
                             v-model="item.inventory_id"
-                        />
-                    </div>
-
-                    <div class="w-1/4">
-                        <jet-label for="quantity">Quantity</jet-label>
-                        <jet-input
-                            id="quantity"
-                            type="number"
-                            min="1"
-                            v-model="item.quantity_removed"
-                            class="w-full"
                         />
                     </div>
 
@@ -40,63 +27,7 @@
                     </jet-button>
                 </div>
             </form>
-            <div
-                :data-tip="`${
-                    orderItem.is_matched
-                        ? 'Matched to Inventory: '
-                        : 'NOT Matched to Inventory: '
-                }${orderItem.size_name} - ${orderItem.product_name}`"
-                v-for="orderItem in inventory"
-                :key="orderItem.id"
-                class="w-full tooltip"
-            >
-                <div
-                    class="
-                        flex
-                        items-center
-                        overflow-hidden
-                        space-x-2
-                        w-full
-                        tracking-wider
-                        uppercase
-                        text-gray-900
-                        px-1
-                    "
-                >
-                    <CheckCircleIcon
-                        class="w-6 h-6 text-green-500 stroke-current mr-0"
-                        v-if="orderItem.is_matched"
-                    />
-                    <ExclamationCircleIcon
-                        class="w-6 h-6 text-yellow-500 stroke-current mr-0"
-                        v-else
-                    />
-                    <div class="w-1/4 ml-0 mr-auto">
-                        {{ orderItem.size_name }}
-                    </div>
-                    <div class="truncate w-1/2">
-                        {{ orderItem.product_name }}
-                    </div>
-                    <div class="w-1/4">
-                        {{ `Qty: ${orderItem.quantity}` }}
-                    </div>
-                </div>
-                <div class="flex flex-wrap">
-                    <inventory-item
-                        v-for="archivedItem in orderItem.archived_inventory"
-                        :key="archivedItem.id"
-                        :archivedItem="archivedItem"
-                        :order="order"
-                        @update="getInventory"
-                    />
-                    <div
-                        v-if="!orderItem.archived_inventory.length"
-                        class="px-1 py-1 text-sm text-gray-700"
-                    >
-                        No Inventory matched.
-                    </div>
-                </div>
-            </div>
+            <InventoryMatchedList :inventory="inventory" :order="order" />
         </div>
         <confirmation-modal
             @close="creatingMatch = false"
@@ -105,23 +36,21 @@
             <template #title> Add {{ inventoryItem.product.name }}?</template>
             <template #content>
                 <form @keydown.enter.prevent="addInventory">
-                    <div class="font-bold">
-                        There is no matching order item for
-                        {{ inventoryItem.product.name }}.
-                    </div>
-                    Do you want to add {{ inventoryItem.product.name }} in size
+                    Do you want to add a new line item of
+                    {{ inventoryItem.product.name }} in size
                     {{ inventoryItem.size.name }} to the order?
                     <div class="border-t pt-4 mt-4">
                         <jet-input-error
                             :message="item.errors.quantity_removed"
                         />
                         <div class="flex items-center justify-between mt-2">
-                            <jet-label class="font-bold" for="quantity"
+                            <jet-label class="font-bold" for="quantity-confirm"
                                 >Quantity:</jet-label
                             >
                             <jet-input
                                 type="number"
-                                v-model="item.quantity_removed"
+                                id="quantity-confirm"
+                                v-model.number="item.quantity_removed"
                                 :error="
                                     item.errors.quantity_removed ? true : false
                                 "
@@ -149,44 +78,101 @@
             </template>
         </confirmation-modal>
         <dialog-modal @close="selectingMatch = false" :show="selectingMatch">
-            <template #title>Select Match</template>
+            <template #title>{{
+                this.thereAreUnmatchedMatches
+                    ? "Select order item to match"
+                    : "Select order item to match and increase quantity of"
+            }}</template>
             <template #description>
-                <span>
+                <div>
                     Select the order item to match ID #{{
                         inventoryItem.id
                     }}
                     inventory item: {{ inventoryItem.product.name }} in size
                     {{ inventoryItem.size.name }} to.
-                </span>
+                </div>
+                <div class="font-bold">
+                    {{
+                        this.thereAreUnmatchedMatches
+                            ? ""
+                            : "This will increase the quantity of the order item."
+                    }}
+                </div>
             </template>
             <template #content>
                 <form @keydown.enter.prevent="addInventory">
                     <jet-input-error class="mb-4 px-1" :message="message" />
                     <RadioListSelect
+                        v-if="thereAreUnmatchedMatches"
                         v-model="match"
+                        id="match"
                         :label="'Select Match'"
                         nameValue="product_name"
                         descriptionValue="size_name"
-                        :options="matches"
+                        :options="unmatchedMatches"
                         :selectedItem="match"
                         @update="updateMatch"
                         class="mb-4"
                     />
-                    <div class="">
-                        <jet-input-error
-                            :message="item.errors.quantity_removed"
-                        />
-                        <div class="flex items-center justify-between mt-2">
-                            <jet-label class="font-bold" for="quantity"
-                                >Quantity:</jet-label
+                    <RadioListSelect
+                        v-else
+                        v-model="match"
+                        id="match"
+                        :label="'Select Match'"
+                        nameValue="product_name"
+                        descriptionValue="size_name"
+                        :options="matchedMatches"
+                        :selectedItem="match"
+                        @update="updateMatch"
+                        class="mb-4"
+                    />
+                    <div class="mt-2 grid gap-4">
+                        <div>
+                            <jet-input-error
+                                :message="item.errors.quantity_removed"
+                            />
+                            <div class="flex items-center justify-between mt-2">
+                                <jet-label class="font-bold" for="quantity"
+                                    >Quantity:</jet-label
+                                >
+                                <jet-input
+                                    id="quantity"
+                                    type="number"
+                                    :error="
+                                        item.errors.quantity_removed
+                                            ? true
+                                            : false
+                                    "
+                                    v-model.number="item.quantity_removed"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div
+                                v-if="needToConfirmQuantity"
+                                class="flex items-center mb-2"
                             >
-                            <jet-input
-                                type="number"
-                                v-model="item.quantity_removed"
-                                :error="
-                                    item.errors.quantity_removed ? true : false
-                                "
-                            ></jet-input>
+                                <jet-label
+                                    :class="{
+                                        'text-red-500':
+                                            needToConfirmQuantity &&
+                                            !confirm_quantity,
+                                    }"
+                                    for="confirm_quantity"
+                                    >Increase quantity of order item from
+                                    {{ orderItemQuantity }} to
+                                    {{
+                                        orderItemQuantityAfterAdding
+                                    }}?</jet-label
+                                >
+                                <jet-checkbox
+                                    id="confirm_quantity"
+                                    v-model="confirm_quantity"
+                                />
+                            </div>
+                            <jet-input-error
+                                :message="item.errors.confirm_quantity"
+                            />
                         </div>
                     </div>
                 </form>
@@ -199,6 +185,13 @@
                     >
                         Cancel
                     </jet-secondary-button>
+                    <jet-secondary-button
+                        type="button"
+                        @click="confirmAddLineItem"
+                        class="mr-auto ml-2"
+                    >
+                        Add New Order Line Item</jet-secondary-button
+                    >
                     <jet-button
                         type="submit"
                         :disabled="!match"
@@ -213,21 +206,18 @@
 </template>
 <script>
 import SearchInput from "@/Components/Forms/SearchInput.vue";
-import { ExclamationCircleIcon, CheckCircleIcon } from "@heroicons/vue/outline";
 import ConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
 import DialogModal from "@/Jetstream/DialogModal.vue";
 import RadioListSelect from "@Components/Forms/RadioListSelect.vue";
-import InventoryItem from "./InventoryItem.vue";
+import InventoryMatchedList from "./InventoryMatchedList.vue";
 import axios from "axios";
 export default {
     components: {
         SearchInput,
-        ExclamationCircleIcon,
-        CheckCircleIcon,
         ConfirmationModal,
         DialogModal,
         RadioListSelect,
-        InventoryItem,
+        InventoryMatchedList,
     },
     props: {
         order: {
@@ -243,6 +233,7 @@ export default {
                 quantity_removed: 1,
             }),
             inventory: [],
+            confirm_quantity: false,
             inventoryItem: null,
             matches: [],
             match: null,
@@ -252,10 +243,53 @@ export default {
             errored: false,
         };
     },
+    computed: {
+        unmatchedMatches() {
+            return this.matches.filter((match) => {
+                return !match.is_matched;
+            });
+        },
+        matchedMatches() {
+            return this.matches.filter((match) => {
+                return match.is_matched;
+            });
+        },
+        thereAreUnmatchedMatches() {
+            return this.unmatchedMatches.length > 0;
+        },
+        needToConfirmQuantity() {
+            return this.match?.unmatched_quantity < this.item.quantity_removed;
+        },
+        orderItemQuantity() {
+            return this.match?.quantity ?? 0;
+        },
+        quantityToAdd() {
+            return this.item?.quantity_removed ?? 0;
+        },
+        orderItemQuantityAfterAdding() {
+            return (
+                parseInt(this.orderItemQuantity) + parseInt(this.quantityToAdd)
+            );
+        },
+    },
     mounted() {
         this.getInventory();
     },
     watch: {
+        selectingMatch(value) {
+            if (value) {
+                this.$nextTick(() => {
+                    document.getElementById("match").focus();
+                });
+            }
+        },
+        creatingMatch(value) {
+            if (value) {
+                this.$nextTick(() => {
+                    document.getElementById("quantity-confirm").focus();
+                });
+            }
+        },
         match(newValue) {
             if (newValue) {
                 this.item.order_item_id = newValue.id;
@@ -304,9 +338,9 @@ export default {
                     this.message = error.response.data.message;
                 })
                 .finally(() => {
-                    if (this.match) {
+                    if (this.match && this.inventoryItem.quantity == 1) {
                         this.addInventory();
-                    } else if (this.matches.length > 0) {
+                    } else if (this.matches?.length > 0) {
                         this.showMatchOptions();
                     } else if (this.inventoryItem) {
                         this.showAddLineItemDialog();
@@ -314,18 +348,43 @@ export default {
                 });
         },
         addInventory() {
-            this.item.post(route("orders.inventory.store", this.order), {
-                preserveState: true,
-                onSuccess: () => {
-                    this.getInventory();
-                    this.selectingMatch = false;
-                    this.creatingMatch = false;
-                    this.match = null;
-                    this.inventoryItem = null;
-                    this.item.reset();
-                },
-            });
-            this.$emit("add", this.inventory);
+            if (this.match || this.creatingMatch) {
+                this.item
+                    .transform((data) => ({
+                        ...data,
+                        confirm_quantity: this.confirm_quantity,
+                    }))
+                    .post(route("orders.inventory.store", this.order), {
+                        preserveState: true,
+
+                        onSuccess: () => {
+                            this.item.inventory_id = null;
+                            this.item.quantity_removed = 1;
+                            this.match = null;
+                            this.creatingMatch = false;
+                            this.selectingMatch = false;
+
+                            setTimeout(() => {
+                                this.$inertia.visit(
+                                    route("orders.show", this.order),
+                                    {
+                                        preserveScroll: true,
+                                        onSuccess: () => {
+                                            document
+                                                .getElementById("search")
+                                                .focus();
+                                        },
+                                    }
+                                );
+                            }, 300);
+                        },
+                    });
+                this.$emit("add", this.inventory);
+            }
+        },
+        confirmAddLineItem() {
+            this.creatingMatch = true;
+            this.selectingMatch = false;
         },
 
         showMatchOptions() {
