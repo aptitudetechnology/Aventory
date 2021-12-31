@@ -24,4 +24,16 @@ class OrderObserver
         $order->updateTotals();
         $order->createCustomerDiscount();
     }
+
+    /**
+     * When deleting an order, we remove the associated items.
+     * 
+     * 
+     * @param Order $order
+     * @return void
+     */
+    public function deleting(Order $order)
+    {
+        $order->items->each->delete();
+    }
 }

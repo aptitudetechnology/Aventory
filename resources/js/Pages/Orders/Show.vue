@@ -1,18 +1,17 @@
 <template>
     <orders-layout>
-        <div class="flex">
-            <div class="max-w-screen-lg md:w-3/4 md:mr-6">
-                <div class="space-y-6">
-                    <OrderUpdate
-                        :order="order"
-                        :customers="customers"
-                        :priceLevels="priceLevels"
-                    />
-
-                    <OrderDelete :order="order" />
-                </div>
+        <div class="lg:flex">
+            <div class="lg:w-3/4 lg:mr-6">
+                <OrderUpdate
+                    :order="order"
+                    :customers="customers"
+                    :priceLevels="priceLevels"
+                />
             </div>
-            <inventory-add :order="order" class="md:w-1/4" />
+            <div class="lg:w-1/4 mt-4 lg:mt-0 space-y-4">
+                <inventory-add :order="order" class="" />
+                <OrderDelete :order="order" />
+            </div>
         </div>
     </orders-layout>
 </template>
@@ -40,6 +39,11 @@ export default {
         items: Array,
         priceLevels: Array,
         customers: Array,
+    },
+    data() {
+        return {
+            editingInventory: false,
+        };
     },
 };
 </script>

@@ -1,21 +1,10 @@
 <template>
-    <div
-        :data-tip="`${
-            orderItem.is_matched
-                ? 'Matched to Inventory: '
-                : 'NOT Matched to Inventory: '
-        }${orderItem.size_name} - ${orderItem.product_name}`"
-        v-for="orderItem in inventory"
-        :key="orderItem.id"
-        class="w-full tooltip"
-    >
+    <div v-for="orderItem in inventory" :key="orderItem.id" class="min-w-0">
         <div
             class="
                 flex
                 items-center
-                overflow-hidden
                 space-x-2
-                w-full
                 tracking-wider
                 uppercase
                 text-gray-900
@@ -23,23 +12,32 @@
                 mb-2
                 pb-2
                 border-b
+                min-w-0
             "
         >
-            <CheckCircleIcon
-                class="w-6 h-6 text-green-500 stroke-current mr-0"
-                v-if="orderItem.is_matched"
-            />
-            <ExclamationCircleIcon
-                class="w-6 h-6 text-yellow-500 stroke-current mr-0"
-                v-else
-            />
-            <div class="w-1/4 ml-0 mr-auto">
-                {{ orderItem.size_name }}
+            <div
+                :data-tip="`${
+                    orderItem.is_matched
+                        ? 'Matched to Inventory: '
+                        : 'NOT Matched to Inventory: '
+                }${orderItem.size_name} - ${orderItem.product_name}`"
+                class="mr-0 tooltip"
+            >
+                <CheckCircleIcon
+                    class="w-6 h-6 text-green-500 stroke-current mr-0"
+                    v-if="orderItem.is_matched"
+                />
+                <ExclamationCircleIcon
+                    class="w-6 h-6 text-yellow-500 stroke-current mr-0"
+                    v-else
+                />
             </div>
-            <div class="truncate w-1/2">
+
+            <div class="truncate w-1/2 ml-0">
+                {{ orderItem.size_name }} -
                 {{ orderItem.product_name }}
             </div>
-            <div class="w-1/4">
+            <div class="">
                 {{ `Qty: ${orderItem.quantity}` }}
             </div>
         </div>
@@ -50,7 +48,6 @@
                 :archivedItem="archivedItem"
                 :order="order"
                 :quantity_left="orderItem.unmatched_quantity"
-                @update="getInventory"
             />
             <div
                 v-if="!orderItem.archived_inventory.length"

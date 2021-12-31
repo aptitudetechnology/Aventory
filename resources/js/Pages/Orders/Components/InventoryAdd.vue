@@ -1,16 +1,24 @@
 <template>
     <details-section class="w-full">
         <template #title> Inventory Detail </template>
-        <div class="space-y-4 overflow-hidden max-h-screen">
+        <div class="space-y-4 max-h-screen min-w-0 overflow-hidden">
             <form
                 @submit.prevent="searchInventory"
-                class="grid gap-2 sticky top-0 bg-white p-1 pt-0"
+                class="grid sticky top-0 bg-white p-1 pt-0"
             >
-                <jet-input-error v-if="!selectingMatch" :message="message" />
-                <jet-input-error
-                    v-if="!selectingMatch"
-                    :message="item.errors.quantity_removed"
-                />
+                <div>
+                    <jet-input-error
+                        class="mb-2"
+                        v-show="!selectingMatch"
+                        :message="message"
+                    />
+                    <jet-input-error
+                        class="mb-2"
+                        v-show="!selectingMatch"
+                        :message="item.errors.quantity_removed"
+                    />
+                </div>
+
                 <div class="flex items-end space-x-2">
                     <div>
                         <jet-label for="search">Inventory ID</jet-label>
@@ -178,7 +186,15 @@
                 </form>
             </template>
             <template #footer>
-                <div class="flex items-center justify-between">
+                <div
+                    class="
+                        flex flex-col
+                        space-y-2
+                        md:space-y-0 md:flex-row
+                        items-center
+                        md:justify-between
+                    "
+                >
                     <jet-secondary-button
                         type="button"
                         @click="selectingMatch = false"
@@ -188,10 +204,11 @@
                     <jet-secondary-button
                         type="button"
                         @click="confirmAddLineItem"
-                        class="mr-auto ml-2"
+                        class="md:mr-auto md:ml-2"
                     >
                         Add New Order Line Item</jet-secondary-button
                     >
+
                     <jet-button
                         type="submit"
                         :disabled="!match"
@@ -268,7 +285,9 @@ export default {
         },
         orderItemQuantityAfterAdding() {
             return (
-                parseInt(this.orderItemQuantity) + parseInt(this.quantityToAdd)
+                parseInt(this.quantityToAdd) -
+                parseInt(this.match?.unmatched_quantity) +
+                this.orderItemQuantity
             );
         },
     },
@@ -363,20 +382,17 @@ export default {
                             this.match = null;
                             this.creatingMatch = false;
                             this.selectingMatch = false;
-
-                            setTimeout(() => {
-                                this.$inertia.visit(
-                                    route("orders.show", this.order),
-                                    {
-                                        preserveScroll: true,
-                                        onSuccess: () => {
-                                            document
-                                                .getElementById("search")
-                                                .focus();
-                                        },
-                                    }
-                                );
-                            }, 300);
+                            this.$inertia.visit(
+                                route("orders.show", this.order),
+                                {
+                                    preserveScroll: true,
+                                    onSuccess: () => {
+                                        document
+                                            .getElementById("search")
+                                            .focus();
+                                    },
+                                }
+                            );
                         },
                     });
                 this.$emit("add", this.inventory);
