@@ -38,6 +38,9 @@ class OrderController extends Controller
                 $query->orderBy('id', 'desc');
             })
             ->paginate(10)->withQueryString();
+        $orders->each(function ($item) {
+            $item->append('ready_to_complete');
+        });
 
         $filters = $request->only(['search', 'orderBy', 'orderByDirection']);
 

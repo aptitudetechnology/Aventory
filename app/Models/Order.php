@@ -56,9 +56,6 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-
-
-
     /**
      * Get the discounts for the order.
      * Need to add for foreign key since the quote model is an extension of the order model.
@@ -95,6 +92,20 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class, 'order_id');
     }
+
+    /**
+     * 
+     * Get the is_completed attribute.
+     * 
+     */
+    public function getReadyToCompleteAttribute()
+    {
+        // Run through the order items and check if any are not completed.
+        return $this->items->every(function ($item) {
+            return $item->is_matched;
+        });
+    }
+
 
     /**
      * 
