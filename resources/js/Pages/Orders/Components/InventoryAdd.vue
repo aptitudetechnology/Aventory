@@ -1,10 +1,10 @@
 <template>
     <details-section class="w-full">
         <template #title> Inventory Detail </template>
-        <div class="space-y-4 max-h-screen min-w-0 overflow-hidden">
+        <div class="space-y-4 min-w-0 clear-both">
             <form
                 @submit.prevent="searchInventory"
-                class="grid sticky top-0 bg-white p-1 pt-0"
+                class="grid sticky top-0 bg-white p-1 pt-0 z-50"
             >
                 <div>
                     <jet-input-error
@@ -36,6 +36,7 @@
                 </div>
             </form>
             <InventoryMatchedList :inventory="inventory" :order="order" />
+            <loading-state :loading="loading" />
         </div>
         <confirmation-modal
             @close="creatingMatch = false"
@@ -223,6 +224,7 @@
 </template>
 <script>
 import SearchInput from "@/Components/Forms/SearchInput.vue";
+import LoadingState from "@/Components/LoadingState.vue";
 import ConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
 import DialogModal from "@/Jetstream/DialogModal.vue";
 import RadioListSelect from "@Components/Forms/RadioListSelect.vue";
@@ -231,6 +233,7 @@ import axios from "axios";
 export default {
     components: {
         SearchInput,
+        LoadingState,
         ConfirmationModal,
         DialogModal,
         RadioListSelect,
@@ -249,6 +252,7 @@ export default {
                 order_item_id: null,
                 quantity_removed: 1,
             }),
+            loading: true,
             inventory: [],
             confirm_quantity: false,
             inventoryItem: null,
@@ -333,6 +337,9 @@ export default {
                 .catch((error) => {
                     this.errored = true;
                     console.error(error);
+                })
+                .finally(() => {
+                    this.loading = false;
                 });
         },
         searchInventory() {
