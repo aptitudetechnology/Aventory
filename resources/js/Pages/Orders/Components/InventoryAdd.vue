@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="flex items-end space-x-2">
-                    <div>
+                    <div class="form-control">
                         <jet-label for="search">Inventory ID</jet-label>
                         <search-input
                             @focus.native="$event.target.select()"

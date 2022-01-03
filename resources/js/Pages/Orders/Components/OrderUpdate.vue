@@ -28,21 +28,13 @@
                     lg:grid-cols-5
                     gap-4
                     xl:gap-x-20
-                    lg:gap-y-8
+                    lg:gap-y-4
+                    justify-evenly
+                    items-start
                 "
             >
                 <div class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2">
                     <div>
-                        <modal
-                            :show="creatingCustomer"
-                            @close="creatingCustomer = false"
-                        >
-                            <create-customer-form
-                                @created="createdCustomer"
-                                :redirect="false"
-                                :customerName="customerName"
-                            />
-                        </modal>
                         <search-select-box
                             labelValue="Customer"
                             :items="customers"
@@ -54,6 +46,16 @@
                             :message="updatedOrder.errors.customer_id"
                             class="mt-2"
                         />
+                        <modal
+                            :show="creatingCustomer"
+                            @close="creatingCustomer = false"
+                        >
+                            <create-customer-form
+                                @created="createdCustomer"
+                                :redirect="false"
+                                :customerName="customerName"
+                            />
+                        </modal>
                     </div>
                     <div v-show="orderCustomer && customerContacts.length">
                         <select-box
@@ -67,7 +69,7 @@
                             class="mt-2"
                         />
                     </div>
-                    <div class="">
+                    <div>
                         <select-box
                             labelValue="Sales Person"
                             :items="teamMembers"
@@ -89,12 +91,12 @@
                         lg:justify-items-end
                     "
                 >
-                    <div>
+                    <div class="form-control">
                         <jet-label for="date" value="Order Date" />
                         <jet-input
                             id="date"
                             type="date"
-                            class="mt-1 block w-full"
+                            class="block w-full"
                             v-model="updatedOrder.date"
                             required
                         />
