@@ -31,6 +31,16 @@ class Customer extends Model
         return $this->belongsTo(Team::class);
     }
 
+    public function getAddressAttribute()
+    {
+        return $this->hasMailingAddress() ? $this->mailing_address . ', ' . $this->mailing_city . ', ' . $this->mailing_state . ' ' . $this->mailing_zip : null;
+    }
+
+    public function hasMailingAddress(): bool
+    {
+        return $this->mailing_address !== null && $this->mailing_address !== '';
+    }
+
     public function priceLevel(): BelongsTo
     {
         return $this->belongsTo(CustomerPriceLevel::class, 'customer_price_level_id');

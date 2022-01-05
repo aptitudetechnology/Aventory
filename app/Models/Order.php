@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
+use App\Classes\Invoice;
+use LaravelDaily\Invoices\Classes\Party;
+use LaravelDaily\Invoices\Classes\Buyer;
+use LaravelDaily\Invoices\Classes\InvoiceItem;
+use App\Classes\DiscountItem;
 
 class Order extends Model
 {
@@ -46,6 +52,21 @@ class Order extends Model
         'is_taxable' => 'boolean',
     ];
 
+    public function getNameAttribute(): string
+    {
+        return $this->is_quote ? "Quote #{$this->id}" : "Order #{$this->id}";
+    }
+
+    public  function getFullNameAttribute(): string
+    {
+        return $this->name .  ($this->customer ? " - {$this->customer->name}" : '');
+    }
+
+    public function getTaxRateAttribute()
+    {
+        return $this->is_taxable ? $this->tax_percentage : 0;
+    }
+
     public function team()
     {
         return $this->belongsTo(Team::class);
@@ -63,6 +84,11 @@ class Order extends Model
     public function discounts()
     {
         return $this->hasMany(OrderDiscount::class, 'order_id');
+    }
+
+    public function appliedDiscounts()
+    {
+        return $this->discounts()->where('discount_applied', true);
     }
 
     /**
@@ -94,9 +120,9 @@ class Order extends Model
     }
 
     /**
-     * 
+     *
      * Get the is_completed attribute.
-     * 
+     *
      */
     public function getReadyToCompleteAttribute()
     {
@@ -108,7 +134,7 @@ class Order extends Model
 
 
     /**
-     * 
+     *
      * Get item matched to inventory.
      */
     public function getItemMatchedToInventory(Inventory $inventory)
@@ -253,5 +279,55 @@ class Order extends Model
             $this->discounts()->delete();
             $this->createCustomerDiscount();
         }
+    }
+
+    public function generatePDF()
+    {
+        $seller = new Party([
+            'name' => $this->team->name,
+            'address' => $this->team->address,
+            'phone' => $this->team->phone,
+        ]);
+
+        $customer = new Buyer([
+            'name' => $this->customer->name,
+            'address' => $this->customer->address,
+        ]);
+
+
+
+        $items = $this->items->map(function ($item) {
+            return (new InvoiceItem())
+                ->title($item->product_name)
+
+                ->quantity($item->quantity)
+                ->pricePerUnit($item->unit_price);
+        });
+
+        $discounts = $this->appliedDiscounts->map(function ($discount) {
+            return (new DiscountItem())
+                ->title($discount->title)
+                ->description($discount->description)
+                ->amount($discount->discount_total);
+        });
+
+        $notes = $this->notes ? $this->notes : '';
+
+        $invoice = Invoice::make()
+            ->name($this->name)
+            ->sequence($this->id)
+            ->seller($seller)
+            ->buyer($customer)
+            ->payUntilDays(30)
+            ->filename($this->team->name . '/' . $this->full_name)
+            ->notes($notes)
+            ->addItems($items)
+            ->addDiscountItems($discounts)
+            ->totalTaxes($this->tax_amount)
+            ->shipping($this->shipping_amount)
+            ->totalDiscount($this->total_discounts)
+            ->save('public');
+
+        return $invoice;
     }
 }
