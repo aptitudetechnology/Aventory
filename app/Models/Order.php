@@ -12,6 +12,7 @@ use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use App\Classes\DiscountItem;
+use App\Services\PricingService;
 
 class Order extends Model
 {
@@ -230,9 +231,7 @@ class Order extends Model
 
     public function setTaxAmountAttribute()
     {
-        $this->attributes['tax_amount'] = $this->is_taxable ? $this->items->reduce(function ($total, $item) {
-            return $total + ($item->tax_amount);
-        }, 0) + $this->shipping_tax_amount : 0;
+        $this->attributes['tax_amount'] = PricingService::applyTax($this->tax_percentage, $this->total_after_discount_and_warranty, 2, true);
     }
 
     public function getShippingTaxAmountAttribute()
@@ -299,7 +298,7 @@ class Order extends Model
         $items = $this->items->map(function ($item) {
             return (new InvoiceItem())
                 ->title($item->product_name)
-
+                ->units($item->size->name)
                 ->quantity($item->quantity)
                 ->pricePerUnit($item->unit_price);
         });
@@ -323,7 +322,7 @@ class Order extends Model
             ->notes($notes)
             ->addItems($items)
             ->addDiscountItems($discounts)
-            ->totalTaxes($this->tax_amount)
+            ->taxRate($this->tax_rate)
             ->shipping($this->shipping_amount)
             ->totalDiscount($this->total_discounts)
             ->save('public');

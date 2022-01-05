@@ -1,7 +1,9 @@
 <template>
     <details-section>
         <div class="flex items-center">
-            <PrintButton class="mr-2">Print Order</PrintButton>
+            <PrintButton @click="printOrder" class="mr-2"
+                >Print Order</PrintButton
+            >
         </div>
     </details-section>
 </template>
@@ -9,6 +11,7 @@
 <script>
 import DetailsSection from "@Components/DetailsSection.vue";
 import PrintButton from "@Components/Buttons/PrintButton.vue";
+
 export default {
     props: {
         order: {
@@ -19,6 +22,11 @@ export default {
     components: {
         DetailsSection,
         PrintButton,
+    },
+    methods: {
+        printOrder() {
+            this.showPopup(route("orders.print", this.order.id), "PrintOrder");
+        },
     },
 };
 </script>

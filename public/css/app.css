@@ -2943,6 +2943,9 @@ html {
 .mr-1 {
 	margin-right: 0.25rem;
 }
+.mb-0 {
+	margin-bottom: 0px;
+}
 .block {
 	display: block;
 }
@@ -3134,6 +3137,9 @@ html {
 .table-auto {
 	table-layout: auto;
 }
+.border-collapse {
+	border-collapse: collapse;
+}
 .origin-top-left {
 	transform-origin: top left;
 }
@@ -3296,6 +3302,9 @@ html {
 .gap-3 {
 	gap: 0.75rem;
 }
+.gap-8 {
+	gap: 2rem;
+}
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(2rem * var(--tw-space-x-reverse));
@@ -3431,6 +3440,9 @@ html {
 }
 .border-2 {
 	border-width: 2px;
+}
+.border-0 {
+	border-width: 0px;
 }
 .border-b-2 {
 	border-bottom-width: 2px;
@@ -3733,6 +3745,15 @@ html {
 }
 .pb-6 {
 	padding-bottom: 1.5rem;
+}
+.pl-0 {
+	padding-left: 0px;
+}
+.pr-0 {
+	padding-right: 0px;
+}
+.pb-0 {
+	padding-bottom: 0px;
 }
 .text-left {
 	text-align: left;
