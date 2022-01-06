@@ -17,7 +17,7 @@
 
 <script>
 import TabContainer from "./TabContainer.vue";
-import TabLink from "./TabLink.vue";
+import TabLink from "./Links/TabLink.vue";
 export default {
     components: {
         TabContainer,

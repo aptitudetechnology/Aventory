@@ -28,6 +28,7 @@ class Product extends Model
         'id' => 'integer',
         'team_id' => 'integer',
         'category_id' => 'integer',
+        'is_taxable' => 'boolean',
     ];
 
     /**
@@ -59,24 +60,50 @@ class Product extends Model
         return $this->hasMany(Price::class);
     }
 
-    public function getBasePricesAttribute()
+    public function basePrices()
     {
-        if($this->category){
+        if ($this->category) {
             return $this->prices->union($this->category->prices);
-        }
-        else{
+        } else {
             return $this->prices;
         }
     }
 
+    public function getBasePricesAttribute()
+    {
+        return $this->basePrices();
+    }
+
+    /**
+     * 
+     * Get price of product for size and customer.
+     */
+    public function getPrice(Size $size, Customer $customer)
+    {
+        $price = $this->basePrices()->where('size_id', $size->id)->first();
+        if ($price) {
+            return $price->getPriceForLevel($customer->price_level);
+        } else {
+            return 0;
+        }
+    }
 
     public function sizes()
     {
         return $this->belongsToMany(Size::class, 'prices');
     }
-    
+
+    public function allSizes()
+    {
+        if ($this->category) {
+            return $this->category->sizes()->union($this->sizes);
+        } else {
+            return $this->sizes();
+        }
+    }
+
     public function inventory()
-    { 
+    {
         return $this->hasMany(Inventory::class);
     }
 
@@ -85,18 +112,98 @@ class Product extends Model
         return $this->inventory()->where('ready_date', '<=', now());
     }
 
+
     public function inventorySizes()
     {
-       return $this->belongsToMany(Size::class, 'inventories')->distinct()
-       ->withCount([
-           'inventories as total_inventory' => function($query)  {
-            $query->where('product_id', $this->id)
-            ->select(DB::raw('sum(quantity)'));}, 
-            
-            'inventories as available_count' => function($query) {
-            $query->where('product_id', $this->id)
-            ->where('ready_date', '<=', now())
-            ->select(DB::raw('sum(quantity)'));
-        }]);
+        return $this->belongsToMany(Size::class, 'inventories')->distinct()
+            ->withCount([
+                'inventories as total_inventory' => function ($query) {
+                    $query->where('product_id', $this->id)
+                        ->select(DB::raw('sum(quantity)'));
+                },
+
+                'inventories as available_count' => function ($query) {
+                    $query->where('product_id', $this->id)
+                        ->where('ready_date', '<=', now())
+                        ->select(DB::raw('sum(quantity)'));
+                }
+            ])
+            ->withCasts([
+                'total_inventory' => 'integer',
+                'available_count' => 'integer',
+            ]);
+    }
+
+    protected function getTotalInventoryForSize(Size $size)
+    {
+        return $this->inventorySizes()->where('size_id', $size->id)->first()->total_inventory ?? 0;
+    }
+
+    protected function getAvailableInventoryForSize(Size $size)
+    {
+        return $this->inventorySizes()->where('size_id', $size->id)->first()->available_count ?? 0;
+    }
+
+    protected function getSoldQuantities(Size $size)
+    {
+        return $this->itemsSold()->where('size_id', $size->id)->get()->reduce(function ($carry, $item) {
+            return $carry + $item->unmatched_quantity;
+        }, 0);
+    }
+
+    protected function getOnHoldQuantities(Size $size)
+    {
+        return intval($this->itemsOnHold()
+            ->where('size_id', $size->id)
+            ->sum('quantity'));
+    }
+
+    public function getQuantities(Size $size)
+    {
+        $total = $this->getTotalInventoryForSize($size);
+        $ready = $this->getAvailableInventoryForSize($size);
+        $sold = $this->getSoldQuantities($size);
+        $onHold = $this->getOnHoldQuantities($size);
+        $available = $ready - $sold - $onHold;
+
+        return compact('total', 'ready', 'sold', 'onHold', 'available');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_items', 'product_id', 'order_id');
+    }
+
+    public function itemsOnHold()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id', 'id')
+            ->whereRelation('order', 'is_quote', true);
+    }
+
+    public function itemsSold()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id', 'id')
+            ->whereRelation('order', 'is_quote', false)
+            ->whereRelation('order', 'completed', false);
+    }
+
+    public function quotes()
+    {
+        return $this->belongsToMany(Quote::class, 'order_items', 'product_id', 'order_id');
+    }
+
+    public function activeQuotes()
+    {
+        return $this->quotes()->where('quote_expires', '>=', now());
+    }
+
+    public function activeQuotesOnHold()
+    {
+        return $this->activeQuotes()->where('hold_inventory', true);
+    }
+
+    public function pendingOrders()
+    {
+        return $this->orders()->where('completed', false);
     }
 }

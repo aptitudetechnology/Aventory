@@ -18,7 +18,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import MainArea from "@Components/MainArea.vue";
-import BackLink from "@Components/BackLink";
+import BackLink from "@Components/Links/BackLink";
 
 import CreateSizeForm from "./CreateSizeForm.vue";
 export default {

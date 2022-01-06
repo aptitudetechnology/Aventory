@@ -11,49 +11,44 @@ use Illuminate\Support\Facades\Gate;
 
 class OrderItemController extends Controller
 {
-
     /**
-     * @param \App\Http\Requests\OrderItemStoreRequest $request
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(OrderItemStoreRequest $request, Order $order)
     {
+        $order->items()->create($request->validated());
+        return redirect()->back()->banner('Item added to order.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(OrderItemUpdateRequest $request, Order $order, OrderItem $item)
+    {
+        $item->update($request->validated());
+
+        return redirect()->back()->banner('Item updated.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Order $order, OrderItem $item)
+    {
         Gate::authorize('update', $order);
 
-        $orderItem = $order->orderItems()->create($request->validated());
+        $item->delete();
 
-        $request->session()->flash('orderItem.id', $orderItem->id);
-
-        return redirect()->back()->banner('Added item!');
-    }
-
-    /**
-     * @param \App\Http\Requests\OrderItemUpdateRequest $request
-     * @param \App\Models\OrderItem $orderItem
-     * @return \Illuminate\Http\Response
-     */
-    public function update(OrderItemUpdateRequest $request, OrderItem $orderItem)
-    {
-        Gate::authorize('update', $orderItem->order);
-
-        $orderItem->update($request->validated());
-
-        $request->session()->flash('orderItem.id', $orderItem->id);
-
-        return redirect()->back();
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\OrderItem $orderItem
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request, OrderItem $orderItem)
-    {
-        Gate::authorize('update', $orderItem->order);
-
-        $orderItem->delete();
-
-        return redirect()->back()->banner('Items removed!');
+        return redirect()->back()->banner('Item deleted.');
     }
 }

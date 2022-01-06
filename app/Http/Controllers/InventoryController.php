@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventoryStoreRequest;
 use App\Http\Requests\InventoryUpdateRequest;
 use App\Models\Inventory;
-use App\Models\OrderItem;
+use App\Models\PurchaseItem;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -36,11 +36,11 @@ class InventoryController extends Controller
      */
     public function store(InventoryStoreRequest $request)
     {
-        
-        $orderItems = OrderItem::whereIn('id', $request->selectedItems)->get();
 
-        foreach ($orderItems as $item) {
-            Gate::authorize('update', $item->order);
+        $purchaseItems = PurchaseItem::whereIn('id', $request->selectedItems)->get();
+
+        foreach ($purchaseItems as $item) {
+            Gate::authorize('update', $item->purchase);
 
             if ($request->type == 'group') {
                 $item->addToGroupInventory($request->block_id, $request->nursery_location_id);
@@ -84,7 +84,7 @@ class InventoryController extends Controller
     {
         $place = Place::find($request->place_id);
 
-        if($place && $place->inventory && $place->inventory->id != $inventory->id){
+        if ($place && $place->inventory && $place->inventory->id != $inventory->id) {
             $place->inventory->update(['place_id' => null]);
         }
 

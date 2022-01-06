@@ -29,7 +29,7 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import BackLink from "@/Components/BackLink";
+import BackLink from "@/Components/Links/BackLink";
 import ViewAside from "@/Pages/View/ViewAside";
 import MainArea from "@Components/MainArea.vue";
 

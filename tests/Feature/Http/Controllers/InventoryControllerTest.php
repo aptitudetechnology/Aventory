@@ -3,7 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Inventory;
-use App\Models\OrderItem;
+use App\Models\PurchaseItem;
 use App\Models\OriginalSize;
 use App\Models\Product;
 use App\Models\Size;
@@ -63,15 +63,17 @@ class InventoryControllerTest extends TestCase
      */
     public function store_saves_and_redirects()
     {
-        $order_item = OrderItem::factory()->create();
+        $purchase_item = PurchaseItem::factory()->create();
         $product = Product::factory()->create();
         $original_size = OriginalSize::factory()->create();
         $size = Size::factory()->create();
         $quantity = $this->faker->numberBetween(-10000, 10000);
-        $type = $this->faker->randomElement(/** enum_attributes **/);
+        $type = $this->faker->randomElement(
+            /** enum_attributes **/
+        );
 
         $response = $this->post(route('inventory.store'), [
-            'order_item_id' => $order_item->id,
+            'purchase_item_id' => $purchase_item->id,
             'product_id' => $product->id,
             'original_size_id' => $original_size->id,
             'size_id' => $size->id,
@@ -80,7 +82,7 @@ class InventoryControllerTest extends TestCase
         ]);
 
         $inventories = Inventory::query()
-            ->where('order_item_id', $order_item->id)
+            ->where('purchase_item_id', $purchase_item->id)
             ->where('product_id', $product->id)
             ->where('original_size_id', $original_size->id)
             ->where('size_id', $size->id)
@@ -143,15 +145,17 @@ class InventoryControllerTest extends TestCase
     public function update_redirects()
     {
         $inventory = Inventory::factory()->create();
-        $order_item = OrderItem::factory()->create();
+        $purchase_item = PurchaseItem::factory()->create();
         $product = Product::factory()->create();
         $original_size = OriginalSize::factory()->create();
         $size = Size::factory()->create();
         $quantity = $this->faker->numberBetween(-10000, 10000);
-        $type = $this->faker->randomElement(/** enum_attributes **/);
+        $type = $this->faker->randomElement(
+            /** enum_attributes **/
+        );
 
         $response = $this->put(route('inventory.update', $inventory), [
-            'order_item_id' => $order_item->id,
+            'purchase_item_id' => $purchase_item->id,
             'product_id' => $product->id,
             'original_size_id' => $original_size->id,
             'size_id' => $size->id,
@@ -164,7 +168,7 @@ class InventoryControllerTest extends TestCase
         $response->assertRedirect(route('inventory.index'));
         $response->assertSessionHas('inventory.id', $inventory->id);
 
-        $this->assertEquals($order_item->id, $inventory->order_item_id);
+        $this->assertEquals($purchase_item->id, $inventory->purchase_item_id);
         $this->assertEquals($product->id, $inventory->product_id);
         $this->assertEquals($original_size->id, $inventory->original_size_id);
         $this->assertEquals($size->id, $inventory->size_id);
