@@ -3,7 +3,7 @@
         <transition name="fade" mode="out-in">
             <ErrorMessage v-if="error" />
             <Loading v-else-if="loading" />
-            <div v-else class="sm:text-right divide-y">
+            <div v-else class="flex flex-col items-end sm:text-right divide-y">
                 <jet-label
                     data-tip="The total amount of these items in inventory. They may be ready, but their ready date states not."
                     class="py-2 mr-0 tooltip lg:tooltip-right"
@@ -20,14 +20,7 @@
                 />
                 <jet-label
                     data-tip="The amount ready to sell - the amount of inventory in active quotes on hold."
-                    class="
-                        py-2
-                        mr-0
-                        font-bold
-                        text-base
-                        tooltip
-                        lg:tooltip-right
-                    "
+                    class="py-2 mr-0 font-bold text-base tooltip lg:tooltip-right"
                     :value="
                         'Available For Sale: ' + quantities.availableForSale
                     "
