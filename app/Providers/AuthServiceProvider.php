@@ -27,6 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         CustomerPriceLevel::class => CustomerPriceLevelPolicy::class,
         Contact::class => ContactPolicy::class,
         Vendor::class => VendorPolicy::class,
+        Inventory::class => InventoryPolicy::class,
     ];
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Purchase;
 use App\Models\Team;
 use App\Models\Vendor;
 use Carbon\Carbon;
@@ -12,9 +12,9 @@ use JMac\Testing\Traits\AdditionalAssertions;
 use Tests\TestCase;
 
 /**
- * @see \App\Http\Controllers\OrderController
+ * @see \App\Http\Controllers\PurchaseController
  */
-class OrderControllerTest extends TestCase
+class PurchaseControllerTest extends TestCase
 {
     use AdditionalAssertions, RefreshDatabase, WithFaker;
 
@@ -23,13 +23,13 @@ class OrderControllerTest extends TestCase
      */
     public function index_displays_view()
     {
-        $orders = Order::factory()->count(3)->create();
+        $purchases = Purchase::factory()->count(3)->create();
 
-        $response = $this->get(route('order.index'));
+        $response = $this->get(route('purchase.index'));
 
         $response->assertOk();
-        $response->assertViewIs('order.index');
-        $response->assertViewHas('orders');
+        $response->assertViewIs('purchase.index');
+        $response->assertViewHas('purchases');
     }
 
 
@@ -38,10 +38,10 @@ class OrderControllerTest extends TestCase
      */
     public function create_displays_view()
     {
-        $response = $this->get(route('order.create'));
+        $response = $this->get(route('purchase.create'));
 
         $response->assertOk();
-        $response->assertViewIs('order.create');
+        $response->assertViewIs('purchase.create');
     }
 
 
@@ -51,9 +51,9 @@ class OrderControllerTest extends TestCase
     public function store_uses_form_request_validation()
     {
         $this->assertActionUsesFormRequest(
-            \App\Http\Controllers\OrderController::class,
+            \App\Http\Controllers\PurchaseController::class,
             'store',
-            \App\Http\Requests\OrderStoreRequest::class
+            \App\Http\Requests\PurchaseStoreRequest::class
         );
     }
 
@@ -66,22 +66,22 @@ class OrderControllerTest extends TestCase
         $vendor = Vendor::factory()->create();
         $team = Team::factory()->create();
 
-        $response = $this->post(route('order.store'), [
+        $response = $this->post(route('purchase.store'), [
             'date' => $date,
             'vendor_id' => $vendor->id,
             'team_id' => $team->id,
         ]);
 
-        $orders = Order::query()
+        $purchases = Purchase::query()
             ->where('date', $date)
             ->where('vendor_id', $vendor->id)
             ->where('team_id', $team->id)
             ->get();
-        $this->assertCount(1, $orders);
-        $order = $orders->first();
+        $this->assertCount(1, $purchases);
+        $purchase = $purchases->first();
 
-        $response->assertRedirect(route('order.index'));
-        $response->assertSessionHas('order.id', $order->id);
+        $response->assertRedirect(route('purchase.index'));
+        $response->assertSessionHas('purchase.id', $purchase->id);
     }
 
 
@@ -90,13 +90,13 @@ class OrderControllerTest extends TestCase
      */
     public function show_displays_view()
     {
-        $order = Order::factory()->create();
+        $purchase = Purchase::factory()->create();
 
-        $response = $this->get(route('order.show', $order));
+        $response = $this->get(route('purchase.show', $purchase));
 
         $response->assertOk();
-        $response->assertViewIs('order.show');
-        $response->assertViewHas('order');
+        $response->assertViewIs('purchase.show');
+        $response->assertViewHas('purchase');
     }
 
 
@@ -105,13 +105,13 @@ class OrderControllerTest extends TestCase
      */
     public function edit_displays_view()
     {
-        $order = Order::factory()->create();
+        $purchase = Purchase::factory()->create();
 
-        $response = $this->get(route('order.edit', $order));
+        $response = $this->get(route('purchase.edit', $purchase));
 
         $response->assertOk();
-        $response->assertViewIs('order.edit');
-        $response->assertViewHas('order');
+        $response->assertViewIs('purchase.edit');
+        $response->assertViewHas('purchase');
     }
 
 
@@ -121,9 +121,9 @@ class OrderControllerTest extends TestCase
     public function update_uses_form_request_validation()
     {
         $this->assertActionUsesFormRequest(
-            \App\Http\Controllers\OrderController::class,
+            \App\Http\Controllers\PurchaseController::class,
             'update',
-            \App\Http\Requests\OrderUpdateRequest::class
+            \App\Http\Requests\PurchaseUpdateRequest::class
         );
     }
 
@@ -132,25 +132,25 @@ class OrderControllerTest extends TestCase
      */
     public function update_redirects()
     {
-        $order = Order::factory()->create();
+        $purchase = Purchase::factory()->create();
         $date = $this->faker->date();
         $vendor = Vendor::factory()->create();
         $team = Team::factory()->create();
 
-        $response = $this->put(route('order.update', $order), [
+        $response = $this->put(route('purchase.update', $purchase), [
             'date' => $date,
             'vendor_id' => $vendor->id,
             'team_id' => $team->id,
         ]);
 
-        $order->refresh();
+        $purchase->refresh();
 
-        $response->assertRedirect(route('order.index'));
-        $response->assertSessionHas('order.id', $order->id);
+        $response->assertRedirect(route('purchase.index'));
+        $response->assertSessionHas('purchase.id', $purchase->id);
 
-        $this->assertEquals(Carbon::parse($date), $order->date);
-        $this->assertEquals($vendor->id, $order->vendor_id);
-        $this->assertEquals($team->id, $order->team_id);
+        $this->assertEquals(Carbon::parse($date), $purchase->date);
+        $this->assertEquals($vendor->id, $purchase->vendor_id);
+        $this->assertEquals($team->id, $purchase->team_id);
     }
 
 
@@ -159,12 +159,12 @@ class OrderControllerTest extends TestCase
      */
     public function destroy_deletes_and_redirects()
     {
-        $order = Order::factory()->create();
+        $purchase = Purchase::factory()->create();
 
-        $response = $this->delete(route('order.destroy', $order));
+        $response = $this->delete(route('purchase.destroy', $purchase));
 
-        $response->assertRedirect(route('order.index'));
+        $response->assertRedirect(route('purchase.index'));
 
-        $this->assertDeleted($order);
+        $this->assertDeleted($purchase);
     }
 }

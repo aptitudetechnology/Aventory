@@ -88,9 +88,9 @@ class Team extends JetstreamTeam
         return $this->hasMany(Size::class);
     }
 
-    public function orders(): HasMany
+    public function purchases(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Purchase::class);
     }
 
     public function inventories(): HasMany
@@ -106,5 +106,20 @@ class Team extends JetstreamTeam
     public function blocks(): HasMany
     {
         return $this->hasMany(Block::class)->orderBy('name');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function quotes(): HasMany
+    {
+        return $this->hasMany(Quote::class);
+    }
+
+    public function activeQuotes(): HasMany
+    {
+        return $this->quotes()->where('quote_expires', '>=', now());
     }
 }

@@ -11,6 +11,21 @@
             >View Inventory</nav-link
         >
         <sidebar-dropdown
+            dropdown_text="Orders & Quotes"
+            :current="route().current('orders.*')"
+        >
+            <nav-link
+                :href="route('orders.index')"
+                :current="route().current('orders.*')"
+                >Orders</nav-link
+            >
+            <nav-link
+                :href="route('customer-price-levels.index')"
+                :current="route().current('customer-price-levels.*')"
+                >Quotes</nav-link
+            >
+        </sidebar-dropdown>
+        <sidebar-dropdown
             dropdown_text="Customers"
             :current="
                 route().current('customers.*') ||
@@ -70,13 +85,13 @@
             :current="
                 route().current('vendors.*') ||
                 route().current('archived-vendors.*') ||
-                route().current('orders.*')
+                route().current('purchases.*')
             "
         >
             <nav-link
-                :href="route('orders.index')"
-                :current="route().current('orders.*')"
-                >Orders</nav-link
+                :href="route('purchases.index')"
+                :current="route().current('purchases.*')"
+                >Purchases</nav-link
             >
             <nav-link
                 :href="route('vendors.index')"
@@ -113,7 +128,7 @@
     </nav>
 </template>
 <script>
-import NavLink from "./NavLink.vue";
+import NavLink from "./Links/NavLink.vue";
 import SidebarDropdown from "./SidebarDropdown.vue";
 
 export default {

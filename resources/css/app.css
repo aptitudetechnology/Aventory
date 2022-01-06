@@ -3,3 +3,6 @@
 @import 'tailwindcss/utilities';
 
 @import url('./progressStyles.css');
+@import url('./daisyUi.css');
+@import url('./custom.css');
+@import url('./transitions.css');

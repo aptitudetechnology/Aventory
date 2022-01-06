@@ -1,49 +1,52 @@
 <template>
-  <jet-action-section>
-    <template #title> Delete Vendor </template>
-
-    <template #description> Delete this vendor. </template>
-
-    <template #content>
-      <div class="max-w-xl text-sm text-gray-600">
-        Once a vendor is deleted, you will be unable to bring product in from
-        this vendor. Past orders will still contain this vendor information.
-      </div>
-
-      <div class="mt-5">
-        <jet-danger-button @click="confirmVendorDeletion">
-          Delete Vendor
-        </jet-danger-button>
-      </div>
-
-      <!-- Delete Vendor Confirmation Modal -->
-      <jet-confirmation-modal
-        :show="confirmingVendorDeletion"
-        @close="confirmingVendorDeletion = false"
-      >
+    <jet-action-section>
         <template #title> Delete Vendor </template>
 
+        <template #description> Delete this vendor. </template>
+
         <template #content>
-          Are you sure you want to delete this vendor?
-        </template>
+            <div class="max-w-xl text-sm text-gray-600">
+                Once a vendor is deleted, you will be unable to bring product in
+                from this vendor. Past purchases will still contain this vendor
+                information.
+            </div>
 
-        <template #footer>
-          <jet-secondary-button @click="confirmingVendorDeletion = false">
-            Cancel
-          </jet-secondary-button>
+            <div class="mt-5">
+                <jet-danger-button @click="confirmVendorDeletion">
+                    Delete Vendor
+                </jet-danger-button>
+            </div>
 
-          <jet-danger-button
-            class="ml-2"
-            @click="deleteVendor"
-            :class="{ 'opacity-25': form.processing }"
-            :disabled="form.processing"
-          >
-            Delete Vendor
-          </jet-danger-button>
+            <!-- Delete Vendor Confirmation Modal -->
+            <jet-confirmation-modal
+                :show="confirmingVendorDeletion"
+                @close="confirmingVendorDeletion = false"
+            >
+                <template #title> Delete Vendor </template>
+
+                <template #content>
+                    Are you sure you want to delete this vendor?
+                </template>
+
+                <template #footer>
+                    <jet-secondary-button
+                        @click="confirmingVendorDeletion = false"
+                    >
+                        Cancel
+                    </jet-secondary-button>
+
+                    <jet-danger-button
+                        class="ml-2"
+                        @click="deleteVendor"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                    >
+                        Delete Vendor
+                    </jet-danger-button>
+                </template>
+            </jet-confirmation-modal>
         </template>
-      </jet-confirmation-modal>
-    </template>
-  </jet-action-section>
+    </jet-action-section>
 </template>
 
 <script>
@@ -53,34 +56,34 @@ import JetDangerButton from "@/Jetstream/DangerButton";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
 export default {
-  props: { vendor: Object },
+    props: { vendor: Object },
 
-  components: {
-    JetActionSection,
-    JetConfirmationModal,
-    JetDangerButton,
-    JetSecondaryButton,
-  },
-
-  data() {
-    return {
-      confirmingVendorDeletion: false,
-      deleting: false,
-
-      form: this.$inertia.form(),
-    };
-  },
-
-  methods: {
-    confirmVendorDeletion() {
-      this.confirmingVendorDeletion = true;
+    components: {
+        JetActionSection,
+        JetConfirmationModal,
+        JetDangerButton,
+        JetSecondaryButton,
     },
 
-    deleteVendor() {
-      this.form.delete(route("vendors.destroy", this.vendor), {
-        errorBag: "deleteVendor",
-      });
+    data() {
+        return {
+            confirmingVendorDeletion: false,
+            deleting: false,
+
+            form: this.$inertia.form(),
+        };
     },
-  },
+
+    methods: {
+        confirmVendorDeletion() {
+            this.confirmingVendorDeletion = true;
+        },
+
+        deleteVendor() {
+            this.form.delete(route("vendors.destroy", this.vendor), {
+                errorBag: "deleteVendor",
+            });
+        },
+    },
 };
 </script>

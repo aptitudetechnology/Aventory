@@ -8,11 +8,7 @@
                     {{ productsLength > 1 ? "Products" : "Product" }}</template
                 >
             </jet-section-title>
-            <search-input
-                v-model="search"
-                @input="updateProducts"
-                placeholder="Search products"
-            />
+            <search-input v-model="search" placeholder="Search products" />
         </template>
 
         <div class="bg-white">
@@ -58,10 +54,10 @@
     </page-aside>
 </template>
 <script>
-import ButtonLink from "@Components/ButtonLink";
-import SearchInput from "@Components/SearchInput.vue";
+import ButtonLink from "@Components/Links/ButtonLink";
+import SearchInput from "@Components/Forms/SearchInput.vue";
 import PageAside from "@Components/PageAside.vue";
-import AsideLink from "@Components/AsideLink.vue";
+import AsideLink from "@/Components/Links/AsideLink.vue";
 import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 export default {
     components: {
@@ -82,6 +78,11 @@ export default {
             search: "",
             filteredProducts: this.$page.props.products,
         };
+    },
+    watch: {
+        search() {
+            this.updateProducts();
+        },
     },
     methods: {
         updateProducts() {

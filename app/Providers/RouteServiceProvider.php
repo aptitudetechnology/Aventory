@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\OrderItem;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -35,6 +37,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::model('order_item', OrderItem::class);
         $this->configureRateLimiting();
 
         $this->routes(function () {

@@ -18,7 +18,7 @@ class Customer extends Model
      */
     protected $casts = [
         'mailing_same_as_primary' => 'boolean',
-        'is_retail' => 'boolean',
+        'is_taxable' => 'boolean',
         'no_auto_discount' => 'boolean',
         'reseller_permit_on_file' => 'boolean'
     ];
@@ -29,6 +29,16 @@ class Customer extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function getAddressAttribute()
+    {
+        return $this->hasMailingAddress() ? $this->mailing_address . ', ' . $this->mailing_city . ', ' . $this->mailing_state . ' ' . $this->mailing_zip : null;
+    }
+
+    public function hasMailingAddress(): bool
+    {
+        return $this->mailing_address !== null && $this->mailing_address !== '';
     }
 
     public function priceLevel(): BelongsTo

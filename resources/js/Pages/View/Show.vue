@@ -1,10 +1,10 @@
 <template>
     <view-layout>
         <div class="grid gap-6">
-            <product-details
-                class="col-span-6"
-                :product="product"
-            ></product-details>
+            <div class="col-span-6">
+                <product-details :product="product"></product-details>
+            </div>
+
             <InventorySizes />
         </div>
     </view-layout>

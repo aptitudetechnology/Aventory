@@ -2,7 +2,15 @@
 
 namespace App\Providers;
 
+use App\Models\InventoryArchive;
+use App\Models\Order;
+use App\Models\OrderDiscount;
+use App\Observers\OrderItemObserver;
 use Illuminate\Support\ServiceProvider;
+use App\Models\OrderItem;
+use App\Observers\OrderObserver;
+use App\Observers\OrderDiscountObserver;
+use App\Observers\InventoryArchiveObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Order::observe(OrderObserver::class);
+        OrderItem::observe(OrderItemObserver::class);
+        OrderDiscount::observe(OrderDiscountObserver::class);
+        InventoryArchive::observe(InventoryArchiveObserver::class);
     }
 }
