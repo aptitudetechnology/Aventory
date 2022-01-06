@@ -8,14 +8,17 @@ use Illuminate\View\Component;
 class InvoiceItems extends Component
 {
     public $invoice;
+
+    public $showPrice;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(Invoice $invoice)
+    public function __construct(Invoice $invoice, bool $showPrice = true)
     {
         $this->invoice = $invoice;
+        $this->showPrice = $showPrice;
     }
 
     /**

@@ -231,7 +231,7 @@ class Order extends Model
 
     public function setTaxAmountAttribute()
     {
-        $this->attributes['tax_amount'] = PricingService::applyTax($this->tax_percentage, $this->total_after_discount_and_warranty, 2, true);
+        $this->attributes['tax_amount'] = $this->total_after_discount_and_warranty * ($this->tax_percentage / 100);
     }
 
     public function getShippingTaxAmountAttribute()
@@ -280,7 +280,7 @@ class Order extends Model
         }
     }
 
-    public function generatePDF()
+    public function generatePDF($template = 'default')
     {
         $seller = new Party([
             'name' => $this->team->name,
@@ -313,6 +313,7 @@ class Order extends Model
         $notes = $this->notes ? $this->notes : '';
 
         $invoice = Invoice::make()
+            ->template($template)
             ->name($this->name)
             ->sequence($this->id)
             ->seller($seller)
@@ -322,6 +323,8 @@ class Order extends Model
             ->notes($notes)
             ->addItems($items)
             ->addDiscountItems($discounts)
+            ->subTotal($this->total)
+            ->warrantyAmount($this->warranty_amount)
             ->taxRate($this->tax_rate)
             ->shipping($this->shipping_amount)
             ->totalDiscount($this->total_discounts)

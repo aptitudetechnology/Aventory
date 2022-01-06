@@ -17,7 +17,7 @@ class OrderPDFController extends Controller
      */
     public function __invoke(Request $request, Order $order)
     {
-        $invoice = $order->generatePDF();
+        $invoice = $order->generatePDF($request->template ? $request->template : 'default');
 
         return $invoice->stream();
     }

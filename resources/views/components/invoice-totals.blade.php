@@ -7,12 +7,28 @@
         </thead>
         <tbody>
             {{-- Summary --}}
+            <tr>
+                <td colspan="{{ $invoice->table_columns - 1 }}" class="border-0"></td>
+                <td class="text-right pl-0">{{ __('invoices::invoice.sub_total') }}</td>
+                <td class="text-right pr-0">
+                    {{ $invoice->formatCurrency($invoice->sub_total) }}
+                </td>
+            </tr>
             @if ($invoice->hasItemOrInvoiceDiscount())
                 <tr>
                     <td colspan="{{ $invoice->table_columns - 1 }}" class="border-0"></td>
                     <td class="text-right pl-0">{{ __('invoices::invoice.total_discount') }}</td>
                     <td class="text-right pr-0">
                         {{ $invoice->formatCurrency($invoice->total_discount) }}
+                    </td>
+                </tr>
+            @endif
+            @if ($invoice->hasWarranty())
+                <tr>
+                    <td colspan="{{ $invoice->table_columns - 1 }}" class="border-0"></td>
+                    <td class="text-right pl-0">{{ __('invoices::invoice.total_warranty') }}</td>
+                    <td class="text-right pr-0">
+                        {{ $invoice->formatCurrency($invoice->warranty_amount) }}
                     </td>
                 </tr>
             @endif

@@ -29,7 +29,6 @@
                     gap-4
                     xl:gap-x-20
                     lg:gap-y-4
-                    justify-evenly
                     items-start
                 "
             >

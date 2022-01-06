@@ -4,7 +4,7 @@
         <div class="space-y-4 min-w-0 clear-both">
             <form
                 @submit.prevent="searchInventory"
-                class="grid sticky top-0 bg-white p-1 pt-0 z-50"
+                class="grid sticky top-0 bg-white p-1 pt-0 z-10"
             >
                 <div>
                     <jet-input-error
