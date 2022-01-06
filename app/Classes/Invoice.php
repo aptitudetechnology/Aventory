@@ -44,7 +44,7 @@ class Invoice extends \LaravelDaily\Invoices\Invoice
    *
    * @return $this
    */
-  public function addDiscountItems($items): Invoice
+  public function addDiscounts($items): Invoice
   {
     foreach ($items as $item) {
       $this->addDiscount($item);

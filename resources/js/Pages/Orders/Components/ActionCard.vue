@@ -7,13 +7,13 @@
             lg:px-0
             fixed
             top-20
-            right-0
-            sm:right-4
+            right-4
+            sm:right-6
             lg:static
         "
     >
         <div class="dropdown dropdown-hover dropdown-end z-20">
-            <PrintButton class="mr-2 bg-white">Print</PrintButton>
+            <PrintButton class="bg-white">Print</PrintButton>
             <ul
                 tabindex="0"
                 class="shadow menu dropdown-content bg-base-100 rounded-lg w-52"

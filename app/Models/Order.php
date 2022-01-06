@@ -322,7 +322,7 @@ class Order extends Model
             ->filename($this->team->name . '/' . $this->full_name)
             ->notes($notes)
             ->addItems($items)
-            ->addDiscountItems($discounts)
+            ->addDiscounts($discounts)
             ->subTotal($this->total)
             ->warrantyAmount($this->warranty_amount)
             ->taxRate($this->tax_rate)
