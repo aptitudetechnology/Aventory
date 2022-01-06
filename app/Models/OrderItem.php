@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Casts\Money;
-use App\Observers\OrderItemObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -55,7 +53,7 @@ class OrderItem extends Model
 
     public function getSizeNameAttribute()
     {
-        return $this->size->name;
+        return $this->size ? $this->size->name : '';
     }
 
     public function inventory()

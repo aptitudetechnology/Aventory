@@ -30,7 +30,12 @@ class OrderDiscount extends Model
             : $this->order->total_of_items_with_discount * ($this->discount_percentage / 100);
     }
 
-    public function getDiscountTypeAttribute()
+    public function getTitleAttribute() : string
+    {
+        return $this->discount_percentage ? 'Percentage Discount': 'Dollar Amount Discount';
+    }
+
+    public function getDiscountTypeAttribute() : string
     {
         return $this->discount_percentage ? 'percentage' : 'amount';
     }

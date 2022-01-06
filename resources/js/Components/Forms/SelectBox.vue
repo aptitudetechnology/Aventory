@@ -1,37 +1,12 @@
 <template>
-    <Listbox as="div" v-model="selected">
-        <ListboxLabel
-            v-if="showLabel"
-            class="block text-sm font-medium text-gray-900 mr-4 cursor-pointer"
-        >
-            {{ labelValue }}
+    <Listbox as="div" class="form-control" v-model="selected">
+        <ListboxLabel v-if="showLabel" class="label">
+            <span class="label-text">{{ labelValue }}</span>
         </ListboxLabel>
-        <div class="mt-1 relative w-full">
-            <ListboxButton
-                class="
-                    bg-white
-                    relative
-                    w-full
-                    border border-gray-300
-                    rounded-md
-                    shadow-sm
-                    pl-3
-                    pr-10
-                    py-2
-                    text-left
-                    cursor-default
-                    focus:outline-none
-                    focus:ring-1
-                    focus:ring-green-500
-                    focus:border-green-500
-                "
-            >
-                <span
-                    v-if="selected"
-                    class="block truncate text-gray-900 max-w-full"
-                    >{{ selected[nameValue] }}</span
-                >
-                <span v-else class="text-gray-600 block truncate">Select</span>
+        <div class="relative w-full">
+            <ListboxButton class="input input-bordered w-full text-left">
+                <span v-if="selected">{{ selected[nameValue] }}</span>
+                <span v-else>Select</span>
                 <span
                     class="
                         absolute
@@ -100,7 +75,7 @@
                         <li
                             :class="[
                                 active
-                                    ? 'text-white bg-green-600'
+                                    ? 'text-white bg-gray-600'
                                     : 'text-gray-900',
                                 'cursor-default select-none relative py-2 pl-3 pr-9',
                             ]"
@@ -117,7 +92,7 @@
                             <span
                                 v-if="selected"
                                 :class="[
-                                    active ? 'text-white' : 'text-green-600',
+                                    active ? 'text-white' : 'text-gray-600',
                                     'absolute inset-y-0 right-0 flex items-center pr-4',
                                 ]"
                             >

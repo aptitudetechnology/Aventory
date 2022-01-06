@@ -28,6 +28,7 @@ use App\Http\Controllers\Api\ApiInventoryArchiveController;
 use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
 use App\Http\Controllers\Api\ApiOrderInventoryController;
 use App\Http\Controllers\Api\ApiProductPriceController;
+use App\Http\Controllers\OrderPDFController;
 use App\Http\Controllers\ViewInventoryController;
 
 use Illuminate\Support\Facades\Route;
@@ -130,6 +131,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return response()->json(['message' => "No Inventory Found for ID: {$request['inventory']}"], 200);
         });
     Route::apiResource('inventory-archive', ApiInventoryArchiveController::class);
+    Route::get('orders/{order}/print', OrderPDFController::class)->name('orders.print');
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');

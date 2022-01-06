@@ -2,7 +2,7 @@
     <div>
         <jet-button
             type="button"
-            class="bg-yellow-500"
+            class="btn-warning"
             @click="creatingDiscount = true"
             ><PlusIcon class="w-4 h-4 mr-2" />New Discount</jet-button
         >

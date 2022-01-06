@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <jet-label v-if="showLabel" for="items-input" class="pb-1">{{
+    <div class="form-control">
+        <jet-label v-if="showLabel" for="items-input">{{
             labelValue
         }}</jet-label>
         <div
@@ -18,24 +18,7 @@
                 id="items-input"
                 :placeholder="'Select ' + labelValue"
                 v-model="search"
-                class="
-                    bg-white
-                    relative
-                    w-full
-                    border border-gray-300
-                    rounded-md
-                    shadow-sm
-                    placeholder-gray-600
-                    pl-3
-                    pr-10
-                    py-2
-                    text-left
-                    cursor-default
-                    focus:outline-none
-                    focus:ring-1
-                    focus:ring-green-500
-                    focus:border-green-500
-                "
+                class="w-full"
             />
             <span
                 class="absolute inset-y-0 right-0 flex items-center pr-2"
@@ -69,35 +52,13 @@
                     rounded-md
                     py-1
                     text-base
-                    ring-1 ring-green-500 ring-opacity-5
+                    ring-1 ring-gray-700 ring-opacity-5
                     overflow-auto
                     focus:outline-none
                     sm:text-sm
                     group
                 "
             >
-                <div
-                    v-if="!searchItems.length"
-                    @click="addItem"
-                    @keydown.enter="addItem"
-                    tabindex="0"
-                    class="
-                        text-white
-                        cursor-default
-                        relative
-                        py-2
-                        pl-3
-                        pr-9
-                        bg-green-500
-                        active:outline-none
-                        focus:outline-none
-                        focus:ring-1
-                        focus:ring-green-500
-                        focus:border-green-500
-                    "
-                >
-                    {{ `Add ${search}?` }}
-                </div>
                 <div
                     v-for="(item, index) in searchItems"
                     key="item.id"
@@ -116,18 +77,22 @@
                         active:outline-none
                         focus:outline-none
                         focus:ring-1
-                        focus:ring-green-500
-                        focus:border-green-500
-                        focus:bg-green-500
+                        focus:ring-gray-500
+                        focus:border-gray-500
+                        focus:bg-gray-500
                         focus:text-white
                     "
+                    :class="[
+                        isSelected(item) ? 'font-semibold' : 'font-normal',
+                        'block truncate',
+                    ]"
                 >
                     {{ item[nameValue] }}
                     <span
-                        v-if="selected?.id == item.id"
+                        v-if="isSelected(item)"
                         class="
                             group-focus:text-white
-                            text-green-500
+                            text-gray-500
                             absolute
                             inset-y-0
                             right-0
@@ -138,6 +103,27 @@
                     >
                         <CheckIcon class="h-5 w-5" aria-hidden="true" />
                     </span>
+                </div>
+                <div
+                    @click="addItem"
+                    @keydown.enter="addItem"
+                    tabindex="0"
+                    class="
+                        focus:text-white
+                        cursor-default
+                        relative
+                        py-2
+                        pl-3
+                        pr-9
+                        focus:bg-gray-500
+                        active:outline-none
+                        focus:outline-none
+                        focus:ring-1
+                        focus:ring-gray-500
+                        focus:border-gray-500
+                    "
+                >
+                    {{ `Add ${search}?` }}
                 </div>
             </div>
         </div>
@@ -203,6 +189,9 @@ export default {
             if (e.keyCode !== 13) {
                 this.isOpen = true;
             }
+        },
+        isSelected(item) {
+            return this.selected && this.selected.id === item.id;
         },
     },
     watch: {
