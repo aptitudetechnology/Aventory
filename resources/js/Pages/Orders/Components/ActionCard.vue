@@ -16,13 +16,23 @@
             <PrintButton class="bg-white">Print</PrintButton>
             <ul
                 tabindex="0"
-                class="shadow menu dropdown-content bg-base-100 rounded-lg w-52"
+                class="
+                    shadow
+                    menu
+                    dropdown-content
+                    bg-base-100
+                    rounded-lg
+                    text-right
+                    w-52
+                "
             >
                 <li>
-                    <a @click="printOrder">Order</a>
+                    <a @click="printOrder" class="justify-end px-4">Order</a>
                 </li>
                 <li>
-                    <a @click="printPickTicket">Pick Ticket</a>
+                    <a @click="printPickTicket" class="justify-end px-4"
+                        >Pick Ticket</a
+                    >
                 </li>
             </ul>
         </div>
