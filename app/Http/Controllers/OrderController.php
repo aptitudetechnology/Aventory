@@ -3,116 +3,149 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderStoreRequest;
-use App\Http\Requests\OrderUpdateRequest;
+use App\Models\Customer;
+use App\Models\DeliveryStatus;
 use App\Models\Order;
+use App\Models\ShippingMethod;
+use App\Models\PaymentStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * Display a listing of the resource.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $orders = $this->getOrders();
 
-        return inertia('Orders/Index', compact('orders'));
+        $orders = auth()->user()->currentTeam->orders()
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
+                    $query->where('name', 'like', "%{$request->search}%");
+                });
+            })
+            ->when($request->orderBy, function ($query) use ($request) {
+                if ($request->orderBy == 'customer') {
+                    $query->addSelect(['customer_name' => Customer::select('name')
+                        ->whereColumn('id', 'orders.customer_id')])->orderBy('customer_name', $request->orderByDirection);
+                } else {
+                    $query->orderBy($request->orderBy, $request->orderByDirection);
+                }
+            }, function ($query) {
+                $query->orderBy('id', 'desc');
+            })
+            ->paginate(10)->withQueryString();
+        $orders->each(function ($item) {
+            $item->append('ready_to_complete');
+        });
+
+        $filters = $request->only(['search', 'orderBy', 'orderByDirection']);
+
+        return inertia('Orders/Index', compact('orders', 'filters'));
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * Show the form for creating a new resource.
+     *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         Gate::authorize('create', Order::class);
-        $orders = $this->getOrders();
-        $vendors = $this->getVendors();
-        return inertia('Orders/Create', compact('orders', 'vendors'));
+        $customers = $this->getCustomers();
+        $teamMembers = auth()->user()->currentTeam->allUsers();
+        return inertia('Orders/Create', compact('customers', 'teamMembers'));
     }
 
     /**
-     * @param \App\Http\Requests\OrderStoreRequest $request
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(OrderStoreRequest $request)
     {
         Gate::authorize('create', Order::class);
 
-        $order = $request->user()->currentTeam->orders()->create($request->validated());
+        $order = auth()->user()->orders()->create($request->validated());
 
-        $request->session()->flash('order.id', $order->id);
+        $order->setTaxPercentage();
 
-        return redirect()->route('orders.show', $order)->banner('Great! Created order. Now add order items.');
+        return redirect()->route('orders.show', $order)->banner('Great work! Created order. Now add some products you sold.');
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Order $order
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Order $order)
+    public function show(Order $order)
     {
         Gate::authorize('view', $order);
-
-        $orders = $this->getOrders();
-        $orderItems = $order->orderItems;
-        $vendors = $this->getVendors();
-        $products = $request->user()->currentTeam->products()->where('type', 'plant')->get();
-        $sizes = $request->user()->currentTeam->sizes;
-        $blocks = $request->user()->currentTeam->blocks;
-        $nurseryLocations = $request->user()->currentTeam->nurseryLocations;
-        return inertia('Orders/Show', compact('orders', 'vendors', 'order', 'products', 'sizes', 'orderItems', 'blocks', 'nurseryLocations'));
+        $customers = $this->getCustomers();
+        $items = $order->items;
+        $teamMembers = auth()->user()->currentTeam->allUsers();
+        $priceLevels = auth()->user()->currentTeam->priceLevels;
+        $delivery_statuses = DeliveryStatus::all();
+        $payment_statuses = PaymentStatus::all();
+        $products = auth()->user()->currentTeam->products;
+        $sizes = auth()->user()->currentTeam->sizes;
+        $shipping_methods = ShippingMethod::all();
+        return inertia('Orders/Show', compact(
+            [
+                'order',
+                'customers',
+                'priceLevels',
+                'teamMembers',
+                'items',
+                'delivery_statuses',
+                'payment_statuses',
+                'products',
+                'sizes',
+                'shipping_methods'
+            ]
+        ));
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request, Order $order)
-    {
-        return redirect()->route('orders.show', $order);
-    }
 
     /**
-     * @param \App\Http\Requests\OrderUpdateRequest $request
-     * @param \App\Models\Order $order
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(OrderUpdateRequest $request, Order $order)
+    public function update(OrderStoreRequest $request, Order $order)
     {
+
         Gate::authorize('update', $order);
-
         $order->update($request->validated());
 
-        $request->session()->flash('order.id', $order->id);
+        $order->updateDiscounts();
+        $order->updateTotals();
 
-        return redirect()->route('orders.show', $order)->banner('Updated order!');
+        return back()->banner("Great work! Updated order.");
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Order $order
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Order $order)
+    public function destroy(Order $order)
     {
         Gate::authorize('delete', $order);
         $order->delete();
-
-        return redirect()->route('orders.index')->banner('Deleted Order!');
+        return redirect()->route('orders.index')->banner('Order deleted.');
     }
 
-    protected function getOrders()
+    protected function getCustomers()
     {
-        return auth()->user()->currentTeam->orders;
-    }
-
-    protected function getVendors()
-    {
-        return auth()->user()->currentTeam->vendors;
+        return auth()->user()->customers;
     }
 }

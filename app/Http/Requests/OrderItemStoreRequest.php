@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderItemStoreRequest extends FormRequest
@@ -13,7 +14,7 @@ class OrderItemStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('update', $this->order);
     }
 
     /**
@@ -24,14 +25,12 @@ class OrderItemStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => ['required', 'integer', 'exists:products,id'],
-            'original_size_id' => ['required', 'integer', 'exists:sizes,id'],
-            'size_id' => ['required', 'integer', 'exists:sizes,id'],
-            'unit_price' => ['required', 'numeric'],
-            'quantity_ordered' => ['required', 'integer'],
-            'quantity_confirmed' => ['required', 'integer'],
-            'received' => ['boolean'],
-            'ready_date' => ['required', 'date']
+            'product_id' => 'required|exists:products,id',
+            'size_id'   => 'required|exists:sizes,id',
+            'quantity'  => 'required|integer|min:0',
+            'original_quantity' => 'required|integer|min:0',
+            'unit_price' => 'required|numeric|min:0',
+            'no_discount'  => 'required|boolean',
         ];
     }
 }

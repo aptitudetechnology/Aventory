@@ -1,17 +1,11 @@
 <template>
     <input
-        class="
-            border-gray-300
-            focus:outline-none
-            focus:ring-1
-            focus:ring-green-500
-            focus:border-green-500
-            rounded-md
-            shadow-sm
-        "
+        class="input input-bordered"
+        :class="{
+            ' input-error': error,
+        }"
+        v-bind="$attrs"
         :value="modelValue"
-        :min="min"
-        :max="max"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"
     />
@@ -19,7 +13,10 @@
 
 <script>
 export default {
-    props: ["modelValue", "min", "max"],
+    props: {
+        modelValue: { type: [String, Boolean, Number] },
+        error: { type: Boolean, default: false },
+    },
 
     emits: ["update:modelValue"],
 

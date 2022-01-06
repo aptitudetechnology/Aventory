@@ -36,10 +36,9 @@ class UpdateCustomerRequest extends FormRequest
             'mailing_zip' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
             'customer_price_level_id' => ['exists:customer_price_levels,id', 'nullable'],
-            'is_retail' => ['nullable', 'boolean'],
-            'no_auto_discount' => ['nullable', 'boolean'],
+            'is_taxable' => ['nullable', 'boolean'],
             'tax_percentage' => ['nullable', 'numeric'],
-            'discount_override' => ['nullable', 'integer'],
+            'discount_percentage' => ['nullable', 'integer'],
             'reseller_permit_expiration' => ['nullable', 'date']
         ];
     }
