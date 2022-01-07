@@ -1686,6 +1686,13 @@ html {
 	width: -moz-max-content;
 	width: max-content;
 }
+.tooltip-left:before {
+	transform: translateY(-50%);
+	top: 50%;
+	left: auto;
+	right: var(--tooltip-offset);
+	bottom: auto;
+}
 .tooltip-right:before {
 	transform: translateY(-50%);
 	top: 50%;
@@ -2652,6 +2659,17 @@ html {
 	opacity: 1;
 	transition-delay: 75ms;
 }
+.tooltip-left:after {
+	transform: translateY(-50%);
+	border-left-color: var(--tooltip-color);
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	border-top-color: transparent;
+	top: 50%;
+	left: auto;
+	right: calc(var(--tooltip-tail-offset) + 1px);
+	bottom: auto;
+}
 .tooltip-right:after {
 	transform: translateY(-50%);
 	border-left-color: transparent;
@@ -2860,6 +2878,9 @@ html {
 .z-20 {
 	z-index: 20;
 }
+.z-30 {
+	z-index: 30;
+}
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
@@ -2877,6 +2898,12 @@ html {
 }
 .col-span-1 {
 	grid-column: span 1 / span 1;
+}
+.col-span-8 {
+	grid-column: span 8 / span 8;
+}
+.col-span-12 {
+	grid-column: span 12 / span 12;
 }
 .clear-both {
 	clear: both;
@@ -3322,6 +3349,12 @@ html {
 .grid-cols-5 {
 	grid-template-columns: repeat(5, minmax(0, 1fr));
 }
+.grid-cols-8 {
+	grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+.grid-cols-12 {
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+}
 .flex-row-reverse {
 	flex-direction: row-reverse;
 }
@@ -3342,9 +3375,6 @@ html {
 }
 .items-center {
 	align-items: center;
-}
-.items-stretch {
-	align-items: stretch;
 }
 .justify-start {
 	justify-content: flex-start;
@@ -4220,6 +4250,12 @@ html {
 .tooltip {
   text-align: inherit;
 }
+.tooltip-small:after, .tooltip:before {
+    max-width: 200px;
+
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 button, select {
   text-transform: inherit;
 }
@@ -4228,6 +4264,9 @@ fade-enter-active, fade-leave-active {
 }
 fade-enter-from, fade-leave-to {
   opacity: 0
+}
+.hover\:overflow-auto:hover {
+	overflow: auto;
 }
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
@@ -4981,6 +5020,14 @@ fade-enter-from, fade-leave-to {
 
 	.lg\:col-span-3 {
 		grid-column: span 3 / span 3;
+	}
+
+	.lg\:col-span-8 {
+		grid-column: span 8 / span 8;
+	}
+
+	.lg\:col-span-7 {
+		grid-column: span 7 / span 7;
 	}
 
 	.lg\:mr-6 {

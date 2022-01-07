@@ -9,6 +9,7 @@ import {
 import { InertiaProgress } from "@inertiajs/progress";
 
 // Mixin Methods
+import date from "./utils/date";
 import money from "./utils/money";
 import popup from "./utils/popup";
 
@@ -55,6 +56,7 @@ app.mixin({
         PercentageInput,
     },
 })
+    .mixin(date)
     .mixin(money)
     .mixin(popup)
     .use(InertiaPlugin);

@@ -1,24 +1,43 @@
 <template>
     <details-section>
-        <div class="grid gap-4 divide-y divide-gray-100 col-span-6">
-            <div v-if="groupInventoryDetails.length" class="overflow-auto">
+        <div
+            class="grid gap-4 divide-y divide-gray-100 col-span-6 overflow-hidden"
+        >
+            <div v-if="groupInventoryDetails.length" class="overflow-hidden">
                 <section-title :showBorder="false" class="pb-6"
                     ><template #title
                         >Group Inventory Locations Sized
                         {{ selectedSize.name }}</template
                     ></section-title
                 >
-                <table-table class="max-h-96 block relative overflow-auto">
-                    <table-head>
-                        <table-h>Product ID</table-h>
-                        <table-h>Block Location</table-h>
-                        <table-h>Quantity</table-h>
+                <table-table
+                    class="max-h-96 block w-full relative hover:overflow-auto"
+                >
+                    <table-head class="z-30">
+                        <table-h class="sticky left-0 bg-white">ID</table-h>
+                        <table-h>Location</table-h>
+                        <table-h>Qty</table-h>
+                        <table-h>Ready</table-h>
                     </table-head>
                     <tbody>
                         <tr v-for="inventory in groupInventoryDetails">
-                            <table-d>{{ inventory.id }}</table-d>
-                            <table-d>{{ inventory.block?.name }}</table-d>
-                            <table-d>{{ inventory.quantity }}</table-d>
+                            <table-d class="sticky left-0 z-10 bg-white">{{
+                                inventory.id
+                            }}</table-d>
+                            <table-d class="truncate">{{
+                                inventory.block?.name
+                            }}</table-d>
+                            <table-d class="truncate max-w-20">{{
+                                inventory.quantity
+                            }}</table-d>
+                            <table-d
+                                :data-tip="
+                                    'Inventory is estimated to be ready to sell by: ' +
+                                    formatDate(inventory.ready_date)
+                                "
+                                class="tooltip tooltip-left tooltip-small z-20"
+                                >{{ formatDate(inventory.ready_date) }}</table-d
+                            >
                         </tr>
                     </tbody>
                 </table-table>
@@ -28,7 +47,7 @@
                 v-if="individualInventoryDetails.length"
                 :class="[
                     groupInventoryDetails.length ? 'pt-6' : '',
-                    'overflow-auto',
+                    'overflow-hidden',
                 ]"
             >
                 <section-title :showBorder="false" class="pb-6"
@@ -37,22 +56,39 @@
                         {{ selectedSize.name }}</template
                     ></section-title
                 >
-                <table-table class="max-h-96 block relative overflow-auto">
-                    <table-head>
-                        <table-h>Product ID</table-h>
-                        <table-h>Block Location</table-h>
+                <table-table
+                    class="max-h-96 block w-full relative hover:overflow-auto"
+                >
+                    <table-head class="z-30">
+                        <table-h class="sticky left-0 bg-white">ID</table-h>
+                        <table-h>Location</table-h>
                         <table-h>Row</table-h>
                         <table-h>Plant #</table-h>
+                        <table-h>Ready</table-h>
                     </table-head>
 
                     <tbody>
                         <tr v-for="inventory in individualInventoryDetails">
-                            <table-d>{{ inventory.id }}</table-d>
-                            <table-d>{{ inventory.block?.name }}</table-d>
-                            <table-d>{{ inventory.place?.row_number }}</table-d>
-                            <table-d>{{
+                            <table-d class="sticky left-0 z-10 bg-white">{{
+                                inventory.id
+                            }}</table-d>
+                            <table-d class="truncate max-w-20">{{
+                                inventory.block?.name
+                            }}</table-d>
+                            <table-d class="truncate max-w-20">{{
+                                inventory.place?.row_number
+                            }}</table-d>
+                            <table-d class="truncate max-w-20">{{
                                 inventory.place?.plant_number
                             }}</table-d>
+                            <table-d
+                                :data-tip="
+                                    'Inventory is estimated to be ready to sell by: ' +
+                                    formatDate(inventory.ready_date)
+                                "
+                                class="tooltip tooltip-left tooltip-small z-20"
+                                >{{ formatDate(inventory.ready_date) }}</table-d
+                            >
                         </tr>
                     </tbody>
                 </table-table>
@@ -109,3 +145,5 @@ export default {
     },
 };
 </script>
+
+<style scoped></style>

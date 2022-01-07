@@ -1,8 +1,8 @@
 <template>
-    <div class="grid gap-6 col-span-6 grid-cols-6">
-        <div class="lg:col-span-3 col-span-6">
+    <div class="grid gap-6 col-span-6 grid-cols-12">
+        <div class="lg:col-span-7 col-span-12">
             <details-section class="h-full">
-                <div class="grid gap-4 divide-y divide-gray-100 col-span-6">
+                <div class="grid gap-4 divide-y divide-gray-100">
                     <availability-section
                         :product-quantities="productQuantities"
                         :selected-size="selectedSize"
@@ -20,7 +20,7 @@
             </details-section>
         </div>
 
-        <div class="lg:col-span-3 col-span-6">
+        <div class="lg:col-span-5 col-span-12">
             <inventory-locations-section
                 :product="product"
                 :inventory="inventory"
