@@ -40,7 +40,7 @@
                 </div>
                 <div class="grid gap-4">
                     <div class="col-span-3 pt-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-lg leading-6 text-gray-900">
                             Primary Address
                         </h3>
                     </div>
@@ -105,9 +105,7 @@
                         class="flex items-center justify-between col-span-3"
                     >
                         <span class="flex-grow flex flex-col mr-4">
-                            <SwitchLabel
-                                as="span"
-                                class="text-sm font-medium text-gray-900"
+                            <SwitchLabel as="span" class="text-sm text-gray-900"
                                 >Mailing same as primary</SwitchLabel
                             >
                             <SwitchDescription
@@ -144,7 +142,7 @@
                     class="grid gap-4"
                 >
                     <div class="col-span-3 pt-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-lg leading-6 text-gray-900">
                             Mailing Address
                         </h3>
                     </div>
@@ -210,7 +208,7 @@
                 </div>
                 <div class="grid gap-4">
                     <div class="col-span-3 pt-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-lg leading-6 text-gray-900">
                             Customer Details
                         </h3>
                     </div>
@@ -231,17 +229,11 @@
                         />
                         <SwitchGroup
                             as="div"
-                            class="
-                                flex
-                                items-center
-                                justify-start
-                                col-span-3
-                                sm:col-span-1
-                            "
+                            class="flex items-center justify-start col-span-3 sm:col-span-1"
                         >
                             <SwitchLabel
                                 as="span"
-                                class="text-sm font-medium text-gray-900 mr-4"
+                                class="text-sm text-gray-900 mr-4"
                                 >Taxable?</SwitchLabel
                             >
                             <Switch
@@ -265,32 +257,17 @@
                             </Switch>
                         </SwitchGroup>
                         <div
-                            class="
-                                grid
-                                gap-4
-                                sm:gap-6 sm:grid-cols-3
-                                col-span-3
-                            "
+                            class="grid gap-4 sm:gap-6 sm:grid-cols-3 col-span-3"
                         >
                             <SwitchGroup
                                 v-show="updatedCustomer.is_taxable"
                                 as="div"
-                                class="
-                                    flex
-                                    items-center
-                                    justify-start
-                                    sm:col-span-2
-                                "
+                                class="flex items-center justify-start sm:col-span-2"
                             >
                                 <div class="flex flex-col">
                                     <SwitchLabel
                                         as="span"
-                                        class="
-                                            text-sm
-                                            font-medium
-                                            text-gray-900
-                                            mr-4
-                                        "
+                                        class="text-sm font-medium text-gray-900 mr-4"
                                         >Custom Tax Rate?</SwitchLabel
                                     >
                                     <SwitchLabel

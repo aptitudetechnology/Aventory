@@ -31,7 +31,7 @@
                                     class="absolute inset-0"
                                     aria-hidden="true"
                                 />
-                                <p class="text-sm font-medium text-gray-900">
+                                <p class="text-sm text-gray-900">
                                     {{ feature.name }}
                                 </p>
                                 <p

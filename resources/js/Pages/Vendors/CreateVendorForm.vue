@@ -42,9 +42,7 @@
                         class="flex items-center justify-between col-span-3"
                     >
                         <span class="flex-grow flex flex-col">
-                            <SwitchLabel
-                                as="span"
-                                class="text-sm font-medium text-gray-900"
+                            <SwitchLabel as="span" class="text-sm text-gray-900"
                                 >Use vendor for block inventory
                                 transfers?</SwitchLabel
                             >
@@ -79,7 +77,7 @@
                 </div>
                 <div class="grid gap-4">
                     <div class="col-span-3 pt-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-lg leading-6 text-gray-900">
                             Primary Address
                         </h3>
                     </div>
@@ -144,9 +142,7 @@
                         class="flex items-center justify-between col-span-3"
                     >
                         <span class="flex-grow flex flex-col">
-                            <SwitchLabel
-                                as="span"
-                                class="text-sm font-medium text-gray-900"
+                            <SwitchLabel as="span" class="text-sm text-gray-900"
                                 >Mailing same as primary</SwitchLabel
                             >
                             <SwitchDescription
@@ -180,7 +176,7 @@
                 </div>
                 <div v-if="!form.mailing_same_as_primary" class="grid gap-4">
                     <div class="col-span-3 pt-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-lg leading-6 text-gray-900">
                             Mailing Address
                         </h3>
                     </div>

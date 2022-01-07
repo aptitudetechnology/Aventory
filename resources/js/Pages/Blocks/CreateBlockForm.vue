@@ -42,9 +42,7 @@
                         class="flex items-center justify-between col-span-6"
                     >
                         <span class="flex-grow flex flex-col mr-2">
-                            <SwitchLabel
-                                as="span"
-                                class="text-sm font-medium text-gray-900"
+                            <SwitchLabel as="span" class="text-sm text-gray-900"
                                 >Has Places?</SwitchLabel
                             >
                             <SwitchDescription

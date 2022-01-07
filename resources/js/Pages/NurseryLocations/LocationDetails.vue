@@ -7,7 +7,7 @@
             ></template
         >
         <div class="sm:col-span-1">
-            <dt class="text-sm font-medium text-gray-500">Address</dt>
+            <dt class="text-sm text-gray-500">Address</dt>
             <dd class="mt-1 text-sm text-gray-900">{{ location.address }}</dd>
             <dd class="mt-1 text-sm text-gray-900">
                 {{ location.city }} {{ location.state }} {{ location.zip }}
