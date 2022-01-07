@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ViewInventoryController extends Controller
 {
-    public function index(Request $request) 
+    public function index(Request $request)
     {
 
         $products = $this->getProducts();
@@ -16,13 +16,14 @@ class ViewInventoryController extends Controller
         return inertia('View/Index', compact('products'));
     }
 
-    public function show(Request $request, Product $product) 
+    public function show(Request $request, Product $product)
     {
+        $productQuantities = $product->getAllSizeQuantities();
         $products = $this->getProducts();
-        $inventorySizes = $product->inventorySizes($product)->get();
+        $inventorySizes = $product->getAllInventorySizes();
         $inventory = $product->inventory;
         $priceLevels = $request->user()->price_levels;
-        return inertia('View/Show', compact('products', 'product', 'inventorySizes', 'inventory', 'priceLevels'));
+        return inertia('View/Show', compact('products', 'product', 'productQuantities', 'inventorySizes', 'inventory', 'priceLevels'));
     }
 
 

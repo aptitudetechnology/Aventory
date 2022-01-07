@@ -5,7 +5,7 @@
                 <product-details :product="product"></product-details>
             </div>
 
-            <InventorySizes />
+            <InventoryDetail />
         </div>
     </view-layout>
 </template>
@@ -13,13 +13,13 @@
 import JetButton from "@/Jetstream/Button.vue";
 import ViewLayout from "./ViewLayout.vue";
 import ProductDetails from "@/Pages/Products/Components/ProductDetails.vue";
-import InventorySizes from "./Components/InventorySizes.vue";
+import InventoryDetail from "./Components/InventoryDetail.vue";
 export default {
     components: {
         ProductDetails,
         JetButton,
         ViewLayout,
-        InventorySizes,
+        InventoryDetail,
     },
     props: ["product"],
 };
