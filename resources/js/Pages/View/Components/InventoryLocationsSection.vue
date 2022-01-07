@@ -3,11 +3,20 @@
         <div
             class="grid gap-4 divide-y divide-gray-100 col-span-6 overflow-hidden"
         >
+            <div v-if="!areInventoryDetails" class="flex justify-center">
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold text-gray-500">
+                        No Inventory
+                    </h3>
+                    <p class="text-gray-500">
+                        There are no inventory items in this size.
+                    </p>
+                </div>
+            </div>
             <div v-if="groupInventoryDetails.length" class="overflow-hidden">
-                <section-title :showBorder="false" class="pb-6"
+                <section-title
                     ><template #title
-                        >Group Inventory Locations Sized
-                        {{ selectedSize.name }}</template
+                        >Group Inventory Sized {{ selectedSize.name }}</template
                     ></section-title
                 >
                 <table-table
@@ -50,9 +59,9 @@
                     'overflow-hidden',
                 ]"
             >
-                <section-title :showBorder="false" class="pb-6"
+                <section-title
                     ><template #title
-                        >Individual Inventory Locations Sized
+                        >Individual Inventory Sized
                         {{ selectedSize.name }}</template
                     ></section-title
                 >
@@ -142,24 +151,12 @@ export default {
                 );
             });
         },
+        areInventoryDetails() {
+            return (
+                this.groupInventoryDetails.length ||
+                this.individualInventoryDetails.length
+            );
+        },
     },
 };
 </script>
-
-<style scoped>
-/* ::-webkit-scrollbar {
-    width: 0px;
-    height: 5px;
-}
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(245, 238, 238, 0.3);
-    box-shadow: inset 0 0 6px rgba(245, 238, 238, 0.3);
-    border-radius: 2px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    -webkit-box-shadow: inset 0 0 6px rgba(211, 204, 204, 0.5);
-    box-shadow: inset 0 0 6px rgba(211, 204, 204, 0.5);
-} */
-</style>

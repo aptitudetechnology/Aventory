@@ -1,6 +1,6 @@
 <template>
     <div class="pt-6 overflow-auto">
-        <section-title :showBorder="false" class="pb-6"
+        <section-title
             ><template #title>Pricing Details</template></section-title
         >
         <table-table class="col-span-6 overflow-auto">
