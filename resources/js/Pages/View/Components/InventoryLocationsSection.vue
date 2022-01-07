@@ -11,7 +11,7 @@
                     ></section-title
                 >
                 <table-table
-                    class="max-h-96 block w-full relative hover:overflow-auto"
+                    class="max-h-96 block w-full relative overflow-auto"
                 >
                     <table-head class="z-30">
                         <table-h class="sticky left-0 bg-white">ID</table-h>
@@ -57,7 +57,7 @@
                     ></section-title
                 >
                 <table-table
-                    class="max-h-96 block w-full relative hover:overflow-auto"
+                    class="max-h-96 block w-full relative overflow-auto"
                 >
                     <table-head class="z-30">
                         <table-h class="sticky left-0 bg-white">ID</table-h>
@@ -146,4 +146,20 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+/* ::-webkit-scrollbar {
+    width: 0px;
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(245, 238, 238, 0.3);
+    box-shadow: inset 0 0 6px rgba(245, 238, 238, 0.3);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 0 6px rgba(211, 204, 204, 0.5);
+    box-shadow: inset 0 0 6px rgba(211, 204, 204, 0.5);
+} */
+</style>
