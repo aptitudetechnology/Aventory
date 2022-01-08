@@ -1,6 +1,6 @@
 <template>
-    <div class="grid gap-6 col-span-6 grid-cols-12">
-        <div class="lg:col-span-7 col-span-12">
+    <div class="grid gap-6 col-span-6 grid-cols-12 items-start">
+        <div class="lg:col-span-7 col-span-12 sticky top-0">
             <details-section class="h-full">
                 <div class="grid gap-4 divide-y divide-gray-100">
                     <availability-section

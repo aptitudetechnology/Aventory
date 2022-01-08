@@ -2918,10 +2918,6 @@ html {
 	margin-left: auto;
 	margin-right: auto;
 }
-.my-4 {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-}
 .mx-2 {
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
@@ -3392,6 +3388,9 @@ html {
 .justify-between {
 	justify-content: space-between;
 }
+.justify-items-stretch {
+	justify-items: stretch;
+}
 .gap-6 {
 	gap: 1.5rem;
 }
@@ -3723,9 +3722,6 @@ html {
 .p-3 {
 	padding: 0.75rem;
 }
-.p-0 {
-	padding: 0px;
-}
 .px-4 {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -3910,10 +3906,6 @@ html {
 .text-4xl {
 	font-size: 2.25rem;
 	line-height: 2.5rem;
-}
-.text-3xl {
-	font-size: 1.875rem;
-	line-height: 2.25rem;
 }
 .font-medium {
 	font-weight: 500;
@@ -4325,10 +4317,6 @@ fade-enter-from, fade-leave-to {
 	--tw-bg-opacity: 1;
 	background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
 }
-.hover\:bg-green-700:hover {
-	--tw-bg-opacity: 1;
-	background-color: rgba(4, 120, 87, var(--tw-bg-opacity));
-}
 .hover\:text-gray-500:hover {
 	--tw-text-opacity: 1;
 	color: rgba(107, 114, 128, var(--tw-text-opacity));
@@ -4382,6 +4370,10 @@ fade-enter-from, fade-leave-to {
 	--tw-border-opacity: 1;
 	border-color: rgba(209, 213, 219, var(--tw-border-opacity));
 }
+.focus\:border-gray-700:focus {
+	--tw-border-opacity: 1;
+	border-color: rgba(55, 65, 81, var(--tw-border-opacity));
+}
 .focus\:border-green-700:focus {
 	--tw-border-opacity: 1;
 	border-color: rgba(4, 120, 87, var(--tw-border-opacity));
@@ -4389,10 +4381,6 @@ fade-enter-from, fade-leave-to {
 .focus\:border-gray-500:focus {
 	--tw-border-opacity: 1;
 	border-color: rgba(107, 114, 128, var(--tw-border-opacity));
-}
-.focus\:border-gray-700:focus {
-	--tw-border-opacity: 1;
-	border-color: rgba(55, 65, 81, var(--tw-border-opacity));
 }
 .focus\:bg-indigo-600:focus {
 	--tw-bg-opacity: 1;
@@ -5083,6 +5071,14 @@ fade-enter-from, fade-leave-to {
 		width: 25%;
 	}
 
+	.lg\:w-7\/12 {
+		width: 58.333333%;
+	}
+
+	.lg\:w-5\/12 {
+		width: 41.666667%;
+	}
+
 	.lg\:grid-cols-8 {
 		grid-template-columns: repeat(8, minmax(0, 1fr));
 	}
@@ -5117,6 +5113,12 @@ fade-enter-from, fade-leave-to {
 
 	.lg\:gap-y-4 {
 		row-gap: 1rem;
+	}
+
+	.lg\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-x-reverse: 0;
+		margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+		margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 	}
 
 	.lg\:px-8 {
