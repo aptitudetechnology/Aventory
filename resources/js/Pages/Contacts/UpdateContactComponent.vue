@@ -2,23 +2,13 @@
     <div>
         <div
             @click="updatingContact = true"
-            class="
-                relative
-                py-5
-                px-4
-                sm:px-6
-                flex
-                items-center
-                space-x-3
-                hover:bg-gray-50
-                cursor-pointer
-            "
+            class="relative py-5 px-4 sm:px-6 flex items-center space-x-3 hover:bg-gray-50 cursor-pointer"
         >
             <div class="flex-1 min-w-0">
                 <div class="focus:outline-none">
                     <!-- Extend touch target to entire panel -->
                     <span class="absolute inset-0" aria-hidden="true" />
-                    <p class="text-sm font-medium text-gray-900">
+                    <p class="text-sm text-gray-900">
                         {{ name }}
                     </p>
                     <p
@@ -94,12 +84,7 @@
                         <div class="grid gap-4">
                             <div class="col-span-4 pt-6">
                                 <h3
-                                    class="
-                                        text-lg
-                                        leading-6
-                                        font-medium
-                                        text-gray-900
-                                    "
+                                    class="text-lg leading-6 font-medium text-gray-900"
                                 >
                                     Contact Details
                                 </h3>

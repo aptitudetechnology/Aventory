@@ -1,35 +1,16 @@
 <template>
-  <inertia-link
-    :href="href"
-    class="
-      inline-flex
-      items-center
-      px-4
-      py-2
-      border border-transparent
-      shadow-sm
-      text-sm
-      font-medium
-      rounded-md
-      text-white
-      bg-green-600
-      hover:bg-green-700
-      focus:outline-none
-      focus:ring-2 focus:ring-offset-2 focus:ring-green-500
-      transition
-    "
-  >
-    <slot></slot>
-  </inertia-link>
+    <inertia-link :href="href" class="btn">
+        <slot></slot>
+    </inertia-link>
 </template>
 
 <script>
 export default {
-  props: {
-    href: {
-      type: String,
-      default: "#",
+    props: {
+        href: {
+            type: String,
+            default: "#",
+        },
     },
-  },
 };
 </script>

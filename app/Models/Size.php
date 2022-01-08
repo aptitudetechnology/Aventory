@@ -56,4 +56,14 @@ class Size extends Model
     {
         return $this->hasMany(Inventory::class);
     }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_items');
+    }
 }

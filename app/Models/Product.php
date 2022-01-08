@@ -134,6 +134,11 @@ class Product extends Model
             ]);
     }
 
+    public function getAllInventorySizes()
+    {
+        return $this->inventorySizes->merge($this->sizesOnHold)->merge($this->sizesSold);
+    }
+
     protected function getTotalInventoryForSize(Size $size)
     {
         return $this->inventorySizes()->where('size_id', $size->id)->first()->total_inventory ?? 0;
@@ -160,13 +165,27 @@ class Product extends Model
 
     public function getQuantities(Size $size)
     {
+        $size_id = $size->id;
+        $product_id = $this->id;
         $total = $this->getTotalInventoryForSize($size);
         $ready = $this->getAvailableInventoryForSize($size);
         $sold = $this->getSoldQuantities($size);
-        $onHold = $this->getOnHoldQuantities($size);
-        $available = $ready - $sold - $onHold;
+        $on_hold = $this->getOnHoldQuantities($size);
+        $available = $ready - $sold - $on_hold;
 
-        return compact('total', 'ready', 'sold', 'onHold', 'available');
+        return compact('size_id', 'product_id', 'total', 'ready', 'sold', 'on_hold', 'available');
+    }
+
+    public function getAllSizeQuantities()
+    {
+        return $this->inventorySizes
+            ->merge($this->sizesSold)
+            ->merge($this->sizesOnHold)
+            ->map(function ($size) {
+                // Get the quantities for this size
+                // And add the size name to the array
+                return array_merge($this->getQuantities($size), ['size_name' => $size->name]);
+            });
     }
 
     public function orders()
@@ -180,11 +199,24 @@ class Product extends Model
             ->whereRelation('order', 'is_quote', true);
     }
 
+    public function sizesOnHold()
+    {
+        return $this->belongsToMany(Size::class, 'order_items')
+            ->whereRelation('orders', 'is_quote', true);
+    }
+
     public function itemsSold()
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'id')
             ->whereRelation('order', 'is_quote', false)
             ->whereRelation('order', 'completed', false);
+    }
+
+    public function sizesSold()
+    {
+        return $this->belongsToMany(Size::class, 'order_items')
+            ->whereRelation('orders', 'is_quote', false)
+            ->whereRelation('orders', 'completed', false);
     }
 
     public function quotes()

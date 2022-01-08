@@ -31,18 +31,10 @@
 
                 <SwitchGroup
                     as="div"
-                    class="
-                        flex
-                        items-center
-                        justify-between
-                        col-span-6
-                        xl:col-span-2
-                    "
+                    class="flex items-center justify-between col-span-6 xl:col-span-2"
                 >
                     <span class="flex-grow flex flex-col mr-2">
-                        <SwitchLabel
-                            as="span"
-                            class="text-sm font-medium text-gray-900"
+                        <SwitchLabel as="span" class="text-sm text-gray-900"
                             >Has Places?</SwitchLabel
                         >
                         <SwitchDescription
