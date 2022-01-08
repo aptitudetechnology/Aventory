@@ -9,7 +9,11 @@
                 <table-h>Inventory</table-h>
                 <table-h>Ready</table-h>
                 <table-h>On Hold</table-h>
-                <table-h>Sold</table-h>
+                <table-h
+                    data-tip="Quantity of inventory items that have not been removed from inventory, but are sold."
+                    class="tooltip tooltip-left"
+                    >Unmatched</table-h
+                >
                 <table-h
                     title="All available inventory with inventory ready date in the future."
                     >Available</table-h
@@ -30,7 +34,11 @@
                     <table-d>{{ quantity.total }}</table-d>
                     <table-d>{{ quantity.ready }}</table-d>
                     <table-d>{{ quantity.on_hold }}</table-d>
-                    <table-d>{{ quantity.sold }}</table-d>
+                    <table-d
+                        data-tip="Inventory items that have not been removed from inventory, but are sold."
+                        class="tooltip tooltip-left"
+                        >{{ quantity.sold }}</table-d
+                    >
                     <table-d>{{ quantity.available }}</table-d>
                 </tr>
             </tbody>

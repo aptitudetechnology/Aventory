@@ -3723,6 +3723,9 @@ html {
 .p-3 {
 	padding: 0.75rem;
 }
+.p-0 {
+	padding: 0px;
+}
 .px-4 {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -3782,6 +3785,10 @@ html {
 .px-0 {
 	padding-left: 0px;
 	padding-right: 0px;
+}
+.py-0 {
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 .pt-6 {
 	padding-top: 1.5rem;

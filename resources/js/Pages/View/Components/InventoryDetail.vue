@@ -21,6 +21,7 @@
         </div>
 
         <div class="lg:col-span-5 col-span-12">
+            <ProductOrdersSection :product="product" :size="selectedSize" />
             <inventory-locations-section
                 :product="product"
                 :inventory="inventory"
@@ -34,12 +35,15 @@ import DetailsSection from "@Components/DetailsSection.vue";
 import AvailabilitySection from "@/Pages/View/Components/AvailabilitySection.vue";
 import PricingSection from "@/Pages/View/Components/PricingSection.vue";
 import InventoryLocationsSection from "@/Pages/View/Components/InventoryLocationsSection.vue";
+import ProductOrdersSection from "@/Pages/View/Components/ProductOrdersSection.vue";
+
 export default {
     components: {
         DetailsSection,
         AvailabilitySection,
         PricingSection,
         InventoryLocationsSection,
+        ProductOrdersSection,
     },
     data() {
         return {

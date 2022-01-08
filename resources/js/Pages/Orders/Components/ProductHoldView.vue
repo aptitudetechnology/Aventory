@@ -1,6 +1,6 @@
 <template>
     <div>
-        <tab-container class="px-0 uppercase tracking-wide"
+        <tab-container class="px-0 py-0 uppercase tracking-wide"
             ><tab-link
                 as="button"
                 :current="viewingOnHold"
@@ -21,20 +21,29 @@
         >
         <div>
             <ErrorMessage v-if="error" />
-            <div v-else-if="viewingOnHold">
+            <LoadingState loading="loading" v-else-if="loading" />
+            <div class="py-4" v-else-if="viewingOnHold">
                 <product-hold-item
                     :item="item"
                     v-for="item in onHoldProductInventoryForSize"
                     :key="item.id"
                 />
+                <div v-if="!onHoldProductInventoryForSize.length">
+                    <p class="text-gray-600 px-2">No items on hold.</p>
+                </div>
             </div>
-            <div v-else>
+            <div class="py-4" v-else>
                 <product-hold-item
                     :item="item"
                     :orderId="orderId"
                     v-for="item in soldProductInventoryForSize"
                     :key="item.id"
                 />
+                <div v-if="!soldProductInventoryForSize.length">
+                    <p class="text-gray-600 px-2">
+                        No items in uncompleted orders.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -44,6 +53,7 @@ import TabContainer from "@Components/TabContainer.vue";
 import TabLink from "@Components/Links/TabLink.vue";
 import ErrorMessage from "@Components/ErrorMessage.vue";
 import ProductHoldItem from "./ProductHoldItem.vue";
+import LoadingState from "@Components/LoadingState.vue";
 
 export default {
     components: {
@@ -51,11 +61,12 @@ export default {
         TabLink,
         ErrorMessage,
         ProductHoldItem,
+        LoadingState,
     },
     props: {
         orderId: {
             type: Number,
-            required: true,
+            required: false,
         },
         product: {
             type: [Object, Boolean],
