@@ -148,18 +148,33 @@ export default {
             this.updateSearch();
         },
         updateSearch() {
-            this.$inertia.get(
-                this.route("orders.index"),
-                {
-                    search: this.search,
-                    orderBy: this.orderBy,
-                    orderByDirection: this.orderByDirection,
-                },
-                {
-                    preserveState: true,
-                    replace: true,
-                }
-            );
+            if (this.areQuotes) {
+                this.$inertia.get(
+                    this.route("quotes.index"),
+                    {
+                        search: this.search,
+                        orderBy: this.orderBy,
+                        orderByDirection: this.orderByDirection,
+                    },
+                    {
+                        preserveState: true,
+                        replace: true,
+                    }
+                );
+            } else {
+                this.$inertia.get(
+                    this.route("orders.index"),
+                    {
+                        search: this.search,
+                        orderBy: this.orderBy,
+                        orderByDirection: this.orderByDirection,
+                    },
+                    {
+                        preserveState: true,
+                        replace: true,
+                    }
+                );
+            }
         },
         showOrder(order) {
             order.is_quote
