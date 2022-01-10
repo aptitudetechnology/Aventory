@@ -134,8 +134,10 @@ class QuoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Quote $quote)
     {
-        //
+        Gate::authorize('delete', $quote);
+        $quote->delete();
+        return redirect()->route('quotes.index')->banner('Quote deleted successfully');
     }
 }
