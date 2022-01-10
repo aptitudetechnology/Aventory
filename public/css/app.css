@@ -3388,9 +3388,6 @@ html {
 .justify-between {
 	justify-content: space-between;
 }
-.justify-items-stretch {
-	justify-items: stretch;
-}
 .gap-6 {
 	gap: 1.5rem;
 }
@@ -5071,14 +5068,6 @@ fade-enter-from, fade-leave-to {
 		width: 25%;
 	}
 
-	.lg\:w-7\/12 {
-		width: 58.333333%;
-	}
-
-	.lg\:w-5\/12 {
-		width: 41.666667%;
-	}
-
 	.lg\:grid-cols-8 {
 		grid-template-columns: repeat(8, minmax(0, 1fr));
 	}
@@ -5113,12 +5102,6 @@ fade-enter-from, fade-leave-to {
 
 	.lg\:gap-y-4 {
 		row-gap: 1rem;
-	}
-
-	.lg\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-x-reverse: 0;
-		margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-		margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 	}
 
 	.lg\:px-8 {

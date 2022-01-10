@@ -57,7 +57,8 @@ class OrderController extends Controller
         Gate::authorize('create', Order::class);
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
-        return inertia('Orders/Create', compact('customers', 'teamMembers'));
+        $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
+        return inertia('Orders/Create', compact('customers', 'teamMembers', 'priceLevels'));
     }
 
     /**

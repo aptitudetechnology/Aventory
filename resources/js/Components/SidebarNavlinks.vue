@@ -20,8 +20,8 @@
                 >Orders</nav-link
             >
             <nav-link
-                :href="route('customer-price-levels.index')"
-                :current="route().current('customer-price-levels.*')"
+                :href="route('quotes.index')"
+                :current="route().current('quotes.*')"
                 >Quotes</nav-link
             >
         </sidebar-dropdown>

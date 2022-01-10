@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
@@ -11,9 +12,30 @@ class QuoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $quotes = auth()->user()->currentTeam->quotes()
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
+                    $query->where('name', 'like', "%{$request->search}%");
+                });
+            })
+            ->when($request->orderBy, function ($query) use ($request) {
+                if ($request->orderBy == 'customer') {
+                    $query->addSelect(['customer_name' => Customer::select('name')
+                        ->whereColumn('id', 'quotes.customer_id')])->orderBy('customer_name', $request->orderByDirection);
+                } else {
+                    $query->orderBy($request->orderBy, $request->orderByDirection);
+                }
+            }, function ($query) {
+                $query->orderBy('id', 'desc');
+            })
+            ->paginate(10)->withQueryString();
+
+
+        $filters = $request->only(['search', 'orderBy', 'orderByDirection']);
+
+        return inertia('Quotes/Index', compact('quotes', 'filters'));
     }
 
     /**
@@ -23,7 +45,10 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        //
+        $customers = auth()->user()->currentTeam->customers()->get();
+        $teamMembers = auth()->user()->currentTeam->users()->get();
+        $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
+        return inertia('Quotes/Create', compact('customers', 'teamMembers', 'priceLevels'));
     }
 
     /**

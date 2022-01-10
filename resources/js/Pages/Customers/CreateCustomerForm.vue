@@ -213,48 +213,57 @@
                     </div>
 
                     <div class="grid gap-4 col-span-3">
-                        <select-box
-                            v-if="priceLevels.length > 0"
-                            :items="priceLevels"
-                            :selectedItem="price_level"
-                            v-model="price_level"
-                            labelValue="Customer Price Level"
-                        />
-                        <jet-input-error
-                            :message="
-                                newCustomer.errors.customer_price_level_id
-                            "
-                            class="mt-2"
-                        />
-                        <SwitchGroup
-                            as="div"
-                            class="flex items-center justify-start col-span-3 sm:col-span-1"
+                        <div
+                            class="grid gap-4 sm:grid-cols-2 col-span-3 items-center"
                         >
-                            <SwitchLabel
-                                as="span"
-                                class="text-sm text-gray-900 mr-4"
-                                >Taxable?</SwitchLabel
+                            <div>
+                                <select-box
+                                    v-if="priceLevels?.length > 0"
+                                    :items="priceLevels"
+                                    :selectedItem="price_level"
+                                    v-model="price_level"
+                                    labelValue="Customer Price Level"
+                                />
+                                <jet-input-error
+                                    :message="
+                                        newCustomer.errors
+                                            .customer_price_level_id
+                                    "
+                                    class="mt-2"
+                                />
+                            </div>
+
+                            <SwitchGroup
+                                as="div"
+                                class="flex items-center justify-start col-span-3 sm:col-span-1"
                             >
-                            <Switch
-                                v-model="newCustomer.is_taxable"
-                                :class="[
-                                    newCustomer.is_taxable
-                                        ? 'bg-green-600'
-                                        : 'bg-gray-200',
-                                    'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
-                                ]"
-                            >
-                                <span
-                                    aria-hidden="true"
+                                <SwitchLabel
+                                    as="span"
+                                    class="text-sm text-gray-900 mr-4"
+                                    >Taxable?</SwitchLabel
+                                >
+                                <Switch
+                                    v-model="newCustomer.is_taxable"
                                     :class="[
                                         newCustomer.is_taxable
-                                            ? 'translate-x-5'
-                                            : 'translate-x-0',
-                                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transnewCustomer ring-0 transition ease-in-out duration-200',
+                                            ? 'bg-green-600'
+                                            : 'bg-gray-200',
+                                        'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
                                     ]"
-                                />
-                            </Switch>
-                        </SwitchGroup>
+                                >
+                                    <span
+                                        aria-hidden="true"
+                                        :class="[
+                                            newCustomer.is_taxable
+                                                ? 'translate-x-5'
+                                                : 'translate-x-0',
+                                            'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transnewCustomer ring-0 transition ease-in-out duration-200',
+                                        ]"
+                                    />
+                                </Switch>
+                            </SwitchGroup>
+                        </div>
+
                         <div
                             class="grid gap-4 sm:gap-6 sm:grid-cols-3 col-span-3"
                         >
@@ -263,10 +272,10 @@
                                 as="div"
                                 class="flex items-center justify-start sm:col-span-2"
                             >
-                                <div class="flex flex-col">
+                                <div class="flex flex-col mr-4">
                                     <SwitchLabel
                                         as="span"
-                                        class="text-sm font-medium text-gray-900 mr-4"
+                                        class="text-sm font-medium text-gray-900"
                                         >Custom Tax Rate?</SwitchLabel
                                     >
                                     <SwitchLabel
@@ -319,14 +328,13 @@
                         </div>
                     </div>
                     <div class="grid gap-4 sm:grid-cols-2 col-span-3">
-                        <div class="">
+                        <div>
                             <jet-label
                                 for="discount_percentage"
                                 value="Percentage Discount"
                             />
-                            <percentage-inputid
+                            <percentage-input
                                 id="discount_percentage"
-                                type="number"
                                 max="100"
                                 min="0"
                                 placeholder="0"
@@ -339,7 +347,7 @@
                                 class="mt-2"
                             />
                         </div>
-                        <div class="">
+                        <div>
                             <jet-label
                                 for="reseller_permit_expiration"
                                 value="Reseller Permit Expiration"
