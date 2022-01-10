@@ -51,6 +51,7 @@ class Order extends Model
         'payment_status_id' => 'integer',
         'quote_id' => 'integer',
         'is_taxable' => 'boolean',
+        'is_quote' => 'boolean',
     ];
 
     public function getNameAttribute(): string

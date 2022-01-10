@@ -123,9 +123,11 @@ class QuoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OrderStoreRequest $request, Quote $quote)
     {
-        //
+        Gate::authorize('update', $quote);
+        $quote->update($request->validated());
+        return redirect()->route('quotes.show', $quote)->banner('Quote updated successfully');
     }
 
     /**

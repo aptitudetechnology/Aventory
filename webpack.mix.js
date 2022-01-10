@@ -22,9 +22,13 @@ mix.webpackConfig((webpack) => {
 });
 mix.browserSync({
     proxy: "quickinventory.test",
-    host: "quickinventory.test",
-    open: "external",
-    reload: { stream: true },
+    open: false,
+    socket: {
+        domain: "localhost:3000",
+    },
+    reload: {
+        stream: true,
+    },
 });
 
 mix.js("resources/js/app.js", "public/js")

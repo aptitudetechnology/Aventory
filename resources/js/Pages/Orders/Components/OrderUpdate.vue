@@ -217,19 +217,29 @@ export default {
         },
     },
     methods: {
+        sendQuoteChanges() {
+            this.updatedOrder.patch(route("quotes.update", this.order.id), {
+                errorBag: "updateOrder",
+                preserveScroll: true,
+            });
+        },
+        sendOrderChanges() {
+            this.updatedOrder.patch(route("orders.update", this.order.id), {
+                errorBag: "updateOrder",
+                preserveScroll: true,
+            });
+        },
         updateOrder() {
             this.$nextTick(() => {
                 if (
                     this.updatedOrder.isDirty &&
                     !this.updatedOrder.processing
                 ) {
-                    this.updatedOrder.patch(
-                        route("orders.update", this.order.id),
-                        {
-                            errorBag: "updateOrder",
-                            preserveScroll: true,
-                        }
-                    );
+                    if (this.order.is_quote) {
+                        this.sendQuoteChanges();
+                    } else {
+                        this.sendOrderChanges();
+                    }
                 }
             });
         },
