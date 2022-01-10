@@ -22,15 +22,7 @@
 
         <div class="col-span-6 grid gap-6">
             <div
-                class="
-                    grid
-                    sm:grid-cols-2
-                    lg:grid-cols-5
-                    gap-4
-                    xl:gap-x-20
-                    lg:gap-y-4
-                    items-start
-                "
+                class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-x-20 lg:gap-y-4 items-start"
             >
                 <div class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2">
                     <div>
@@ -82,13 +74,7 @@
                     </div>
                 </div>
                 <div
-                    class="
-                        col-span-1
-                        lg:col-span-2
-                        grid
-                        gap-4
-                        lg:justify-items-end
-                    "
+                    class="col-span-1 lg:col-span-2 grid gap-4 lg:justify-items-end"
                 >
                     <div class="form-control">
                         <jet-label for="date" value="Order Date" />
@@ -174,18 +160,18 @@ export default {
             customerContacts: [],
             teamMembers: this.$page.props.teamMembers,
             orderCustomer: this.customers.find(
-                (customer) => customer.id === this.order.customer_id
+                (customer) => customer.id === this.order?.customer_id
             ),
-            contact: this.order.contact,
+            contact: this.order?.contact,
             teamMember: this.$page.props.teamMembers.find(
-                (member) => member.id === this.order.team_member_id
+                (member) => member.id === this.order?.team_member_id
             ),
             updatedOrder: this.$inertia.form({
-                customer_id: this.order.customer_id,
-                contact_id: this.order.contact_id,
-                team_member_id: this.order.team_member_id,
-                date: this.order.date,
-                notes: this.order.notes,
+                customer_id: this.order?.customer_id,
+                contact_id: this.order?.contact_id,
+                team_member_id: this.order?.team_member_id,
+                date: this.order?.date,
+                notes: this.order?.notes,
             }),
         };
     },

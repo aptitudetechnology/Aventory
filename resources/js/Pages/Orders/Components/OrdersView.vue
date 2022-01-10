@@ -13,7 +13,7 @@
                             :class="orderBy == 'id' ? 'text-gray-900' : ''"
                             @click="updateOrderBy('id')"
                         >
-                            Order #
+                            {{ areQuotes ? "Quote #" : "Order #" }}
                             <ArrowUpIcon
                                 v-if="
                                     orderBy == 'id' && orderByDirection == 'asc'
@@ -65,15 +65,8 @@
                         v-for="order in orders.data"
                         :key="order.id"
                         tabindex="0"
-                        class="
-                            px-2
-                            rounded-md
-                            hover:bg-gray-100
-                            focus:bg-gray-100
-                            transition
-                            cursor-pointer
-                        "
-                        @click="$inertia.get(route('orders.show', order))"
+                        class="px-2 rounded-md hover:bg-gray-100 focus:bg-gray-100 transition cursor-pointer"
+                        @click="showOrder(order)"
                     >
                         <table-d>{{ order.id }}</table-d>
                         <table-d>{{ formatDate(order.date) }}</table-d>
@@ -122,6 +115,10 @@ export default {
         orders: {
             type: Object,
         },
+        areQuotes: {
+            type: Boolean,
+            default: false,
+        },
         filters: {
             type: Object,
         },
@@ -163,6 +160,11 @@ export default {
                     replace: true,
                 }
             );
+        },
+        showOrder(order) {
+            order.is_quote
+                ? this.$inertia.get(route("quotes.show", order))
+                : this.$inertia.get(route("orders.show", order));
         },
     },
 };

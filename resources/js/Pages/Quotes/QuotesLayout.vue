@@ -34,9 +34,6 @@ export default {
         MainArea,
     },
     computed: {
-        orders() {
-            return this.$page.props.orders;
-        },
         isIndex() {
             return (
                 route().current("orders.index") ||

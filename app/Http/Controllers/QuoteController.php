@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderStoreRequest;
 use App\Models\Customer;
+use App\Models\DeliveryStatus;
+use App\Models\PaymentStatus;
+use App\Models\Quote;
+use App\Models\ShippingMethod;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
@@ -57,9 +63,12 @@ class QuoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderStoreRequest $request)
     {
-        //
+        $quote = auth()->user()->currentTeam->quotes()->create($request->validated());
+        $quote->customer()->associate(Customer::findOrFail($request->customer_id));
+        $quote->save();
+        return redirect()->route('quotes.show', $quote);
     }
 
     /**
@@ -68,9 +77,32 @@ class QuoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, Quote $quote)
     {
-        //
+        Gate::authorize('view', $quote);
+        $customers = \auth()->user()->currentTeam->customers;
+        $items = $quote->items;
+        $teamMembers = auth()->user()->currentTeam->allUsers();
+        $priceLevels = auth()->user()->currentTeam->priceLevels;
+        $delivery_statuses = DeliveryStatus::all();
+        $payment_statuses = PaymentStatus::all();
+        $products = auth()->user()->currentTeam->products;
+        $sizes = auth()->user()->currentTeam->sizes;
+        $shipping_methods = ShippingMethod::all();
+        return inertia('Quotes/Show', compact(
+            [
+                'quote',
+                'customers',
+                'priceLevels',
+                'teamMembers',
+                'items',
+                'delivery_statuses',
+                'payment_statuses',
+                'products',
+                'sizes',
+                'shipping_methods'
+            ]
+        ));
     }
 
     /**

@@ -1,6 +1,10 @@
 <template>
     <quotes-layout>
-        <OrderCreate :customers="customers" class="max-w-screen-lg mx-auto" />
+        <OrderCreate
+            :is-quote="true"
+            :customers="customers"
+            class="max-w-screen-lg mx-auto"
+        />
     </quotes-layout>
 </template>
 

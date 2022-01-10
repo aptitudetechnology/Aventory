@@ -2,7 +2,7 @@
     <quotes-layout>
         <div class="flex justify-between items-center w-full pb-9 px-2 lg:px-4">
             <heading-one>Quotes</heading-one>
-            <button-link :href="route('quotes.create')">New Order</button-link>
+            <button-link :href="route('quotes.create')">New Quote</button-link>
         </div>
         <div class="grid gap-6 lg:gap-8">
             <div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900">
@@ -21,7 +21,11 @@
 
                 <active-quotes-card />
             </div>
-            <view-orders :orders="quotes" :filters="filters" />
+            <view-orders
+                :are-quotes="true"
+                :orders="quotes"
+                :filters="filters"
+            />
         </div>
     </quotes-layout>
 </template>

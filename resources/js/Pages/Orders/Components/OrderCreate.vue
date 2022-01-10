@@ -7,23 +7,10 @@
         <template #form>
             <div class="col-span-6 grid gap-6">
                 <div
-                    class="
-                        grid
-                        sm:grid-cols-2
-                        lg:grid-cols-5
-                        gap-4
-                        xl:gap-x-20
-                        lg:gap-y-8
-                    "
+                    class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-x-20 lg:gap-y-8"
                 >
                     <div
-                        class="
-                            col-span-1
-                            lg:col-span-3
-                            grid
-                            gap-4
-                            lg:grid-cols-2
-                        "
+                        class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2"
                     >
                         <div>
                             <modal
@@ -74,13 +61,7 @@
                         </div>
                     </div>
                     <div
-                        class="
-                            col-span-1
-                            lg:col-span-2
-                            grid
-                            gap-4
-                            lg:justify-items-end
-                        "
+                        class="col-span-1 lg:col-span-2 grid gap-4 lg:justify-items-end"
                     >
                         <div>
                             <jet-label for="date" value="Order Date" />
@@ -170,6 +151,10 @@ export default {
             type: Array,
             required: true,
         },
+        isQuote: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -227,10 +212,11 @@ export default {
 
     methods: {
         createOrder() {
-            this.order.post(route("orders.store"), {
-                errorBag: "createOrder",
-                preserveScroll: true,
-            });
+            if (this.isQuote) {
+                this.order.post(route("quotes.store"));
+            } else {
+                this.order.post(route("orders.store"));
+            }
         },
         updateCustomer(customerId) {
             this.orderCustomer = this.customers.find(
