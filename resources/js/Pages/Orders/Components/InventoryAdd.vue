@@ -340,7 +340,7 @@ export default {
             axios
                 .get(
                     route(
-                        "sale.inventory.show",
+                        "sales.inventory.show",
                         [this.order, this.item.inventory_id],
                         {
                             quantity: this.item.quantity_removed,

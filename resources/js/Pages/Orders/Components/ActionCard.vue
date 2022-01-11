@@ -1,11 +1,11 @@
 <template>
     <div
         v-if="show"
-        class="flex items-center px-4 lg:px-0 fixed top-20 right-4 sm:right-6 lg:static"
+        class="flex items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
     >
         <div
             v-if="order.items.length > 0"
-            class="dropdown dropdown-hover dropdown-end z-20"
+            class="dropdown dropdown-hover dropdown-end"
         >
             <PrintButton class="bg-white">Print</PrintButton>
             <ul

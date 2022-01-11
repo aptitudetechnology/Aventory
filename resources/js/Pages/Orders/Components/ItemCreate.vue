@@ -8,7 +8,9 @@
             :show="creatingOrderItem"
             @close="creatingOrderItem = false"
         >
-            <template #title>Add a product or service to {{ order.type }}.</template>
+            <template #title
+                >Add a product or service to {{ order.type }}.</template
+            >
             <template #aside
                 ><jet-button
                     v-show="selectedProduct"
@@ -170,13 +172,20 @@
                 </div>
             </template>
         </jet-dialog-modal>
+
+        <ItemConfirmQuantity
+            :selectedProduct="selectedProduct"
+            :quantity="form.quantity"
+            :quantityAvailable="availableForSale"
+            :show="confirmingQuantity"
+            @quantity-confirmed="confirmed"
+        />
     </div>
 </template>
 
 <script>
 import JetDialogModal from "@/Jetstream/DialogModal";
 import JetActionMessage from "@/Jetstream/ActionMessage";
-import ProductHoldView from "./ProductHoldView.vue";
 import {
     Switch,
     SwitchDescription,
@@ -185,8 +194,10 @@ import {
 } from "@headlessui/vue";
 
 import { PlusIcon } from "@heroicons/vue/outline";
-import InventoryDetail from "./InventoryDetail.vue";
 
+import ProductHoldView from "./ProductHoldView.vue";
+import InventoryDetail from "./InventoryDetail.vue";
+import ItemConfirmQuantity from "./ItemConfirmQuantity.vue";
 export default {
     components: {
         Switch,
@@ -195,9 +206,10 @@ export default {
         SwitchLabel,
         JetActionMessage,
         JetDialogModal,
-        ProductHoldView,
         PlusIcon,
+        ProductHoldView,
         InventoryDetail,
+        ItemConfirmQuantity,
     },
     props: { order: Object },
 
@@ -212,6 +224,8 @@ export default {
             selectedSize: null,
             creatingOrderItem: false,
             availableForSale: 0,
+            confirmingQuantity: false,
+            confirmedQuantity: false,
             form: this.$inertia.form({
                 _method: "POST",
                 product_id: null,
@@ -281,7 +295,19 @@ export default {
             this.addAnother = false;
             this.createOrderItem();
         },
+        confirmed() {
+            this.confirmingQuantity = false;
+            this.confirmedQuantity = true;
+            this.create();
+        },
         createOrderItem() {
+            if (this.form.quantity > this.availableForSale) {
+                this.confirmingQuantity = true;
+            } else {
+                this.confirmed();
+            }
+        },
+        create() {
             this.form.post(route("sales.order-items.store", this.order), {
                 preserveScroll: true,
                 preserveState: true,
