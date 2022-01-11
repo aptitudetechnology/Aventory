@@ -5,7 +5,10 @@
     >
         <div class="flex items-center w-full md:w-auto">
             <div class="w-full md:w-auto">
-                <div title="Discount Description" class="text-lg capitalize">
+                <div
+                    title="Discount Description"
+                    class="card-title capitalize mb-0"
+                >
                     {{ updatedDiscount.description }}
                 </div>
                 <div @click.stop class="flex items-center h-full">
