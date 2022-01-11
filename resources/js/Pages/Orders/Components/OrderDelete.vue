@@ -13,7 +13,7 @@
 
             <div class="mt-5">
                 <jet-danger-button @click="confirmOrderDeletion">
-                    Delete Order
+                    Delete {{ order.type }}
                 </jet-danger-button>
             </div>
 
@@ -22,7 +22,11 @@
                 :show="confirmingOrderDeletion"
                 @close="confirmingOrderDeletion = false"
             >
-                <template #title> Delete Order </template>
+                <template #title
+                    ><span class="capitalize">
+                        Delete {{ order.type }}
+                    </span></template
+                >
 
                 <template #content>
                     Are you sure you want to delete this {{ order.type }}? There
@@ -42,7 +46,7 @@
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
-                        Delete Order
+                        Yes, Delete
                     </jet-danger-button>
                 </template>
             </jet-confirmation-modal>
