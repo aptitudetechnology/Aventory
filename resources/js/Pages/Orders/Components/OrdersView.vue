@@ -70,7 +70,7 @@
                         v-for="order in orders.data"
                         :key="order.id"
                         tabindex="0"
-                        class="px-2 rounded-md hover:bg-gray-100 focus:bg-gray-100 transition cursor-pointer"
+                        class="px-2 border-b border-gray-50 last:border-transparent hover:border-black focus:border-black transition cursor-pointer"
                         @click="showOrder(order)"
                     >
                         <table-d>{{ order.id }}</table-d>
@@ -81,6 +81,13 @@
                     </tr>
                 </tbody>
             </table-table>
+            <div v-if="orders.data.length < 1" class="p-4">
+                <div class="text-gray-500">
+                    No {{ areQuotes ? "quotes" : "orders" }} found{{
+                        search ? " for " + search : ""
+                    }}.
+                </div>
+            </div>
             <pagination :items="orders" />
         </div>
     </details-section>
