@@ -9,7 +9,9 @@
                 class="shadow menu dropdown-content bg-base-100 rounded-lg text-right w-52"
             >
                 <li>
-                    <a @click="printOrder" class="justify-end px-4">Order</a>
+                    <a @click="printOrder" class="justify-end px-4">{{
+                        order.type
+                    }}</a>
                 </li>
                 <li>
                     <a @click="printPickTicket" class="justify-end px-4"

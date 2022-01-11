@@ -16,7 +16,7 @@ class Sale extends Model
 {
   use HasFactory;
   protected $with = ['customer', 'teamMember'];
-  protected $appends = ['total_of_items_with_discount'];
+  protected $appends = ['total_of_items_with_discount', 'type'];
   protected $table = 'orders';
   protected $guarded = [];
 
@@ -39,6 +39,11 @@ class Sale extends Model
     'is_taxable' => 'boolean',
     'is_quote' => 'boolean',
   ];
+
+  public function getTypeAttribute()
+  {
+    return $this->is_quote ? 'quote' : 'order';
+  }
 
   public function getNameAttribute(): string
   {

@@ -10,7 +10,7 @@ class OrderDiscount extends Model
     use HasFactory;
     protected $table = 'order_discounts';
     protected $guarded = [];
-    protected $appends = ['discount_total', 'is_quote'];
+    protected $appends = ['discount_total', 'is_quote', 'sale_type'];
 
     // $casts
     protected $casts = [
@@ -18,6 +18,17 @@ class OrderDiscount extends Model
         'discount_percentage' => 'integer',
         'discount_total' => 'float',
     ];
+
+    public function getSaleTypeAttribute()
+    {
+        return $this->is_quote ? 'quote' : 'order';
+    }
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class, 'order_id');
+    }
+
     public function order()
     {
         return $this->belongsTo(Order::class);

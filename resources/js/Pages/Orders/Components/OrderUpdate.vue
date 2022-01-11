@@ -1,9 +1,11 @@
 <template>
     <details-section>
         <template #title
-            ><span class="uppercase">{{ order.customer.name }}:</span> Order #{{
-                order.id
-            }}
+            ><span class="uppercase"
+                >{{ order.customer.name }}: {{ order.type }} #{{
+                    order.id
+                }}</span
+            >
             <span
                 :class="[
                     'ml-4 fixed bottom-5 right-10 z-50 md:static rounded bg-white p-3 text-base',

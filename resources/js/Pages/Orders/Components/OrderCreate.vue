@@ -1,8 +1,10 @@
 <template>
     <jet-form-section @submitted="createOrder">
-        <template #title>Create Order</template>
+        <template #title>Create {{ isQuote ? "Quote" : "Order" }}</template>
 
-        <template #description> Create a new customer order. </template>
+        <template #description>
+            Create a new customer {{ isQuote ? "quote" : "order" }}.
+        </template>
 
         <template #form>
             <div class="col-span-6 grid gap-6">
@@ -89,7 +91,7 @@
                             >
                         </div>
                         <div class="sm:w-3/4 sm:ml-4">
-                            <jet-label for="notes" value="Order Notes" />
+                            <jet-label for="notes" value="Notes" />
                             <text-area-input
                                 id="notes"
                                 type="notes"

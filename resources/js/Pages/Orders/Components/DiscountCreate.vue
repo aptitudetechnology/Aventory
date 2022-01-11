@@ -11,7 +11,9 @@
             :show="creatingDiscount"
             @close="creatingDiscount = false"
         >
-            <template #title>Add a discount to apply to this order.</template>
+            <template #title
+                >Add a discount to apply to this {{ order.type }}.</template
+            >
 
             <template #content>
                 <div class="grid grid-cols-6 gap-4">

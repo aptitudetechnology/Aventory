@@ -6,12 +6,16 @@
         :show="confirmingOrderItemDeletion"
         @close="confirmingOrderItemDeletion = false"
     >
-        <template #title> Remove item from order</template>
+        <template #title> Remove item from {{ item.sale_type }}</template>
 
         <template #content>
-            Are you sure you want to delete this item? This will add all matched
-            inventory to this item back in inventory. This action cannot be
-            undone.
+            Are you sure you want to delete this item?
+            {{
+                item.sale_type == "order"
+                    ? "This will add all matched inventory for this item back to inventory."
+                    : ""
+            }}
+            This action cannot be undone.
         </template>
 
         <template #footer>

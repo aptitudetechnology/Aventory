@@ -4,8 +4,8 @@
             <nav v-if="!isIndex" aria-label="Breadcrumb">
                 <div class="px-4 md:pb-2">
                     <back-link
-                        v-if="route().current('orders.*')"
-                        :href="route('orders.index')"
+                        v-if="route().current('quotes.*')"
+                        :href="route('quotes.index')"
                         >Quotes</back-link
                     >
                 </div>
@@ -24,21 +24,15 @@ import AppLayout from "@/Layouts/AppLayout";
 import BackLink from "@/Components/Links/BackLink";
 import MainArea from "@Components/MainArea.vue";
 
-import OrdersAside from "@/Pages/Orders/Components/OrdersAside";
-
 export default {
     components: {
-        OrdersAside,
         AppLayout,
         BackLink,
         MainArea,
     },
     computed: {
         isIndex() {
-            return (
-                route().current("orders.index") ||
-                route().current("archived-orders.index")
-            );
+            return route().current("quotes.index");
         },
     },
 };

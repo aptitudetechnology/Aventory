@@ -2930,6 +2930,10 @@ html {
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
 }
+.mx-1 {
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
 .ml-3 {
 	margin-left: 0.75rem;
 }
@@ -3922,6 +3926,9 @@ html {
 .uppercase {
 	text-transform: uppercase;
 }
+.capitalize {
+	text-transform: capitalize;
+}
 .leading-5 {
 	line-height: 1.25rem;
 }
@@ -4285,9 +4292,16 @@ fade-enter-active, fade-leave-active {
 fade-enter-from, fade-leave-to {
   opacity: 0
 }
+.hover\:border:hover {
+	border-width: 1px;
+}
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
 	border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+}
+.hover\:border-black:hover {
+	--tw-border-opacity: 1;
+	border-color: rgba(0, 0, 0, var(--tw-border-opacity));
 }
 .hover\:bg-indigo-600:hover {
 	--tw-bg-opacity: 1;

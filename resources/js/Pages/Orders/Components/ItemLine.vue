@@ -35,11 +35,11 @@
                         @click.stop
                         class="md:px-2 flex items-center py-1 mr-auto"
                     >
-                        <label
-                            class="px-1 pr-2 text-sm text-gray-500 tracking-wider uppercase"
+                        <jet-label
+                            class="px-1 py-0 pr-2 text-sm text-gray-500 tracking-wider uppercase"
                             :for="'no_discount' + form.id"
                             >No Discount
-                        </label>
+                        </jet-label>
                         <jet-checkbox
                             :id="'no_discount' + form.id"
                             @change="updateItem"

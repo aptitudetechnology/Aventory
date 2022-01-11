@@ -1,6 +1,11 @@
 <template>
     <details-section>
-        <template #title><slot name="title">Recent Orders</slot></template>
+        <template #title
+            ><slot name="title"
+                >Recent {{ areQuotes ? "Quotes" : "Orders" }}
+                {{ search ? "for " + search : "" }}</slot
+            ></template
+        >
         <template #aside
             ><search-input v-model="search"></search-input
         ></template>
@@ -101,9 +106,7 @@ export default {
         ExternalLinkIcon,
         ArrowDownIcon,
         ArrowUpIcon,
-
         DetailsSection,
-
         TableTable,
         TableHead,
         TableH,

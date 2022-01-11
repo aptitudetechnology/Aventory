@@ -20,7 +20,7 @@ class OrderItem extends Model
         'no_discount',
     ];
 
-    protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount', 'unmatched_quantity'];
+    protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount', 'unmatched_quantity', 'sale_type'];
 
     protected $casts = [
         'product_id' => 'integer',
@@ -29,6 +29,11 @@ class OrderItem extends Model
         'unit_price' => 'float',
         'no_discount' => 'boolean',
     ];
+
+    public function getSaleTypeAttribute()
+    {
+        return $this->sale->type;
+    }
 
     public function sale()
     {

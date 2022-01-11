@@ -1,12 +1,14 @@
 <template>
     <jet-action-section>
-        <template #title> Delete Order</template>
+        <template #title
+            ><span class="capitalize">Delete {{ order.type }}</span></template
+        >
 
         <template #content>
             <div class="text-sm text-gray-600">
-                If this order is deleted, all associated order items, associated
-                shipments and associated invoices will be deleted. This is
-                permanent and cannot be undone.
+                If this {{ order.type }} is deleted, all associated products and
+                services, associated shipments, and associated invoices will be
+                deleted. This is permanent and cannot be undone.
             </div>
 
             <div class="mt-5">
@@ -23,8 +25,8 @@
                 <template #title> Delete Order </template>
 
                 <template #content>
-                    Are you sure you want to delete this order? There will be no
-                    way to recover it.
+                    Are you sure you want to delete this {{ order.type }}? There
+                    will be no way to recover it.
                 </template>
 
                 <template #footer>

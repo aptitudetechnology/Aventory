@@ -29,7 +29,7 @@ class QuoteController extends Controller
             ->when($request->orderBy, function ($query) use ($request) {
                 if ($request->orderBy == 'customer') {
                     $query->addSelect(['customer_name' => Customer::select('name')
-                        ->whereColumn('id', 'quotes.customer_id')])->orderBy('customer_name', $request->orderByDirection);
+                        ->whereColumn('id', 'orders.customer_id')])->orderBy('customer_name', $request->orderByDirection);
                 } else {
                     $query->orderBy($request->orderBy, $request->orderByDirection);
                 }

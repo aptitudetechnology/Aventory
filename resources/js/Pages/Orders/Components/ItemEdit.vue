@@ -17,7 +17,7 @@
                 ></template
             >
 
-            <template #description> Edit this order item. </template>
+            <template #description> Edit Item</template>
 
             <template #content>
                 <div class="grid md:grid-cols-6 gap-4">

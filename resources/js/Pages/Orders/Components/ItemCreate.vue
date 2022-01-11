@@ -8,7 +8,7 @@
             :show="creatingOrderItem"
             @close="creatingOrderItem = false"
         >
-            <template #title>Add an order item.</template>
+            <template #title>Add a product or service to {{ order.type }}.</template>
             <template #aside
                 ><jet-button
                     v-show="selectedProduct"
