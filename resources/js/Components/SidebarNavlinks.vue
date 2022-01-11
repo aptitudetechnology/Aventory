@@ -12,7 +12,9 @@
         >
         <sidebar-dropdown
             dropdown_text="Orders & Quotes"
-            :current="route().current('orders.*')"
+            :current="
+                route().current('orders.*') || route().current('quotes.*')
+            "
         >
             <nav-link
                 :href="route('orders.index')"
