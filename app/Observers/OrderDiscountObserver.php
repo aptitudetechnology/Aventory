@@ -30,13 +30,6 @@ class OrderDiscountObserver
 
     protected function updateTotals(OrderDiscount $orderDiscount)
     {
-        $order = $orderDiscount->order;
-        $quote = $orderDiscount->quote;
-        if ($order) {
-            $order->updateTotals();
-        }
-        if ($quote) {
-            $quote->updateTotals();
-        }
+        $orderDiscount->sale->updateTotals();
     }
 }

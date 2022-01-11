@@ -94,7 +94,7 @@ class OrderItem extends Model
     }
     public function getLineDiscountAttribute()
     {
-        return $this->no_discount ? 0 : $this->line_total * ($this->order->discount_percentage / 100);
+        return $this->no_discount ? 0 : $this->line_total * ($this->sale->discount_percentage / 100);
     }
 
     public function getLineTotalAfterDiscountAttribute()
@@ -104,8 +104,8 @@ class OrderItem extends Model
 
     public function getTaxAmountAttribute()
     {
-        if ($this->product->is_taxable && $this->order->is_taxable) {
-            return $this->line_total_after_discount * $this->order->tax_percentage / 100;
+        if ($this->product->is_taxable && $this->sale->is_taxable) {
+            return $this->line_total_after_discount * $this->sale->tax_percentage / 100;
         } else {
             return 0;
         }

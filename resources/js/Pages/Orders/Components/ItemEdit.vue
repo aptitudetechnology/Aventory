@@ -312,7 +312,7 @@ export default {
         update() {
             if (this.confirmedQuantity) {
                 this.form.patch(
-                    route("orders.order-items.update", [
+                    route("sales.order-items.update", [
                         this.orderItem.order_id,
                         this.orderItem.id,
                     ]),

@@ -62,7 +62,7 @@ export default {
 
         deleteOrderItem() {
             this.form.delete(
-                route("orders.order-items.destroy", [
+                route("sales.order-items.destroy", [
                     this.item.order_id,
                     this.item,
                 ]),

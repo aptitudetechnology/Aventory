@@ -71,7 +71,7 @@ class OrderController extends Controller
     {
         Gate::authorize('create', Sale::class);
 
-        $order = auth()->user()->orders()->create($request->validated());
+        $order = auth()->user()->currentTeam->orders()->create($request->validated());
 
         $order->setTaxPercentage();
 

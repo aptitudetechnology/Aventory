@@ -125,9 +125,14 @@ class QuoteController extends Controller
      */
     public function update(OrderStoreRequest $request, Quote $quote)
     {
+
         Gate::authorize('update', $quote);
         $quote->update($request->validated());
-        return redirect()->route('quotes.show', $quote)->banner('Quote updated successfully');
+
+        $quote->updateDiscounts();
+        $quote->updateTotals();
+
+        return back()->banner("Great work! Updated quote.");
     }
 
     /**

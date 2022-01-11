@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderItemStoreRequest;
 use App\Http\Requests\OrderItemUpdateRequest;
-use App\Models\Order;
+use App\Models\Sale;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -17,9 +17,9 @@ class OrderItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OrderItemStoreRequest $request, Order $order)
+    public function store(OrderItemStoreRequest $request, Sale $sale)
     {
-        $order->items()->create($request->validated());
+        $sale->items()->create($request->validated());
         return redirect()->back()->banner('Item added to order.');
     }
 
@@ -30,7 +30,7 @@ class OrderItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(OrderItemUpdateRequest $request, Order $order, OrderItem $item)
+    public function update(OrderItemUpdateRequest $request, Sale $sale, OrderItem $item)
     {
         $item->update($request->validated());
 
@@ -43,9 +43,9 @@ class OrderItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order, OrderItem $item)
+    public function destroy(Sale $sale, OrderItem $item)
     {
-        Gate::authorize('update', $order);
+        Gate::authorize('update', $sale);
 
         $item->delete();
 

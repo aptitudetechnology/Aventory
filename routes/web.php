@@ -125,7 +125,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 
     Route::resource('orders', OrderController::class);
-    Route::resource('orders.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
+    Route::resource('sales.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
     Route::apiResource('sales.inventory', ApiOrderInventoryController::class)->only(['index', 'show', 'store'])
         ->missing(function (Request $request) {
             return response()->json(['message' => "No Inventory Found for ID: {$request['inventory']}"], 200);

@@ -51,12 +51,7 @@
                                         class="mt-2"
                                     />
                                     <div
-                                        class="
-                                            sm:col-span-1
-                                            flex
-                                            items-center
-                                            mt-4
-                                        "
+                                        class="sm:col-span-1 flex items-center mt-4"
                                     >
                                         <jet-checkbox
                                             id="no_discount"
@@ -287,7 +282,7 @@ export default {
             this.createOrderItem();
         },
         createOrderItem() {
-            this.form.post(route("orders.order-items.store", this.order), {
+            this.form.post(route("sales.order-items.store", this.order), {
                 preserveScroll: true,
                 preserveState: true,
                 onSuccess: () => {

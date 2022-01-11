@@ -1,16 +1,7 @@
 <template>
     <div
         @click="editing = true"
-        class="
-            relative
-            md:flex md:space-x-6
-            py-4
-            px-4
-            items-center
-            justify-between
-            cursor-pointer
-            hover:bg-gray-50
-        "
+        class="relative md:flex md:space-x-6 py-4 px-4 items-center justify-between cursor-pointer hover:bg-gray-50"
     >
         <div class="flex items-center w-full md:w-auto">
             <div @click.stop class="flex items-center h-full">
@@ -30,15 +21,7 @@
                     {{ form.product_name }}
                 </div>
                 <div
-                    class="
-                        flex
-                        items-end
-                        flex-row-reverse
-                        md:flex-row md:-ml-2
-                        flex-wrap
-                        w-full
-                        md:w-auto
-                    "
+                    class="flex items-end flex-row-reverse md:flex-row md:-ml-2 flex-wrap w-full md:w-auto"
                 >
                     <DeleteOrderItem :item="item" />
 
@@ -53,13 +36,7 @@
                         class="md:px-2 flex items-center py-1 mr-auto"
                     >
                         <label
-                            class="
-                                px-1
-                                pr-2
-                                text-sm text-gray-500
-                                tracking-wider
-                                uppercase
-                            "
+                            class="px-1 pr-2 text-sm text-gray-500 tracking-wider uppercase"
                             :for="'no_discount' + form.id"
                             >No Discount
                         </label>
@@ -75,14 +52,7 @@
             </div>
         </div>
         <div
-            class="
-                flex flex-row-reverse
-                justify-between
-                w-full
-                md:w-auto md:flex-col md:items-end
-                pl-10
-                md:pl-0 md:text-right
-            "
+            class="flex flex-row-reverse justify-between w-full md:w-auto md:flex-col md:items-end pl-10 md:pl-0 md:text-right"
         >
             <div title="Line Total" class="text-lg">
                 {{ formatMoney(form.line_total) }}
@@ -140,7 +110,7 @@ export default {
     methods: {
         updateItem() {
             this.form.patch(
-                route("orders.order-items.update", [
+                route("sales.order-items.update", [
                     this.item.order_id,
                     this.item.id,
                 ])
