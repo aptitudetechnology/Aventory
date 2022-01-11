@@ -10,7 +10,7 @@
             ></template>
         </jet-section-title>
 
-        <div class="divide-gray-50 divide-y">
+        <div class="">
             <order-line-item
                 @selected="toggleSelected(item)"
                 v-for="item in items"

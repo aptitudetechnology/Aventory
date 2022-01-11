@@ -1,10 +1,7 @@
 <template>
-    <div
-        @click="editing = true"
-        class="relative md:flex md:space-x-6 py-4 px-4 items-center justify-between cursor-pointer hover:bg-gray-50"
-    >
+    <LineItem @click="editing = true">
         <div class="flex items-center w-full md:w-auto">
-            <div @click.stop class="flex items-center h-full">
+            <div @click.stop class="flex items-center h-full hidden">
                 <jet-label class="sr-only" :for="'item-selected' + form.id"
                     >Select</jet-label
                 >
@@ -16,8 +13,8 @@
                     :checked="selected"
                 ></jet-checkbox>
             </div>
-            <div class="ml-6 w-full md:w-auto">
-                <div title="Product Name" class="text-lg">
+            <div class="w-full md:w-auto">
+                <div title="Product Name" class="card-title mb-0">
                     {{ form.product_name }}
                 </div>
                 <div
@@ -33,10 +30,11 @@
                     ></edit-order-item>
                     <div
                         @click.stop
+                        @hover.stop
                         class="md:px-2 flex items-center py-1 mr-auto"
                     >
                         <jet-label
-                            class="px-1 py-0 pr-2 text-sm text-gray-500 tracking-wider uppercase"
+                            class="px-0 pr-2 py-0 text-gray-700 uppercase tracking-wide"
                             :for="'no_discount' + form.id"
                             >No Discount
                         </jet-label>
@@ -76,17 +74,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </LineItem>
 </template>
 
 <script>
 import Check from "@heroicons/vue/outline/CheckIcon";
-
+import LineItem from "@Components/Lists/LineItem.vue";
 import EditOrderItem from "./ItemEdit.vue";
 import DeleteOrderItem from "./ItemDelete.vue";
 export default {
     components: {
         Check,
+        LineItem,
         EditOrderItem,
         DeleteOrderItem,
     },

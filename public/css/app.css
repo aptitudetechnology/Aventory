@@ -4292,6 +4292,9 @@ fade-enter-active, fade-leave-active {
 fade-enter-from, fade-leave-to {
   opacity: 0
 }
+.last\:border-transparent:last-child {
+	border-color: transparent;
+}
 .hover\:border:hover {
 	border-width: 1px;
 }

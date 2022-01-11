@@ -1,8 +1,5 @@
 <template>
-    <div
-        @click="editing = true"
-        class="relative md:flex md:space-x-6 py-4 px-2 items-center justify-between cursor-pointer hover:border-black border-b border-transparent"
-    >
+    <LineItem @click="editing = true">
         <div class="flex items-center w-full md:w-auto">
             <div class="w-full md:w-auto">
                 <div
@@ -39,21 +36,24 @@
         >
             {{ formatMoney(updatedDiscount.discount_total) }}
         </div>
-    </div>
+    </LineItem>
 </template>
 
 <script>
+import LineItem from "@Components/Lists/LineItem.vue";
 import EditDiscountItem from "./DiscountEdit.vue";
 export default {
+    components: {
+        LineItem,
+        EditDiscountItem,
+    },
     props: {
         discount: {
             type: Object,
             required: true,
         },
     },
-    components: {
-        EditDiscountItem,
-    },
+
     data() {
         return {
             editing: false,
