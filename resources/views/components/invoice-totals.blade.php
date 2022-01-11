@@ -32,7 +32,7 @@
                     </td>
                 </tr>
             @endif
-            @if ($invoice->taxable_amount)
+            @if ($invoice->taxable_amount && $invoice->is_taxable)
                 <tr>
                     <td colspan="{{ $invoice->table_columns - 1 }}" class="border-0"></td>
                     <td class="text-right ">{{ __('invoices::invoice.taxable_amount') }}</td>
@@ -41,7 +41,7 @@
                     </td>
                 </tr>
             @endif
-            @if ($invoice->tax_rate)
+            @if ($invoice->tax_rate && $invoice->is_taxable)
                 <tr>
                     <td colspan="{{ $invoice->table_columns - 1 }}" class="border-0"></td>
                     <td class="text-right pl-0">{{ __('invoices::invoice.tax_rate') }}</td>
@@ -50,7 +50,7 @@
                     </td>
                 </tr>
             @endif
-            @if ($invoice->hasItemOrInvoiceTax())
+            @if ($invoice->hasItemOrInvoiceTax() && $invoice->is_taxable)
                 <tr>
                     <td colspan="{{ $invoice->table_columns - 1 }}" class="border-0"></td>
                     <td class="text-right pl-0">{{ __('invoices::invoice.total_taxes') }}</td>

@@ -54,7 +54,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        Gate::authorize('create', Sale::class);
+        Gate::authorize('create', Quote::class);
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
         $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
@@ -69,7 +69,7 @@ class OrderController extends Controller
      */
     public function store(OrderStoreRequest $request)
     {
-        Gate::authorize('create', Sale::class);
+        Gate::authorize('create', Quote::class);
 
         $order = auth()->user()->currentTeam->orders()->create($request->validated());
 

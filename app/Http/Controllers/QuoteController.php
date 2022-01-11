@@ -20,6 +20,7 @@ class QuoteController extends Controller
      */
     public function index(Request $request)
     {
+        Gate::authorize('viewAny', Quote::class);
         $quotes = auth()->user()->currentTeam->quotes()
             ->when($request->search, function ($query) use ($request) {
                 $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
@@ -51,8 +52,9 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        $customers = auth()->user()->currentTeam->customers()->get();
-        $teamMembers = auth()->user()->currentTeam->users()->get();
+        Gate::authorize('create', Quote::class);
+        $customers = $this->getCustomers();
+        $teamMembers = auth()->user()->currentTeam->allUsers();
         $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
         return inertia('Quotes/Create', compact('customers', 'teamMembers', 'priceLevels'));
     }
@@ -65,6 +67,7 @@ class QuoteController extends Controller
      */
     public function store(OrderStoreRequest $request)
     {
+        Gate::authorize('create', Quote::class);
         $quote = auth()->user()->currentTeam->quotes()->create($request->validated());
         $quote->customer()->associate(Customer::findOrFail($request->customer_id));
         $quote->save();
@@ -146,5 +149,11 @@ class QuoteController extends Controller
         Gate::authorize('delete', $quote);
         $quote->delete();
         return redirect()->route('quotes.index')->banner('Quote deleted successfully');
+    }
+
+
+    protected function getCustomers()
+    {
+        return auth()->user()->customers;
     }
 }

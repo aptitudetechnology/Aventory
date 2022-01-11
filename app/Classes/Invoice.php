@@ -18,6 +18,8 @@ class Invoice extends \LaravelDaily\Invoices\Invoice
 
   public $sub_total;
 
+  public $is_taxable;
+
   /**
    * Invoice constructor.
    *
@@ -78,6 +80,13 @@ class Invoice extends \LaravelDaily\Invoices\Invoice
   public function subTotal(float $amount)
   {
     $this->sub_total = $amount;
+
+    return $this;
+  }
+
+  public function isTaxable(bool $is_taxable)
+  {
+    $this->is_taxable = $is_taxable;
 
     return $this;
   }

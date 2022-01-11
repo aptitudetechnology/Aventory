@@ -57,7 +57,12 @@ class Sale extends Model
 
   public function getTaxRateAttribute()
   {
-    return $this->is_taxable ? $this->tax_percentage : 0;
+    return $this->is_taxable && $this->tax_percentage ? $this->tax_percentage : 0;
+  }
+
+  public function getShippingAmountAttribute($value)
+  {
+    return $value ? $value : 0;
   }
 
   public function team()
@@ -305,6 +310,7 @@ class Sale extends Model
       ->subTotal($this->total)
       ->warrantyAmount($this->warranty_amount)
       ->taxRate($this->tax_rate)
+      ->isTaxable($this->is_taxable)
       ->shipping($this->shipping_amount)
       ->totalDiscount($this->total_discounts)
       ->save('public');
