@@ -23,10 +23,8 @@
         </template>
 
         <div class="col-span-6 grid gap-6">
-            <div
-                class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-x-20 lg:gap-y-4 items-start"
-            >
-                <div class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2">
+            <div class="grid lg:grid-cols-2 gap-x-4 gap-y-2 2xl:gap-x-20">
+                <div class="col-span-1 grid xl:grid-cols-2 gap-x-4 gap-y-2">
                     <div>
                         <search-select-box
                             labelValue="Customer"
@@ -75,10 +73,13 @@
                         />
                     </div>
                 </div>
-                <div
-                    class="col-span-1 lg:col-span-2 grid gap-4 lg:justify-items-end"
-                >
-                    <div class="form-control">
+                <div class="col-span-1 grid grid-cols-2 gap-4">
+                    <div
+                        class="form-control"
+                        :class="
+                            order.is_quote ? '' : 'col-span-2 justify-self-end'
+                        "
+                    >
                         <jet-label for="date" value="Order Date" />
                         <jet-input
                             id="date"
@@ -92,8 +93,22 @@
                             class="mt-2"
                         />
                     </div>
+                    <div v-if="order.is_quote">
+                        <jet-label for="quote_expires" value="Expire Date" />
+                        <jet-input
+                            id="quote_expires"
+                            type="date"
+                            class="block w-full"
+                            v-model="updatedOrder.quote_expires"
+                            required
+                        />
+                        <jet-input-error
+                            :message="updatedOrder.errors.quote_expires"
+                            class="mt-2"
+                        />
+                    </div>
                 </div>
-                <div class="sm:col-span-2 lg:col-span-5">
+                <div class="lg:col-span-2">
                     <div class="">
                         <jet-label for="notes" value="Order Notes" />
                         <text-area-input
@@ -162,18 +177,19 @@ export default {
             customerContacts: [],
             teamMembers: this.$page.props.teamMembers,
             orderCustomer: this.customers.find(
-                (customer) => customer.id === this.order?.customer_id
+                (customer) => customer.id === this.order.customer_id
             ),
-            contact: this.order?.contact,
+            contact: this.order.contact,
             teamMember: this.$page.props.teamMembers.find(
-                (member) => member.id === this.order?.team_member_id
+                (member) => member.id === this.order.team_member_id
             ),
             updatedOrder: this.$inertia.form({
-                customer_id: this.order?.customer_id,
-                contact_id: this.order?.contact_id,
-                team_member_id: this.order?.team_member_id,
-                date: this.order?.date,
-                notes: this.order?.notes,
+                customer_id: this.order.customer_id,
+                contact_id: this.order.contact_id,
+                team_member_id: this.order.team_member_id,
+                date: this.order.date,
+                quote_expires: this.order.quote_expires,
+                notes: this.order.notes,
             }),
         };
     },
@@ -185,6 +201,9 @@ export default {
             this.updateOrder();
         }, 500),
         "updatedOrder.date": _debounce(function () {
+            this.updateOrder();
+        }, 1000),
+        "updatedOrder.quote_expires": _debounce(function () {
             this.updateOrder();
         }, 1000),
         "updatedOrder.notes": _debounce(function () {

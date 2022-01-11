@@ -63,19 +63,40 @@
                         </div>
                     </div>
                     <div
-                        class="col-span-1 lg:col-span-2 grid gap-4 lg:justify-items-end"
+                        class="col-span-1 lg:col-span-2 grid grid-cols-2 gap-4"
                     >
-                        <div>
-                            <jet-label for="date" value="Order Date" />
+                        <div
+                            :class="
+                                isQuote ? '' : 'col-span-2 justify-self-end'
+                            "
+                        >
+                            <jet-label for="date" value="Date" />
                             <jet-input
                                 id="date"
                                 type="date"
-                                class="mt-1 block w-full"
+                                class="block w-full"
                                 v-model="order.date"
                                 required
                             />
                             <jet-input-error
                                 :message="order.errors.date"
+                                class="mt-2"
+                            />
+                        </div>
+                        <div v-if="isQuote">
+                            <jet-label
+                                for="quote_expires"
+                                value="Expire Date"
+                            />
+                            <jet-input
+                                id="quote_expires"
+                                type="date"
+                                class="block w-full"
+                                v-model="order.quote_expires"
+                                required
+                            />
+                            <jet-input-error
+                                :message="order.errors.quote_expires"
                                 class="mt-2"
                             />
                         </div>
@@ -95,7 +116,7 @@
                             <text-area-input
                                 id="notes"
                                 type="notes"
-                                class="mt-1 block w-full"
+                                class="block w-full"
                                 v-model="order.notes"
                             />
                             <jet-input-error
@@ -113,7 +134,7 @@
                 type="submit"
                 :class="{ 'opacity-25': order.processing }"
                 :disabled="order.processing"
-                >New Order</jet-button
+                >New {{ isQuote ? "quote" : "order" }}</jet-button
             >
         </template>
     </jet-form-section>
@@ -173,6 +194,10 @@ export default {
             order: this.$inertia.form({
                 _method: "POST",
                 date: new Date().toISOString().slice(0, -14),
+                // set default to 3 months from now
+                quote_expires: new Date(new Date().getTime() + 2592000000)
+                    .toISOString()
+                    .slice(0, -14),
                 notes: "",
                 items: [],
                 customer_id: null,
