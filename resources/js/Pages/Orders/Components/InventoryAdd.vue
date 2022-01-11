@@ -188,13 +188,7 @@
             </template>
             <template #footer>
                 <div
-                    class="
-                        flex flex-col
-                        space-y-2
-                        md:space-y-0 md:flex-row
-                        items-center
-                        md:justify-between
-                    "
+                    class="flex flex-col space-y-2 md:space-y-0 md:flex-row items-center md:justify-between"
                 >
                     <jet-secondary-button
                         type="button"
@@ -330,7 +324,7 @@ export default {
     methods: {
         getInventory() {
             axios
-                .get(route("orders.inventory.index", this.order))
+                .get(route("sales.inventory.index", this.order))
                 .then((response) => {
                     this.inventory = response.data;
                 })
@@ -346,7 +340,7 @@ export default {
             axios
                 .get(
                     route(
-                        "orders.inventory.show",
+                        "sale.inventory.show",
                         [this.order, this.item.inventory_id],
                         {
                             quantity: this.item.quantity_removed,
@@ -380,7 +374,7 @@ export default {
                         ...data,
                         confirm_quantity: this.confirm_quantity,
                     }))
-                    .post(route("orders.inventory.store", this.order), {
+                    .post(route("sales.inventory.store", this.order), {
                         preserveState: true,
 
                         onSuccess: () => {

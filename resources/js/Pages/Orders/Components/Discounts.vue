@@ -11,6 +11,7 @@
         </jet-section-title>
 
         <div class="divide-gray-50 divide-y">
+            <loading-state :loading="loading"></loading-state>
             <discount-item
                 v-for="discount in discounts"
                 :key="discount.id"
@@ -22,11 +23,13 @@
 <script>
 import DiscountItem from "./DiscountItem";
 import CreateOrderDiscount from "./DiscountCreate";
+import LoadingState from "@/Components/LoadingState";
 export default {
     name: "Discounts",
     components: {
         DiscountItem,
         CreateOrderDiscount,
+        LoadingState,
     },
     props: {
         order: {
@@ -38,6 +41,7 @@ export default {
     data() {
         return {
             discounts: [],
+            loading: true,
         };
     },
     mounted() {
@@ -54,11 +58,11 @@ export default {
         },
     },
     methods: {
-        async getDiscounts() {
-            await axios
+        getDiscounts() {
+            axios
                 .get(
-                    route("orders.discounts.index", {
-                        order: this.order.id,
+                    route("sales.discounts.index", {
+                        sale: this.order.id,
                     })
                 )
                 .then((response) => {
@@ -66,6 +70,9 @@ export default {
                 })
                 .catch((error) => {
                     console.error(error.response.data.message);
+                })
+                .finally(() => {
+                    this.loading = false;
                 });
         },
     },

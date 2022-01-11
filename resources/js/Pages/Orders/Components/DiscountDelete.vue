@@ -65,9 +65,9 @@ export default {
 
         deleteDiscount() {
             this.form.delete(
-                route("orders.discounts.destroy", [
+                route("sales.discounts.destroy", [
                     this.discount.order_id,
-                    this.discount,
+                    this.discount.id,
                 ]),
                 {
                     errorBag: "deleteDiscount",

@@ -30,6 +30,10 @@ class OrderItem extends Model
         'no_discount' => 'boolean',
     ];
 
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class, 'order_id');
+    }
 
     public function order()
     {

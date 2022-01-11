@@ -1,16 +1,7 @@
 <template>
     <div
         @click="editing = true"
-        class="
-            relative
-            md:flex md:space-x-6
-            py-4
-            px-4
-            items-center
-            justify-between
-            cursor-pointer
-            hover:bg-gray-50
-        "
+        class="relative md:flex md:space-x-6 py-4 px-4 items-center justify-between cursor-pointer hover:bg-gray-50"
     >
         <div class="flex items-center w-full md:w-auto">
             <div class="w-full md:w-auto space-y-4">
@@ -22,13 +13,7 @@
                         >Discount Applied</jet-label
                     >
                     <jet-checkbox
-                        class="
-                            px-1
-                            pr-2
-                            text-sm text-gray-500
-                            tracking-wider
-                            uppercase
-                        "
+                        class="px-1 pr-2 text-sm text-gray-500 tracking-wider uppercase"
                         :id="'discount_applied' + discount.id"
                         @change="updateItem"
                         v-model="updatedDiscount.discount_applied"
@@ -78,7 +63,7 @@ export default {
     methods: {
         updateItem() {
             this.updatedDiscount.patch(
-                route("orders.discounts.update", [
+                route("sales.discounts.update", [
                     this.discount.order_id,
                     this.discount.id,
                 ])

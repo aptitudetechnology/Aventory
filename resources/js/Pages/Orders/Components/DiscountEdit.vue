@@ -78,12 +78,7 @@
 
             <template #footer>
                 <div
-                    class="
-                        space-y-4
-                        sm:space-y-0 sm:flex sm:justify-between
-                        items-center
-                        w-full
-                    "
+                    class="space-y-4 sm:space-y-0 sm:flex sm:justify-between items-center w-full"
                 >
                     <jet-secondary-button type="button" @click="close"
                         >Cancel</jet-secondary-button
@@ -146,7 +141,7 @@ export default {
     methods: {
         createDiscount() {
             this.updatedDiscount.patch(
-                route("orders.discounts.update", [
+                route("sales.discounts.update", [
                     this.discount.order_id,
                     this.discount,
                 ]),

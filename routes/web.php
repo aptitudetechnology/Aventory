@@ -126,15 +126,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('orders', OrderController::class);
     Route::resource('orders.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
-    Route::apiResource('orders.discounts', ApiDiscountsController::class);
-    Route::apiResource('orders.inventory', ApiOrderInventoryController::class)->only(['index', 'show', 'store'])
+    Route::apiResource('sales.inventory', ApiOrderInventoryController::class)->only(['index', 'show', 'store'])
         ->missing(function (Request $request) {
             return response()->json(['message' => "No Inventory Found for ID: {$request['inventory']}"], 200);
         });
     Route::apiResource('inventory-archive', ApiInventoryArchiveController::class);
-    Route::get('orders/{order}/print', OrderPDFController::class)->name('orders.print');
+    Route::get('sales/{sale}/print', OrderPDFController::class)->name('orders.print');
 
     Route::resource('quotes', QuoteController::class);
+
+    Route::apiResource('sales.discounts', ApiDiscountsController::class);
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');

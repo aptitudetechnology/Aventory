@@ -8,6 +8,7 @@ use App\Models\DeliveryStatus;
 use App\Models\Order;
 use App\Models\ShippingMethod;
 use App\Models\PaymentStatus;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -20,7 +21,6 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-
         $orders = auth()->user()->currentTeam->orders()
             ->when($request->search, function ($query) use ($request) {
                 $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
@@ -54,7 +54,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        Gate::authorize('create', Order::class);
+        Gate::authorize('create', Sale::class);
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
         $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
@@ -69,7 +69,7 @@ class OrderController extends Controller
      */
     public function store(OrderStoreRequest $request)
     {
-        Gate::authorize('create', Order::class);
+        Gate::authorize('create', Sale::class);
 
         $order = auth()->user()->orders()->create($request->validated());
 
@@ -84,7 +84,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Sale $order)
     {
         Gate::authorize('view', $order);
         $customers = $this->getCustomers();
@@ -120,7 +120,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(OrderStoreRequest $request, Order $order)
+    public function update(OrderStoreRequest $request, Sale $order)
     {
 
         Gate::authorize('update', $order);
@@ -138,7 +138,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Sale $order)
     {
         Gate::authorize('delete', $order);
         $order->delete();

@@ -127,7 +127,7 @@ export default {
 
     methods: {
         createDiscount() {
-            this.discount.post(route("orders.discounts.store", this.order), {
+            this.discount.post(route("sales.discounts.store", this.order), {
                 preserveScroll: true,
                 preserveState: true,
                 onSuccess: () => {
