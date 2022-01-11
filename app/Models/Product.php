@@ -196,7 +196,7 @@ class Product extends Model
     public function itemsOnHold()
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'id')
-            ->whereRelation('order', 'is_quote', true);
+            ->whereRelation('sale', 'is_quote', true);
     }
 
     public function sizesOnHold()

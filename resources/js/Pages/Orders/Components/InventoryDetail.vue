@@ -84,7 +84,7 @@ export default {
                     .then((response) => {
                         this.quantities.inNursery = response.data.total;
                         this.quantities.ready = response.data.ready;
-                        this.quantities.onHold = response.data.onHold;
+                        this.quantities.onHold = response.data.on_hold;
                         this.quantities.availableForSale =
                             response.data.available;
                     })

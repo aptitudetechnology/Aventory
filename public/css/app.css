@@ -3726,6 +3726,9 @@ html {
 .p-3 {
 	padding: 0.75rem;
 }
+.p-8 {
+	padding: 2rem;
+}
 .px-4 {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -4398,6 +4401,10 @@ fade-enter-from, fade-leave-to {
 .focus\:border-gray-500:focus {
 	--tw-border-opacity: 1;
 	border-color: rgba(107, 114, 128, var(--tw-border-opacity));
+}
+.focus\:border-black:focus {
+	--tw-border-opacity: 1;
+	border-color: rgba(0, 0, 0, var(--tw-border-opacity));
 }
 .focus\:bg-indigo-600:focus {
 	--tw-bg-opacity: 1;

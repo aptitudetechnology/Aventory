@@ -1,20 +1,11 @@
 <template>
     <div
         @click="viewOrder"
-        class="
-            flex
-            items-center
-            justify-between
-            hover:bg-gray-100
-            uppercase
-            text-sm
-            p-2
-            cursor-pointer
-        "
+        class="flex items-center justify-between hover:bg-gray-100 uppercase text-sm p-2 cursor-pointer"
     >
         <div v-if="itemIsNotInThisOrder" class="text-black">
             {{ item.is_quote ? "Quote #" : "Order #" }} {{ item.order_id }},
-            {{ item.order.customer.name }}
+            {{ item.sale.customer.name }}
         </div>
         <div v-else class="text-black">
             {{
