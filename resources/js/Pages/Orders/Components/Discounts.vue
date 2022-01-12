@@ -17,6 +17,9 @@
                 :key="discount.id"
                 :discount="discount"
             />
+            <div v-if="!discounts.length" class="text-center text-gray-500 p-4">
+                No discounts applied.
+            </div>
         </div>
     </div>
 </template>

@@ -8,7 +8,6 @@ use App\Models\DeliveryStatus;
 use App\Models\Order;
 use App\Models\ShippingMethod;
 use App\Models\PaymentStatus;
-use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -21,6 +20,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
+        Gate::authorize('viewAny', Order::class);
         $orders = auth()->user()->currentTeam->orders()
             ->when($request->search, function ($query) use ($request) {
                 $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
@@ -54,7 +54,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        Gate::authorize('create', Quote::class);
+        Gate::authorize('create', Order::class);
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
         $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
@@ -69,7 +69,7 @@ class OrderController extends Controller
      */
     public function store(OrderStoreRequest $request)
     {
-        Gate::authorize('create', Quote::class);
+        Gate::authorize('create', Order::class);
 
         $order = auth()->user()->currentTeam->orders()->create($request->validated());
 
@@ -84,7 +84,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Sale $order)
+    public function show(Order $order)
     {
         Gate::authorize('view', $order);
         $customers = $this->getCustomers();
@@ -120,7 +120,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(OrderStoreRequest $request, Sale $order)
+    public function update(OrderStoreRequest $request, Order $order)
     {
 
         Gate::authorize('update', $order);
@@ -135,10 +135,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Order $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $order)
+    public function destroy(Order $order)
     {
         Gate::authorize('delete', $order);
         $order->delete();

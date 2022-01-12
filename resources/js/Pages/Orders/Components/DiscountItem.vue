@@ -4,7 +4,7 @@
             <div class="w-full md:w-auto">
                 <div
                     title="Discount Description"
-                    class="card-title capitalize mb-0"
+                    class="card-title capitalize mb-2"
                 >
                     {{ updatedDiscount.description }}
                 </div>

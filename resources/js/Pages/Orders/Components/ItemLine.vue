@@ -14,7 +14,7 @@
                 ></jet-checkbox>
             </div>
             <div class="w-full md:w-auto">
-                <div title="Product Name" class="card-title mb-0">
+                <div title="Product Name" class="card-title mb-2">
                     {{ form.product_name }}
                 </div>
                 <div

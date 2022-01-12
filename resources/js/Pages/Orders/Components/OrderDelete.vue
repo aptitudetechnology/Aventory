@@ -43,7 +43,6 @@
                     <jet-danger-button
                         class="ml-2"
                         @click="deleteOrder"
-                        :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
                         Yes, Delete
@@ -88,9 +87,7 @@ export default {
             if (this.order.is_quote) {
                 this.form.delete(route("quotes.destroy", this.order.id));
             } else {
-                this.form.delete(route("orders.destroy", this.order), {
-                    errorBag: "deleteOrder",
-                });
+                this.form.delete(route("orders.destroy", this.order.id));
             }
         },
     },

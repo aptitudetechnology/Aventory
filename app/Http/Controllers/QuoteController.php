@@ -141,7 +141,7 @@ class QuoteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Quote $quote
      * @return \Illuminate\Http\Response
      */
     public function destroy(Quote $quote)

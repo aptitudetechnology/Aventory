@@ -18,6 +18,9 @@
                 :item="item"
                 :itemSelected="isItemSelected(item)"
             />
+            <div v-if="!items.length" class="text-center text-gray-500 p-4">
+                No items added.
+            </div>
         </div>
     </div>
 </template>
