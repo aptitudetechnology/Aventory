@@ -100,16 +100,35 @@
                                 class="mt-2"
                             />
                         </div>
+                        <div v-if="isQuote" class="col-span-2">
+                            <div class="form-control">
+                                <label class="cursor-pointer label">
+                                    <span class="label-text"
+                                        >Hold Inventory?</span
+                                    >
+                                    <input
+                                        id="hold_inventory"
+                                        type="checkbox"
+                                        class="toggle"
+                                        v-model="order.hold_inventory"
+                                    />
+                                </label>
+                            </div>
+                            <jet-input-error
+                                :message="order.errors.hold_inventory"
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
                     <div class="sm:col-span-2 lg:col-span-5 sm:flex">
-                        <div class="sm:w-1/4 mb-6 sm:mb-0">
-                            <jet-label class="flex items-center text-lg px-2">
+                        <div class="form-control sm:w-1/4 mb-6 sm:mb-0 sm:mt-4">
+                            <label class="label cursor-pointer">
+                                <span class="label-text">Taxable</span>
                                 <jet-checkbox
-                                    class="mr-2 mb-1"
+                                    class="mr-2"
                                     :checked="order.is_taxable"
                                     v-model="order.is_taxable"
-                                />Taxable</jet-label
-                            >
+                            /></label>
                         </div>
                         <div class="sm:w-3/4 sm:ml-4">
                             <jet-label for="notes" value="Notes" />
@@ -198,6 +217,7 @@ export default {
                 quote_expires: new Date(new Date().getTime() + 2592000000)
                     .toISOString()
                     .slice(0, -14),
+                hold_inventory: false,
                 notes: "",
                 items: [],
                 customer_id: null,

@@ -29,6 +29,7 @@ class Sale extends Model
     'id' => 'integer',
     'date' => 'date:Y-m-d',
     'quote_expires' => 'date:Y-m-d',
+    'hold_inventory' => 'boolean',
     'customer_id' => 'integer',
     'contact_id' => 'integer',
     'team_member_id' => 'integer',

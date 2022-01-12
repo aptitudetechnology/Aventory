@@ -29,6 +29,7 @@ class OrderStoreRequest extends FormRequest
             'contact_id' => 'sometimes|nullable|exists:contacts,id',
             'date' => 'sometimes|required|date',
             'quote_expires' => 'sometimes|nullable|date',
+            'hold_inventory' => 'sometimes|nullable|boolean',
             'from_quote_id' => 'sometimes|nullable|exists:orders,id',
             'notes' => 'sometimes|nullable|string',
             'shipping_method_id' => 'sometimes|nullable|exists:shipping_methods,id',
