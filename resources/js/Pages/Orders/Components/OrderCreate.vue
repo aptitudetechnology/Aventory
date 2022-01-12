@@ -100,25 +100,11 @@
                                 class="mt-2"
                             />
                         </div>
-                        <div v-if="isQuote" class="col-span-2">
-                            <div class="form-control">
-                                <label class="cursor-pointer label">
-                                    <span class="label-text"
-                                        >Hold Inventory?</span
-                                    >
-                                    <input
-                                        id="hold_inventory"
-                                        type="checkbox"
-                                        class="toggle"
-                                        v-model="order.hold_inventory"
-                                    />
-                                </label>
-                            </div>
-                            <jet-input-error
-                                :message="order.errors.hold_inventory"
-                                class="mt-2"
-                            />
-                        </div>
+                        <QuoteHoldInventoryCheckmark
+                            v-if="isQuote"
+                            v-model="order.hold_inventory"
+                            :errorMessage="order.errors.hold_inventory"
+                        />
                     </div>
                     <div class="sm:col-span-2 lg:col-span-5 sm:flex">
                         <div class="form-control sm:w-1/4 mb-6 sm:mb-0 sm:mt-4">
@@ -172,6 +158,7 @@ import SelectBox from "@/Components/Forms/SelectBox.vue";
 import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
+import QuoteHoldInventoryCheckmark from "@/Pages/Orders/Components/QuoteHoldInventoryCheckmark.vue";
 import { Inertia } from "@inertiajs/inertia";
 export default {
     components: {
@@ -187,6 +174,7 @@ export default {
         TextAreaInput,
         Modal,
         CreateCustomerForm,
+        QuoteHoldInventoryCheckmark,
     },
     props: {
         customers: {

@@ -93,7 +93,7 @@
                             class="mt-2"
                         />
                     </div>
-                    <div v-if="order.is_quote">
+                    <div v-if="isQuote">
                         <jet-label for="quote_expires" value="Expire Date" />
                         <jet-input
                             id="quote_expires"
@@ -107,6 +107,12 @@
                             class="mt-2"
                         />
                     </div>
+                    <QuoteHoldInventoryCheckmark
+                        v-if="isQuote"
+                        v-model="updatedOrder.hold_inventory"
+                        @change="updateOrder"
+                        :errorMessage="updatedOrder.errors.hold_inventory"
+                    />
                 </div>
                 <div class="lg:col-span-2">
                     <div class="">
@@ -139,7 +145,7 @@ import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 import OrderItems from "@/Pages/Orders/Components/Items.vue";
 import Discounts from "@/Pages/Orders/Components/Discounts.vue";
 import Totals from "@/Pages/Orders/Components/Totals.vue";
-
+import QuoteHoldInventoryCheckmark from "@/Pages/Orders/Components/QuoteHoldInventoryCheckmark.vue";
 import { Inertia } from "@inertiajs/inertia";
 
 // import debounce from "lodash/debounce";
@@ -154,6 +160,7 @@ export default {
         OrderItems,
         Discounts,
         Totals,
+        QuoteHoldInventoryCheckmark,
     },
     props: {
         order: {
@@ -189,9 +196,15 @@ export default {
                 team_member_id: this.order.team_member_id,
                 date: this.order.date,
                 quote_expires: this.order.quote_expires,
+                hold_inventory: this.order.hold_inventory,
                 notes: this.order.notes,
             }),
         };
+    },
+    computed: {
+        isQuote() {
+            return this.order.is_quote;
+        },
     },
     watch: {
         "updatedOrder.customer_id": _debounce(function () {
