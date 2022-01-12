@@ -7,3 +7,6 @@
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+.toggle {
+  flex-shrink: 0;
+}
