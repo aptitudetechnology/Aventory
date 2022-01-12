@@ -20,7 +20,7 @@ class OrderItem extends Model
         'no_discount',
     ];
 
-    protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount', 'unmatched_quantity'];
+    protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount', 'unmatched_quantity', 'sale_type'];
 
     protected $casts = [
         'product_id' => 'integer',
@@ -30,6 +30,15 @@ class OrderItem extends Model
         'no_discount' => 'boolean',
     ];
 
+    public function getSaleTypeAttribute()
+    {
+        return $this->sale->type;
+    }
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class, 'order_id');
+    }
 
     public function order()
     {
@@ -90,7 +99,7 @@ class OrderItem extends Model
     }
     public function getLineDiscountAttribute()
     {
-        return $this->no_discount ? 0 : $this->line_total * ($this->order->discount_percentage / 100);
+        return $this->no_discount ? 0 : $this->line_total * ($this->sale->discount_percentage / 100);
     }
 
     public function getLineTotalAfterDiscountAttribute()
@@ -100,8 +109,8 @@ class OrderItem extends Model
 
     public function getTaxAmountAttribute()
     {
-        if ($this->product->is_taxable && $this->order->is_taxable) {
-            return $this->line_total_after_discount * $this->order->tax_percentage / 100;
+        if ($this->product->is_taxable && $this->sale->is_taxable) {
+            return $this->line_total_after_discount * $this->sale->tax_percentage / 100;
         } else {
             return 0;
         }

@@ -4,22 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 
-class Quote extends Order
+class Quote extends Sale
 {
     protected $attributes = [
         'is_quote' => true,
-    ];
-
-    protected $casts = [
-        'is_quote' => 'boolean',
-    ];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-        'quote_expires',
-        'date',
     ];
 
     protected static function booted()

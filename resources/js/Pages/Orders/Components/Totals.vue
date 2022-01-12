@@ -3,7 +3,7 @@
         <jet-section-title>
             <template #title>Shipping / Tax / Totals</template>
         </jet-section-title>
-        <div class="md:flex justify-between items-center">
+        <div class="md:grid grid-cols-2 gap-8">
             <div class="grid gap-2 items-center">
                 <p v-if="updatedOrder.processing">Saving...</p>
                 <select-box
@@ -38,14 +38,7 @@
                     />
                 </div>
                 <div
-                    class="
-                        grid grid-cols-2
-                        gap-4
-                        items-center
-                        border-t
-                        mt-2
-                        pt-2
-                    "
+                    class="grid grid-cols-2 gap-4 items-center border-t mt-2 pt-2"
                 >
                     <jet-label class="flex items-center text-lg">
                         <jet-checkbox
@@ -71,36 +64,29 @@
                 </div>
             </div>
             <div
-                class="
-                    grid
-                    gap-2
-                    mt-4
-                    pt-4
-                    border-t
-                    md:border-t-0 md:mt-0 md:py-2
-                    items-center
-                    md:text-right md:justify-end
-                "
+                class="grid gap-2 mt-4 pt-4 border-t md:border-t-0 md:mt-0 md:py-2 items-center"
             >
-                <div class="grid grid-cols-2 gap-4 items-center auto-cols-min">
+                <div
+                    class="flex space-x-4 justify-between items-center auto-cols-min"
+                >
                     <jet-label>Product Total</jet-label>
                     <p class="text-black">
                         {{ formatMoney(order.total) }}
                     </p>
                 </div>
-                <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="flex space-x-4 justify-between items-center">
                     <jet-label>Discount Total</jet-label>
                     <p class="text-gray-600">
                         {{ formatMoney(order.total_discounts) }}
                     </p>
                 </div>
-                <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="flex space-x-4 justify-between items-center">
                     <jet-label>Warranty Amount</jet-label>
                     <p class="text-gray-600">
                         {{ formatMoney(order.warranty_amount) }}
                     </p>
                 </div>
-                <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="flex space-x-4 justify-between items-center">
                     <jet-label class="text-black">Sub Total</jet-label>
                     <p class="text-black">
                         {{
@@ -109,14 +95,14 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="flex space-x-4 justify-between items-center">
                     <jet-label>Shipping Amount</jet-label>
                     <p class="text-gray-600">
                         {{ formatMoney(updatedOrder.shipping_amount) }}
                     </p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="flex space-x-4 justify-between items-center">
                     <jet-label>Tax Amount</jet-label>
                     <p class="text-gray-600">
                         {{ formatMoney(order.tax_amount) }}
@@ -124,14 +110,7 @@
                 </div>
 
                 <div
-                    class="
-                        grid grid-cols-2
-                        gap-4
-                        uppercase
-                        items-center
-                        border-t
-                        pt-2
-                    "
+                    class="flex space-x-4 justify-between uppercase items-center border-t pt-2"
                 >
                     <jet-label class="text-black text-lg"
                         >Grand Total</jet-label
@@ -205,11 +184,25 @@ export default {
         },
     },
     methods: {
+        sendQuoteChanges() {
+            this.updatedOrder.patch(route("quotes.update", this.order.id), {
+                errorBag: "updateOrder",
+                preserveScroll: true,
+            });
+        },
+        sendOrderChanges() {
+            this.updatedOrder.patch(route("orders.update", this.order.id), {
+                errorBag: "updateOrder",
+                preserveScroll: true,
+            });
+        },
         updateOrder() {
             if (this.updatedOrder.isDirty && !this.updatedOrder.processing) {
-                this.updatedOrder.patch(route("orders.update", this.order.id), {
-                    preserveState: true,
-                });
+                if (this.order.is_quote) {
+                    this.sendQuoteChanges();
+                } else {
+                    this.sendOrderChanges();
+                }
             }
         },
     },

@@ -10,7 +10,7 @@
             ></template>
         </jet-section-title>
 
-        <div class="divide-gray-50 divide-y">
+        <div class="">
             <order-line-item
                 @selected="toggleSelected(item)"
                 v-for="item in items"
@@ -18,6 +18,9 @@
                 :item="item"
                 :itemSelected="isItemSelected(item)"
             />
+            <div v-if="!items.length" class="text-center text-gray-500 p-4">
+                No items added.
+            </div>
         </div>
     </div>
 </template>

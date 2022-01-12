@@ -1,34 +1,21 @@
 <template>
-    <div
-        @click="editing = true"
-        class="
-            relative
-            md:flex md:space-x-6
-            py-4
-            px-4
-            items-center
-            justify-between
-            cursor-pointer
-            hover:bg-gray-50
-        "
-    >
+    <LineItem @click="editing = true">
         <div class="flex items-center w-full md:w-auto">
-            <div class="w-full md:w-auto space-y-4">
-                <div title="Discount Description" class="text-lg">
+            <div class="w-full md:w-auto">
+                <div
+                    title="Discount Description"
+                    class="card-title capitalize mb-2"
+                >
                     {{ updatedDiscount.description }}
                 </div>
                 <div @click.stop class="flex items-center h-full">
-                    <jet-label :for="'discount_applied' + discount.id"
+                    <jet-label
+                        :for="'discount_applied' + discount.id"
+                        class="px-0 text-gray-700 uppercase tracking-wide"
                         >Discount Applied</jet-label
                     >
                     <jet-checkbox
-                        class="
-                            px-1
-                            pr-2
-                            text-sm text-gray-500
-                            tracking-wider
-                            uppercase
-                        "
+                        class="mx-1 ml-2 text-sm text-gray-500 tracking-wider uppercase"
                         :id="'discount_applied' + discount.id"
                         @change="updateItem"
                         v-model="updatedDiscount.discount_applied"
@@ -49,21 +36,24 @@
         >
             {{ formatMoney(updatedDiscount.discount_total) }}
         </div>
-    </div>
+    </LineItem>
 </template>
 
 <script>
+import LineItem from "@Components/Lists/LineItem.vue";
 import EditDiscountItem from "./DiscountEdit.vue";
 export default {
+    components: {
+        LineItem,
+        EditDiscountItem,
+    },
     props: {
         discount: {
             type: Object,
             required: true,
         },
     },
-    components: {
-        EditDiscountItem,
-    },
+
     data() {
         return {
             editing: false,
@@ -78,7 +68,7 @@ export default {
     methods: {
         updateItem() {
             this.updatedDiscount.patch(
-                route("orders.discounts.update", [
+                route("sales.discounts.update", [
                     this.discount.order_id,
                     this.discount.id,
                 ])

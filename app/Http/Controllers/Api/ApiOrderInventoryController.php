@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InventoryArchiveStoreRequest;
 use App\Models\Inventory;
-use App\Models\Order;
+use App\Models\Sale;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Http\Request;
 
 class ApiOrderInventoryController extends Controller
 {
@@ -16,10 +15,10 @@ class ApiOrderInventoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Order $order)
+    public function index(Sale $sale)
     {
-        Gate::authorize('update', $order);
-        return $order->inventory();
+        Gate::authorize('update', $sale);
+        return $sale->inventory();
     }
 
     /**
@@ -29,13 +28,13 @@ class ApiOrderInventoryController extends Controller
      * if the item is not able to be automatically matched to an order item, it will return a list of items that may be able to be matched.(Same product, but not the same size.)
      * 
      */
-    public function show(Request $request, Order $order, Inventory $inventory)
+    public function show(Sale $sale, Inventory $inventory)
     {
-        Gate::authorize('update', $order);
+        Gate::authorize('update', $sale);
         $message = "";
-        $orderItem = $order->getItemMatchedToInventory($inventory);
-        $match = $order->getPerfectInventoryMatchForItem($inventory);
-        $possibleItemMatches = $order->getPossibleInventoryItemMatches($inventory);
+        $orderItem = $sale->getItemMatchedToInventory($inventory);
+        $match = $sale->getPerfectInventoryMatchForItem($inventory);
+        $possibleItemMatches = $sale->getPossibleInventoryItemMatches($inventory);
         if ($inventory->quantity < 1) {
             $match = null;
             $possibleItemMatches = [];
@@ -65,18 +64,18 @@ class ApiOrderInventoryController extends Controller
      * @param  \Illuminate\Http\Requests\InventoryArchiveStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InventoryArchiveStoreRequest $request, Order $order)
+    public function store(InventoryArchiveStoreRequest $request, Sale $sale)
     {
         $inventory = Inventory::findOrFail($request->input('inventory_id'));
-        $items = $order->items;
+        $items = $sale->items;
 
         $match = $items->find($request->input('order_item_id'));
 
         if (!$match) {
-            $match = $order->items()->create([
+            $match = $sale->items()->create([
                 'product_id' => $inventory->product_id,
                 'size_id' => $inventory->size_id,
-                'unit_price' => $inventory->product->getPrice($inventory->size, $order->customer),
+                'unit_price' => $inventory->product->getPrice($inventory->size, $sale->customer),
                 'original_quantity' => $request->input('quantity_removed'),
                 'quantity' => $request->input('quantity_removed'),
             ]);

@@ -23,6 +23,7 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ClearLocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\Api\ApiDiscountsController;
 use App\Http\Controllers\Api\ApiInventoryArchiveController;
 use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
@@ -124,14 +125,20 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 
     Route::resource('orders', OrderController::class);
-    Route::resource('orders.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
-    Route::apiResource('orders.discounts', ApiDiscountsController::class);
-    Route::apiResource('orders.inventory', ApiOrderInventoryController::class)->only(['index', 'show', 'store'])
+    Route::resource('quotes', QuoteController::class);
+
+    Route::resource('sales.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
+
+
+    Route::get('sales/{sale}/print', OrderPDFController::class)->name('orders.print');
+    Route::apiResource('sales.discounts', ApiDiscountsController::class);
+
+    Route::apiResource('sales.inventory', ApiOrderInventoryController::class)->only(['index', 'show', 'store'])
         ->missing(function (Request $request) {
             return response()->json(['message' => "No Inventory Found for ID: {$request['inventory']}"], 200);
         });
+
     Route::apiResource('inventory-archive', ApiInventoryArchiveController::class);
-    Route::get('orders/{order}/print', OrderPDFController::class)->name('orders.print');
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');

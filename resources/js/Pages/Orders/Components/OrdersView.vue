@@ -1,6 +1,11 @@
 <template>
     <details-section>
-        <template #title><slot name="title">Recent Orders</slot></template>
+        <template #title
+            ><slot name="title"
+                >Recent {{ areQuotes ? "Quotes" : "Orders" }}
+                {{ search ? "for " + search : "" }}</slot
+            ></template
+        >
         <template #aside
             ><search-input v-model="search"></search-input
         ></template>
@@ -13,7 +18,7 @@
                             :class="orderBy == 'id' ? 'text-gray-900' : ''"
                             @click="updateOrderBy('id')"
                         >
-                            Order #
+                            {{ areQuotes ? "Quote #" : "Order #" }}
                             <ArrowUpIcon
                                 v-if="
                                     orderBy == 'id' && orderByDirection == 'asc'
@@ -65,15 +70,8 @@
                         v-for="order in orders.data"
                         :key="order.id"
                         tabindex="0"
-                        class="
-                            px-2
-                            rounded-md
-                            hover:bg-gray-100
-                            focus:bg-gray-100
-                            transition
-                            cursor-pointer
-                        "
-                        @click="$inertia.get(route('orders.show', order))"
+                        class="px-2 border-b border-gray-50 last:border-transparent hover:border-black focus:border-black transition cursor-pointer"
+                        @click="showOrder(order)"
                     >
                         <table-d>{{ order.id }}</table-d>
                         <table-d>{{ formatDate(order.date) }}</table-d>
@@ -83,6 +81,13 @@
                     </tr>
                 </tbody>
             </table-table>
+            <div v-if="orders.data.length < 1" class="p-4">
+                <div class="text-gray-500">
+                    No {{ areQuotes ? "quotes" : "orders" }} found{{
+                        search ? " for " + search : ""
+                    }}.
+                </div>
+            </div>
             <pagination :items="orders" />
         </div>
     </details-section>
@@ -108,9 +113,7 @@ export default {
         ExternalLinkIcon,
         ArrowDownIcon,
         ArrowUpIcon,
-
         DetailsSection,
-
         TableTable,
         TableHead,
         TableH,
@@ -121,6 +124,10 @@ export default {
     props: {
         orders: {
             type: Object,
+        },
+        areQuotes: {
+            type: Boolean,
+            default: false,
         },
         filters: {
             type: Object,
@@ -151,18 +158,38 @@ export default {
             this.updateSearch();
         },
         updateSearch() {
-            this.$inertia.get(
-                this.route("orders.index"),
-                {
-                    search: this.search,
-                    orderBy: this.orderBy,
-                    orderByDirection: this.orderByDirection,
-                },
-                {
-                    preserveState: true,
-                    replace: true,
-                }
-            );
+            if (this.areQuotes) {
+                this.$inertia.get(
+                    this.route("quotes.index"),
+                    {
+                        search: this.search,
+                        orderBy: this.orderBy,
+                        orderByDirection: this.orderByDirection,
+                    },
+                    {
+                        preserveState: true,
+                        replace: true,
+                    }
+                );
+            } else {
+                this.$inertia.get(
+                    this.route("orders.index"),
+                    {
+                        search: this.search,
+                        orderBy: this.orderBy,
+                        orderByDirection: this.orderByDirection,
+                    },
+                    {
+                        preserveState: true,
+                        replace: true,
+                    }
+                );
+            }
+        },
+        showOrder(order) {
+            order.is_quote
+                ? this.$inertia.get(route("quotes.show", order))
+                : this.$inertia.get(route("orders.show", order));
         },
     },
 };

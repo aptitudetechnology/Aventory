@@ -9,22 +9,27 @@ class OrderDiscountObserver
     /**
      * Handle the order discount "created" event.
      *
-     * @param  \App\OrderDiscount  $orderDiscount
+     * @param  \App\Models\OrderDiscount $orderDiscount
      * @return void
      */
     public function created(OrderDiscount $orderDiscount)
     {
-        $orderDiscount->order->updateTotals();
+        $this->updateTotals($orderDiscount);
     }
 
     /**
      * Handle the order discount "updated" event.
      *
-     * @param  \App\OrderDiscount  $orderDiscount
+     * @param  \App\Models\OrderDiscount $orderDiscount
      * @return void
      */
     public function updated(OrderDiscount $orderDiscount)
     {
-        $orderDiscount->order->updateTotals();
+        $this->updateTotals($orderDiscount);
+    }
+
+    protected function updateTotals(OrderDiscount $orderDiscount)
+    {
+        $orderDiscount->sale->updateTotals();
     }
 }

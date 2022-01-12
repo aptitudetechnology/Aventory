@@ -17,7 +17,7 @@
                 ></template
             >
 
-            <template #description> Edit this order item. </template>
+            <template #description> Edit Item</template>
 
             <template #content>
                 <div class="grid md:grid-cols-6 gap-4">
@@ -152,35 +152,13 @@
             </template>
         </jet-dialog-modal>
 
-        <jet-confirmation-modal
+        <ItemConfirmQuantity
+            :selectedProduct="selectedProduct"
+            :quantity="form.quantity"
+            :quantityAvailable="availableForSale"
             :show="confirmingQuantity"
-            @close="confirmingQuantity = false"
-        >
-            <template #title> Confirm Quantity </template>
-
-            <template #content>
-                The amount of {{ selectedProduct.name }} available for sale is:
-                {{ availableForSale }}. Are you sure you want to add
-                {{ form.quantity }} to this order?
-            </template>
-
-            <template #footer>
-                <jet-secondary-button
-                    @click.native="confirmingQuantity = false"
-                >
-                    Nevermind Edit
-                </jet-secondary-button>
-
-                <jet-button
-                    class="ml-2"
-                    @click.native="confirmed"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Yes, Confirm
-                </jet-button>
-            </template>
-        </jet-confirmation-modal>
+            @quantity-confirmed="confirmed"
+        />
     </div>
 </template>
 
@@ -193,12 +171,12 @@ import {
 } from "@headlessui/vue";
 
 import JetDialogModal from "@/Jetstream/DialogModal";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import EditButton from "@/Components/Buttons/EditButton.vue";
 import ProductHoldView from "@/Pages/Orders/Components/ProductHoldView.vue";
 import MoneyInput from "@/Components/Forms/MoneyInput.vue";
 import InventoryDetail from "./InventoryDetail.vue";
+import ItemConfirmQuantity from "@/Pages/Orders/Components/ItemConfirmQuantity";
 
 export default {
     components: {
@@ -207,12 +185,12 @@ export default {
         SwitchGroup,
         SwitchLabel,
         JetDialogModal,
-        JetConfirmationModal,
         JetActionMessage,
         EditButton,
         ProductHoldView,
         MoneyInput,
         InventoryDetail,
+        ItemConfirmQuantity,
     },
 
     props: {
@@ -298,7 +276,10 @@ export default {
             this.$emit("close");
         },
         updateOrderItem() {
-            if (this.form.quantity > this.availableForSale) {
+            if (
+                this.form.quantity - this.orderItem.quantity >
+                this.availableForSale
+            ) {
                 this.confirmingQuantity = true;
             } else {
                 this.confirmed();
@@ -312,7 +293,7 @@ export default {
         update() {
             if (this.confirmedQuantity) {
                 this.form.patch(
-                    route("orders.order-items.update", [
+                    route("sales.order-items.update", [
                         this.orderItem.order_id,
                         this.orderItem.id,
                     ]),

@@ -1,29 +1,18 @@
 <template>
     <jet-form-section @submitted="createOrder">
-        <template #title>Create Order</template>
+        <template #title>Create {{ isQuote ? "Quote" : "Order" }}</template>
 
-        <template #description> Create a new customer order. </template>
+        <template #description>
+            Create a new customer {{ isQuote ? "quote" : "order" }}.
+        </template>
 
         <template #form>
             <div class="col-span-6 grid gap-6">
                 <div
-                    class="
-                        grid
-                        sm:grid-cols-2
-                        lg:grid-cols-5
-                        gap-4
-                        xl:gap-x-20
-                        lg:gap-y-8
-                    "
+                    class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-x-20 lg:gap-y-8"
                 >
                     <div
-                        class="
-                            col-span-1
-                            lg:col-span-3
-                            grid
-                            gap-4
-                            lg:grid-cols-2
-                        "
+                        class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2"
                     >
                         <div>
                             <modal
@@ -74,20 +63,18 @@
                         </div>
                     </div>
                     <div
-                        class="
-                            col-span-1
-                            lg:col-span-2
-                            grid
-                            gap-4
-                            lg:justify-items-end
-                        "
+                        class="col-span-1 lg:col-span-2 grid grid-cols-2 gap-4"
                     >
-                        <div>
-                            <jet-label for="date" value="Order Date" />
+                        <div
+                            :class="
+                                isQuote ? '' : 'col-span-2 justify-self-end'
+                            "
+                        >
+                            <jet-label for="date" value="Date" />
                             <jet-input
                                 id="date"
                                 type="date"
-                                class="mt-1 block w-full"
+                                class="block w-full"
                                 v-model="order.date"
                                 required
                             />
@@ -96,23 +83,45 @@
                                 class="mt-2"
                             />
                         </div>
+                        <div v-if="isQuote">
+                            <jet-label
+                                for="quote_expires"
+                                value="Expire Date"
+                            />
+                            <jet-input
+                                id="quote_expires"
+                                type="date"
+                                class="block w-full"
+                                v-model="order.quote_expires"
+                                required
+                            />
+                            <jet-input-error
+                                :message="order.errors.quote_expires"
+                                class="mt-2"
+                            />
+                        </div>
+                        <QuoteHoldInventoryCheckmark
+                            v-if="isQuote"
+                            v-model="order.hold_inventory"
+                            :errorMessage="order.errors.hold_inventory"
+                        />
                     </div>
                     <div class="sm:col-span-2 lg:col-span-5 sm:flex">
-                        <div class="sm:w-1/4 mb-6 sm:mb-0">
-                            <jet-label class="flex items-center text-lg px-2">
+                        <div class="form-control sm:w-1/4 mb-6 sm:mb-0 sm:mt-4">
+                            <label class="label cursor-pointer">
+                                <span class="label-text">Taxable</span>
                                 <jet-checkbox
-                                    class="mr-2 mb-1"
+                                    class="mr-2"
                                     :checked="order.is_taxable"
                                     v-model="order.is_taxable"
-                                />Taxable</jet-label
-                            >
+                            /></label>
                         </div>
                         <div class="sm:w-3/4 sm:ml-4">
-                            <jet-label for="notes" value="Order Notes" />
+                            <jet-label for="notes" value="Notes" />
                             <text-area-input
                                 id="notes"
                                 type="notes"
-                                class="mt-1 block w-full"
+                                class="block w-full"
                                 v-model="order.notes"
                             />
                             <jet-input-error
@@ -130,7 +139,7 @@
                 type="submit"
                 :class="{ 'opacity-25': order.processing }"
                 :disabled="order.processing"
-                >New Order</jet-button
+                >New {{ isQuote ? "quote" : "order" }}</jet-button
             >
         </template>
     </jet-form-section>
@@ -149,6 +158,7 @@ import SelectBox from "@/Components/Forms/SelectBox.vue";
 import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
+import QuoteHoldInventoryCheckmark from "@/Pages/Orders/Components/QuoteHoldInventoryCheckmark.vue";
 import { Inertia } from "@inertiajs/inertia";
 export default {
     components: {
@@ -164,11 +174,16 @@ export default {
         TextAreaInput,
         Modal,
         CreateCustomerForm,
+        QuoteHoldInventoryCheckmark,
     },
     props: {
         customers: {
             type: Array,
             required: true,
+        },
+        isQuote: {
+            type: Boolean,
+            default: false,
         },
     },
 
@@ -186,6 +201,11 @@ export default {
             order: this.$inertia.form({
                 _method: "POST",
                 date: new Date().toISOString().slice(0, -14),
+                // set default to 3 months from now
+                quote_expires: new Date(new Date().getTime() + 2592000000)
+                    .toISOString()
+                    .slice(0, -14),
+                hold_inventory: false,
                 notes: "",
                 items: [],
                 customer_id: null,
@@ -227,10 +247,11 @@ export default {
 
     methods: {
         createOrder() {
-            this.order.post(route("orders.store"), {
-                errorBag: "createOrder",
-                preserveScroll: true,
-            });
+            if (this.isQuote) {
+                this.order.post(route("quotes.store"));
+            } else {
+                this.order.post(route("orders.store"));
+            }
         },
         updateCustomer(customerId) {
             this.orderCustomer = this.customers.find(

@@ -20,7 +20,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-
+        Gate::authorize('viewAny', Order::class);
         $orders = auth()->user()->currentTeam->orders()
             ->when($request->search, function ($query) use ($request) {
                 $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
@@ -57,7 +57,8 @@ class OrderController extends Controller
         Gate::authorize('create', Order::class);
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
-        return inertia('Orders/Create', compact('customers', 'teamMembers'));
+        $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
+        return inertia('Orders/Create', compact('customers', 'teamMembers', 'priceLevels'));
     }
 
     /**
@@ -70,7 +71,7 @@ class OrderController extends Controller
     {
         Gate::authorize('create', Order::class);
 
-        $order = auth()->user()->orders()->create($request->validated());
+        $order = auth()->user()->currentTeam->orders()->create($request->validated());
 
         $order->setTaxPercentage();
 
@@ -134,7 +135,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Order $order
      * @return \Illuminate\Http\Response
      */
     public function destroy(Order $order)

@@ -1,33 +1,23 @@
 <template>
     <div
-        class="
-            flex
-            items-center
-            px-4
-            lg:px-0
-            fixed
-            top-20
-            right-4
-            sm:right-6
-            lg:static
-        "
+        v-if="show"
+        class="flex items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
     >
-        <div class="dropdown dropdown-hover dropdown-end z-20">
+        <div
+            v-if="order.items.length > 0"
+            class="dropdown dropdown-hover dropdown-end"
+        >
             <PrintButton class="bg-white">Print</PrintButton>
             <ul
                 tabindex="0"
-                class="
-                    shadow
-                    menu
-                    dropdown-content
-                    bg-base-100
-                    rounded-lg
-                    text-right
-                    w-52
-                "
+                class="shadow menu dropdown-content bg-base-100 rounded-lg text-right w-52"
             >
                 <li>
-                    <a @click="printOrder" class="justify-end px-4">Order</a>
+                    <a
+                        @click="printOrder"
+                        class="justify-end px-4 capitalize"
+                        >{{ order.type }}</a
+                    >
                 </li>
                 <li>
                     <a @click="printPickTicket" class="justify-end px-4"
@@ -43,15 +33,21 @@
 import PrintButton from "@Components/Buttons/PrintButton.vue";
 
 export default {
+    components: {
+        PrintButton,
+    },
     props: {
         order: {
             type: Object,
             required: true,
         },
     },
-    components: {
-        PrintButton,
+    computed: {
+        show() {
+            return this.order.items.length > 0;
+        },
     },
+
     methods: {
         printOrder() {
             this.showPopup(route("orders.print", this.order.id), "Print");
@@ -59,7 +55,7 @@ export default {
         printPickTicket() {
             this.showPopup(
                 route("orders.print", {
-                    order: this.order,
+                    sale: this.order,
                     template: "pick_ticket",
                 }),
                 "Print"

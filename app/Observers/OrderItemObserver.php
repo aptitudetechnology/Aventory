@@ -8,7 +8,7 @@ class OrderItemObserver
 {
     public function saved(OrderItem $orderItem)
     {
-        $orderItem->order->updateTotals();
+        $orderItem->sale->updateTotals();
     }
 
     public function deleting(OrderItem $orderItem)
@@ -20,6 +20,6 @@ class OrderItemObserver
 
     public function deleted(OrderItem $orderItem)
     {
-        $orderItem->order->updateTotals();
+        $orderItem->sale->updateTotals();
     }
 }

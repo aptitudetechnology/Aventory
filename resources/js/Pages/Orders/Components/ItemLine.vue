@@ -1,19 +1,7 @@
 <template>
-    <div
-        @click="editing = true"
-        class="
-            relative
-            md:flex md:space-x-6
-            py-4
-            px-4
-            items-center
-            justify-between
-            cursor-pointer
-            hover:bg-gray-50
-        "
-    >
+    <LineItem @click="editing = true">
         <div class="flex items-center w-full md:w-auto">
-            <div @click.stop class="flex items-center h-full">
+            <div @click.stop class="flex items-center h-full hidden">
                 <jet-label class="sr-only" :for="'item-selected' + form.id"
                     >Select</jet-label
                 >
@@ -25,20 +13,12 @@
                     :checked="selected"
                 ></jet-checkbox>
             </div>
-            <div class="ml-6 w-full md:w-auto">
-                <div title="Product Name" class="text-lg">
+            <div class="w-full md:w-auto">
+                <div title="Product Name" class="card-title mb-2">
                     {{ form.product_name }}
                 </div>
                 <div
-                    class="
-                        flex
-                        items-end
-                        flex-row-reverse
-                        md:flex-row md:-ml-2
-                        flex-wrap
-                        w-full
-                        md:w-auto
-                    "
+                    class="flex items-end flex-row-reverse md:flex-row md:-ml-2 flex-wrap w-full md:w-auto"
                 >
                     <DeleteOrderItem :item="item" />
 
@@ -50,19 +30,14 @@
                     ></edit-order-item>
                     <div
                         @click.stop
+                        @hover.stop
                         class="md:px-2 flex items-center py-1 mr-auto"
                     >
-                        <label
-                            class="
-                                px-1
-                                pr-2
-                                text-sm text-gray-500
-                                tracking-wider
-                                uppercase
-                            "
+                        <jet-label
+                            class="px-0 pr-2 py-0 text-gray-700 uppercase tracking-wide"
                             :for="'no_discount' + form.id"
                             >No Discount
-                        </label>
+                        </jet-label>
                         <jet-checkbox
                             :id="'no_discount' + form.id"
                             @change="updateItem"
@@ -75,14 +50,7 @@
             </div>
         </div>
         <div
-            class="
-                flex flex-row-reverse
-                justify-between
-                w-full
-                md:w-auto md:flex-col md:items-end
-                pl-10
-                md:pl-0 md:text-right
-            "
+            class="flex flex-row-reverse justify-between w-full md:w-auto md:flex-col md:items-end pl-10 md:pl-0 md:text-right"
         >
             <div title="Line Total" class="text-lg">
                 {{ formatMoney(form.line_total) }}
@@ -106,17 +74,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </LineItem>
 </template>
 
 <script>
 import Check from "@heroicons/vue/outline/CheckIcon";
-
+import LineItem from "@Components/Lists/LineItem.vue";
 import EditOrderItem from "./ItemEdit.vue";
 import DeleteOrderItem from "./ItemDelete.vue";
 export default {
     components: {
         Check,
+        LineItem,
         EditOrderItem,
         DeleteOrderItem,
     },
@@ -140,7 +109,7 @@ export default {
     methods: {
         updateItem() {
             this.form.patch(
-                route("orders.order-items.update", [
+                route("sales.order-items.update", [
                     this.item.order_id,
                     this.item.id,
                 ])

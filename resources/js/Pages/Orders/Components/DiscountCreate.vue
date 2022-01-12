@@ -11,7 +11,9 @@
             :show="creatingDiscount"
             @close="creatingDiscount = false"
         >
-            <template #title>Add a discount to apply to this order.</template>
+            <template #title
+                >Add a discount to apply to this {{ order.type }}.</template
+            >
 
             <template #content>
                 <div class="grid grid-cols-6 gap-4">
@@ -127,7 +129,7 @@ export default {
 
     methods: {
         createDiscount() {
-            this.discount.post(route("orders.discounts.store", this.order), {
+            this.discount.post(route("sales.discounts.store", this.order), {
                 preserveScroll: true,
                 preserveState: true,
                 onSuccess: () => {

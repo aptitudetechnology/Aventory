@@ -12,8 +12,8 @@
             <template #title> Delete Discount </template>
 
             <template #content>
-                Are you sure you want to delete this discount from the order?
-                This action cannot be undone.
+                Are you sure you want to delete this discount from the
+                {{ discount.sale_type }}? This action cannot be undone.
             </template>
 
             <template #footer>
@@ -65,9 +65,9 @@ export default {
 
         deleteDiscount() {
             this.form.delete(
-                route("orders.discounts.destroy", [
+                route("sales.discounts.destroy", [
                     this.discount.order_id,
-                    this.discount,
+                    this.discount.id,
                 ]),
                 {
                     errorBag: "deleteDiscount",

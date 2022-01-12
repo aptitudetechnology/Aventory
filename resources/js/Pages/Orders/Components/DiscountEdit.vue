@@ -1,7 +1,7 @@
 <template>
     <div>
         <jet-dialog-modal maxWidth="3xl" :show="editingDiscount" @close="close">
-            <template #title>Add a discount to apply to this order.</template>
+            <template #title>Edit Discount</template>
             <template #content>
                 <div class="grid grid-cols-6 gap-4">
                     <form
@@ -9,10 +9,8 @@
                         @keydown.enter="createDiscount"
                         class="col-span-6 grid gap-4 md:grid-cols-5 items-start"
                     >
-                        <div class="grid gap-2 md:col-span-3">
-                            <jet-label for="description"
-                                >Discount Description</jet-label
-                            >
+                        <div class="grid md:col-span-3">
+                            <jet-label for="description">Description</jet-label>
                             <text-area-input
                                 required
                                 v-model="updatedDiscount.description"
@@ -22,7 +20,7 @@
                                 :message="updatedDiscount.errors.description"
                             />
                         </div>
-                        <div class="grid gap-2 md:col-span-2">
+                        <div class="grid md:col-span-2">
                             <jet-label
                                 >Percentage Discount?<jet-checkbox
                                     v-model="updatedDiscount.is_percentage"
@@ -34,7 +32,7 @@
 
                             <div
                                 v-show="updatedDiscount.is_percentage"
-                                class="grid gap-2"
+                                class="grid"
                             >
                                 <jet-label for="percentage"
                                     >Percentage %</jet-label
@@ -61,7 +59,7 @@
                             </div>
                             <div
                                 v-show="!updatedDiscount.is_percentage"
-                                class="grid gap-2"
+                                class="grid"
                             >
                                 <jet-label for="amount"
                                     >Discount Amount</jet-label
@@ -78,12 +76,7 @@
 
             <template #footer>
                 <div
-                    class="
-                        space-y-4
-                        sm:space-y-0 sm:flex sm:justify-between
-                        items-center
-                        w-full
-                    "
+                    class="space-y-4 sm:space-y-0 sm:flex sm:justify-between items-center w-full"
                 >
                     <jet-secondary-button type="button" @click="close"
                         >Cancel</jet-secondary-button
@@ -146,7 +139,7 @@ export default {
     methods: {
         createDiscount() {
             this.updatedDiscount.patch(
-                route("orders.discounts.update", [
+                route("sales.discounts.update", [
                     this.discount.order_id,
                     this.discount,
                 ]),

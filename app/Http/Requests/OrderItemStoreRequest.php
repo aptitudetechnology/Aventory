@@ -14,7 +14,7 @@ class OrderItemStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('update', $this->order);
+        return $this->user()->can('update', $this->sale);
     }
 
     /**

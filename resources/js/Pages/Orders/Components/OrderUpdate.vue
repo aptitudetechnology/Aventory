@@ -1,9 +1,11 @@
 <template>
     <details-section>
         <template #title
-            ><span class="uppercase">{{ order.customer.name }}:</span> Order #{{
-                order.id
-            }}
+            ><span class="uppercase"
+                >{{ order.customer.name }}: {{ order.type }} #{{
+                    order.id
+                }}</span
+            >
             <span
                 :class="[
                     'ml-4 fixed bottom-5 right-10 z-50 md:static rounded bg-white p-3 text-base',
@@ -21,18 +23,8 @@
         </template>
 
         <div class="col-span-6 grid gap-6">
-            <div
-                class="
-                    grid
-                    sm:grid-cols-2
-                    lg:grid-cols-5
-                    gap-4
-                    xl:gap-x-20
-                    lg:gap-y-4
-                    items-start
-                "
-            >
-                <div class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2">
+            <div class="grid lg:grid-cols-2 gap-x-4 gap-y-2 2xl:gap-x-20">
+                <div class="col-span-1 grid xl:grid-cols-2 gap-x-4 gap-y-2">
                     <div>
                         <search-select-box
                             labelValue="Customer"
@@ -81,16 +73,13 @@
                         />
                     </div>
                 </div>
-                <div
-                    class="
-                        col-span-1
-                        lg:col-span-2
-                        grid
-                        gap-4
-                        lg:justify-items-end
-                    "
-                >
-                    <div class="form-control">
+                <div class="col-span-1 grid grid-cols-2 gap-4">
+                    <div
+                        class="form-control"
+                        :class="
+                            order.is_quote ? '' : 'col-span-2 justify-self-end'
+                        "
+                    >
                         <jet-label for="date" value="Order Date" />
                         <jet-input
                             id="date"
@@ -104,8 +93,28 @@
                             class="mt-2"
                         />
                     </div>
+                    <div v-if="isQuote">
+                        <jet-label for="quote_expires" value="Expire Date" />
+                        <jet-input
+                            id="quote_expires"
+                            type="date"
+                            class="block w-full"
+                            v-model="updatedOrder.quote_expires"
+                            required
+                        />
+                        <jet-input-error
+                            :message="updatedOrder.errors.quote_expires"
+                            class="mt-2"
+                        />
+                    </div>
+                    <QuoteHoldInventoryCheckmark
+                        v-if="isQuote"
+                        v-model="updatedOrder.hold_inventory"
+                        @change="updateOrder"
+                        :errorMessage="updatedOrder.errors.hold_inventory"
+                    />
                 </div>
-                <div class="sm:col-span-2 lg:col-span-5">
+                <div class="lg:col-span-2">
                     <div class="">
                         <jet-label for="notes" value="Order Notes" />
                         <text-area-input
@@ -136,7 +145,7 @@ import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 import OrderItems from "@/Pages/Orders/Components/Items.vue";
 import Discounts from "@/Pages/Orders/Components/Discounts.vue";
 import Totals from "@/Pages/Orders/Components/Totals.vue";
-
+import QuoteHoldInventoryCheckmark from "@/Pages/Orders/Components/QuoteHoldInventoryCheckmark.vue";
 import { Inertia } from "@inertiajs/inertia";
 
 // import debounce from "lodash/debounce";
@@ -151,6 +160,7 @@ export default {
         OrderItems,
         Discounts,
         Totals,
+        QuoteHoldInventoryCheckmark,
     },
     props: {
         order: {
@@ -185,9 +195,16 @@ export default {
                 contact_id: this.order.contact_id,
                 team_member_id: this.order.team_member_id,
                 date: this.order.date,
+                quote_expires: this.order.quote_expires,
+                hold_inventory: this.order.hold_inventory,
                 notes: this.order.notes,
             }),
         };
+    },
+    computed: {
+        isQuote() {
+            return this.order.is_quote;
+        },
     },
     watch: {
         "updatedOrder.customer_id": _debounce(function () {
@@ -197,6 +214,9 @@ export default {
             this.updateOrder();
         }, 500),
         "updatedOrder.date": _debounce(function () {
+            this.updateOrder();
+        }, 1000),
+        "updatedOrder.quote_expires": _debounce(function () {
             this.updateOrder();
         }, 1000),
         "updatedOrder.notes": _debounce(function () {
@@ -231,19 +251,29 @@ export default {
         },
     },
     methods: {
+        sendQuoteChanges() {
+            this.updatedOrder.patch(route("quotes.update", this.order.id), {
+                errorBag: "updateOrder",
+                preserveScroll: true,
+            });
+        },
+        sendOrderChanges() {
+            this.updatedOrder.patch(route("orders.update", this.order.id), {
+                errorBag: "updateOrder",
+                preserveScroll: true,
+            });
+        },
         updateOrder() {
             this.$nextTick(() => {
                 if (
                     this.updatedOrder.isDirty &&
                     !this.updatedOrder.processing
                 ) {
-                    this.updatedOrder.patch(
-                        route("orders.update", this.order.id),
-                        {
-                            errorBag: "updateOrder",
-                            preserveScroll: true,
-                        }
-                    );
+                    if (this.order.is_quote) {
+                        this.sendQuoteChanges();
+                    } else {
+                        this.sendOrderChanges();
+                    }
                 }
             });
         },

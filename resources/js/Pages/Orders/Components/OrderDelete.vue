@@ -1,17 +1,19 @@
 <template>
     <jet-action-section>
-        <template #title> Delete Order</template>
+        <template #title
+            ><span class="capitalize">Delete {{ order.type }}</span></template
+        >
 
         <template #content>
             <div class="text-sm text-gray-600">
-                If this order is deleted, all associated order items, associated
-                shipments and associated invoices will be deleted. This is
-                permanent and cannot be undone.
+                If this {{ order.type }} is deleted, all associated products and
+                services, associated shipments, and associated invoices will be
+                deleted. This is permanent and cannot be undone.
             </div>
 
             <div class="mt-5">
                 <jet-danger-button @click="confirmOrderDeletion">
-                    Delete Order
+                    Delete {{ order.type }}
                 </jet-danger-button>
             </div>
 
@@ -20,11 +22,15 @@
                 :show="confirmingOrderDeletion"
                 @close="confirmingOrderDeletion = false"
             >
-                <template #title> Delete Order </template>
+                <template #title
+                    ><span class="capitalize">
+                        Delete {{ order.type }}
+                    </span></template
+                >
 
                 <template #content>
-                    Are you sure you want to delete this order? There will be no
-                    way to recover it.
+                    Are you sure you want to delete this {{ order.type }}? There
+                    will be no way to recover it.
                 </template>
 
                 <template #footer>
@@ -37,10 +43,9 @@
                     <jet-danger-button
                         class="ml-2"
                         @click="deleteOrder"
-                        :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
-                        Delete Order
+                        Yes, Delete
                     </jet-danger-button>
                 </template>
             </jet-confirmation-modal>
@@ -79,9 +84,11 @@ export default {
         },
 
         deleteOrder() {
-            this.form.delete(route("orders.destroy", this.order), {
-                errorBag: "deleteOrder",
-            });
+            if (this.order.is_quote) {
+                this.form.delete(route("quotes.destroy", this.order.id));
+            } else {
+                this.form.delete(route("orders.destroy", this.order.id));
+            }
         },
     },
 };
