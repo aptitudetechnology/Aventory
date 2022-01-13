@@ -2810,9 +2810,6 @@ html {
 .mt-1 {
 	margin-top: 0.25rem;
 }
-.ml-2 {
-	margin-left: 0.5rem;
-}
 .mb-6 {
 	margin-bottom: 1.5rem;
 }
@@ -2830,6 +2827,9 @@ html {
 }
 .ml-1 {
 	margin-left: 0.25rem;
+}
+.ml-2 {
+	margin-left: 0.5rem;
 }
 .-mr-0\.5 {
 	margin-right: -0.125rem;
@@ -2896,9 +2896,6 @@ html {
 }
 .mr-1 {
 	margin-right: 0.25rem;
-}
-.mb-1 {
-	margin-bottom: 0.25rem;
 }
 .block {
 	display: block;
@@ -3207,6 +3204,9 @@ html {
 }
 .grid-cols-12 {
 	grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.flex-row {
+	flex-direction: row;
 }
 .flex-row-reverse {
 	flex-direction: row-reverse;
