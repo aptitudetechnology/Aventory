@@ -36,10 +36,15 @@ export default {
     },
     methods: {
         viewOrder() {
-            this.showPopup(
-                route("orders.show", this.item.order_id),
-                "View Order"
-            );
+            this.item.sale.is_quote
+                ? this.showPopup(
+                      route("quotes.show", this.item.order_id),
+                      "View Order"
+                  )
+                : this.showPopup(
+                      route("orders.show", this.item.order_id),
+                      "View Order"
+                  );
         },
     },
 };
