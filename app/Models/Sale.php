@@ -66,6 +66,11 @@ class Sale extends Model
     return $value ? $value : 0;
   }
 
+  public function getRouteAttribute()
+  {
+    return $this->is_quote ? 'quotes.show' : 'orders.show';
+  }
+
   public function team()
   {
     return $this->belongsTo(Team::class, 'team_id');

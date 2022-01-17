@@ -30,6 +30,7 @@ use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
 use App\Http\Controllers\Api\ApiOrderInventoryController;
 use App\Http\Controllers\Api\ApiProductPriceController;
 use App\Http\Controllers\OrderPDFController;
+use App\Http\Controllers\Sales\ConvertSaleController;
 use App\Http\Controllers\ViewInventoryController;
 
 use Illuminate\Support\Facades\Route;
@@ -129,6 +130,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('sales.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
 
+    Route::post('sales/{sale}/convert', [ConvertSaleController::class, 'convert'])->name('sales.convert');
 
     Route::get('sales/{sale}/print', OrderPDFController::class)->name('orders.print');
     Route::apiResource('sales.discounts', ApiDiscountsController::class);

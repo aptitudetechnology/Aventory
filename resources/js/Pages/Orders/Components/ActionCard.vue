@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="show"
-        class="flex items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
+        class="flex space-x-2 items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
     >
         <div
             v-if="order.items.length > 0"
@@ -26,6 +26,7 @@
                 </li>
             </ul>
         </div>
+        <button @click="convert" class="btn btn-sm">{{ convertText }}</button>
     </div>
 </template>
 
@@ -44,7 +45,12 @@ export default {
     },
     computed: {
         show() {
-            return this.order.items.length > 0;
+            return true;
+        },
+        convertText() {
+            return this.order.is_quote
+                ? "Convert to Order"
+                : "Convert to Quote";
         },
     },
 
@@ -60,6 +66,9 @@ export default {
                 }),
                 "Print"
             );
+        },
+        convert() {
+            this.$inertia.post(route("sales.convert", this.order.id));
         },
     },
 };
