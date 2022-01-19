@@ -3,10 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Quote;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -89,25 +87,25 @@ class ConvertSalesTest extends TestCase
         $response->assertForbidden();
     }
 
-    /**
-     * Orders that have inventory matched should not be convertable to quotes.
-     * 
-     * @return void
-     */
-    public function test_order_with_matched_inventory_cannot_be_converted_to_quote()
-    {
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+    // /**
+    //  * Orders that have inventory matched should not be convertable to quotes.
+    //  * 
+    //  * @return void
+    //  */
+    // public function test_order_with_matched_inventory_cannot_be_converted_to_quote()
+    // {
+    //     $this->actingAs($user = User::factory()->withPersonalTeam()->create());
 
-        $order = $user->currentTeam->orders()->save(Order::factory()->withInventory()->make());
+    //     $order = $user->currentTeam->orders()->save(Order::factory()->withInventory()->make());
 
-        $id = $order->id;
-        $response = $this->post(\route('sales.convert', $id));
+    //     $id = $order->id;
+    //     $response = $this->post(\route('sales.convert', $id));
 
-        $this->assertDatabaseHas('orders', [
-            'id' => $id,
-            'is_quote' => false,
-        ]);
+    //     $this->assertDatabaseHas('orders', [
+    //         'id' => $id,
+    //         'is_quote' => false,
+    //     ]);
 
-        $response->assertRedirect(\route('orders.show', $id));
-    }
+    //     $response->assertRedirect(\route('orders.show', $id));
+    // }
 }

@@ -32,6 +32,7 @@ use App\Http\Controllers\Api\ApiProductPriceController;
 use App\Http\Controllers\OrderPDFController;
 use App\Http\Controllers\Sales\ConvertSaleController;
 use App\Http\Controllers\ViewInventoryController;
+use App\Http\Controllers\Api\ApiSalesController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -141,6 +142,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         });
 
     Route::apiResource('inventory-archive', ApiInventoryArchiveController::class);
+
+    Route::name('api.')->prefix('api')->group(function () {
+        Route::apiResource('sales', ApiSalesController::class)->only(['index', 'show']);
+    });
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');

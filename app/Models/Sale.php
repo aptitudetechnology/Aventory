@@ -16,7 +16,7 @@ class Sale extends Model
 {
   use HasFactory;
   protected $with = ['customer', 'teamMember'];
-  protected $appends = ['total_of_items_with_discount', 'type'];
+  protected $appends = ['total_of_items_with_discount', 'type', 'name', 'full_name', 'route'];
   protected $table = 'orders';
   protected $guarded = [];
 

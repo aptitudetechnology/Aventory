@@ -2969,6 +2969,9 @@ html {
 .max-h-96 {
 	max-height: 24rem;
 }
+.max-h-52 {
+	max-height: 13rem;
+}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -3040,6 +3043,9 @@ html {
 }
 .w-3 {
 	width: 0.75rem;
+}
+.w-1\/4 {
+	width: 25%;
 }
 .min-w-0 {
 	min-width: 0px;
@@ -3314,6 +3320,11 @@ html {
 	margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+.space-x-6 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-x-reverse: 0;
+	margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+	margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .divide-y > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-y-reverse: 0;
 	border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -3584,6 +3595,9 @@ html {
 }
 .p-3 {
 	padding: 0.75rem;
+}
+.p-0 {
+	padding: 0px;
 }
 .px-4 {
 	padding-left: 1rem;
@@ -4983,6 +4997,12 @@ fade-enter-from, fade-leave-to {
 		row-gap: 2rem;
 	}
 
+	.lg\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-x-reverse: 0;
+		margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+		margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+	}
+
 	.lg\:px-8 {
 		padding-left: 2rem;
 		padding-right: 2rem;
@@ -5020,6 +5040,14 @@ fade-enter-from, fade-leave-to {
 		width: 24rem;
 	}
 
+	.xl\:w-3\/4 {
+		width: 75%;
+	}
+
+	.xl\:w-1\/4 {
+		width: 25%;
+	}
+
 	.xl\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -5031,6 +5059,18 @@ fade-enter-from, fade-leave-to {
 	.xl\:gap-x-20 {
 		-moz-column-gap: 5rem;
 		     column-gap: 5rem;
+	}
+
+	.xl\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-x-reverse: 0;
+		margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+		margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+	}
+
+	.xl\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-y-reverse: 0;
+		margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+		margin-bottom: calc(0px * var(--tw-space-y-reverse));
 	}
 }
 @media (min-width: 1536px) {

@@ -1,6 +1,6 @@
 <template>
     <orders-layout>
-        <OrderCreate :customers="customers" class="max-w-screen-lg mx-auto" />
+        <OrderCreate :customers="customers" />
     </orders-layout>
 </template>
 

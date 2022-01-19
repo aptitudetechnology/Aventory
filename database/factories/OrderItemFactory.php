@@ -35,12 +35,4 @@ class OrderItemFactory extends Factory
             'no_discount' => $this->faker->boolean,
         ];
     }
-
-    public function withInventory()
-    {
-        return $this->afterMaking(function (OrderItem $orderItem) {
-            $orderItem->product->inventory = $this->faker->randomDigit;
-            $orderItem->product->save();
-        });
-    }
 }

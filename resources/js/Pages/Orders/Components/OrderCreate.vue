@@ -1,148 +1,157 @@
 <template>
-    <jet-form-section @submitted="createOrder">
-        <template #title>Create {{ isQuote ? "Quote" : "Order" }}</template>
+    <div class="xl:flex items-start xl:space-x-6 space-y-6 xl:space-y-0">
+        <jet-form-section @submitted="createOrder" class="xl:w-3/4">
+            <template #title>Create {{ isQuote ? "Quote" : "Order" }}</template>
 
-        <template #description>
-            Create a new customer {{ isQuote ? "quote" : "order" }}.
-        </template>
+            <template #description>
+                Create a new customer {{ isQuote ? "quote" : "order" }}.
+            </template>
 
-        <template #form>
-            <div class="col-span-6 grid gap-6">
-                <div
-                    class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-x-20 lg:gap-y-8"
-                >
+            <template #form>
+                <div class="col-span-6 grid gap-6">
                     <div
-                        class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2"
-                    >
-                        <div>
-                            <modal
-                                :show="creatingCustomer"
-                                @close="creatingCustomer = false"
-                            >
-                                <create-customer-form
-                                    @created="createdCustomer"
-                                    :redirect="false"
-                                    :customerName="customerName"
-                                />
-                            </modal>
-                            <search-select-box
-                                labelValue="Customer"
-                                :items="customers"
-                                :selectedItem="orderCustomer"
-                                @update="updateCustomer"
-                                @add="addCustomer"
-                            />
-                            <jet-input-error
-                                :message="order.errors.customer_id"
-                                class="mt-2"
-                            />
-                        </div>
-                        <div v-show="orderCustomer && customerContacts.length">
-                            <select-box
-                                labelValue="Customer Contact"
-                                :items="customerContacts"
-                                v-model="contact"
-                                :selectedItem="contact"
-                            />
-                            <jet-input-error
-                                :message="order.errors.contact_id"
-                                class="mt-2"
-                            />
-                        </div>
-                        <div class="">
-                            <select-box
-                                labelValue="Sales Person"
-                                :items="teamMembers"
-                                :selectedItem="teamMember"
-                                v-model="teamMember"
-                            />
-                            <jet-input-error
-                                :message="order.errors.team_member_id"
-                                class="mt-2"
-                            />
-                        </div>
-                    </div>
-                    <div
-                        class="col-span-1 lg:col-span-2 grid grid-cols-2 gap-4"
+                        class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 2xl:gap-x-20 lg:gap-y-8"
                     >
                         <div
-                            :class="
-                                isQuote ? '' : 'col-span-2 justify-self-end'
-                            "
+                            class="col-span-1 lg:col-span-3 grid gap-4 lg:grid-cols-2"
                         >
-                            <jet-label for="date" value="Date" />
-                            <jet-input
-                                id="date"
-                                type="date"
-                                class="block w-full"
-                                v-model="order.date"
-                                required
-                            />
-                            <jet-input-error
-                                :message="order.errors.date"
-                                class="mt-2"
+                            <div>
+                                <modal
+                                    :show="creatingCustomer"
+                                    @close="creatingCustomer = false"
+                                >
+                                    <create-customer-form
+                                        @created="createdCustomer"
+                                        :redirect="false"
+                                        :customerName="customerName"
+                                    />
+                                </modal>
+                                <search-select-box
+                                    labelValue="Customer"
+                                    :items="customers"
+                                    :selectedItem="orderCustomer"
+                                    @update="updateCustomer"
+                                    @add="addCustomer"
+                                />
+                                <jet-input-error
+                                    :message="order.errors.customer_id"
+                                    class="mt-2"
+                                />
+                            </div>
+                            <div
+                                v-show="
+                                    orderCustomer && customerContacts.length
+                                "
+                            >
+                                <select-box
+                                    labelValue="Customer Contact"
+                                    :items="customerContacts"
+                                    v-model="contact"
+                                    :selectedItem="contact"
+                                />
+                                <jet-input-error
+                                    :message="order.errors.contact_id"
+                                    class="mt-2"
+                                />
+                            </div>
+                            <div class="">
+                                <select-box
+                                    labelValue="Sales Person"
+                                    :items="teamMembers"
+                                    :selectedItem="teamMember"
+                                    v-model="teamMember"
+                                />
+                                <jet-input-error
+                                    :message="order.errors.team_member_id"
+                                    class="mt-2"
+                                />
+                            </div>
+                        </div>
+                        <div
+                            class="col-span-1 lg:col-span-2 grid grid-cols-2 gap-4"
+                        >
+                            <div
+                                :class="
+                                    isQuote ? '' : 'col-span-2 justify-self-end'
+                                "
+                            >
+                                <jet-label for="date" value="Date" />
+                                <jet-input
+                                    id="date"
+                                    type="date"
+                                    class="block w-full"
+                                    v-model="order.date"
+                                    required
+                                />
+                                <jet-input-error
+                                    :message="order.errors.date"
+                                    class="mt-2"
+                                />
+                            </div>
+                            <div v-if="isQuote">
+                                <jet-label
+                                    for="quote_expires"
+                                    value="Expire Date"
+                                />
+                                <jet-input
+                                    id="quote_expires"
+                                    type="date"
+                                    class="block w-full"
+                                    v-model="order.quote_expires"
+                                    required
+                                />
+                                <jet-input-error
+                                    :message="order.errors.quote_expires"
+                                    class="mt-2"
+                                />
+                            </div>
+                            <QuoteHoldInventoryCheckmark
+                                v-if="isQuote"
+                                v-model="order.hold_inventory"
+                                :errorMessage="order.errors.hold_inventory"
                             />
                         </div>
-                        <div v-if="isQuote">
-                            <jet-label
-                                for="quote_expires"
-                                value="Expire Date"
-                            />
-                            <jet-input
-                                id="quote_expires"
-                                type="date"
-                                class="block w-full"
-                                v-model="order.quote_expires"
-                                required
-                            />
-                            <jet-input-error
-                                :message="order.errors.quote_expires"
-                                class="mt-2"
-                            />
-                        </div>
-                        <QuoteHoldInventoryCheckmark
-                            v-if="isQuote"
-                            v-model="order.hold_inventory"
-                            :errorMessage="order.errors.hold_inventory"
-                        />
-                    </div>
-                    <div class="sm:col-span-2 lg:col-span-5 sm:flex">
-                        <div class="form-control sm:w-1/4 mb-6 sm:mb-0 sm:mt-4">
-                            <label class="label cursor-pointer">
-                                <span class="label-text">Taxable</span>
-                                <jet-checkbox
-                                    class="mr-2"
-                                    :checked="order.is_taxable"
-                                    v-model="order.is_taxable"
-                            /></label>
-                        </div>
-                        <div class="sm:w-3/4 sm:ml-4">
-                            <jet-label for="notes" value="Notes" />
-                            <text-area-input
-                                id="notes"
-                                type="notes"
-                                class="block w-full"
-                                v-model="order.notes"
-                            />
-                            <jet-input-error
-                                :message="order.errors.notes"
-                                class="mt-2"
-                            />
+                        <div class="sm:col-span-2 lg:col-span-5 sm:flex">
+                            <div
+                                class="form-control sm:w-1/4 mb-6 sm:mb-0 sm:mt-4"
+                            >
+                                <label class="label cursor-pointer">
+                                    <span class="label-text">Taxable</span>
+                                    <jet-checkbox
+                                        class="mr-2"
+                                        :checked="order.is_taxable"
+                                        v-model="order.is_taxable"
+                                /></label>
+                            </div>
+                            <div class="sm:w-3/4 sm:ml-4">
+                                <jet-label for="notes" value="Notes" />
+                                <text-area-input
+                                    id="notes"
+                                    type="notes"
+                                    class="block w-full"
+                                    v-model="order.notes"
+                                />
+                                <jet-input-error
+                                    :message="order.errors.notes"
+                                    class="mt-2"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </template>
+            </template>
 
-        <template #actions>
-            <jet-button
-                type="submit"
-                :class="{ 'opacity-25': order.processing }"
-                :disabled="order.processing"
-                >New {{ isQuote ? "quote" : "order" }}</jet-button
-            >
-        </template>
-    </jet-form-section>
+            <template #actions>
+                <jet-button
+                    type="submit"
+                    :class="{ 'opacity-25': order.processing }"
+                    :disabled="order.processing"
+                    >New {{ isQuote ? "quote" : "order" }}</jet-button
+                >
+            </template>
+        </jet-form-section>
+        <company-open-orders :customer="orderCustomer" class="xl:w-1/4" />
+    </div>
 </template>
 
 <script>
@@ -160,6 +169,8 @@ import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";
 import QuoteHoldInventoryCheckmark from "@/Pages/Orders/Components/QuoteHoldInventoryCheckmark.vue";
 import { Inertia } from "@inertiajs/inertia";
+
+import CompanyOpenOrders from "@/Pages/Orders/Components/CompanyOpenOrders.vue";
 export default {
     components: {
         JetSectionTitle,
@@ -175,6 +186,7 @@ export default {
         Modal,
         CreateCustomerForm,
         QuoteHoldInventoryCheckmark,
+        CompanyOpenOrders,
     },
     props: {
         customers: {
