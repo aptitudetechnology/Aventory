@@ -24,9 +24,9 @@ class BlockFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
             'nursery_location_id' => NurseryLocation::factory(),
-            'has_places' => $this->faker->boolean,
+            'has_places' => $this->faker->boolean(),
         ];
     }
 }

@@ -30,9 +30,9 @@ class OrderItemFactory extends Factory
             'order_id' => Order::factory(),
             'product_id' => Product::factory(),
             'size_id' => Size::factory(),
-            'quantity' => $this->faker->randomDigit,
+            'quantity' => $this->faker->randomDigit(),
             'unit_price' => $this->faker->randomFloat(2, 0, 100),
-            'no_discount' => $this->faker->boolean,
+            'no_discount' => $this->faker->boolean(),
         ];
     }
 }

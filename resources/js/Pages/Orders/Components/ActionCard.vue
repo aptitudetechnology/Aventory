@@ -1,11 +1,11 @@
 <template>
     <div
         v-if="show"
-        class="flex space-x-2 items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
+        class="flex flex-wrap items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
     >
         <div
             v-if="order.items.length > 0"
-            class="dropdown dropdown-hover dropdown-end"
+            class="dropdown dropdown-hover dropdown-end mr-2"
         >
             <PrintButton class="bg-white">Print</PrintButton>
             <ul
@@ -26,16 +26,17 @@
                 </li>
             </ul>
         </div>
-        <button @click="convert" class="btn btn-sm">{{ convertText }}</button>
+        <convert-sale :order="order" />
     </div>
 </template>
 
 <script>
 import PrintButton from "@Components/Buttons/PrintButton.vue";
-
+import ConvertSale from "@/Pages/Orders/Components/ConvertSale.vue";
 export default {
     components: {
         PrintButton,
+        ConvertSale,
     },
     props: {
         order: {
@@ -46,11 +47,6 @@ export default {
     computed: {
         show() {
             return true;
-        },
-        convertText() {
-            return this.order.is_quote
-                ? "Convert to Order"
-                : "Convert to Quote";
         },
     },
 
@@ -66,9 +62,6 @@ export default {
                 }),
                 "Print"
             );
-        },
-        convert() {
-            this.$inertia.post(route("sales.convert", this.order.id));
         },
     },
 };

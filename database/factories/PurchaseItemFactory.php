@@ -32,8 +32,8 @@ class PurchaseItemFactory extends Factory
             'unit_price' => $this->faker->randomFloat(0, 0, 9999999999.),
             'quantity_ordered' => $this->faker->numberBetween(-10000, 10000),
             'quantity_confirmed' => $this->faker->numberBetween(-10000, 10000),
-            'received' => $this->faker->boolean,
-            'printed' => $this->faker->boolean,
+            'received' => $this->faker->boolean(),
+            'printed' => $this->faker->boolean(),
         ];
     }
 }

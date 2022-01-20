@@ -25,7 +25,7 @@ class FeatureFactory extends Factory
     {
         return [
             'team_id' => Team::factory(),
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
         ];
     }
 }

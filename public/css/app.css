@@ -1249,8 +1249,38 @@ html {
 	outline-offset: 2px;
 	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsla(var(--bc)/.2);
 }
+.input-group {
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+}
 .input-group>*,.input-group>.input {
 	border-radius: 0;
+}
+.input-group-sm {
+	font-size: .875rem;
+	line-height: 1.25rem;
+	line-height: 2rem;
+}
+.input-group :where(span) {
+	--tw-bg-opacity: 1;
+	background-color: hsla(var(--b3)/var(--tw-bg-opacity,1));
+	display: flex;
+	align-items: center;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.input-group :first-child {
+	border-top-left-radius: var(--rounded-btn,.5rem);
+	border-top-right-radius: 0;
+	border-bottom-left-radius: var(--rounded-btn,.5rem);
+	border-bottom-right-radius: 0;
+}
+.input-group :last-child {
+	border-top-left-radius: 0;
+	border-top-right-radius: var(--rounded-btn,.5rem);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: var(--rounded-btn,.5rem);
 }
 .link {
 	cursor: pointer;
@@ -1670,6 +1700,23 @@ html {
 .btn-secondary:focus-visible {
 	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--s));
 }
+.btn-success {
+	--tw-bg-opacity: 1;
+	background-color: hsla(var(--su)/var(--tw-bg-opacity,1));
+	--tw-border-opacity: 1;
+	border-color: hsla(var(--su)/var(--tw-border-opacity,1));
+	--tw-text-opacity: 1;
+	color: hsla(var(--b2)/var(--tw-text-opacity,1));
+}
+.btn-success.btn-active,.btn-success:hover {
+	--tw-bg-opacity: 1;
+	background-color: hsla(var(--su)/var(--tw-bg-opacity,1));
+	--tw-border-opacity: 1;
+	border-color: hsla(var(--su)/var(--tw-border-opacity,1));
+}
+.btn-success:focus-visible {
+	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--su));
+}
 .btn-warning {
 	--tw-bg-opacity: 1;
 	background-color: hsla(var(--wa)/var(--tw-bg-opacity,1));
@@ -1984,6 +2031,9 @@ html {
 }
 .drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-secondary {
 	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--s));
+}
+.drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-success {
+	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--su));
 }
 .drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-warning {
 	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--wa));
@@ -2628,6 +2678,14 @@ html {
 .checkbox-sm {
 	height: 1.25rem;
 	width: 1.25rem;
+}
+.input-sm {
+	height: 2rem;
+	font-size: .875rem;
+	line-height: 1.25rem;
+	line-height: 2rem;
+	padding-left: .75rem;
+	padding-right: .75rem;
 }
 .alert-info {
 	--tw-bg-opacity: 1;

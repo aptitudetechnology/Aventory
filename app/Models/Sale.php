@@ -43,7 +43,7 @@ class Sale extends Model
 
   public function getTypeAttribute()
   {
-    return $this->is_quote ? 'quote' : 'order';
+    return $this->is_quote ? 'Quote' : 'Order';
   }
 
   public function getNameAttribute(): string
@@ -115,6 +115,13 @@ class Sale extends Model
     return $inventory;
   }
 
+  public function doesntHaveInventory(): bool
+  {
+    return $this->items->every(function ($item) {
+      return $item->matched_quantity === 0;
+    });
+  }
+
   /**
    * Get items in the order.
    */
@@ -180,8 +187,6 @@ class Sale extends Model
   {
     return $this->belongsTo(Contact::class);
   }
-
-
 
   public function getDiscountPercentageAttribute()
   {
@@ -322,5 +327,34 @@ class Sale extends Model
       ->save('public');
 
     return $invoice;
+  }
+
+  public static function convert(Sale $sale, array $items)
+  {
+    $newSale = $sale->replicate()->fill([
+      'is_quote' => false,
+      'from_quote_id' => $sale->id,
+    ]);
+    $newSale->save();
+    $newSale->updateTotals();
+
+    foreach ($items as $item) {
+      $oldItem = $sale->items()->where('id', $item)->first();
+      $newItem = $oldItem->replicate()->fill([
+        'order_id' => $newSale->id,
+        'quantity' => $item['quantity'],
+      ]);
+      $newItem->save();
+    }
+
+    foreach ($sale->discounts as $discount) {
+      $newDiscount = $discount->replicate()
+        ->fill([
+          'order_id' => $newSale->id,
+        ]);
+      $newDiscount->save();
+    }
+
+    return $newSale;
   }
 }

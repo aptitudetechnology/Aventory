@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Customer;
+use App\Models\OrderItem;
 use App\Models\Quote;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -28,7 +29,15 @@ class QuoteFactory extends Factory
             'customer_id' => Customer::factory(),
             'date' => $this->faker->date(),
             'quote_expires' => $this->faker->date(),
-            'hold_inventory'    => $this->faker->boolean,
+            'hold_inventory'    => $this->faker->boolean(),
         ];
+    }
+
+    public function withOrderItems()
+    {
+        return $this->has(
+            OrderItem::factory()->count(rand(1, 5)),
+            'items'
+        );
     }
 }
