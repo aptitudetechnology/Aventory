@@ -2,7 +2,7 @@
     <details-section>
         <template #title>Linked Orders </template>
 
-        <div class="">
+        <div>
             <SmallLineItem
                 as="a"
                 target="_blank"

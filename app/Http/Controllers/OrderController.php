@@ -96,6 +96,7 @@ class OrderController extends Controller
         $products = auth()->user()->currentTeam->products;
         $sizes = auth()->user()->currentTeam->sizes;
         $shipping_methods = ShippingMethod::all();
+        $order->load('quote');
         return inertia('Orders/Show', compact(
             [
                 'order',

@@ -38,4 +38,9 @@ class Order extends Sale
     {
         return $this->belongsTo(Quote::class, 'from_quote_id');
     }
+
+    public function relatedOrders()
+    {
+        return $this->hasMany(Order::class, 'from_quote_id', 'from_quote_id')->where('id', '!=', $this->id);
+    }
 }

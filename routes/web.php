@@ -34,7 +34,7 @@ use App\Http\Controllers\Sales\ConvertSaleController;
 use App\Http\Controllers\ViewInventoryController;
 use App\Http\Controllers\Api\ApiSalesController;
 use App\Http\Controllers\Api\ApiQuoteOrdersController;
-
+use App\Http\Controllers\Api\ApiRelatedOrdersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -148,6 +148,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::apiResource('sales', ApiSalesController::class)->only(['index', 'show']);
 
         Route::get('quotes/{quote}/orders', ApiQuoteOrdersController::class)->name('quotes.orders.index');
+        Route::get('orders/{order}/related', ApiRelatedOrdersController::class)->name('orders.related.index');
     });
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');

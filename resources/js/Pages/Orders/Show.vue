@@ -11,6 +11,8 @@
             <div class="lg:w-1/4 mt-4 lg:mt-0 space-y-4">
                 <ActionCard :order="order" />
                 <InventoryAdd :order="order" class="" />
+                <LinkedQuoteCard :quote="order.quote" />
+                <RelatedOrdersCard v-if="order.from_quote_id" :order="order" />
                 <OrderDelete :order="order" />
             </div>
         </div>
@@ -23,6 +25,8 @@ import OrderUpdate from "./Components/OrderUpdate";
 import OrderDelete from "./Components/OrderDelete.vue";
 import InventoryAdd from "./Components/InventoryAdd.vue";
 import ActionCard from "./Components/ActionCard.vue";
+import LinkedQuoteCard from "./Components/LinkedQuoteCard.vue";
+import RelatedOrdersCard from "./Components/RelatedOrdersCard.vue";
 
 export default {
     components: {
@@ -31,6 +35,8 @@ export default {
         OrderDelete,
         InventoryAdd,
         ActionCard,
+        LinkedQuoteCard,
+        RelatedOrdersCard,
     },
     props: {
         order: Object,

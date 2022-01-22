@@ -329,23 +329,24 @@ class Sale extends Model
     return $invoice;
   }
 
-  public static function convert(Sale $sale, array $items)
+  public static function convert(Sale $sale, $items)
   {
     $newSale = $sale->replicate()->fill([
-      'is_quote' => false,
-      'from_quote_id' => $sale->id,
+      'is_quote' => !$sale->is_quote,
+      'from_quote_id' => $sale->is_quote ? $sale->id : null,
     ]);
     $newSale->save();
     $newSale->updateTotals();
 
     foreach ($items as $item) {
-      $oldItem = $sale->items()->where('id', $item)->first();
+      $oldItem = $sale->items()->where('id', $item['id'])->first();
       $newItem = $oldItem->replicate()->fill([
         'order_id' => $newSale->id,
         'quantity' => $item['quantity'],
       ]);
       $newItem->save();
     }
+
 
     foreach ($sale->discounts as $discount) {
       $newDiscount = $discount->replicate()
