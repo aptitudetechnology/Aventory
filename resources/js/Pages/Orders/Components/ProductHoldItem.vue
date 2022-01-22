@@ -1,8 +1,5 @@
 <template>
-    <div
-        @click="viewOrder"
-        class="flex items-center justify-between hover:bg-gray-100 uppercase text-sm p-2 cursor-pointer"
-    >
+    <SmallLineItem @click="viewOrder">
         <div v-if="itemIsNotInThisOrder" class="text-black">
             {{ item.is_quote ? "Quote #" : "Order #" }} {{ item.order_id }},
             {{ item.sale.customer.name }}
@@ -15,10 +12,14 @@
             }}
         </div>
         <div>Qt:{{ item.quantity }}</div>
-    </div>
+    </SmallLineItem>
 </template>
 <script>
+import SmallLineItem from "@/Components/Lists/SmallLineItem.vue";
 export default {
+    components: {
+        SmallLineItem,
+    },
     props: {
         item: {
             type: Object,
@@ -36,10 +37,15 @@ export default {
     },
     methods: {
         viewOrder() {
-            this.showPopup(
-                route("orders.show", this.item.order_id),
-                "View Order"
-            );
+            this.item.sale.is_quote
+                ? this.showPopup(
+                      route("quotes.show", this.item.order_id),
+                      "View Order"
+                  )
+                : this.showPopup(
+                      route("orders.show", this.item.order_id),
+                      "View Order"
+                  );
         },
     },
 };

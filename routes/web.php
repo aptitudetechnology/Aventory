@@ -28,10 +28,14 @@ use App\Http\Controllers\Api\ApiDiscountsController;
 use App\Http\Controllers\Api\ApiInventoryArchiveController;
 use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
 use App\Http\Controllers\Api\ApiOrderInventoryController;
+use App\Http\Controllers\Api\ApiOrderQuoteController;
 use App\Http\Controllers\Api\ApiProductPriceController;
 use App\Http\Controllers\OrderPDFController;
+use App\Http\Controllers\Sales\ConvertSaleController;
 use App\Http\Controllers\ViewInventoryController;
-
+use App\Http\Controllers\Api\ApiSalesController;
+use App\Http\Controllers\Api\ApiQuoteOrdersController;
+use App\Http\Controllers\Api\ApiRelatedOrdersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -129,6 +133,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('sales.order-items', OrderItemController::class)->only(['store', 'update', 'destroy']);
 
+    Route::post('sales/{sale}/convert', [ConvertSaleController::class, 'convert'])->name('sales.convert');
 
     Route::get('sales/{sale}/print', OrderPDFController::class)->name('orders.print');
     Route::apiResource('sales.discounts', ApiDiscountsController::class);
@@ -139,6 +144,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         });
 
     Route::apiResource('inventory-archive', ApiInventoryArchiveController::class);
+
+    Route::name('api.')->prefix('api')->group(function () {
+        Route::apiResource('sales', ApiSalesController::class)->only(['index', 'show']);
+
+        Route::get('quotes/{quote}/orders', ApiQuoteOrdersController::class)->name('quotes.orders.index');
+        Route::get('orders/{order}/quote', ApiOrderQuoteController::class)->name('orders.quote.show');
+        Route::get('orders/{order}/related', ApiRelatedOrdersController::class)->name('orders.related.index');
+    });
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');

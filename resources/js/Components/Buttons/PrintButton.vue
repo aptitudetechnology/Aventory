@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-sm btn-outline flex items-center">
+    <button class="btn btn-sm btn-outline pl-2 flex items-center">
         <PrinterIcon class="w-6 h-6 stroke-current mr-2" />
         <slot />
     </button>

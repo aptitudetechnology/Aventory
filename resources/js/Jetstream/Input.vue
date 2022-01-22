@@ -4,7 +4,6 @@
         :class="{
             ' input-error': error,
         }"
-        v-bind="$attrs"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"

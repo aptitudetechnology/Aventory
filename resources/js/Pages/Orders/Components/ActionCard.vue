@@ -1,11 +1,11 @@
 <template>
     <div
         v-if="show"
-        class="flex items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
+        class="flex flex-wrap items-center px-4 lg:px-0 fixed z-50 top-20 right-4 sm:right-6 lg:static"
     >
         <div
             v-if="order.items.length > 0"
-            class="dropdown dropdown-hover dropdown-end"
+            class="dropdown dropdown-hover dropdown-end mr-2"
         >
             <PrintButton class="bg-white">Print</PrintButton>
             <ul
@@ -26,15 +26,17 @@
                 </li>
             </ul>
         </div>
+        <convert-sale :order="order" />
     </div>
 </template>
 
 <script>
 import PrintButton from "@Components/Buttons/PrintButton.vue";
-
+import ConvertSale from "@/Pages/Orders/Components/ConvertSale.vue";
 export default {
     components: {
         PrintButton,
+        ConvertSale,
     },
     props: {
         order: {
@@ -44,7 +46,7 @@ export default {
     },
     computed: {
         show() {
-            return this.order.items.length > 0;
+            return true;
         },
     },
 

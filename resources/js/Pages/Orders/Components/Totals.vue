@@ -40,12 +40,12 @@
                 <div
                     class="grid grid-cols-2 gap-4 items-center border-t mt-2 pt-2"
                 >
-                    <jet-label class="flex items-center text-lg">
+                    <label class="label justify-start">
                         <jet-checkbox
-                            class="mr-2 mb-1"
+                            class="mr-2"
                             :checked="updatedOrder.is_taxable"
                             v-model="updatedOrder.is_taxable"
-                        />Taxable</jet-label
+                        /><span class="label-text">Taxable</span></label
                     >
                 </div>
                 <div

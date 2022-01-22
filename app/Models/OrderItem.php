@@ -45,6 +45,11 @@ class OrderItem extends Model
         return $this->belongsTo(Order::class);
     }
 
+    public function quote()
+    {
+        return $this->belongsTo(Quote::class, 'order_id');
+    }
+
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -91,6 +96,11 @@ class OrderItem extends Model
     public function getMatchedQuantityAttribute()
     {
         return $this->archived()->sum('quantity_removed');
+    }
+
+    public function getIsFullfilledAttribute()
+    {
+        return $this->quantity_fulfilled >= $this->quantity;
     }
 
     public function getLineTotalAttribute()

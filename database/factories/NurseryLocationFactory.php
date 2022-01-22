@@ -23,10 +23,10 @@ class NurseryLocationFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
             'address' => $this->faker->word,
             'city' => $this->faker->city,
-            'state' => $this->faker->word, 
+            'state' => $this->faker->word,
         ];
     }
 }

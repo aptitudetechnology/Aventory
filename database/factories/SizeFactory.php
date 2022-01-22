@@ -23,7 +23,7 @@ class SizeFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
             'next_size_id' => Size::factory(),
         ];
     }

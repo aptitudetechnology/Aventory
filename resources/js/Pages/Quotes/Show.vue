@@ -10,6 +10,7 @@
             </div>
             <div class="lg:w-1/4 mt-4 lg:mt-0 space-y-4">
                 <ActionCard :order="quote" />
+                <LinkedOrdersCard :quote="quote" />
                 <OrderDelete :order="quote" />
             </div>
         </div>
@@ -21,6 +22,7 @@ import QuotesLayout from "./QuotesLayout.vue";
 import OrderUpdate from "@/Pages/Orders/Components/OrderUpdate";
 import OrderDelete from "@/Pages/Orders/Components/OrderDelete.vue";
 import ActionCard from "@/Pages/Orders/Components/ActionCard.vue";
+import LinkedOrdersCard from "@/Pages/Quotes/Components/LinkedOrdersCard.vue";
 
 export default {
     components: {
@@ -28,6 +30,7 @@ export default {
         OrderUpdate,
         OrderDelete,
         ActionCard,
+        LinkedOrdersCard,
     },
     props: {
         quote: Object,
