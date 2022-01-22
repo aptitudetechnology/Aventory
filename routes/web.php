@@ -28,6 +28,7 @@ use App\Http\Controllers\Api\ApiDiscountsController;
 use App\Http\Controllers\Api\ApiInventoryArchiveController;
 use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
 use App\Http\Controllers\Api\ApiOrderInventoryController;
+use App\Http\Controllers\Api\ApiOrderQuoteController;
 use App\Http\Controllers\Api\ApiProductPriceController;
 use App\Http\Controllers\OrderPDFController;
 use App\Http\Controllers\Sales\ConvertSaleController;
@@ -148,6 +149,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::apiResource('sales', ApiSalesController::class)->only(['index', 'show']);
 
         Route::get('quotes/{quote}/orders', ApiQuoteOrdersController::class)->name('quotes.orders.index');
+        Route::get('orders/{order}/quote', ApiOrderQuoteController::class)->name('orders.quote.show');
         Route::get('orders/{order}/related', ApiRelatedOrdersController::class)->name('orders.related.index');
     });
 

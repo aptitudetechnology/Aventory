@@ -20,9 +20,6 @@
                     </span>
                 </div>
                 <div class="flex items-center">
-                    <span class="text-sm">
-                        {{ order.customer_name }}
-                    </span>
                     <span class="text-sm ml-2">
                         {{ formatMoney(order.total) }}
                     </span>

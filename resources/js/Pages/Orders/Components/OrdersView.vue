@@ -76,7 +76,11 @@
                         <table-d>{{ order.id }}</table-d>
                         <table-d>{{ formatDate(order.date) }}</table-d>
                         <table-d>{{ order.customer.name }}</table-d>
-                        <table-d>{{ order.deliveryStatus?.name }}</table-d>
+                        <table-d>{{
+                            order.is_quote
+                                ? order.status
+                                : order.deliveryStatus?.name
+                        }}</table-d>
                         <table-d>{{ formatMoney(order.grand_total) }}</table-d>
                     </tr>
                 </tbody>

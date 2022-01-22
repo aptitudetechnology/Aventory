@@ -11,7 +11,7 @@
             <div class="lg:w-1/4 mt-4 lg:mt-0 space-y-4">
                 <ActionCard :order="order" />
                 <InventoryAdd :order="order" class="" />
-                <LinkedQuoteCard :quote="order.quote" />
+                <LinkedQuoteCard :order="order" />
                 <RelatedOrdersCard v-if="order.from_quote_id" :order="order" />
                 <OrderDelete :order="order" />
             </div>

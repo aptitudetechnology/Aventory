@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Sales;
 
 use App\Http\Controllers\Controller;
+use App\Models\Quote;
 use Illuminate\Http\Request;
 use App\Models\Sale;
 use Illuminate\Support\Facades\Gate;
@@ -24,12 +25,16 @@ class ConvertSaleController extends Controller
 
         $saleType = $sale->type;
 
+        $quote = Quote::find($sale->id);
 
         if ($request->has('items') && $sale->is_quote && count($request->items) > 0) {
             $sale = Sale::convert($sale, $request->items);
         } else if ($sale->doesntHaveInventory()) {
             if ($sale->from_quote_id) {
                 return \back()->dangerBanner("This order is already linked to a quote. Please delete this order and edit the quote instead.");
+            }
+            if ($quote && $quote->orders->count() > 0) {
+                return \back()->dangerBanner("You cannot convert this quote because there are already orders linked to it.");
             }
             $sale = Sale::convert($sale, $sale->items);
         } else {

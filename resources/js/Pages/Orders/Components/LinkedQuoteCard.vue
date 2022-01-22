@@ -3,6 +3,7 @@
         <template #title>Linked Quote </template>
 
         <div>
+            <LoadingState :loading="loading" />
             <SmallLineItem
                 v-if="quote"
                 as="a"
@@ -19,9 +20,6 @@
                     </span>
                 </div>
                 <div class="flex items-center">
-                    <span class="text-sm">
-                        {{ quote.customer_name }}
-                    </span>
                     <span class="text-sm ml-2">
                         {{ formatMoney(quote.total) }}
                     </span>
@@ -42,16 +40,43 @@
 import DetailsSection from "@Components/DetailsSection.vue";
 import SmallLineItem from "@Components/Lists/SmallLineItem.vue";
 import EmptyState from "@Components/EmptyState.vue";
+import LoadingState from "@Components/LoadingState.vue";
 export default {
     components: {
         DetailsSection,
         SmallLineItem,
         EmptyState,
+        LoadingState,
     },
     props: {
-        quote: {
+        order: {
             type: Object,
-            required: false,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            loading: false,
+            quote: null,
+        };
+    },
+    mounted() {
+        this.getQuote();
+    },
+    methods: {
+        getQuote() {
+            this.loading = true;
+            axios
+                .get(route("api.orders.quote.show", this.order.id))
+                .then((response) => {
+                    this.quote = response.data;
+                })
+                .catch((error) => {
+                    console.error(error.message);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
         },
     },
 };

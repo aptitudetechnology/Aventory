@@ -5,7 +5,7 @@
             tabindex="0"
             class="shadow menu dropdown-content bg-base-100 rounded-lg text-right w-52"
         >
-            <li>
+            <li v-if="!order.is_quote || order.status == 'Pending'">
                 <a @click="convert" class="justify-end px-4 capitalize">{{
                     convertText
                 }}</a>

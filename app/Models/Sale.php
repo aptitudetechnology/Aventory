@@ -340,11 +340,18 @@ class Sale extends Model
 
     foreach ($items as $item) {
       $oldItem = $sale->items()->where('id', $item['id'])->first();
+
       $newItem = $oldItem->replicate()->fill([
         'order_id' => $newSale->id,
+        'quantity_fulfilled' => 0,
         'quantity' => $item['quantity'],
       ]);
       $newItem->save();
+
+      if ($sale->is_quote) {
+        $oldItem->quantity_fulfilled += $item['quantity'];
+        $oldItem->save();
+      }
     }
 
 
