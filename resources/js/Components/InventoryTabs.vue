@@ -1,5 +1,5 @@
 <template>
-    <tab-container>
+    <tab-container class="tabs-boxed px-2">
         <tab-link
             :href="route('inventory.index')"
             :current="route().current('inventory.index')"
