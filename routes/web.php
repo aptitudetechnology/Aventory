@@ -33,6 +33,7 @@ use App\Http\Controllers\OrderPDFController;
 use App\Http\Controllers\Sales\ConvertSaleController;
 use App\Http\Controllers\ViewInventoryController;
 use App\Http\Controllers\Api\ApiSalesController;
+use App\Http\Controllers\Api\ApiQuoteOrdersController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -145,6 +146,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::name('api.')->prefix('api')->group(function () {
         Route::apiResource('sales', ApiSalesController::class)->only(['index', 'show']);
+
+        Route::get('quotes/{quote}/orders', ApiQuoteOrdersController::class)->name('quotes.orders.index');
     });
 
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');

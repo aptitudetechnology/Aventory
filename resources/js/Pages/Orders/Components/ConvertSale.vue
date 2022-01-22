@@ -23,7 +23,7 @@
             <div>
                 <ErrorMessage
                     :title="errorMessage"
-                    :message=""
+                    :message="errorMessage"
                     v-if="errorMessage"
                 />
                 <div

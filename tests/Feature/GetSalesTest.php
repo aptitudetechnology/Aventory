@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class GetSalesTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * Ensure that the sales endpoint returns a list of sales for a given customer.
      *

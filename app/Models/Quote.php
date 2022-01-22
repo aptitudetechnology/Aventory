@@ -19,6 +19,6 @@ class Quote extends Sale
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'from_quote_id');
     }
 }

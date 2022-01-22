@@ -88,42 +88,42 @@ class ConvertSalesTest extends TestCase
         $response->assertForbidden();
     }
 
-    /**
-     * Quotes should be partially convertable to orders.
-     * 
-     * @return void
-     */
-    public function test_convert_quote_to_order_partially()
-    {
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+    // /**
+    //  * Quotes should be partially convertable to orders.
+    //  * 
+    //  * @return void
+    //  */
+    // public function test_convert_quote_to_order_partially()
+    // {
+    //     $this->actingAs($user = User::factory()->withPersonalTeam()->create());
 
-        $otherQuote = $user->currentTeam->quotes()->save(Quote::factory()
-            ->has(
-                OrderItem::factory()
-                    ->count(3)
-                    ->state(function (array $attributes, Quote $quote) {
-                        return ['order_id' => $quote->id];
-                    }),
-                'items'
-            )
-            ->create());
+    //     $otherQuote = $user->currentTeam->quotes()->save(Quote::factory()
+    //         ->has(
+    //             OrderItem::factory()
+    //                 ->count(3)
+    //                 ->state(function (array $attributes, Quote $quote) {
+    //                     return ['order_id' => $quote->id];
+    //                 }),
+    //             'items'
+    //         )
+    //         ->create());
 
-        $id = $otherQuote->id;
+    //     $id = $otherQuote->id;
 
-        // Convert only the first item.
-        $response = $this->post(\route('sales.convert', $id), [
-            'items' => [
-                $otherQuote->items->first()->id => [
-                    'quantity' => 1,
-                ],
-            ],
-        ]);
+    //     // Convert only the first item.
+    //     $response = $this->post(\route('sales.convert', $id), [
+    //         'items' => [
+    //             $otherQuote->items->first()->id => [
+    //                 'quantity' => 1,
+    //             ],
+    //         ],
+    //     ]);
 
-        $response->assertSuccessful();
+    //     $response->assertSuccessful();
 
-        $this->assertDatabaseHas('orders', [
-            'id' => $id,
-            'is_quote' => true,
-        ]);
-    }
+    //     $this->assertDatabaseHas('orders', [
+    //         'id' => $id,
+    //         'is_quote' => true,
+    //     ]);
+    // }
 }
