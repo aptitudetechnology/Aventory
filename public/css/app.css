@@ -2340,15 +2340,6 @@ html {
 	border-style: solid;
 	border-bottom-width: calc(var(--tab-border, 1px) + 1px);
 }
-.tab-lifted {
-	border-top-left-radius: var(--tab-radius,.5rem);
-	border-top-right-radius: var(--tab-radius,.5rem);
-	border: 0 solid transparent;
-	border-bottom: var(--tab-border,1px) solid hsla(var(--border-color,var(--b3))/var(--tw-border-opacity,1));
-	padding-left: var(--tab-padding,1rem);
-	padding-right: var(--tab-padding,1rem);
-	padding-top: var(--tab-border,1px);
-}
 .tab-lifted.tab-active {
 	--tw-bg-opacity: 1;
 	background-color: hsla(var(--b1)/var(--tw-bg-opacity,1));

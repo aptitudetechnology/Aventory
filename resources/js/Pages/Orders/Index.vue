@@ -27,11 +27,6 @@
 </template>
 
 <script>
-import {
-    ExternalLinkIcon,
-    ArrowUpIcon,
-    ArrowDownIcon,
-} from "@heroicons/vue/outline";
 import OrdersLayout from "./OrdersLayout.vue";
 import ButtonLink from "@/Components/Links/ButtonLink";
 import DetailsSection from "@/Components/DetailsSection";
@@ -41,9 +36,6 @@ import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";
 import ViewOrders from "./Components/OrdersView.vue";
 export default {
     components: {
-        ExternalLinkIcon,
-        ArrowDownIcon,
-        ArrowUpIcon,
         OrdersLayout,
         ButtonLink,
         DetailsSection,

@@ -36,6 +36,7 @@ use App\Http\Controllers\ViewInventoryController;
 use App\Http\Controllers\Api\ApiSalesController;
 use App\Http\Controllers\Api\ApiQuoteOrdersController;
 use App\Http\Controllers\Api\ApiRelatedOrdersController;
+use App\Http\Controllers\ReprintQueueController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -156,4 +157,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');
     Route::get('api/products/{product}/size/{size}/prices', ApiProductPriceController::class)->name('api.product.prices');
+
+    // Reprint Queue
+    Route::resource('reprint-queue', ReprintQueueController::class)->only('index', 'store', 'update', 'destroy');
 });

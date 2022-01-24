@@ -122,4 +122,9 @@ class Team extends JetstreamTeam
     {
         return $this->quotes()->where('quote_expires', '>=', now());
     }
+
+    public function reprintQueue(): HasMany
+    {
+        return $this->hasMany(ReprintQueue::class);
+    }
 }

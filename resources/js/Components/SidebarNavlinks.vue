@@ -5,11 +5,7 @@
             :current="route().current('dashboard')"
             >Dashboard</nav-link
         >
-        <nav-link
-            :href="route('view.index')"
-            :current="route().current('view.*')"
-            >View Inventory</nav-link
-        >
+
         <sidebar-dropdown
             dropdown_text="Orders & Quotes"
             :current="
@@ -68,12 +64,12 @@
             <nav-link
                 :href="route('sizes.index')"
                 :current="route().current('sizes.*')"
-                >Product Sizes</nav-link
+                >Sizes</nav-link
             >
             <nav-link
                 :href="route('categories.index')"
                 :current="route().current('categories.*')"
-                >Product Categories</nav-link
+                >Categories</nav-link
             >
             <nav-link
                 :href="route('features.index')"
@@ -122,11 +118,31 @@
                 >Blocks</nav-link
             >
         </sidebar-dropdown>
-        <nav-link
-            :href="route('inventory.index')"
-            :current="route().current('inventory.*')"
-            >Inventory</nav-link
+        <sidebar-dropdown
+            dropdown_text="Inventory"
+            :current="
+                route().current('inventory.*') ||
+                route().current('view.*') ||
+                route().current('reprint-queue.*')
+            "
         >
+            <nav-link
+                :href="route('inventory.index')"
+                :current="route().current('inventory.*')"
+                >Inventory Editor</nav-link
+            >
+            <nav-link
+                :href="route('view.index')"
+                :current="route().current('view.*')"
+                >View Inventory</nav-link
+            >
+
+            <nav-link
+                :href="route('reprint-queue.index')"
+                :current="route().current('reprint-queue.*')"
+                >Reprint Labels</nav-link
+            >
+        </sidebar-dropdown>
     </nav>
 </template>
 <script>
