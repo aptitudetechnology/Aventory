@@ -4,15 +4,7 @@
             <label for="search" class="sr-only">Search</label>
             <div class="relative rounded-md shadow-sm">
                 <div
-                    class="
-                        absolute
-                        inset-y-0
-                        left-0
-                        pl-3
-                        flex
-                        items-center
-                        pointer-events-none
-                    "
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
                 >
                     <SearchIcon
                         class="h-5 w-5 text-gray-400"
@@ -82,3 +74,24 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer;
+    -webkit-appearance: none;
+    padding: 0.5em;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 50em;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
+        no-repeat 50% 50%;
+    background-size: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+    opacity: 0.3;
+    pointer-events: all;
+}
+</style>
