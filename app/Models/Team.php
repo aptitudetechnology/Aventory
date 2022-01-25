@@ -123,8 +123,10 @@ class Team extends JetstreamTeam
         return $this->quotes()->where('quote_expires', '>=', now());
     }
 
-    public function reprintQueue(): HasMany
+    public function inventoryToReprint()
     {
-        return $this->hasMany(ReprintQueue::class);
+        return $this->belongsToMany(Inventory::class, 'reprint_queue')
+            ->wherePivot('printed', false)
+            ->with('product', 'purchaseItem', 'size');
     }
 }

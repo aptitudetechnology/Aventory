@@ -9,7 +9,7 @@ class ReprintQueueController extends Controller
 {
     public function index()
     {
-        $queue = auth()->user()->currentTeam->reprintQueue()->where('printed', false)->get();
+        $queue = auth()->user()->currentTeam->inventoryToReprint()->paginate(10);
 
         return Inertia::render('ReprintQueue/Index', [
             'queue' => $queue,

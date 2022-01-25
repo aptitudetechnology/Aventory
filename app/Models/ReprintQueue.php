@@ -12,14 +12,14 @@ class ReprintQueue extends Model
     protected $table = "reprint_queue";
 
     protected $fillable = [
-        'purchase_item_id',
+        'inventory_id',
         'to_print',
         'printed',
     ];
 
     protected $casts = [
         'team_id' => 'integer',
-        'purchase_item_id' => 'integer',
+        'inventory_id' => 'integer',
         'to_print' => 'integer',
         'printed' => 'boolean',
     ];
@@ -29,8 +29,8 @@ class ReprintQueue extends Model
         return $this->belongsTo(Team::class);
     }
 
-    public function purchaseItem()
+    public function inventory()
     {
-        return $this->belongsTo(PurchaseItem::class);
+        return $this->belongsTo(Inventory::class);
     }
 }

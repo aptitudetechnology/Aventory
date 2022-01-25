@@ -16,7 +16,7 @@ class CreateRePrintQueueTable extends Migration
         Schema::create('reprint_queue', function (Blueprint $table) {
             $table->id();
             $table->foreignId('team_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('purchase_item_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('inventory_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->integer('to_print')->default(1);
             $table->boolean('printed')->default(false);
             $table->timestamps();

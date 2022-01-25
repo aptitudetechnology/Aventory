@@ -146,4 +146,9 @@ class PurchaseItem extends Model
     {
         return $this->belongsTo(\App\Models\Size::class);
     }
+
+    public function inventory()
+    {
+        return $this->hasMany(Inventory::class);
+    }
 }

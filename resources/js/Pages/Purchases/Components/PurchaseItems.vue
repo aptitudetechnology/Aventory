@@ -17,20 +17,7 @@
             </div>
             <div>
                 <div
-                    class="
-                        py-3
-                        text-left text-xs
-                        font-medium
-                        text-gray-500
-                        uppercase
-                        tracking-wider
-                        grid
-                        gap-4
-                        grid-cols-5
-                        md:grid-cols-10
-                        items-center
-                        border-b border-gray-50
-                    "
+                    class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider grid gap-4 grid-cols-5 md:grid-cols-10 items-center border-b border-gray-50"
                 >
                     <div class="col-span-2 md:col-span-4 flex items-center">
                         <jet-label class="sr-only" for="select-all"
@@ -68,9 +55,6 @@
 
 <script>
 import JetActionSection from "@/Jetstream/ActionSection.vue";
-import JetCheckbox from "@/Jetstream/Checkbox.vue";
-import JetLabel from "@/Jetstream/Label.vue";
-import JetButton from "@/Jetstream/Button.vue";
 
 import CreatePurchaseItem from "./CreatePurchaseItem.vue";
 import PurchaseLineItem from "./PurchaseLineItem.vue";
@@ -81,9 +65,6 @@ export default {
 
     components: {
         JetActionSection,
-        JetCheckbox,
-        JetLabel,
-        JetButton,
 
         CreatePurchaseItem,
         PurchaseLineItem,
