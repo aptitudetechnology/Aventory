@@ -5,7 +5,7 @@
             <button-link>Add to Queue</button-link>
         </div>
         <div class="grid gap-6 lg:gap-8">
-            <QueueView :inventory="queue" />
+            <QueueView :filters="filters" :inventory="queue" />
         </div>
     </QueueLayout>
 </template>
@@ -25,6 +25,9 @@ export default {
     props: {
         queue: {
             type: [Object, Array],
+        },
+        filters: {
+            type: Object,
         },
     },
 };

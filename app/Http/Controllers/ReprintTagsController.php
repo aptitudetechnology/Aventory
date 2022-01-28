@@ -2,14 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InventoryPrintRequest;
+use App\Models\Inventory;
 use App\Models\ReprintQueue;
 use Illuminate\Http\Request;
+use PDF;
 
 class ReprintTagsController extends Controller
 {
-    public function index()
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(InventoryPrintRequest $request)
     {
-        $queue = auth()->user()->currentTeam->reprintQueue()->where('printed', false)->get();
-        return $queue;
+        $inventories = Inventory::where('id', $request->inventory)->with('product.plant')->get();
+        $team = auth()->user()->currentTeam;
+
+        $paperSize = [0, 0, 288, 720];
+
+        $tags = PDF::setOptions(['dpi' => 72, 'defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            ->loadview('tags.index', compact('inventories', 'team'))
+            ->setPaper($paperSize, 'landscape');
+
+        ReprintQueue::whereIn('inventory_id', $request->inventory)->update(['printed' => true]);
+        // return view('tags.index', compact('inventories', 'team'));
+        return $tags->stream('tags.pdf');
     }
 }

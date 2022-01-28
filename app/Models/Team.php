@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
@@ -123,10 +124,10 @@ class Team extends JetstreamTeam
         return $this->quotes()->where('quote_expires', '>=', now());
     }
 
-    public function inventoryToReprint()
+    public function reprintQueue(): BelongsToMany
     {
         return $this->belongsToMany(Inventory::class, 'reprint_queue')
-            ->wherePivot('printed', false)
-            ->with('product', 'purchaseItem', 'size');
+            ->withPivot('printed')
+            ->with('product', 'size', 'block');
     }
 }

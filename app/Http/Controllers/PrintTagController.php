@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PurchaseItemTagRequest;
 use App\Models\Inventory;
-use Illuminate\Http\Request;
 use App\Models\PurchaseItem;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
 use PDF;
 
 class PrintTagController extends Controller
@@ -24,6 +21,7 @@ class PrintTagController extends Controller
         $team = auth()->user()->currentTeam;
 
         $paperSize = [0, 0, 288, 720];
+
         $tags = PDF::setOptions(['dpi' => 72, 'defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->loadview('tags.index', compact('inventories', 'team'))
             ->setPaper($paperSize, 'landscape');

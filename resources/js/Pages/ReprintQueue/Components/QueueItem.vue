@@ -6,7 +6,7 @@
             >
             <jet-checkbox
                 :id="'item-selected' + form.id"
-                @checked="$emit('selected')"
+                @change="$emit('selected')"
                 :value="form.id"
                 v-model="selected"
                 :checked="selected"
@@ -36,6 +36,7 @@ export default {
             form: this.$inertia.form(this.item),
         };
     },
+    emits: ["selected"],
 
     watch: {
         itemSelected() {

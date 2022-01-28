@@ -1,11 +1,25 @@
 <template>
     <details-section>
         <template #title><slot name="title">Inventory</slot></template>
-        <template #aside
-            ><search-input v-model="search"></search-input
+        <template #aside>
+            <search-input v-model="search"></search-input
         ></template>
-        <div class="flex pb-4 space-x-4" v-if="selected.length">
-            <PrintPurchaseItemsInventory :purchase_items="selected" />
+        <div class="flex pb-4 space-x-4">
+            <button-link
+                v-if="filters.includePrinted"
+                :href="route('reprint-queue.index')"
+                class="btn btn-sm btn-primary"
+            >
+                Hide Printed</button-link
+            >
+            <button-link
+                v-else
+                :href="route('reprint-queue.index', { includePrinted: true })"
+                class="btn btn-sm btn-primary"
+            >
+                Show Printed</button-link
+            >
+            <ReprintTagsButton :inventory="selected" />
         </div>
         <div class="col-span-6 overflow-auto">
             <table-table class="text-left">
@@ -18,7 +32,7 @@
                                 id="select-all"
                                 :checked="allSelected"
                                 v-model="allSelected"
-                                @checked="toggleAllSelected" /></jet-checkbox
+                                @change="toggleAllSelected" /></jet-checkbox
                     ></table-h>
                     <table-h>Inventory ID</table-h>
                     <table-h>Date Added</table-h>
@@ -31,6 +45,8 @@
                         v-for="item in inventory.data"
                         :key="item.id"
                         :item="item"
+                        :itemSelected="isItemSelected(item)"
+                        @selected="toggleSelected(item)"
                     ></QueueItem>
                 </tbody>
             </table-table>
@@ -52,11 +68,13 @@ import DetailsSection from "@/Components/DetailsSection";
 import TableTable from "@/Components/Tables/TableTable.vue";
 import TableHead from "@/Components/Tables/TableHead.vue";
 import TableH from "@/Components/Tables/TableH.vue";
-import PrintPurchaseItemsInventory from "@/Pages/Purchases/Components/PrintPurchaseItemsInventory.vue";
+import ReprintTagsButton from "@/Pages/ReprintQueue/Components/ReprintTagsButton.vue";
 import Pagination from "@/Components/Pagination.vue";
 import SearchInput from "@/Components/Forms/SearchInput.vue";
 import _debounce from "lodash/debounce";
 import QueueItem from "./QueueItem.vue";
+
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 export default {
     components: {
         ExternalLinkIcon,
@@ -66,10 +84,11 @@ export default {
         TableTable,
         TableHead,
         TableH,
-        PrintPurchaseItemsInventory,
+        ReprintTagsButton,
         SearchInput,
         Pagination,
         QueueItem,
+        ButtonLink,
     },
     props: {
         inventory: {
@@ -83,9 +102,9 @@ export default {
         return {
             allSelected: false,
             selected: [],
-            search: this.filters?.search || "",
-            orderBy: this.filters?.orderBy || "",
-            orderByDirection: this.filters?.orderByDirection || "",
+            search: this.filters.search || "",
+            orderBy: this.filters.orderBy || "",
+            orderByDirection: this.filters.orderByDirection ?? "desc",
         };
     },
     computed: {
@@ -121,7 +140,7 @@ export default {
         },
         toggleAllSelected() {
             if (this.allSelected) {
-                this.selected = this.purchaseItems.map((item) => item.id);
+                this.selected = this.inventory.data.map((item) => item.id);
             } else {
                 this.selected = [];
             }

@@ -117,4 +117,9 @@ class Inventory extends Model
     {
         return $this->belongsTo(\App\Models\Team::class);
     }
+
+    public function reprintQueue()
+    {
+        return $this->hasMany(ReprintQueue::class);
+    }
 }

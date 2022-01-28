@@ -1688,6 +1688,23 @@ html {
 .btn:focus-visible {
 	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--nf));
 }
+.btn-primary {
+	--tw-bg-opacity: 1;
+	background-color: hsla(var(--p)/var(--tw-bg-opacity,1));
+	--tw-border-opacity: 1;
+	border-color: hsla(var(--p)/var(--tw-border-opacity,1));
+	--tw-text-opacity: 1;
+	color: hsla(var(--pc)/var(--tw-text-opacity,1));
+}
+.btn-primary.btn-active,.btn-primary:hover {
+	--tw-bg-opacity: 1;
+	background-color: hsla(var(--pf)/var(--tw-bg-opacity,1));
+	--tw-border-opacity: 1;
+	border-color: hsla(var(--pf)/var(--tw-border-opacity,1));
+}
+.btn-primary:focus-visible {
+	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--p));
+}
 .btn-secondary {
 	--tw-bg-opacity: 1;
 	background-color: hsla(var(--s)/var(--tw-bg-opacity,1));
@@ -2016,6 +2033,9 @@ html {
 	to {
 		background-position-y: 0;
 	}
+}
+.drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-primary {
+	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--p));
 }
 .drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-secondary {
 	box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--s));
