@@ -7,7 +7,7 @@
             v-model="id"
             class="mt-0 w-full"
             ref="search"
-            :autofocus="true"
+            :autofocus="!route().current('inventory.index')"
             :disabled="loading"
             placeholder="Search by plant id"
             title="Must be a valid id"

@@ -14,6 +14,11 @@ class ReprintQueueController extends Controller
 
         $queue = auth()->user()->currentTeam
             ->inventoryToReprint()
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('id', $request->search)->orWhereHas('product', function ($query) use ($request) {
+                    $query->where('name', 'like', "%{$request->search}%");
+                });
+            })
             ->when($request->includePrinted, function ($query) use ($filters) {
                 return $query
                     ->where('printed', $filters['includePrinted']);
@@ -24,7 +29,7 @@ class ReprintQueueController extends Controller
                 if ($request->orderBy == 'product') {
                     $query
                         ->addSelect(['product_name' => Product::select('name')
-                            ->whereColumn('id', 'reprint_queue.inventory.product_id')])
+                            ->whereColumn('id', 'inventories.product_id')])
                         ->orderBy('product_name', $request->orderByDirection);
                 } else {
                     $query->orderBy($request->orderBy, $request->orderByDirection);

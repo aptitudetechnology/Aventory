@@ -32,6 +32,11 @@ class NurseryLocation extends Model
         'id' => 'integer',
     ];
 
+    public function inventory()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

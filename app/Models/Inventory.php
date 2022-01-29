@@ -79,6 +79,11 @@ class Inventory extends Model
         return $this->belongsToMany(\App\Models\OrderItem::class, 'inventory_archive', 'inventory_id', 'order_item_id');
     }
 
+    public function nurseryLocation()
+    {
+        return $this->belongsTo(\App\Models\NurseryLocation::class, 'nursery_location_id');
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
