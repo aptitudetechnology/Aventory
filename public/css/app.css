@@ -2921,14 +2921,14 @@ html {
 .mb-4 {
 	margin-bottom: 1rem;
 }
+.mr-20 {
+	margin-right: 5rem;
+}
 .mb-0 {
 	margin-bottom: 0px;
 }
 .mt-0 {
 	margin-top: 0px;
-}
-.mr-20 {
-	margin-right: 5rem;
 }
 .-mt-px {
 	margin-top: -1px;

@@ -19,22 +19,26 @@
             >
                 Show Printed</button-link
             >
-            <ReprintTagsButton :inventory="selected" />
+            <ReprintTagsButton
+                :disabled="!selected.length"
+                :inventory="selected"
+            />
         </div>
         <div class="col-span-6 overflow-auto">
             <table-table class="text-left">
                 <table-head>
-                    <table-h
-                        ><jet-checkbox>
+                    <table-h class="sticky left-0 bg-white">
+                        <div>
                             <jet-label class="sr-only" for="select-all"
                                 >Select all</jet-label
                             ><jet-checkbox
                                 id="select-all"
                                 :checked="allSelected"
-                                v-model="allSelected"
-                                @change="toggleAllSelected" /></jet-checkbox
+                                @change="toggleAllSelected"
+                            /></div
                     ></table-h>
                     <table-h>Inventory ID</table-h>
+                    <table-h>Qty to Print</table-h>
                     <table-h>Date Added</table-h>
                     <table-h>Product Name</table-h>
                     <table-h>Size</table-h>
@@ -43,7 +47,7 @@
                 <tbody>
                     <QueueItem
                         v-for="item in inventory.data"
-                        :key="item.id"
+                        :key="`${item.id}-${item.pivot.created_at}`"
                         :item="item"
                         :itemSelected="isItemSelected(item)"
                         @selected="toggleSelected(item)"
@@ -115,35 +119,35 @@ export default {
         },
     },
     watch: {
-        selected() {
-            //watches selected to uncheck the select all checkbox if selected is empty
-            let selectedLength = this.selected.length;
-
-            if (selectedLength === 0) {
-                this.allSelected = false;
-            }
+        selected: {
+            handler() {
+                this.allSelected =
+                    this.selected.length === this.inventory.data.length;
+            },
+            deep: true,
         },
         search: _debounce(function (value) {
             this.updateSearch();
         }, 300),
     },
     methods: {
-        toggleSelected(item) {
-            if (this.selected.includes(item.id)) {
-                this.selected = this.selected.filter((id) => id != item.id);
-            } else {
-                this.selected.push(item.id);
-            }
-        },
-        isItemSelected(item) {
-            return this.selected.includes(item.id);
-        },
         toggleAllSelected() {
-            if (this.allSelected) {
-                this.selected = this.inventory.data.map((item) => item.id);
+            this.allSelected = !this.allSelected;
+            this.selected = this.allSelected
+                ? this.inventory.data.map((item) => item.id)
+                : [];
+        },
+        toggleSelected(currentItem) {
+            if (this.selected.includes(currentItem.id)) {
+                this.selected = this.selected.filter(
+                    (item) => item !== currentItem.id
+                );
             } else {
-                this.selected = [];
+                this.selected.push(currentItem.id);
             }
+        },
+        isItemSelected(currentItem) {
+            return this.selected.includes(currentItem.id);
         },
         updateItemBy(value) {
             if (this.orderBy === value) {
@@ -162,6 +166,7 @@ export default {
                     search: this.search,
                     orderBy: this.orderBy,
                     orderByDirection: this.orderByDirection,
+                    includePrinted: this.filters.includePrinted,
                 },
                 {
                     preserveState: true,

@@ -120,6 +120,11 @@ class Inventory extends Model
 
     public function reprintQueue()
     {
-        return $this->hasMany(ReprintQueue::class);
+        return $this->hasOne(ReprintQueue::class);
+    }
+
+    public function getQuantityToPrintAttribute()
+    {
+        return $this->reprintQueue ? $this->reprintQueue->to_print : $this->quantity;
     }
 }

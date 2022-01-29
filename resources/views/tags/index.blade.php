@@ -87,7 +87,7 @@
     <table width="100%" style="width:100%;">
 
         @foreach ($inventories as $inventory)
-            @for ($tag = 1; $tag <= $inventory->quantity; $tag++)
+            @for ($tag = 1; $tag <= $inventory->quantity_to_print; $tag++)
                 <tr>
                     <td width="30%"></td>
                     <td width="30%">

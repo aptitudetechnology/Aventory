@@ -1,19 +1,20 @@
 <template>
     <tr tabindex="0" class="px-2">
-        <table-d>
-            <jet-label class="sr-only" :for="'item-selected' + form.id"
+        <table-d class="sticky left-0 bg-white">
+            <jet-label class="sr-only" :for="'item-selected' + item.id"
                 >Select</jet-label
             >
             <jet-checkbox
-                :id="'item-selected' + form.id"
+                :id="'item-selected' + item.id"
                 @change="$emit('selected')"
-                :value="form.id"
+                :value="item.id"
                 v-model="selected"
                 :checked="selected"
             ></jet-checkbox
         ></table-d>
         <table-d>{{ item.id }}</table-d>
-        <table-d>{{ formatDate(item.created_at) }}</table-d>
+        <table-d>{{ item.pivot.to_print }}</table-d>
+        <table-d>{{ formatDate(item.pivot.created_at) }}</table-d>
         <table-d>{{ item.product.name }}</table-d>
         <table-d>{{ item.size.name }}</table-d>
         <table-d>{{ item.block.name }}</table-d>
@@ -33,7 +34,6 @@ export default {
     data() {
         return {
             selected: this.itemSelected,
-            form: this.$inertia.form(this.item),
         };
     },
     emits: ["selected"],

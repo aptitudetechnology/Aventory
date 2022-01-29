@@ -13,7 +13,7 @@ class ReprintQueueController extends Controller
         $filters = $request->only(['search', 'orderBy', 'orderByDirection', 'includePrinted']);
 
         $queue = auth()->user()->currentTeam
-            ->reprintQueue()
+            ->inventoryToReprint()
             ->when($request->includePrinted, function ($query) use ($filters) {
                 return $query
                     ->where('printed', $filters['includePrinted']);
@@ -44,15 +44,25 @@ class ReprintQueueController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'inventory' => 'required|array',
-            'inventory.*' => 'required|exists:inventories,id',
+            'inventory' => 'required|exists:inventories,id',
+            'quantity' => 'required|integer|min:1',
         ]);
 
-        $inventories = auth()->user()->currentTeam->inventories()->whereIn('id', $request->inventory)->get();
+        $team = auth()->user()->currentTeam;
+        $inventory = $team->inventories()->findOrFail($request->inventory);
 
-        $inventories->each(function ($inventory) {
-            $inventory->reprintQueue()->create();
-        });
+
+        $team->reprintQueue()->updateOrCreate(
+            [
+                'inventory_id' => $inventory->id,
+            ],
+            [
+                'to_print' => $request->quantity,
+                'printed' => false,
+                'created_at' => now(),
+            ]
+
+        );
 
         return redirect()->back()->banner('Inventory added to reprint queue');
     }

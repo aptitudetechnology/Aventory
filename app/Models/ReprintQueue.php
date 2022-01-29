@@ -11,11 +11,7 @@ class ReprintQueue extends Model
 
     protected $table = "reprint_queue";
 
-    protected $fillable = [
-        'inventory_id',
-        'to_print',
-        'printed',
-    ];
+    protected $guarded = [];
 
     protected $casts = [
         'team_id' => 'integer',
