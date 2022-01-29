@@ -8,14 +8,14 @@
             <button-link
                 v-if="filters.includePrinted"
                 :href="route('reprint-queue.index')"
-                class="btn btn-sm btn-primary"
+                class="btn btn-sm"
             >
                 Hide Printed</button-link
             >
             <button-link
                 v-else
                 :href="route('reprint-queue.index', { includePrinted: true })"
-                class="btn btn-sm btn-primary"
+                class="btn btn-sm"
             >
                 Show Printed</button-link
             >
