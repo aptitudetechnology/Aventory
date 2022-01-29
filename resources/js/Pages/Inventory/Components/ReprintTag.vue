@@ -67,7 +67,6 @@ export default {
 
     methods: {
         sendToQueue() {
-            this.printing = true;
             this.form.post(route("reprint-queue.store"), {
                 onSuccess: () => {
                     this.confirmingQuantity = false;
