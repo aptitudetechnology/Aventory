@@ -25,7 +25,6 @@
                     <table-h>Size</table-h>
                     <table-h>Nursery</table-h>
                     <table-h>Block</table-h>
-                    <table-h>Row</table-h>
                     <table-h>Place</table-h>
                     <table-h></table-h>
                 </table-head>

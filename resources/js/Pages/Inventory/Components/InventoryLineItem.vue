@@ -19,9 +19,8 @@
         <table-d>{{ item.product.name }}</table-d>
         <table-d>{{ item.size.name }}</table-d>
         <table-d>{{ item.nursery_location?.location_code }}</table-d>
-        <table-d>{{ item.block?.name }}</table-d>
-        <table-d>{{ item.place?.row_number }}</table-d>
-        <table-d>{{ item.place?.plant_number }}</table-d>
+        <table-d>{{ item.block_name }}</table-d>
+        <table-d>{{ item.place_name }}</table-d>
         <table-d>
             <inertia-link :href="route('inventory.show', item.id)" class="link"
                 >Edit</inertia-link

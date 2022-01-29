@@ -17,6 +17,7 @@
         <table-d>{{ formatDate(item.pivot.created_at) }}</table-d>
         <table-d>{{ item.product.name }}</table-d>
         <table-d>{{ item.size.name }}</table-d>
+        <table-d>{{ item.nursery_location?.name }}</table-d>
         <table-d>{{ item.block?.name }}</table-d>
     </tr>
 </template>

@@ -42,7 +42,9 @@
                     <table-h>Date Added</table-h>
                     <table-h>Product Name</table-h>
                     <table-h>Size</table-h>
-                    <table-h>Block Location</table-h>
+
+                    <table-h>Nursery Location</table-h>
+                    <table-h>Block</table-h>
                 </table-head>
                 <tbody>
                     <QueueItem

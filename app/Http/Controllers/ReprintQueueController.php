@@ -15,13 +15,20 @@ class ReprintQueueController extends Controller
         $queue = auth()->user()->currentTeam
             ->inventoryToReprint()
             ->when($request->search, function ($query) use ($request) {
-                $query->where('id', $request->search)->orWhereHas('product', function ($query) use ($request) {
-                    $query->where('name', 'like', "%{$request->search}%");
-                });
+                $query->where('inventories.id', $request->search)
+                    ->orWhereHas('product', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%");
+                    })
+                    ->orWhereHas('nurseryLocation', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%")->orWhere('location_code', 'like', "%{$request->search}%");
+                    })
+                    ->orWhereHas('block', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%");
+                    });
             })
             ->when($request->includePrinted, function ($query) use ($filters) {
                 return $query
-                    ->where('printed', $filters['includePrinted']);
+                    ->where('printed', $filters['includePrinted'])->orWhere('printed', false);
             }, function ($query) {
                 return $query->where('printed', false);
             })
