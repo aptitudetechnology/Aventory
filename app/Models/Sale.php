@@ -39,6 +39,13 @@ class Sale extends Model
     'quote_id' => 'integer',
     'is_taxable' => 'boolean',
     'is_quote' => 'boolean',
+    'total' => 'float',
+    'tax_amount' => 'float',
+    'total_after_discount_and_warranty' => 'float',
+    'total_of_items_with_discount' => 'float',
+    'total_discounts' => 'float',
+    'warranty_amount' => 'float',
+    'grand_total' => 'float',
   ];
 
   public function getTypeAttribute()

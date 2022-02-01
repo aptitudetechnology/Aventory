@@ -1,3 +1,3 @@
 <template>
-    <div class="p-4 flex"><slot></slot></div>
+    <div class="p-4 tabs"><slot></slot></div>
 </template>

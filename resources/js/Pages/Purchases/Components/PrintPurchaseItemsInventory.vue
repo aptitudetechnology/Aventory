@@ -1,14 +1,14 @@
 <template>
-    <jet-button @click="printTags">Print Tags</jet-button>
+    <print-button @click="printTags">Print Tags</print-button>
 </template>
 
 <script>
-import JetButton from "@/Jetstream/Button";
+import PrintButton from "@/Components/Buttons/PrintButton.vue";
 import { Inertia } from "@inertiajs/inertia";
 
 export default {
     components: {
-        JetButton,
+        PrintButton,
     },
     props: { purchase_items: Array },
 

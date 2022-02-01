@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     use HasFactory;
-    protected $with = ['product', 'size', 'block', 'place'];
-    protected $appends = ['last_inventory_date'];
+    protected $with = ['product', 'size', 'block', 'place', 'nurseryLocation'];
+    protected $appends = ['last_inventory_date', 'block_name', 'place_name'];
     /**
      * The attributes that are mass assignable.
      *
@@ -79,6 +79,11 @@ class Inventory extends Model
         return $this->belongsToMany(\App\Models\OrderItem::class, 'inventory_archive', 'inventory_id', 'order_item_id');
     }
 
+    public function nurseryLocation()
+    {
+        return $this->belongsTo(\App\Models\NurseryLocation::class, 'nursery_location_id');
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -88,12 +93,28 @@ class Inventory extends Model
         return $this->belongsTo(\App\Models\Block::class);
     }
 
+    public function getBlockNameAttribute()
+    {
+        return $this->block ? $this->block->name : "Unassigned";
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function place()
     {
         return $this->belongsTo(\App\Models\Place::class);
+    }
+
+    public function getPlaceNameAttribute()
+    {
+        if ($this->place) {
+            return 'Row: ' . $this->place->row_number . '- #' . $this->place->plant_number;
+        }
+        if ($this->type == 'group') {
+            return "Located in Group";
+        }
+        return "Unassigned";
     }
 
 
@@ -116,5 +137,15 @@ class Inventory extends Model
     public function team()
     {
         return $this->belongsTo(\App\Models\Team::class);
+    }
+
+    public function reprintQueue()
+    {
+        return $this->hasOne(ReprintQueue::class);
+    }
+
+    public function getQuantityToPrintAttribute()
+    {
+        return $this->reprintQueue ? $this->reprintQueue->to_print : $this->quantity;
     }
 }

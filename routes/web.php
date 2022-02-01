@@ -17,7 +17,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PlantFeaturesController;
 use App\Http\Controllers\RemovePurchaseItemFromInventory;
-use App\Http\Controllers\PrintTagController;
+use App\Http\Controllers\PrintPurchaseItemsTagsController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ClearLocationController;
@@ -36,6 +36,8 @@ use App\Http\Controllers\ViewInventoryController;
 use App\Http\Controllers\Api\ApiSalesController;
 use App\Http\Controllers\Api\ApiQuoteOrdersController;
 use App\Http\Controllers\Api\ApiRelatedOrdersController;
+use App\Http\Controllers\ReprintQueueController;
+use App\Http\Controllers\PrintInventoryTagsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -108,7 +110,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
 
-    Route::get('print-items-tags', PrintTagController::class)->name('print-items-tags');
+    Route::get('print-items-tags', PrintPurchaseItemsTagsController::class)->name('print-items-tags');
 
     Route::get('inventory/clear-locations', [ClearLocationController::class, 'index'])->name('inventory.clear-locations');
     Route::post('inventory/clear-locations/{block}', [ClearLocationController::class, 'clear'])->name('clear-locations.clear');
@@ -156,4 +158,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
     Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');
     Route::get('api/products/{product}/size/{size}/prices', ApiProductPriceController::class)->name('api.product.prices');
+
+    // Reprint Queue
+    Route::resource('reprint-queue', ReprintQueueController::class)->only('index', 'store', 'update', 'destroy');
+    Route::get('reprint-tags', PrintInventoryTagsController::class)->name('reprint-tags');
 });

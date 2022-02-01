@@ -7,6 +7,7 @@ use App\Http\Requests\InventoryUpdateRequest;
 use App\Models\Inventory;
 use App\Models\PurchaseItem;
 use App\Models\Place;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -18,7 +19,42 @@ class InventoryController extends Controller
      */
     public function index(Request $request)
     {
-        return inertia('Inventory/Index');
+        Gate::authorize('viewAny', Inventory::class);
+        $filters = $request->only(['search', 'orderBy', 'orderByDirection']);
+
+        $inventory = auth()->user()->currentTeam
+            ->inventories()->with('nurseryLocation')
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('id', $request->search)
+                    ->orWhereHas('product', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%");
+                    })
+                    ->orWhereHas('nurseryLocation', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%")->orWhere('location_code', 'like', "%{$request->search}%");
+                    })
+                    ->orWhereHas('block', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%");
+                    });
+            })
+            ->when($request->orderBy, function ($query) use ($request) {
+                if ($request->orderBy == 'product') {
+                    $query
+                        ->addSelect(['product_name' => Product::select('name')
+                            ->whereColumn('id', 'inventories.product_id')])
+                        ->orderBy('product_name', $request->orderByDirection);
+                } else {
+                    $query->orderBy($request->orderBy, $request->orderByDirection);
+                }
+            }, function ($query) {
+                $query->orderBy('id', 'desc');
+            })
+            ->paginate(50)->withQueryString();
+
+
+        return inertia('Inventory/Index', [
+            'inventory' => $inventory,
+            'filters' => $filters,
+        ]);
     }
 
     /**

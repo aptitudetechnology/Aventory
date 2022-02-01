@@ -12,7 +12,6 @@
                             labelValue="Select Nursery"
                             :items="nurseries"
                             v-model="selectedNursery"
-                            @update="getBlocks"
                         ></select-box>
 
                         <select-box
@@ -20,7 +19,6 @@
                             labelValue="Select Block"
                             :items="blocks"
                             v-model="selectedBlock"
-                            @update="getPlaces"
                         />
 
                         <form
@@ -127,8 +125,21 @@ export default {
                 })[0];
         },
     },
+    watch: {
+        selectedNursery() {
+            this.getBlocks();
+        },
+        selectedBlock() {
+            this.getPlaces();
+        },
+    },
     methods: {
         getBlocks() {
+            this.blocks = [];
+            this.selectedBlock = null;
+            this.places = [];
+            this.starting_row = null;
+            this.ending_row = null;
             if (this.selectedNursery) {
                 axios
                     .get(route("api.blocks.index", this.selectedNursery))

@@ -597,8 +597,8 @@ html {
 }
 
 :root {
-	--p: 142 71.8% 29.2%;
-	--pf: 142 71.8% 29.2%;
+	--p: 219 14.1% 27.8%;
+	--pf: 222 13.4% 19%;
 	--pc: 0 0% 100%;
 	--s: 219 6.9% 40%;
 	--sf: 222 15% 22.2%;
@@ -1429,6 +1429,11 @@ html {
 	gap: .5rem;
 	min-height: 4rem;
 	justify-items: start;
+}
+.tabs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
 }
 .tab {
 	cursor: pointer;
@@ -2386,6 +2391,12 @@ html {
 .tab-lifted.tab-active+.tab-lifted.tab-active:before {
 	background: none;
 }
+.tabs-boxed {
+	--tw-bg-opacity: 1;
+	background-color: hsla(var(--b2)/var(--tw-bg-opacity,1));
+	padding: .25rem;
+	border-radius: var(--rounded-btn,.5rem);
+}
 .tabs-boxed .tab-active {
 	--tw-bg-opacity: 1;
 	background-color: hsla(var(--p)/var(--tw-bg-opacity,1));
@@ -2805,6 +2816,10 @@ html {
 	margin-left: auto;
 	margin-right: auto;
 }
+.my-4 {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
 .mx-2 {
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
@@ -2890,14 +2905,14 @@ html {
 .mb-4 {
 	margin-bottom: 1rem;
 }
+.mr-20 {
+	margin-right: 5rem;
+}
 .mb-0 {
 	margin-bottom: 0px;
 }
 .mt-0 {
 	margin-top: 0px;
-}
-.mr-20 {
-	margin-right: 5rem;
 }
 .-mt-px {
 	margin-top: -1px;
@@ -2923,11 +2938,11 @@ html {
 .mr-4 {
 	margin-right: 1rem;
 }
-.mr-0 {
-	margin-right: 0px;
-}
 .ml-0 {
 	margin-left: 0px;
+}
+.mr-0 {
+	margin-right: 0px;
 }
 .mr-1\.5 {
 	margin-right: 0.375rem;
@@ -5010,10 +5025,6 @@ fade-enter-from, fade-leave-to {
 
 	.lg\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.lg\:grid-cols-4 {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
 	.lg\:gap-8 {
