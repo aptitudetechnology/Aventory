@@ -1,4 +1,5 @@
 {
     "projectId": "rkihm2",
-    "experimentalStudio": true
+    "experimentalStudio": true,
+    "baseUrl": "https://quickinventory.test"
 }
