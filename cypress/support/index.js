@@ -21,6 +21,8 @@ before(() => {
     cy.task("activateCypressEnvFile", {}, { log: false });
     cy.artisan("config:clear", {}, { log: false });
 
+    // Reset the database
+    cy.refreshDatabase();
     cy.refreshRoutes();
 });
 

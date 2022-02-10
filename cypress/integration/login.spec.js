@@ -1,9 +1,4 @@
 describe("The Login Page", () => {
-    beforeEach(() => {
-        // reset and seed the database prior to every test
-        cy.refreshDatabase();
-    });
-
     it("Invalid credentials should not log in.", function () {
         cy.visit("login");
         cy.get("#email").clear();
