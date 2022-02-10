@@ -1,0 +1,1925 @@
+{
+  "ignition.healthCheck": {
+    "name": "ignition.healthCheck",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\HealthCheckController",
+    "uri": "_ignition/health-check",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "ignition.executeSolution": {
+    "name": "ignition.executeSolution",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\ExecuteSolutionController",
+    "uri": "_ignition/execute-solution",
+    "method": [
+      "POST"
+    ]
+  },
+  "ignition.shareReport": {
+    "name": "ignition.shareReport",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\ShareReportController",
+    "uri": "_ignition/share-report",
+    "method": [
+      "POST"
+    ]
+  },
+  "ignition.scripts": {
+    "name": "ignition.scripts",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\ScriptController",
+    "uri": "_ignition/scripts/{script}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "ignition.styles": {
+    "name": "ignition.styles",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\StyleController",
+    "uri": "_ignition/styles/{style}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "cypress.factory": {
+    "name": "cypress.factory",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@factory",
+    "uri": "__cypress__/factory",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.login": {
+    "name": "cypress.login",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@login",
+    "uri": "__cypress__/login",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.logout": {
+    "name": "cypress.logout",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@logout",
+    "uri": "__cypress__/logout",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.artisan": {
+    "name": "cypress.artisan",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@artisan",
+    "uri": "__cypress__/artisan",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.run-php": {
+    "name": "cypress.run-php",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@runPhp",
+    "uri": "__cypress__/run-php",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.csrf-token": {
+    "name": "cypress.csrf-token",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@csrfToken",
+    "uri": "__cypress__/csrf_token",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "cypress.routes": {
+    "name": "cypress.routes",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@routes",
+    "uri": "__cypress__/routes",
+    "method": [
+      "POST"
+    ]
+  },
+  "login": {
+    "name": "login",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\AuthenticatedSessionController@create",
+    "uri": "login",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "": {
+    "name": null,
+    "domain": null,
+    "action": "Closure",
+    "uri": "/",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "logout": {
+    "name": "logout",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\AuthenticatedSessionController@destroy",
+    "uri": "logout",
+    "method": [
+      "POST"
+    ]
+  },
+  "password.request": {
+    "name": "password.request",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\PasswordResetLinkController@create",
+    "uri": "forgot-password",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "password.reset": {
+    "name": "password.reset",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\NewPasswordController@create",
+    "uri": "reset-password/{token}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "password.email": {
+    "name": "password.email",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\PasswordResetLinkController@store",
+    "uri": "forgot-password",
+    "method": [
+      "POST"
+    ]
+  },
+  "password.update": {
+    "name": "password.update",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\NewPasswordController@store",
+    "uri": "reset-password",
+    "method": [
+      "POST"
+    ]
+  },
+  "register": {
+    "name": "register",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\RegisteredUserController@create",
+    "uri": "register",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "user-profile-information.update": {
+    "name": "user-profile-information.update",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\ProfileInformationController@update",
+    "uri": "user/profile-information",
+    "method": [
+      "PUT"
+    ]
+  },
+  "user-password.update": {
+    "name": "user-password.update",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\PasswordController@update",
+    "uri": "user/password",
+    "method": [
+      "PUT"
+    ]
+  },
+  "password.confirm": {
+    "name": "password.confirm",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\ConfirmablePasswordController@show",
+    "uri": "user/confirm-password",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "password.confirmation": {
+    "name": "password.confirmation",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\ConfirmedPasswordStatusController@show",
+    "uri": "user/confirmed-password-status",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "two-factor.login": {
+    "name": "two-factor.login",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\TwoFactorAuthenticatedSessionController@create",
+    "uri": "two-factor-challenge",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "two-factor.enable": {
+    "name": "two-factor.enable",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\TwoFactorAuthenticationController@store",
+    "uri": "user/two-factor-authentication",
+    "method": [
+      "POST"
+    ]
+  },
+  "two-factor.disable": {
+    "name": "two-factor.disable",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\TwoFactorAuthenticationController@destroy",
+    "uri": "user/two-factor-authentication",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "two-factor.qr-code": {
+    "name": "two-factor.qr-code",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\TwoFactorQrCodeController@show",
+    "uri": "user/two-factor-qr-code",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "two-factor.recovery-codes": {
+    "name": "two-factor.recovery-codes",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\RecoveryCodeController@index",
+    "uri": "user/two-factor-recovery-codes",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "profile.show": {
+    "name": "profile.show",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\UserProfileController@show",
+    "uri": "user/profile",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "other-browser-sessions.destroy": {
+    "name": "other-browser-sessions.destroy",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\OtherBrowserSessionsController@destroy",
+    "uri": "user/other-browser-sessions",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "current-user-photo.destroy": {
+    "name": "current-user-photo.destroy",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\ProfilePhotoController@destroy",
+    "uri": "user/profile-photo",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "current-user.destroy": {
+    "name": "current-user.destroy",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\CurrentUserController@destroy",
+    "uri": "user",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "teams.create": {
+    "name": "teams.create",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamController@create",
+    "uri": "teams/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "teams.store": {
+    "name": "teams.store",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamController@store",
+    "uri": "teams",
+    "method": [
+      "POST"
+    ]
+  },
+  "teams.show": {
+    "name": "teams.show",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamController@show",
+    "uri": "teams/{team}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "teams.update": {
+    "name": "teams.update",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamController@update",
+    "uri": "teams/{team}",
+    "method": [
+      "PUT"
+    ]
+  },
+  "teams.destroy": {
+    "name": "teams.destroy",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamController@destroy",
+    "uri": "teams/{team}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "current-team.update": {
+    "name": "current-team.update",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\CurrentTeamController@update",
+    "uri": "current-team",
+    "method": [
+      "PUT"
+    ]
+  },
+  "team-members.store": {
+    "name": "team-members.store",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamMemberController@store",
+    "uri": "teams/{team}/members",
+    "method": [
+      "POST"
+    ]
+  },
+  "team-members.update": {
+    "name": "team-members.update",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamMemberController@update",
+    "uri": "teams/{team}/members/{user}",
+    "method": [
+      "PUT"
+    ]
+  },
+  "team-members.destroy": {
+    "name": "team-members.destroy",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\Inertia\\TeamMemberController@destroy",
+    "uri": "teams/{team}/members/{user}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "team-invitations.accept": {
+    "name": "team-invitations.accept",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\TeamInvitationController@accept",
+    "uri": "team-invitations/{invitation}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "team-invitations.destroy": {
+    "name": "team-invitations.destroy",
+    "domain": null,
+    "action": "Laravel\\Jetstream\\Http\\Controllers\\TeamInvitationController@destroy",
+    "uri": "team-invitations/{invitation}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "dashboard": {
+    "name": "dashboard",
+    "domain": null,
+    "action": "Closure",
+    "uri": "dashboard",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "archived-customers.index": {
+    "name": "archived-customers.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedCustomersController@index",
+    "uri": "customers/archived",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "archived-customers.show": {
+    "name": "archived-customers.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedCustomersController@show",
+    "uri": "customers/archived/{customerId}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "archived-customers.restore": {
+    "name": "archived-customers.restore",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedCustomersController@store",
+    "uri": "customers/archived/{customerId}",
+    "method": [
+      "POST"
+    ]
+  },
+  "customer-price-levels.index": {
+    "name": "customer-price-levels.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerPriceLevelController@index",
+    "uri": "customer-price-levels",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customer-price-levels.create": {
+    "name": "customer-price-levels.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerPriceLevelController@create",
+    "uri": "customer-price-levels/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customer-price-levels.store": {
+    "name": "customer-price-levels.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerPriceLevelController@store",
+    "uri": "customer-price-levels",
+    "method": [
+      "POST"
+    ]
+  },
+  "customer-price-levels.show": {
+    "name": "customer-price-levels.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerPriceLevelController@show",
+    "uri": "customer-price-levels/{customer_price_level}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customer-price-levels.edit": {
+    "name": "customer-price-levels.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerPriceLevelController@edit",
+    "uri": "customer-price-levels/{customer_price_level}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customer-price-levels.update": {
+    "name": "customer-price-levels.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerPriceLevelController@update",
+    "uri": "customer-price-levels/{customer_price_level}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "customer-price-levels.destroy": {
+    "name": "customer-price-levels.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerPriceLevelController@destroy",
+    "uri": "customer-price-levels/{customer_price_level}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "customers.index": {
+    "name": "customers.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerController@index",
+    "uri": "customers",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customers.create": {
+    "name": "customers.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerController@create",
+    "uri": "customers/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customers.store": {
+    "name": "customers.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerController@store",
+    "uri": "customers",
+    "method": [
+      "POST"
+    ]
+  },
+  "customers.show": {
+    "name": "customers.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerController@show",
+    "uri": "customers/{customer}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customers.edit": {
+    "name": "customers.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerController@edit",
+    "uri": "customers/{customer}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "customers.update": {
+    "name": "customers.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerController@update",
+    "uri": "customers/{customer}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "customers.destroy": {
+    "name": "customers.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CustomerController@destroy",
+    "uri": "customers/{customer}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "customers.contacts.index": {
+    "name": "customers.contacts.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiContactsController@index",
+    "uri": "customers/{customer}/contacts",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "contacts.store": {
+    "name": "contacts.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ContactController@store",
+    "uri": "contacts",
+    "method": [
+      "POST"
+    ]
+  },
+  "contacts.update": {
+    "name": "contacts.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ContactController@update",
+    "uri": "contacts/{contact}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "contacts.destroy": {
+    "name": "contacts.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ContactController@destroy",
+    "uri": "contacts/{contact}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "archived-vendors.index": {
+    "name": "archived-vendors.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedVendorsController@index",
+    "uri": "vendors/archived",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "archived-vendors.show": {
+    "name": "archived-vendors.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedVendorsController@show",
+    "uri": "vendors/archived/{vendorId}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "archived-vendors.restore": {
+    "name": "archived-vendors.restore",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedVendorsController@store",
+    "uri": "vendors/archived/{vendorId}",
+    "method": [
+      "POST"
+    ]
+  },
+  "vendors.index": {
+    "name": "vendors.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\VendorController@index",
+    "uri": "vendors",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "vendors.create": {
+    "name": "vendors.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\VendorController@create",
+    "uri": "vendors/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "vendors.store": {
+    "name": "vendors.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\VendorController@store",
+    "uri": "vendors",
+    "method": [
+      "POST"
+    ]
+  },
+  "vendors.show": {
+    "name": "vendors.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\VendorController@show",
+    "uri": "vendors/{vendor}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "vendors.edit": {
+    "name": "vendors.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\VendorController@edit",
+    "uri": "vendors/{vendor}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "vendors.update": {
+    "name": "vendors.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\VendorController@update",
+    "uri": "vendors/{vendor}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "vendors.destroy": {
+    "name": "vendors.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\VendorController@destroy",
+    "uri": "vendors/{vendor}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "archived-products.index": {
+    "name": "archived-products.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedProductsController@index",
+    "uri": "products/archived",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "archived-products.show": {
+    "name": "archived-products.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedProductsController@show",
+    "uri": "products/archived/{productId}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "archived-products.restore": {
+    "name": "archived-products.restore",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ArchivedProductsController@store",
+    "uri": "products/archived/{productId}",
+    "method": [
+      "POST"
+    ]
+  },
+  "products.index": {
+    "name": "products.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductController@index",
+    "uri": "products",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.create": {
+    "name": "products.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductController@create",
+    "uri": "products/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.store": {
+    "name": "products.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductController@store",
+    "uri": "products",
+    "method": [
+      "POST"
+    ]
+  },
+  "products.show": {
+    "name": "products.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductController@show",
+    "uri": "products/{product}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.update": {
+    "name": "products.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductController@update",
+    "uri": "products/{product}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "products.destroy": {
+    "name": "products.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductController@destroy",
+    "uri": "products/{product}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "api.products.orders.index": {
+    "name": "api.products.orders.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiProductsOrdersController@index",
+    "uri": "api/products/{product}/orders",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "features.index": {
+    "name": "features.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\FeatureController@index",
+    "uri": "features",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "features.create": {
+    "name": "features.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\FeatureController@create",
+    "uri": "features/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "features.store": {
+    "name": "features.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\FeatureController@store",
+    "uri": "features",
+    "method": [
+      "POST"
+    ]
+  },
+  "features.show": {
+    "name": "features.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\FeatureController@show",
+    "uri": "features/{feature}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "features.edit": {
+    "name": "features.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\FeatureController@edit",
+    "uri": "features/{feature}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "features.update": {
+    "name": "features.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\FeatureController@update",
+    "uri": "features/{feature}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "features.destroy": {
+    "name": "features.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\FeatureController@destroy",
+    "uri": "features/{feature}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "api.products.show": {
+    "name": "api.products.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiProductsController@show",
+    "uri": "api/products/{product}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.products.sizes.index": {
+    "name": "api.products.sizes.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiProductSizesController@index",
+    "uri": "api/products/{product}/sizes",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "categories.index": {
+    "name": "categories.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CategoryController@index",
+    "uri": "categories",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "categories.create": {
+    "name": "categories.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CategoryController@create",
+    "uri": "categories/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "categories.store": {
+    "name": "categories.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CategoryController@store",
+    "uri": "categories",
+    "method": [
+      "POST"
+    ]
+  },
+  "categories.show": {
+    "name": "categories.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CategoryController@show",
+    "uri": "categories/{category}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "categories.edit": {
+    "name": "categories.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CategoryController@edit",
+    "uri": "categories/{category}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "categories.update": {
+    "name": "categories.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CategoryController@update",
+    "uri": "categories/{category}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "categories.destroy": {
+    "name": "categories.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CategoryController@destroy",
+    "uri": "categories/{category}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "plant-features.update": {
+    "name": "plant-features.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PlantFeaturesController@update",
+    "uri": "plant-features/{plant}",
+    "method": [
+      "PATCH"
+    ]
+  },
+  "sizes.index": {
+    "name": "sizes.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SizeController@index",
+    "uri": "sizes",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sizes.create": {
+    "name": "sizes.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SizeController@create",
+    "uri": "sizes/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sizes.store": {
+    "name": "sizes.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SizeController@store",
+    "uri": "sizes",
+    "method": [
+      "POST"
+    ]
+  },
+  "sizes.update": {
+    "name": "sizes.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SizeController@update",
+    "uri": "sizes/{size}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "sizes.destroy": {
+    "name": "sizes.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SizeController@destroy",
+    "uri": "sizes/{size}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "sizes.updateOrder": {
+    "name": "sizes.updateOrder",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SizeController@updateOrder",
+    "uri": "size-order",
+    "method": [
+      "PUT"
+    ]
+  },
+  "prices.store": {
+    "name": "prices.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PriceController@store",
+    "uri": "prices",
+    "method": [
+      "POST"
+    ]
+  },
+  "prices.update": {
+    "name": "prices.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PriceController@update",
+    "uri": "prices/{price}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "prices.destroy": {
+    "name": "prices.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PriceController@destroy",
+    "uri": "prices/{price}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "api.products": {
+    "name": "api.products",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiProductsController@index",
+    "uri": "api/products",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.categories": {
+    "name": "api.categories",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiCategoriesController@index",
+    "uri": "api/categories",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "purchases.purchase-item.store": {
+    "name": "purchases.purchase-item.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseItemController@store",
+    "uri": "purchases/{purchase}/purchase-item",
+    "method": [
+      "POST"
+    ]
+  },
+  "purchase-item.update": {
+    "name": "purchase-item.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseItemController@update",
+    "uri": "purchase-item/{purchase_item}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "purchase-item.destroy": {
+    "name": "purchase-item.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseItemController@destroy",
+    "uri": "purchase-item/{purchase_item}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "purchases.index": {
+    "name": "purchases.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseController@index",
+    "uri": "purchases",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "purchases.create": {
+    "name": "purchases.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseController@create",
+    "uri": "purchases/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "purchases.store": {
+    "name": "purchases.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseController@store",
+    "uri": "purchases",
+    "method": [
+      "POST"
+    ]
+  },
+  "purchases.show": {
+    "name": "purchases.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseController@show",
+    "uri": "purchases/{purchase}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "purchases.edit": {
+    "name": "purchases.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseController@edit",
+    "uri": "purchases/{purchase}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "purchases.update": {
+    "name": "purchases.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseController@update",
+    "uri": "purchases/{purchase}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "purchases.destroy": {
+    "name": "purchases.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PurchaseController@destroy",
+    "uri": "purchases/{purchase}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "print-items-tags": {
+    "name": "print-items-tags",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PrintPurchaseItemsTagsController",
+    "uri": "print-items-tags",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory.clear-locations": {
+    "name": "inventory.clear-locations",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ClearLocationController@index",
+    "uri": "inventory/clear-locations",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "clear-locations.clear": {
+    "name": "clear-locations.clear",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ClearLocationController@clear",
+    "uri": "inventory/clear-locations/{block}",
+    "method": [
+      "POST"
+    ]
+  },
+  "inventory.index": {
+    "name": "inventory.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\InventoryController@index",
+    "uri": "inventory",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory.create": {
+    "name": "inventory.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\InventoryController@create",
+    "uri": "inventory/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory.store": {
+    "name": "inventory.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\InventoryController@store",
+    "uri": "inventory",
+    "method": [
+      "POST"
+    ]
+  },
+  "inventory.show": {
+    "name": "inventory.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\InventoryController@show",
+    "uri": "inventory/{inventory}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory.edit": {
+    "name": "inventory.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\InventoryController@edit",
+    "uri": "inventory/{inventory}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory.update": {
+    "name": "inventory.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\InventoryController@update",
+    "uri": "inventory/{inventory}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "inventory.destroy": {
+    "name": "inventory.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\InventoryController@destroy",
+    "uri": "inventory/{inventory}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "delete-inventory-purchase-item": {
+    "name": "delete-inventory-purchase-item",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RemovePurchaseItemFromInventory",
+    "uri": "inventory-purchase-items",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "view.index": {
+    "name": "view.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ViewInventoryController@index",
+    "uri": "view",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "view.show": {
+    "name": "view.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ViewInventoryController@show",
+    "uri": "view/{product}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "locations.index": {
+    "name": "locations.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NurseryLocationController@index",
+    "uri": "locations",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "locations.create": {
+    "name": "locations.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NurseryLocationController@create",
+    "uri": "locations/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "locations.store": {
+    "name": "locations.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NurseryLocationController@store",
+    "uri": "locations",
+    "method": [
+      "POST"
+    ]
+  },
+  "locations.show": {
+    "name": "locations.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NurseryLocationController@show",
+    "uri": "locations/{location}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "locations.edit": {
+    "name": "locations.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NurseryLocationController@edit",
+    "uri": "locations/{location}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "locations.update": {
+    "name": "locations.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NurseryLocationController@update",
+    "uri": "locations/{location}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "locations.destroy": {
+    "name": "locations.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NurseryLocationController@destroy",
+    "uri": "locations/{location}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "blocks.index": {
+    "name": "blocks.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BlockController@index",
+    "uri": "blocks",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "blocks.create": {
+    "name": "blocks.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BlockController@create",
+    "uri": "blocks/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "blocks.store": {
+    "name": "blocks.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BlockController@store",
+    "uri": "blocks",
+    "method": [
+      "POST"
+    ]
+  },
+  "blocks.show": {
+    "name": "blocks.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BlockController@show",
+    "uri": "blocks/{block}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "blocks.edit": {
+    "name": "blocks.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BlockController@edit",
+    "uri": "blocks/{block}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "blocks.update": {
+    "name": "blocks.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BlockController@update",
+    "uri": "blocks/{block}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "blocks.destroy": {
+    "name": "blocks.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BlockController@destroy",
+    "uri": "blocks/{block}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "api.blocks.index": {
+    "name": "api.blocks.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiBlocksController@index",
+    "uri": "api/{nursery}/blocks",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.places.index": {
+    "name": "api.places.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PlaceController@index",
+    "uri": "api/{block}/places",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "places.store": {
+    "name": "places.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PlaceController@store",
+    "uri": "places",
+    "method": [
+      "POST"
+    ]
+  },
+  "places.update": {
+    "name": "places.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PlaceController@update",
+    "uri": "places",
+    "method": [
+      "PATCH"
+    ]
+  },
+  "orders.index": {
+    "name": "orders.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderController@index",
+    "uri": "orders",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "orders.create": {
+    "name": "orders.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderController@create",
+    "uri": "orders/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "orders.store": {
+    "name": "orders.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderController@store",
+    "uri": "orders",
+    "method": [
+      "POST"
+    ]
+  },
+  "orders.show": {
+    "name": "orders.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderController@show",
+    "uri": "orders/{order}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "orders.edit": {
+    "name": "orders.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderController@edit",
+    "uri": "orders/{order}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "orders.update": {
+    "name": "orders.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderController@update",
+    "uri": "orders/{order}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "orders.destroy": {
+    "name": "orders.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderController@destroy",
+    "uri": "orders/{order}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "quotes.index": {
+    "name": "quotes.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\QuoteController@index",
+    "uri": "quotes",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "quotes.create": {
+    "name": "quotes.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\QuoteController@create",
+    "uri": "quotes/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "quotes.store": {
+    "name": "quotes.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\QuoteController@store",
+    "uri": "quotes",
+    "method": [
+      "POST"
+    ]
+  },
+  "quotes.show": {
+    "name": "quotes.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\QuoteController@show",
+    "uri": "quotes/{quote}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "quotes.edit": {
+    "name": "quotes.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\QuoteController@edit",
+    "uri": "quotes/{quote}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "quotes.update": {
+    "name": "quotes.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\QuoteController@update",
+    "uri": "quotes/{quote}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "quotes.destroy": {
+    "name": "quotes.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\QuoteController@destroy",
+    "uri": "quotes/{quote}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "sales.order-items.store": {
+    "name": "sales.order-items.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderItemController@store",
+    "uri": "sales/{sale}/order-items",
+    "method": [
+      "POST"
+    ]
+  },
+  "sales.order-items.update": {
+    "name": "sales.order-items.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderItemController@update",
+    "uri": "sales/{sale}/order-items/{order_item}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "sales.order-items.destroy": {
+    "name": "sales.order-items.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderItemController@destroy",
+    "uri": "sales/{sale}/order-items/{order_item}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "sales.convert": {
+    "name": "sales.convert",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Sales\\ConvertSaleController@convert",
+    "uri": "sales/{sale}/convert",
+    "method": [
+      "POST"
+    ]
+  },
+  "orders.print": {
+    "name": "orders.print",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\OrderPDFController",
+    "uri": "sales/{sale}/print",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sales.discounts.index": {
+    "name": "sales.discounts.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiDiscountsController@index",
+    "uri": "sales/{sale}/discounts",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sales.discounts.store": {
+    "name": "sales.discounts.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiDiscountsController@store",
+    "uri": "sales/{sale}/discounts",
+    "method": [
+      "POST"
+    ]
+  },
+  "sales.discounts.show": {
+    "name": "sales.discounts.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiDiscountsController@show",
+    "uri": "sales/{sale}/discounts/{discount}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sales.discounts.update": {
+    "name": "sales.discounts.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiDiscountsController@update",
+    "uri": "sales/{sale}/discounts/{discount}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "sales.discounts.destroy": {
+    "name": "sales.discounts.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiDiscountsController@destroy",
+    "uri": "sales/{sale}/discounts/{discount}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "sales.inventory.index": {
+    "name": "sales.inventory.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiOrderInventoryController@index",
+    "uri": "sales/{sale}/inventory",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sales.inventory.store": {
+    "name": "sales.inventory.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiOrderInventoryController@store",
+    "uri": "sales/{sale}/inventory",
+    "method": [
+      "POST"
+    ]
+  },
+  "sales.inventory.show": {
+    "name": "sales.inventory.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiOrderInventoryController@show",
+    "uri": "sales/{sale}/inventory/{inventory}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory-archive.index": {
+    "name": "inventory-archive.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiInventoryArchiveController@index",
+    "uri": "inventory-archive",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory-archive.store": {
+    "name": "inventory-archive.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiInventoryArchiveController@store",
+    "uri": "inventory-archive",
+    "method": [
+      "POST"
+    ]
+  },
+  "inventory-archive.show": {
+    "name": "inventory-archive.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiInventoryArchiveController@show",
+    "uri": "inventory-archive/{inventory_archive}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "inventory-archive.update": {
+    "name": "inventory-archive.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiInventoryArchiveController@update",
+    "uri": "inventory-archive/{inventory_archive}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "inventory-archive.destroy": {
+    "name": "inventory-archive.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiInventoryArchiveController@destroy",
+    "uri": "inventory-archive/{inventory_archive}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "api.sales.index": {
+    "name": "api.sales.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiSalesController@index",
+    "uri": "api/sales",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.sales.show": {
+    "name": "api.sales.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiSalesController@show",
+    "uri": "api/sales/{sale}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.quotes.orders.index": {
+    "name": "api.quotes.orders.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiQuoteOrdersController",
+    "uri": "api/quotes/{quote}/orders",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.orders.quote.show": {
+    "name": "api.orders.quote.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiOrderQuoteController",
+    "uri": "api/orders/{order}/quote",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.orders.related.index": {
+    "name": "api.orders.related.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiRelatedOrdersController",
+    "uri": "api/orders/{order}/related",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.quotes.active": {
+    "name": "api.quotes.active",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiActiveQuotesController",
+    "uri": "api/quotes/active",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.inventory.quantities": {
+    "name": "api.inventory.quantities",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiInventoryQuantitiesController",
+    "uri": "api/products/{product}/size/{size}/quantities",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "api.product.prices": {
+    "name": "api.product.prices",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ApiProductPriceController",
+    "uri": "api/products/{product}/size/{size}/prices",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "reprint-queue.index": {
+    "name": "reprint-queue.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ReprintQueueController@index",
+    "uri": "reprint-queue",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "reprint-queue.store": {
+    "name": "reprint-queue.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ReprintQueueController@store",
+    "uri": "reprint-queue",
+    "method": [
+      "POST"
+    ]
+  },
+  "reprint-queue.update": {
+    "name": "reprint-queue.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ReprintQueueController@update",
+    "uri": "reprint-queue/{reprint_queue}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "reprint-queue.destroy": {
+    "name": "reprint-queue.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ReprintQueueController@destroy",
+    "uri": "reprint-queue/{reprint_queue}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "reprint-tags": {
+    "name": "reprint-tags",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PrintInventoryTagsController",
+    "uri": "reprint-tags",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  }
+}
