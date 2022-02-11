@@ -21,7 +21,7 @@
         "browser-sync": "^2.27.7",
         "browser-sync-webpack-plugin": "^2.3.0",
         "cypress": "^9.4.1",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.41",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "postcss-import": "^12.0.1",
@@ -34,6 +34,7 @@
         "@heroicons/vue": "^1.0.3",
         "daisyui": "^1.16.2",
         "moment": "^2.29.1",
+        "pinia": "^2.0.11",
         "vue-pluralize": "0.0.2",
         "vuedraggable": "^4.1.0"
     }
