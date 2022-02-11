@@ -6,7 +6,7 @@ export default {
     props: {
         current: Boolean,
         type: { type: String, default: "underline" },
-        as: { type: String, default: "inertia-link" },
+        as: { type: String, default: "Link" },
     },
     computed: {
         classes() {

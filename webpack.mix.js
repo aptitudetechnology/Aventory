@@ -15,21 +15,10 @@ mix.webpackConfig((webpack) => {
         plugins: [
             new webpack.DefinePlugin({
                 __VUE_OPTIONS_API__: true,
-                __VUE_PROD_DEVTOOLS__: true,
             }),
         ],
     };
 });
-// mix.browserSync({
-//     proxy: "quickinventory.test",
-//     open: false,
-//     socket: {
-//         domain: "localhost:3000",
-//     },
-//     reload: {
-//         stream: true,
-//     },
-// });
 
 mix.js("resources/js/app.js", "public/js")
     .vue()

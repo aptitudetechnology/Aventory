@@ -1,29 +1,12 @@
 <template>
     <nav
         v-if="items.links.length > 3"
-        class="
-            border-t border-gray-200
-            px-4
-            flex
-            items-center
-            justify-between
-            sm:px-0
-        "
+        class="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0"
     >
         <div class="-mt-px w-0 flex-1 flex">
             <div
                 v-if="!items.prev_page_url"
-                class="
-                    border-t-2 border-transparent
-                    pt-4
-                    pr-1
-                    inline-flex
-                    items-center
-                    text-sm
-                    font-medium
-                    text-gray-500
-                    cursor-not-allowed
-                "
+                class="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 cursor-not-allowed"
             >
                 <svg
                     class="mr-3 h-5 w-5 text-gray-400"
@@ -42,20 +25,10 @@
 
                 Previous
             </div>
-            <inertia-link
+            <Link
                 v-else
                 :href="items.prev_page_url"
-                class="
-                    border-t-2 border-transparent
-                    pt-4
-                    pr-1
-                    inline-flex
-                    items-center
-                    text-sm
-                    font-medium
-                    text-gray-500
-                    hover:text-gray-700 hover:border-gray-300
-                "
+                class="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
             >
                 <svg
                     class="mr-3 h-5 w-5 text-gray-400"
@@ -72,44 +45,23 @@
                     ></path>
                 </svg>
                 Previous
-            </inertia-link>
+            </Link>
         </div>
         <div class="hidden md:-mt-px md:flex">
             <template v-for="link in links" :key="link.label">
-                <inertia-link
+                <Link
                     v-if="link.url"
                     :href="link.url"
-                    class="
-                        border-transparent
-                        text-gray-500
-                        hover:text-gray-700 hover:border-gray-300
-                        border-t-2
-                        pt-4
-                        px-4
-                        inline-flex
-                        items-center
-                        text-sm
-                        font-medium
-                    "
+                    class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                     :class="{
                         'border-green-500 text-green-600': link.active,
                     }"
                 >
                     {{ link.label }}
-                </inertia-link>
+                </Link>
                 <span
                     v-else
-                    class="
-                        border-transparent
-                        text-gray-500
-                        border-t-2
-                        pt-4
-                        px-4
-                        inline-flex
-                        items-center
-                        text-sm
-                        font-medium
-                    "
+                    class="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                 >
                     ...
                 </span>
@@ -118,17 +70,7 @@
         <div class="-mt-px w-0 flex-1 flex justify-end">
             <div
                 v-if="!items.next_page_url"
-                class="
-                    border-t-2 border-transparent
-                    pt-4
-                    pl-1
-                    inline-flex
-                    items-center
-                    text-sm
-                    font-medium
-                    text-gray-500
-                    cursor-not-allowed
-                "
+                class="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 cursor-not-allowed"
             >
                 Next
                 <svg
@@ -146,20 +88,10 @@
                     ></path>
                 </svg>
             </div>
-            <inertia-link
+            <Link
                 v-else
                 :href="items.next_page_url"
-                class="
-                    border-t-2 border-transparent
-                    pt-4
-                    pl-1
-                    inline-flex
-                    items-center
-                    text-sm
-                    font-medium
-                    text-gray-500
-                    hover:text-gray-700 hover:border-gray-300
-                "
+                class="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
             >
                 Next
                 <svg
@@ -176,7 +108,7 @@
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                     ></path>
                 </svg>
-            </inertia-link>
+            </Link>
         </div>
     </nav>
 </template>

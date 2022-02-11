@@ -27,6 +27,7 @@ import SelectBox from "@Components/Forms/SelectBox";
 import DetailsSection from "@Components/DetailsSection";
 import MoneyInput from "@Components/Forms/MoneyInput";
 import PercentageInput from "@Components/Forms/PercentageInput";
+import { Link } from "@inertiajs/inertia-vue3";
 
 const el = document.getElementById("app");
 
@@ -41,6 +42,7 @@ const app = createApp({
 app.mixin({
     methods: { route },
     components: {
+        Link,
         JetLabel,
         JetInput,
         JetInputError,

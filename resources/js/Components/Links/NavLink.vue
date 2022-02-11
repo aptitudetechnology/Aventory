@@ -1,5 +1,5 @@
 <template>
-    <inertia-link
+    <Link
         :href="href"
         :class="[
             current ? 'bg-gray-50' : 'hover:bg-gray-50 hover:text-gray-900',
@@ -7,7 +7,7 @@
         ]"
     >
         <slot></slot>
-    </inertia-link>
+    </Link>
 </template>
 
 <script>
