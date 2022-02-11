@@ -18,8 +18,8 @@ export default {
     props: {
         modelValue: { type: [String, Boolean, Number] },
         error: { type: Boolean, default: false },
-        min: { type: Number },
-        max: { type: Number },
+        min: { type: [Number, String] },
+        max: { type: [Number, String] },
     },
 
     emits: ["update:modelValue"],

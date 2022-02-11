@@ -24,12 +24,12 @@
                     Resend Verification Email
                 </jet-button>
 
-                <inertia-link
+                <Link
                     :href="route('logout')"
                     method="post"
                     as="button"
                     class="underline text-sm text-gray-600 hover:text-gray-900"
-                    >Log Out</inertia-link
+                    >Log Out</Link
                 >
             </div>
         </form>

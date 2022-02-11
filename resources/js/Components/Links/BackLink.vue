@@ -1,5 +1,5 @@
 <template>
-    <inertia-link
+    <Link
         :href="href"
         class="-ml-1 inline-flex items-center space-x-3 text-sm text-blue-gray-900"
     >
@@ -8,7 +8,7 @@
             aria-hidden="true"
         />
         <span><slot></slot></span>
-    </inertia-link>
+    </Link>
 </template>
 <script>
 import { ChevronLeftIcon } from "@heroicons/vue/solid";

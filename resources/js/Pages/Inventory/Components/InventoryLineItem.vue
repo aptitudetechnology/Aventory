@@ -22,8 +22,8 @@
         <table-d>{{ item.block_name }}</table-d>
         <table-d>{{ item.place_name }}</table-d>
         <table-d>
-            <inertia-link :href="route('inventory.show', item.id)" class="link"
-                >Edit</inertia-link
+            <Link :href="route('inventory.show', item.id)" class="link"
+                >Edit</Link
             >
         </table-d>
     </tr>
