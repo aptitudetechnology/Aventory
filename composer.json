@@ -11,7 +11,7 @@
         "php": "^8.1",
         "doctrine/dbal": "^3.3.2",
         "fruitcake/laravel-cors": "^2.0.5",
-        "guzzlehttp/guzzle": "^7.4.1",
+        "guzzlehttp/guzzle": "^7.4",
         "inertiajs/inertia-laravel": "^0.5.2",
         "laravel/framework": "^9.0",
         "laravel/jetstream": "^2.6.5",
@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.7",
         "laraveldaily/laravel-invoices": "^3.0",
         "quickbooks/v3-php-sdk": "^6.0.3",
+        "sammyjo20/saloon-laravel": "^1.4",
         "tightenco/ziggy": "^1.4.3"
     },
     "require-dev": {
