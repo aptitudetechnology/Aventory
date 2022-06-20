@@ -16,7 +16,7 @@ class Codat extends SaloonConnector
      */
     public function defineBaseUrl(): string
     {
-        return '';
+        return config('app.codat_url');
     }
 
     /**
@@ -26,7 +26,9 @@ class Codat extends SaloonConnector
      */
     public function defaultHeaders(): array
     {
-        return [];
+        return [
+            'Authorization' => 'Bearer ' . config('app.codat_api_key'),
+        ];
     }
 
     /**
