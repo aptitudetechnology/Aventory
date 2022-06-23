@@ -25,8 +25,6 @@ Quick Inventory Pro is a web application to help nurseries manage their plant an
 - Laravel
 - InertiaJS
 
-## Setup Instructions
-
 ## License
 
 This project is confidential and is not open source. Do not distribute or publish any part of the source code or archetecture without prior written consent.
