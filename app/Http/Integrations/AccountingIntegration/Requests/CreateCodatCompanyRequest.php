@@ -2,24 +2,26 @@
 
 namespace App\Http\Integrations\AccountingIntegration\Requests;
 
+
+use App\Http\Integrations\AccountingIntegration\CodatConnector;
 use Sammyjo20\Saloon\Constants\Saloon;
 use Sammyjo20\Saloon\Http\SaloonRequest;
 
-class CreateCompanyRequest extends SaloonRequest
+class CreateCodatCompanyRequest extends SaloonRequest
 {
     /**
      * The connector class.
      *
      * @var string|null
      */
-    protected ?string $connector = null;
+    protected ?string $connector = CodatConnector::class;
 
     /**
      * The HTTP verb the request will use.
      *
      * @var string|null
      */
-    protected ?string $method = Saloon::GET;
+    protected ?string $method = Saloon::POST;
 
     /**
      * The endpoint of the request.
@@ -28,6 +30,6 @@ class CreateCompanyRequest extends SaloonRequest
      */
     public function defineEndpoint(): string
     {
-        return '/api/v1/user';
+        return '/companies';
     }
 }

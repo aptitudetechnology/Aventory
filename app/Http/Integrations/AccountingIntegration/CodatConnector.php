@@ -5,7 +5,7 @@ namespace App\Http\Integrations\AccountingIntegration;
 use Sammyjo20\Saloon\Http\SaloonConnector;
 use Sammyjo20\Saloon\Traits\Plugins\AcceptsJson;
 
-class Codat extends SaloonConnector
+class CodatConnector extends SaloonConnector
 {
     use AcceptsJson;
 
