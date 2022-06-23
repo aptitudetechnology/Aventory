@@ -14,6 +14,5 @@ class TeamObserver
      */
     public function created(Team $team)
     {
-        //TODO: create company in codat
     }
 }

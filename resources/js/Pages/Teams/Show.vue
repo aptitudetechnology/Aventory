@@ -1,30 +1,35 @@
 <template>
-  <app-layout>
-    <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Team Settings
-      </h2>
-    </template>
-
-    <div class="overflow-y-auto h-full">
-      <div class="max-w-7xl py-10 sm:px-6 lg:px-8">
-        <update-team-name-form :team="team" :permissions="permissions" />
-
-        <team-member-manager
-          class="mt-10 sm:mt-0"
-          :team="team"
-          :available-roles="availableRoles"
-          :user-permissions="permissions"
-        />
-
-        <template v-if="permissions.canDeleteTeam && !team.personal_team">
-          <jet-section-border />
-
-          <delete-team-form class="mt-10 sm:mt-0" :team="team" />
+    <app-layout>
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Company Settings
+            </h2>
         </template>
-      </div>
-    </div>
-  </app-layout>
+
+        <div class="overflow-y-auto h-full">
+            <div class="max-w-7xl py-10 sm:px-6 lg:px-8">
+                <update-team-name-form
+                    :team="team"
+                    :permissions="permissions"
+                />
+
+                <team-member-manager
+                    class="mt-10 sm:mt-0"
+                    :team="team"
+                    :available-roles="availableRoles"
+                    :user-permissions="permissions"
+                />
+
+                <template
+                    v-if="permissions.canDeleteTeam && !team.personal_team"
+                >
+                    <jet-section-border />
+
+                    <delete-team-form class="mt-10 sm:mt-0" :team="team" />
+                </template>
+            </div>
+        </div>
+    </app-layout>
 </template>
 
 <script>
@@ -35,14 +40,14 @@ import JetSectionBorder from "@/Jetstream/SectionBorder";
 import UpdateTeamNameForm from "./UpdateTeamNameForm";
 
 export default {
-  props: ["team", "availableRoles", "permissions"],
+    props: ["team", "availableRoles", "permissions"],
 
-  components: {
-    AppLayout,
-    DeleteTeamForm,
-    JetSectionBorder,
-    TeamMemberManager,
-    UpdateTeamNameForm,
-  },
+    components: {
+        AppLayout,
+        DeleteTeamForm,
+        JetSectionBorder,
+        TeamMemberManager,
+        UpdateTeamNameForm,
+    },
 };
 </script>

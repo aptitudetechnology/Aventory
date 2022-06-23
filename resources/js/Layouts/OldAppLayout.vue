@@ -84,10 +84,10 @@
                                                 <div
                                                     class="block px-4 py-2 text-xs text-gray-400"
                                                 >
-                                                    Manage Team
+                                                    Admin
                                                 </div>
 
-                                                <!-- Team Settings -->
+                                                <!-- Company Settings -->
                                                 <jet-dropdown-link
                                                     :href="
                                                         route(
@@ -97,7 +97,7 @@
                                                         )
                                                     "
                                                 >
-                                                    Team Settings
+                                                    Company Settings
                                                 </jet-dropdown-link>
 
                                                 <jet-dropdown-link
@@ -109,7 +109,7 @@
                                                             .canCreateTeams
                                                     "
                                                 >
-                                                    Create New Team
+                                                    Create New Company
                                                 </jet-dropdown-link>
 
                                                 <div
@@ -120,7 +120,7 @@
                                                 <div
                                                     class="block px-4 py-2 text-xs text-gray-400"
                                                 >
-                                                    Switch Teams
+                                                    Switch Company
                                                 </div>
 
                                                 <template
@@ -386,10 +386,10 @@
                                 <div
                                     class="block px-4 py-2 text-xs text-gray-400"
                                 >
-                                    Manage Team
+                                    Admin
                                 </div>
 
-                                <!-- Team Settings -->
+                                <!-- Company Settings -->
                                 <jet-responsive-nav-link
                                     :href="
                                         route(
@@ -399,7 +399,7 @@
                                     "
                                     :active="route().current('teams.show')"
                                 >
-                                    Team Settings
+                                    Company Settings
                                 </jet-responsive-nav-link>
 
                                 <jet-responsive-nav-link
@@ -407,7 +407,7 @@
                                     :active="route().current('teams.create')"
                                     v-if="$page.props.jetstream.canCreateTeams"
                                 >
-                                    Create New Team
+                                    Create New Company
                                 </jet-responsive-nav-link>
 
                                 <div class="border-t border-gray-200"></div>
@@ -416,7 +416,7 @@
                                 <div
                                     class="block px-4 py-2 text-xs text-gray-400"
                                 >
-                                    Switch Teams
+                                    Switch Company
                                 </div>
 
                                 <template
