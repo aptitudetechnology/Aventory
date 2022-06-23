@@ -28,7 +28,7 @@
             </div>
 
             <!-- Company Name -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-3">
                 <jet-label for="name" value="Company Name" />
 
                 <jet-input
@@ -40,6 +40,159 @@
                 />
 
                 <jet-input-error :message="form.errors.name" class="mt-2" />
+            </div>
+
+            <div class="col-span-6 grid grid-cols-6 gap-y-2 gap-x-6">
+                <h3 class="col-span-6 text-lg font-bold">
+                    Contact Information
+                </h3>
+                <!-- Company Email -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="email" value="Company Email" />
+
+                    <jet-input
+                        id="email"
+                        type="email"
+                        class="mt-1 block w-full"
+                        v-model="form.email"
+                        placeholder="yourcompany@email.com"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error
+                        :message="form.errors.email"
+                        class="mt-2"
+                    />
+                </div>
+
+                <!-- Company Phone -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="phone" value="Company Phone" />
+
+                    <jet-input
+                        id="phone"
+                        type="text"
+                        class="mt-1 block w-full"
+                        placeholder="(123) 456-7890"
+                        v-model="form.phone"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error
+                        :message="form.errors.phone"
+                        class="mt-2"
+                    />
+                </div>
+            </div>
+
+            <div class="col-span-6 grid grid-cols-6 gap-y-2 gap-x-6">
+                <h3 class="col-span-6 text-lg font-bold">Company Address</h3>
+                <!-- Company Address -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="address_line_1" value="Address Line 1" />
+
+                    <jet-input
+                        id="address_line_1"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.address_line_1"
+                        placeholder="123 Main St"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error
+                        :message="form.errors.address_line_1"
+                        class="mt-2"
+                    />
+                </div>
+
+                <!-- Company Address 2 -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="address_line_2" value="Address Line 2" />
+
+                    <jet-input
+                        id="address_line_2"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.address_line_2"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error
+                        :message="form.errors.address_line_2"
+                        class="mt-2"
+                    />
+                </div>
+
+                <!-- Company City -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="city" value="Company City" />
+
+                    <jet-input
+                        id="city"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.city"
+                        placeholder="New York"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error :message="form.errors.city" class="mt-2" />
+                </div>
+
+                <!-- Company State -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="state" value="Company State" />
+
+                    <jet-input
+                        id="state"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.state"
+                        placeholder="NY"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error
+                        :message="form.errors.state"
+                        class="mt-2"
+                    />
+                </div>
+
+                <!-- Company Zip -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="zip" value="Company Zip" />
+
+                    <jet-input
+                        id="zip"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.zip"
+                        placeholder="12345"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error :message="form.errors.zip" class="mt-2" />
+                </div>
+
+                <!-- Company Country -->
+                <div class="col-span-6 sm:col-span-3">
+                    <jet-label for="country" value="Company Country" />
+
+                    <jet-input
+                        id="country"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.country"
+                        placeholder="United States"
+                        :disabled="!permissions.canUpdateTeam"
+                    />
+
+                    <jet-input-error
+                        :message="form.errors.country"
+                        class="mt-2"
+                    />
+                </div>
             </div>
         </template>
 
@@ -65,6 +218,7 @@ import JetFormSection from "@/Jetstream/FormSection";
 import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
+import HeadingTwo from "@/Components/Headings/HeadingTwo.vue";
 
 export default {
     components: {
@@ -74,6 +228,7 @@ export default {
         JetInput,
         JetInputError,
         JetLabel,
+        HeadingTwo,
     },
 
     props: ["team", "permissions"],
@@ -82,6 +237,14 @@ export default {
         return {
             form: this.$inertia.form({
                 name: this.team.name,
+                email: "",
+                address_line_1: "",
+                address_line_2: "",
+                city: "",
+                state: "",
+                zip: "",
+                country: "",
+                phone: "",
             }),
         };
     },
