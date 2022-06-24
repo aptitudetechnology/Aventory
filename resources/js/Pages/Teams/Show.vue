@@ -8,10 +8,7 @@
 
         <div class="overflow-y-auto h-full">
             <div class="max-w-7xl py-10 sm:px-6 lg:px-8">
-                <update-team-name-form
-                    :team="team"
-                    :permissions="permissions"
-                />
+                <update-team-form :team="team" :permissions="permissions" />
 
                 <team-member-manager
                     class="mt-10 sm:mt-0"
@@ -37,7 +34,7 @@ import TeamMemberManager from "./TeamMemberManager";
 import AppLayout from "@/Layouts/AppLayout";
 import DeleteTeamForm from "./DeleteTeamForm";
 import JetSectionBorder from "@/Jetstream/SectionBorder";
-import UpdateTeamNameForm from "./UpdateTeamNameForm";
+import UpdateTeamForm from "./UpdateTeamForm";
 
 export default {
     props: ["team", "availableRoles", "permissions"],
@@ -47,7 +44,7 @@ export default {
         DeleteTeamForm,
         JetSectionBorder,
         TeamMemberManager,
-        UpdateTeamNameForm,
+        UpdateTeamForm,
     },
 };
 </script>

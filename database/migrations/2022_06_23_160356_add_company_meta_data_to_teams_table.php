@@ -14,14 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('teams', function (Blueprint $table) {
-            $table->text('phone')->nullable();
-            $table->text('email')->nullable();
-            $table->text('address_line_1')->nullable();
-            $table->text('address_line_2')->nullable();
-            $table->text('city')->nullable();
-            $table->text('state')->nullable();
-            $table->text('zip')->nullable();
-            $table->text('country')->nullable();
+            $table->string('website')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('country')->nullable();
         });
     }
 
@@ -33,7 +34,17 @@ return new class extends Migration
     public function down()
     {
         Schema::table('teams', function (Blueprint $table) {
-            //
+            $table->dropColumns([
+                'website',
+                'phone',
+                'email',
+                'address_line_1',
+                'address_line_2',
+                'city',
+                'state',
+                'zip',
+                'country',
+            ]);
         });
     }
 };
