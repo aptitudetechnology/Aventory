@@ -6,19 +6,6 @@
         </div>
         <div class="grid gap-6 lg:gap-8">
             <div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900">
-                <completed-orders-card
-                    :thirtyDaysCompletedOrders="23"
-                    :thirtyDaysCompletedSales="23000"
-                />
-
-                <details-section>
-                    <template #title>Pending Orders</template>
-                    <div class="col-span-6">
-                        <p class="text-lg mb-2">23 Pending Orders</p>
-                        <p>$25,000 in pending sales</p>
-                    </div>
-                </details-section>
-
                 <active-quotes-card />
             </div>
             <view-orders :orders="orders" :filters="filters" />

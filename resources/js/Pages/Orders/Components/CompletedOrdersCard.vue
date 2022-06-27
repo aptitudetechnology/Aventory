@@ -7,14 +7,20 @@
             </p>
             <p>${{ thirtyDaysCompletedSales }} in completed sales</p>
         </div>
+
+        <template #actions>
+            <button-link :href="route('orders.index')">View Orders</button-link>
+        </template>
     </details-section>
 </template>
 
 <script>
 import DetailsSection from "@Components/DetailsSection.vue";
+import ButtonLink from "@Components/Links/ButtonLink.vue";
 export default {
     components: {
         DetailsSection,
+        ButtonLink,
     },
     props: {
         /**

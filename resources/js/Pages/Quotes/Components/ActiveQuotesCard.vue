@@ -1,22 +1,25 @@
 <template>
     <details-section>
         <template #title>Quotes</template>
-        <template #aside
-            ><ExternalLinkIcon class="w-6 h-6 stroke-current"
-        /></template>
         <div class="col-span-6">
             <p class="text-lg mb-2">{{ numActiveQuotes }} Active quotes</p>
             <p>{{ totalActiveQuotes }} in active quotes</p>
         </div>
+
+        <template #actions>
+            <button-link :href="route('quotes.index')">View Quotes</button-link>
+        </template>
     </details-section>
 </template>
 <script>
 import DetailsSection from "@Components/DetailsSection.vue";
 import { ExternalLinkIcon } from "@heroicons/vue/outline";
+import ButtonLink from "@Components/Links/ButtonLink.vue";
 export default {
     components: {
         DetailsSection,
         ExternalLinkIcon,
+        ButtonLink,
     },
     data() {
         return {
