@@ -64,7 +64,7 @@ Bundling : Webpack & Laravel Mix
 
 ## Installation
 
-- Open terminal @ AwiaForNurseries folder
+- Open terminal @ Awia-For-Nurseries folder
 - Install packages Run : `composer install`
 - Copy sample env `cp .env.example .env`
 - Open .env file and update DB setting
