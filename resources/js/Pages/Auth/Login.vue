@@ -3,7 +3,11 @@
         <template #logo>
             <jet-authentication-card-logo />
         </template>
-
+        <template #title>
+            <jet-authentication-card-title>
+                <span class="text-2xl font-bold">Login to your account</span>
+            </jet-authentication-card-title>
+        </template>
         <jet-validation-errors class="mb-4" />
 
         <div v-if="status" class="mb-4 text-sm text-green-600">
