@@ -34,7 +34,7 @@ class Block extends Model
 
     public function getBlockDisplayNameAttribute()
     {
-        return "Block #" . $this->id . " : " . $this->name;
+        return "Block : " . $this->name;
     }
 
     public function team()
