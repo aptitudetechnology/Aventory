@@ -1,6 +1,12 @@
-# QuickInventory Pro
+# Awia for Nurseries
 
-Quick Inventory Pro is a web application to help nurseries manage their plant and product inventory, create and manage invoices, and view reports.
+Awia for Nurseries is a web application to help nurseries manage their plant and product inventory, create and manage invoices, and view reports.
+
+## Screenshots
+
+![Login Screen](./.screenshots/login.png)
+![registration page](./.screenshots/registration.png)
+![view inventory](./.screenshots/view-inventory.png)
 
 ## Screenshots
 
@@ -64,7 +70,7 @@ Bundling : Webpack & Laravel Mix
 
 ## Installation
 
-- Open terminal @ AwiaForNurseries folder
+- Open terminal @ Awia-For-Nurseries folder
 - Install packages Run : `composer install`
 - Copy sample env `cp .env.example .env`
 - Open .env file and update DB setting

@@ -21,7 +21,7 @@ class BlockController extends Controller
         Gate::authorize('viewAny', Block::class);
 
         $blocks = $this->getBlocks();
-
+        $blocks->load('nurseryLocation');
         return inertia('Blocks/Index', compact('blocks'));
     }
 
@@ -34,6 +34,7 @@ class BlockController extends Controller
         Gate::authorize('create', Block::class);
 
         $blocks = $this->getBlocks();
+        $blocks->load('nurseryLocation');
         $locations = auth()->user()->currentTeam->nurseryLocations;
 
         return inertia('Blocks/Create', compact('blocks', 'locations'));
@@ -64,11 +65,12 @@ class BlockController extends Controller
         Gate::authorize('view', $block);
 
         $blocks = $this->getBlocks();
-        
-        $places = cache()->rememberForever($block->id . 'places', function () use($block) {
+
+        $blocks->load('nurseryLocation');
+        $places = cache()->rememberForever($block->id . 'places', function () use ($block) {
             return $block->places;
-        }); 
-        
+        });
+
         $locations = auth()->user()->currentTeam->nurseryLocations;
         return inertia('Blocks/Edit', compact('block', 'blocks', 'locations', 'places'));
     }
@@ -80,6 +82,7 @@ class BlockController extends Controller
      */
     public function edit(Request $request, Block $block)
     {
+        $block->load('nurseryLocation');
         return redirect()->route('blocks.show', $block);
     }
 

@@ -15,15 +15,17 @@ class CreatePlacesTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('places', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('block_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer('row_number');
-            $table->integer('plant_number');
-            $table->timestamps();
+        Schema::create(
+            'places', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('block_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+                $table->integer('row_number');
+                $table->integer('plant_number');
+                $table->timestamps();
 
-            $table->unique(['block_id', 'row_number', 'plant_number']);
-        });
+                $table->unique(['block_id', 'row_number', 'plant_number']);
+            }
+        );
 
         Schema::enableForeignKeyConstraints();
     }
