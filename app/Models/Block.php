@@ -30,6 +30,13 @@ class Block extends Model
         'has_places' => 'boolean',
     ];
 
+    protected $appends = array('BlockDisplayName');
+
+    public function getBlockDisplayNameAttribute()
+    {
+        return "Block : " . $this->name;
+    }
+
     public function team()
     {
         return $this->belongsTo(Team::class);

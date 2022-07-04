@@ -1,17 +1,10 @@
 <template>
     <tr tabindex="0" class="px-2">
         <table-d class="sticky left-0 bg-white">
-            <jet-label class="sr-only" :for="'item-selected' + item.id"
-                >Select</jet-label
-            >
-            <jet-checkbox
-                :id="'item-selected' + item.id"
-                @change="$emit('selected')"
-                :value="item.id"
-                v-model="selected"
-                :checked="selected"
-            ></jet-checkbox
-        ></table-d>
+            <jet-label class="sr-only" :for="'item-selected' + item.id">Select</jet-label>
+            <jet-checkbox :id="'item-selected' + item.id" @change="$emit('selected')" :value="item.id"
+                v-model="selected" :checked="selected"></jet-checkbox>
+        </table-d>
         <table-d>{{ item.id }}</table-d>
         <table-d>{{ item.quantity }}</table-d>
         <table-d>{{ formatDate(item.created_at) }}</table-d>
@@ -19,12 +12,10 @@
         <table-d>{{ item.product.name }}</table-d>
         <table-d>{{ item.size.name }}</table-d>
         <table-d>{{ item.nursery_location?.location_code }}</table-d>
-        <table-d>{{ item.block_name }}</table-d>
+        <table-d>{{ item.block.BlockDisplayName }}</table-d>
         <table-d>{{ item.place_name }}</table-d>
         <table-d>
-            <Link :href="route('inventory.show', item.id)" class="link"
-                >Edit</Link
-            >
+            <Link :href="route('inventory.show', item.id)" class="link">Edit</Link>
         </table-d>
     </tr>
 </template>

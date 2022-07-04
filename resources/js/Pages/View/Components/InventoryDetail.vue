@@ -3,30 +3,18 @@
         <div class="lg:col-span-7 col-span-12 sticky top-0">
             <details-section class="h-full">
                 <div class="grid gap-4 divide-y divide-gray-100">
-                    <availability-section
-                        :product-quantities="productQuantities"
-                        :selected-size="selectedSize"
-                        @update-size="updateSize"
-                    />
+                    <availability-section :product-quantities="productQuantities" :selected-size="selectedSize"
+                        @update-size="updateSize" />
 
-                    <pricing-section
-                        :product="product"
-                        :product-quantities="productQuantities"
-                        :selected-size="selectedSize"
-                        :price-levels="priceLevels"
-                        @update-size="updateSize"
-                    />
+                    <pricing-section :product="product" :product-quantities="productQuantities"
+                        :selected-size="selectedSize" :price-levels="priceLevels" @update-size="updateSize" />
                 </div>
             </details-section>
         </div>
 
         <div class="lg:col-span-5 col-span-12">
             <ProductOrdersSection :product="product" :size="selectedSize" />
-            <inventory-locations-section
-                :product="product"
-                :inventory="inventory"
-                :selected-size="selectedSize"
-            />
+            <inventory-locations-section :product="product" :inventory="inventory" :selected-size="selectedSize" />
         </div>
     </div>
 </template>
@@ -36,7 +24,6 @@ import AvailabilitySection from "@/Pages/View/Components/AvailabilitySection.vue
 import PricingSection from "@/Pages/View/Components/PricingSection.vue";
 import InventoryLocationsSection from "@/Pages/View/Components/InventoryLocationsSection.vue";
 import ProductOrdersSection from "@/Pages/View/Components/ProductOrdersSection.vue";
-
 export default {
     components: {
         DetailsSection,
