@@ -5,6 +5,57 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\OrderItem
+ *
+ * @property int $id
+ * @property int $order_id
+ * @property int $product_id
+ * @property int $size_id
+ * @property int $quantity
+ * @property int $original_quantity
+ * @property float $unit_price
+ * @property bool $no_discount
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $quantity_fulfilled
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\InventoryArchive[] $archived
+ * @property-read int|null $archived_count
+ * @property-read mixed $is_fullfilled
+ * @property-read mixed $is_matched
+ * @property-read mixed $line_discount
+ * @property-read mixed $line_total_after_discount
+ * @property-read mixed $line_total
+ * @property-read mixed $matched_quantity
+ * @property-read mixed $product_name
+ * @property-read mixed $sale_type
+ * @property-read mixed $size_name
+ * @property-read mixed $tax_amount
+ * @property-read mixed $unmatched_quantity
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inventory[] $inventory
+ * @property-read int|null $inventory_count
+ * @property-read \App\Models\Order $order
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\Quote $quote
+ * @property-read \App\Models\Sale $sale
+ * @property-read \App\Models\Size $size
+ * @method static \Database\Factories\OrderItemFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereNoDiscount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereOriginalQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereQuantityFulfilled($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereSizeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereUnitPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class OrderItem extends Model
 {
     use HasFactory;

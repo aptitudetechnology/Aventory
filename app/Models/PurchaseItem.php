@@ -7,6 +7,48 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * App\Models\PurchaseItem
+ *
+ * @property int $id
+ * @property int $purchase_id
+ * @property int $product_id
+ * @property int|null $size_id
+ * @property float $unit_price
+ * @property int $quantity_ordered
+ * @property int $quantity_confirmed
+ * @property bool $received
+ * @property bool $printed
+ * @property bool $in_inventory
+ * @property \Illuminate\Support\Carbon|null $ready_date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $original_size_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inventory[] $inventory
+ * @property-read int|null $inventory_count
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\Purchase $purchase
+ * @property-read \App\Models\Size|null $size
+ * @method static \Database\Factories\PurchaseItemFactory factory(...$parameters)
+ * @method static Builder|PurchaseItem newModelQuery()
+ * @method static Builder|PurchaseItem newQuery()
+ * @method static Builder|PurchaseItem query()
+ * @method static Builder|PurchaseItem whereCreatedAt($value)
+ * @method static Builder|PurchaseItem whereId($value)
+ * @method static Builder|PurchaseItem whereInInventory($value)
+ * @method static Builder|PurchaseItem whereOriginalSizeId($value)
+ * @method static Builder|PurchaseItem wherePrinted($value)
+ * @method static Builder|PurchaseItem whereProductId($value)
+ * @method static Builder|PurchaseItem wherePurchaseId($value)
+ * @method static Builder|PurchaseItem whereQuantityConfirmed($value)
+ * @method static Builder|PurchaseItem whereQuantityOrdered($value)
+ * @method static Builder|PurchaseItem whereReadyDate($value)
+ * @method static Builder|PurchaseItem whereReceived($value)
+ * @method static Builder|PurchaseItem whereSizeId($value)
+ * @method static Builder|PurchaseItem whereUnitPrice($value)
+ * @method static Builder|PurchaseItem whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class PurchaseItem extends Model
 {
     use HasFactory;
