@@ -72,3 +72,11 @@ Bundling : Webpack & Laravel Mix
 - Generate App key : `php artisan key:generate`
 - Generate all tables : `php artisan migrate`
 - Serve application : `php artisan serve`
+
+## Documentation
+
+You can update model block docs by running the following command:
+
+```shell
+php artisan ide-helper:models
+```
