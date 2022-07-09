@@ -6,6 +6,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * App\Models\Price
+ *
+ * @property int $id
+ * @property int|null $product_id
+ * @property int|null $category_id
+ * @property int $size_id
+ * @property float $unit_price
+ * @property bool $show_on_availability
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Category|null $category
+ * @property-read \App\Models\Product|null $product
+ * @property-read \App\Models\Size $size
+ * @method static Builder|Price newModelQuery()
+ * @method static Builder|Price newQuery()
+ * @method static Builder|Price query()
+ * @method static Builder|Price whereCategoryId($value)
+ * @method static Builder|Price whereCreatedAt($value)
+ * @method static Builder|Price whereId($value)
+ * @method static Builder|Price whereProductId($value)
+ * @method static Builder|Price whereShowOnAvailability($value)
+ * @method static Builder|Price whereSizeId($value)
+ * @method static Builder|Price whereUnitPrice($value)
+ * @method static Builder|Price whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Price extends Model
 {
     use HasFactory;

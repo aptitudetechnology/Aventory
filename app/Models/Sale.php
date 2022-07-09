@@ -12,6 +12,90 @@ use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use App\Classes\DiscountItem;
 
+/**
+ * App\Models\Sale
+ *
+ * @property int $id
+ * @property int $customer_id
+ * @property int|null $team_member_id
+ * @property int $team_id
+ * @property int|null $contact_id
+ * @property \Illuminate\Support\Carbon $date
+ * @property int|null $from_quote_id
+ * @property int|null $shipping_method_id
+ * @property string|null $shipping_amount
+ * @property string|null $warranty_percentage
+ * @property float|null $warranty_amount
+ * @property float $total_discounts
+ * @property string|null $tax_percentage
+ * @property float|null $tax_amount
+ * @property float $total_after_discount_and_warranty
+ * @property float $total
+ * @property float $grand_total
+ * @property bool $is_taxable
+ * @property bool $completed
+ * @property bool $is_quote
+ * @property \Illuminate\Support\Carbon|null $quote_expires
+ * @property bool $hold_inventory
+ * @property string|null $notes
+ * @property bool $added_to_qb
+ * @property string|null $qb_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $payment_status_id
+ * @property int|null $delivery_status_id
+ * @property-read \App\Models\Contact|null $contact
+ * @property-read \App\Models\Customer $customer
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\OrderDiscount[] $discounts
+ * @property-read int|null $discounts_count
+ * @property-read mixed $discount_percentage
+ * @property-read string $full_name
+ * @property-read string $name
+ * @property-read mixed $ready_to_complete
+ * @property-read mixed $route
+ * @property-read mixed $shipping_tax_amount
+ * @property-read mixed $tax_rate
+ * @property-read mixed $total_of_items_with_discount
+ * @property-read mixed $type
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\OrderItem[] $items
+ * @property-read int|null $items_count
+ * @property-write mixed $warranty_ammount
+ * @property-read \App\Models\Team $team
+ * @property-read \App\Models\User|null $teamMember
+ * @method static Builder|Sale newModelQuery()
+ * @method static Builder|Sale newQuery()
+ * @method static Builder|Sale query()
+ * @method static Builder|Sale whereAddedToQb($value)
+ * @method static Builder|Sale whereCompleted($value)
+ * @method static Builder|Sale whereContactId($value)
+ * @method static Builder|Sale whereCreatedAt($value)
+ * @method static Builder|Sale whereCustomerId($value)
+ * @method static Builder|Sale whereDate($value)
+ * @method static Builder|Sale whereDeliveryStatusId($value)
+ * @method static Builder|Sale whereFromQuoteId($value)
+ * @method static Builder|Sale whereGrandTotal($value)
+ * @method static Builder|Sale whereHoldInventory($value)
+ * @method static Builder|Sale whereId($value)
+ * @method static Builder|Sale whereIsQuote($value)
+ * @method static Builder|Sale whereIsTaxable($value)
+ * @method static Builder|Sale whereNotes($value)
+ * @method static Builder|Sale wherePaymentStatusId($value)
+ * @method static Builder|Sale whereQbId($value)
+ * @method static Builder|Sale whereQuoteExpires($value)
+ * @method static Builder|Sale whereShippingAmount($value)
+ * @method static Builder|Sale whereShippingMethodId($value)
+ * @method static Builder|Sale whereTaxAmount($value)
+ * @method static Builder|Sale whereTaxPercentage($value)
+ * @method static Builder|Sale whereTeamId($value)
+ * @method static Builder|Sale whereTeamMemberId($value)
+ * @method static Builder|Sale whereTotal($value)
+ * @method static Builder|Sale whereTotalAfterDiscountAndWarranty($value)
+ * @method static Builder|Sale whereTotalDiscounts($value)
+ * @method static Builder|Sale whereUpdatedAt($value)
+ * @method static Builder|Sale whereWarrantyAmount($value)
+ * @method static Builder|Sale whereWarrantyPercentage($value)
+ * @mixin \Eloquent
+ */
 class Sale extends Model
 {
   use HasFactory;

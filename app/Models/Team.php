@@ -10,6 +10,66 @@ use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use Laravel\Jetstream\Team as JetstreamTeam;
 
+/**
+ * App\Models\Team
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property bool $personal_team
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Quote[] $activeQuotes
+ * @property-read int|null $active_quotes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Block[] $blocks
+ * @property-read int|null $blocks_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
+ * @property-read int|null $categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contact[] $contacts
+ * @property-read int|null $contacts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Customer[] $customers
+ * @property-read int|null $customers_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Feature[] $features
+ * @property-read int|null $features_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inventory[] $inventories
+ * @property-read int|null $inventories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inventory[] $inventoryToReprint
+ * @property-read int|null $inventory_to_reprint_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\NurseryLocation[] $nurseryLocations
+ * @property-read int|null $nursery_locations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
+ * @property-read \App\Models\User $owner
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CustomerPriceLevel[] $priceLevels
+ * @property-read int|null $price_levels_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Purchase[] $purchases
+ * @property-read int|null $purchases_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Quote[] $quotes
+ * @property-read int|null $quotes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ReprintQueue[] $reprintQueue
+ * @property-read int|null $reprint_queue_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Size[] $sizes
+ * @property-read int|null $sizes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TeamInvitation[] $teamInvitations
+ * @property-read int|null $team_invitations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Vendor[] $vendors
+ * @property-read int|null $vendors_count
+ * @method static \Database\Factories\TeamFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Team extends JetstreamTeam
 {
     use HasFactory;
