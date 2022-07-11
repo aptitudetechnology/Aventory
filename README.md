@@ -52,20 +52,21 @@ Awia for Nurseries is a web application to help nurseries manage their plant and
 ### Clone and Setup
 
 To ensure your machine is ready for development, make sure that your machine is ready for Laravel development. 
+
 **From the Laravel Docs:**
 "Before creating your first Laravel project, you should ensure that your local machine has PHP and Composer installed. If you are developing on macOS (or WSL), PHP and Composer can be installed via Homebrew. In addition, we recommend installing Node and NPM."
 
-#### Setup Docker
+#### **Setup Docker**
 Follow the appropriate steps to install and configure Laravel with Docker on your machine.
 **Docs on setting up Laravel & Docker:**
 https://laravel.com/docs/9.x/installation#laravel-and-docker
 
-**Windows Users:**
+#### **Windows Users:**
 
 You must use WSL with Docker desktop. Ensure you clone the git repo into your linux filesystem.
 https://laravel.com/docs/9.x/installation#getting-started-on-windows
 
-#### Clone the Repository 
+### Clone the Repository 
 
 Ensure you clone the repository into your linux or macOS filesystem.
 
@@ -134,4 +135,4 @@ php artisan ide-helper:models
 
 ## License
 
-This project is confidential and is not open source. Do not distribute or publish any part of the source code or archetecture without prior written consent.
+This project is confidential and is not open source. Do not distribute or publish any part of the source code or architecture without prior written consent.
