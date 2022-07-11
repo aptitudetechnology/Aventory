@@ -25,6 +25,7 @@
         "fakerphp/faker": "^1.19.1",
         "jasonmccreary/laravel-test-assertions": "^2.1.1",
         "laracasts/cypress": "2.2.1",
+        "laravel/sail": "^1.15",
         "mockery/mockery": "^1.5.0",
         "nunomaduro/collision": "^6.2.1",
         "phpunit/phpunit": "^9.5",
