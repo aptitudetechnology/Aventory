@@ -5,10 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Awia for Nurseries') }} | The best wholesale nursery management platform.</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="/logos/apple-touch-icon.png">
+    <link rel="icon" href="/logos/favicon.png">
 
     <!-- Scripts -->
     @routes
