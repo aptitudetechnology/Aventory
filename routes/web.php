@@ -165,4 +165,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('reprint-tags', PrintInventoryTagsController::class)->name('reprint-tags');
 
     Route::post('teams/{team}/connect', [TeamController::class, 'connect'])->name('teams.connect');
+    Route::delete('teams/{team}/disconnect', [TeamController::class, 'disconnect'])->name('teams.disconnect');
 });

@@ -8,11 +8,23 @@
             quis efficitur nulla iaculis in.
         </template>
 
-        <jet-button @click="$emit('connect', team.id)" v-if="!team.codat_company_id">
+        <jet-button
+            type="button"
+            :disabled="loading"
+            @click="connect"
+            v-if="!team.codat_company_id"
+        >
+            <loader :loading="loading" />
             Connect now
         </jet-button>
 
-        <jet-button @click="$emit('disconnect', team.id)" v-if="team.codat_company_id">
+        <jet-button
+            type="button"
+            :disabled="loading"
+            @click="disconnect"
+            v-if="team.codat_company_id"
+        >
+            <loader :loading="loading" />
             Disconnect now
         </jet-button>
     </jet-section>
@@ -21,20 +33,42 @@
 <script setup>
 import JetSection from "@/Jetstream/Section";
 import JetButton from "@/Jetstream/Button";
+import Loader from "@/Components/Loader.vue";
 import axios from "axios";
+import { ref } from "vue";
 
-defineProps(["team"]);
+const loading = ref(false);
 
-defineEmits({
-    connect(teamId) {
-        axios
-            .post(route("teams.connect", { team: teamId }))
-            .then(({ data: { redirectUrl } }) => {
-                let url = new URL(redirectUrl);
-                url.searchParams.append("teamId", teamId);
+const props = defineProps(["team"]);
 
-                window.location.href = url;
-            });
-    },
-});
+function connect() {
+    loading.value = true;
+    const { team } = props;
+
+    axios
+        .post(route("teams.connect", { team }))
+        .then(({ data: { redirectUrl } }) => {
+            let url = new URL(redirectUrl);
+            url.searchParams.append("teamId", team.id);
+
+            window.location.href = url;
+        })
+        .finally(() => {
+            loading.value = false;
+        });
+}
+
+function disconnect() {
+    loading.value = true;
+    const { team } = props;
+
+    axios
+        .delete(route("teams.disconnect", { team }))
+        .then(() => {
+            console.log("disconnected");
+        })
+        .finally(() => {
+            loading.value = false;
+        });
+}
 </script>
