@@ -3823,16 +3823,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.5",
+            "version": "v0.11.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf"
+                "reference": "3f5b5f8aaa979fbd0d1783173f4c82ad529fe621"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/c23686f9c48ca202710dbb967df8385a952a2daf",
-                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/3f5b5f8aaa979fbd0d1783173f4c82ad529fe621",
+                "reference": "3f5b5f8aaa979fbd0d1783173f4c82ad529fe621",
                 "shasum": ""
             },
             "require": {
@@ -3893,9 +3893,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.5"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.6"
             },
-            "time": "2022-05-27T18:03:49+00:00"
+            "time": "2022-07-03T16:40:23+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -4166,6 +4166,130 @@
                 "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.4.0"
             },
             "time": "2021-12-11T13:40:54+00:00"
+        },
+        {
+            "name": "sammyjo20/saloon",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sammyjo20/Saloon.git",
+                "reference": "7ab32e794113823e06861839bc2c6bfb21d4ebbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sammyjo20/Saloon/zipball/7ab32e794113823e06861839bc2c6bfb21d4ebbf",
+                "reference": "7ab32e794113823e06861839bc2c6bfb21d4ebbf",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.4",
+                "illuminate/support": "^8.0 || ^9.0",
+                "nesbot/carbon": "^2.58",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.5",
+                "pestphp/pest": "^1.21",
+                "spatie/ray": "^1.33"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sammyjo20\\Saloon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Carré",
+                    "email": "29132017+Sammyjo20@users.noreply.github.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel/PHP package that allows you to write your API integrations or SDKs in a beautiful, standardised syntax.",
+            "homepage": "https://github.com/sammyjo20/saloon",
+            "keywords": [
+                "api",
+                "api-integrations",
+                "saloon",
+                "sammyjo20",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/Sammyjo20/Saloon/issues",
+                "source": "https://github.com/Sammyjo20/Saloon/tree/v1.4.2"
+            },
+            "time": "2022-06-24T14:30:13+00:00"
+        },
+        {
+            "name": "sammyjo20/saloon-laravel",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sammyjo20/saloon-laravel.git",
+                "reference": "592bbc622ebacf99e6f4b3c222d63366afaabc19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sammyjo20/saloon-laravel/zipball/592bbc622ebacf99e6f4b3c222d63366afaabc19",
+                "reference": "592bbc622ebacf99e6f4b3c222d63366afaabc19",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^8.0 || ^9.0",
+                "illuminate/support": "^8.0 || ^9.0",
+                "php": "^8.0",
+                "sammyjo20/saloon": "^1.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.5",
+                "orchestra/testbench": "^v6.24.0",
+                "pestphp/pest": "^1.21"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Saloon": "Saloon"
+                    },
+                    "providers": [
+                        "Sammyjo20\\SaloonLaravel\\SaloonServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sammyjo20\\SaloonLaravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Carré",
+                    "email": "29132017+Sammyjo20@users.noreply.github.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package for Sammyjo20/Saloon",
+            "homepage": "https://github.com/sammyjo20/saloon-laravel",
+            "keywords": [
+                "api",
+                "api-integrations",
+                "saloon",
+                "sammyjo20",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/Sammyjo20/saloon-laravel/issues",
+                "source": "https://github.com/Sammyjo20/saloon-laravel/tree/v1.4.0"
+            },
+            "time": "2022-06-13T21:24:07+00:00"
         },
         {
             "name": "symfony/console",
@@ -6948,12 +7072,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "135f6e9909301e971503656715b869b6a1dbeeb9"
+                "reference": "9b6cbdbf247ed5b2f5a56a4e3d77288a4fb17d01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/135f6e9909301e971503656715b869b6a1dbeeb9",
-                "reference": "135f6e9909301e971503656715b869b6a1dbeeb9",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/9b6cbdbf247ed5b2f5a56a4e3d77288a4fb17d01",
+                "reference": "9b6cbdbf247ed5b2f5a56a4e3d77288a4fb17d01",
                 "shasum": ""
             },
             "require": {
@@ -7008,7 +7132,7 @@
                 "issues": "https://github.com/FakerPHP/Faker/issues",
                 "source": "https://github.com/FakerPHP/Faker/tree/main"
             },
-            "time": "2022-06-22T16:49:31+00:00"
+            "time": "2022-07-04T06:26:43+00:00"
         },
         {
             "name": "filp/whoops",

@@ -38,6 +38,7 @@ use App\Http\Controllers\Api\ApiQuoteOrdersController;
 use App\Http\Controllers\Api\ApiRelatedOrdersController;
 use App\Http\Controllers\ReprintQueueController;
 use App\Http\Controllers\PrintInventoryTagsController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -162,4 +163,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Reprint Queue
     Route::resource('reprint-queue', ReprintQueueController::class)->only('index', 'store', 'update', 'destroy');
     Route::get('reprint-tags', PrintInventoryTagsController::class)->name('reprint-tags');
+
+    Route::post('teams/{team}/connect', [TeamController::class, 'connect'])->name('teams.connect');
+    Route::delete('teams/{team}/disconnect', [TeamController::class, 'disconnect'])->name('teams.disconnect');
 });

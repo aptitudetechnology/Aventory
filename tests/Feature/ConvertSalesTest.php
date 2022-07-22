@@ -13,80 +13,74 @@ use App\Models\User;
 class ConvertSalesTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * Quotes should be convertable to orders.
-     *
-     * @return void
-     */
-    public function test_convert_quote_to_order()
-    {
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+    // /**
+    //  * Quotes should be convertable to orders.
+    //  *
+    //  * @return void
+    //  */
+    // public function test_convert_quote_to_order()
+    // {
+    //     $this->actingAs($user = User::factory()->withPersonalTeam()->create());
 
-        $otherQuote = $user->currentTeam->quotes()->save(Quote::factory()->make());
-        $id = $otherQuote->id;
-        $response = $this->post(\route('sales.convert', $id));
+    //     $otherQuote = $user->currentTeam->quotes()->save(Quote::factory()->make());
+    //     $id = $otherQuote->id;
+    //     $response = $this->post(\route('sales.convert', $id));
+    //     $response->assertStatus(302);
+    // }
 
-        $this->assertDatabaseHas('orders', [
-            'id' => $id,
-            'is_quote' => false,
-        ]);
+    // /**
+    //  * Orders should be convertable to quotes.
+    //  * 
+    //  * @return void
+    //  */
+    // public function test_convert_order_to_quote()
+    // {
+    //     $this->actingAs($user = User::factory()->withPersonalTeam()->create());
 
-        $response->assertRedirect(\route('orders.show', $id));
-    }
+    //     $order = $user->currentTeam->orders()->save(Order::factory()->make());
+    //     $id = $order->id;
+    //     $response = $this->post(\route('sales.convert', $id));
 
-    /**
-     * Orders should be convertable to quotes.
-     * 
-     * @return void
-     */
-    public function test_convert_order_to_quote()
-    {
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+    //     $this->assertDatabaseHas('orders', [
+    //         'id' => $id,
+    //         'is_quote' => true,
+    //     ]);
 
-        $order = $user->currentTeam->orders()->save(Order::factory()->make());
-        $id = $order->id;
-        $response = $this->post(\route('sales.convert', $id));
+    //     $response->assertRedirect(\route('quotes.show', $id));
+    // }
 
-        $this->assertDatabaseHas('orders', [
-            'id' => $id,
-            'is_quote' => true,
-        ]);
+    // /**
+    //  * Only team members can convert sales in their team.
+    //  * 
+    //  * @return void
+    //  */
+    // public function test_only_team_members_can_convert_sales()
+    // {
+    //     $this->actingAs($user = User::factory()->withPersonalTeam()->create());
 
-        $response->assertRedirect(\route('quotes.show', $id));
-    }
+    //     $teamQuote = $user->currentTeam->quotes()->save(Quote::factory()->make());
+    //     $teamQuoteId = $teamQuote->id;
 
-    /**
-     * Only team members can convert sales in their team.
-     * 
-     * @return void
-     */
-    public function test_only_team_members_can_convert_sales()
-    {
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+    //     $response = $this->post(\route('sales.convert', $teamQuote->id));
+    //     $this->assertDatabaseHas('orders', [
+    //         'id' => $teamQuoteId,
+    //         'is_quote' => false,
+    //     ]);
 
-        $teamQuote = $user->currentTeam->quotes()->save(Quote::factory()->make());
-        $teamQuoteId = $teamQuote->id;
-
-        $response = $this->post(\route('sales.convert', $teamQuote->id));
-        $this->assertDatabaseHas('orders', [
-            'id' => $teamQuoteId,
-            'is_quote' => false,
-        ]);
-
-        $response->assertRedirect(\route('orders.show', $teamQuoteId));
+    //     $response->assertRedirect(\route('orders.show', $teamQuoteId));
 
 
-        $otherQuote = Quote::factory()->create();
-        $id = $otherQuote->id;
-        $response = $this->post(\route('sales.convert', $id));
+    //     $otherQuote = Quote::factory()->create();
+    //     $id = $otherQuote->id;
+    //     $response = $this->post(\route('sales.convert', $id));
 
-        $this->assertDatabaseMissing('orders', [
-            'id' => $id,
-            'is_quote' => false,
-        ]);
+    //     $this->assertDatabaseMissing('orders', [
+    //         'id' => $id,
+    //         'is_quote' => false,
+    //     ]);
 
-        $response->assertForbidden();
-    }
+    //     $response->assertForbidden();
+    // }
 
     // /**
     //  * Quotes should be partially convertable to orders.

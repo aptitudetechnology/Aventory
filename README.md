@@ -8,6 +8,12 @@ Awia for Nurseries is a web application to help nurseries manage their plant and
 ![registration page](./.screenshots/registration.png)
 ![view inventory](./.screenshots/view-inventory.png)
 
+## Screenshots
+
+![Login Screen](./.screenshots/login.png)
+![registration page](./.screenshots/registration.png)
+![view inventory](./.screenshots/view-inventory.png)
+
 ## Frameworks used
 
 - Laravel/PHP for the backend.

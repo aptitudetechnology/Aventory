@@ -58,6 +58,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Codat Base URL and API Key
+    |--------------------------------------------------------------------------
+    |
+    | This is the base URL of the Codat server for requests to Codat.
+     */
+
+    'codat_url' => env('CODAT_URL', 'https://api.codat.io'),
+
+    // Must be a base64 encoded string of the api key. Not the api key itself.
+    'codat_api_key' => env('CODAT_API_KEY', 'DEFINE IN ENV'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
