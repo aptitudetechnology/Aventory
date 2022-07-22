@@ -8,6 +8,10 @@
 
         <div class="overflow-y-auto h-full">
             <div class="max-w-7xl py-10 sm:px-6 lg:px-8">
+                <connect-accounting :team="team" />
+                
+                <jet-section-border />
+
                 <update-team-form :team="team" :permissions="permissions" />
 
                 <team-member-manager
@@ -35,6 +39,7 @@ import AppLayout from "@/Layouts/AppLayout";
 import DeleteTeamForm from "./DeleteTeamForm";
 import JetSectionBorder from "@/Jetstream/SectionBorder";
 import UpdateTeamForm from "./UpdateTeamForm";
+import ConnectAccounting from "./ConnectAccounting.vue";
 
 export default {
     props: ["team", "availableRoles", "permissions"],
@@ -45,6 +50,7 @@ export default {
         JetSectionBorder,
         TeamMemberManager,
         UpdateTeamForm,
+        ConnectAccounting,
     },
 };
 </script>
