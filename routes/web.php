@@ -164,5 +164,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('reprint-queue', ReprintQueueController::class)->only('index', 'store', 'update', 'destroy');
     Route::get('reprint-tags', PrintInventoryTagsController::class)->name('reprint-tags');
 
-    Route::post('teams/connect', [TeamController::class, 'connect'])->name('teams.connect');
+    Route::post('teams/{team}/connect', [TeamController::class, 'connect'])->name('teams.connect');
 });

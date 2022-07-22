@@ -8,7 +8,8 @@
 
         <div class="overflow-y-auto h-full">
             <div class="max-w-7xl py-10 sm:px-6 lg:px-8">
-                <connect-accounting />
+                <connect-accounting :team="team" />
+                
                 <jet-section-border />
 
                 <update-team-form :team="team" :permissions="permissions" />
