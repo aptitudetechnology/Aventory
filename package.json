@@ -30,7 +30,7 @@
         "@heroicons/vue": "^1.0.5",
         "autoprefixer": "^10.4.7",
         "daisyui": "^1.25.4",
-        "moment": "^2.29.3",
+        "moment": "^2.29.4",
         "pinia": "^2.0.11",
         "vuedraggable": "^4.1.0"
     }

@@ -5,6 +5,38 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\OrderDiscount
+ *
+ * @property int $id
+ * @property int $order_id
+ * @property string $description
+ * @property string|null $discount_amount
+ * @property int|null $discount_percentage
+ * @property bool $discount_applied
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $discount_total
+ * @property-read string $discount_type
+ * @property-read mixed $is_quote
+ * @property-read mixed $sale_type
+ * @property-read string $title
+ * @property-read \App\Models\Order $order
+ * @property-read \App\Models\Quote $quote
+ * @property-read \App\Models\Sale $sale
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereDiscountAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereDiscountApplied($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereDiscountPercentage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class OrderDiscount extends Model
 {
     use HasFactory;
