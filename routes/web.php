@@ -166,4 +166,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::post('teams/{team}/connect', [TeamController::class, 'connect'])->name('teams.connect');
     Route::delete('teams/{team}/disconnect', [TeamController::class, 'disconnect'])->name('teams.disconnect');
+    Route::post('teams/{team}/logo', [TeamController::class, 'updateLogo'])->name('teams.logo');
 });
