@@ -12,11 +12,40 @@
                 <jet-label value="Primary Account Manager" />
 
                 <div class="flex items-center mt-2">
-                    <img
-                        class="w-12 h-12 rounded-full object-cover"
-                        :src="team.owner.profile_photo_url"
-                        :alt="team.owner.name"
+                    <input
+                        type="file"
+                        ref="logo"
+                        class="hidden"
+                        @change="uploadLogo"
                     />
+                    <div class="relative h-16">
+                        <img
+                            class="h-full object-cover"
+                            :src="logoUrl"
+                            :alt="team.name"
+                        />
+                        <button
+                            type="button"
+                            class="absolute top-0 left-0 inline-flex items-center justify-center w-6 h-6 border border-2 border-gray-400 text-gray-500 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-100"
+                            :disabled="isLogoUploading"
+                            @click="chooseLogo"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 w-3"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14.078 4.232l-12.64 12.639-1.438 7.129 7.127-1.438 12.641-12.64-5.69-5.69zm-10.369 14.893l-.85-.85 11.141-11.125.849.849-11.14 11.126zm2.008 2.008l-.85-.85 11.141-11.125.85.85-11.141 11.125zm18.283-15.444l-2.816 2.818-5.691-5.691 2.816-2.816 5.691 5.689z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
 
                     <div class="ml-4 leading-tight">
                         <div>{{ team.owner.name }}</div>
@@ -239,6 +268,7 @@ import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
 import JetLabel from "@/Jetstream/Label";
 import HeadingTwo from "@/Components/Headings/HeadingTwo.vue";
+import axios from "axios";
 
 export default {
     components: {
@@ -267,6 +297,8 @@ export default {
                 zip: this.team.zip,
                 country: this.team.country,
             }),
+            logoUrl: this.team.logo_url,
+            isLogoUploading: false,
         };
     },
 
@@ -276,6 +308,27 @@ export default {
                 errorBag: "updateTeam",
                 preserveScroll: true,
             });
+        },
+        chooseLogo() {
+            this.$refs.logo.click();
+        },
+        uploadLogo(e) {
+            const config = {
+                headers: { "Content-Type": "multipart/form-data" },
+            };
+
+            const formData = new FormData();
+            formData.append("logo", e.target.files[0]);
+
+            this.isLogoUploading = true;
+            axios
+                .post(route("teams.logo", this.team), formData, config)
+                .then(({ data }) => {
+                    this.logoUrl = data.logo_url;
+                })
+                .finally(() => {
+                    this.isLogoUploading = false;
+                });
         },
     },
 };
