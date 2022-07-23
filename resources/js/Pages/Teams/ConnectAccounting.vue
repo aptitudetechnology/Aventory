@@ -10,39 +10,64 @@
 
         <jet-button
             type="button"
-            :disabled="loading"
+            :disabled="isLoading"
             @click="connect"
-            v-if="!team.codat_company_id"
+            v-if="!connected"
         >
-            <loader :loading="loading" />
+            <loader :loading="isLoading" />
             Connect now
         </jet-button>
 
         <jet-button
             type="button"
-            :disabled="loading"
-            @click="disconnect"
-            v-if="team.codat_company_id"
+            :disabled="isLoading"
+            @click="isDisconnectModalOpen = true"
+            v-if="connected"
         >
-            <loader :loading="loading" />
+            <loader :loading="isLoading" />
             Disconnect now
         </jet-button>
     </jet-section>
+
+    <jet-confirmation-modal
+        :show="isDisconnectModalOpen"
+        @close="isDisconnectModalOpen = false"
+    >
+        <template #title> Disconnect </template>
+
+        <template #content>
+            Are you sure you want to disconnect accounting?
+        </template>
+
+        <template #footer>
+            <jet-secondary-button @click="isDisconnectModalOpen = false">
+                Cancel
+            </jet-secondary-button>
+
+            <jet-danger-button class="ml-2" @click="disconnect">
+                Disconnect
+            </jet-danger-button>
+        </template>
+    </jet-confirmation-modal>
 </template>
 
 <script setup>
 import JetSection from "@/Jetstream/Section";
 import JetButton from "@/Jetstream/Button";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import JetDangerButton from "@/Jetstream/DangerButton";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 import Loader from "@/Components/Loader.vue";
 import axios from "axios";
 import { ref } from "vue";
 
-const loading = ref(false);
-
+const isLoading = ref(false);
+const isDisconnectModalOpen = ref(false);
 const props = defineProps(["team"]);
+const connected = ref(!!props.team.codat_company_id);
 
 function connect() {
-    loading.value = true;
+    isLoading.value = true;
     const { team } = props;
 
     axios
@@ -50,25 +75,27 @@ function connect() {
         .then(({ data: { redirectUrl } }) => {
             let url = new URL(redirectUrl);
             url.searchParams.append("teamId", team.id);
-
             window.location.href = url;
+
+            connected.value = true;
         })
         .finally(() => {
-            loading.value = false;
+            isLoading.value = false;
         });
 }
 
 function disconnect() {
-    loading.value = true;
+    isLoading.value = true;
+    isDisconnectModalOpen.value = false;
     const { team } = props;
 
     axios
         .delete(route("teams.disconnect", { team }))
         .then(() => {
-            console.log("disconnected");
+            connected.value = false;
         })
         .finally(() => {
-            loading.value = false;
+            isLoading.value = false;
         });
 }
 </script>
