@@ -131,4 +131,33 @@ class DataETLSeeder extends Seeder
         Product::insert($new_products);
         Plant::insert($new_plants);
     }
+
+    public function do_ETL_customers()
+    {
+        $old_customers = $this->sqlsrv_conn->table('TblCustomers')->get()->toArray();
+        $new_customers = array_map(function($c) {
+            return [
+                'id' => $c->CustomerID,
+                'name' => $c->CompanyName,
+                'address' => $c->Address,
+                'city' => $c->City,
+                'state' => $c->State,
+                'zip' => $c->Zip,
+                'mailing_same_as_primary' => $c->MailingAddressSameAsPrimary,
+                'mailing_address' => $c->MailingAddress,
+                'mailing_city' => $c->MailingCity,
+                'mailing_state' => $c->MailingState,
+                'mailing_zip' => $c->MailingZip,
+                'notes' => $c->Notes,
+                'is_taxable' => $c->IsRetail,
+                'tax_percentage' => $c->TaxPercentage,
+                'reseller_permit_on_file' => $c->ResellerPermitOnFile,
+                'reseller_permit_expiration' => $c->ResellerPermitExpiration,
+                'discount_percentage' => $c->DiscountOverride,
+                'team_id' => $this->team->id,
+            ];
+        }, $old_customers);
+
+        NurseryLocation::insert($new_customers);
+    }
 }
