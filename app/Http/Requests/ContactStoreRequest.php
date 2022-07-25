@@ -26,8 +26,6 @@ class ContactStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id' => ['nullable', 'integer', 'exists:customers,id'],
-            'vendor_id' => ['nullable', 'integer', 'exists:vendors,id'],
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['nullable', 'string', 'max:50'],
             'email' => ['nullable', 'email', 'max:150'],

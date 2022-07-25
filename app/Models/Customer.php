@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -110,9 +111,9 @@ class Customer extends Model
         return $this->belongsTo(CustomerPriceLevel::class, 'customer_price_level_id');
     }
 
-    public function contacts(): HasMany
+    public function contacts(): MorphMany
     {
-        return $this->hasMany(Contact::class);
+        return $this->morphMany(Contact::class, 'contactable');
     }
 
     public function orders(): HasMany

@@ -36,9 +36,17 @@ use App\Http\Controllers\ViewInventoryController;
 use App\Http\Controllers\Api\ApiSalesController;
 use App\Http\Controllers\Api\ApiQuoteOrdersController;
 use App\Http\Controllers\Api\ApiRelatedOrdersController;
+use App\Http\Controllers\BlockController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\NurseryLocationController;
 use App\Http\Controllers\ReprintQueueController;
 use App\Http\Controllers\PrintInventoryTagsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseItemController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -74,32 +82,30 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('customers', CustomerController::class);
     Route::get('customers/{customer}/contacts', [ApiContactsController::class, 'index'])->name('customers.contacts.index');
 
-    Route::resource('contacts', ContactController::class)->only(['store', 'update', 'destroy']);
-
     /**This needs to be before the vendors resource as will return 403 if after. */
     Route::get('/vendors/archived', [ArchivedVendorsController::class, 'index'])->name('archived-vendors.index');
     Route::get('/vendors/archived/{vendorId}', [ArchivedVendorsController::class, 'show'])->name('archived-vendors.show');
     Route::post('/vendors/archived/{vendorId}', [ArchivedVendorsController::class, 'store'])->name('archived-vendors.restore');
 
-    Route::resource('vendors', App\Http\Controllers\VendorController::class);
+    Route::resource('vendors', VendorController::class);
 
     /**This needs to be before the products resource as will return 403 if after. */
     Route::get('/products/archived', [ArchivedProductsController::class, 'index'])->name('archived-products.index');
     Route::get('/products/archived/{productId}', [ArchivedProductsController::class, 'show'])->name('archived-products.show');
     Route::post('/products/archived/{productId}', [ArchivedProductsController::class, 'store'])->name('archived-products.restore');
 
-    Route::resource('products', App\Http\Controllers\ProductController::class)->except(['edit']);
+    Route::resource('products', ProductController::class)->except(['edit']);
     Route::get('api/products/{product}/orders', [ApiProductsOrdersController::class, 'index'])->name('api.products.orders.index');
-    Route::resource('features', App\Http\Controllers\FeatureController::class);
+    Route::resource('features', FeatureController::class);
     Route::get('api/products/{product}', [ApiProductsController::class, 'show'])->name('api.products.show');
     // Route to get a list of product sizes
     Route::get('api/products/{product}/sizes', [ApiProductSizesController::class, 'index'])->name('api.products.sizes.index');
 
-    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    Route::resource('categories', CategoryController::class);
 
     Route::patch('plant-features/{plant}', [PlantFeaturesController::class, 'update'])->name('plant-features.update');
 
-    Route::resource('sizes', App\Http\Controllers\SizeController::class)->only(['create', 'index', 'store', 'update', 'destroy']);
+    Route::resource('sizes', SizeController::class)->only(['create', 'index', 'store', 'update', 'destroy']);
     Route::put('size-order', [SizeController::class, 'updateOrder'])->name('sizes.updateOrder');
 
     Route::resource('prices', PriceController::class)->only(['store', 'update', 'destroy']);
@@ -107,9 +113,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
     Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
 
-    Route::resource('purchases.purchase-item', App\Http\Controllers\PurchaseItemController::class)->only(['store', 'update', 'destroy'])->shallow();
+    Route::resource('purchases.purchase-item', PurchaseItemController::class)->only(['store', 'update', 'destroy'])->shallow();
 
-    Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
+    Route::resource('purchases', PurchaseController::class);
 
     Route::get('print-items-tags', PrintPurchaseItemsTagsController::class)->name('print-items-tags');
 
@@ -122,9 +128,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('view', [ViewInventoryController::class, 'index'])->name('view.index');
     Route::get('view/{product}', [ViewInventoryController::class, 'show'])->name('view.show');
 
-    Route::resource('locations', App\Http\Controllers\NurseryLocationController::class);
+    Route::resource('locations', NurseryLocationController::class);
 
-    Route::resource('blocks', App\Http\Controllers\BlockController::class);
+    Route::resource('blocks', BlockController::class);
 
     Route::get('api/{nursery}/blocks', [ApiBlocksController::class, 'index'])->name('api.blocks.index');
     Route::get('api/{block}/places/', [PlaceController::class, 'index'])->name('api.places.index');
@@ -167,4 +173,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('teams/{team}/connect', [TeamController::class, 'connect'])->name('teams.connect');
     Route::delete('teams/{team}/disconnect', [TeamController::class, 'disconnect'])->name('teams.disconnect');
     Route::post('teams/{team}/logo', [TeamController::class, 'updateLogo'])->name('teams.logo');
+
+    Route::post('{contactableType}/{contactableId}/contacts', [ContactController::class, 'store'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.store');
+    Route::put('contacts/{contact}', [ContactController::class, 'update'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.update');
+    Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.destroy');
 });

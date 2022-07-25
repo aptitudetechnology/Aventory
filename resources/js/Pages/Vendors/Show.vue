@@ -6,7 +6,11 @@
                     <update-vendor-form :vendor="vendor" />
                 </div>
                 <div class="lg:col-span-3">
-                    <contact-aside :vendor="vendor" />
+                    <contact-aside
+                        contactable-type="vendors"
+                        :contactable-id="vendor.id"
+                        :contacts="vendor.contacts"
+                    />
                 </div>
             </div>
             <delete-vendor-form :vendor="vendor" />

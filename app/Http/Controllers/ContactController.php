@@ -5,19 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactStoreRequest;
 use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class ContactController extends Controller
 {
-
-    /**
-     * @param \App\Http\Requests\ContactStoreRequest $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ContactStoreRequest $request)
+    public function store($contactableType, $contactableId, ContactStoreRequest $request)
     {
-        $contact = auth()->user()->currentTeam->contacts()->create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['team_id'] = $request->user()->currentTeam->id;
+        $validatedData['contactable_type'] = $contactableType;
+        $validatedData['contactable_id'] = $contactableId;
+
+        $contact = new Contact($validatedData);
+        $contact->save();
 
         session()->flash('flash.banner', 'Created new contact!');
         session()->flash('flash.bannerStyle', 'success');
@@ -25,13 +24,7 @@ class ContactController extends Controller
         return $this->redirectRoute($contact);
     }
 
-
-    /**
-     * @param \App\Http\Requests\ContactUpdateRequest $request
-     * @param \App\Models\Contact $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ContactUpdateRequest $request, Contact $contact)
+    public function update(Contact $contact, ContactUpdateRequest $request)
     {
         $contact->update($request->validated());
 
@@ -41,15 +34,8 @@ class ContactController extends Controller
         return $this->redirectRoute($contact);
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Contact $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request, Contact $contact)
+    public function destroy(Contact $contact)
     {
-
-
         $contact->delete();
 
         session()->flash('flash.banner', 'Deleted contact.');
@@ -58,12 +44,8 @@ class ContactController extends Controller
         return $this->redirectRoute($contact);
     }
 
-    public function redirectRoute($contact)
+    protected function redirectRoute($contact)
     {
-        if ($contact->customer_id) {
-            return redirect(route('customers.show', $contact->customer_id));
-        } elseif ($contact->vendor_id) {
-            return redirect(route('vendors.show', $contact->vendor_id));
-        }
+        return redirect()->route("{$contact->contactable_type}.show", $contact->contactable_id);
     }
 }
