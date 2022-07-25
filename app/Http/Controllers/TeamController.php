@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Integrations\Accounting\Requests\CreateCompanyRequest;
 use App\Http\Integrations\Accounting\Requests\DeleteCompanyRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
@@ -31,5 +32,15 @@ class TeamController extends Controller
 
         $team->codat_company_id = null;
         $team->save();
+    }
+
+    public function updateLogo(Request $request)
+    {
+        $request->validate(['logo' => 'required|image']);
+        $team = Auth::user()->currentTeam;
+
+        $team->updateLogo($request->file('logo'));
+
+        return ['logo_url' => $team->logo_url];
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
@@ -15,6 +17,7 @@ use Laravel\Jetstream\Team as JetstreamTeam;
  * @property int $id
  * @property int $user_id
  * @property string $name
+ * @property string $logo_path
  * @property bool $personal_team
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -90,6 +93,15 @@ class Team extends JetstreamTeam
     protected $fillable = [
         'name',
         'personal_team',
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'logo_url',
     ];
 
     /**
@@ -193,5 +205,68 @@ class Team extends JetstreamTeam
         return $this->belongsToMany(Inventory::class, 'reprint_queue')
             ->withPivot('printed', 'created_at', 'to_print')
             ->with('product', 'size', 'block');
+    }
+
+    public function getLogoUrlAttribute()
+    {
+        return $this->logo_path
+            ? Storage::disk($this->logoDisk())->url($this->logo_path)
+            : $this->defaultLogoUrl();
+    }
+
+    /**
+     * Get the default logo URL if no logo has been uploaded.
+     *
+     * @return string
+     */
+    protected function defaultLogoUrl()
+    {
+        $name = trim(collect(explode(' ', $this->name))->map(function ($segment) {
+            return mb_substr($segment, 0, 1);
+        })->join(' '));
+
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF';
+    }
+
+    public function updateLogo(UploadedFile $logo)
+    {
+        tap($this->logo_path, function ($previous) use ($logo) {
+            $this->forceFill([
+                'logo_path' => $logo->storePublicly(
+                    'logos',
+                    ['disk' => $this->logoDisk()]
+                ),
+            ])->save();
+
+            if ($previous) {
+                Storage::disk($this->logoDisk())->delete($previous);
+            }
+        });
+    }
+
+    /**
+     * Delete the team's logo.
+     *
+     * @return void
+     */
+    public function deleteLogo()
+    {
+        if (is_null($this->logo_path)) {
+            return;
+        }
+
+        Storage::disk($this->logoDisk())->delete($this->logo_path);
+
+        $this->forceFill(['logo_path' => null])->save();
+    }
+
+    /**
+     * Get the disk that logos should be stored on.
+     *
+     * @return string
+     */
+    protected function logoDisk()
+    {
+        return config('jetstream.team_logo_disk', 'public');
     }
 }
