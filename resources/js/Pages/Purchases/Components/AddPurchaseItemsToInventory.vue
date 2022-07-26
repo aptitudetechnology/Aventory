@@ -272,12 +272,12 @@ import {
     RadioGroupOption,
 } from "@headlessui/vue";
 
-import JetButton from "@/Jetstream/Button";
-import JetDialogModal from "@/Jetstream/DialogModal";
-import JetInput from "@/Jetstream/Input";
-import JetInputError from "@/Jetstream/InputError";
-import JetLabel from "@/Jetstream/Label";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton";
+import JetButton from "@/Jetstream/Button.vue";
+import JetDialogModal from "@/Jetstream/DialogModal.vue";
+import JetInput from "@/Jetstream/Input.vue";
+import JetInputError from "@/Jetstream/InputError.vue";
+import JetLabel from "@/Jetstream/Label.vue";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
 
 import BackButton from "@/Components/Buttons/BackButton.vue";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
