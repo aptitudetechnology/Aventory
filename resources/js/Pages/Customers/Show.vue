@@ -6,7 +6,11 @@
                     <update-customer-form :customer="customer" />
                 </div>
                 <div class="lg:col-span-3">
-                    <contact-aside :customer="customer" />
+                    <contact-aside
+                        contactable-type="customers"
+                        :contactable-id="customer.id"
+                        :contacts="customer.contacts"
+                    />
                 </div>
             </div>
             <delete-customer-form :customer="customer" />

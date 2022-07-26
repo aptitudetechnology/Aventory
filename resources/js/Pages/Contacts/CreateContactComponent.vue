@@ -66,12 +66,7 @@
                         <div class="grid gap-4">
                             <div class="col-span-4 pt-6">
                                 <h3
-                                    class="
-                                        text-lg
-                                        leading-6
-                                        font-medium
-                                        text-gray-900
-                                    "
+                                    class="text-lg leading-6 font-medium text-gray-900"
                                 >
                                     Contact Details
                                 </h3>
@@ -165,15 +160,17 @@
                     <jet-secondary-button
                         type="button"
                         @click="creatingContact = false"
-                        >Cancel</jet-secondary-button
                     >
+                        Cancel
+                    </jet-secondary-button>
                     <jet-button
                         type="submit"
                         @click="createContact"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
-                        >Save Contact</jet-button
                     >
+                        Save Contact
+                    </jet-button>
                 </div>
             </template>
         </jet-dialog-modal>
@@ -201,7 +198,7 @@ export default {
         JetSecondaryButton,
         TextAreaInput,
     },
-    props: { customer: Object, vendor: Object },
+    props: { contactableType: String, contactableId: Number },
 
     data() {
         return {
@@ -224,14 +221,21 @@ export default {
 
     methods: {
         createContact() {
-            this.form.post(route("contacts.store"), {
-                preserveScroll: false,
-                preserveState: true,
-                onSuccess: () => {
-                    this.form.reset();
-                    this.creatingContact = false;
-                },
-            });
+            const { contactableType, contactableId } = this;
+            this.form.post(
+                route("contacts.store", {
+                    contactableType,
+                    contactableId,
+                }),
+                {
+                    preserveScroll: false,
+                    preserveState: true,
+                    onSuccess: () => {
+                        this.form.reset();
+                        this.creatingContact = false;
+                    },
+                }
+            );
         },
     },
 };

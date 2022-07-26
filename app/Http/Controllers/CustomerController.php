@@ -6,7 +6,6 @@ use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -15,7 +14,7 @@ class CustomerController extends Controller
      *
      * @return \Inertia\Response|\Inertia\ResponseFactory
      */
-    public function index(Request $request)
+    public function index()
     {
         $customers = $this->getCustomers();
 
@@ -27,10 +26,11 @@ class CustomerController extends Controller
      *
      * @return \Inertia\Response|\Inertia\ResponseFactory
      */
-    public function create(Request $request)
+    public function create()
     {
         $customers = $this->getCustomers();
         $priceLevels = $this->getPriceLevels();
+
         return inertia('Customers/Create', [
             'customers' => $customers,
             'priceLevels' => $priceLevels
@@ -64,7 +64,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Customer $customer)
+    public function show(Customer $customer)
     {
         Gate::authorize('view', $customer);
         $customers = $this->getCustomers();

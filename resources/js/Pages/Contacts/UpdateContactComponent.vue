@@ -27,8 +27,8 @@
             <template #title>Update Contact</template>
 
             <template #aside>
-                <delete-contact-component :contact="contact"
-            /></template>
+                <delete-contact-component :contact="contact" />
+            </template>
             <template #content>
                 <form
                     @submit.prevent="updateContact"
@@ -223,9 +223,7 @@ export default {
         return {
             updatingContact: false,
             form: this.$inertia.form({
-                _method: "PATCH",
-                customer_id: this.contact.customer_id,
-                vendor_id: this.contact.vendor_id,
+                _method: "PUT",
                 first_name: this.contact.first_name,
                 last_name: this.contact.last_name,
                 notes: this.contact.notes,
@@ -247,14 +245,19 @@ export default {
 
     methods: {
         updateContact() {
-            this.form.patch(route("contacts.update", this.contact.id), {
-                preserveScroll: false,
-                preserveState: true,
-                onSuccess: () => {
-                    this.form.reset();
-                    this.updatingContact = false;
-                },
-            });
+            this.form.put(
+                route("contacts.update", {
+                    contact: this.contact,
+                }),
+                {
+                    preserveScroll: false,
+                    preserveState: true,
+                    onSuccess: () => {
+                        this.form.reset();
+                        this.updatingContact = false;
+                    },
+                }
+            );
         },
     },
 };
