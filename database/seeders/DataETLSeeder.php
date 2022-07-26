@@ -17,6 +17,7 @@ use App\Models\Customer;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\Purchase;
+use App\Models\PurchaseItem;
 use App\Models\Product;
 use App\Models\Plant;
 use App\Models\Order;
@@ -58,6 +59,7 @@ class DataETLSeeder extends Seeder
         $this->do_ETL_customers();
         $this->do_ETL_vendors();
         $this->do_ETL_purchases();
+        $this->do_ETL_purchases_items();
     }
 
     public function bulk_insert($model, $data, $id_seq_name = null, $id_seq_value = null)
@@ -255,5 +257,26 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblOrders')->max('OrderID');
         $this->bulk_insert(Purchase::class, $new_purchases, 'purchases_id_seq', $last_id + 1);
+    }
+
+    public function do_ETL_purchases_items()
+    {
+        $old_purchases_items = $this->sqlsrv_conn->table('TblOrdersItems')->get()->toArray();
+        $new_purchases_items = array_map(function($pi) {
+            return [
+                'id' => $pi->OrderItemID,
+                'purchase_id' => $pi->OrderID,
+                'product_id' => $pi->ProductID,
+                'size_id' => $pi->SizeID,
+                'unit_price' => $pi->UnitPrice,
+                'quantity_ordered' => $pi->QuantityOrdered,
+                'quantity_confirmed' => $pi->QuantityConfirmed,
+                'received' => $pi->Received,
+                'printed' => $pi->Printed,
+            ];
+        }, $old_purchases_items);
+
+        $last_id = $this->sqlsrv_conn->table('TblOrdersItems')->max('OrderItemID');
+        $this->bulk_insert(PurchaseItem::class, $new_purchases_items, 'purchase_items_id_seq', $last_id + 1);
     }
 }
