@@ -26,7 +26,7 @@
 import AppLayout from "@/Layouts/AppLayout";
 
 import BackLink from "@/Components/Links/BackLink";
-import MainArea from "@/Components/MainArea.vue";
+import MainArea from "@Components/MainArea.vue";
 
 import PurchasesAside from "./Components/PurchasesAside";
 

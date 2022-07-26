@@ -72,11 +72,11 @@
 import SectionTitle from "@/Jetstream/SectionTitle.vue";
 import JetInput from "@/Jetstream/Input.vue";
 import JetLabel from "@/Jetstream/Label.vue";
-import JetButton from "@/Jetstream/Button.vue";
+import JetButton from "@Jetstream/Button.vue";
 import AppLayout from "@/Layouts/AppLayout";
-import MainArea from "@/Components/MainArea.vue";
-import InventoryTabs from "@/Components/InventoryTabs.vue";
-import Card from "@/Components/Card.vue";
+import MainArea from "@Components/MainArea.vue";
+import InventoryTabs from "@Components/InventoryTabs.vue";
+import Card from "@Components/Card.vue";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
 export default {
     components: {

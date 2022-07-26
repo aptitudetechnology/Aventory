@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import DetailsSection from "@/Components/DetailsSection.vue";
-import ButtonLink from "@/Components/Links/ButtonLink.vue";
+import DetailsSection from "@Components/DetailsSection.vue";
+import ButtonLink from "@Components/Links/ButtonLink.vue";
 export default {
     components: {
         DetailsSection,

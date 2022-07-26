@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
+import JetSectionTitle from "@/Jetstream/SectionTitle";
 
 export default {
     components: {

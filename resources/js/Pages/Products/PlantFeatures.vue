@@ -52,9 +52,9 @@
 </template>
 
 <script>
-import JetButton from "@/Jetstream/Button.vue";
-import JetFormSection from "@/Jetstream/FormSection.vue";
-import JetLabel from "@/Jetstream/Label.vue";
+import JetButton from "@/Jetstream/Button";
+import JetFormSection from "@/Jetstream/FormSection";
+import JetLabel from "@/Jetstream/Label";
 
 export default {
   components: {

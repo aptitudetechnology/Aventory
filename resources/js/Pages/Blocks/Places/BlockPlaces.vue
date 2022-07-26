@@ -48,7 +48,7 @@
   </details-section>
 </template>
 <script>
-import DetailsSection from "@/Components/DetailsSection.vue";
+import DetailsSection from "@Components/DetailsSection.vue";
 import CreatePlacesForm from "./CreatePlacesForm.vue";
 import ChangeNumPlacesInRowForm from "./ChangeNumPlacesInRowForm.vue";
 export default {

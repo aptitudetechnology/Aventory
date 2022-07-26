@@ -37,7 +37,7 @@
 import TeamMemberManager from "./TeamMemberManager";
 import AppLayout from "@/Layouts/AppLayout";
 import DeleteTeamForm from "./DeleteTeamForm";
-import JetSectionBorder from "@/Jetstream/SectionBorder.vue";
+import JetSectionBorder from "@/Jetstream/SectionBorder";
 import UpdateTeamForm from "./UpdateTeamForm";
 import ConnectAccounting from "./ConnectAccounting.vue";
 

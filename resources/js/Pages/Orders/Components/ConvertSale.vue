@@ -66,7 +66,7 @@
     </dialog-modal>
 </template>
 <script>
-import ActionButton from "@/Components/Buttons/ActionButton.vue";
+import ActionButton from "@Components/Buttons/ActionButton.vue";
 import DialogModal from "@/Jetstream/DialogModal.vue";
 import ErrorMessage from "@/Components/ErrorMessage.vue";
 export default {

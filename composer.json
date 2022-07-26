@@ -12,19 +12,22 @@
         "doctrine/dbal": "^3.3.7",
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.4.5",
-        "inertiajs/inertia-laravel": "0.6.3",
-        "laravel/framework": "^9.19",
+        "inertiajs/inertia-laravel": "^0.6.3",
+        "laravel/framework": "^9.18.0",
         "laravel/jetstream": "^2.9.0",
         "laravel/sanctum": "^2.15.1",
         "laravel/tinker": "^2.7",
         "laraveldaily/laravel-invoices": "^3.0",
+        "sammyjo20/saloon": "^1.4",
+        "sammyjo20/saloon-laravel": "^1.4",
         "tightenco/ziggy": "^1.4.6"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.7",
+        "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.19.1",
         "jasonmccreary/laravel-test-assertions": "^2.1.1",
         "laracasts/cypress": "2.2.1",
+        "laravel/sail": "^1.15",
         "mockery/mockery": "^1.5.0",
         "nunomaduro/collision": "^6.2.1",
         "phpunit/phpunit": "^9.5",
@@ -53,6 +56,11 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
         ]
     },
     "extra": {

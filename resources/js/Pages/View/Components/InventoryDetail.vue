@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-import DetailsSection from "@/Components/DetailsSection.vue";
+import DetailsSection from "@Components/DetailsSection.vue";
 import AvailabilitySection from "@/Pages/View/Components/AvailabilitySection.vue";
 import PricingSection from "@/Pages/View/Components/PricingSection.vue";
 import InventoryLocationsSection from "@/Pages/View/Components/InventoryLocationsSection.vue";

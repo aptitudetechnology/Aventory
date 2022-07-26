@@ -52,11 +52,11 @@
 </template>
 
 <script setup>
-import JetSection from "@/Jetstream/Section.vue";
-import JetButton from "@/Jetstream/Button.vue";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
-import JetDangerButton from "@/Jetstream/DangerButton.vue";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
+import JetSection from "@/Jetstream/Section";
+import JetButton from "@/Jetstream/Button";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import JetDangerButton from "@/Jetstream/DangerButton";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 import Loader from "@/Components/Loader.vue";
 import axios from "axios";
 import { ref } from "vue";

@@ -5,6 +5,9 @@
             "@/*": [
                 "resources/js/*"
             ],
+            "@Components/*": [
+                "resources/js/Components/*"
+            ]
         }
     },
     "exclude": [

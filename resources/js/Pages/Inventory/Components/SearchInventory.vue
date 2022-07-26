@@ -20,11 +20,11 @@
 
 <script>
 import { Inertia } from "@inertiajs/inertia";
-import JetButton from "@/Jetstream/Button.vue";
-import JetInput from "@/Jetstream/Input.vue";
-import JetInputError from "@/Jetstream/InputError.vue";
-import JetLabel from "@/Jetstream/Label.vue";
-import SearchInput from "@/Components/Forms/SearchInput.vue";
+import JetButton from "@/Jetstream/Button";
+import JetInput from "@/Jetstream/Input";
+import JetInputError from "@/Jetstream/InputError";
+import JetLabel from "@/Jetstream/Label";
+import SearchInput from "@Components/Forms/SearchInput.vue";
 export default {
     components: {
         JetButton,

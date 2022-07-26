@@ -49,11 +49,11 @@
     </div>
 </template>
 <script>
-import TabContainer from "@/Components/TabContainer.vue";
-import TabLink from "@/Components/Links/TabLink.vue";
-import ErrorMessage from "@/Components/ErrorMessage.vue";
+import TabContainer from "@Components/TabContainer.vue";
+import TabLink from "@Components/Links/TabLink.vue";
+import ErrorMessage from "@Components/ErrorMessage.vue";
 import ProductHoldItem from "./ProductHoldItem.vue";
-import LoadingState from "@/Components/LoadingState.vue";
+import LoadingState from "@Components/LoadingState.vue";
 
 export default {
     components: {

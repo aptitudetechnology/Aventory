@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import PrintButton from "@/Components/Buttons/PrintButton.vue";
+import PrintButton from "@Components/Buttons/PrintButton.vue";
 import DialogModal from "@/Jetstream/DialogModal.vue";
-import ErrorMessage from "@/Components/ErrorMessage.vue";
+import ErrorMessage from "@Components/ErrorMessage.vue";
 export default {
     components: {
         PrintButton,

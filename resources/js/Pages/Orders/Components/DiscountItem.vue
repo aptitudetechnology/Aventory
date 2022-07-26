@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import LineItem from "@/Components/Lists/LineItem.vue";
+import LineItem from "@Components/Lists/LineItem.vue";
 import EditDiscountItem from "./DiscountEdit.vue";
 export default {
     components: {
