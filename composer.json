@@ -21,6 +21,7 @@
         "tightenco/ziggy": "^1.4.6"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "fakerphp/faker": "^1.19.1",
         "jasonmccreary/laravel-test-assertions": "^2.1.1",
         "laracasts/cypress": "2.2.1",
