@@ -31,7 +31,7 @@
 import AppLayout from "@/Layouts/AppLayout";
 import BackLink from "@/Components/Links/BackLink";
 import VendorsAside from "./VendorsAside";
-import MainArea from "@/Components/MainArea.vue";
+import MainArea from "@Components/MainArea.vue";
 
 export default {
     components: {

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import DetailsSection from "@/Components/DetailsSection.vue";
+import DetailsSection from "@Components/DetailsSection.vue";
 export default {
     components: { DetailsSection },
     props: ["product"],

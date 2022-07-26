@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import JetDialogModal from "@/Jetstream/DialogModal.vue";
+import JetDialogModal from "@/Jetstream/DialogModal";
 import { PlusIcon } from "@heroicons/vue/outline";
 
 export default {

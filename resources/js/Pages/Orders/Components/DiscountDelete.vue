@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
-import JetDangerButton from "@/Jetstream/DangerButton.vue";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import JetDangerButton from "@/Jetstream/DangerButton";
 import DeleteButton from "@/Components/Buttons/DeleteButton.vue";
 export default {
     props: ["discount"],

@@ -9,7 +9,7 @@
     </details-section>
 </template>
 <script>
-import DetailsSection from "@/Components/DetailsSection.vue";
+import DetailsSection from "@Components/DetailsSection.vue";
 import SectionTitle from "@/Jetstream/SectionTitle.vue";
 import ProductHoldView from "@/Pages/Orders/Components/ProductHoldView.vue";
 export default {

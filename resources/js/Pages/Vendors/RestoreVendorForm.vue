@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import JetActionSection from "@/Jetstream/ActionSection.vue";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
-import JetButton from "@/Jetstream/Button.vue";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
+import JetActionSection from "@/Jetstream/ActionSection";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import JetButton from "@/Jetstream/Button";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
 export default {
   props: ["vendor"],

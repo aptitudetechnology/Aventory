@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
-import JetDangerButton from "@/Jetstream/DangerButton.vue";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import JetDangerButton from "@/Jetstream/DangerButton";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 import DeleteButton from "@/Components/Buttons/DeleteButton.vue";
 export default {
     props: ["size"],

@@ -221,7 +221,7 @@ import SearchInput from "@/Components/Forms/SearchInput.vue";
 import LoadingState from "@/Components/LoadingState.vue";
 import ConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
 import DialogModal from "@/Jetstream/DialogModal.vue";
-import RadioListSelect from "@/Components/Forms/RadioListSelect.vue";
+import RadioListSelect from "@Components/Forms/RadioListSelect.vue";
 import InventoryMatchedList from "./InventoryMatchedList.vue";
 import axios from "axios";
 export default {

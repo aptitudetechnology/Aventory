@@ -12,9 +12,9 @@
     </details-section>
 </template>
 <script>
-import DetailsSection from "@/Components/DetailsSection.vue";
+import DetailsSection from "@Components/DetailsSection.vue";
 import { ExternalLinkIcon } from "@heroicons/vue/outline";
-import ButtonLink from "@/Components/Links/ButtonLink.vue";
+import ButtonLink from "@Components/Links/ButtonLink.vue";
 export default {
     components: {
         DetailsSection,

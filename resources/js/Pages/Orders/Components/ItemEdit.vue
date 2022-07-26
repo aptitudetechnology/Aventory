@@ -170,8 +170,8 @@ import {
     SwitchLabel,
 } from "@headlessui/vue";
 
-import JetDialogModal from "@/Jetstream/DialogModal.vue";
-import JetActionMessage from "@/Jetstream/ActionMessage.vue";
+import JetDialogModal from "@/Jetstream/DialogModal";
+import JetActionMessage from "@/Jetstream/ActionMessage";
 import EditButton from "@/Components/Buttons/EditButton.vue";
 import ProductHoldView from "@/Pages/Orders/Components/ProductHoldView.vue";
 import MoneyInput from "@/Components/Forms/MoneyInput.vue";

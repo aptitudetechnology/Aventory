@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import TableD from "@/Components/Tables/TableD.vue";
+import TableD from "@Components/Tables/TableD.vue";
 export default {
     components: {
         TableD,

@@ -29,7 +29,7 @@ import {
 import QuotesLayout from "./QuotesLayout.vue";
 import ButtonLink from "@/Components/Links/ButtonLink";
 import DetailsSection from "@/Components/DetailsSection";
-import HeadingOne from "@/Components/Headings/HeadingOne.vue";
+import HeadingOne from "@Components/Headings/HeadingOne.vue";
 import CompletedOrdersCard from "@/Pages/Orders/Components/CompletedOrdersCard.vue";
 import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";
 import ViewOrders from "@/Pages/Orders/Components/OrdersView.vue";
