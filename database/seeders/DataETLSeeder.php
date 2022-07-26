@@ -6,11 +6,17 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
+use Faker\Generator;
+use Illuminate\Container\Container;
 
 use App\Models\Category;
 use App\Models\Size;
 use App\Models\Team;
 use App\Models\NurseryLocation;
+use App\Models\Customer;
+use App\Models\User;
+use App\Models\Vendor;
+use App\Models\Purchase;
 use App\Models\Product;
 use App\Models\Plant;
 use App\Models\Order;
@@ -26,20 +32,44 @@ class DataETLSeeder extends Seeder
     public function __construct()
     {
         $this->team = NULL;
+        $this->op_bulk_count = 3000;
         $this->sqlsrv_conn = DB::connection('sqlsrv');
+        $this->faker = $this->withFaker();
+    }
+
+    protected function withFaker()
+    {
+        return Container::getInstance()->make(Generator::class);
     }
 
     public function run()
     {
         $this->fresh_db();
 
-        // Create Garden Gate Nursery team
+        $this->do_ETL_users();
+
+        // // Create Garden Gate Nursery team
         $this->team = $this->create_team();
 
         $this->do_ETL_categories();
         $this->do_ETL_sizes();
         $this->do_ETL_locations();
         $this->do_ETL_products();
+        $this->do_ETL_customers();
+        $this->do_ETL_vendors();
+        $this->do_ETL_purchases();
+    }
+
+    public function bulk_insert($model, $data, $id_seq_name, $id_seq_value)
+    {
+        $op_bulk_count = $this->op_bulk_count;
+        $cnt = count($data);
+        for ($i = 0 ; $i <= $cnt / $op_bulk_count; $i++)
+        {
+            $model::insert(array_slice($data, $i * $op_bulk_count, $op_bulk_count));
+        }
+
+        DB::statement("ALTER SEQUENCE " . $id_seq_name . " RESTART WITH " . $id_seq_value);
     }
 
     public function fresh_db()
@@ -158,6 +188,66 @@ class DataETLSeeder extends Seeder
             ];
         }, $old_customers);
 
-        NurseryLocation::insert($new_customers);
+        Customer::insert($new_customers);
+    }
+
+    public function do_ETL_users()
+    {
+        $old_users = $this->sqlsrv_conn->table('TblEmployees')->get()->toArray();
+        $new_users = array_map(function($u) {
+            return [
+                'id' => $u->EmployeeID,
+                'name' => $u->FirstName . ' ' . $u->LastName,
+                'email' => $this->faker->unique()->safeEmail(),
+                'password' => $u->Password,
+            ];
+        }, $old_users);
+
+        $last_id = $this->sqlsrv_conn->table('TblEmployees')->max('EmployeeID');
+        $this->bulk_insert(User::class, $new_users, 'users_id_seq', $last_id + 1);
+    }
+
+    public function do_ETL_vendors()
+    {
+        $old_vendors = $this->sqlsrv_conn->table('TblSuppliers')->get()->toArray();
+        $new_vendors = array_map(function($v) {
+            return [
+                'id' => $v->SupplierID,
+                'team_id' => $this->team->id,
+                'name' => $v->CompanyName,
+                'vendor_code' => $v->SupplierCode,
+                'address' => $v->Address,
+                'city' => $v->City,
+                'state' => $v->State,
+                'zip' => $v->Zip,
+                'mailing_same_as_primary' => $v->MailingAddressSameAsPrimary,
+                'mailing_address' => $v->MailingAddress,
+                'mailing_city' => $v->MailingCity,
+                'mailing_state' => $v->MailingState,
+                'mailing_zip' => $v->MailingZip,
+                'notes' => $v->Notes,
+                'use_for_block_transfers' => $v->UseForBlockInventoryTransfers,
+            ];
+        }, $old_vendors);
+
+        $last_id = $this->sqlsrv_conn->table('TblSuppliers')->max('SupplierID');
+        $this->bulk_insert(Vendor::class, $new_vendors, 'vendors_id_seq', $last_id + 1);
+    }
+
+    public function do_ETL_purchases()
+    {
+        $old_purchases = $this->sqlsrv_conn->table('TblOrders')->get()->toArray();
+        $new_purchases = array_map(function($p) {
+            return [
+                'id' => $p->OrderID,
+                'date' => $p->OrderDate,
+                'vendor_id' => $p->SupplierID,
+                'user_id' => $p->EmployeeID,
+                'team_id' => $this->team->id,
+            ];
+        }, $old_purchases);
+
+        $last_id = $this->sqlsrv_conn->table('TblOrders')->max('OrderID');
+        $this->bulk_insert(Purchase::class, $new_purchases, 'purchases_id_seq', $last_id + 1);
     }
 }
