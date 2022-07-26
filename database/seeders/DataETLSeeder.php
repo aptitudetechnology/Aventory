@@ -60,7 +60,7 @@ class DataETLSeeder extends Seeder
         $this->do_ETL_purchases();
     }
 
-    public function bulk_insert($model, $data, $id_seq_name, $id_seq_value)
+    public function bulk_insert($model, $data, $id_seq_name = null, $id_seq_value = null)
     {
         $op_bulk_count = $this->op_bulk_count;
         $cnt = count($data);
@@ -69,7 +69,8 @@ class DataETLSeeder extends Seeder
             $model::insert(array_slice($data, $i * $op_bulk_count, $op_bulk_count));
         }
 
-        DB::statement("ALTER SEQUENCE " . $id_seq_name . " RESTART WITH " . $id_seq_value);
+        if ($id_seq_name && $id_seq_value)
+            DB::statement("ALTER SEQUENCE " . $id_seq_name . " RESTART WITH " . $id_seq_value);
     }
 
     public function fresh_db()
@@ -97,7 +98,8 @@ class DataETLSeeder extends Seeder
             ];
         }, $old_categories);
 
-        Category::insert($new_categories);
+        $last_id = $this->sqlsrv_conn->table('TblCategories')->max('CategoryID');
+        $this->bulk_insert(Category::class, $new_categories, 'categories_id_seq', $last_id + 1);
     }
 
     public function do_ETL_sizes()
@@ -113,7 +115,8 @@ class DataETLSeeder extends Seeder
             ];
         }, $old_sizes);
 
-        Size::insert($new_sizes);
+        $last_id = $this->sqlsrv_conn->table('TblProductSizes')->max('SizeID');
+        $this->bulk_insert(Size::class, $new_sizes, 'sizes_id_seq', $last_id + 1);
     }
 
     public function do_ETL_locations()
@@ -127,7 +130,8 @@ class DataETLSeeder extends Seeder
             ];
         }, $old_locations);
 
-        NurseryLocation::insert($new_locations);
+        $last_id = $this->sqlsrv_conn->table('TblLocations')->max('LocationID');
+        $this->bulk_insert(NurseryLocation::class, $new_locations, 'nursery_locations_id_seq', $last_id + 1);
     }
 
     public function do_ETL_products()
@@ -158,8 +162,9 @@ class DataETLSeeder extends Seeder
             ]);
         }
 
-        Product::insert($new_products);
-        Plant::insert($new_plants);
+        $last_id = $this->sqlsrv_conn->table('TblProducts')->max('ProductID');
+        $this->bulk_insert(Product::class, $new_products, 'products_id_seq', $last_id + 1);
+        $this->bulk_insert(Plant::class, $new_plants);
     }
 
     public function do_ETL_customers()
@@ -188,7 +193,8 @@ class DataETLSeeder extends Seeder
             ];
         }, $old_customers);
 
-        Customer::insert($new_customers);
+        $last_id = $this->sqlsrv_conn->table('TblCustomers')->max('CustomerID');
+        $this->bulk_insert(Customer::class, $new_customers, 'customers_id_seq', $last_id + 1);
     }
 
     public function do_ETL_users()
