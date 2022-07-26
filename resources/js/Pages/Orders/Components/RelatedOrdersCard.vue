@@ -37,9 +37,9 @@
 </template>
 
 <script>
-import DetailsSection from "@Components/DetailsSection.vue";
-import SmallLineItem from "@Components/Lists/SmallLineItem.vue";
-import EmptyState from "@Components/EmptyState.vue";
+import DetailsSection from "@/Components/DetailsSection.vue";
+import SmallLineItem from "@/Components/Lists/SmallLineItem.vue";
+import EmptyState from "@/Components/EmptyState.vue";
 import axios from "axios";
 export default {
     components: {

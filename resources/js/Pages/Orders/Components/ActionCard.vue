@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import PrintButton from "@Components/Buttons/PrintButton.vue";
+import PrintButton from "@/Components/Buttons/PrintButton.vue";
 import ConvertSale from "@/Pages/Orders/Components/ConvertSale.vue";
 export default {
     components: {

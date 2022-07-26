@@ -32,7 +32,7 @@
 
 <script>
 import ErrorMessage from "@/Components/ErrorMessage";
-import Loading from "@Components/Messages/Loading";
+import Loading from "@/Components/Messages/Loading";
 export default {
     components: { ErrorMessage, Loading },
     props: {

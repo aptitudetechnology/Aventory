@@ -156,13 +156,13 @@
 
 <script>
 import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
-import JetButton from "@/Jetstream/Button";
-import JetFormSection from "@/Jetstream/FormSection";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetInputError from "@/Jetstream/InputError";
-import JetLabel from "@/Jetstream/Label";
-import TextAreaInput from "@Components/Forms/TextAreaInput";
+import JetButton from "@/Jetstream/Button.vue";
+import JetFormSection from "@/Jetstream/FormSection.vue";
+import JetInput from "@/Jetstream/Input.vue";
+import JetCheckbox from "@/Jetstream/Checkbox.vue";
+import JetInputError from "@/Jetstream/InputError.vue";
+import JetLabel from "@/Jetstream/Label.vue";
+import TextAreaInput from "@/Components/Forms/TextAreaInput";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
 import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 import Modal from "@/Jetstream/Modal.vue";
