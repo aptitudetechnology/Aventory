@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class PurchaseController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -22,7 +22,7 @@ class PurchaseController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -30,11 +30,12 @@ class PurchaseController extends Controller
         Gate::authorize('create', Purchase::class);
         $purchases = $this->getPurchases();
         $vendors = $this->getVendors();
+
         return inertia('Purchases/Create', compact('purchases', 'vendors'));
     }
 
     /**
-     * @param \App\Http\Requests\PurchaseStoreRequest $request
+     * @param  \App\Http\Requests\PurchaseStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PurchaseStoreRequest $request)
@@ -49,8 +50,8 @@ class PurchaseController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Purchase $purchase
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Purchase $purchase)
@@ -64,12 +65,13 @@ class PurchaseController extends Controller
         $sizes = $request->user()->currentTeam->sizes;
         $blocks = $request->user()->currentTeam->blocks;
         $nurseryLocations = $request->user()->currentTeam->nurseryLocations;
+
         return inertia('Purchases/Show', compact('purchases', 'vendors', 'purchase', 'products', 'sizes', 'purchaseItems', 'blocks', 'nurseryLocations'));
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Purchase $purchase
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Purchase $purchase)
@@ -78,8 +80,8 @@ class PurchaseController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\PurchaseUpdateRequest $request
-     * @param \App\Models\Purchase $purchase
+     * @param  \App\Http\Requests\PurchaseUpdateRequest  $request
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function update(PurchaseUpdateRequest $request, Purchase $purchase)
@@ -94,8 +96,8 @@ class PurchaseController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Purchase $purchase
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Purchase $purchase)

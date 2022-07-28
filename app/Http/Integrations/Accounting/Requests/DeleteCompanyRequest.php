@@ -29,7 +29,7 @@ class DeleteCompanyRequest extends SaloonRequest
      */
     public function defineEndpoint(): string
     {
-        return '/companies/' . $this->companyId;
+        return '/companies/'.$this->companyId;
     }
 
     public function __construct(

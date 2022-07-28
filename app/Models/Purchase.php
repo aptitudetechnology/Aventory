@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Team $team
  * @property-read \App\Models\User|null $user
  * @property-read \App\Models\Vendor $vendor
+ *
  * @method static \Database\Factories\PurchaseFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Purchase newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Purchase newQuery()
@@ -39,9 +40,11 @@ use Illuminate\Database\Eloquent\Model;
 class Purchase extends Model
 {
     use HasFactory;
+
     protected $with = ['vendor', 'user'];
 
-    protected $appends = ["vendor_name"];
+    protected $appends = ['vendor_name'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -67,7 +70,6 @@ class Purchase extends Model
         'user_id' => 'integer',
         'team_id' => 'integer',
     ];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

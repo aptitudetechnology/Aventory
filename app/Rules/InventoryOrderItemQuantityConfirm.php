@@ -9,7 +9,6 @@ use Illuminate\Contracts\Validation\ImplicitRule;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Contracts\Validation\ValidatorAwareRule;
 
-
 class InventoryOrderItemQuantityConfirm implements Rule, ValidatorAwareRule, ImplicitRule, DataAwareRule
 {
     /**
@@ -60,7 +59,7 @@ class InventoryOrderItemQuantityConfirm implements Rule, ValidatorAwareRule, Imp
             $orderItem &&
             $orderItem->unmatched_quantity < $difference_removed
         ) {
-            if ($value == false || !$value) {
+            if ($value == false || ! $value) {
                 return false;
             } else {
                 return true;
@@ -79,6 +78,7 @@ class InventoryOrderItemQuantityConfirm implements Rule, ValidatorAwareRule, Imp
     {
         $orderItem = $this->orderItem;
         $increasedQuantity = $orderItem->quantity + $this->differenceRemoved;
+
         return "You must confirm that you want to increase the quantity of this order item from $orderItem->quantity to $increasedQuantity.";
     }
 

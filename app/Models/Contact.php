@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property-read \App\Models\Customer|null $customer
  * @property-read mixed $name
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\ContactFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Contact newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Contact newQuery()
@@ -70,8 +71,6 @@ class Contact extends Model
 
     protected $appends = ['name'];
 
-
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -90,6 +89,6 @@ class Contact extends Model
 
     public function getNameAttribute()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 }

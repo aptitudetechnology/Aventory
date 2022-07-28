@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contact[] $contacts
  * @property-read int|null $contacts_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\VendorFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Vendor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Vendor newQuery()
@@ -62,7 +63,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Vendor extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $with = ['contacts'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -96,7 +99,6 @@ class Vendor extends Model
         'mailing_same_as_primary' => 'boolean',
         'use_for_block_transfers' => 'boolean',
     ];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

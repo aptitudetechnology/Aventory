@@ -3,10 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Models\Inventory;
-use App\Models\OrderItem;
 use App\Rules\InventoryOrderItemQuantityConfirm;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class InventoryArchiveStoreRequest extends FormRequest
 {
@@ -27,7 +25,6 @@ class InventoryArchiveStoreRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             'inventory_id' => 'required|integer|exists:inventories,id',
             'order_item_id' => 'nullable|integer|exists:order_items,id',
@@ -35,7 +32,7 @@ class InventoryArchiveStoreRequest extends FormRequest
                 $inventoryItem = Inventory::find($this->inventory_id);
                 $inventoryArchive = $this->inventory_archive;
 
-                if (!$inventoryArchive && $inventoryItem->quantity < $value) {
+                if (! $inventoryArchive && $inventoryItem->quantity < $value) {
                     $fail("There are $inventoryItem->quantity of inventory item #$inventoryItem->id available. Update quantity, or edit the id.");
                 }
 

@@ -24,8 +24,8 @@ class ClearLocationRequest extends FormRequest
     public function rules()
     {
         return [
-            'starting_row'=> ['required', 'exists:places,row_number'],
-            'ending_row' => ['required', 'exists:places,row_number']
+            'starting_row' => ['required', 'exists:places,row_number'],
+            'ending_row' => ['required', 'exists:places,row_number'],
         ];
     }
 }

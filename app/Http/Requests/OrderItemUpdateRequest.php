@@ -26,9 +26,9 @@ class OrderItemUpdateRequest extends FormRequest
     {
         return [
             'product_id' => 'required|exists:products,id',
-            'size_id'   => 'required|exists:sizes,id',
+            'size_id' => 'required|exists:sizes,id',
             'original_quantity' => 'required|integer|min:0',
-            'quantity'  => ['required', 'integer', 'min:0', function ($attribute, $value, $fail) {
+            'quantity' => ['required', 'integer', 'min:0', function ($attribute, $value, $fail) {
                 if ($this->order_item->quantity > $value) {
                     if ($this->order_item->matched_quantity > $value) {
                         $difference = $this->order_item->matched_quantity - $value;
@@ -38,7 +38,7 @@ class OrderItemUpdateRequest extends FormRequest
                 }
             }],
             'unit_price' => 'required|numeric|min:0',
-            'no_discount'  => 'required|boolean',
+            'no_discount' => 'required|boolean',
         ];
     }
 }

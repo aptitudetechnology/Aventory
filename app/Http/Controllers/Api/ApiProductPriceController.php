@@ -13,15 +13,14 @@ class ApiProductPriceController extends Controller
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param Product $product
-     * @param Size $size
-     * 
+     * @param  Product  $product
+     * @param  Size  $size
      * @return \Illuminate\Http\Response
      * @return list of product prices for size.
      */
     public function __invoke(Request $request, Product $product, Size $size)
     {
-        // Map the base prices to a new collection of prices for the size and customer price levels. 
+        // Map the base prices to a new collection of prices for the size and customer price levels.
         // If there are no customer price levels, then the base prices are returned.
         $priceLevels = $request->user()->priceLevels;
 

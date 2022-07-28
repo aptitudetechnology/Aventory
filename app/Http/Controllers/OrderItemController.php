@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderItemStoreRequest;
 use App\Http\Requests\OrderItemUpdateRequest;
-use App\Models\Sale;
 use App\Models\OrderItem;
-use Illuminate\Http\Request;
+use App\Models\Sale;
 use Illuminate\Support\Facades\Gate;
 
 class OrderItemController extends Controller
@@ -20,6 +19,7 @@ class OrderItemController extends Controller
     public function store(OrderItemStoreRequest $request, Sale $sale)
     {
         $sale->items()->create($request->validated());
+
         return redirect()->back()->banner('Item added to order.');
     }
 

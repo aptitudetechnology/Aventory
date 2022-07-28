@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ArchivedCustomersController extends Controller
 {
@@ -23,7 +23,7 @@ class ArchivedCustomersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param   $customerId
+     * @param    $customerId
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $customerId)
@@ -31,13 +31,14 @@ class ArchivedCustomersController extends Controller
         $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('view', $customer);
         $customers = $request->user()->currentTeam->customers()->onlyTrashed()->get();
+
         return inertia('Customers/ArchivedShow', ['customer' => $customer, 'customers' => $customers]);
     }
 
     /**
      * Restore the specified resource.
      *
-     * @param  $customerId
+     * @param    $customerId
      * @return \Illuminate\Http\Response
      */
     public function store($customerId)
@@ -45,6 +46,7 @@ class ArchivedCustomersController extends Controller
         $customer = Customer::withTrashed()->find($customerId);
         Gate::authorize('update', $customer);
         $customer->restore();
+
         return redirect(route('customers.show', $customer->id))->banner('Successfully restored company.');
     }
 }

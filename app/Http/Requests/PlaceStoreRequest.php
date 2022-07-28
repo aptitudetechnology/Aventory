@@ -27,7 +27,7 @@ class PlaceStoreRequest extends FormRequest
             'num_rows' => ['required', 'integer'],
             'block_id' => ['required', 'exists:blocks,id'],
             'starting_row_num' => ['required', 'integer'],
-            'num_plants_per_row' => ['required', 'integer']
+            'num_plants_per_row' => ['required', 'integer'],
         ];
     }
 }

@@ -10,9 +10,8 @@ use Illuminate\Support\Facades\Gate;
 
 class NurseryLocationController extends Controller
 {
-
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -23,7 +22,7 @@ class NurseryLocationController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -31,11 +30,12 @@ class NurseryLocationController extends Controller
         Gate::authorize('create', NurseryLocation::class);
 
         $locations = $this->getLocations();
+
         return inertia('NurseryLocations/Create', compact('locations'));
     }
 
     /**
-     * @param \App\Http\Requests\NurseryLocationStoreRequest $request
+     * @param  \App\Http\Requests\NurseryLocationStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(NurseryLocationStoreRequest $request)
@@ -50,32 +50,34 @@ class NurseryLocationController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\NurseryLocation $nurseryLocation
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\NurseryLocation  $nurseryLocation
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, NurseryLocation $location)
     {
         Gate::authorize('view', $location);
         $locations = $this->getLocations();
+
         return inertia('NurseryLocations/Show', compact('location', 'locations'));
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\NurseryLocation $location
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\NurseryLocation  $location
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, NurseryLocation $location)
     {
         Gate::authorize('update', $location);
         $locations = $this->getLocations();
+
         return inertia('NurseryLocations/Edit', compact('location', 'locations'));
     }
 
     /**
-     * @param \App\Http\Requests\NurseryLocationUpdateRequest $request
-     * @param \App\Models\NurseryLocation $location
+     * @param  \App\Http\Requests\NurseryLocationUpdateRequest  $request
+     * @param  \App\Models\NurseryLocation  $location
      * @return \Illuminate\Http\Response
      */
     public function update(NurseryLocationUpdateRequest $request, NurseryLocation $location)
@@ -90,8 +92,8 @@ class NurseryLocationController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\NurseryLocation $location
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\NurseryLocation  $location
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, NurseryLocation $location)

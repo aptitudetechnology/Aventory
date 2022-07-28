@@ -23,7 +23,7 @@ class CreateCustomerOrdersTable extends Migration
                 $table->foreignId('team_id');
                 $table->foreignId('contact_id')->nullable()->constrained('contacts')->onUpdate('cascade')->onDelete('cascade');
                 $table->date('date');
-                $table->foreignId('from_quote_id')->nullable()->constrained("orders")->onDelete('set null')->cascadeOnUpdate();
+                $table->foreignId('from_quote_id')->nullable()->constrained('orders')->onDelete('set null')->cascadeOnUpdate();
                 $table->foreignId('shipping_method_id')->nullable()->constrained('shipping_methods')->onUpdate('cascade')->onDelete('set null');
                 $table->decimal('shipping_amount', 10, 2)->nullable();
                 $table->decimal('warranty_percentage', 9, 4)->nullable();
@@ -42,7 +42,6 @@ class CreateCustomerOrdersTable extends Migration
                 $table->text('notes')->nullable();
                 $table->boolean('added_to_qb')->default(false);
                 $table->string('qb_id')->nullable();
-
 
                 $table->timestamps();
             }

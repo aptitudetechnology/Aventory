@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Block $block
  * @property-read \App\Models\Inventory|null $inventory
+ *
  * @method static \Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
@@ -32,7 +33,7 @@ class Place extends Model
 {
     use HasFactory;
 
-    /** 
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -53,7 +54,6 @@ class Place extends Model
         'block_id' => 'integer',
     ];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -61,7 +61,6 @@ class Place extends Model
     {
         return $this->belongsTo(\App\Models\Block::class);
     }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

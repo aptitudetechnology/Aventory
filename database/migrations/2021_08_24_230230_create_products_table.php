@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null')->cascadeOnUpdate();
             $table->string('name');
-            $table->enum('type', ["plant", "inventory", "non-inventory", "service"]);
+            $table->enum('type', ['plant', 'inventory', 'non-inventory', 'service']);
             $table->string('description', 8000)->nullable();
             $table->timestamps();
         });

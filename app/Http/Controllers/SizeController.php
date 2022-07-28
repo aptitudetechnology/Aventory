@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class SizeController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -22,7 +22,7 @@ class SizeController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -33,7 +33,7 @@ class SizeController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\SizeStoreRequest $request
+     * @param  \App\Http\Requests\SizeStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(SizeStoreRequest $request)
@@ -46,8 +46,8 @@ class SizeController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\SizeUpdateRequest $request
-     * @param \App\Models\Size $size
+     * @param  \App\Http\Requests\SizeUpdateRequest  $request
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
     public function update(SizeUpdateRequest $request, Size $size)
@@ -56,7 +56,7 @@ class SizeController extends Controller
 
         $request->session()->flash('size.id', $size->id);
 
-        return redirect()->route('sizes.index')->banner("Good job! Updated Size.");
+        return redirect()->route('sizes.index')->banner('Good job! Updated Size.');
     }
 
     /**
@@ -70,7 +70,7 @@ class SizeController extends Controller
             Gate::authorize('update', $size);
 
             $size->update([
-                'sort_num' => $updatedSize['sort_num']
+                'sort_num' => $updatedSize['sort_num'],
             ]);
         }
         session()->flash('flash.banner', 'Great work! Updated sort.');
@@ -79,8 +79,8 @@ class SizeController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Size $size
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Size $size)

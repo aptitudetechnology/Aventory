@@ -27,7 +27,7 @@ class CodatConnector extends SaloonConnector
     public function defaultHeaders(): array
     {
         return [
-            'Authorization' => 'Basic ' . config('app.codat_api_key'),
+            'Authorization' => 'Basic '.config('app.codat_api_key'),
             'Content-Type' => 'application/json',
         ];
     }
@@ -40,7 +40,7 @@ class CodatConnector extends SaloonConnector
     public function defaultConfig(): array
     {
         return [
-            'timeout' => 30
+            'timeout' => 30,
         ];
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class FeatureController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -22,7 +22,7 @@ class FeatureController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -35,7 +35,7 @@ class FeatureController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\FeatureStoreRequest $request
+     * @param  \App\Http\Requests\FeatureStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(FeatureStoreRequest $request)
@@ -48,8 +48,8 @@ class FeatureController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Feature $feature
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Feature  $feature
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Feature $feature)
@@ -62,8 +62,8 @@ class FeatureController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Feature $feature
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Feature  $feature
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Feature $feature)
@@ -72,8 +72,8 @@ class FeatureController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\FeatureUpdateRequest $request
-     * @param \App\Models\Feature $feature
+     * @param  \App\Http\Requests\FeatureUpdateRequest  $request
+     * @param  \App\Models\Feature  $feature
      * @return \Illuminate\Http\Response
      */
     public function update(FeatureUpdateRequest $request, Feature $feature)
@@ -86,8 +86,8 @@ class FeatureController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Feature $feature
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Feature  $feature
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Feature $feature)

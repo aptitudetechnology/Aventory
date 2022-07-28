@@ -29,7 +29,7 @@ class CreateCustomersTable extends Migration
             $table->boolean('is_retail')->nullable();
             $table->boolean('hide_customer')->nullable();
             $table->boolean('no_auto_discount')->nullable();
-            $table->decimal('tax_percentage', 9,2)->nullable();
+            $table->decimal('tax_percentage', 9, 2)->nullable();
             $table->boolean('reseller_permit_on_file')->default(false);
             $table->date('reseller_permit_expiration')->nullable();
             $table->unsignedTinyInteger('discount_override')->default(0);

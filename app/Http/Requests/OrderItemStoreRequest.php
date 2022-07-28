@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderItemStoreRequest extends FormRequest
@@ -26,11 +25,11 @@ class OrderItemStoreRequest extends FormRequest
     {
         return [
             'product_id' => 'required|exists:products,id',
-            'size_id'   => 'required|exists:sizes,id',
-            'quantity'  => 'required|integer|min:0',
+            'size_id' => 'required|exists:sizes,id',
+            'quantity' => 'required|integer|min:0',
             'original_quantity' => 'required|integer|min:0',
             'unit_price' => 'required|numeric|min:0',
-            'no_discount'  => 'required|boolean',
+            'no_discount' => 'required|boolean',
         ];
     }
 }

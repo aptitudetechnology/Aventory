@@ -57,6 +57,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-write mixed $warranty_ammount
  * @property-read \App\Models\Team $team
  * @property-read \App\Models\User|null $teamMember
+ *
  * @method static \Database\Factories\QuoteFactory factory(...$parameters)
  * @method static Builder|Quote newModelQuery()
  * @method static Builder|Quote newQuery()
@@ -116,9 +117,9 @@ class Quote extends Sale
     {
         if ($this->isFullfilled()) {
             return 'Fulfilled';
-        } else if ($this->isPartiallyFullfilled()) {
+        } elseif ($this->isPartiallyFullfilled()) {
             return 'Partially Fulfilled';
-        } else if ($this->isExpired()) {
+        } elseif ($this->isExpired()) {
             return 'Expired';
         } else {
             return 'Pending';

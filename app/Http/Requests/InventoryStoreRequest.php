@@ -27,7 +27,7 @@ class InventoryStoreRequest extends FormRequest
             'selectedItems' => ['required', 'array', 'exists:purchase_items,id'],
             'type' => ['required', 'in:individual,group'],
             'block_id' => ['nullable', 'exists:blocks,id'],
-            'nursery_location_id' => ['required', 'exists:nursery_locations,id']
+            'nursery_location_id' => ['required', 'exists:nursery_locations,id'],
         ];
     }
 }

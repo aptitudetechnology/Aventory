@@ -21,6 +21,7 @@ class RemovePurchaseItemFromInventory extends Controller
         Gate::authorize('update', $purchaseItem->purchase);
 
         $purchaseItem->removeFromInventory();
+
         return redirect()->back()->banner('Item removed from inventory.');
     }
 }

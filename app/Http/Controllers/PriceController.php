@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\PriceStoreRequest;
 use App\Http\Requests\PriceUpdateRequest;
 use App\Models\Price;
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\Gate;
 class PriceController extends Controller
 {
     /**
-     * @param \App\Http\Requests\PriceStoreRequest $request
+     * @param  \App\Http\Requests\PriceStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PriceStoreRequest $request)
@@ -20,16 +19,16 @@ class PriceController extends Controller
         $price = Price::create($request->validated());
 
         $request->session()->flash('baseprice.id', $price->id);
+
         return redirect()->back()->banner('New product price created! Yeah, good job!');
     }
 
     /**
-     * @param \App\Http\Requests\PriceUpdateRequest $request
+     * @param  \App\Http\Requests\PriceUpdateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function update(PriceUpdateRequest $request, Price $price)
     {
-
         Gate::authorize('update', $price);
         $price->update($request->validated());
 
@@ -39,7 +38,7 @@ class PriceController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\PriceUpdateRequest $request
+     * @param  \App\Http\Requests\PriceUpdateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function destroy(Price $price)
