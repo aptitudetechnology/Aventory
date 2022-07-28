@@ -2,7 +2,7 @@
     <details-section class="mb-4">
         <section-title class="mb-0"
             ><template #title
-                >Product Orders for size {{ size.name }}</template
+                >Product Orders for size {{ size?.name }}</template
             ></section-title
         >
         <ProductHoldView :product="product" :size="size" />
