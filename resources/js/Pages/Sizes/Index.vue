@@ -18,9 +18,9 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import MainArea from "@Components/MainArea.vue";
+import MainArea from "@/Components/MainArea.vue";
 import SizeList from "./SizeList.vue";
-import ButtonLink from "@Components/Links/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink";
 export default {
     components: {
         AppLayout,

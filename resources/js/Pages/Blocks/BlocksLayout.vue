@@ -26,7 +26,7 @@
 import AppLayout from "@/Layouts/AppLayout";
 import BackLink from "@/Components/Links/BackLink";
 import BlocksAside from "./BlocksAside";
-import MainArea from "@Components/MainArea.vue";
+import MainArea from "@/Components/MainArea.vue";
 
 export default {
     components: {

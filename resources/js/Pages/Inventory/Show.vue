@@ -50,8 +50,8 @@
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import Card from "@Components/Card.vue";
-import MainArea from "@Components/MainArea.vue";
+import Card from "@/Components/Card.vue";
+import MainArea from "@/Components/MainArea.vue";
 import SearchInventory from "./Components/SearchInventory.vue";
 import InventorySizeUpdate from "./Components/InventorySizeUpdate.vue";
 import InventoryQuantityUpdate from "./Components/InventoryQuantityUpdate.vue";

@@ -184,8 +184,8 @@
 </template>
 
 <script>
-import JetDialogModal from "@/Jetstream/DialogModal";
-import JetActionMessage from "@/Jetstream/ActionMessage";
+import JetDialogModal from "@/Jetstream/DialogModal.vue";
+import JetActionMessage from "@/Jetstream/ActionMessage.vue";
 import {
     Switch,
     SwitchDescription,

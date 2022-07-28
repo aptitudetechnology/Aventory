@@ -88,13 +88,13 @@
     </page-aside>
 </template>
 <script>
-import ButtonLink from "@Components/Links/ButtonLink";
-import TabContainer from "@Components/TabContainer.vue";
-import TabLink from "@Components/Links/TabLink";
-import SearchInput from "@Components/Forms/SearchInput.vue";
-import PageAside from "@Components/PageAside.vue";
+import ButtonLink from "@/Components/Links/ButtonLink";
+import TabContainer from "@/Components/TabContainer.vue";
+import TabLink from "@/Components/Links/TabLink";
+import SearchInput from "@/Components/Forms/SearchInput.vue";
+import PageAside from "@/Components/PageAside.vue";
 import AsideLink from "@/Components/Links/AsideLink.vue";
-import EmptyState from "@Components/EmptyState.vue";
+import EmptyState from "@/Components/EmptyState.vue";
 import JetSectionTitle from "@/Jetstream/SectionTitle.vue";
 export default {
     components: {
