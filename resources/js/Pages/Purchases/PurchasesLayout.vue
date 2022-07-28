@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 
-import BackLink from "@/Components/Links/BackLink";
+import BackLink from "@/Components/Links/BackLink.vue";
 import MainArea from "@/Components/MainArea.vue";
 
-import PurchasesAside from "./Components/PurchasesAside";
+import PurchasesAside from "./Components/PurchasesAside.vue";
 
 export default {
     components: {

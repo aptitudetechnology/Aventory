@@ -104,7 +104,7 @@
 
 <script>
 import JetDialogModal from "@/Jetstream/DialogModal.vue";
-import DiscountDelete from "./DiscountDelete";
+import DiscountDelete from "./DiscountDelete.vue";
 export default {
     props: { discount: Object, show: Boolean },
     components: {

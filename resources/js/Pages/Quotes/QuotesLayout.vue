@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 
-import BackLink from "@/Components/Links/BackLink";
+import BackLink from "@/Components/Links/BackLink.vue";
 import MainArea from "@/Components/MainArea.vue";
 
 export default {

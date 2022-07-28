@@ -20,8 +20,8 @@
 
 <script>
 import VendorsLayout from "./VendorsLayout.vue";
-import UpdateVendorForm from "@/Pages/Vendors/UpdateVendorForm";
-import ButtonLink from "@/Components/Links/ButtonLink";
+import UpdateVendorForm from "@/Pages/Vendors/UpdateVendorForm.vue";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 import DeleteVendorForm from "./DeleteVendorForm.vue";
 import ContactAside from "../Contacts/ContactAside.vue";
 export default {

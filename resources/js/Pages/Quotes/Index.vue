@@ -27,8 +27,8 @@ import {
     ArrowDownIcon,
 } from "@heroicons/vue/outline";
 import QuotesLayout from "./QuotesLayout.vue";
-import ButtonLink from "@/Components/Links/ButtonLink";
-import DetailsSection from "@/Components/DetailsSection";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
+import DetailsSection from "@/Components/DetailsSection.vue";
 import HeadingOne from "@/Components/Headings/HeadingOne.vue";
 import CompletedOrdersCard from "@/Pages/Orders/Components/CompletedOrdersCard.vue";
 import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";

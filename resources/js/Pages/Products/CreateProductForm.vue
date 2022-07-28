@@ -122,12 +122,7 @@
                         <div class="grid gap-4">
                             <div class="col-span-3 pt-6">
                                 <h3
-                                    class="
-                                        text-lg
-                                        leading-6
-                                        font-medium
-                                        text-gray-900
-                                    "
+                                    class="text-lg leading-6 font-medium text-gray-900"
                                 >
                                     Plant details
                                 </h3>
@@ -276,12 +271,7 @@
                                         aria-hidden="true"
                                     >
                                         <span
-                                            class="
-                                                rounded-full
-                                                bg-white
-                                                w-1.5
-                                                h-1.5
-                                            "
+                                            class="rounded-full bg-white w-1.5 h-1.5"
                                         />
                                     </span>
                                     <div class="ml-3 flex flex-col">
@@ -339,7 +329,7 @@ import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
 
 import TextAreaInput from "@/Components/Forms/TextAreaInput.vue";
 import SelectBox from "@/Components/Forms/SelectBox.vue";
-import BackButton from "@/Components/Buttons/BackButton";
+import BackButton from "@/Components/Buttons/BackButton.vue";
 import {
     RadioGroup,
     RadioGroupDescription,

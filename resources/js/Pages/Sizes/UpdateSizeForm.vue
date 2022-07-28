@@ -29,7 +29,7 @@ import JetInputError from "@/Jetstream/InputError.vue";
 import JetLabel from "@/Jetstream/Label.vue";
 import JetActionMessage from "@/Jetstream/ActionMessage.vue";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
-import SelectBox from "@/Components/Forms/SelectBox";
+import SelectBox from "@/Components/Forms/SelectBox.vue";
 
 import TextAreaInput from "@/Components/Forms/TextAreaInput.vue";
 

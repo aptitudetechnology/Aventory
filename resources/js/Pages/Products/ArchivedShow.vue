@@ -11,7 +11,7 @@
 <script>
 import { PaperClipIcon } from "@heroicons/vue/solid";
 import ProductsLayout from "./ProductsLayout.vue";
-import ProductDetails from "./Components/ProductDetails";
+import ProductDetails from "./Components/ProductDetails.vue";
 import RestoreProductForm from "./RestoreProductForm.vue";
 export default {
     components: {

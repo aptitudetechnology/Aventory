@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import BackLink from "@/Components/Links/BackLink";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import BackLink from "@/Components/Links/BackLink.vue";
 import FeaturesAside from "./FeaturesAside.vue";
 import MainArea from "@/Components/MainArea.vue";
 

@@ -176,7 +176,7 @@ import EditButton from "@/Components/Buttons/EditButton.vue";
 import ProductHoldView from "@/Pages/Orders/Components/ProductHoldView.vue";
 import MoneyInput from "@/Components/Forms/MoneyInput.vue";
 import InventoryDetail from "./InventoryDetail.vue";
-import ItemConfirmQuantity from "@/Pages/Orders/Components/ItemConfirmQuantity";
+import ItemConfirmQuantity from "@/Pages/Orders/Components/ItemConfirmQuantity.vue";
 
 export default {
     components: {

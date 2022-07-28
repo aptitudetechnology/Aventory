@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import TextAreaInput from "@/Components/Forms/TextAreaInput";
+import TextAreaInput from "@/Components/Forms/TextAreaInput.vue";
 import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 import Modal from "@/Jetstream/Modal.vue";
 import CreateCustomerForm from "@/Pages/Customers/CreateCustomerForm.vue";

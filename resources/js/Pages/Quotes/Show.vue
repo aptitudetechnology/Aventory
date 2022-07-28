@@ -19,7 +19,7 @@
 
 <script>
 import QuotesLayout from "./QuotesLayout.vue";
-import OrderUpdate from "@/Pages/Orders/Components/OrderUpdate";
+import OrderUpdate from "@/Pages/Orders/Components/OrderUpdate.vue";
 import OrderDelete from "@/Pages/Orders/Components/OrderDelete.vue";
 import ActionCard from "@/Pages/Orders/Components/ActionCard.vue";
 import LinkedOrdersCard from "@/Pages/Quotes/Components/LinkedOrdersCard.vue";

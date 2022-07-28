@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import BackLink from "@/Components/Links/BackLink";
-import CustomersAside from "@/Pages/Customers/CustomersAside";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import BackLink from "@/Components/Links/BackLink.vue";
+import CustomersAside from "@/Pages/Customers/CustomersAside.vue";
 import MainArea from "@/Components/MainArea.vue";
 
 export default {

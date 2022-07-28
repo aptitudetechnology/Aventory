@@ -54,7 +54,7 @@
     </page-aside>
 </template>
 <script>
-import ButtonLink from "@/Components/Links/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 import SearchInput from "@/Components/Forms/SearchInput.vue";
 import PageAside from "@/Components/PageAside.vue";
 import AsideLink from "@/Components/Links/AsideLink.vue";

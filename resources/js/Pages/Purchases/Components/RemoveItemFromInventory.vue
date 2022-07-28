@@ -55,7 +55,7 @@ import JetInputError from "@/Jetstream/InputError.vue";
 import JetLabel from "@/Jetstream/Label.vue";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
 
-import RemoveButton from "@/Components/Buttons/RemoveButton";
+import RemoveButton from "@/Components/Buttons/RemoveButton.vue";
 
 export default {
     components: {

@@ -93,9 +93,9 @@
     </page-aside>
 </template>
 <script>
-import ButtonLink from "@/Components/Links/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 import TabContainer from "@/Components/TabContainer.vue";
-import TabLink from "@/Components/Links/TabLink";
+import TabLink from "@/Components/Links/TabLink.vue";
 import SearchInput from "@/Components/Forms/SearchInput.vue";
 import PageAside from "@/Components/PageAside.vue";
 import AsideLink from "@/Components/Links/AsideLink.vue";

@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import HeadingOne from "@/Components/Headings/HeadingOne.vue";
-import ButtonLink from "@/Components/Links/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 
 import CompletedOrdersCard from "@/Pages/Orders/Components/CompletedOrdersCard.vue";
 import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";

@@ -49,7 +49,7 @@
     </AppLayout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import Card from "@/Components/Card.vue";
 import MainArea from "@/Components/MainArea.vue";
 import SearchInventory from "./Components/SearchInventory.vue";

@@ -3,9 +3,7 @@
         <template #title> Connect your accounting system </template>
 
         <template #description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            dapibus diam ut felis varius lobortis. Nunc sodales aliquet felis,
-            quis efficitur nulla iaculis in.
+            Sync your orders and quotes with your accounting platform of choice, including QuickBooks Online or QuickBooks Desktop. 
         </template>
 
         <jet-button

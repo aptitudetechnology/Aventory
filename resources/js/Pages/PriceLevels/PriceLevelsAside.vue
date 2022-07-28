@@ -64,7 +64,7 @@
     </page-aside>
 </template>
 <script>
-import ButtonLink from "@/Components/Links/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 import PageAside from "@/Components/PageAside.vue";
 import AsideLink from "@/Components/Links/AsideLink.vue";
 import EmptyState from "@/Components/EmptyState.vue";

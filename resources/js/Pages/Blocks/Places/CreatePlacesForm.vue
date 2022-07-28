@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import JetButton from "Button";
+import JetButton from "@/Jetstream/Button.vue";
 import JetDialogModal from "@/Jetstream/DialogModal.vue";
 import JetInput from "@/Jetstream/Input.vue";
 import JetInputError from "@/Jetstream/InputError.vue";

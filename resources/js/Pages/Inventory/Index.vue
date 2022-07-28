@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import MainArea from "@/Components/MainArea.vue";
 import Card from "@/Components/Card.vue";
 import InventoryTabs from "@/Components/InventoryTabs.vue";
