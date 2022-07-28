@@ -10,6 +10,7 @@ class ApiBlocksController extends Controller
     public function index(NurseryLocation $nursery)
     {
         $blocks = $nursery->blocks;
+
         return $blocks;
     }
 }

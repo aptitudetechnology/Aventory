@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * App\Models\Order
@@ -62,6 +60,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-write mixed $warranty_ammount
  * @property-read \App\Models\Team $team
  * @property-read \App\Models\User|null $teamMember
+ *
  * @method static \Database\Factories\OrderFactory factory(...$parameters)
  * @method static Builder|Order newModelQuery()
  * @method static Builder|Order newQuery()
@@ -100,12 +99,12 @@ use Illuminate\Database\Eloquent\Builder;
 class Order extends Sale
 {
     use HasFactory;
+
     protected $with = ['customer', 'teamMember', 'deliveryStatus', 'paymentStatus'];
 
     protected $attributes = [
         'is_quote' => false,
     ];
-
 
     protected static function booted()
     {

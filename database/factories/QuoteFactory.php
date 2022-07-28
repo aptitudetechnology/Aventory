@@ -29,7 +29,7 @@ class QuoteFactory extends Factory
             'customer_id' => Customer::factory(),
             'date' => $this->faker->date(),
             'quote_expires' => $this->faker->date(),
-            'hold_inventory'    => $this->faker->boolean(),
+            'hold_inventory' => $this->faker->boolean(),
         ];
     }
 

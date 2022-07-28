@@ -24,7 +24,7 @@ class PurchaseItemTagRequest extends FormRequest
     public function rules()
     {
         return [
-            'purchase_items' => ['array', 'exists:purchase_items,id']
+            'purchase_items' => ['array', 'exists:purchase_items,id'],
         ];
     }
 }

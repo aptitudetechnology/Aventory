@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ArchivedProductsController extends Controller
 {
@@ -23,7 +23,7 @@ class ArchivedProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param   $productId
+     * @param    $productId
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $productId)
@@ -39,7 +39,7 @@ class ArchivedProductsController extends Controller
     /**
      * Restore the specified resource.
      *
-     * @param  $productId
+     * @param    $productId
      * @return \Illuminate\Http\Response
      */
     public function store($productId)
@@ -47,6 +47,7 @@ class ArchivedProductsController extends Controller
         $product = Product::withTrashed()->find($productId);
         Gate::authorize('update', $product);
         $product->restore();
+
         return redirect(route('products.show', $product->id))->banner('Successfully restored company.');
     }
 

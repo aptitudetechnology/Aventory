@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Product|null $product
  * @property-read \App\Models\User|null $removedBy
  * @property-read \App\Models\Size|null $size
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|InventoryArchive newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|InventoryArchive newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|InventoryArchive query()
@@ -44,8 +45,11 @@ use Illuminate\Database\Eloquent\Model;
 class InventoryArchive extends Model
 {
     use HasFactory;
+
     protected $table = 'inventory_archive';
+
     protected $guarded = [];
+
     protected $casts = [
         'id' => 'integer',
         'order_item_id' => 'integer',
@@ -55,6 +59,7 @@ class InventoryArchive extends Model
         'reason_removed' => 'string',
         'was_adjustment' => 'boolean',
     ];
+
     protected $appends = ['product_name', 'size_name', 'order_item_quantity', 'inventory_is_group'];
 
     public function orderItem()
@@ -104,6 +109,6 @@ class InventoryArchive extends Model
 
     public function getInventoryIsGroupAttribute()
     {
-        return $this->inventory->type == "group";
+        return $this->inventory->type == 'group';
     }
 }

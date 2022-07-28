@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Inventory
@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\ReprintQueue|null $reprintQueue
  * @property-read \App\Models\Size|null $size
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\InventoryFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Inventory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Inventory newQuery()
@@ -61,8 +62,11 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     use HasFactory;
+
     protected $with = ['product', 'size', 'block', 'place', 'nurseryLocation'];
+
     protected $appends = ['last_inventory_date', 'block_name', 'place_name'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -78,9 +82,8 @@ class Inventory extends Model
         'nursery_location_id',
         'block_id',
         'place_id',
-        'ready_date'
+        'ready_date',
     ];
-
 
     /**
      * The attributes that should be cast to native types.
@@ -96,17 +99,18 @@ class Inventory extends Model
         'nursery_location_id' => 'integer',
         'block_id' => 'integer',
         'place_id' => 'integer',
-        'ready_date' => 'datetime'
+        'ready_date' => 'datetime',
     ];
 
     public function getLastInventoryDateAttribute()
     {
         if ($this->updated_at == $this->created_at) {
-            return "Never Inventoried";
+            return 'Never Inventoried';
         } else {
             return $this->updated_at->diffForHumans();
         }
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -136,7 +140,6 @@ class Inventory extends Model
         return $this->belongsTo(\App\Models\NurseryLocation::class, 'nursery_location_id');
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -147,7 +150,7 @@ class Inventory extends Model
 
     public function getBlockNameAttribute()
     {
-        return $this->block ? $this->block->name : "Unassigned";
+        return $this->block ? $this->block->name : 'Unassigned';
     }
 
     /**
@@ -161,14 +164,14 @@ class Inventory extends Model
     public function getPlaceNameAttribute()
     {
         if ($this->place) {
-            return 'Row: ' . $this->place->row_number . '- #' . $this->place->plant_number;
+            return 'Row: '.$this->place->row_number.'- #'.$this->place->plant_number;
         }
         if ($this->type == 'group') {
-            return "Located in Group";
+            return 'Located in Group';
         }
-        return "Unassigned";
-    }
 
+        return 'Unassigned';
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

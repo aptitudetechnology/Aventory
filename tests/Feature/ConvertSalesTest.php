@@ -5,10 +5,9 @@ namespace Tests\Feature;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Quote;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use App\Models\User;
-
 
 class ConvertSalesTest extends TestCase
 {
@@ -30,7 +29,7 @@ class ConvertSalesTest extends TestCase
 
     // /**
     //  * Orders should be convertable to quotes.
-    //  * 
+    //  *
     //  * @return void
     //  */
     // public function test_convert_order_to_quote()
@@ -51,7 +50,7 @@ class ConvertSalesTest extends TestCase
 
     // /**
     //  * Only team members can convert sales in their team.
-    //  * 
+    //  *
     //  * @return void
     //  */
     // public function test_only_team_members_can_convert_sales()
@@ -69,7 +68,6 @@ class ConvertSalesTest extends TestCase
 
     //     $response->assertRedirect(\route('orders.show', $teamQuoteId));
 
-
     //     $otherQuote = Quote::factory()->create();
     //     $id = $otherQuote->id;
     //     $response = $this->post(\route('sales.convert', $id));
@@ -84,7 +82,7 @@ class ConvertSalesTest extends TestCase
 
     // /**
     //  * Quotes should be partially convertable to orders.
-    //  * 
+    //  *
     //  * @return void
     //  */
     // public function test_convert_quote_to_order_partially()

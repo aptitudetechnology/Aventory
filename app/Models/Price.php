@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 /**
  * App\Models\Price
@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read \App\Models\Category|null $category
  * @property-read \App\Models\Product|null $product
  * @property-read \App\Models\Size $size
+ *
  * @method static Builder|Price newModelQuery()
  * @method static Builder|Price newQuery()
  * @method static Builder|Price query()
@@ -36,8 +37,11 @@ use Illuminate\Database\Eloquent\Builder;
 class Price extends Model
 {
     use HasFactory;
+
     protected $table = 'prices';
+
     protected $with = ['size'];
+
     protected static function boot()
     {
         parent::boot();
@@ -47,6 +51,7 @@ class Price extends Model
             $builder->orderBy(Size::select('sort_num')->whereColumn('sizes.id', 'prices.size_id'));
         });
     }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -57,7 +62,7 @@ class Price extends Model
         'category_id',
         'size_id',
         'unit_price',
-        'show_on_availability'
+        'show_on_availability',
     ];
 
     /**
@@ -70,7 +75,7 @@ class Price extends Model
         'product_id' => 'integer',
         'category_id' => 'integer',
         'size_id' => 'integer',
-        'show_on_availability' => 'boolean'
+        'show_on_availability' => 'boolean',
     ];
 
     public function size()

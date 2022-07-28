@@ -18,6 +18,7 @@ class ApiOrderInventoryController extends Controller
     public function index(Sale $sale)
     {
         Gate::authorize('update', $sale);
+
         return $sale->inventory();
     }
 
@@ -26,12 +27,11 @@ class ApiOrderInventoryController extends Controller
      * If the item is not able to be added, it will return the reason why.
      * If the item is able to be added, it will return the inventory object.
      * if the item is not able to be automatically matched to an order item, it will return a list of items that may be able to be matched.(Same product, but not the same size.)
-     * 
      */
     public function show(Sale $sale, Inventory $inventory)
     {
         Gate::authorize('update', $sale);
-        $message = "";
+        $message = '';
         $orderItem = $sale->getItemMatchedToInventory($inventory);
         $match = $sale->getPerfectInventoryMatchForItem($inventory);
         $possibleItemMatches = $sale->getPossibleInventoryItemMatches($inventory);
@@ -39,8 +39,8 @@ class ApiOrderInventoryController extends Controller
             $match = null;
             $possibleItemMatches = [];
             $inventory = null;
-            $message = "Not enough inventory to match. Please update.";
-        } else if ($orderItem) {
+            $message = 'Not enough inventory to match. Please update.';
+        } elseif ($orderItem) {
             $match = null;
         } elseif ($match) {
             $message = '';
@@ -71,7 +71,7 @@ class ApiOrderInventoryController extends Controller
 
         $match = $items->find($request->input('order_item_id'));
 
-        if (!$match) {
+        if (! $match) {
             $match = $sale->items()->create([
                 'product_id' => $inventory->product_id,
                 'size_id' => $inventory->size_id,
@@ -103,7 +103,7 @@ class ApiOrderInventoryController extends Controller
             );
         }
 
-        if (!$match->is_matched) {
+        if (! $match->is_matched) {
             return back()->banner('Inventory matched to order items.');
         } else {
             $match->update([

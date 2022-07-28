@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 class InvoiceTotals extends Component
 {
     public $invoice;
+
     /**
      * Create a new component instance.
      *

@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inventory[] $inventory
  * @property-read int|null $inventory_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\NurseryLocationFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|NurseryLocation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|NurseryLocation newQuery()
@@ -54,7 +55,7 @@ class NurseryLocation extends Model
         'address',
         'city',
         'state',
-        'zip'
+        'zip',
     ];
 
     /**
@@ -70,7 +71,6 @@ class NurseryLocation extends Model
     {
         return $this->hasMany(Inventory::class);
     }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

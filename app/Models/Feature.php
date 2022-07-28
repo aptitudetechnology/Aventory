@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Plant[] $plants
  * @property-read int|null $plants_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\FeatureFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Feature newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Feature newQuery()

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Price;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -26,14 +25,14 @@ class PriceStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => ['nullable', 'exists:products,id',],
+            'product_id' => ['nullable', 'exists:products,id'],
             'category_id' => ['nullable', 'exists:categories,id'],
             'size_id' => [
                 'required', 'exists:sizes,id',
-                $this->uniqueSize()
+                $this->uniqueSize(),
             ],
             'unit_price' => ['required', 'numeric'],
-            'show_on_availability' => ['boolean']
+            'show_on_availability' => ['boolean'],
         ];
     }
 

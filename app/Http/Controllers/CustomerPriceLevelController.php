@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Gate;
 use App\Models\CustomerPriceLevel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Validator;
 
 class CustomerPriceLevelController extends Controller
 {
@@ -17,6 +17,7 @@ class CustomerPriceLevelController extends Controller
     public function index()
     {
         $priceLevels = $this->getPriceLevels();
+
         return inertia('PriceLevels/Index', ['priceLevels' => $priceLevels]);
     }
 
@@ -29,6 +30,7 @@ class CustomerPriceLevelController extends Controller
     {
         Gate::authorize('create', CustomerPriceLevel::class);
         $priceLevels = $this->getPriceLevels();
+
         return inertia('PriceLevels/Create', ['priceLevels' => $priceLevels]);
     }
 
@@ -55,6 +57,7 @@ class CustomerPriceLevelController extends Controller
                 'percentage_more' => $request->percentage_more,
             ]
         );
+
         return redirect(route('customer-price-levels.index'))->banner('Successfully added price level.');
     }
 
@@ -69,6 +72,7 @@ class CustomerPriceLevelController extends Controller
         Gate::authorize('view', $customerPriceLevel);
 
         $priceLevels = $this->getPriceLevels();
+
         return inertia('PriceLevels/Show', ['priceLevels' => $priceLevels, 'priceLevel' => $customerPriceLevel]);
     }
 
@@ -107,6 +111,7 @@ class CustomerPriceLevelController extends Controller
                 'percentage_more' => $request->percentage_more,
             ]
         );
+
         return redirect(route('customer-price-levels.index'))->banner('Price level successfully updated.');
     }
 
@@ -121,6 +126,7 @@ class CustomerPriceLevelController extends Controller
         Gate::authorize('delete', $customerPriceLevel);
 
         $customerPriceLevel->delete();
+
         return redirect(route('customer-price-levels.index'))->banner('Price level deleted.');
     }
 

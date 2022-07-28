@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 /**
  * App\Models\PurchaseItem
@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read \App\Models\Product $product
  * @property-read \App\Models\Purchase $purchase
  * @property-read \App\Models\Size|null $size
+ *
  * @method static \Database\Factories\PurchaseItemFactory factory(...$parameters)
  * @method static Builder|PurchaseItem newModelQuery()
  * @method static Builder|PurchaseItem newQuery()
@@ -52,6 +53,7 @@ use Illuminate\Database\Eloquent\Builder;
 class PurchaseItem extends Model
 {
     use HasFactory;
+
     protected static function boot()
     {
         parent::boot();
@@ -63,6 +65,7 @@ class PurchaseItem extends Model
     }
 
     protected $with = ['product:id,name', 'size:id,name'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -79,7 +82,7 @@ class PurchaseItem extends Model
         'received',
         'printed',
         'in_inventory',
-        'ready_date'
+        'ready_date',
     ];
 
     /**
@@ -97,14 +100,14 @@ class PurchaseItem extends Model
         'received' => 'boolean',
         'printed' => 'boolean',
         'in_inventory' => 'boolean',
-        'ready_date' => 'date:Y-m-d'
+        'ready_date' => 'date:Y-m-d',
     ];
 
     protected function addedToInventory()
     {
         $this->update([
             'in_inventory' => true,
-            'received' => true
+            'received' => true,
         ]);
     }
 
@@ -114,7 +117,7 @@ class PurchaseItem extends Model
 
         $this->update([
             'in_inventory' => false,
-            'printed' => false
+            'printed' => false,
         ]);
     }
 
@@ -132,7 +135,7 @@ class PurchaseItem extends Model
                 'block_id' => $blockId,
                 'quantity' => $this->quantity_confirmed,
                 'type' => 'group',
-                'ready_date' => $this->ready_date
+                'ready_date' => $this->ready_date,
             ]);
 
             $this->addedToInventory();
@@ -156,14 +159,13 @@ class PurchaseItem extends Model
                     'block_id' => $blockId,
                     'quantity' => 1,
                     'type' => 'individual',
-                    'ready_date' => $this->ready_date
+                    'ready_date' => $this->ready_date,
                 ]);
             }
 
             $this->addedToInventory();
         }
     }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

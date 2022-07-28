@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-
 return [
     'date' => [
         /*
@@ -15,13 +13,13 @@ return [
     ],
 
     'serial_number' => [
-        'series'   => 'AA',
+        'series' => 'AA',
         'sequence' => 1,
         /*
          * Sequence will be padded accordingly, for ex. 00001
          */
         'sequence_padding' => 0,
-        'delimiter'        => '.',
+        'delimiter' => '.',
         /*
          * Supported tags {SERIES}, {DELIMITER}, {SEQUENCE}
          * Example: AA.00001
@@ -38,7 +36,7 @@ return [
          * Example: Amount in words: Eight hundred fifty thousand sixty-eight EUR and fifteen ct.
          */
         'fraction' => 'cents',
-        'symbol'   => '$',
+        'symbol' => '$',
         /*
          * Example: 19.00
          */
@@ -61,7 +59,7 @@ return [
 
     'paper' => [
         // A4 = 210 mm x 297 mm = 595 pt x 842 pt
-        'size'        => 'letter',
+        'size' => 'letter',
         'orientation' => 'portrait',
     ],
 
@@ -80,13 +78,13 @@ return [
          * Default attributes for Seller::class
          */
         'attributes' => [
-            'name'          => '',
-            'address'       => '',
-            'code'          => '',
-            'vat'           => '',
-            'phone'         => '',
+            'name' => '',
+            'address' => '',
+            'code' => '',
+            'vat' => '',
+            'phone' => '',
             'custom_fields' => [
-                /*
+            /*
                  * Custom attributes for Seller::class
                  *
                  * Used to display additional info on Seller section in invoice

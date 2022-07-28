@@ -33,7 +33,7 @@ class CustomerController extends Controller
 
         return inertia('Customers/Create', [
             'customers' => $customers,
-            'priceLevels' => $priceLevels
+            'priceLevels' => $priceLevels,
         ]);
     }
 
@@ -76,7 +76,7 @@ class CustomerController extends Controller
             'customer' => $customer,
             'customers' => $customers,
             'priceLevels' => $priceLevels,
-            'priceLevel' => $priceLevel
+            'priceLevel' => $priceLevel,
         ]);
     }
 
@@ -89,6 +89,7 @@ class CustomerController extends Controller
     public function edit(Customer $customer)
     {
         Gate::authorize('update', $customer);
+
         return redirect(route('customers.show', $customer->id));
     }
 
@@ -111,7 +112,7 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  $customerId
+     * @param    $customerId
      * @return \Illuminate\Http\Response
      */
     public function destroy(Customer $customer)
@@ -120,6 +121,7 @@ class CustomerController extends Controller
         $customer->delete();
         session()->flash('flash.banner', 'The customer was deleted');
         session()->flash('flash.bannerStyle', 'danger');
+
         return redirect(route('customers.index'));
     }
 
@@ -141,7 +143,7 @@ class CustomerController extends Controller
                     'mailing_address' => $request->address,
                     'mailing_city' => $request->city,
                     'mailing_state' => $request->state,
-                    'mailing_zip' => $request->zip
+                    'mailing_zip' => $request->zip,
                 ]
             );
         }

@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
 
 class CreateInventoriesTable extends Migration
@@ -19,7 +18,6 @@ class CreateInventoriesTable extends Migration
         Schema::create(
             'inventories',
             function (Blueprint $table) {
-
                 $table->id();
 
                 $table->foreignId('team_id')
@@ -44,7 +42,7 @@ class CreateInventoriesTable extends Migration
 
                 $table->integer('quantity')->default(1);
 
-                $table->enum('type', ["group", "individual"]);
+                $table->enum('type', ['group', 'individual']);
 
                 $table->foreignId('block_id')
                     ->nullable()
@@ -55,7 +53,7 @@ class CreateInventoriesTable extends Migration
                     ->constrained()->onDelete('set null')->cascadeOnUpdate();
 
                 $table->date('ready_date')->useCurrent();
-                
+
                 $table->timestamps();
             }
         );

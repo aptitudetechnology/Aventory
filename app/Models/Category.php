@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Size[] $sizes
  * @property-read int|null $sizes_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\CategoryFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
@@ -36,7 +37,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
     protected $with = ['prices'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -74,7 +77,6 @@ class Category extends Model
     {
         return $this->hasMany(Price::class);
     }
-
 
     public function sizes()
     {

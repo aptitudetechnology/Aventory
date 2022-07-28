@@ -36,7 +36,7 @@ class ReprintQueueController extends Controller
                 if ($request->orderBy == 'product') {
                     $query
                         ->addSelect(['product_name' => Product::select('name')
-                            ->whereColumn('id', 'inventories.product_id')])
+                            ->whereColumn('id', 'inventories.product_id'), ])
                         ->orderBy('product_name', $request->orderByDirection);
                 } else {
                     $query->orderBy($request->orderBy, $request->orderByDirection);
@@ -45,7 +45,6 @@ class ReprintQueueController extends Controller
                 $query->orderBy('id', 'desc');
             })
             ->paginate(10)->withQueryString();
-
 
         return Inertia::render('ReprintQueue/Index', [
             'queue' => $queue,
@@ -62,7 +61,6 @@ class ReprintQueueController extends Controller
 
         $team = auth()->user()->currentTeam;
         $inventory = $team->inventories()->findOrFail($request->inventory);
-
 
         $team->reprintQueue()->updateOrCreate(
             [

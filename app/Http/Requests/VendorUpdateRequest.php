@@ -38,7 +38,7 @@ class VendorUpdateRequest extends FormRequest
             'notes' => ['nullable', 'string', 'max:8000'],
             'use_for_block_transfers' => [
                 'boolean',
-                'required'
+                'required',
             ],
         ];
     }

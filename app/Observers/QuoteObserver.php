@@ -15,8 +15,8 @@ class QuoteObserver
 
     /**
      * When creating an order, we add the discount to the order
-     * 
-     * @param Quote $quote
+     *
+     * @param  Quote  $quote
      * @return void
      */
     public function created(Quote $quote)
@@ -27,9 +27,9 @@ class QuoteObserver
 
     /**
      * When deleting an order, we remove the associated items.
-     * 
-     * 
-     * @param Quote $quote
+     *
+     *
+     * @param  Quote  $quote
      * @return void
      */
     public function deleting(Quote $quote)

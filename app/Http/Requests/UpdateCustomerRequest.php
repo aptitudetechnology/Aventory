@@ -39,7 +39,7 @@ class UpdateCustomerRequest extends FormRequest
             'is_taxable' => ['nullable', 'boolean'],
             'tax_percentage' => ['nullable', 'numeric'],
             'discount_percentage' => ['nullable', 'integer'],
-            'reseller_permit_expiration' => ['nullable', 'date']
+            'reseller_permit_expiration' => ['nullable', 'date'],
         ];
     }
 }

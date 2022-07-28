@@ -15,6 +15,7 @@ use Laravel\Jetstream\TeamInvitation as JetstreamTeamInvitation;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Team $team
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation query()

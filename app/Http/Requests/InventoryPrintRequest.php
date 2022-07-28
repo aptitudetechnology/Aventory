@@ -24,7 +24,7 @@ class InventoryPrintRequest extends FormRequest
     public function rules()
     {
         return [
-            'inventory' => ['array', 'exists:inventories,id', 'required']
+            'inventory' => ['array', 'exists:inventories,id', 'required'],
         ];
     }
 }

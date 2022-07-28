@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Block;
 use App\Models\NurseryLocation;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BlockFactory extends Factory
 {

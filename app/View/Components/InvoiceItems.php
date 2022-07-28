@@ -10,6 +10,7 @@ class InvoiceItems extends Component
     public $invoice;
 
     public $showPrice;
+
     /**
      * Create a new component instance.
      *

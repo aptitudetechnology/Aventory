@@ -11,9 +11,8 @@ use Illuminate\Support\Facades\Gate;
 
 class PurchaseItemController extends Controller
 {
-
     /**
-     * @param \App\Http\Requests\PurchaseItemStoreRequest $request
+     * @param  \App\Http\Requests\PurchaseItemStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PurchaseItemStoreRequest $request, Purchase $purchase)
@@ -28,8 +27,8 @@ class PurchaseItemController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\PurchaseItemUpdateRequest $request
-     * @param \App\Models\PurchaseItem $purchaseItem
+     * @param  \App\Http\Requests\PurchaseItemUpdateRequest  $request
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
     public function update(PurchaseItemUpdateRequest $request, PurchaseItem $purchaseItem)
@@ -44,8 +43,8 @@ class PurchaseItemController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\PurchaseItem $purchaseItem
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, PurchaseItem $purchaseItem)

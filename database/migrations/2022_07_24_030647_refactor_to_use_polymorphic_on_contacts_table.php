@@ -18,9 +18,9 @@ return new class extends Migration
             $table->dropForeign(['vendor_id']);
             $table->dropColumn(['customer_id', 'vendor_id']);
 
-            $table->unsignedInteger("contactable_id")->after('team_id');
-            $table->string("contactable_type")->after('contactable_id');
-            $table->index(["contactable_id", "contactable_type"]);
+            $table->unsignedInteger('contactable_id')->after('team_id');
+            $table->string('contactable_type')->after('contactable_id');
+            $table->index(['contactable_id', 'contactable_type']);
         });
     }
 

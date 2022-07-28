@@ -7,8 +7,8 @@ use Illuminate\View\Component;
 
 class InvoiceLayout extends Component
 {
-
     public $invoice;
+
     /**
      * Create a new component instance.
      *
