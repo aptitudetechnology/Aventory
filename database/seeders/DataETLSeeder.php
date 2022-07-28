@@ -13,6 +13,8 @@ use App\Models\Category;
 use App\Models\Size;
 use App\Models\Team;
 use App\Models\NurseryLocation;
+use App\Models\Block;
+use App\Models\Place;
 use App\Models\Customer;
 use App\Models\User;
 use App\Models\Vendor;
@@ -55,7 +57,8 @@ class DataETLSeeder extends Seeder
 
         $this->do_ETL_categories();
         $this->do_ETL_sizes();
-        $this->do_ETL_locations();
+        $this->do_ETL_blocks();
+        $this->do_ETL_places();
         $this->do_ETL_products();
         $this->do_ETL_customers();
         $this->do_ETL_vendors();
@@ -148,19 +151,53 @@ class DataETLSeeder extends Seeder
         ]);
         DB::statement("ALTER SEQUENCE nursery_locations_id_seq RESTART WITH 2");
     }
-    public function do_ETL_locations()
+
+    public function do_ETL_blocks()
     {
         $old_locations = $this->sqlsrv_conn->table('TblLocations')->get()->toArray();
-        $new_locations = array_map(function($l) {
-            return [
-                'id' => $l->LocationID,
-                'name' => $l->LocationName,
-                'team_id' => $this->team->id
-            ];
-        }, $old_locations);
+        $last_location_id = $this->sqlsrv_conn->table('TblLocations')->max('LocationID');
 
-        $last_id = $this->sqlsrv_conn->table('TblLocations')->max('LocationID');
-        $this->bulk_insert(NurseryLocation::class, $new_locations, 'nursery_locations_id_seq', $last_id + 1);
+        $old_block_locations = $this->sqlsrv_conn->table('TblBlockLocations')->get()->toArray();
+        $last_block_location_id = $this->sqlsrv_conn->table('TblBlockLocations')->max('BlockID');
+
+        $new_blocks = [];
+        foreach($old_locations as $l) {
+            array_push($new_blocks, [
+                'id' => $l->LocationID,
+                'team_id' => $this->team->id,
+                'name' => $l->LocationName,
+                'nursery_location_id' => 0, // Garden Gate Nursery East
+                'has_places' => true,
+            ]);
+        }
+        foreach($old_block_locations as $l) {
+            array_push($new_blocks, [
+                'id' => $l->BlockID + $last_location_id,
+                'team_id' => $this->team->id,
+                'name' => $l->BlockDescription,
+                'nursery_location_id' => 1, // Garden Gate Nursery East
+                'has_places' => false,
+            ]);
+        }
+
+        $last_id = $last_block_location_id + $last_location_id + 1;
+        $this->bulk_insert(Block::class, $new_blocks, 'blocks_id_seq', $last_id);
+    }
+
+    public function do_ETL_places()
+    {
+        $old_location_rows = $this->sqlsrv_conn->table('TblLocationRows')->get()->toArray();
+        $new_places = array_map(function($lr) {
+            return [
+                'id' => $lr->LocationRowID,
+                'block_id' => $lr->LocationID,
+                'row_number' => $lr->RowNumber,
+                'plant_number' => $lr->PotNumber,
+            ];
+        }, $old_location_rows);
+
+        $last_id = $this->sqlsrv_conn->table('TblLocationRows')->max('LocationRowID');
+        $this->bulk_insert(Place::class, $new_places, 'places_id_seq', $last_id + 1);
     }
 
     public function do_ETL_products()
