@@ -24,9 +24,9 @@
     </div>
 </template>
 <script>
-import DiscountItem from "./DiscountItem";
-import CreateOrderDiscount from "./DiscountCreate";
-import LoadingState from "@/Components/LoadingState";
+import DiscountItem from "./DiscountItem.vue";
+import CreateOrderDiscount from "./DiscountCreate.vue";
+import LoadingState from "@/Components/LoadingState.vue";
 export default {
     name: "Discounts",
     components: {

@@ -103,7 +103,7 @@ import {
     ArrowUpIcon,
     ArrowDownIcon,
 } from "@heroicons/vue/outline";
-import DetailsSection from "@/Components/DetailsSection";
+import DetailsSection from "@/Components/DetailsSection.vue";
 import TableTable from "@/Components/Tables/TableTable.vue";
 import TableHead from "@/Components/Tables/TableHead.vue";
 import TableH from "@/Components/Tables/TableH.vue";

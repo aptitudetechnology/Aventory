@@ -3,9 +3,7 @@
         <template #title> Connect your accounting system </template>
 
         <template #description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            dapibus diam ut felis varius lobortis. Nunc sodales aliquet felis,
-            quis efficitur nulla iaculis in.
+            Sync your orders and quotes with your accounting platform of choice, including QuickBooks Online or QuickBooks Desktop. 
         </template>
 
         <jet-button
@@ -52,11 +50,11 @@
 </template>
 
 <script setup>
-import JetSection from "@/Jetstream/Section";
-import JetButton from "@/Jetstream/Button";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
-import JetDangerButton from "@/Jetstream/DangerButton";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton";
+import JetSection from "@/Jetstream/Section.vue";
+import JetButton from "@/Jetstream/Button.vue";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
+import JetDangerButton from "@/Jetstream/DangerButton.vue";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
 import Loader from "@/Components/Loader.vue";
 import axios from "axios";
 import { ref } from "vue";

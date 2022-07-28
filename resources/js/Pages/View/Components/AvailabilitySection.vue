@@ -27,7 +27,9 @@
                     v-for="(quantity, index) in productQuantities"
                     :class="[
                         'cursor-pointer hover:bg-gray-50',
-                        quantity.size_id == selectedSize.id ? 'bg-gray-50' : '',
+                        quantity.size_id == selectedSize?.id
+                            ? 'bg-gray-50'
+                            : '',
                     ]"
                 >
                     <table-d>{{ quantity.size_name }}</table-d>
@@ -52,7 +54,6 @@ import TableHead from "@/Components/Tables/TableHead.vue";
 import TableH from "@/Components/Tables/TableH.vue";
 import TableD from "@/Components/Tables/TableD.vue";
 export default {
-    name: "AvailabilitySection",
     components: {
         SectionTitle,
         TableTable,
@@ -66,8 +67,9 @@ export default {
             required: true,
         },
         selectedSize: {
-            type: Object,
-            required: true,
+            type: [Object],
+            required: false,
+            default: {},
         },
     },
     methods: {

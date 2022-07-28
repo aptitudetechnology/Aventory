@@ -12,8 +12,8 @@
 
 <script>
 import QueueLayout from "./QueueLayout.vue";
-import ButtonLink from "@/Components/Links/ButtonLink";
-import HeadingOne from "@Components/Headings/HeadingOne.vue";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
+import HeadingOne from "@/Components/Headings/HeadingOne.vue";
 import QueueView from "./Components/QueueView.vue";
 import AddToQueue from "./Components/AddToQueue.vue";
 export default {

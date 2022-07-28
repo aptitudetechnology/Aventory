@@ -18,7 +18,7 @@
 
 <script>
 import UpdatePrice from "./UpdatePrice.vue";
-import TableH from "@Components/Tables/TableH";
+import TableH from "@/Components/Tables/TableH.vue";
 export default {
     components: {
         UpdatePrice,

@@ -53,9 +53,9 @@
 
 <script>
 import axios from "axios";
-import DetailsSection from "@/Components/DetailsSection";
-import EmptyState from "@/Components/EmptyState";
-import LoadingState from "@/Components/LoadingState";
+import DetailsSection from "@/Components/DetailsSection.vue";
+import EmptyState from "@/Components/EmptyState.vue";
+import LoadingState from "@/Components/LoadingState.vue";
 export default {
     components: {
         DetailsSection,

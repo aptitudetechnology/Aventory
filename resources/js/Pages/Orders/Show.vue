@@ -21,7 +21,7 @@
 
 <script>
 import OrdersLayout from "./OrdersLayout.vue";
-import OrderUpdate from "./Components/OrderUpdate";
+import OrderUpdate from "./Components/OrderUpdate.vue";
 import OrderDelete from "./Components/OrderDelete.vue";
 import InventoryAdd from "./Components/InventoryAdd.vue";
 import ActionCard from "./Components/ActionCard.vue";

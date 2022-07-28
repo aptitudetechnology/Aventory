@@ -8,7 +8,7 @@
     </div>
 </template>
 <script>
-import SelectBox from "@/Components/Forms/SelectBox";
+import SelectBox from "@/Components/Forms/SelectBox.vue";
 export default {
     components: {
         SelectBox,

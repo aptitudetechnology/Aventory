@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import ErrorMessage from "@/Components/ErrorMessage";
-import Loading from "@Components/Messages/Loading";
+import ErrorMessage from "@/Components/ErrorMessage.vue";
+import Loading from "@/Components/Messages/Loading.vue";
 export default {
     components: { ErrorMessage, Loading },
     props: {

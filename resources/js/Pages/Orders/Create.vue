@@ -7,7 +7,7 @@
 <script>
 import OrdersLayout from "./OrdersLayout.vue";
 
-import OrderCreate from "./Components/OrderCreate";
+import OrderCreate from "./Components/OrderCreate.vue";
 export default {
     components: {
         OrdersLayout,
