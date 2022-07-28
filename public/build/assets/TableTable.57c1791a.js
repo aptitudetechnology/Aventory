@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vue_export-helper.21dcd24c.js";import{o as t,t as r,z as a}from"./app.c6d51eb6.js";const s={},l={class:"table-auto bg-white sm:rounded-lg min-w-full overflow-auto"};function n(e,c){return t(),r("table",l,[a(e.$slots,"default")])}var m=o(s,[["render",n]]);export{m as T};

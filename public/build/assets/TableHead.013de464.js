@@ -1,0 +1,1 @@
+import{_ as r,o,J as t,P as s}from"./app.9dc34ef4.js";const a={},c={class:"sticky top-0 z-10 bg-white border-b border-gray-100"};function n(e,_){return o(),t("thead",c,[s(e.$slots,"default")])}var l=r(a,[["render",n]]);export{l as T};

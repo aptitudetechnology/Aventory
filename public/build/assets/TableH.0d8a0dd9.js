@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vue_export-helper.21dcd24c.js";import{o as r,t as o,z as s}from"./app.c6d51eb6.js";const c={},a={scope:"col",class:"px-4 py-3 text-xs uppercase tracking-wider text-left whitespace-nowrap"};function n(e,p){return r(),o("th",a,[s(e.$slots,"default")])}var f=t(c,[["render",n]]);export{f as T};

@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vue_export-helper.21dcd24c.js";import{o as n,t as r,z as s}from"./app.c6d51eb6.js";const a={props:{type:{type:String,default:"button"}}},c=["type"];function p(t,_,e,d,f,l){return n(),r("button",{type:e.type,class:"btn btn-secondary"},[s(t.$slots,"default")],8,c)}var y=o(a,[["render",p]]);export{y as J};

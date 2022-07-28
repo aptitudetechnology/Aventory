@@ -1,1 +1,0 @@
-import{_ as r}from"./plugin-vue_export-helper.21dcd24c.js";import{r as n,o as s,c as a,w as c,z as f}from"./app.c6d51eb6.js";const p={props:{href:{type:String,default:"#"}}};function _(e,i,t,l,d,m){const o=n("Link");return s(),a(o,{href:t.href,class:"btn"},{default:c(()=>[f(e.$slots,"default")]),_:3},8,["href"])}var k=r(p,[["render",_]]);export{k as B};
