@@ -51,6 +51,7 @@ class DataETLSeeder extends Seeder
 
         // // Create Garden Gate Nursery team
         $this->team = $this->create_team();
+        $this->seed_nursery_locations();
 
         $this->do_ETL_categories();
         $this->do_ETL_sizes();
@@ -121,6 +122,32 @@ class DataETLSeeder extends Seeder
         $this->bulk_insert(Size::class, $new_sizes, 'sizes_id_seq', $last_id + 1);
     }
 
+    public function seed_nursery_locations()
+    {
+        $nusery_locations = NurseryLocation::insert([
+            [
+                'id' => 0,
+                'team_id' => $this->team->id,
+                'name' => 'Garden Gate Nursery East',
+                'location_code' => 'GGE',
+                'address' => '2761 W Sagemoor Rd',
+                'city' => 'Pasco',
+                'state' => 'WA',
+                'zip' => '99301'
+            ],
+            [
+                'id' => 1,
+                'team_id' => $this->team->id,
+                'name' => 'Garden Gate Nursery West',
+                'location_code' => 'GGW',
+                'address' => '10990 SE 362 Ave',
+                'city' => 'Boring',
+                'state' => 'OR',
+                'zip' => '97009'
+            ]
+        ]);
+        DB::statement("ALTER SEQUENCE nursery_locations_id_seq RESTART WITH 2");
+    }
     public function do_ETL_locations()
     {
         $old_locations = $this->sqlsrv_conn->table('TblLocations')->get()->toArray();
