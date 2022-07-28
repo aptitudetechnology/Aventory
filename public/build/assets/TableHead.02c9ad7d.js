@@ -1,0 +1,1 @@
+import{_ as r}from"./plugin-vue_export-helper.21dcd24c.js";import{o,t,z as s}from"./app.c6d51eb6.js";const a={},c={class:"sticky top-0 z-10 bg-white border-b border-gray-100"};function n(e,_){return o(),t("thead",c,[s(e.$slots,"default")])}var f=r(a,[["render",n]]);export{f as T};
