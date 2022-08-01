@@ -76,6 +76,9 @@ class DataETLSeeder extends Seeder
         $this->do_ETL_purchases_items();
         $this->do_ETL_shipping_methods();
 
+        $this->do_ETL_orders();
+        $this->do_ETL_order_discounts();
+
     }
 
     public function bulk_insert($model, $data, $id_seq_name = null, $id_seq_value = null)
@@ -444,6 +447,65 @@ class DataETLSeeder extends Seeder
         $last_id = $this->sqlsrv_conn->table('TblCustomerPriceLevels')->max('PriceLevelID');
         $this->bulk_insert(CustomerPriceLevel::class, $new_customer_price_levels, 'customer_price_levels_id_seq', $last_id + 1);
         echo "Finished ETL of customer_price_levels successfully!!!\n\n";
+    }
+
+    public function do_ETL_orders()
+    {
+        echo "Processing ETL of orders...\n";
+        $old_orders = $this->sqlsrv_conn->table('TblCustomerOrders')->get()->toArray();
+        $new_orders= array_map(function($o) {
+            return [
+                'id' => $o->CustomerOrderID,
+                'customer_id' => $o->CustomerID,
+                'team_id' => $this->team->id,
+                'contact_id' => null, // $o->ContactID,
+                'date' => $o->OrderDate,
+                'from_quote_id' => null, // $o->FromQuoteID,
+                'shipping_method_id' => $o->ShippingMethodID,
+                'shipping_amount' => $o->ShippingAmount,
+                'warranty_percentage' => $o->WarrantyPercentage,
+                'warranty_amount' => $o->WarrantyAmount,
+                'total_discounts' => $o->TotalDiscounts,
+                'tax_percentage' => $o->TaxPercentage,
+                'tax_amount' => $o->TaxAmount,
+                'total_after_discount_and_warranty' => $o->TotalAmount,
+                'total' => $o->TotalAmountBeforeDiscount,
+                'grand_total' => $o->GrandTotal,
+                'is_taxable' => $o->IsRetailSale,
+                'completed' => $o->OrderCompleted,
+                'is_quote' => $o->IsQuote,
+                'quote_expires' => $o->QuoteExpires,
+                'hold_inventory' => $o->HoldInventory,
+                'notes' => $o->JobDescription,
+                'added_to_qb' => $o->QBAdded,
+                'qb_id' => $o->QBID,
+                'payment_status_id' => null,
+                'delivery_status_id' => null,
+            ];
+        }, $old_orders);
+
+        $last_id = $this->sqlsrv_conn->table('TblCustomerOrders')->max('CustomerOrderID');
+        $this->bulk_insert(Order::class, $new_orders, 'orders_id_seq', $last_id + 1);
+        echo "Finished ETL of orders successfully!!!\n\n";
+    }
+
+
+    public function do_ETL_order_discounts()
+    {
+        echo "Processing ETL of order_discounts...\n";
+        $old_order_discounts = $this->sqlsrv_conn->table('TblCustomerOrdersDiscounts')->get()->toArray();
+        $new_order_discounts = array_map(function($od) {
+            return [
+                'order_id' => $od->CustomerOrderID,
+                'description' => $od->Description,
+                'discount_amount' => $od->DollarAmount,
+                // 'discount_percentage' => $od->,
+                // 'discount_applied' => $od->,
+            ];
+        }, $old_order_discounts);
+
+        $this->bulk_insert(OrderDiscount::class, $new_order_discounts);
+        echo "Finished ETL of order_discounts successfully!!!\n\n";
     }
 
 }
