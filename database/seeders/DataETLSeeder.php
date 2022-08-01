@@ -66,10 +66,15 @@ class DataETLSeeder extends Seeder
         $this->do_ETL_blocks();
         $this->do_ETL_places();
         $this->do_ETL_products();
+
+        $this->do_ETL_customer_price_levels();
         $this->do_ETL_customers();
+
         $this->do_ETL_vendors();
         $this->do_ETL_purchases();
         $this->do_ETL_purchases_items();
+        $this->do_ETL_shipping_methods();
+
     }
 
     public function bulk_insert($model, $data, $id_seq_name = null, $id_seq_value = null)
@@ -375,4 +380,42 @@ class DataETLSeeder extends Seeder
         $this->bulk_insert(PurchaseItem::class, $new_purchases_items, 'purchase_items_id_seq', $last_id + 1);
         echo "Finished ETL of purchases_items successfully!!!\n\n";
     }
+
+
+    public function do_ETL_shipping_methods()
+    {
+        echo "Processing ETL of shipping_methods...\n";
+        $old_shipping_methods = $this->sqlsrv_conn->table('TblShippingMethods')->get()->toArray();
+        $new_shipping_methods = array_map(function($sm) {
+            return [
+                'id' => $sm->ShippingMethodID,
+                'name' => $sm->Description,
+                'description' => $sm->Description,
+            ];
+        }, $old_shipping_methods);
+
+        $last_id = $this->sqlsrv_conn->table('TblShippingMethods')->max('ShippingMethodID');
+        $this->bulk_insert(ShippingMethod::class, $new_shipping_methods, 'shipping_methods_id_seq', $last_id + 1);
+        echo "Finished ETL of shipping_methods successfully!!!\n\n";
+    }
+
+    public function do_ETL_customer_price_levels()
+    {
+        echo "Processing ETL of customer_price_levels...\n";
+        $old_customer_price_levels = $this->sqlsrv_conn->table('TblCustomerPriceLevels')->get()->toArray();
+        $new_customer_price_levels = array_map(function($cpl) {
+            return [
+                'id' => $cpl->PriceLevelID,
+                'team_id' => $this->team->id,
+                'name' => $cpl->Description,
+                'description' => $cpl->Description,
+                'percentage_more' => $cpl->Percentage,
+            ];
+        }, $old_customer_price_levels);
+
+        $last_id = $this->sqlsrv_conn->table('TblCustomerPriceLevels')->max('PriceLevelID');
+        $this->bulk_insert(CustomerPriceLevel::class, $new_customer_price_levels, 'customer_price_levels_id_seq', $last_id + 1);
+        echo "Finished ETL of customer_price_levels successfully!!!\n\n";
+    }
+
 }
