@@ -66,6 +66,7 @@ class DataETLSeeder extends Seeder
         $this->do_ETL_blocks();
         $this->do_ETL_places();
         $this->do_ETL_products();
+        $this->do_ETL_prices();
 
         $this->do_ETL_customer_price_levels();
         $this->do_ETL_customers();
@@ -381,6 +382,33 @@ class DataETLSeeder extends Seeder
         echo "Finished ETL of purchases_items successfully!!!\n\n";
     }
 
+    public function do_ETL_prices()
+    {
+        echo "Processing ETL of prices...\n";
+        $old_categories_prices = $this->sqlsrv_conn->table('TblCategoriesPrices')->get()->toArray();
+        $old_prices = $this->sqlsrv_conn->table('TblPrices')->get()->toArray();
+
+        $new_prices = [];
+        foreach($old_categories_prices as $cp) {
+            array_push($new_prices, [
+                'product_id' => null,
+                'category_id' => $cp->CategoryID,
+                'size_id' => $cp->SizeID,
+                'unit_price' => $cp->UnitPrice,
+            ]);
+        }
+        foreach($old_prices as $op) {
+            array_push($new_prices, [
+                'product_id' => $op->ProductID,
+                'category_id' => null,
+                'size_id' => $op->SizeID,
+                'unit_price' => $op->UnitPrice,
+            ]);
+        }
+
+        $this->bulk_insert(Price::class, $new_prices);
+        echo "Finished ETL of prices successfully!!!\n\n";
+    }
 
     public function do_ETL_shipping_methods()
     {
