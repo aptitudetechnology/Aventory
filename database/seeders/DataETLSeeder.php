@@ -94,8 +94,13 @@ class DataETLSeeder extends Seeder
 
     public function create_team()
     {
+        $init_user = User::factory()->create([
+            'email' => 'teststuff@gmail.com'
+        ]);
+
         return Team::factory()->create([
-            'name' => 'Garden Gate Nursery'
+            'name' => 'Garden Gate Nursery',
+            'user_id' => $init_user->id
         ]);
     }
     
