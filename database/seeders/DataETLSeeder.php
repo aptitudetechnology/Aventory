@@ -21,9 +21,15 @@ use App\Models\Vendor;
 use App\Models\Purchase;
 use App\Models\PurchaseItem;
 use App\Models\Product;
+use App\Models\Price;
 use App\Models\Plant;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\OrderDiscount;
+use App\Models\ShippingMethod;
+use App\Models\CustomerPriceLevel;
+use App\Models\Inventory;
+use App\Models\InventoryArchive;
 
 class DataETLSeeder extends Seeder
 {
@@ -35,7 +41,7 @@ class DataETLSeeder extends Seeder
     public function __construct()
     {
         $this->team = NULL;
-        $this->op_bulk_count = 3000;
+        $this->op_bulk_count = 2000;
         $this->sqlsrv_conn = DB::connection('sqlsrv');
         $this->faker = $this->withFaker();
     }
@@ -95,6 +101,7 @@ class DataETLSeeder extends Seeder
     
     public function do_ETL_categories()
     {
+        echo "Processing ETL of categories...\n";
         $old_categories = $this->sqlsrv_conn->table('TblCategories')->get()->toArray();
         $new_categories = array_map(function($category) {
             return [
@@ -106,10 +113,12 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblCategories')->max('CategoryID');
         $this->bulk_insert(Category::class, $new_categories, 'categories_id_seq', $last_id + 1);
+        echo "Finished ETL of categories successfully!!!\n\n";
     }
 
     public function do_ETL_sizes()
     {
+        echo "Processing ETL of sizes...\n";
         $old_sizes = $this->sqlsrv_conn->table('TblProductSizes')->get()->toArray();
         $new_sizes = array_map(function($size) {
             return [
@@ -123,6 +132,7 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblProductSizes')->max('SizeID');
         $this->bulk_insert(Size::class, $new_sizes, 'sizes_id_seq', $last_id + 1);
+        echo "Finished ETL of sizes successfully!!!\n\n";
     }
 
     public function seed_nursery_locations()
@@ -154,6 +164,7 @@ class DataETLSeeder extends Seeder
 
     public function do_ETL_blocks()
     {
+        echo "Processing ETL of blocks...\n";
         $old_locations = $this->sqlsrv_conn->table('TblLocations')->get()->toArray();
         $last_location_id = $this->sqlsrv_conn->table('TblLocations')->max('LocationID');
 
@@ -182,10 +193,12 @@ class DataETLSeeder extends Seeder
 
         $last_id = $last_block_location_id + $last_location_id + 1;
         $this->bulk_insert(Block::class, $new_blocks, 'blocks_id_seq', $last_id);
+        echo "Finished ETL of blocks successfully!!!\n\n";
     }
 
     public function do_ETL_places()
     {
+        echo "Processing ETL of places...\n";
         $old_location_rows = $this->sqlsrv_conn->table('TblLocationRows')->get()->toArray();
         $new_places = array_map(function($lr) {
             return [
@@ -198,10 +211,12 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblLocationRows')->max('LocationRowID');
         $this->bulk_insert(Place::class, $new_places, 'places_id_seq', $last_id + 1);
+        echo "Finished ETL of places successfully!!!\n\n";
     }
 
     public function do_ETL_products()
     {
+        echo "Processing ETL of products...\n";
         $old_products = $this->sqlsrv_conn->table('TblProducts')->get()->toArray();
         $new_products = [];
         $new_plants = [];
@@ -231,10 +246,12 @@ class DataETLSeeder extends Seeder
         $last_id = $this->sqlsrv_conn->table('TblProducts')->max('ProductID');
         $this->bulk_insert(Product::class, $new_products, 'products_id_seq', $last_id + 1);
         $this->bulk_insert(Plant::class, $new_plants);
+        echo "Finished ETL of products successfully!!!\n\n";
     }
 
     public function do_ETL_customers()
     {
+        echo "Processing ETL of customers...\n";
         $old_customers = $this->sqlsrv_conn->table('TblCustomers')->get()->toArray();
         $new_customers = array_map(function($c) {
             return [
@@ -256,15 +273,18 @@ class DataETLSeeder extends Seeder
                 'reseller_permit_expiration' => $c->ResellerPermitExpiration,
                 'discount_percentage' => $c->DiscountOverride,
                 'team_id' => $this->team->id,
+                'customer_price_level_id' => $c->PriceLevelID,
             ];
         }, $old_customers);
 
         $last_id = $this->sqlsrv_conn->table('TblCustomers')->max('CustomerID');
         $this->bulk_insert(Customer::class, $new_customers, 'customers_id_seq', $last_id + 1);
+        echo "Finished ETL of customers successfully!!!\n\n";
     }
 
     public function do_ETL_users()
     {
+        echo "Processing ETL of users...\n";
         $old_users = $this->sqlsrv_conn->table('TblEmployees')->get()->toArray();
         $new_users = array_map(function($u) {
             return [
@@ -277,10 +297,12 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblEmployees')->max('EmployeeID');
         $this->bulk_insert(User::class, $new_users, 'users_id_seq', $last_id + 1);
+        echo "Finished ETL of users successfully!!!\n\n";
     }
 
     public function do_ETL_vendors()
     {
+        echo "Processing ETL of vendors...\n";
         $old_vendors = $this->sqlsrv_conn->table('TblSuppliers')->get()->toArray();
         $new_vendors = array_map(function($v) {
             return [
@@ -304,10 +326,12 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblSuppliers')->max('SupplierID');
         $this->bulk_insert(Vendor::class, $new_vendors, 'vendors_id_seq', $last_id + 1);
+        echo "Finished ETL of vendors successfully!!!\n\n";
     }
 
     public function do_ETL_purchases()
     {
+        echo "Processing ETL of purchases...\n";
         $old_purchases = $this->sqlsrv_conn->table('TblOrders')->get()->toArray();
         $new_purchases = array_map(function($p) {
             return [
@@ -321,10 +345,12 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblOrders')->max('OrderID');
         $this->bulk_insert(Purchase::class, $new_purchases, 'purchases_id_seq', $last_id + 1);
+        echo "Finished ETL of purchases successfully!!!\n\n";
     }
 
     public function do_ETL_purchases_items()
     {
+        echo "Processing ETL of purchases_items...\n";
         $old_purchases_items = $this->sqlsrv_conn->table('TblOrdersItems')->get()->toArray();
         $new_purchases_items = array_map(function($pi) {
             return [
@@ -342,5 +368,6 @@ class DataETLSeeder extends Seeder
 
         $last_id = $this->sqlsrv_conn->table('TblOrdersItems')->max('OrderItemID');
         $this->bulk_insert(PurchaseItem::class, $new_purchases_items, 'purchase_items_id_seq', $last_id + 1);
+        echo "Finished ETL of purchases_items successfully!!!\n\n";
     }
 }
