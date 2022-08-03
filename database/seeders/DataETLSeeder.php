@@ -80,6 +80,8 @@ class DataETLSeeder extends Seeder
         $this->do_ETL_order_items();
         $this->do_ETL_order_discounts();
 
+        $this->do_ETL_inventories();
+        $this->do_ETL_inventory_archive();
     }
 
     public function bulk_insert($model, $data, $id_seq_name = null, $id_seq_value = null)
@@ -530,4 +532,84 @@ class DataETLSeeder extends Seeder
         echo "Finished ETL of order_discounts successfully!!!\n\n";
     }
 
+    public function do_ETL_inventories()
+    {
+        echo "Processing ETL of inventories...\n";
+
+        $this->do_ETL_individual_inventory();
+
+        echo "Finished ETL of inventories successfully!!!\n\n";
+    }
+
+    public function do_ETL_individual_inventory()
+    {
+        echo "Processing ETL of individual inventories...\n";
+        $old_individual_inventories = $this->sqlsrv_conn->table('TblInventory')->get()->toArray();
+        $last_ii_id = $this->sqlsrv_conn->table('TblInventory')->max('InventoryID');
+
+        $old_individual_archive_inventories = $this->sqlsrv_conn
+            ->table('TblInventoryArchive')
+            ->whereNotIn('OrderItemID', [465, 4637])
+            ->get()
+            ->toArray();
+        $last_ii_archive_id = $this->sqlsrv_conn->table('TblInventoryArchive')->max('InventoryID');
+
+        $new_inventories = [];
+        foreach ($old_individual_inventories as $ii) {
+            array_push($new_inventories, [
+                'id' => $ii->InventoryID,
+                'team_id' => $this->team->id,
+                'purchase_item_id' => $ii->OrderItemID,
+                'product_id' => $ii->ProductID,
+                'original_size_id' => $ii->OriginalSizeID,
+                'size_id' => $ii->SizeID,
+                'ready_date' => $ii->DateAdded,
+                'quantity' => 1,
+                'type' => 'individual',
+                'block_id' => null,
+                'place_id' => null,
+                'nursery_location_id' => 0, //Garden Gate East
+            ]);
+        }
+
+        foreach ($old_individual_archive_inventories as $iia) {
+            array_push($new_inventories, [
+                'id' => $iia->InventoryID,
+                'team_id' => $this->team->id,
+                'purchase_item_id' => $iia->OrderItemID,
+                'product_id' => $iia->ProductID,
+                'original_size_id' => $iia->OriginalSizeID,
+                'size_id' => $iia->SizeID,
+                'ready_date' => $iia->DateAdded,
+                'quantity' => 1,
+                'type' => 'individual',
+                'block_id' => null,
+                'place_id' => null,
+                'nursery_location_id' => 0, //Garden Gate East
+            ]);
+        }
+
+        $this->bulk_insert(Inventory::class, $new_inventories, 'inventories_id_seq', $last_ii_id + 1);
+        echo "Finished ETL of individual inventories successfully!!!\n\n";
+    }
+
+    public function do_ETL_inventory_archive()
+    {
+        echo "Processing ETL of inventory_archive...\n";
+        $old_inventory_archive = $this->sqlsrv_conn->table('TblInventoryArchive')->get()->toArray();
+        $new_inventory_archive = array_map(function($ia) {
+            return [
+                'order_item_id' => $ia->OrderItemID,
+                'inventory_id' => $ia->InventoryID,
+                'quantity_removed' => 0,
+                'reason_removed' => $ia->ReasonRemovedFromInventory,
+                'was_adjustment' => $ia->WasInventoryAdjustment,
+                'removed_by_id' => $ia->RemovedByEmployeeID,
+                'created_at' => $ia->DateRemoved,
+            ];
+        }, array_slice($old_inventory_archive, 0, 10));
+
+        $this->bulk_insert(InventoryArchive::class, $new_inventory_archive);
+        echo "Finished ETL of inventory_archive successfully!!!\n\n";
+    }
 }
