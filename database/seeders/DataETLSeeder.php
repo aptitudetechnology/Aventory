@@ -77,6 +77,7 @@ class DataETLSeeder extends Seeder
         $this->do_ETL_shipping_methods();
 
         $this->do_ETL_orders();
+        $this->do_ETL_order_items();
         $this->do_ETL_order_discounts();
 
     }
@@ -489,6 +490,27 @@ class DataETLSeeder extends Seeder
         echo "Finished ETL of orders successfully!!!\n\n";
     }
 
+    public function do_ETL_order_items()
+    {
+        echo "Processing ETL of order_items...\n";
+        $old_order_items = $this->sqlsrv_conn->table('TblCustomerOrdersItems')->get()->toArray();
+        $new_order_items = array_map(function($oi) {
+            return [
+                'id' => $oi->CustomerOrderItemID,
+                'order_id' => $oi->CustomerOrderID,
+                'product_id' => $oi->ProductID,
+                'size_id' => $oi->SizeID,
+                'quantity' => $oi->Quantity,
+                'original_quantity' => 0,
+                'unit_price' => $oi->UnitPrice,
+                'no_discount' => $oi->NoAutoDiscount,
+                'quantity_fulfilled' => $oi->Quantity,
+            ];
+        }, $old_order_items);
+
+        $this->bulk_insert(OrderItem::class, $new_order_items);
+        echo "Finished ETL of order_items successfully!!!\n\n";
+    }
 
     public function do_ETL_order_discounts()
     {
