@@ -126,9 +126,9 @@ You can update model block docs by running the following command:
 php artisan ide-helper:models
 ```
 
-## Run seed commands for importing data
+## Run seed script for importing data
 
-In `.env` file, set up the configuration of MSSQL server from which data can be imported as shown below.
+In `.env` file, set up the configuration of MS SQL server from which data can be imported as shown below.
 
 ```
 DB_SQLSRV_HOST=host.docker.internal
@@ -138,7 +138,7 @@ DB_SQLSRV_USERNAME=username
 DB_SQLSRV_PASSWORD=password
 ```
 
-Run the seed script to import data from MSSQL server to PostgreSQL server.
+Run the seed script to import data from MS SQL server to PostgreSQL server.
 
 ```
 sail artisan db:seed --class=DataETLSeeder
