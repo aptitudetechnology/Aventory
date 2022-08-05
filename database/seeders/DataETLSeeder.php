@@ -567,7 +567,7 @@ class DataETLSeeder extends Seeder
                 'quantity' => 1,
                 'type' => 'individual',
                 'block_id' => null,
-                'place_id' => null,
+                'place_id' => $ii->LocationRowID,
                 'nursery_location_id' => 0, //Garden Gate East
             ]);
         }
@@ -584,12 +584,12 @@ class DataETLSeeder extends Seeder
                 'quantity' => 1,
                 'type' => 'individual',
                 'block_id' => null,
-                'place_id' => null,
+                'place_id' => null, // $iia->LocationRowID,
                 'nursery_location_id' => 0, //Garden Gate East
             ]);
         }
 
-        $this->bulk_insert(Inventory::class, $new_inventories, 'inventories_id_seq', $last_ii_id + 1);
+        $this->bulk_insert(Inventory::class, $new_inventories, 'inventories_id_seq', max($last_ii_id, $last_ii_archive_id) + 1);
         echo "Finished ETL of individual inventories successfully!!!\n\n";
     }
 
