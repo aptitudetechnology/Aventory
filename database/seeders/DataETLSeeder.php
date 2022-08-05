@@ -662,6 +662,7 @@ class DataETLSeeder extends Seeder
         echo "Processing ETL of inventory_archive...\n";
 
         $this->do_ETL_individual_inventory_archive();
+        $this->do_ETL_block_inventory_archive();
 
         echo "Finished ETL of inventory_archive successfully!!!\n\n";
     }
@@ -684,6 +685,30 @@ class DataETLSeeder extends Seeder
         }, array_slice($old_inventory_archive, 0, 10));
 
         $this->bulk_insert(InventoryArchive::class, $new_inventory_archive);
-        echo "Finished ETL of inventory_archive successfully!!!\n\n";
+        echo "Finished ETL of individual inventory_archive successfully!!!\n\n";
+    }
+
+    public function do_ETL_block_inventory_archive()
+    {
+        echo "Processing ETL of block inventory_archive...\n";
+        $last_ii_id = $this->sqlsrv_conn->table('TblInventory')->max('InventoryID');
+        $last_ii_archive_id = $this->sqlsrv_conn->table('TblInventoryArchive')->max('InventoryID');
+        $last_inventory_id = max($last_ii_id, $last_ii_archive_id);
+
+        $old_block_inventory_archive = $this->sqlsrv_conn->table('TblBlockInventoryArchive')->get()->toArray();
+        $new_block_inventory_archive = array_map(function($bia) use ($last_inventory_id) {
+            return [
+                'order_item_id' => 1, // $bia->CustomerOrderItemID,
+                'inventory_id' => $bia->BlockInventoryID + $last_inventory_id,
+                'quantity_removed' => 0,
+                'reason_removed' => $bia->Reason,
+                'was_adjustment' => 0,
+                'removed_by_id' => $bia->EmployeeID,
+                'created_at' => $bia->DateRemoved,
+            ];
+        }, $old_block_inventory_archive);
+
+        $this->bulk_insert(InventoryArchive::class, $new_block_inventory_archive);
+        echo "Finished ETL of block inventory_archive successfully!!!\n\n";
     }
 }
