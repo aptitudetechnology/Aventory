@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|DeliveryStatus newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DeliveryStatus newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DeliveryStatus query()

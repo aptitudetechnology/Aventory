@@ -4,12 +4,12 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class GetLinkedOrdersForQuotes extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * Get linked orders for a given quote.
      *
@@ -28,7 +28,6 @@ class GetLinkedOrdersForQuotes extends TestCase
         $order->save();
 
         $response = $this->get(route('api.quotes.orders.index', $quote->id));
-
 
         $response->assertStatus(200);
 

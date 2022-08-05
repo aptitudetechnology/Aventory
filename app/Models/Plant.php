@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $features_count
  * @property-read \App\Models\Product $product
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\PlantFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Plant newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Plant newQuery()
@@ -45,7 +46,9 @@ use Illuminate\Database\Eloquent\Model;
 class Plant extends Model
 {
     use HasFactory;
+
     protected $with = ['features'];
+
     /**
      * The attributes that are mass assignable.
      *

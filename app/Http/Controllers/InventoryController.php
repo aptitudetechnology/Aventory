@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventoryStoreRequest;
 use App\Http\Requests\InventoryUpdateRequest;
 use App\Models\Inventory;
-use App\Models\PurchaseItem;
 use App\Models\Place;
 use App\Models\Product;
+use App\Models\PurchaseItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class InventoryController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -40,7 +40,7 @@ class InventoryController extends Controller
                 if ($request->orderBy == 'product') {
                     $query
                         ->addSelect(['product_name' => Product::select('name')
-                            ->whereColumn('id', 'inventories.product_id')])
+                            ->whereColumn('id', 'inventories.product_id'), ])
                         ->orderBy('product_name', $request->orderByDirection);
                 } else {
                     $query->orderBy($request->orderBy, $request->orderByDirection);
@@ -50,7 +50,6 @@ class InventoryController extends Controller
             })
             ->paginate(50)->withQueryString();
 
-
         return inertia('Inventory/Index', [
             'inventory' => $inventory,
             'filters' => $filters,
@@ -58,7 +57,7 @@ class InventoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -67,12 +66,11 @@ class InventoryController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\InventoryStoreRequest $request
+     * @param  \App\Http\Requests\InventoryStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(InventoryStoreRequest $request)
     {
-
         $purchaseItems = PurchaseItem::whereIn('id', $request->selectedItems)->get();
 
         foreach ($purchaseItems as $item) {
@@ -89,8 +87,8 @@ class InventoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Inventory $inventory
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Inventory $inventory)
@@ -98,12 +96,13 @@ class InventoryController extends Controller
         $sizes = $request->user()->currentTeam->sizes;
         $inventory->load('block', 'place');
         $blocks = $request->user()->currentTeam->blocks->where('nursery_location_id', $inventory->nursery_location_id);
+
         return inertia('Inventory/Show', compact('inventory', 'sizes', 'blocks'));
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Inventory $inventory
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Inventory $inventory)
@@ -112,8 +111,8 @@ class InventoryController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\InventoryUpdateRequest $request
-     * @param \App\Models\Inventory $inventory
+     * @param  \App\Http\Requests\InventoryUpdateRequest  $request
+     * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
     public function update(InventoryUpdateRequest $request, Inventory $inventory)
@@ -127,13 +126,14 @@ class InventoryController extends Controller
         $inventory->update($request->validated());
 
         $request->session()->flash('inventory.id', $inventory->id);
-        $label =  $inventory->type == 'group' ? 'grouped inventory items.' : 'inventory item.';
-        return back()->banner('Great! Updated ' . $label);
+        $label = $inventory->type == 'group' ? 'grouped inventory items.' : 'inventory item.';
+
+        return back()->banner('Great! Updated '.$label);
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Inventory $inventory
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Inventory $inventory)

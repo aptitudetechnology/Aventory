@@ -60,6 +60,7 @@ use Laravel\Jetstream\Team as JetstreamTeam;
  * @property-read int|null $users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Vendor[] $vendors
  * @property-read int|null $vendors_count
+ *
  * @method static \Database\Factories\TeamFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
@@ -225,7 +226,7 @@ class Team extends JetstreamTeam
             return mb_substr($segment, 0, 1);
         })->join(' '));
 
-        return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF';
+        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
     }
 
     public function updateLogo(UploadedFile $logo)

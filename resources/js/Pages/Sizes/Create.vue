@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import MainArea from "@Components/MainArea.vue";
-import BackLink from "@Components/Links/BackLink";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import MainArea from "@/Components/MainArea.vue";
+import BackLink from "@/Components/Links/BackLink.vue";
 
 import CreateSizeForm from "./CreateSizeForm.vue";
 export default {

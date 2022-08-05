@@ -42,6 +42,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Quote[] $quotes
  * @property-read int|null $quotes_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\CustomerFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Customer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Customer newQuery()
@@ -76,6 +77,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Customer extends Model
 {
     use HasFactory, SoftDeletes;
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -85,8 +87,9 @@ class Customer extends Model
         'mailing_same_as_primary' => 'boolean',
         'is_taxable' => 'boolean',
         'no_auto_discount' => 'boolean',
-        'reseller_permit_on_file' => 'boolean'
+        'reseller_permit_on_file' => 'boolean',
     ];
+
     protected $with = ['contacts'];
 
     protected $guarded = [];
@@ -98,7 +101,7 @@ class Customer extends Model
 
     public function getAddressAttribute()
     {
-        return $this->hasMailingAddress() ? $this->mailing_address . ', ' . $this->mailing_city . ', ' . $this->mailing_state . ' ' . $this->mailing_zip : null;
+        return $this->hasMailingAddress() ? $this->mailing_address.', '.$this->mailing_city.', '.$this->mailing_state.' '.$this->mailing_zip : null;
     }
 
     public function hasMailingAddress(): bool

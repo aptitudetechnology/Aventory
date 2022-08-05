@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Models\CustomerPriceLevel;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\Access\Response;
 
 class CustomerPriceLevelPolicy
 {
@@ -26,7 +25,7 @@ class CustomerPriceLevelPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CustomerPriceLevel $customerPriceLevel
+     * @param  \App\Models\CustomerPriceLevel  $customerPriceLevel
      * @return mixed
      */
     public function view(User $user, CustomerPriceLevel $customerPriceLevel)
@@ -49,7 +48,7 @@ class CustomerPriceLevelPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CustomerPriceLevel $customerPriceLevel
+     * @param  \App\Models\CustomerPriceLevel  $customerPriceLevel
      * @return mixed
      */
     public function update(User $user, CustomerPriceLevel $customerPriceLevel)
@@ -61,7 +60,7 @@ class CustomerPriceLevelPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CustomerPriceLevel $customerPriceLevel
+     * @param  \App\Models\CustomerPriceLevel  $customerPriceLevel
      * @return mixed
      */
     public function delete(User $user, CustomerPriceLevel $customerPriceLevel)

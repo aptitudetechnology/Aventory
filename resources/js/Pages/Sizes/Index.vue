@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import MainArea from "@Components/MainArea.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import MainArea from "@/Components/MainArea.vue";
 import SizeList from "./SizeList.vue";
-import ButtonLink from "@Components/Links/ButtonLink";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 export default {
     components: {
         AppLayout,

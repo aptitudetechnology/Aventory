@@ -34,7 +34,7 @@
 <script>
 import { PaperClipIcon } from "@heroicons/vue/solid";
 import CustomersLayout from "./CustomersLayout.vue";
-import DetailsSection from "@/Components/DetailsSection";
+import DetailsSection from "@/Components/DetailsSection.vue";
 import RestoreCustomerForm from "./RestoreCustomerForm.vue";
 export default {
     components: {

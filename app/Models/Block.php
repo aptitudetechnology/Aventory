@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Place[] $places
  * @property-read int|null $places_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\BlockFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Block newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Block newQuery()
@@ -38,6 +39,7 @@ use Illuminate\Database\Eloquent\Model;
 class Block extends Model
 {
     use HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -60,18 +62,17 @@ class Block extends Model
         'has_places' => 'boolean',
     ];
 
-    protected $appends = array('BlockDisplayName');
+    protected $appends = ['BlockDisplayName'];
 
     public function getBlockDisplayNameAttribute()
     {
-        return "Block : " . $this->name;
+        return 'Block : '.$this->name;
     }
 
     public function team()
     {
         return $this->belongsTo(Team::class);
     }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

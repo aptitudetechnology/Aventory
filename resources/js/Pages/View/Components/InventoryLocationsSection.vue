@@ -112,7 +112,6 @@ import TableHead from "@/Components/Tables/TableHead.vue";
 import TableH from "@/Components/Tables/TableH.vue";
 import TableD from "@/Components/Tables/TableD.vue";
 export default {
-    name: "AvailabilitySection",
     components: {
         SectionTitle,
         TableTable,
@@ -131,7 +130,7 @@ export default {
         },
         selectedSize: {
             type: Object,
-            required: true,
+            required: false,
         },
     },
     computed: {

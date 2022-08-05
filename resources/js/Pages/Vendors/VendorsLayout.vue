@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import BackLink from "@/Components/Links/BackLink";
-import VendorsAside from "./VendorsAside";
-import MainArea from "@Components/MainArea.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import BackLink from "@/Components/Links/BackLink.vue";
+import VendorsAside from "./VendorsAside.vue";
+import MainArea from "@/Components/MainArea.vue";
 
 export default {
     components: {

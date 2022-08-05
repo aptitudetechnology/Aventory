@@ -15,8 +15,8 @@ class OrderObserver
 
     /**
      * When creating an order, we add the discount to the order
-     * 
-     * @param Order $order
+     *
+     * @param  Order  $order
      * @return void
      */
     public function created(Order $order)
@@ -27,9 +27,9 @@ class OrderObserver
 
     /**
      * When deleting an order, we remove the associated items.
-     * 
-     * 
-     * @param Order $order
+     *
+     *
+     * @param  Order  $order
      * @return void
      */
     public function deleting(Order $order)

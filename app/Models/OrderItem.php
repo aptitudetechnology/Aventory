@@ -39,6 +39,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Quote $quote
  * @property-read \App\Models\Sale $sale
  * @property-read \App\Models\Size $size
+ *
  * @method static \Database\Factories\OrderItemFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newQuery()
@@ -59,8 +60,11 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItem extends Model
 {
     use HasFactory;
+
     protected $table = 'order_items';
+
     protected $guarded = [];
+
     protected $fillable = [
         'order_id',
         'product_id',
@@ -133,7 +137,6 @@ class OrderItem extends Model
         return $this->hasMany(InventoryArchive::class);
     }
 
-
     public function getIsMatchedAttribute()
     {
         return $this->matched_quantity >= $this->quantity;
@@ -158,6 +161,7 @@ class OrderItem extends Model
     {
         return $this->quantity * $this->unit_price;
     }
+
     public function getLineDiscountAttribute()
     {
         return $this->no_discount ? 0 : $this->line_total * ($this->sale->discount_percentage / 100);

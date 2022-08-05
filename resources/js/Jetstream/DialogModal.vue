@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Modal from "./Modal";
+import Modal from "./Modal.vue";
 import JetSectionTitle from "./SectionTitle.vue";
 export default {
     emits: ["close"],

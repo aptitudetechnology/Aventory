@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\Team;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,10 +13,9 @@ class CreateCompanyInCodat implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-
     /**
      * The Team instance.
-     * 
+     *
      * @var Team
      */
     protected $team;

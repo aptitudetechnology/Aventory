@@ -15,9 +15,9 @@
 
 <script>
 import OrdersLayout from "./OrdersLayout.vue";
-import ButtonLink from "@/Components/Links/ButtonLink";
-import DetailsSection from "@/Components/DetailsSection";
-import HeadingOne from "@Components/Headings/HeadingOne.vue";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
+import DetailsSection from "@/Components/DetailsSection.vue";
+import HeadingOne from "@/Components/Headings/HeadingOne.vue";
 import CompletedOrdersCard from "./Components/CompletedOrdersCard.vue";
 import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";
 import ViewOrders from "./Components/OrdersView.vue";

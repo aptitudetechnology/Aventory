@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import BackLink from "@/Components/Links/BackLink";
-import ProductsAside from "@/Pages/Products/ProductsAside";
-import MainArea from "@Components/MainArea.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import BackLink from "@/Components/Links/BackLink.vue";
+import ProductsAside from "@/Pages/Products/ProductsAside.vue";
+import MainArea from "@/Components/MainArea.vue";
 
 export default {
     components: {

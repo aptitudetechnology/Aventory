@@ -6,23 +6,24 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Contact;
 use App\Models\Product;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $products = $this->getProducts();
+
         return inertia('Products/Index', compact('products'));
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -31,11 +32,12 @@ class ProductController extends Controller
 
         $products = $this->getProducts();
         $categories = $this->getCategories();
+
         return inertia('Products/Create', compact('products', 'categories'));
     }
 
     /**
-     * @param \App\Http\Requests\ProductStoreRequest $request
+     * @param  \App\Http\Requests\ProductStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(ProductStoreRequest $request)
@@ -44,10 +46,10 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'category_id' => $request->category_id,
-            'type' => $request->type
+            'type' => $request->type,
         ]);
 
-        if ($request->type == "plant") {
+        if ($request->type == 'plant') {
             $product->plant()->create([
                 'scientific_name' => $request->scientific_name,
                 'common_name' => $request->common_name,
@@ -56,7 +58,7 @@ class ProductController extends Controller
                 'spread' => $request->spread,
                 'bloom_color' => $request->bloom_color,
                 'fall_color' => $request->fall_color,
-                'growth_rate' => $request->growth_rate
+                'growth_rate' => $request->growth_rate,
             ]);
         }
 
@@ -66,8 +68,8 @@ class ProductController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Product $product
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Product $product)
@@ -83,10 +85,9 @@ class ProductController extends Controller
         return inertia('Products/Show', compact('product', 'products', 'categories', 'features', 'sizes', 'category'));
     }
 
-
     /**
-     * @param \App\Http\Requests\ProductUpdateRequest $request
-     * @param \App\Models\Product $product
+     * @param  \App\Http\Requests\ProductUpdateRequest  $request
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function update(ProductUpdateRequest $request, Product $product)
@@ -96,7 +97,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'category_id' => $request->category_id,
         ]);
-        if ($product->type == "plant") {
+        if ($product->type == 'plant') {
             $product->plant()->update([
                 'scientific_name' => $request->scientific_name,
                 'common_name' => $request->common_name,
@@ -105,10 +106,9 @@ class ProductController extends Controller
                 'spread' => $request->spread,
                 'bloom_color' => $request->bloom_color,
                 'fall_color' => $request->fall_color,
-                'growth_rate' => $request->growth_rate
+                'growth_rate' => $request->growth_rate,
             ]);
         }
-
 
         $request->session()->flash('product.id', $product->id);
 
@@ -116,8 +116,8 @@ class ProductController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Product $product
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Product $product)

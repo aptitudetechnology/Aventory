@@ -2,10 +2,9 @@
 
 namespace App\Policies;
 
-use App\Models\Vendor;
 use App\Models\User;
+use App\Models\Vendor;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\Access\Response;
 
 class VendorPolicy
 {

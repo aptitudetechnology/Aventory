@@ -9,7 +9,7 @@
         <div class="overflow-y-auto h-full">
             <div class="max-w-7xl py-10 sm:px-6 lg:px-8">
                 <connect-accounting :team="team" />
-                
+
                 <jet-section-border />
 
                 <update-team-form :team="team" :permissions="permissions" />
@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import TeamMemberManager from "./TeamMemberManager";
-import AppLayout from "@/Layouts/AppLayout";
-import DeleteTeamForm from "./DeleteTeamForm";
-import JetSectionBorder from "@/Jetstream/SectionBorder";
-import UpdateTeamForm from "./UpdateTeamForm";
+import TeamMemberManager from "./TeamMemberManager.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import DeleteTeamForm from "./DeleteTeamForm.vue";
+import JetSectionBorder from "@/Jetstream/SectionBorder.vue";
+import UpdateTeamForm from "./UpdateTeamForm.vue";
 import ConnectAccounting from "./ConnectAccounting.vue";
 
 export default {

@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Price;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class PriceUpdateRequest extends FormRequest
 {
@@ -28,7 +26,7 @@ class PriceUpdateRequest extends FormRequest
         return [
             'size_id' => ['required', 'exists:sizes,id'],
             'unit_price' => ['required', 'numeric'],
-            'show_on_availability' => ['boolean']
+            'show_on_availability' => ['boolean'],
         ];
     }
 }

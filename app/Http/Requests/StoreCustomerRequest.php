@@ -7,7 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCustomerRequest extends FormRequest
 {
-    protected $errorBag = "createCustomer";
+    protected $errorBag = 'createCustomer';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -41,7 +42,7 @@ class StoreCustomerRequest extends FormRequest
             'is_taxable' => ['nullable', 'boolean'],
             'tax_percentage' => ['nullable', 'numeric'],
             'discount_percentage' => ['nullable', 'integer'],
-            'reseller_permit_expiration' => ['nullable', 'date']
+            'reseller_permit_expiration' => ['nullable', 'date'],
         ];
     }
 }

@@ -7,7 +7,7 @@
 <script>
 import PurchasesLayout from "./PurchasesLayout.vue";
 
-import CreatePurchaseForm from "./Components/CreatePurchaseForm";
+import CreatePurchaseForm from "./Components/CreatePurchaseForm.vue";
 export default {
     components: {
         PurchasesLayout,

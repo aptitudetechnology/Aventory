@@ -29,7 +29,7 @@ class NurseryLocationUpdateRequest extends FormRequest
             'address' => ['nullable', 'string'],
             'city' => ['nullable', 'string'],
             'state' => ['nullable', 'string'],
-            'zip' => ['nullable', 'string']
+            'zip' => ['nullable', 'string'],
         ];
     }
 }

@@ -4,9 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Customer;
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Team;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderFactory extends Factory

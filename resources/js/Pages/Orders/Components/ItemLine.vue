@@ -79,7 +79,7 @@
 
 <script>
 import Check from "@heroicons/vue/outline/CheckIcon";
-import LineItem from "@Components/Lists/LineItem.vue";
+import LineItem from "@/Components/Lists/LineItem.vue";
 import EditOrderItem from "./ItemEdit.vue";
 import DeleteOrderItem from "./ItemDelete.vue";
 export default {

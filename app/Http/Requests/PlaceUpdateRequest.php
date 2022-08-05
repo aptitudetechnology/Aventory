@@ -26,7 +26,7 @@ class PlaceUpdateRequest extends FormRequest
         return [
             'row_number' => ['required', 'integer'],
             'block_id' => ['required', 'exists:blocks,id'],
-            'num_places' => ['required', 'integer']
+            'num_places' => ['required', 'integer'],
         ];
     }
 }

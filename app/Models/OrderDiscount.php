@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Order $order
  * @property-read \App\Models\Quote $quote
  * @property-read \App\Models\Sale $sale
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderDiscount query()
@@ -40,8 +41,11 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDiscount extends Model
 {
     use HasFactory;
+
     protected $table = 'order_discounts';
+
     protected $guarded = [];
+
     protected $appends = ['discount_total', 'is_quote', 'sale_type'];
 
     // $casts

@@ -6,8 +6,8 @@ use App\Http\Requests\OrderStoreRequest;
 use App\Models\Customer;
 use App\Models\DeliveryStatus;
 use App\Models\Order;
-use App\Models\ShippingMethod;
 use App\Models\PaymentStatus;
+use App\Models\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -30,7 +30,7 @@ class OrderController extends Controller
             ->when($request->orderBy, function ($query) use ($request) {
                 if ($request->orderBy == 'customer') {
                     $query->addSelect(['customer_name' => Customer::select('name')
-                        ->whereColumn('id', 'orders.customer_id')])->orderBy('customer_name', $request->orderByDirection);
+                        ->whereColumn('id', 'orders.customer_id'), ])->orderBy('customer_name', $request->orderByDirection);
                 } else {
                     $query->orderBy($request->orderBy, $request->orderByDirection);
                 }
@@ -58,6 +58,7 @@ class OrderController extends Controller
         $customers = $this->getCustomers();
         $teamMembers = auth()->user()->currentTeam->allUsers();
         $priceLevels = auth()->user()->currentTeam->priceLevels()->get();
+
         return inertia('Orders/Create', compact('customers', 'teamMembers', 'priceLevels'));
     }
 
@@ -96,6 +97,7 @@ class OrderController extends Controller
         $products = auth()->user()->currentTeam->products;
         $sizes = auth()->user()->currentTeam->sizes;
         $shipping_methods = ShippingMethod::all();
+
         return inertia('Orders/Show', compact(
             [
                 'order',
@@ -107,11 +109,10 @@ class OrderController extends Controller
                 'payment_statuses',
                 'products',
                 'sizes',
-                'shipping_methods'
+                'shipping_methods',
             ]
         ));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -122,26 +123,26 @@ class OrderController extends Controller
      */
     public function update(OrderStoreRequest $request, Order $order)
     {
-
         Gate::authorize('update', $order);
         $order->update($request->validated());
 
         $order->updateDiscounts();
         $order->updateTotals();
 
-        return back()->banner("Great work! Updated order.");
+        return back()->banner('Great work! Updated order.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order $order
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function destroy(Order $order)
     {
         Gate::authorize('delete', $order);
         $order->delete();
+
         return redirect()->route('orders.index')->banner('Order deleted.');
     }
 

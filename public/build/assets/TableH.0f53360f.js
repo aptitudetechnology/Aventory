@@ -1,0 +1,1 @@
+import{_ as t,o as s,J as r,P as c}from"./app.9dc34ef4.js";const o={},a={scope:"col",class:"px-4 py-3 text-xs uppercase tracking-wider text-left whitespace-nowrap"};function n(e,p){return s(),r("th",a,[c(e.$slots,"default")])}var _=t(o,[["render",n]]);export{_ as T};

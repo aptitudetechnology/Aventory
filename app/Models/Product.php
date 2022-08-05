@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\DB;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Size[] $sizesSold
  * @property-read int|null $sizes_sold_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\ProductFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
@@ -66,15 +67,20 @@ use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $with = ['plant', 'category', 'prices',];
+
+    protected $with = ['plant', 'category', 'prices'];
+
     protected $appends = ['base_prices'];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $hidden = [];
+
     protected $guarded = [];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -131,7 +137,6 @@ class Product extends Model
     }
 
     /**
-     * 
      * Get price of product for size and customer.
      */
     public function getPrice(Size $size, Customer $customer)
@@ -168,7 +173,6 @@ class Product extends Model
         return $this->inventory()->where('ready_date', '<=', now());
     }
 
-
     public function inventorySizes()
     {
         return $this->belongsToMany(Size::class, 'inventories')->distinct()
@@ -182,7 +186,7 @@ class Product extends Model
                     $query->where('product_id', $this->id)
                         ->where('ready_date', '<=', now())
                         ->select(DB::raw('sum(quantity)'));
-                }
+                },
             ])
             ->withCasts([
                 'total_inventory' => 'integer',

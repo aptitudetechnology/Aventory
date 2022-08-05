@@ -7,16 +7,14 @@
 
     <title>{{ config('app.name', 'Awia for Nurseries') }} | The best wholesale nursery management platform.</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
     <!-- Icons -->
     <link rel="apple-touch-icon" href="/logos/apple-touch-icon.png">
     <link rel="icon" href="/logos/favicon.png">
 
-    <!-- Scripts -->
     @routes
-    <script src="{{ mix('js/app.js') }}" defer></script>
+
+    <!-- Scripts & Styles -->
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased">

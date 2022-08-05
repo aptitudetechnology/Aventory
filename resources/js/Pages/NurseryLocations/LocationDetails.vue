@@ -18,7 +18,7 @@
 
 <script>
 import ButtonLink from "@/Components/Links/ButtonLink.vue";
-import DetailsSection from "@/Components/DetailsSection";
+import DetailsSection from "@/Components/DetailsSection.vue";
 export default {
     components: {
         ButtonLink,

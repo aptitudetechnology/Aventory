@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Inventory $inventory
  * @property-read \App\Models\Team $team
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|ReprintQueue newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ReprintQueue newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ReprintQueue query()
@@ -33,7 +34,7 @@ class ReprintQueue extends Model
 {
     use HasFactory;
 
-    protected $table = "reprint_queue";
+    protected $table = 'reprint_queue';
 
     protected $guarded = [];
 

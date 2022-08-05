@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Customer;
 use App\Models\Quote;
 use Illuminate\Database\Seeder;
 

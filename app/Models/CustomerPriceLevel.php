@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Customer[] $customers
  * @property-read int|null $customers_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|CustomerPriceLevel newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CustomerPriceLevel newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CustomerPriceLevel query()
@@ -35,7 +36,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CustomerPriceLevel extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
+
     /**
      * The attributes that are mass assignable.
      *

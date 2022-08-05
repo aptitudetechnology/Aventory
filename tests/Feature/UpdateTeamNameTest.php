@@ -14,7 +14,7 @@ class UpdateTeamTest extends TestCase
     {
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
 
-        $response = $this->put('/teams/' . $user->currentTeam->id, [
+        $response = $this->put('/teams/'.$user->currentTeam->id, [
             'name' => 'Test Team',
             'email' => 'test@test.com',
         ]);

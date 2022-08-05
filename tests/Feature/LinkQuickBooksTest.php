@@ -2,10 +2,8 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use App\Models\User;
+use Tests\TestCase;
 
 class LinkQuickBooksTest extends TestCase
 {
@@ -19,7 +17,7 @@ class LinkQuickBooksTest extends TestCase
         $user = User::factory()->withPersonalTeam()->create();
         $team = $user->currentTeam;
 
-        $response = $this->post('/teams/' . $team->id . '/link-quickbooks', [
+        $response = $this->post('/teams/'.$team->id.'/link-quickbooks', [
             'company_id' => $team->id,
             'access_token' => 'abcdef',
             'realm_id' => 'ghijk',

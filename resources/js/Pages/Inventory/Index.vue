@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import MainArea from "@Components/MainArea.vue";
-import Card from "@Components/Card.vue";
-import InventoryTabs from "@Components/InventoryTabs.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import MainArea from "@/Components/MainArea.vue";
+import Card from "@/Components/Card.vue";
+import InventoryTabs from "@/Components/InventoryTabs.vue";
 import SearchInventory from "./Components/SearchInventory.vue";
 import InventoryList from "./Components/InventoryList.vue";
 

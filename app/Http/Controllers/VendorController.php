@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VendorStoreRequest;
 use App\Http\Requests\VendorUpdateRequest;
 use App\Models\Vendor;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class VendorController extends Controller
 {
@@ -31,9 +31,10 @@ class VendorController extends Controller
     {
         $vendors = $this->getVendors();
         $priceLevels = $this->getPriceLevels();
+
         return inertia('Vendors/Create', [
             'vendors' => $vendors,
-            'priceLevels' => $priceLevels
+            'priceLevels' => $priceLevels,
         ]);
     }
 
@@ -51,7 +52,7 @@ class VendorController extends Controller
 
         $this->updateMailingAddress($vendor, $request);
 
-        return redirect(route('vendors.show', $vendor->id))->banner('Successfully saved new vendor.');;
+        return redirect(route('vendors.show', $vendor->id))->banner('Successfully saved new vendor.');
     }
 
     /**
@@ -72,7 +73,7 @@ class VendorController extends Controller
             'vendor' => $vendor,
             'vendors' => $vendors,
             'priceLevels' => $priceLevels,
-            'priceLevel' => $priceLevel
+            'priceLevel' => $priceLevel,
         ]);
     }
 
@@ -85,6 +86,7 @@ class VendorController extends Controller
     public function edit(Vendor $vendor)
     {
         Gate::authorize('update', $vendor);
+
         return redirect(route('vendors.show', $vendor->id));
     }
 
@@ -107,7 +109,7 @@ class VendorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  $vendorId
+     * @param    $vendorId
      * @return \Illuminate\Http\Response
      */
     public function destroy(Vendor $vendor)
@@ -116,6 +118,7 @@ class VendorController extends Controller
         $vendor->delete();
         session()->flash('flash.banner', 'The vendor was deleted');
         session()->flash('flash.bannerStyle', 'danger');
+
         return redirect(route('vendors.index'));
     }
 
@@ -137,7 +140,7 @@ class VendorController extends Controller
                     'mailing_address' => $request->address,
                     'mailing_city' => $request->city,
                     'mailing_state' => $request->state,
-                    'mailing_zip' => $request->zip
+                    'mailing_zip' => $request->zip,
                 ]
             );
         }

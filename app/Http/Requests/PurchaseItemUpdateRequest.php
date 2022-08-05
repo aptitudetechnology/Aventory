@@ -31,7 +31,7 @@ class PurchaseItemUpdateRequest extends FormRequest
             'quantity_ordered' => ['required', 'integer'],
             'quantity_confirmed' => ['required', 'integer'],
             'received' => ['boolean'],
-            'ready_date' => ['required', 'date']
+            'ready_date' => ['required', 'date'],
         ];
     }
 }

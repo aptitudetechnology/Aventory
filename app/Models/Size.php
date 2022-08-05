@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
  * @property-read int|null $products_count
  * @property-read \App\Models\Team $team
+ *
  * @method static \Database\Factories\SizeFactory factory(...$parameters)
  * @method static Builder|Size newModelQuery()
  * @method static Builder|Size newQuery()
@@ -57,6 +58,7 @@ class Size extends Model
             $builder->orderBy('sort_num', 'asc');
         });
     }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -65,7 +67,7 @@ class Size extends Model
     protected $fillable = [
         'name',
         'next_size_id',
-        'sort_num'
+        'sort_num',
     ];
 
     /**
@@ -76,7 +78,7 @@ class Size extends Model
     protected $casts = [
         'id' => 'integer',
         'next_size_id' => 'integer',
-        'sort_num' => 'integer'
+        'sort_num' => 'integer',
     ];
 
     public function team()

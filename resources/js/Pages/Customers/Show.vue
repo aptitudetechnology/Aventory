@@ -20,8 +20,8 @@
 
 <script>
 import CustomersLayout from "./CustomersLayout.vue";
-import UpdateCustomerForm from "@/Pages/Customers/UpdateCustomerForm";
-import ButtonLink from "@/Components/Links/ButtonLink";
+import UpdateCustomerForm from "@/Pages/Customers/UpdateCustomerForm.vue";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
 import DeleteCustomerForm from "./DeleteCustomerForm.vue";
 import ContactAside from "../Contacts/ContactAside.vue";
 export default {

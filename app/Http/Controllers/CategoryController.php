@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class CategoryController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -22,7 +22,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -33,7 +33,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\CategoryStoreRequest $request
+     * @param  \App\Http\Requests\CategoryStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryStoreRequest $request)
@@ -46,8 +46,8 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Category $category
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Category $category)
@@ -60,8 +60,8 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Category $category
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Category $category)
@@ -70,8 +70,8 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\CategoryUpdateRequest $request
-     * @param \App\Models\Category $category
+     * @param  \App\Http\Requests\CategoryUpdateRequest  $request
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryUpdateRequest $request, Category $category)
@@ -84,8 +84,8 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Category $category
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Category $category)

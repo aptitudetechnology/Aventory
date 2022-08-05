@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\PlaceStoreRequest;
 use App\Http\Requests\PlaceUpdateRequest;
 use App\Models\Block;
 use App\Models\Place;
-use App\Models\Plant;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class PlaceController extends Controller
 {
     public function index(Request $request, Block $block)
     {
-        $places = cache()->rememberForever($block->id . 'places', function () use($block) {
+        $places = cache()->rememberForever($block->id.'places', function () use ($block) {
             return $block->places;
-        }); 
+        });
 
         return response()->json($places)->header('Cache-Control', 'public, max_age=60');
     }
@@ -33,13 +32,13 @@ class PlaceController extends Controller
                 Place::firstOrCreate([
                     'block_id' => $request->block_id,
                     'row_number' => $rowNumber,
-                    'plant_number' => $plant
+                    'plant_number' => $plant,
                 ]);
             }
             $rowNumber += 1;
         }
 
-        cache()->forget($block->id . 'places');
+        cache()->forget($block->id.'places');
 
         return redirect()->back()->banner('Added places to block!');
     }
@@ -55,14 +54,14 @@ class PlaceController extends Controller
             Place::firstOrCreate([
                 'block_id' => $request->block_id,
                 'row_number' => $request->row_number,
-                'plant_number' => $plant
+                'plant_number' => $plant,
             ]);
         }
 
         if ($currentPlaces->count() > $request->num_places) {
             $currentPlaces->where('plant_number', '>', $request->num_places)->each->delete();
         }
-        cache()->forget($block->id . 'places');
+        cache()->forget($block->id.'places');
 
         return redirect()->back()->banner('Updated row');
     }

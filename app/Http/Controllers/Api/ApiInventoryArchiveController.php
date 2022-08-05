@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InventoryArchiveStoreRequest;
-use Illuminate\Http\Request;
 use App\Models\InventoryArchive;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ApiInventoryArchiveController extends Controller
 {
@@ -60,6 +60,7 @@ class ApiInventoryArchiveController extends Controller
                 $orderItem->save();
             }
         });
+
         return back()->banner('Inventory archive updated successfully.');
     }
 

@@ -48,14 +48,14 @@
 </template>
 
 <script>
-import JetDangerButton from "@/Jetstream/DangerButton";
-import JetDialogModal from "@/Jetstream/DialogModal";
-import JetInput from "@/Jetstream/Input";
-import JetInputError from "@/Jetstream/InputError";
-import JetLabel from "@/Jetstream/Label";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton";
+import JetDangerButton from "@/Jetstream/DangerButton.vue";
+import JetDialogModal from "@/Jetstream/DialogModal.vue";
+import JetInput from "@/Jetstream/Input.vue";
+import JetInputError from "@/Jetstream/InputError.vue";
+import JetLabel from "@/Jetstream/Label.vue";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
 
-import RemoveButton from "@Components/Buttons/RemoveButton";
+import RemoveButton from "@/Components/Buttons/RemoveButton.vue";
 
 export default {
     components: {

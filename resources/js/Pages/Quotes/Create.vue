@@ -7,7 +7,7 @@
 <script>
 import QuotesLayout from "./QuotesLayout.vue";
 
-import OrderCreate from "@/Pages/Orders/Components/OrderCreate";
+import OrderCreate from "@/Pages/Orders/Components/OrderCreate.vue";
 export default {
     components: {
         QuotesLayout,

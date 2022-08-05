@@ -61,5 +61,5 @@ return [
     */
 
     'profile_photo_disk' => 'public',
-    'team_logo_disk' => 'public'
+    'team_logo_disk' => 'public',
 ];

@@ -9,7 +9,7 @@ class InventoryArchiveObserver
     /**
      * When creating an inventory archive, update the inventory quantity.
      *
-     * @param InventoryArchive $inventoryArchive
+     * @param  InventoryArchive  $inventoryArchive
      * @return void
      */
     public function created(InventoryArchive $inventoryArchive)
@@ -20,7 +20,7 @@ class InventoryArchiveObserver
     /**
      * When Updating an Inventory Archive, update the Inventory.
      *
-     * @param InventoryArchive $inventoryArchive
+     * @param  InventoryArchive  $inventoryArchive
      * @return void
      */
     public function updating(InventoryArchive $inventoryArchive)
@@ -30,10 +30,9 @@ class InventoryArchiveObserver
     }
 
     /**
-     * 
      * When deleting an archive, we add the inventory back to inventory.
-     * 
-     * @param InventoryArchive $inventoryArchive
+     *
+     * @param  InventoryArchive  $inventoryArchive
      * @return void
      */
     public function deleting(InventoryArchive $inventoryArchive)
