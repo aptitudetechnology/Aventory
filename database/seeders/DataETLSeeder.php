@@ -537,6 +537,7 @@ class DataETLSeeder extends Seeder
         echo "Processing ETL of inventories...\n";
 
         $this->do_ETL_individual_inventory();
+        $this->do_ETL_block_inventory();
 
         echo "Finished ETL of inventories successfully!!!\n\n";
     }
@@ -591,6 +592,69 @@ class DataETLSeeder extends Seeder
 
         $this->bulk_insert(Inventory::class, $new_inventories, 'inventories_id_seq', max($last_ii_id, $last_ii_archive_id) + 1);
         echo "Finished ETL of individual inventories successfully!!!\n\n";
+    }
+
+    public function do_ETL_block_inventory()
+    {
+        echo "Processing ETL of block inventories...\n";
+        $last_ii_id = $this->sqlsrv_conn->table('TblInventory')->max('InventoryID');
+        $last_ii_archive_id = $this->sqlsrv_conn->table('TblInventoryArchive')->max('InventoryID');
+        $last_bi_id = $this->sqlsrv_conn->table('TblBlockInventory')->max('BlockInventoryID');
+        $last_location_id = $this->sqlsrv_conn->table('TblLocations')->max('LocationID');
+
+        $last_inventory_id = max($last_ii_id, $last_ii_archive_id);
+        $old_block_inventories = $this->sqlsrv_conn->table('TblBlockInventory')->get()->toArray();
+        $purchase_item_ids = array();
+        $new_inventories = array();
+
+        foreach($old_block_inventories as $bi) {
+            $user_id = $bi->EmployeeID;
+            $vendor_id = $bi->SupplierID;
+
+            if (!array_key_exists($user_id, $purchase_item_ids)) {
+                $purchase_item_ids[$user_id] = array();
+            }
+            if (!array_key_exists($vendor_id, $purchase_item_ids[$user_id])) {
+                $purchase = Purchase::create([
+                    'date' => $bi->DateAdded,
+                    'vendor_id' => $vendor_id,
+                    'user_id' => $user_id,
+                    'team_id' => $this->team->id,
+                    'order_number' => 0 // okay with random number
+                ]);
+
+                $purchase_item = PurchaseItem::create([
+                    'purchase_id' => $purchase->id,
+                    'product_id' => $bi->ProductID,
+                    'size_id' => $bi->SizeID,
+                    'unit_price' => 0,
+                    'quantity_ordered' => 0,
+                    'quantity_confirmed' => 0,
+                    'received' => 1,
+                    'printed' => 0,
+                ]);
+
+                $purchase_item_ids[$user_id][$vendor_id] = $purchase_item->id;
+            }
+
+            array_push($new_inventories, [
+                'id' => $bi->BlockInventoryID + $last_inventory_id,
+                'team_id' => $this->team->id,
+                'purchase_item_id' => $purchase_item_ids[$user_id][$vendor_id],
+                'product_id' => $bi->ProductID,
+                'original_size_id' => $bi->SizeID,
+                'size_id' => $bi->SizeID,
+                'ready_date' => $bi->DateAdded,
+                'quantity' => $bi->InventoryCount,
+                'type' => 'group',
+                'block_id' => $bi->BlockID + $last_location_id,
+                'place_id' => null,
+                'nursery_location_id' => 1, //Garden Gate West
+            ]);
+        }
+
+        $this->bulk_insert(Inventory::class, $new_inventories, 'inventories_id_seq', $last_inventory_id + $last_bi_id + 1);
+        echo "Finished ETL of block inventories successfully!!!\n\n";
     }
 
     public function do_ETL_inventory_archive()
