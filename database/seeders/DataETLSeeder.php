@@ -660,6 +660,16 @@ class DataETLSeeder extends Seeder
     public function do_ETL_inventory_archive()
     {
         echo "Processing ETL of inventory_archive...\n";
+
+        $this->do_ETL_individual_inventory_archive();
+
+        echo "Finished ETL of inventory_archive successfully!!!\n\n";
+    }
+
+    public function do_ETL_individual_inventory_archive()
+    {
+        echo "Processing ETL of individual inventory_archive...\n";
+
         $old_inventory_archive = $this->sqlsrv_conn->table('TblInventoryArchive')->get()->toArray();
         $new_inventory_archive = array_map(function($ia) {
             return [
