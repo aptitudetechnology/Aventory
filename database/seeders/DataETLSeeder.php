@@ -671,7 +671,11 @@ class DataETLSeeder extends Seeder
     {
         echo "Processing ETL of individual inventory_archive...\n";
 
-        $old_inventory_archive = $this->sqlsrv_conn->table('TblInventoryArchive')->get()->toArray();
+        $old_inventory_archive = $this->sqlsrv_conn->table('TblInventoryArchive')
+            ->whereNotIn('OrderItemID', [465, 4637])
+            ->get()
+            ->toArray();
+
         $new_inventory_archive = array_map(function($ia) {
             return [
                 'order_item_id' => $ia->OrderItemID,
@@ -682,7 +686,7 @@ class DataETLSeeder extends Seeder
                 'removed_by_id' => $ia->RemovedByEmployeeID,
                 'created_at' => $ia->DateRemoved,
             ];
-        }, array_slice($old_inventory_archive, 0, 10));
+        }, $old_inventory_archive);
 
         $this->bulk_insert(InventoryArchive::class, $new_inventory_archive);
         echo "Finished ETL of individual inventory_archive successfully!!!\n\n";
