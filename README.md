@@ -126,7 +126,7 @@ You can update model block docs by running the following command:
 php artisan ide-helper:models
 ```
 
-## Run seed script for importing data
+## Run the seed command to migrate data
 
 In `.env` file, set up the configuration of MS SQL server from which data can be imported as shown below.
 
@@ -138,10 +138,14 @@ DB_SQLSRV_USERNAME=username
 DB_SQLSRV_PASSWORD=password
 ```
 
-Run the seed script to import data from MS SQL server to PostgreSQL server.
+Migrate your custom data by running the seed command and select the data to import as shown below.
 
 ```
-sail artisan db:seed --class=DataETLSeeder
+sail artisan migrate:data
+
+Which customer data do you want to migrate? [GardenGateNursery]:
+    [0] GardenGateNursery
+ > 0
 ```
 
 ## Technologies
