@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Customers;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -57,7 +57,7 @@ class GardenGateNurseryDataSeeder extends Seeder
 
         $this->migrateUsers();
 
-        // // Create Garden Gate Nursery team
+        // Create Garden Gate Nursery team
         $this->team = $this->createGardenGateNurseryTeam();
         $this->createNurseryLocations();
 
