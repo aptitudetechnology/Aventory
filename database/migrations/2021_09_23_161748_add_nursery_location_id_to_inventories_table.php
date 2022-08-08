@@ -26,7 +26,7 @@ class AddNurseryLocationIdToInventoriesTable extends Migration
     public function down()
     {
         Schema::table('inventories', function (Blueprint $table) {
-            $table->dropConstrainedForeignId(['nursery_location_id']);
+            $table->dropConstrainedForeignId('nursery_location_id');
         });
     }
 }

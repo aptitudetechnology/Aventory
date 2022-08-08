@@ -26,7 +26,7 @@ class DropHideCustomerColumnFromCustomers extends Migration
     public function down()
     {
         Schema::table('customers', function (Blueprint $table) {
-            $table->boolean('hide_customer');
+            $table->boolean('hide_customer')->default(true);
         });
     }
 }
