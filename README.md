@@ -143,7 +143,13 @@ Migrate your custom data by running the seed command and select the data to impo
 ```
 sail artisan migrate:data
 
-Which customer data do you want to migrate? [GardenGateNursery]:
+ Do you want to backup current DB? (yes/no) [yes]:
+ > yes
+
+The backup has been started
+The backup has been proceed successfully. => app/backups/backup_20220808.sql
+
+ Which customer data do you want to migrate? [GardenGateNursery]:
     [0] GardenGateNursery
  > 0
 ```
