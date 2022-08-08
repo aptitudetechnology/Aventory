@@ -18,7 +18,7 @@ class MigrateData extends Command
      *
      * @var string
      */
-    protected $description = 'Migrate data from other database';
+    protected $description = 'Migrate data from other data sources';
 
     /**
      * Execute the console command.
