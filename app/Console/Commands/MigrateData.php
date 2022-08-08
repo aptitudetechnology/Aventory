@@ -27,6 +27,10 @@ class MigrateData extends Command
      */
     public function handle()
     {
+        if ($this->confirm('Do you want to backup current DB?', true)) {
+            $this->call('db:backup');
+        }
+
         $namespace = $this->getMigrateNamespace();
         $customers = $this->getCustomers();
         $name = $this->choice('Which customer data do you want to migrate?', array_keys($customers), 0);
