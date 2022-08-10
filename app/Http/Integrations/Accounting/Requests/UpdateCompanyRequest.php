@@ -5,9 +5,12 @@ namespace App\Http\Integrations\Accounting\Requests;
 use App\Http\Integrations\Accounting\CodatConnector;
 use Sammyjo20\Saloon\Constants\Saloon;
 use Sammyjo20\Saloon\Http\SaloonRequest;
+use Sammyjo20\Saloon\Traits\Plugins\HasJsonBody;
 
-class DeleteCompanyRequest extends SaloonRequest
+class UpdateCompanyRequest extends SaloonRequest
 {
+    use HasJsonBody;
+    
     /**
      * The connector class.
      *
@@ -20,7 +23,7 @@ class DeleteCompanyRequest extends SaloonRequest
      *
      * @var string|null
      */
-    protected ?string $method = Saloon::DELETE;
+    protected ?string $method = Saloon::PUT;
 
     public function __construct(
         public string $companyId,
