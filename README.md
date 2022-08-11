@@ -121,6 +121,34 @@ You can update model block docs by running the following command:
 php artisan ide-helper:models
 ```
 
+## Run the seed command to migrate data
+
+In `.env` file, set up the configuration of MS SQL server from which data can be imported as shown below.
+
+```
+DB_SQLSRV_HOST=host.docker.internal
+DB_SQLSRV_PORT=1433
+DB_SQLSRV_DATABASE=TestDB
+DB_SQLSRV_USERNAME=username
+DB_SQLSRV_PASSWORD=password
+```
+
+Migrate your custom data by running the seed command and select the data to import as shown below.
+
+```
+sail artisan migrate:data
+
+ Do you want to backup current DB? (yes/no) [yes]:
+ > yes
+
+The backup has been started
+The backup has been proceed successfully. => app/backups/backup_20220808.sql
+
+ Which customer data do you want to migrate? [GardenGateNursery]:
+    [0] GardenGateNursery
+ > 0
+```
+
 ## Technologies
 
 - MySQL
