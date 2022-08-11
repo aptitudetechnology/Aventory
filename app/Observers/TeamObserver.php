@@ -2,9 +2,9 @@
 
 namespace App\Observers;
 
-use App\Http\Integrations\Accounting\Requests\CreateCompanyRequest;
-use App\Http\Integrations\Accounting\Requests\DeleteCompanyRequest;
-use App\Http\Integrations\Accounting\Requests\UpdateCompanyRequest;
+use App\Http\Integrations\Companies\Requests\CreateCompanyRequest;
+use App\Http\Integrations\Companies\Requests\DeleteCompanyRequest;
+use App\Http\Integrations\Companies\Requests\UpdateCompanyRequest;
 use App\Models\Team;
 
 class TeamObserver

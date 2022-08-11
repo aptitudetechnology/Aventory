@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Integrations\Accounting\Requests;
+namespace App\Http\Integrations\Companies\Requests;
 
-use App\Http\Integrations\Accounting\CodatConnector;
+use App\Http\Integrations\Companies\CodatConnector;
 use Sammyjo20\Saloon\Constants\Saloon;
 use Sammyjo20\Saloon\Http\SaloonRequest;
 use Sammyjo20\Saloon\Traits\Plugins\HasJsonBody;
 
-class DisconnectRequest extends SaloonRequest
+class UpdateCompanyRequest extends SaloonRequest
 {
     use HasJsonBody;
 
@@ -23,11 +23,10 @@ class DisconnectRequest extends SaloonRequest
      *
      * @var string|null
      */
-    protected ?string $method = Saloon::PATCH;
+    protected ?string $method = Saloon::PUT;
 
     public function __construct(
         public string $companyId,
-        public string $connectionId
     ) {
     }
 
@@ -38,6 +37,6 @@ class DisconnectRequest extends SaloonRequest
      */
     public function defineEndpoint(): string
     {
-        return '/companies/' . $this->companyId . '/connections/' . $this->connectionId;
+        return $this->companyId;
     }
 }

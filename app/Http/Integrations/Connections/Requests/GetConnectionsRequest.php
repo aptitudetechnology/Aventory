@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Integrations\Accounting\Requests;
+namespace App\Http\Integrations\Connections\Requests;
 
-use App\Http\Integrations\Accounting\CodatConnector;
+use App\Http\Integrations\Connections\CodatConnector;
 use Sammyjo20\Saloon\Constants\Saloon;
 use Sammyjo20\Saloon\Http\SaloonRequest;
 use Sammyjo20\Saloon\Traits\Plugins\HasJsonBody;
 
-class CreateCompanyRequest extends SaloonRequest
+class GetConnectionsRequest extends SaloonRequest
 {
     use HasJsonBody;
 
@@ -23,7 +23,12 @@ class CreateCompanyRequest extends SaloonRequest
      *
      * @var string|null
      */
-    protected ?string $method = Saloon::POST;
+    protected ?string $method = Saloon::GET;
+
+    public function __construct(
+        public string $companyId
+    ) {
+    }
 
     /**
      * The endpoint of the request.
@@ -32,6 +37,6 @@ class CreateCompanyRequest extends SaloonRequest
      */
     public function defineEndpoint(): string
     {
-        return '/companies';
+        return '/companies/' . $this->companyId . '/connections';
     }
 }

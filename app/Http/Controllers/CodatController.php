@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Integrations\Accounting\Requests\DisconnectRequest;
-use App\Http\Integrations\Accounting\Requests\GetConnectionsRequest;
+use App\Http\Integrations\Connections\Requests\DisconnectRequest;
+use App\Http\Integrations\Connections\Requests\GetConnectionsRequest;
 use Arr;
 use Illuminate\Support\Facades\Auth;
 

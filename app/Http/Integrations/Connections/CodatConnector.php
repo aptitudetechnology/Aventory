@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Integrations\Accounting;
+namespace App\Http\Integrations\Connections;
 
 use Sammyjo20\Saloon\Http\SaloonConnector;
 use Sammyjo20\Saloon\Traits\Plugins\AcceptsJson;

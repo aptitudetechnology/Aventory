@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Integrations\Accounting\Requests;
+namespace App\Http\Integrations\Companies\Requests;
 
-use App\Http\Integrations\Accounting\CodatConnector;
+use App\Http\Integrations\Companies\CodatConnector;
 use Sammyjo20\Saloon\Constants\Saloon;
 use Sammyjo20\Saloon\Http\SaloonRequest;
 
@@ -34,6 +34,6 @@ class DeleteCompanyRequest extends SaloonRequest
      */
     public function defineEndpoint(): string
     {
-        return '/companies/' . $this->companyId;
+        return $this->companyId;
     }
 }

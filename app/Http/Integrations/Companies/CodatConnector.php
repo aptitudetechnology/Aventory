@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Integrations\Accounting;
+namespace App\Http\Integrations\Companies;
 
 use Sammyjo20\Saloon\Http\SaloonConnector;
 use Sammyjo20\Saloon\Traits\Plugins\AcceptsJson;
@@ -16,7 +16,7 @@ class CodatConnector extends SaloonConnector
      */
     public function defineBaseUrl(): string
     {
-        return config('app.codat_url');
+        return config('app.codat_url') . '/companies';
     }
 
     /**
