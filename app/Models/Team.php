@@ -84,6 +84,7 @@ class Team extends JetstreamTeam
      */
     protected $casts = [
         'personal_team' => 'boolean',
+        'connections' => 'array'
     ];
 
     /**
@@ -103,13 +104,9 @@ class Team extends JetstreamTeam
      */
     protected $appends = [
         'logo_url',
+        'codat_company_link'
     ];
 
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
     protected $dispatchesEvents = [
         'created' => TeamCreated::class,
         'updated' => TeamUpdated::class,
@@ -226,7 +223,7 @@ class Team extends JetstreamTeam
             return mb_substr($segment, 0, 1);
         })->join(' '));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF';
     }
 
     public function updateLogo(UploadedFile $logo)
@@ -269,5 +266,10 @@ class Team extends JetstreamTeam
     protected function logoDisk()
     {
         return config('jetstream.team_logo_disk', 'public');
+    }
+
+    public function getCodatCompanyLinkAttribute()
+    {
+        return "https://link.codat.io/company/" . $this->codat_company_id;
     }
 }

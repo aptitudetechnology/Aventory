@@ -37,10 +37,12 @@ class TeamObserver
 
     public function deleted(Team $team)
     {
-        $request = new DeleteCompanyRequest($team->codat_company_id);
-        $request->send();
+        if ($team->codat_company_id) {
+            $request = new DeleteCompanyRequest($team->codat_company_id);
+            $request->send();
 
-        $team->codat_company_id = null;
-        $team->save();
+            $team->codat_company_id = null;
+            $team->save();
+        }
     }
 }

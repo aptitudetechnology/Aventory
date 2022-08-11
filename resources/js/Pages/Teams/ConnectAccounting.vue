@@ -3,28 +3,48 @@
         <template #title> Connect your accounting system </template>
 
         <template #description>
-            Sync your orders and quotes with your accounting platform of choice, including QuickBooks Online or QuickBooks Desktop. 
+            Sync your orders and quotes with your accounting platform of choice,
+            including QuickBooks Online or QuickBooks Desktop.
         </template>
 
-        <jet-button
-            type="button"
-            :disabled="isLoading"
-            @click="connect"
-            v-if="!connected"
-        >
-            <loader :loading="isLoading" />
-            Connect now
-        </jet-button>
+        <a :href="team.codat_company_link" class="btn"> Connect now </a>
 
-        <jet-button
-            type="button"
-            :disabled="isLoading"
-            @click="isDisconnectModalOpen = true"
-            v-if="connected"
+        <ul
+            class="w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white mt-5"
         >
-            <loader :loading="isLoading" />
-            Disconnect now
-        </jet-button>
+            <li
+                class="py-4 px-4 w-full border-b border-gray-200 dark:border-gray-600"
+                v-for="connection in accountingConnections"
+            >
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <span
+                            class="inline-flex justify-center items-center w-5 h-5 text-xs font-bold text-white rounded-full border-2 border-white dark:border-gray-900 mr-5"
+                            :class="statusClass(connection)"
+                            :title="connection.status"
+                        ></span>
+                        {{ connection.platformName }}
+                    </div>
+                    <a
+                        :href="connection.linkUrl"
+                        v-if="connection.status !== 'Linked'"
+                        class="btn btn-sm"
+                    >
+                        Connect
+                    </a>
+                    <button
+                        v-else-if="connection.status === 'Linked'"
+                        class="btn btn-error btn-sm"
+                        @click="
+                            isDisconnectModalOpen = true;
+                            currentConnectionId = connection.id;
+                        "
+                    >
+                        Disconnect
+                    </button>
+                </div>
+            </li>
+        </ul>
     </jet-section>
 
     <jet-confirmation-modal
@@ -51,49 +71,35 @@
 
 <script setup>
 import JetSection from "@/Jetstream/Section.vue";
-import JetButton from "@/Jetstream/Button.vue";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue";
 import JetDangerButton from "@/Jetstream/DangerButton.vue";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
-import Loader from "@/Components/Loader.vue";
-import axios from "axios";
 import { ref } from "vue";
+import { Inertia } from "@inertiajs/inertia";
 
-const isLoading = ref(false);
 const isDisconnectModalOpen = ref(false);
+const currentConnectionId = ref("");
 const props = defineProps(["team"]);
-const connected = ref(!!props.team.codat_company_id);
+const accountingConnections = props.team.connections?.filter(
+    (c) => c.sourceType === "Accounting"
+);
 
-function connect() {
-    isLoading.value = true;
-    const { team } = props;
-
-    axios
-        .post(route("teams.connect", { team }))
-        .then(({ data: { redirectUrl } }) => {
-            let url = new URL(redirectUrl);
-            url.searchParams.append("teamId", team.id);
-            window.location.href = url;
-
-            connected.value = true;
-        })
-        .finally(() => {
-            isLoading.value = false;
-        });
+function statusClass(connection) {
+    if (connection.status === "Deauthorized") {
+        return "bg-error";
+    } else if (connection.status === "Linked") {
+        return "bg-success";
+    } else if (connection.status === "Unlinked") {
+        return "bg-primary";
+    } else if (connection.status === "PendingAuth") {
+        return "bg-warning";
+    }
 }
 
 function disconnect() {
-    isLoading.value = true;
     isDisconnectModalOpen.value = false;
-    const { team } = props;
-
-    axios
-        .delete(route("teams.disconnect", { team }))
-        .then(() => {
-            connected.value = false;
-        })
-        .finally(() => {
-            isLoading.value = false;
-        });
+    Inertia.patch(
+        route("codat.disconnect", { connectionId: currentConnectionId.value })
+    );
 }
 </script>
