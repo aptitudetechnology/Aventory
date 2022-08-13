@@ -68,10 +68,6 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $with = ['plant', 'category', 'prices'];
-
-    protected $appends = ['base_prices'];
-
     /**
      * The attributes that are mass assignable.
      *
