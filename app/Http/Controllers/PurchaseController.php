@@ -37,6 +37,7 @@ class PurchaseController extends Controller
             ->paginate(10)->withQueryString();
 
 
+
         $filters = $request->only(['search', 'orderBy', 'orderByDirection']);
 
         return inertia('Purchases/Index', compact('purchases', 'filters'));

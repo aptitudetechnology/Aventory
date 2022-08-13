@@ -22,6 +22,8 @@ class ViewInventoryController extends Controller
         $inventory = $product->inventory;
         $priceLevels = $request->user()->price_levels;
 
+        $product->append('base_prices');
+
         return inertia('View/Show', compact('products', 'product', 'productQuantities', 'inventorySizes', 'inventory', 'priceLevels'));
     }
 
