@@ -17,14 +17,13 @@ class ViewInventoryController extends Controller
     public function show(Request $request, Product $product)
     {
         $productQuantities = $product->getAllSizeQuantities();
-        $products = $this->getProducts();
         $inventorySizes = $product->getAllInventorySizes();
         $inventory = $product->inventory;
         $priceLevels = $request->user()->price_levels;
 
         $product->append('base_prices');
 
-        return inertia('View/Show', compact('products', 'product', 'productQuantities', 'inventorySizes', 'inventory', 'priceLevels'));
+        return inertia('View/Show', compact('product', 'productQuantities', 'inventorySizes', 'inventory', 'priceLevels'));
     }
 
     protected function getProducts()

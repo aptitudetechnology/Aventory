@@ -1,12 +1,12 @@
 <template>
-    <view-layout> </view-layout>
+    <ViewLayout>
+        <template #asside>
+            <ViewAside></ViewAside>
+        </template>
+    </ViewLayout>
 </template>
 
-<script>
+<script setup>
 import ViewLayout from "./ViewLayout.vue";
-export default {
-    components: {
-        ViewLayout,
-    },
-};
+import ViewAside from "@/Pages/View/ViewAside.vue";
 </script>
