@@ -56,6 +56,8 @@ class CategoryController extends Controller
         $categories = $this->getCategories();
         $sizes = $request->user()->currentTeam->sizes;
 
+        // load the category prices.
+        $category->load('prices');
         return inertia('Categories/Show', compact('category', 'categories', 'sizes'));
     }
 
