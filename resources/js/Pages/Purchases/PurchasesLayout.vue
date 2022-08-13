@@ -1,8 +1,8 @@
 <template>
     <app-layout>
         <div class="flex-1 relative z-0 flex overflow-hidden">
-            <main-area :dontShowOnMobile="isIndex">
-                <nav v-if="!isIndex" aria-label="Breadcrumb" class="xl:hidden">
+            <main-area>
+                <nav v-if="!isIndex" aria-label="Breadcrumb">
                     <div class="px-4 md:pb-2">
                         <back-link
                             v-if="route().current('purchases.*')"
@@ -16,8 +16,6 @@
                     <slot></slot>
                 </div>
             </main-area>
-            <!-- Start secondary column (hidden on smaller screens) -->
-            <purchases-aside :purchases="purchases" />
         </div>
     </app-layout>
 </template>
@@ -28,19 +26,13 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import BackLink from "@/Components/Links/BackLink.vue";
 import MainArea from "@/Components/MainArea.vue";
 
-import PurchasesAside from "./Components/PurchasesAside.vue";
-
 export default {
     components: {
-        PurchasesAside,
         AppLayout,
         BackLink,
         MainArea,
     },
     computed: {
-        purchases() {
-            return this.$page.props.purchases;
-        },
         isIndex() {
             return (
                 route().current("purchases.index") ||
