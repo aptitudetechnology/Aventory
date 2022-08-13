@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PurchaseStoreRequest;
 use App\Http\Requests\PurchaseUpdateRequest;
 use App\Models\Purchase;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,9 +17,29 @@ class PurchaseController extends Controller
      */
     public function index(Request $request)
     {
-        $purchases = $this->getPurchases();
+        Gate::authorize('viewAny', Purchase::class);
+        $purchases = auth()->user()->currentTeam->purchases()
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('id', $request->search)->orWhereHas('vendor', function ($query) use ($request) {
+                    $query->where('name', 'like', "%{$request->search}%");
+                });
+            })
+            ->when($request->orderBy, function ($query) use ($request) {
+                if ($request->orderBy == 'vendor') {
+                    $query->addSelect(['vendor_name' => Vendor::select('name')
+                        ->whereColumn('id', 'purchases.vendor_id'),])->orderBy('vendor_name', $request->orderByDirection);
+                } else {
+                    $query->orderBy($request->orderBy, $request->orderByDirection);
+                }
+            }, function ($query) {
+                $query->orderBy('id', 'desc');
+            })
+            ->paginate(10)->withQueryString();
 
-        return inertia('Purchases/Index', compact('purchases'));
+
+        $filters = $request->only(['search', 'orderBy', 'orderByDirection']);
+
+        return inertia('Purchases/Index', compact('purchases', 'filters'));
     }
 
     /**
