@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\UploadedFile;
@@ -84,7 +85,6 @@ class Team extends JetstreamTeam
      */
     protected $casts = [
         'personal_team' => 'boolean',
-        'connections' => 'array'
     ];
 
     /**
@@ -210,6 +210,13 @@ class Team extends JetstreamTeam
         return $this->logo_path
             ? Storage::disk($this->logoDisk())->url($this->logo_path)
             : $this->defaultLogoUrl();
+    }
+
+    protected function accountingConnected(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => !is_null($attributes['codat_accounting_connection_id'])
+        );
     }
 
     /**

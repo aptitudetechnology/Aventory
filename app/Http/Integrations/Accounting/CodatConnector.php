@@ -4,10 +4,12 @@ namespace App\Http\Integrations\Accounting;
 
 use Sammyjo20\Saloon\Http\SaloonConnector;
 use Sammyjo20\Saloon\Traits\Plugins\AcceptsJson;
+use Sammyjo20\Saloon\Traits\Plugins\AlwaysThrowsOnErrors;
 
 class CodatConnector extends SaloonConnector
 {
     use AcceptsJson;
+    use AlwaysThrowsOnErrors;
 
     /**
      * The Base URL of the API.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Integrations\Connections;
+namespace App\Http\Integrations\DataPush;
 
 use Sammyjo20\Saloon\Http\SaloonConnector;
 use Sammyjo20\Saloon\Traits\Plugins\AcceptsJson;
@@ -18,7 +18,7 @@ class CodatConnector extends SaloonConnector
      */
     public function defineBaseUrl(): string
     {
-        return config('app.codat_url');
+        return config('app.codat_url') . '/companies';
     }
 
     /**
@@ -42,7 +42,7 @@ class CodatConnector extends SaloonConnector
     public function defaultConfig(): array
     {
         return [
-            'timeout' => 30,
+            'timeout' => 30
         ];
     }
 }

@@ -101,7 +101,7 @@ class Customer extends Model
 
     public function getAddressAttribute()
     {
-        return $this->hasMailingAddress() ? $this->mailing_address.', '.$this->mailing_city.', '.$this->mailing_state.' '.$this->mailing_zip : null;
+        return $this->hasMailingAddress() ? $this->mailing_address . ', ' . $this->mailing_city . ', ' . $this->mailing_state . ' ' . $this->mailing_zip : null;
     }
 
     public function hasMailingAddress(): bool
@@ -127,5 +127,10 @@ class Customer extends Model
     public function quotes(): HasMany
     {
         return $this->hasMany(Quote::class);
+    }
+
+    public function codatPushOp()
+    {
+        return $this->morphOne(CodatPushOperation::class, 'pushable');
     }
 }

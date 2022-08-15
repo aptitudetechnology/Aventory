@@ -68,9 +68,16 @@
                                     class="absolute inset-0"
                                     aria-hidden="true"
                                 />
-                                <p class="text-sm text-gray-900">
-                                    {{ customer.name }}
-                                </p>
+                                <div class="flex justify-between items-center">
+                                    <p class="text-sm text-gray-900">
+                                        {{ customer.name }}
+                                    </p>
+                                    <span
+                                        class="inline-flex justify-center items-center w-3 h-3 text-xs font-bold text-white rounded-full border-2 border-white dark:border-gray-900"
+                                        :class="statusClass(customer)"
+                                        :title="customer.codat_push_status"
+                                    ></span>
+                                </div>
                                 <p
                                     v-if="customer.state"
                                     class="text-sm text-gray-500 truncate"
@@ -142,6 +149,17 @@ export default {
                     return false;
                 }
             });
+        },
+        statusClass(customer) {
+            if (customer.codat_push_status === "Pending") {
+                return "bg-warning";
+            } else if (customer.codat_push_status === "Success") {
+                return "bg-success";
+            } else if (customer.codat_push_status === "Failed") {
+                return "bg-error";
+            } else {
+                return "bg-primary";
+            }
         },
     },
 };

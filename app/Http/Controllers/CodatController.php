@@ -13,10 +13,15 @@ class CodatController extends Controller
     {
         $team = Auth::user()->currentTeam;
 
-        $request = new GetConnectionsRequest($team->codat_company_id);
+        $request = new GetConnectionsRequest(companyId: $team->codat_company_id);
         $response = $request->send()->json();
 
-        $team->connections = $response['results'];
+        $linkedAccountingConnection = Arr::first($response['connections'], function ($connection) {
+            return $connection['status'] === 'Linked' && $connection['sourceType'] === 'Accounting';
+        });
+
+        $team->codat_accounting_connection_id = $linkedAccountingConnection ? $linkedAccountingConnection['id'] : null;
+        $team->codat_accounting_platform_name = $linkedAccountingConnection ? $linkedAccountingConnection['platFormName'] : null;
         $team->save();
 
         return redirect()->route('teams.show', $team);
@@ -26,15 +31,12 @@ class CodatController extends Controller
     {
         $team = Auth::user()->currentTeam;
 
-        $request = new DisconnectRequest($team->codat_company_id, $connectionId);
+        $request = new DisconnectRequest(
+            companyId: $team->codat_company_id,
+            connectionId: $connectionId
+        );
         $request->setData(['status' => 'Unlinked']);
         $response = $request->send()->json();
-
-        $team->connections = Arr::map($team->connections, function ($connection) use ($response) {
-            return $connection['id'] === $response['id'] ? $response : $connection;
-        });
-
-        $team->save();
 
         return redirect()->route('teams.show', $team);
     }
