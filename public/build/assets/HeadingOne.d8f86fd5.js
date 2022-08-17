@@ -1,0 +1,1 @@
+import{_ as o,o as t,J as s,P as n}from"./app.9a96a844.js";const r={},a={class:"text-4xl font-bold"};function c(e,_){return t(),s("h1",a,[n(e.$slots,"default")])}var d=o(r,[["render",c]]);export{d as H};
