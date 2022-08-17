@@ -120,7 +120,7 @@ export default {
             type: Object,
         },
     },
-    items() {
+    data() {
         return {
             search: this.filters.search || "",
             orderBy: this.filters.orderBy || "",
@@ -159,7 +159,9 @@ export default {
             );
         },
         showPurchase(purchase) {
-            this.$inertia.get(route("purchases.show", purchase));
+            if (purchase) {
+                // this.$inertia.get(route("purchases.show", purchase));
+            }
         },
     },
 };
