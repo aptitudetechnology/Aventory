@@ -160,7 +160,7 @@ export default {
         },
         showPurchase(purchase) {
             if (purchase) {
-                // this.$inertia.get(route("purchases.show", purchase));
+                this.$inertia.get(route("purchases.show", purchase));
             }
         },
     },

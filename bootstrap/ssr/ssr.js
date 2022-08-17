@@ -35707,6 +35707,9 @@ const _sfc_main$_ = {
       );
     },
     showPurchase(purchase) {
+      if (purchase) {
+        this.$inertia.get(route("purchases.show", purchase));
+      }
     }
   }
 };
