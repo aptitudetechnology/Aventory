@@ -2,13 +2,16 @@
 
 namespace App\Observers;
 
-use App\Http\Integrations\Accounting\Requests\CreateCustomerRequest;
-use App\Http\Integrations\Accounting\Requests\UpdateCustomerRequest;
-use App\Models\CodatPushOperation;
 use App\Models\Customer;
+use App\Services\CodatAccountingService;
 
 class CustomerObserver
 {
+    public function __construct(
+        public CodatAccountingService $codatAccountingService
+    ) {
+    }
+
     /**
      * Handle the Customer "created" event.
      *
@@ -18,20 +21,7 @@ class CustomerObserver
     public function created(Customer $customer)
     {
         if ($customer->team->accounting_connected) {
-            $request = new CreateCustomerRequest(
-                companyId: $customer->team->codat_company_id,
-                connectionId: $customer->team->codat_accounting_connection_id
-            );
-            $request->setData(['customerName' => $customer->name, 'status' => 'Active']);
-            $response = $request->send()->json();
-
-            $customer->codat_push_status = $response['status'];
-            $customer->saveQuietly();
-
-            $pushOp = new CodatPushOperation();
-            $pushOp->id = $response['pushOperationKey'];
-            $pushOp->company_id = $response['companyId'];
-            $customer->codatPushOp()->save($pushOp);
+            $this->codatAccountingService->sendCreateCustomerRequest($customer);
         }
     }
 
@@ -44,21 +34,7 @@ class CustomerObserver
     public function updated(Customer $customer)
     {
         if ($customer->team->accounting_connected) {
-            $request = new UpdateCustomerRequest(
-                companyId: $customer->team->codat_company_id,
-                connectionId: $customer->team->codat_accounting_connection_id,
-                customerId: $customer->codat_record_id
-            );
-            $request->setData(['customerName' => $customer->name, 'status' => 'Active']);
-            $response = $request->send()->json();
-
-            $customer->codat_push_status = $response['status'];
-            $customer->saveQuietly();
-
-            $pushOp = new CodatPushOperation();
-            $pushOp->id = $response['pushOperationKey'];
-            $pushOp->company_id = $response['companyId'];
-            $customer->codatPushOp()->save($pushOp);
+            $this->codatAccountingService->sendUpdateCustomerRequest($customer);
         }
     }
 }

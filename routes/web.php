@@ -79,6 +79,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('customer-price-levels', CustomerPriceLevelController::class);
 
+    Route::patch('customers/{customer}/sync-with-accounting', [CustomerController::class, 'syncWithAccounting'])->name('customers.sync-with-accounting');
     Route::resource('customers', CustomerController::class);
     Route::get('customers/{customer}/contacts', [ApiContactsController::class, 'index'])->name('customers.contacts.index');
 

@@ -8,22 +8,19 @@
         <template v-slot:header>
             <jet-section-title>
                 <template #title>Customer Directory</template>
-                <template v-if="customersLength > 0" #description
-                    >Search {{ customersLength }}
-                    {{
-                        customersLength > 1 ? "Customers" : "Customer"
-                    }}</template
-                >
+                <template v-if="customersLength > 0" #description>
+                    Search {{ customersLength }}
+                    {{ customersLength > 1 ? "Customers" : "Customer" }}
+                </template>
 
-                <template #aside
-                    ><button-link :href="route('customers.create')"
-                        >New Customer</button-link
-                    ></template
-                >
+                <template #aside>
+                    <button-link :href="route('customers.create')">
+                        New Customer
+                    </button-link>
+                </template>
             </jet-section-title>
             <search-input
                 v-model="search"
-                @input="updateCustomers"
                 placeholder="Search by customer name or state."
             />
         </template>
@@ -123,19 +120,11 @@ export default {
         customers: Array,
     },
     computed: {
-        customersLength: function () {
-            return this.customers.length;
+        customersLength() {
+            return this.$page.props.length;
         },
-    },
-    data() {
-        return {
-            search: "",
-            filteredCustomers: this.customers,
-        };
-    },
-    methods: {
-        updateCustomers() {
-            this.filteredCustomers = this.customers.filter((customer) => {
+        filteredCustomers() {
+            return this.$page.props.customers.filter((customer) => {
                 if (
                     customer.name
                         .toLowerCase()
@@ -148,8 +137,15 @@ export default {
                 } else {
                     return false;
                 }
-            });
+            });;
         },
+    },
+    data() {
+        return {
+            search: "",
+        };
+    },
+    methods: {
         statusClass(customer) {
             if (customer.codat_push_status === "Pending") {
                 return "bg-warning";

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
+use App\Services\CodatAccountingService;
 use Illuminate\Support\Facades\Gate;
 
 class CustomerController extends Controller
@@ -147,5 +148,13 @@ class CustomerController extends Controller
                 ]
             );
         }
+    }
+
+    public function syncWithAccounting(CodatAccountingService $codatAccountingService, Customer $customer)
+    {
+        $codatAccountingService->sendCreateCustomerRequest($customer);
+        $customer->fresh();
+
+        return redirect(route('customers.show', $customer));
     }
 }

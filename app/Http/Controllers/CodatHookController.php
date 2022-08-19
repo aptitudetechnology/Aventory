@@ -23,6 +23,6 @@ class CodatHookController extends Controller
         $pushOp = CodatPushOperation::find($pushOperationId);
         $pushOp->pushable->codat_push_status = $status;
         $pushOp->pushable->codat_record_id = $response['data']['id'];
-        $pushOp->pushable->save();
+        $pushOp->pushable->saveQuietly();
     }
 }
