@@ -104,7 +104,8 @@ class Team extends JetstreamTeam
      */
     protected $appends = [
         'logo_url',
-        'codat_company_link'
+        'codat_company_link',
+        'accounting_connected'
     ];
 
     protected $dispatchesEvents = [

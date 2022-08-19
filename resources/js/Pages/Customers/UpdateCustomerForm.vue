@@ -7,12 +7,12 @@
         <template #aside>
             <div class="flex flex-col">
                 <span class="font-bold text-gray-500">
-                    {{ customer.codat_push_status }}
+                    {{ customer.codat_record?.push_status }}
                 </span>
                 <jet-button
                     type="button"
                     class="btn-sm btn-success"
-                    v-if="customer.codat_push_status !== 'Success'"
+                    v-if="customer.codat_record?.push_status !== 'Success'"
                     @click="syncWithAccounting()"
                 >
                     Sync now

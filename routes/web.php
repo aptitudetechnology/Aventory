@@ -173,7 +173,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::post('teams/logo', [TeamController::class, 'updateLogo'])->name('teams.logo');
     Route::get('codat-accounting/link', [CodatController::class, 'link']);
-    Route::patch('codat-connections/{connectionId}/disconnect', [CodatController::class, 'disconnect'])->name('codat.disconnect');
+    Route::patch('codat-accounting/disconnect', [CodatController::class, 'disconnect'])->name('codat.disconnect');
 
     Route::post('{contactableType}/{contactableId}/contacts', [ContactController::class, 'store'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.store');
     Route::put('contacts/{contact}', [ContactController::class, 'update'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.update');

@@ -2,13 +2,16 @@
 
 namespace App\Observers;
 
-use App\Http\Integrations\Companies\Requests\CreateCompanyRequest;
-use App\Http\Integrations\Companies\Requests\DeleteCompanyRequest;
-use App\Http\Integrations\Companies\Requests\UpdateCompanyRequest;
 use App\Models\Team;
+use App\Services\CodatCompaniesService;
 
 class TeamObserver
 {
+    public function __construct(
+        public CodatCompaniesService $codatCompaniesService
+    ) {
+    }
+
     /**
      * When a Team is created, dispatch jobs.
      *
@@ -16,33 +19,29 @@ class TeamObserver
      */
     public function created(Team $team)
     {
-        $request = new CreateCompanyRequest();
-        $request->setData(['name' => $team->name]);
-        $response = $request->send()->json();
-
+        $response = $this->codatCompaniesService->create(['name' => $team->name]);
         $team->codat_company_id = $response['id'];
-        $team->save();
+        $team->saveQuietly();
     }
 
     public function updated(Team $team)
     {
         if ($team->codat_company_id) {
-            $request = new UpdateCompanyRequest($team->codat_company_id);
-            $request->setData(['name' => $team->name]);
-            $request->send();
+            $this->codatCompaniesService->update($team->codat_company_id, ['name' => $team->name]);
         } else {
-            $this->created($team);
+            $response = $this->codatCompaniesService->create(['name' => $team->name]);
+            $team->codat_company_id = $response['id'];
+            $team->saveQuietly();
         }
     }
 
     public function deleted(Team $team)
     {
         if ($team->codat_company_id) {
-            $request = new DeleteCompanyRequest($team->codat_company_id);
-            $request->send();
+            $this->codatCompaniesService->delete($team->codat_company_id);
 
             $team->codat_company_id = null;
-            $team->save();
+            $team->saveQuietly();
         }
     }
 }

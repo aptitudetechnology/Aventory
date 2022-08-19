@@ -91,7 +91,7 @@ class Customer extends Model
         'reseller_permit_on_file' => 'boolean',
     ];
 
-    protected $with = ['contacts'];
+    protected $with = ['contacts', 'codatRecord'];
 
     protected $guarded = [];
 
@@ -108,13 +108,6 @@ class Customer extends Model
     public function hasMailingAddress(): bool
     {
         return $this->mailing_address !== null && $this->mailing_address !== '';
-    }
-
-    protected function codatPushStatus(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value, $attributes) => is_null($value) ? 'Never' : $value
-        );
     }
 
     public function priceLevel(): BelongsTo
@@ -140,5 +133,10 @@ class Customer extends Model
     public function codatPushOp()
     {
         return $this->morphOne(CodatPushOperation::class, 'pushable');
+    }
+
+    public function codatRecord()
+    {
+        return $this->morphOne(CodatRecord::class, 'pushable');
     }
 }

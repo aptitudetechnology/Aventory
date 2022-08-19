@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Integrations\DataPush\Requests\GetPushOperationRecordRequest;
 use App\Models\CodatPushOperation;
+use App\Models\CodatRecord;
 use Illuminate\Http\Request;
 
 class CodatHookController extends Controller
@@ -20,9 +21,12 @@ class CodatHookController extends Controller
         );
         $response = $request->send()->json();
 
-        $pushOp = CodatPushOperation::find($pushOperationId);
-        $pushOp->pushable->codat_push_status = $status;
-        $pushOp->pushable->codat_record_id = $response['data']['id'];
-        $pushOp->pushable->saveQuietly();
+        $record = CodatRecord::where('push_id', $pushOperationId)->first();
+
+        if ($record) {
+            $record->push_status = $status;
+            $record->record_id = $response['data']['id'];
+            $record->saveQuietly();
+        }
     }
 }

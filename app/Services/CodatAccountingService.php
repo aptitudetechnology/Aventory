@@ -4,20 +4,19 @@ namespace App\Services;
 
 use App\Http\Integrations\Accounting\Requests\CreateCustomerRequest;
 use App\Http\Integrations\Accounting\Requests\UpdateCustomerRequest;
-use App\Models\CodatPushOperation;
+use App\Models\CodatRecord;
 use App\Models\Customer;
 
 class CodatAccountingService
 {
     protected function createOrUpdateCustomerResponseReceived(Customer $customer, $response)
     {
-        $customer->codat_push_status = $response['status'];
-        $customer->saveQuietly();
-
-        $pushOp = new CodatPushOperation();
-        $pushOp->id = $response['pushOperationKey'];
-        $pushOp->company_id = $response['companyId'];
-        $customer->codatPushOp()->save($pushOp);
+        $record = new CodatRecord();
+        $record->company_id = $response['companyId'];
+        $record->connection_id = $response['dataConnectionKey'];
+        $record->push_id = $response['pushOperationKey'];
+        $record->push_status = $response['status'];
+        $customer->codatRecord()->save($record);
     }
 
     public function sendCreateCustomerRequest(Customer $customer)

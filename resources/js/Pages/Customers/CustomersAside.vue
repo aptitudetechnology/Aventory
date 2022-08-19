@@ -30,13 +30,15 @@
                 <tab-link
                     :href="route('customers.index')"
                     :current="route().current('customers.*')"
-                    >Active</tab-link
                 >
+                    Active
+                </tab-link>
                 <tab-link
                     :href="route('archived-customers.index')"
                     :current="route().current('archived-customers.*')"
-                    >Archived</tab-link
                 >
+                    Archived
+                </tab-link>
             </tab-container>
             <ul class="divide-y divide-gray-200">
                 <li
@@ -72,7 +74,9 @@
                                     <span
                                         class="inline-flex justify-center items-center w-3 h-3 text-xs font-bold text-white rounded-full border-2 border-white dark:border-gray-900"
                                         :class="statusClass(customer)"
-                                        :title="customer.codat_push_status"
+                                        :title="
+                                            customer.codat_record?.push_status
+                                        "
                                     ></span>
                                 </div>
                                 <p
@@ -137,7 +141,7 @@ export default {
                 } else {
                     return false;
                 }
-            });;
+            });
         },
     },
     data() {
@@ -147,11 +151,11 @@ export default {
     },
     methods: {
         statusClass(customer) {
-            if (customer.codat_push_status === "Pending") {
+            if (customer.codat_record?.push_status === "Pending") {
                 return "bg-warning";
-            } else if (customer.codat_push_status === "Success") {
+            } else if (customer.codat_record?.push_status === "Success") {
                 return "bg-success";
-            } else if (customer.codat_push_status === "Failed") {
+            } else if (customer.codat_record?.push_status === "Failed") {
                 return "bg-error";
             } else {
                 return "bg-primary";
