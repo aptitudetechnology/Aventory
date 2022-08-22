@@ -1994,7 +1994,7 @@ function _sfc_ssrRender$3R(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     href: $props.href,
     class: [
       $props.current ? "bg-gray-50" : "hover:bg-gray-50 hover:text-gray-900",
-      "text-gray-600 text-large group flex items-center px-2 py-2 text-base rounded-md"
+      "text-gray-700 text-large group flex items-center px-2 py-2 text-base rounded-md"
     ]
   }, _attrs), {
     default: vue.withCtx((_, _push2, _parent2, _scopeId) => {

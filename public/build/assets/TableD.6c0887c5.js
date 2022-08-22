@@ -1,1 +1,0 @@
-import{_ as t,o as s,J as r,P as a}from"./app.fa9cc1ae.js";const o={},c={class:"px-4 py-4 whitespace-nowrap text-sm text-gray-700"};function n(e,_){return s(),r("td",c,[a(e.$slots,"default")])}var p=t(o,[["render",n]]);export{p as T};
