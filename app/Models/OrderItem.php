@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\OrderItem
@@ -78,12 +79,22 @@ class OrderItem extends Model
     protected $appends = ['product_name', 'size_name', 'line_total', 'line_discount', 'line_total_after_discount', 'unmatched_quantity', 'sale_type'];
 
     protected $casts = [
+        'id' => 'string',
         'product_id' => 'integer',
         'size_id' => 'integer',
         'quantity' => 'integer',
         'unit_price' => 'float',
         'no_discount' => 'boolean',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($orderItem) {
+            $orderItem->{$orderItem->getKeyName()} = (string) Str::uuid();
+        });
+    }
 
     public function getSaleTypeAttribute()
     {
@@ -134,7 +145,7 @@ class OrderItem extends Model
 
     public function archived()
     {
-        return $this->hasMany(InventoryArchive::class);
+        return $this->hasMany(InventoryArchive::class, 'order_item_id', 'order_id');
     }
 
     public function getIsMatchedAttribute()

@@ -495,7 +495,10 @@ class GardenGateNurseryDataSeeder extends Seeder
     public function migrateOrderItems()
     {
         echo "Migrating order items...\n";
-        $old_order_items = $this->sqlsrv_conn->table('TblCustomerOrdersItems')->get()->toArray();
+        $old_order_items = $this->sqlsrv_conn->table('TblCustomerOrdersItems')
+            ->whereNot('UnitPrice', 0)
+            ->get()
+            ->toArray();
         $new_order_items = array_map(function($oi) {
             return [
                 'id' => $oi->CustomerOrderItemID,
@@ -565,6 +568,8 @@ class GardenGateNurseryDataSeeder extends Seeder
                 'original_size_id' => $ii->OriginalSizeID,
                 'size_id' => $ii->SizeID,
                 'ready_date' => $ii->DateAdded,
+                'created_at' => $ii->DateAdded,
+                'updated_at' => $ii->LastInventoryDate,
                 'quantity' => 1,
                 'type' => 'individual',
                 'block_id' => null,
@@ -582,6 +587,8 @@ class GardenGateNurseryDataSeeder extends Seeder
                 'original_size_id' => $iia->OriginalSizeID,
                 'size_id' => $iia->SizeID,
                 'ready_date' => $iia->DateAdded,
+                'created_at' => $iia->DateAdded,
+                'updated_at' => $iia->LastInventoryDate,
                 'quantity' => 1,
                 'type' => 'individual',
                 'block_id' => null,
