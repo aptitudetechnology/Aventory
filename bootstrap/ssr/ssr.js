@@ -529,10 +529,10 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$4c = {
+const _sfc_main$4f = {
   props: ["value"]
 };
-function _sfc_ssrRender$48(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$47(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<label${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "label" }, _attrs))}>`);
   if ($props.value) {
     _push(`<span class="label-text">${serverRenderer.ssrInterpolate($props.value)}</span>`);
@@ -543,14 +543,14 @@ function _sfc_ssrRender$48(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</label>`);
 }
-const _sfc_setup$4c = _sfc_main$4c.setup;
-_sfc_main$4c.setup = (props, ctx) => {
+const _sfc_setup$4f = _sfc_main$4f.setup;
+_sfc_main$4f.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Label.vue");
-  return _sfc_setup$4c ? _sfc_setup$4c(props, ctx) : void 0;
+  return _sfc_setup$4f ? _sfc_setup$4f(props, ctx) : void 0;
 };
-var JetLabel = /* @__PURE__ */ _export_sfc(_sfc_main$4c, [["ssrRender", _sfc_ssrRender$48]]);
-const _sfc_main$4b = {
+var JetLabel = /* @__PURE__ */ _export_sfc(_sfc_main$4f, [["ssrRender", _sfc_ssrRender$47]]);
+const _sfc_main$4e = {
   props: {
     modelValue: { type: [String, Boolean, Number] },
     error: { type: Boolean, default: false },
@@ -564,7 +564,7 @@ const _sfc_main$4b = {
     }
   }
 };
-function _sfc_ssrRender$47(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$46(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<input${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     class: ["input input-bordered", {
       " input-error": $props.error
@@ -576,29 +576,29 @@ function _sfc_ssrRender$47(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     ref: "input"
   }, _attrs))}>`);
 }
-const _sfc_setup$4b = _sfc_main$4b.setup;
-_sfc_main$4b.setup = (props, ctx) => {
+const _sfc_setup$4e = _sfc_main$4e.setup;
+_sfc_main$4e.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Input.vue");
-  return _sfc_setup$4b ? _sfc_setup$4b(props, ctx) : void 0;
+  return _sfc_setup$4e ? _sfc_setup$4e(props, ctx) : void 0;
 };
-var JetInput = /* @__PURE__ */ _export_sfc(_sfc_main$4b, [["ssrRender", _sfc_ssrRender$47]]);
-const _sfc_main$4a = {
+var JetInput = /* @__PURE__ */ _export_sfc(_sfc_main$4e, [["ssrRender", _sfc_ssrRender$46]]);
+const _sfc_main$4d = {
   props: ["message"]
 };
-function _sfc_ssrRender$46(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$45(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     style: $props.message ? null : { display: "none" }
   }, _attrs))}><p class="text-sm text-red-600">${serverRenderer.ssrInterpolate($props.message)}</p></div>`);
 }
-const _sfc_setup$4a = _sfc_main$4a.setup;
-_sfc_main$4a.setup = (props, ctx) => {
+const _sfc_setup$4d = _sfc_main$4d.setup;
+_sfc_main$4d.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/InputError.vue");
-  return _sfc_setup$4a ? _sfc_setup$4a(props, ctx) : void 0;
+  return _sfc_setup$4d ? _sfc_setup$4d(props, ctx) : void 0;
 };
-var JetInputError = /* @__PURE__ */ _export_sfc(_sfc_main$4a, [["ssrRender", _sfc_ssrRender$46]]);
-const _sfc_main$49 = {
+var JetInputError = /* @__PURE__ */ _export_sfc(_sfc_main$4d, [["ssrRender", _sfc_ssrRender$45]]);
+const _sfc_main$4c = {
   emits: ["update:checked"],
   props: {
     color: {
@@ -628,7 +628,7 @@ const _sfc_main$49 = {
     }
   }
 };
-function _sfc_ssrRender$45(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$44(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   let _temp0;
   _push(`<input${serverRenderer.ssrRenderAttrs((_temp0 = vue.mergeProps({
     type: "checkbox",
@@ -638,14 +638,14 @@ function _sfc_ssrRender$45(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     class: "checkbox checkbox-sm"
   }, _attrs), vue.mergeProps(_temp0, serverRenderer.ssrGetDynamicModelProps(_temp0, $options.proxyChecked))))}>`);
 }
-const _sfc_setup$49 = _sfc_main$49.setup;
-_sfc_main$49.setup = (props, ctx) => {
+const _sfc_setup$4c = _sfc_main$4c.setup;
+_sfc_main$4c.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Checkbox.vue");
-  return _sfc_setup$49 ? _sfc_setup$49(props, ctx) : void 0;
+  return _sfc_setup$4c ? _sfc_setup$4c(props, ctx) : void 0;
 };
-var JetCheckBox = /* @__PURE__ */ _export_sfc(_sfc_main$49, [["ssrRender", _sfc_ssrRender$45]]);
-const _sfc_main$48 = {
+var JetCheckBox = /* @__PURE__ */ _export_sfc(_sfc_main$4c, [["ssrRender", _sfc_ssrRender$44]]);
+const _sfc_main$4b = {
   props: {
     showBorder: {
       type: Boolean,
@@ -653,7 +653,7 @@ const _sfc_main$48 = {
     }
   }
 };
-function _sfc_ssrRender$44(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$43(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     class: [
       $props.showBorder ? "border-b border-gray-100 mb-4" : "",
@@ -667,14 +667,14 @@ function _sfc_ssrRender$44(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "aside", {}, null, _push, _parent);
   _push(`</div></div>`);
 }
-const _sfc_setup$48 = _sfc_main$48.setup;
-_sfc_main$48.setup = (props, ctx) => {
+const _sfc_setup$4b = _sfc_main$4b.setup;
+_sfc_main$4b.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/SectionTitle.vue");
-  return _sfc_setup$48 ? _sfc_setup$48(props, ctx) : void 0;
+  return _sfc_setup$4b ? _sfc_setup$4b(props, ctx) : void 0;
 };
-var SectionTitle = /* @__PURE__ */ _export_sfc(_sfc_main$48, [["ssrRender", _sfc_ssrRender$44]]);
-const _sfc_main$47 = {
+var SectionTitle = /* @__PURE__ */ _export_sfc(_sfc_main$4b, [["ssrRender", _sfc_ssrRender$43]]);
+const _sfc_main$4a = {
   props: {
     type: {
       type: String,
@@ -682,7 +682,7 @@ const _sfc_main$47 = {
     }
   }
 };
-function _sfc_ssrRender$43(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$42(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     type: $props.type,
     class: "btn"
@@ -690,37 +690,14 @@ function _sfc_ssrRender$43(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</button>`);
 }
-const _sfc_setup$47 = _sfc_main$47.setup;
-_sfc_main$47.setup = (props, ctx) => {
+const _sfc_setup$4a = _sfc_main$4a.setup;
+_sfc_main$4a.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Button.vue");
-  return _sfc_setup$47 ? _sfc_setup$47(props, ctx) : void 0;
+  return _sfc_setup$4a ? _sfc_setup$4a(props, ctx) : void 0;
 };
-var JetButton = /* @__PURE__ */ _export_sfc(_sfc_main$47, [["ssrRender", _sfc_ssrRender$43]]);
-const _sfc_main$46 = {
-  props: {
-    type: {
-      type: String,
-      default: "button"
-    }
-  }
-};
-function _sfc_ssrRender$42(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({
-    type: $props.type,
-    class: "btn btn-secondary"
-  }, _attrs))}>`);
-  serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
-  _push(`</button>`);
-}
-const _sfc_setup$46 = _sfc_main$46.setup;
-_sfc_main$46.setup = (props, ctx) => {
-  const ssrContext = vue.useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/SecondaryButton.vue");
-  return _sfc_setup$46 ? _sfc_setup$46(props, ctx) : void 0;
-};
-var JetSecondaryButton = /* @__PURE__ */ _export_sfc(_sfc_main$46, [["ssrRender", _sfc_ssrRender$42]]);
-const _sfc_main$45 = {
+var JetButton = /* @__PURE__ */ _export_sfc(_sfc_main$4a, [["ssrRender", _sfc_ssrRender$42]]);
+const _sfc_main$49 = {
   props: {
     type: {
       type: String,
@@ -731,19 +708,42 @@ const _sfc_main$45 = {
 function _sfc_ssrRender$41(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     type: $props.type,
+    class: "btn btn-secondary"
+  }, _attrs))}>`);
+  serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
+  _push(`</button>`);
+}
+const _sfc_setup$49 = _sfc_main$49.setup;
+_sfc_main$49.setup = (props, ctx) => {
+  const ssrContext = vue.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/SecondaryButton.vue");
+  return _sfc_setup$49 ? _sfc_setup$49(props, ctx) : void 0;
+};
+var JetSecondaryButton = /* @__PURE__ */ _export_sfc(_sfc_main$49, [["ssrRender", _sfc_ssrRender$41]]);
+const _sfc_main$48 = {
+  props: {
+    type: {
+      type: String,
+      default: "button"
+    }
+  }
+};
+function _sfc_ssrRender$40(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({
+    type: $props.type,
     class: "btn btn-error"
   }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</button>`);
 }
-const _sfc_setup$45 = _sfc_main$45.setup;
-_sfc_main$45.setup = (props, ctx) => {
+const _sfc_setup$48 = _sfc_main$48.setup;
+_sfc_main$48.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/DangerButton.vue");
-  return _sfc_setup$45 ? _sfc_setup$45(props, ctx) : void 0;
+  return _sfc_setup$48 ? _sfc_setup$48(props, ctx) : void 0;
 };
-var JetDangerButton = /* @__PURE__ */ _export_sfc(_sfc_main$45, [["ssrRender", _sfc_ssrRender$41]]);
-const _sfc_main$44 = {
+var JetDangerButton = /* @__PURE__ */ _export_sfc(_sfc_main$48, [["ssrRender", _sfc_ssrRender$40]]);
+const _sfc_main$47 = {
   props: ["modelValue"],
   emits: ["update:modelValue"],
   methods: {
@@ -752,7 +752,7 @@ const _sfc_main$44 = {
     }
   }
 };
-function _sfc_ssrRender$40(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   let _temp0;
   _push(`<textarea${serverRenderer.ssrRenderAttrs(_temp0 = vue.mergeProps({
     class: "textarea textarea-bordered",
@@ -760,14 +760,14 @@ function _sfc_ssrRender$40(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     ref: "input"
   }, _attrs), "textarea")}>${serverRenderer.ssrInterpolate("value" in _temp0 ? _temp0.value : "")}</textarea>`);
 }
-const _sfc_setup$44 = _sfc_main$44.setup;
-_sfc_main$44.setup = (props, ctx) => {
+const _sfc_setup$47 = _sfc_main$47.setup;
+_sfc_main$47.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/TextAreaInput.vue");
-  return _sfc_setup$44 ? _sfc_setup$44(props, ctx) : void 0;
+  return _sfc_setup$47 ? _sfc_setup$47(props, ctx) : void 0;
 };
-var TextAreaInput = /* @__PURE__ */ _export_sfc(_sfc_main$44, [["ssrRender", _sfc_ssrRender$40]]);
-const _sfc_main$43 = {
+var TextAreaInput = /* @__PURE__ */ _export_sfc(_sfc_main$47, [["ssrRender", _sfc_ssrRender$3$]]);
+const _sfc_main$46 = {
   components: {
     Listbox: vue$1.Listbox,
     ListboxButton: vue$1.ListboxButton,
@@ -795,7 +795,7 @@ const _sfc_main$43 = {
     }
   }
 };
-function _sfc_ssrRender$3$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Listbox = vue.resolveComponent("Listbox");
   const _component_ListboxLabel = vue.resolveComponent("ListboxLabel");
   const _component_ListboxButton = vue.resolveComponent("ListboxButton");
@@ -1078,14 +1078,14 @@ function _sfc_ssrRender$3$(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$43 = _sfc_main$43.setup;
-_sfc_main$43.setup = (props, ctx) => {
+const _sfc_setup$46 = _sfc_main$46.setup;
+_sfc_main$46.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/SelectBox.vue");
-  return _sfc_setup$43 ? _sfc_setup$43(props, ctx) : void 0;
+  return _sfc_setup$46 ? _sfc_setup$46(props, ctx) : void 0;
 };
-var SelectBox = /* @__PURE__ */ _export_sfc(_sfc_main$43, [["ssrRender", _sfc_ssrRender$3$]]);
-const _sfc_main$42 = {
+var SelectBox = /* @__PURE__ */ _export_sfc(_sfc_main$46, [["ssrRender", _sfc_ssrRender$3_]]);
+const _sfc_main$45 = {
   components: {
     JetSectionTitle: SectionTitle
   },
@@ -1108,7 +1108,7 @@ const _sfc_main$42 = {
     }
   }
 };
-function _sfc_ssrRender$3_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   _push(`<div${serverRenderer.ssrRenderAttrs(_attrs)}><div class="${serverRenderer.ssrRenderClass([
     $options.hasActions ? "sm:rounded-tl-md sm:rounded-tr-md" : "sm:rounded-md",
@@ -1163,76 +1163,14 @@ function _sfc_ssrRender$3_(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$42 = _sfc_main$42.setup;
-_sfc_main$42.setup = (props, ctx) => {
+const _sfc_setup$45 = _sfc_main$45.setup;
+_sfc_main$45.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/DetailsSection.vue");
-  return _sfc_setup$42 ? _sfc_setup$42(props, ctx) : void 0;
+  return _sfc_setup$45 ? _sfc_setup$45(props, ctx) : void 0;
 };
-var DetailsSection = /* @__PURE__ */ _export_sfc(_sfc_main$42, [["ssrRender", _sfc_ssrRender$3_]]);
-const _sfc_main$41 = {
-  props: {
-    modelValue: {
-      type: [Number, String],
-      default: 0
-    }
-  },
-  emits: ["update:modelValue"],
-  data() {
-    return {
-      isInputFocused: false
-    };
-  },
-  computed: {
-    displayValue: {
-      get: function() {
-        var _a;
-        if (this.isInputFocused) {
-          return (_a = this.modelValue) == null ? void 0 : _a.toString();
-        } else {
-          return this.modelValue ? this.formatDecimal(this.modelValue) : 0;
-        }
-      },
-      set: function(modifiedValue) {
-        let newValue = parseFloat(
-          modifiedValue.replace(/[^\d\.]/g, "")
-        );
-        if (isNaN(newValue)) {
-          newValue = 0;
-        }
-        this.$emit("update:modelValue", newValue);
-      }
-    }
-  },
-  methods: {
-    formatDecimal(value) {
-      return parseFloat(value).toFixed(2);
-    }
-  }
-};
-function _sfc_ssrRender$3Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_jet_input = vue.resolveComponent("jet-input");
-  _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "relative" }, _attrs))}>`);
-  _push(serverRenderer.ssrRenderComponent(_component_jet_input, vue.mergeProps({
-    type: "number",
-    modelValue: $options.displayValue,
-    "onUpdate:modelValue": ($event) => $options.displayValue = $event,
-    onFocus: ($event) => $data.isInputFocused = true,
-    onBlur: ($event) => $data.isInputFocused = false
-  }, _ctx.$attrs, {
-    ref: "input",
-    class: "pl-6 w-full"
-  }), null, _parent));
-  _push(`<div class="absolute top-0 bottom-0 left-0 pl-2 flex items-center"> $ </div></div>`);
-}
-const _sfc_setup$41 = _sfc_main$41.setup;
-_sfc_main$41.setup = (props, ctx) => {
-  const ssrContext = vue.useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/MoneyInput.vue");
-  return _sfc_setup$41 ? _sfc_setup$41(props, ctx) : void 0;
-};
-var MoneyInput = /* @__PURE__ */ _export_sfc(_sfc_main$41, [["ssrRender", _sfc_ssrRender$3Z]]);
-const _sfc_main$40 = {
+var DetailsSection = /* @__PURE__ */ _export_sfc(_sfc_main$45, [["ssrRender", _sfc_ssrRender$3Z]]);
+const _sfc_main$44 = {
   props: {
     modelValue: {
       type: [Number, String],
@@ -1283,17 +1221,79 @@ function _sfc_ssrRender$3Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     onBlur: ($event) => $data.isInputFocused = false
   }, _ctx.$attrs, {
     ref: "input",
+    class: "pl-6 w-full"
+  }), null, _parent));
+  _push(`<div class="absolute top-0 bottom-0 left-0 pl-2 flex items-center"> $ </div></div>`);
+}
+const _sfc_setup$44 = _sfc_main$44.setup;
+_sfc_main$44.setup = (props, ctx) => {
+  const ssrContext = vue.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/MoneyInput.vue");
+  return _sfc_setup$44 ? _sfc_setup$44(props, ctx) : void 0;
+};
+var MoneyInput = /* @__PURE__ */ _export_sfc(_sfc_main$44, [["ssrRender", _sfc_ssrRender$3Y]]);
+const _sfc_main$43 = {
+  props: {
+    modelValue: {
+      type: [Number, String],
+      default: 0
+    }
+  },
+  emits: ["update:modelValue"],
+  data() {
+    return {
+      isInputFocused: false
+    };
+  },
+  computed: {
+    displayValue: {
+      get: function() {
+        var _a;
+        if (this.isInputFocused) {
+          return (_a = this.modelValue) == null ? void 0 : _a.toString();
+        } else {
+          return this.modelValue ? this.formatDecimal(this.modelValue) : 0;
+        }
+      },
+      set: function(modifiedValue) {
+        let newValue = parseFloat(
+          modifiedValue.replace(/[^\d\.]/g, "")
+        );
+        if (isNaN(newValue)) {
+          newValue = 0;
+        }
+        this.$emit("update:modelValue", newValue);
+      }
+    }
+  },
+  methods: {
+    formatDecimal(value) {
+      return parseFloat(value).toFixed(2);
+    }
+  }
+};
+function _sfc_ssrRender$3X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_jet_input = vue.resolveComponent("jet-input");
+  _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "relative" }, _attrs))}>`);
+  _push(serverRenderer.ssrRenderComponent(_component_jet_input, vue.mergeProps({
+    type: "number",
+    modelValue: $options.displayValue,
+    "onUpdate:modelValue": ($event) => $options.displayValue = $event,
+    onFocus: ($event) => $data.isInputFocused = true,
+    onBlur: ($event) => $data.isInputFocused = false
+  }, _ctx.$attrs, {
+    ref: "input",
     class: "pr-6 w-full"
   }), null, _parent));
   _push(`<div class="absolute top-0 bottom-0 right-0 pr-2 flex items-center"> % </div></div>`);
 }
-const _sfc_setup$40 = _sfc_main$40.setup;
-_sfc_main$40.setup = (props, ctx) => {
+const _sfc_setup$43 = _sfc_main$43.setup;
+_sfc_main$43.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/PercentageInput.vue");
-  return _sfc_setup$40 ? _sfc_setup$40(props, ctx) : void 0;
+  return _sfc_setup$43 ? _sfc_setup$43(props, ctx) : void 0;
 };
-var PercentageInput = /* @__PURE__ */ _export_sfc(_sfc_main$40, [["ssrRender", _sfc_ssrRender$3Y]]);
+var PercentageInput = /* @__PURE__ */ _export_sfc(_sfc_main$43, [["ssrRender", _sfc_ssrRender$3X]]);
 createServer__default["default"](
   (page) => inertiaVue3.createInertiaApp({
     page,
@@ -1311,7 +1311,7 @@ createServer__default["default"](
       }), "./Pages/API/ApiTokenManager.vue": () => Promise.resolve().then(function() {
         return ApiTokenManager$1;
       }), "./Pages/API/Index.vue": () => Promise.resolve().then(function() {
-        return Index$v;
+        return Index$y;
       }), "./Pages/Auth/ConfirmPassword.vue": () => Promise.resolve().then(function() {
         return ConfirmPassword$1;
       }), "./Pages/Auth/ForgotPassword.vue": () => Promise.resolve().then(function() {
@@ -1339,7 +1339,7 @@ createServer__default["default"](
       }), "./Pages/Blocks/Edit.vue": () => Promise.resolve().then(function() {
         return Edit$3;
       }), "./Pages/Blocks/Index.vue": () => Promise.resolve().then(function() {
-        return Index$t;
+        return Index$w;
       }), "./Pages/Blocks/UpdateBlockForm.vue": () => Promise.resolve().then(function() {
         return UpdateBlockForm$1;
       }), "./Pages/Categories/CategoriesAside.vue": () => Promise.resolve().then(function() {
@@ -1353,13 +1353,13 @@ createServer__default["default"](
       }), "./Pages/Categories/DeleteCategoryForm.vue": () => Promise.resolve().then(function() {
         return DeleteCategoryForm$1;
       }), "./Pages/Categories/Index.vue": () => Promise.resolve().then(function() {
-        return Index$r;
+        return Index$u;
       }), "./Pages/Categories/Show.vue": () => Promise.resolve().then(function() {
         return Show$r;
       }), "./Pages/Categories/UpdateCategoryForm.vue": () => Promise.resolve().then(function() {
         return UpdateCategoryForm$1;
       }), "./Pages/ClearLocations/Index.vue": () => Promise.resolve().then(function() {
-        return Index$p;
+        return Index$s;
       }), "./Pages/Contacts/ContactAside.vue": () => Promise.resolve().then(function() {
         return ContactAside$1;
       }), "./Pages/Contacts/CreateContactComponent.vue": () => Promise.resolve().then(function() {
@@ -1381,7 +1381,7 @@ createServer__default["default"](
       }), "./Pages/Customers/DeleteCustomerForm.vue": () => Promise.resolve().then(function() {
         return DeleteCustomerForm$1;
       }), "./Pages/Customers/Index.vue": () => Promise.resolve().then(function() {
-        return Index$n;
+        return Index$q;
       }), "./Pages/Customers/RestoreCustomerForm.vue": () => Promise.resolve().then(function() {
         return RestoreCustomerForm$1;
       }), "./Pages/Customers/Show.vue": () => Promise.resolve().then(function() {
@@ -1399,13 +1399,13 @@ createServer__default["default"](
       }), "./Pages/Features/FeaturesLayout.vue": () => Promise.resolve().then(function() {
         return FeaturesLayout$1;
       }), "./Pages/Features/Index.vue": () => Promise.resolve().then(function() {
-        return Index$l;
+        return Index$o;
       }), "./Pages/Features/Show.vue": () => Promise.resolve().then(function() {
         return Show$n;
       }), "./Pages/Features/UpdateFeatureForm.vue": () => Promise.resolve().then(function() {
         return UpdateFeatureForm$1;
       }), "./Pages/Inventory/Index.vue": () => Promise.resolve().then(function() {
-        return Index$j;
+        return Index$m;
       }), "./Pages/Inventory/Show.vue": () => Promise.resolve().then(function() {
         return Show$l;
       }), "./Pages/NurseryLocations/Create.vue": () => Promise.resolve().then(function() {
@@ -1417,7 +1417,7 @@ createServer__default["default"](
       }), "./Pages/NurseryLocations/Edit.vue": () => Promise.resolve().then(function() {
         return Edit$1;
       }), "./Pages/NurseryLocations/Index.vue": () => Promise.resolve().then(function() {
-        return Index$h;
+        return Index$k;
       }), "./Pages/NurseryLocations/LocationDetails.vue": () => Promise.resolve().then(function() {
         return LocationDetails$1;
       }), "./Pages/NurseryLocations/LocationsAside.vue": () => Promise.resolve().then(function() {
@@ -1431,7 +1431,7 @@ createServer__default["default"](
       }), "./Pages/Orders/Create.vue": () => Promise.resolve().then(function() {
         return Create$f;
       }), "./Pages/Orders/Index.vue": () => Promise.resolve().then(function() {
-        return Index$f;
+        return Index$i;
       }), "./Pages/Orders/OrdersLayout.vue": () => Promise.resolve().then(function() {
         return OrdersLayout$1;
       }), "./Pages/Orders/Show.vue": () => Promise.resolve().then(function() {
@@ -1443,7 +1443,7 @@ createServer__default["default"](
       }), "./Pages/PriceLevels/DeletePriceLevelForm.vue": () => Promise.resolve().then(function() {
         return DeletePriceLevelForm$1;
       }), "./Pages/PriceLevels/Index.vue": () => Promise.resolve().then(function() {
-        return Index$d;
+        return Index$g;
       }), "./Pages/PriceLevels/PriceLevelsAside.vue": () => Promise.resolve().then(function() {
         return PriceLevelsAside$1;
       }), "./Pages/PriceLevels/PriceLevelsLayout.vue": () => Promise.resolve().then(function() {
@@ -1473,7 +1473,7 @@ createServer__default["default"](
       }), "./Pages/Products/DeleteProductForm.vue": () => Promise.resolve().then(function() {
         return DeleteProductForm$1;
       }), "./Pages/Products/Index.vue": () => Promise.resolve().then(function() {
-        return Index$b;
+        return Index$e;
       }), "./Pages/Products/PlantFeatures.vue": () => Promise.resolve().then(function() {
         return PlantFeatures$1;
       }), "./Pages/Products/ProductsAside.vue": () => Promise.resolve().then(function() {
@@ -1501,7 +1501,7 @@ createServer__default["default"](
       }), "./Pages/Purchases/Create.vue": () => Promise.resolve().then(function() {
         return Create$9;
       }), "./Pages/Purchases/Index.vue": () => Promise.resolve().then(function() {
-        return Index$9;
+        return Index$c;
       }), "./Pages/Purchases/PurchasesLayout.vue": () => Promise.resolve().then(function() {
         return PurchasesLayout$1;
       }), "./Pages/Purchases/Show.vue": () => Promise.resolve().then(function() {
@@ -1509,13 +1509,17 @@ createServer__default["default"](
       }), "./Pages/Quotes/Create.vue": () => Promise.resolve().then(function() {
         return Create$7;
       }), "./Pages/Quotes/Index.vue": () => Promise.resolve().then(function() {
-        return Index$8;
+        return Index$b;
       }), "./Pages/Quotes/QuotesLayout.vue": () => Promise.resolve().then(function() {
         return QuotesLayout$1;
       }), "./Pages/Quotes/Show.vue": () => Promise.resolve().then(function() {
         return Show$7;
+      }), "./Pages/Reports/Index.vue": () => Promise.resolve().then(function() {
+        return Index$9;
+      }), "./Pages/Reports/ReportsLayout.vue": () => Promise.resolve().then(function() {
+        return ReportsLayout;
       }), "./Pages/ReprintQueue/Index.vue": () => Promise.resolve().then(function() {
-        return Index$6;
+        return Index$8;
       }), "./Pages/ReprintQueue/QueueLayout.vue": () => Promise.resolve().then(function() {
         return QueueLayout$1;
       }), "./Pages/Sizes/Create.vue": () => Promise.resolve().then(function() {
@@ -1525,7 +1529,7 @@ createServer__default["default"](
       }), "./Pages/Sizes/DeleteSizeComponent.vue": () => Promise.resolve().then(function() {
         return DeleteSizeComponent$1;
       }), "./Pages/Sizes/Index.vue": () => Promise.resolve().then(function() {
-        return Index$4;
+        return Index$6;
       }), "./Pages/Sizes/SizeList.vue": () => Promise.resolve().then(function() {
         return SizeList$1;
       }), "./Pages/Sizes/UpdateSizeForm.vue": () => Promise.resolve().then(function() {
@@ -1553,7 +1557,7 @@ createServer__default["default"](
       }), "./Pages/Vendors/DeleteVendorForm.vue": () => Promise.resolve().then(function() {
         return DeleteVendorForm$1;
       }), "./Pages/Vendors/Index.vue": () => Promise.resolve().then(function() {
-        return Index$2;
+        return Index$4;
       }), "./Pages/Vendors/RestoreVendorForm.vue": () => Promise.resolve().then(function() {
         return RestoreVendorForm$1;
       }), "./Pages/Vendors/Show.vue": () => Promise.resolve().then(function() {
@@ -1565,7 +1569,7 @@ createServer__default["default"](
       }), "./Pages/Vendors/VendorsLayout.vue": () => Promise.resolve().then(function() {
         return VendorsLayout$1;
       }), "./Pages/View/Index.vue": () => Promise.resolve().then(function() {
-        return Index;
+        return Index$2;
       }), "./Pages/View/Show.vue": () => Promise.resolve().then(function() {
         return Show$1;
       }), "./Pages/View/ViewAside.vue": () => Promise.resolve().then(function() {
@@ -1599,7 +1603,7 @@ createServer__default["default"](
       }), "./Pages/Orders/Components/CompanyOpenOrders.vue": () => Promise.resolve().then(function() {
         return CompanyOpenOrders$1;
       }), "./Pages/Orders/Components/CompletedOrdersCard.vue": () => Promise.resolve().then(function() {
-        return CompletedOrdersCard$1;
+        return CompletedOrdersCard;
       }), "./Pages/Orders/Components/ConvertSale.vue": () => Promise.resolve().then(function() {
         return ConvertSale$1;
       }), "./Pages/Orders/Components/DiscountCreate.vue": () => Promise.resolve().then(function() {
@@ -1683,9 +1687,11 @@ createServer__default["default"](
       }), "./Pages/Purchases/Components/UpdatePurchaseForm.vue": () => Promise.resolve().then(function() {
         return UpdatePurchaseForm$1;
       }), "./Pages/Quotes/Components/ActiveQuotesCard.vue": () => Promise.resolve().then(function() {
-        return ActiveQuotesCard$1;
+        return ActiveQuotesCard;
       }), "./Pages/Quotes/Components/LinkedOrdersCard.vue": () => Promise.resolve().then(function() {
         return LinkedOrdersCard$1;
+      }), "./Pages/Reports/Sales/Index.vue": () => Promise.resolve().then(function() {
+        return Index$1;
       }), "./Pages/ReprintQueue/Components/AddToQueue.vue": () => Promise.resolve().then(function() {
         return AddToQueue$1;
       }), "./Pages/ReprintQueue/Components/QueueItem.vue": () => Promise.resolve().then(function() {
@@ -1731,18 +1737,18 @@ createServer__default["default"](
     }
   })
 );
-const _sfc_main$3$ = {};
-function _sfc_ssrRender$3X(_ctx, _push, _parent, _attrs) {
+const _sfc_main$42 = {};
+function _sfc_ssrRender$3W(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "pb-2" }, _attrs))}><img src="/logos/awia-for-nurseries-zoomed.png" alt="Awia for Nurseries" class="h-12 w-auto"></div>`);
 }
-const _sfc_setup$3$ = _sfc_main$3$.setup;
-_sfc_main$3$.setup = (props, ctx) => {
+const _sfc_setup$42 = _sfc_main$42.setup;
+_sfc_main$42.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/ApplicationMark.vue");
-  return _sfc_setup$3$ ? _sfc_setup$3$(props, ctx) : void 0;
+  return _sfc_setup$42 ? _sfc_setup$42(props, ctx) : void 0;
 };
-var JetApplicationMark = /* @__PURE__ */ _export_sfc(_sfc_main$3$, [["ssrRender", _sfc_ssrRender$3X]]);
-const _sfc_main$3_ = {
+var JetApplicationMark = /* @__PURE__ */ _export_sfc(_sfc_main$42, [["ssrRender", _sfc_ssrRender$3W]]);
+const _sfc_main$41 = {
   data() {
     return {
       show: true
@@ -1776,7 +1782,7 @@ const _sfc_main$3_ = {
     this.hideBanner();
   }
 };
-function _sfc_ssrRender$3W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "fixed bottom-0 z-50 right-0 left-0 w-full" }, _attrs))}>`);
   if ($data.show && $options.message) {
     _push(`<div class="${serverRenderer.ssrRenderClass({
@@ -1805,14 +1811,14 @@ function _sfc_ssrRender$3W(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$3_ = _sfc_main$3_.setup;
-_sfc_main$3_.setup = (props, ctx) => {
+const _sfc_setup$41 = _sfc_main$41.setup;
+_sfc_main$41.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Banner.vue");
-  return _sfc_setup$3_ ? _sfc_setup$3_(props, ctx) : void 0;
+  return _sfc_setup$41 ? _sfc_setup$41(props, ctx) : void 0;
 };
-var JetBanner = /* @__PURE__ */ _export_sfc(_sfc_main$3_, [["ssrRender", _sfc_ssrRender$3W]]);
-const _sfc_main$3Z = {
+var JetBanner = /* @__PURE__ */ _export_sfc(_sfc_main$41, [["ssrRender", _sfc_ssrRender$3V]]);
+const _sfc_main$40 = {
   props: {
     align: {
       default: "right"
@@ -1854,7 +1860,7 @@ const _sfc_main$3Z = {
     }
   }
 };
-function _sfc_ssrRender$3V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3U(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "relative" }, _attrs))}><div>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "trigger", {}, null, _push, _parent);
   _push(`</div><div style="${serverRenderer.ssrRenderStyle($setup.open ? null : { display: "none" })}" class="fixed inset-0 z-40"></div><div style="${serverRenderer.ssrRenderStyle([
@@ -1864,17 +1870,17 @@ function _sfc_ssrRender$3V(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "content", {}, null, _push, _parent);
   _push(`</div></div></div>`);
 }
-const _sfc_setup$3Z = _sfc_main$3Z.setup;
-_sfc_main$3Z.setup = (props, ctx) => {
+const _sfc_setup$40 = _sfc_main$40.setup;
+_sfc_main$40.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Dropdown.vue");
-  return _sfc_setup$3Z ? _sfc_setup$3Z(props, ctx) : void 0;
+  return _sfc_setup$40 ? _sfc_setup$40(props, ctx) : void 0;
 };
-var JetDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$3Z, [["ssrRender", _sfc_ssrRender$3V]]);
-const _sfc_main$3Y = {
+var JetDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$40, [["ssrRender", _sfc_ssrRender$3U]]);
+const _sfc_main$3$ = {
   props: ["href", "as"]
 };
-function _sfc_ssrRender$3U(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   _push(`<div${serverRenderer.ssrRenderAttrs(_attrs)}>`);
   if ($props.as == "button") {
@@ -1904,14 +1910,14 @@ function _sfc_ssrRender$3U(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$3Y = _sfc_main$3Y.setup;
-_sfc_main$3Y.setup = (props, ctx) => {
+const _sfc_setup$3$ = _sfc_main$3$.setup;
+_sfc_main$3$.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/DropdownLink.vue");
-  return _sfc_setup$3Y ? _sfc_setup$3Y(props, ctx) : void 0;
+  return _sfc_setup$3$ ? _sfc_setup$3$(props, ctx) : void 0;
 };
-var JetDropdownLink = /* @__PURE__ */ _export_sfc(_sfc_main$3Y, [["ssrRender", _sfc_ssrRender$3U]]);
-const _sfc_main$3X = {
+var JetDropdownLink = /* @__PURE__ */ _export_sfc(_sfc_main$3$, [["ssrRender", _sfc_ssrRender$3T]]);
+const _sfc_main$3_ = {
   props: ["href", "active"],
   computed: {
     classes() {
@@ -1919,7 +1925,7 @@ const _sfc_main$3X = {
     }
   }
 };
-function _sfc_ssrRender$3T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   _push(serverRenderer.ssrRenderComponent(_component_Link, vue.mergeProps({
     href: $props.href,
@@ -1937,14 +1943,14 @@ function _sfc_ssrRender$3T(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3X = _sfc_main$3X.setup;
-_sfc_main$3X.setup = (props, ctx) => {
+const _sfc_setup$3_ = _sfc_main$3_.setup;
+_sfc_main$3_.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/NavLink.vue");
-  return _sfc_setup$3X ? _sfc_setup$3X(props, ctx) : void 0;
+  return _sfc_setup$3_ ? _sfc_setup$3_(props, ctx) : void 0;
 };
-var JetNavLink = /* @__PURE__ */ _export_sfc(_sfc_main$3X, [["ssrRender", _sfc_ssrRender$3T]]);
-const _sfc_main$3W = {
+var JetNavLink = /* @__PURE__ */ _export_sfc(_sfc_main$3_, [["ssrRender", _sfc_ssrRender$3S]]);
+const _sfc_main$3Z = {
   props: ["active", "href", "as"],
   computed: {
     classes() {
@@ -1952,7 +1958,7 @@ const _sfc_main$3W = {
     }
   }
 };
-function _sfc_ssrRender$3S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   _push(`<div${serverRenderer.ssrRenderAttrs(_attrs)}>`);
   if ($props.as == "button") {
@@ -1978,17 +1984,17 @@ function _sfc_ssrRender$3S(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$3W = _sfc_main$3W.setup;
-_sfc_main$3W.setup = (props, ctx) => {
+const _sfc_setup$3Z = _sfc_main$3Z.setup;
+_sfc_main$3Z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/ResponsiveNavLink.vue");
-  return _sfc_setup$3W ? _sfc_setup$3W(props, ctx) : void 0;
+  return _sfc_setup$3Z ? _sfc_setup$3Z(props, ctx) : void 0;
 };
-var JetResponsiveNavLink = /* @__PURE__ */ _export_sfc(_sfc_main$3W, [["ssrRender", _sfc_ssrRender$3S]]);
-const _sfc_main$3V = {
+var JetResponsiveNavLink = /* @__PURE__ */ _export_sfc(_sfc_main$3Z, [["ssrRender", _sfc_ssrRender$3R]]);
+const _sfc_main$3Y = {
   props: ["href", "current"]
 };
-function _sfc_ssrRender$3R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   _push(serverRenderer.ssrRenderComponent(_component_Link, vue.mergeProps({
     href: $props.href,
@@ -2009,14 +2015,14 @@ function _sfc_ssrRender$3R(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3V = _sfc_main$3V.setup;
-_sfc_main$3V.setup = (props, ctx) => {
+const _sfc_setup$3Y = _sfc_main$3Y.setup;
+_sfc_main$3Y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Links/NavLink.vue");
-  return _sfc_setup$3V ? _sfc_setup$3V(props, ctx) : void 0;
+  return _sfc_setup$3Y ? _sfc_setup$3Y(props, ctx) : void 0;
 };
-var NavLink = /* @__PURE__ */ _export_sfc(_sfc_main$3V, [["ssrRender", _sfc_ssrRender$3R]]);
-const _sfc_main$3U = {
+var NavLink = /* @__PURE__ */ _export_sfc(_sfc_main$3Y, [["ssrRender", _sfc_ssrRender$3Q]]);
+const _sfc_main$3X = {
   components: {
     Disclosure: vue$1.Disclosure,
     DisclosureButton: vue$1.DisclosureButton,
@@ -2024,7 +2030,7 @@ const _sfc_main$3U = {
   },
   props: ["dropdown_text", "current"]
 };
-function _sfc_ssrRender$3Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Disclosure = vue.resolveComponent("Disclosure");
   const _component_DisclosureButton = vue.resolveComponent("DisclosureButton");
   const _component_DisclosurePanel = vue.resolveComponent("DisclosurePanel");
@@ -2118,20 +2124,20 @@ function _sfc_ssrRender$3Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3U = _sfc_main$3U.setup;
-_sfc_main$3U.setup = (props, ctx) => {
+const _sfc_setup$3X = _sfc_main$3X.setup;
+_sfc_main$3X.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/SidebarDropdown.vue");
-  return _sfc_setup$3U ? _sfc_setup$3U(props, ctx) : void 0;
+  return _sfc_setup$3X ? _sfc_setup$3X(props, ctx) : void 0;
 };
-var SidebarDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$3U, [["ssrRender", _sfc_ssrRender$3Q]]);
-const _sfc_main$3T = {
+var SidebarDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$3X, [["ssrRender", _sfc_ssrRender$3P]]);
+const _sfc_main$3W = {
   components: {
     NavLink,
     SidebarDropdown
   }
 };
-function _sfc_ssrRender$3P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_nav_link = vue.resolveComponent("nav-link");
   const _component_sidebar_dropdown = vue.resolveComponent("sidebar-dropdown");
   _push(`<nav${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "flex-1 px-2 bg-white space-y-1" }, _attrs))}>`);
@@ -2588,16 +2594,31 @@ function _sfc_ssrRender$3P(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     }),
     _: 1
   }, _parent));
+  _push(serverRenderer.ssrRenderComponent(_component_nav_link, {
+    href: _ctx.route("reports.index"),
+    current: _ctx.route().current("reports.*")
+  }, {
+    default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+      if (_push2) {
+        _push2(`Reports`);
+      } else {
+        return [
+          vue.createTextVNode("Reports")
+        ];
+      }
+    }),
+    _: 1
+  }, _parent));
   _push(`</nav>`);
 }
-const _sfc_setup$3T = _sfc_main$3T.setup;
-_sfc_main$3T.setup = (props, ctx) => {
+const _sfc_setup$3W = _sfc_main$3W.setup;
+_sfc_main$3W.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/SidebarNavlinks.vue");
-  return _sfc_setup$3T ? _sfc_setup$3T(props, ctx) : void 0;
+  return _sfc_setup$3W ? _sfc_setup$3W(props, ctx) : void 0;
 };
-var SidebarNavlinks = /* @__PURE__ */ _export_sfc(_sfc_main$3T, [["ssrRender", _sfc_ssrRender$3P]]);
-const _sfc_main$3S = {
+var SidebarNavlinks = /* @__PURE__ */ _export_sfc(_sfc_main$3W, [["ssrRender", _sfc_ssrRender$3O]]);
+const _sfc_main$3V = {
   components: {
     Dialog: vue$1.Dialog,
     DialogOverlay: vue$1.DialogOverlay,
@@ -2641,7 +2662,7 @@ const _sfc_main$3S = {
     }
   }
 };
-function _sfc_ssrRender$3O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_TransitionRoot = vue.resolveComponent("TransitionRoot");
   const _component_Dialog = vue.resolveComponent("Dialog");
   const _component_TransitionChild = vue.resolveComponent("TransitionChild");
@@ -3315,27 +3336,27 @@ function _sfc_ssrRender$3O(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div>`);
 }
-const _sfc_setup$3S = _sfc_main$3S.setup;
-_sfc_main$3S.setup = (props, ctx) => {
+const _sfc_setup$3V = _sfc_main$3V.setup;
+_sfc_main$3V.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/AppLayout.vue");
-  return _sfc_setup$3S ? _sfc_setup$3S(props, ctx) : void 0;
+  return _sfc_setup$3V ? _sfc_setup$3V(props, ctx) : void 0;
 };
-var AppLayout = /* @__PURE__ */ _export_sfc(_sfc_main$3S, [["ssrRender", _sfc_ssrRender$3O]]);
-const _sfc_main$3R = {};
-function _sfc_ssrRender$3N(_ctx, _push, _parent, _attrs) {
+var AppLayout = /* @__PURE__ */ _export_sfc(_sfc_main$3V, [["ssrRender", _sfc_ssrRender$3N]]);
+const _sfc_main$3U = {};
+function _sfc_ssrRender$3M(_ctx, _push, _parent, _attrs) {
   _push(`<h1${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "text-4xl font-bold" }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</h1>`);
 }
-const _sfc_setup$3R = _sfc_main$3R.setup;
-_sfc_main$3R.setup = (props, ctx) => {
+const _sfc_setup$3U = _sfc_main$3U.setup;
+_sfc_main$3U.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Headings/HeadingOne.vue");
-  return _sfc_setup$3R ? _sfc_setup$3R(props, ctx) : void 0;
+  return _sfc_setup$3U ? _sfc_setup$3U(props, ctx) : void 0;
 };
-var HeadingOne = /* @__PURE__ */ _export_sfc(_sfc_main$3R, [["ssrRender", _sfc_ssrRender$3N]]);
-const _sfc_main$3Q = {
+var HeadingOne = /* @__PURE__ */ _export_sfc(_sfc_main$3U, [["ssrRender", _sfc_ssrRender$3M]]);
+const _sfc_main$3T = {
   props: {
     href: {
       type: String,
@@ -3343,7 +3364,7 @@ const _sfc_main$3Q = {
     }
   }
 };
-function _sfc_ssrRender$3M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   _push(serverRenderer.ssrRenderComponent(_component_Link, vue.mergeProps({
     href: $props.href,
@@ -3361,210 +3382,215 @@ function _sfc_ssrRender$3M(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3Q = _sfc_main$3Q.setup;
-_sfc_main$3Q.setup = (props, ctx) => {
+const _sfc_setup$3T = _sfc_main$3T.setup;
+_sfc_main$3T.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Links/ButtonLink.vue");
-  return _sfc_setup$3Q ? _sfc_setup$3Q(props, ctx) : void 0;
+  return _sfc_setup$3T ? _sfc_setup$3T(props, ctx) : void 0;
 };
-var ButtonLink = /* @__PURE__ */ _export_sfc(_sfc_main$3Q, [["ssrRender", _sfc_ssrRender$3M]]);
-const _sfc_main$3P = {
-  components: {
-    DetailsSection,
-    ButtonLink
-  },
-  props: {
-    thirtyDaysCompletedOrders: {
-      type: Number,
-      required: true
-    },
-    thirtyDaysCompletedSales: {
-      type: Number,
-      required: true
-    }
+var ButtonLink = /* @__PURE__ */ _export_sfc(_sfc_main$3T, [["ssrRender", _sfc_ssrRender$3L]]);
+const _sfc_main$3S = {
+  __name: "CompletedOrdersCard",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const recentOrders = vue.reactive({
+      orders: [],
+      total: "",
+      count: 0,
+      loading: true
+    });
+    const headingText = vue.computed(() => {
+      return `${recentOrders.total} in sales, past 30 days`;
+    });
+    const numberOrdersText = vue.computed(() => {
+      return recentOrders.count > 1 || recentOrders.count == 0 ? `${recentOrders.count} orders` : `${recentOrders.count} order`;
+    });
+    const totalText = vue.computed(() => {
+      return `There have been ${recentOrders.total} in sales the past 30 days from ${numberOrdersText.value}`;
+    });
+    vue.onMounted(() => {
+      axios.get(route("api.orders.index")).then((response) => {
+        recentOrders.orders = response.data.orders;
+        recentOrders.total = response.data.total_in_dollars;
+        recentOrders.count = response.data.count;
+        recentOrders.loading = false;
+      }).catch((error) => {
+        console.log(error);
+      });
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(serverRenderer.ssrRenderComponent(DetailsSection, _attrs, {
+        title: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${serverRenderer.ssrInterpolate(vue.unref(headingText))}`);
+          } else {
+            return [
+              vue.createTextVNode(vue.toDisplayString(vue.unref(headingText)), 1)
+            ];
+          }
+        }),
+        actions: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(serverRenderer.ssrRenderComponent(ButtonLink, {
+              href: _ctx.route("orders.index")
+            }, {
+              default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`View Orders`);
+                } else {
+                  return [
+                    vue.createTextVNode("View Orders")
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+          } else {
+            return [
+              vue.createVNode(ButtonLink, {
+                href: _ctx.route("orders.index")
+              }, {
+                default: vue.withCtx(() => [
+                  vue.createTextVNode("View Orders")
+                ]),
+                _: 1
+              }, 8, ["href"])
+            ];
+          }
+        }),
+        default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="col-span-6"${_scopeId}><p class="text-lg font-bold mb-2"${_scopeId}>${serverRenderer.ssrInterpolate(vue.unref(numberOrdersText))}, ${serverRenderer.ssrInterpolate(recentOrders.total)} in sales. </p><p${_scopeId}>${serverRenderer.ssrInterpolate(vue.unref(totalText))}</p></div>`);
+          } else {
+            return [
+              vue.createVNode("div", { class: "col-span-6" }, [
+                vue.createVNode("p", { class: "text-lg font-bold mb-2" }, vue.toDisplayString(vue.unref(numberOrdersText)) + ", " + vue.toDisplayString(recentOrders.total) + " in sales. ", 1),
+                vue.createVNode("p", null, vue.toDisplayString(vue.unref(totalText)), 1)
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
   }
 };
-function _sfc_ssrRender$3L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_details_section = vue.resolveComponent("details-section");
-  const _component_button_link = vue.resolveComponent("button-link");
-  _push(serverRenderer.ssrRenderComponent(_component_details_section, _attrs, {
-    title: vue.withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(`Completed Orders, 30 Days`);
-      } else {
-        return [
-          vue.createTextVNode("Completed Orders, 30 Days")
-        ];
-      }
-    }),
-    actions: vue.withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(serverRenderer.ssrRenderComponent(_component_button_link, {
-          href: _ctx.route("orders.index")
-        }, {
-          default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
-            if (_push3) {
-              _push3(`View Orders`);
-            } else {
-              return [
-                vue.createTextVNode("View Orders")
-              ];
-            }
-          }),
-          _: 1
-        }, _parent2, _scopeId));
-      } else {
-        return [
-          vue.createVNode(_component_button_link, {
-            href: _ctx.route("orders.index")
-          }, {
-            default: vue.withCtx(() => [
-              vue.createTextVNode("View Orders")
-            ]),
-            _: 1
-          }, 8, ["href"])
-        ];
-      }
-    }),
-    default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(`<div class="col-span-6"${_scopeId}><p class="text-lg mb-2"${_scopeId}>${serverRenderer.ssrInterpolate($props.thirtyDaysCompletedOrders)} Completed Orders </p><p${_scopeId}>$${serverRenderer.ssrInterpolate($props.thirtyDaysCompletedSales)} in completed sales</p></div>`);
-      } else {
-        return [
-          vue.createVNode("div", { class: "col-span-6" }, [
-            vue.createVNode("p", { class: "text-lg mb-2" }, vue.toDisplayString($props.thirtyDaysCompletedOrders) + " Completed Orders ", 1),
-            vue.createVNode("p", null, "$" + vue.toDisplayString($props.thirtyDaysCompletedSales) + " in completed sales", 1)
-          ])
-        ];
-      }
-    }),
-    _: 1
-  }, _parent));
-}
-const _sfc_setup$3P = _sfc_main$3P.setup;
-_sfc_main$3P.setup = (props, ctx) => {
+const _sfc_setup$3S = _sfc_main$3S.setup;
+_sfc_main$3S.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/CompletedOrdersCard.vue");
-  return _sfc_setup$3P ? _sfc_setup$3P(props, ctx) : void 0;
+  return _sfc_setup$3S ? _sfc_setup$3S(props, ctx) : void 0;
 };
-var CompletedOrdersCard = /* @__PURE__ */ _export_sfc(_sfc_main$3P, [["ssrRender", _sfc_ssrRender$3L]]);
-var CompletedOrdersCard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var CompletedOrdersCard = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": CompletedOrdersCard
+  "default": _sfc_main$3S
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3O = {
-  components: {
-    DetailsSection,
-    ExternalLinkIcon: outline.ExternalLinkIcon,
-    ButtonLink
-  },
-  data() {
-    return {
-      activeQuotes: []
-    };
-  },
-  mounted() {
-    this.getActiveQuotes();
-  },
-  computed: {
-    numActiveQuotes() {
-      return this.activeQuotes.length;
-    },
-    totalActiveQuotes() {
-      return this.formatMoney(
-        this.activeQuotes.reduce(
-          (total, quote) => total + quote.grand_total,
-          0
-        )
-      );
-    }
-  },
-  methods: {
-    getActiveQuotes() {
-      axios.get(route("api.quotes.active")).then((response) => {
-        this.activeQuotes = response.data;
+const _sfc_main$3R = {
+  __name: "ActiveQuotesCard",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const activeQuotes = vue.reactive({
+      quotes: [],
+      total: "",
+      count: 0,
+      loading: true
+    });
+    const headingText = vue.computed(() => {
+      return `${activeQuotes.total} in active quotes`;
+    });
+    const numberQuotesText = vue.computed(() => {
+      return activeQuotes.count > 1 || activeQuotes.count == 0 ? `${activeQuotes.count} quotes` : `${activeQuotes.count} quote`;
+    });
+    const totalText = vue.computed(() => {
+      return `There are ${activeQuotes.count} active quotes with a total of ${activeQuotes.total} that could be converted to an order.`;
+    });
+    vue.onMounted(() => {
+      axios.get(route("api.quotes.index")).then((response) => {
+        activeQuotes.quotes = response.data.quotes;
+        activeQuotes.total = response.data.total_in_dollars;
+        activeQuotes.count = response.data.count;
+        activeQuotes.loading = false;
+      }).catch((error) => {
+        console.log(error);
       });
-    }
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(serverRenderer.ssrRenderComponent(DetailsSection, _attrs, {
+        title: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${serverRenderer.ssrInterpolate(vue.unref(headingText))}`);
+          } else {
+            return [
+              vue.createTextVNode(vue.toDisplayString(vue.unref(headingText)), 1)
+            ];
+          }
+        }),
+        actions: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(serverRenderer.ssrRenderComponent(ButtonLink, {
+              href: _ctx.route("quotes.index")
+            }, {
+              default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`View Quotes`);
+                } else {
+                  return [
+                    vue.createTextVNode("View Quotes")
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+          } else {
+            return [
+              vue.createVNode(ButtonLink, {
+                href: _ctx.route("quotes.index")
+              }, {
+                default: vue.withCtx(() => [
+                  vue.createTextVNode("View Quotes")
+                ]),
+                _: 1
+              }, 8, ["href"])
+            ];
+          }
+        }),
+        default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="col-span-6"${_scopeId}><p class="text-lg mb-2"${_scopeId}>${serverRenderer.ssrInterpolate(vue.unref(numberQuotesText))}</p><p${_scopeId}>${serverRenderer.ssrInterpolate(vue.unref(totalText))}</p></div>`);
+          } else {
+            return [
+              vue.createVNode("div", { class: "col-span-6" }, [
+                vue.createVNode("p", { class: "text-lg mb-2" }, vue.toDisplayString(vue.unref(numberQuotesText)), 1),
+                vue.createVNode("p", null, vue.toDisplayString(vue.unref(totalText)), 1)
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
   }
 };
-function _sfc_ssrRender$3K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_details_section = vue.resolveComponent("details-section");
-  const _component_button_link = vue.resolveComponent("button-link");
-  _push(serverRenderer.ssrRenderComponent(_component_details_section, _attrs, {
-    title: vue.withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(`Quotes`);
-      } else {
-        return [
-          vue.createTextVNode("Quotes")
-        ];
-      }
-    }),
-    actions: vue.withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(serverRenderer.ssrRenderComponent(_component_button_link, {
-          href: _ctx.route("quotes.index")
-        }, {
-          default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
-            if (_push3) {
-              _push3(`View Quotes`);
-            } else {
-              return [
-                vue.createTextVNode("View Quotes")
-              ];
-            }
-          }),
-          _: 1
-        }, _parent2, _scopeId));
-      } else {
-        return [
-          vue.createVNode(_component_button_link, {
-            href: _ctx.route("quotes.index")
-          }, {
-            default: vue.withCtx(() => [
-              vue.createTextVNode("View Quotes")
-            ]),
-            _: 1
-          }, 8, ["href"])
-        ];
-      }
-    }),
-    default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(`<div class="col-span-6"${_scopeId}><p class="text-lg mb-2"${_scopeId}>${serverRenderer.ssrInterpolate($options.numActiveQuotes)} Active quotes</p><p${_scopeId}>${serverRenderer.ssrInterpolate($options.totalActiveQuotes)} in active quotes</p></div>`);
-      } else {
-        return [
-          vue.createVNode("div", { class: "col-span-6" }, [
-            vue.createVNode("p", { class: "text-lg mb-2" }, vue.toDisplayString($options.numActiveQuotes) + " Active quotes", 1),
-            vue.createVNode("p", null, vue.toDisplayString($options.totalActiveQuotes) + " in active quotes", 1)
-          ])
-        ];
-      }
-    }),
-    _: 1
-  }, _parent));
-}
-const _sfc_setup$3O = _sfc_main$3O.setup;
-_sfc_main$3O.setup = (props, ctx) => {
+const _sfc_setup$3R = _sfc_main$3R.setup;
+_sfc_main$3R.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Quotes/Components/ActiveQuotesCard.vue");
-  return _sfc_setup$3O ? _sfc_setup$3O(props, ctx) : void 0;
+  return _sfc_setup$3R ? _sfc_setup$3R(props, ctx) : void 0;
 };
-var ActiveQuotesCard = /* @__PURE__ */ _export_sfc(_sfc_main$3O, [["ssrRender", _sfc_ssrRender$3K]]);
-var ActiveQuotesCard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var ActiveQuotesCard = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": ActiveQuotesCard
+  "default": _sfc_main$3R
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3N = {
+const _sfc_main$3Q = {
   components: {
     AppLayout,
     HeadingOne,
     ButtonLink,
-    CompletedOrdersCard,
-    ActiveQuotesCard
+    CompletedOrdersCard: _sfc_main$3S,
+    ActiveQuotesCard: _sfc_main$3R
   }
 };
-function _sfc_ssrRender$3J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_heading_one = vue.resolveComponent("heading-one");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -3601,10 +3627,7 @@ function _sfc_ssrRender$3J(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
           _: 1
         }, _parent2, _scopeId));
         _push2(`</div><div class="grid gap-6 lg:gap-8"${_scopeId}><div class="sm:px-6 lg:px-8"${_scopeId}><div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900"${_scopeId}>`);
-        _push2(serverRenderer.ssrRenderComponent(_component_completed_orders_card, {
-          thirtyDaysCompletedOrders: 0,
-          thirtyDaysCompletedSales: 0
-        }, null, _parent2, _scopeId));
+        _push2(serverRenderer.ssrRenderComponent(_component_completed_orders_card, null, null, _parent2, _scopeId));
         _push2(serverRenderer.ssrRenderComponent(_component_active_quotes_card, null, null, _parent2, _scopeId));
         _push2(`</div></div></div></div>`);
       } else {
@@ -3629,10 +3652,7 @@ function _sfc_ssrRender$3J(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
             vue.createVNode("div", { class: "grid gap-6 lg:gap-8" }, [
               vue.createVNode("div", { class: "sm:px-6 lg:px-8" }, [
                 vue.createVNode("div", { class: "grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900" }, [
-                  vue.createVNode(_component_completed_orders_card, {
-                    thirtyDaysCompletedOrders: 0,
-                    thirtyDaysCompletedSales: 0
-                  }),
+                  vue.createVNode(_component_completed_orders_card),
                   vue.createVNode(_component_active_quotes_card)
                 ])
               ])
@@ -3644,34 +3664,57 @@ function _sfc_ssrRender$3J(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3N = _sfc_main$3N.setup;
-_sfc_main$3N.setup = (props, ctx) => {
+const _sfc_setup$3Q = _sfc_main$3Q.setup;
+_sfc_main$3Q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Dashboard.vue");
-  return _sfc_setup$3N ? _sfc_setup$3N(props, ctx) : void 0;
+  return _sfc_setup$3Q ? _sfc_setup$3Q(props, ctx) : void 0;
 };
-var Dashboard = /* @__PURE__ */ _export_sfc(_sfc_main$3N, [["ssrRender", _sfc_ssrRender$3J]]);
+var Dashboard = /* @__PURE__ */ _export_sfc(_sfc_main$3Q, [["ssrRender", _sfc_ssrRender$3K]]);
 var Dashboard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Dashboard
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3M = {};
-function _sfc_ssrRender$3I(_ctx, _push, _parent, _attrs) {
+const _sfc_main$3P = {};
+function _sfc_ssrRender$3J(_ctx, _push, _parent, _attrs) {
   _push(`<img${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     src: "/logos/awia-for-nurseries-zoomed.png",
     alt: "Awia for Nurseries",
     class: "h-20 mb-4 w-auto"
   }, _attrs))}>`);
 }
-const _sfc_setup$3M = _sfc_main$3M.setup;
-_sfc_main$3M.setup = (props, ctx) => {
+const _sfc_setup$3P = _sfc_main$3P.setup;
+_sfc_main$3P.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/AuthenticationCardLogo.vue");
-  return _sfc_setup$3M ? _sfc_setup$3M(props, ctx) : void 0;
+  return _sfc_setup$3P ? _sfc_setup$3P(props, ctx) : void 0;
 };
-var JetAuthenticationCardLogo = /* @__PURE__ */ _export_sfc(_sfc_main$3M, [["ssrRender", _sfc_ssrRender$3I]]);
-const _sfc_main$3L = {
+var JetAuthenticationCardLogo = /* @__PURE__ */ _export_sfc(_sfc_main$3P, [["ssrRender", _sfc_ssrRender$3J]]);
+const _sfc_main$3O = {
   props: ["policy"],
+  components: {
+    JetAuthenticationCardLogo
+  }
+};
+function _sfc_ssrRender$3I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
+  _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "font-sans text-gray-900 antialiased" }, _attrs))}><div class="pt-4 bg-gray-100"><div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0"><div>`);
+  _push(serverRenderer.ssrRenderComponent(_component_jet_authentication_card_logo, null, null, _parent));
+  _push(`</div><div class="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose">${$props.policy}</div></div></div></div>`);
+}
+const _sfc_setup$3O = _sfc_main$3O.setup;
+_sfc_main$3O.setup = (props, ctx) => {
+  const ssrContext = vue.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PrivacyPolicy.vue");
+  return _sfc_setup$3O ? _sfc_setup$3O(props, ctx) : void 0;
+};
+var PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$3O, [["ssrRender", _sfc_ssrRender$3I]]);
+var PrivacyPolicy$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  "default": PrivacyPolicy
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$3N = {
+  props: ["terms"],
   components: {
     JetAuthenticationCardLogo
   }
@@ -3680,44 +3723,21 @@ function _sfc_ssrRender$3H(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "font-sans text-gray-900 antialiased" }, _attrs))}><div class="pt-4 bg-gray-100"><div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0"><div>`);
   _push(serverRenderer.ssrRenderComponent(_component_jet_authentication_card_logo, null, null, _parent));
-  _push(`</div><div class="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose">${$props.policy}</div></div></div></div>`);
-}
-const _sfc_setup$3L = _sfc_main$3L.setup;
-_sfc_main$3L.setup = (props, ctx) => {
-  const ssrContext = vue.useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PrivacyPolicy.vue");
-  return _sfc_setup$3L ? _sfc_setup$3L(props, ctx) : void 0;
-};
-var PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$3L, [["ssrRender", _sfc_ssrRender$3H]]);
-var PrivacyPolicy$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  "default": PrivacyPolicy
-}, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3K = {
-  props: ["terms"],
-  components: {
-    JetAuthenticationCardLogo
-  }
-};
-function _sfc_ssrRender$3G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
-  _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "font-sans text-gray-900 antialiased" }, _attrs))}><div class="pt-4 bg-gray-100"><div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0"><div>`);
-  _push(serverRenderer.ssrRenderComponent(_component_jet_authentication_card_logo, null, null, _parent));
   _push(`</div><div class="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose">${$props.terms}</div></div></div></div>`);
 }
-const _sfc_setup$3K = _sfc_main$3K.setup;
-_sfc_main$3K.setup = (props, ctx) => {
+const _sfc_setup$3N = _sfc_main$3N.setup;
+_sfc_main$3N.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/TermsOfService.vue");
-  return _sfc_setup$3K ? _sfc_setup$3K(props, ctx) : void 0;
+  return _sfc_setup$3N ? _sfc_setup$3N(props, ctx) : void 0;
 };
-var TermsOfService = /* @__PURE__ */ _export_sfc(_sfc_main$3K, [["ssrRender", _sfc_ssrRender$3G]]);
+var TermsOfService = /* @__PURE__ */ _export_sfc(_sfc_main$3N, [["ssrRender", _sfc_ssrRender$3H]]);
 var TermsOfService$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": TermsOfService
 }, Symbol.toStringTag, { value: "Module" }));
 var Welcome_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _sfc_main$3J = {
+const _sfc_main$3M = {
   props: {
     canLogin: Boolean,
     canRegister: Boolean,
@@ -3725,7 +3745,7 @@ const _sfc_main$3J = {
     phpVersion: String
   }
 };
-function _sfc_ssrRender$3F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0" }, _attrs))} data-v-7b6d435c>`);
   if ($props.canLogin) {
@@ -3790,38 +3810,38 @@ function _sfc_ssrRender$3F(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`<div class="max-w-6xl mx-auto sm:px-6 lg:px-8" data-v-7b6d435c><div class="flex justify-center pt-8 sm:justify-start sm:pt-0" data-v-7b6d435c><svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20" data-v-7b6d435c><g clip-path="url(#clip0)" fill="#EF3B2D" data-v-7b6d435c><path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z" data-v-7b6d435c></path></g></svg></div><div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" data-v-7b6d435c><div class="grid grid-cols-1 md:grid-cols-2" data-v-7b6d435c><div class="p-6" data-v-7b6d435c><div class="flex items-center" data-v-7b6d435c><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500" data-v-7b6d435c><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" data-v-7b6d435c></path></svg><div class="ml-4 text-lg leading-7 font-semibold" data-v-7b6d435c><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white" data-v-7b6d435c>Documentation</a></div></div><div class="ml-12" data-v-7b6d435c><div class="mt-2 text-gray-600 dark:text-gray-400 text-sm" data-v-7b6d435c> Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end. </div></div></div><div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l" data-v-7b6d435c><div class="flex items-center" data-v-7b6d435c><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500" data-v-7b6d435c><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" data-v-7b6d435c></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" data-v-7b6d435c></path></svg><div class="ml-4 text-lg leading-7 font-semibold" data-v-7b6d435c><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white" data-v-7b6d435c>Laracasts</a></div></div><div class="ml-12" data-v-7b6d435c><div class="mt-2 text-gray-600 dark:text-gray-400 text-sm" data-v-7b6d435c> Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process. </div></div></div><div class="p-6 border-t border-gray-200 dark:border-gray-700" data-v-7b6d435c><div class="flex items-center" data-v-7b6d435c><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500" data-v-7b6d435c><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" data-v-7b6d435c></path></svg><div class="ml-4 text-lg leading-7 font-semibold" data-v-7b6d435c><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white" data-v-7b6d435c>Laravel News</a></div></div><div class="ml-12" data-v-7b6d435c><div class="mt-2 text-gray-600 dark:text-gray-400 text-sm" data-v-7b6d435c> Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials. </div></div></div><div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l" data-v-7b6d435c><div class="flex items-center" data-v-7b6d435c><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500" data-v-7b6d435c><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" data-v-7b6d435c></path></svg><div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white" data-v-7b6d435c> Vibrant Ecosystem </div></div><div class="ml-12" data-v-7b6d435c><div class="mt-2 text-gray-600 dark:text-gray-400 text-sm" data-v-7b6d435c> Laravel&#39;s robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline" data-v-7b6d435c>Forge</a>, <a href="https://vapor.laravel.com" class="underline" data-v-7b6d435c>Vapor</a>, <a href="https://nova.laravel.com" class="underline" data-v-7b6d435c>Nova</a>, and <a href="https://envoyer.io" class="underline" data-v-7b6d435c>Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline" data-v-7b6d435c>Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline" data-v-7b6d435c>Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline" data-v-7b6d435c>Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline" data-v-7b6d435c>Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline" data-v-7b6d435c>Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline" data-v-7b6d435c>Telescope</a>, and more. </div></div></div></div></div><div class="flex justify-center mt-4 sm:items-center sm:justify-between" data-v-7b6d435c><div class="text-center text-sm text-gray-500 sm:text-left" data-v-7b6d435c><div class="flex items-center" data-v-7b6d435c><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400" data-v-7b6d435c><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" data-v-7b6d435c></path></svg><a href="https://laravel.bigcartel.com" class="ml-1 underline" data-v-7b6d435c> Shop </a><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400" data-v-7b6d435c><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" data-v-7b6d435c></path></svg><a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline" data-v-7b6d435c> Sponsor </a></div></div></div></div></div>`);
 }
-const _sfc_setup$3J = _sfc_main$3J.setup;
-_sfc_main$3J.setup = (props, ctx) => {
+const _sfc_setup$3M = _sfc_main$3M.setup;
+_sfc_main$3M.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Welcome.vue");
-  return _sfc_setup$3J ? _sfc_setup$3J(props, ctx) : void 0;
+  return _sfc_setup$3M ? _sfc_setup$3M(props, ctx) : void 0;
 };
-var Welcome = /* @__PURE__ */ _export_sfc(_sfc_main$3J, [["ssrRender", _sfc_ssrRender$3F], ["__scopeId", "data-v-7b6d435c"]]);
+var Welcome = /* @__PURE__ */ _export_sfc(_sfc_main$3M, [["ssrRender", _sfc_ssrRender$3G], ["__scopeId", "data-v-7b6d435c"]]);
 var Welcome$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Welcome
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3I = {
+const _sfc_main$3L = {
   props: ["on"]
 };
-function _sfc_ssrRender$3E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${serverRenderer.ssrRenderAttrs(_attrs)}><div style="${serverRenderer.ssrRenderStyle($props.on ? null : { display: "none" })}" class="text-sm text-gray-600">`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div>`);
 }
-const _sfc_setup$3I = _sfc_main$3I.setup;
-_sfc_main$3I.setup = (props, ctx) => {
+const _sfc_setup$3L = _sfc_main$3L.setup;
+_sfc_main$3L.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/ActionMessage.vue");
-  return _sfc_setup$3I ? _sfc_setup$3I(props, ctx) : void 0;
+  return _sfc_setup$3L ? _sfc_setup$3L(props, ctx) : void 0;
 };
-var JetActionMessage = /* @__PURE__ */ _export_sfc(_sfc_main$3I, [["ssrRender", _sfc_ssrRender$3E]]);
-const _sfc_main$3H = {
+var JetActionMessage = /* @__PURE__ */ _export_sfc(_sfc_main$3L, [["ssrRender", _sfc_ssrRender$3F]]);
+const _sfc_main$3K = {
   components: {
     JetSectionTitle: SectionTitle
   }
 };
-function _sfc_ssrRender$3D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "md:grid md:gap-6" }, _attrs))}><div class="md:mt-0 md:col-span-2"><div class="px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg">`);
   _push(serverRenderer.ssrRenderComponent(_component_jet_section_title, null, {
@@ -3857,14 +3877,14 @@ function _sfc_ssrRender$3D(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "content", {}, null, _push, _parent);
   _push(`</div></div></div>`);
 }
-const _sfc_setup$3H = _sfc_main$3H.setup;
-_sfc_main$3H.setup = (props, ctx) => {
+const _sfc_setup$3K = _sfc_main$3K.setup;
+_sfc_main$3K.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/ActionSection.vue");
-  return _sfc_setup$3H ? _sfc_setup$3H(props, ctx) : void 0;
+  return _sfc_setup$3K ? _sfc_setup$3K(props, ctx) : void 0;
 };
-var JetActionSection = /* @__PURE__ */ _export_sfc(_sfc_main$3H, [["ssrRender", _sfc_ssrRender$3D]]);
-const _sfc_main$3G = {
+var JetActionSection = /* @__PURE__ */ _export_sfc(_sfc_main$3K, [["ssrRender", _sfc_ssrRender$3E]]);
+const _sfc_main$3J = {
   emits: ["close"],
   props: {
     show: {
@@ -3926,7 +3946,7 @@ const _sfc_main$3G = {
     }
   }
 };
-function _sfc_ssrRender$3C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   serverRenderer.ssrRenderTeleport(_push, (_push2) => {
     _push2(`<div style="${serverRenderer.ssrRenderStyle($props.show ? null : { display: "none" })}" class="fixed inset-0 overflow-y-auto px-4 py-6 z-50" scroll-region><div style="${serverRenderer.ssrRenderStyle($props.show ? null : { display: "none" })}" class="fixed inset-0 transform transition-all"><div class="absolute inset-0 bg-gray-500 opacity-75"></div></div><div style="${serverRenderer.ssrRenderStyle($props.show ? null : { display: "none" })}" class="${serverRenderer.ssrRenderClass([$options.maxWidthClass, "mb-6 bg-white rounded-lg shadow-xl transform transition-all sm:w-full sm:mx-auto"])}">`);
     if ($props.show) {
@@ -3937,14 +3957,14 @@ function _sfc_ssrRender$3C(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _push2(`</div></div>`);
   }, "body", false, _parent);
 }
-const _sfc_setup$3G = _sfc_main$3G.setup;
-_sfc_main$3G.setup = (props, ctx) => {
+const _sfc_setup$3J = _sfc_main$3J.setup;
+_sfc_main$3J.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Modal.vue");
-  return _sfc_setup$3G ? _sfc_setup$3G(props, ctx) : void 0;
+  return _sfc_setup$3J ? _sfc_setup$3J(props, ctx) : void 0;
 };
-var Modal = /* @__PURE__ */ _export_sfc(_sfc_main$3G, [["ssrRender", _sfc_ssrRender$3C]]);
-const _sfc_main$3F = {
+var Modal = /* @__PURE__ */ _export_sfc(_sfc_main$3J, [["ssrRender", _sfc_ssrRender$3D]]);
+const _sfc_main$3I = {
   emits: ["close"],
   components: {
     Modal
@@ -3966,7 +3986,7 @@ const _sfc_main$3F = {
     }
   }
 };
-function _sfc_ssrRender$3B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_modal = vue.resolveComponent("modal");
   _push(serverRenderer.ssrRenderComponent(_component_modal, vue.mergeProps({
     show: $props.show,
@@ -4021,14 +4041,14 @@ function _sfc_ssrRender$3B(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3F = _sfc_main$3F.setup;
-_sfc_main$3F.setup = (props, ctx) => {
+const _sfc_setup$3I = _sfc_main$3I.setup;
+_sfc_main$3I.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/ConfirmationModal.vue");
-  return _sfc_setup$3F ? _sfc_setup$3F(props, ctx) : void 0;
+  return _sfc_setup$3I ? _sfc_setup$3I(props, ctx) : void 0;
 };
-var JetConfirmationModal = /* @__PURE__ */ _export_sfc(_sfc_main$3F, [["ssrRender", _sfc_ssrRender$3B]]);
-const _sfc_main$3E = {
+var JetConfirmationModal = /* @__PURE__ */ _export_sfc(_sfc_main$3I, [["ssrRender", _sfc_ssrRender$3C]]);
+const _sfc_main$3H = {
   emits: ["close"],
   components: {
     Modal,
@@ -4051,7 +4071,7 @@ const _sfc_main$3E = {
     }
   }
 };
-function _sfc_ssrRender$3A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_modal = vue.resolveComponent("modal");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   _push(serverRenderer.ssrRenderComponent(_component_modal, vue.mergeProps({
@@ -4126,14 +4146,14 @@ function _sfc_ssrRender$3A(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3E = _sfc_main$3E.setup;
-_sfc_main$3E.setup = (props, ctx) => {
+const _sfc_setup$3H = _sfc_main$3H.setup;
+_sfc_main$3H.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/DialogModal.vue");
-  return _sfc_setup$3E ? _sfc_setup$3E(props, ctx) : void 0;
+  return _sfc_setup$3H ? _sfc_setup$3H(props, ctx) : void 0;
 };
-var JetDialogModal = /* @__PURE__ */ _export_sfc(_sfc_main$3E, [["ssrRender", _sfc_ssrRender$3A]]);
-const _sfc_main$3D = {
+var JetDialogModal = /* @__PURE__ */ _export_sfc(_sfc_main$3H, [["ssrRender", _sfc_ssrRender$3B]]);
+const _sfc_main$3G = {
   emits: ["submitted"],
   components: {
     JetSectionTitle: SectionTitle
@@ -4144,7 +4164,7 @@ const _sfc_main$3D = {
     }
   }
 };
-function _sfc_ssrRender$3z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "md:grid md:gap-6" }, _attrs))}><div class="mt-5 md:mt-0 md:col-span-2"><form><div class="${serverRenderer.ssrRenderClass([
     $options.hasActions ? "sm:rounded-tl-md sm:rounded-tr-md" : "sm:rounded-md",
@@ -4191,25 +4211,25 @@ function _sfc_ssrRender$3z(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</form></div></div>`);
 }
-const _sfc_setup$3D = _sfc_main$3D.setup;
-_sfc_main$3D.setup = (props, ctx) => {
+const _sfc_setup$3G = _sfc_main$3G.setup;
+_sfc_main$3G.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/FormSection.vue");
-  return _sfc_setup$3D ? _sfc_setup$3D(props, ctx) : void 0;
+  return _sfc_setup$3G ? _sfc_setup$3G(props, ctx) : void 0;
 };
-var JetFormSection = /* @__PURE__ */ _export_sfc(_sfc_main$3D, [["ssrRender", _sfc_ssrRender$3z]]);
-const _sfc_main$3C = {};
-function _sfc_ssrRender$3y(_ctx, _push, _parent, _attrs) {
+var JetFormSection = /* @__PURE__ */ _export_sfc(_sfc_main$3G, [["ssrRender", _sfc_ssrRender$3A]]);
+const _sfc_main$3F = {};
+function _sfc_ssrRender$3z(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "hidden sm:block" }, _attrs))}><div class="py-8"><div class="border-t border-gray-200"></div></div></div>`);
 }
-const _sfc_setup$3C = _sfc_main$3C.setup;
-_sfc_main$3C.setup = (props, ctx) => {
+const _sfc_setup$3F = _sfc_main$3F.setup;
+_sfc_main$3F.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/SectionBorder.vue");
-  return _sfc_setup$3C ? _sfc_setup$3C(props, ctx) : void 0;
+  return _sfc_setup$3F ? _sfc_setup$3F(props, ctx) : void 0;
 };
-var JetSectionBorder = /* @__PURE__ */ _export_sfc(_sfc_main$3C, [["ssrRender", _sfc_ssrRender$3y]]);
-const _sfc_main$3B = {
+var JetSectionBorder = /* @__PURE__ */ _export_sfc(_sfc_main$3F, [["ssrRender", _sfc_ssrRender$3z]]);
+const _sfc_main$3E = {
   components: {
     JetActionMessage,
     JetActionSection,
@@ -4278,7 +4298,7 @@ const _sfc_main$3B = {
     }
   }
 };
-function _sfc_ssrRender$3x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -4777,25 +4797,25 @@ function _sfc_ssrRender$3x(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$3B = _sfc_main$3B.setup;
-_sfc_main$3B.setup = (props, ctx) => {
+const _sfc_setup$3E = _sfc_main$3E.setup;
+_sfc_main$3E.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/API/ApiTokenManager.vue");
-  return _sfc_setup$3B ? _sfc_setup$3B(props, ctx) : void 0;
+  return _sfc_setup$3E ? _sfc_setup$3E(props, ctx) : void 0;
 };
-var ApiTokenManager = /* @__PURE__ */ _export_sfc(_sfc_main$3B, [["ssrRender", _sfc_ssrRender$3x]]);
+var ApiTokenManager = /* @__PURE__ */ _export_sfc(_sfc_main$3E, [["ssrRender", _sfc_ssrRender$3y]]);
 var ApiTokenManager$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ApiTokenManager
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3A = {
+const _sfc_main$3D = {
   props: ["tokens", "availablePermissions", "defaultPermissions"],
   components: {
     ApiTokenManager,
     AppLayout
   }
 };
-function _sfc_ssrRender$3w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_api_token_manager = vue.resolveComponent("api-token-manager");
   _push(serverRenderer.ssrRenderComponent(_component_app_layout, _attrs, {
@@ -4834,19 +4854,19 @@ function _sfc_ssrRender$3w(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3A = _sfc_main$3A.setup;
-_sfc_main$3A.setup = (props, ctx) => {
+const _sfc_setup$3D = _sfc_main$3D.setup;
+_sfc_main$3D.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/API/Index.vue");
-  return _sfc_setup$3A ? _sfc_setup$3A(props, ctx) : void 0;
+  return _sfc_setup$3D ? _sfc_setup$3D(props, ctx) : void 0;
 };
-var Index$u = /* @__PURE__ */ _export_sfc(_sfc_main$3A, [["ssrRender", _sfc_ssrRender$3w]]);
-var Index$v = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$x = /* @__PURE__ */ _export_sfc(_sfc_main$3D, [["ssrRender", _sfc_ssrRender$3x]]);
+var Index$y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$u
+  "default": Index$x
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3z = {};
-function _sfc_ssrRender$3v(_ctx, _push, _parent, _attrs) {
+const _sfc_main$3C = {};
+function _sfc_ssrRender$3w(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100" }, _attrs))}><div class="flex flex-col items-center">`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "logo", {}, null, _push, _parent);
   _push(`<div class="mt-6 text-center text-3xl font-extrabold text-gray-900">`);
@@ -4855,14 +4875,14 @@ function _sfc_ssrRender$3v(_ctx, _push, _parent, _attrs) {
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div>`);
 }
-const _sfc_setup$3z = _sfc_main$3z.setup;
-_sfc_main$3z.setup = (props, ctx) => {
+const _sfc_setup$3C = _sfc_main$3C.setup;
+_sfc_main$3C.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/AuthenticationCard.vue");
-  return _sfc_setup$3z ? _sfc_setup$3z(props, ctx) : void 0;
+  return _sfc_setup$3C ? _sfc_setup$3C(props, ctx) : void 0;
 };
-var JetAuthenticationCard = /* @__PURE__ */ _export_sfc(_sfc_main$3z, [["ssrRender", _sfc_ssrRender$3v]]);
-const _sfc_main$3y = {
+var JetAuthenticationCard = /* @__PURE__ */ _export_sfc(_sfc_main$3C, [["ssrRender", _sfc_ssrRender$3w]]);
+const _sfc_main$3B = {
   computed: {
     errors() {
       return this.$page.props.errors;
@@ -4872,7 +4892,7 @@ const _sfc_main$3y = {
     }
   }
 };
-function _sfc_ssrRender$3u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   if ($options.hasErrors) {
     _push(`<div${serverRenderer.ssrRenderAttrs(_attrs)}><div class="font-medium text-red-600">Whoops! Something went wrong.</div><ul class="mt-3 list-disc list-inside text-sm text-red-600"><!--[-->`);
     serverRenderer.ssrRenderList($options.errors, (error, key) => {
@@ -4883,14 +4903,14 @@ function _sfc_ssrRender$3u(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _push(`<!---->`);
   }
 }
-const _sfc_setup$3y = _sfc_main$3y.setup;
-_sfc_main$3y.setup = (props, ctx) => {
+const _sfc_setup$3B = _sfc_main$3B.setup;
+_sfc_main$3B.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/ValidationErrors.vue");
-  return _sfc_setup$3y ? _sfc_setup$3y(props, ctx) : void 0;
+  return _sfc_setup$3B ? _sfc_setup$3B(props, ctx) : void 0;
 };
-var JetValidationErrors = /* @__PURE__ */ _export_sfc(_sfc_main$3y, [["ssrRender", _sfc_ssrRender$3u]]);
-const _sfc_main$3x = {
+var JetValidationErrors = /* @__PURE__ */ _export_sfc(_sfc_main$3B, [["ssrRender", _sfc_ssrRender$3v]]);
+const _sfc_main$3A = {
   components: {
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
@@ -4914,7 +4934,7 @@ const _sfc_main$3x = {
     }
   }
 };
-function _sfc_ssrRender$3t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_authentication_card = vue.resolveComponent("jet-authentication-card");
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   const _component_jet_validation_errors = vue.resolveComponent("jet-validation-errors");
@@ -5008,18 +5028,18 @@ function _sfc_ssrRender$3t(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3x = _sfc_main$3x.setup;
-_sfc_main$3x.setup = (props, ctx) => {
+const _sfc_setup$3A = _sfc_main$3A.setup;
+_sfc_main$3A.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ConfirmPassword.vue");
-  return _sfc_setup$3x ? _sfc_setup$3x(props, ctx) : void 0;
+  return _sfc_setup$3A ? _sfc_setup$3A(props, ctx) : void 0;
 };
-var ConfirmPassword = /* @__PURE__ */ _export_sfc(_sfc_main$3x, [["ssrRender", _sfc_ssrRender$3t]]);
+var ConfirmPassword = /* @__PURE__ */ _export_sfc(_sfc_main$3A, [["ssrRender", _sfc_ssrRender$3u]]);
 var ConfirmPassword$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ConfirmPassword
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3w = {
+const _sfc_main$3z = {
   components: {
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
@@ -5044,7 +5064,7 @@ const _sfc_main$3w = {
     }
   }
 };
-function _sfc_ssrRender$3s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_authentication_card = vue.resolveComponent("jet-authentication-card");
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   const _component_jet_validation_errors = vue.resolveComponent("jet-validation-errors");
@@ -5145,18 +5165,18 @@ function _sfc_ssrRender$3s(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3w = _sfc_main$3w.setup;
-_sfc_main$3w.setup = (props, ctx) => {
+const _sfc_setup$3z = _sfc_main$3z.setup;
+_sfc_main$3z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ForgotPassword.vue");
-  return _sfc_setup$3w ? _sfc_setup$3w(props, ctx) : void 0;
+  return _sfc_setup$3z ? _sfc_setup$3z(props, ctx) : void 0;
 };
-var ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$3w, [["ssrRender", _sfc_ssrRender$3s]]);
+var ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$3z, [["ssrRender", _sfc_ssrRender$3t]]);
 var ForgotPassword$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ForgotPassword
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3v = {
+const _sfc_main$3y = {
   components: {
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
@@ -5190,7 +5210,7 @@ const _sfc_main$3v = {
     }
   }
 };
-function _sfc_ssrRender$3r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_authentication_card = vue.resolveComponent("jet-authentication-card");
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   const _component_jet_authentication_card_title = vue.resolveComponent("jet-authentication-card-title");
@@ -5391,18 +5411,18 @@ function _sfc_ssrRender$3r(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3v = _sfc_main$3v.setup;
-_sfc_main$3v.setup = (props, ctx) => {
+const _sfc_setup$3y = _sfc_main$3y.setup;
+_sfc_main$3y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/Login.vue");
-  return _sfc_setup$3v ? _sfc_setup$3v(props, ctx) : void 0;
+  return _sfc_setup$3y ? _sfc_setup$3y(props, ctx) : void 0;
 };
-var Login = /* @__PURE__ */ _export_sfc(_sfc_main$3v, [["ssrRender", _sfc_ssrRender$3r]]);
+var Login = /* @__PURE__ */ _export_sfc(_sfc_main$3y, [["ssrRender", _sfc_ssrRender$3s]]);
 var Login$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Login
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3u = {
+const _sfc_main$3x = {
   components: {
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
@@ -5431,7 +5451,7 @@ const _sfc_main$3u = {
     }
   }
 };
-function _sfc_ssrRender$3q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_authentication_card = vue.resolveComponent("jet-authentication-card");
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   const _component_jet_validation_errors = vue.resolveComponent("jet-validation-errors");
@@ -5713,18 +5733,18 @@ function _sfc_ssrRender$3q(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3u = _sfc_main$3u.setup;
-_sfc_main$3u.setup = (props, ctx) => {
+const _sfc_setup$3x = _sfc_main$3x.setup;
+_sfc_main$3x.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/Register.vue");
-  return _sfc_setup$3u ? _sfc_setup$3u(props, ctx) : void 0;
+  return _sfc_setup$3x ? _sfc_setup$3x(props, ctx) : void 0;
 };
-var Register = /* @__PURE__ */ _export_sfc(_sfc_main$3u, [["ssrRender", _sfc_ssrRender$3q]]);
+var Register = /* @__PURE__ */ _export_sfc(_sfc_main$3x, [["ssrRender", _sfc_ssrRender$3r]]);
 var Register$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Register
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3t = {
+const _sfc_main$3w = {
   components: {
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
@@ -5755,7 +5775,7 @@ const _sfc_main$3t = {
     }
   }
 };
-function _sfc_ssrRender$3p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_authentication_card = vue.resolveComponent("jet-authentication-card");
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   const _component_jet_validation_errors = vue.resolveComponent("jet-validation-errors");
@@ -5903,18 +5923,18 @@ function _sfc_ssrRender$3p(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3t = _sfc_main$3t.setup;
-_sfc_main$3t.setup = (props, ctx) => {
+const _sfc_setup$3w = _sfc_main$3w.setup;
+_sfc_main$3w.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ResetPassword.vue");
-  return _sfc_setup$3t ? _sfc_setup$3t(props, ctx) : void 0;
+  return _sfc_setup$3w ? _sfc_setup$3w(props, ctx) : void 0;
 };
-var ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$3t, [["ssrRender", _sfc_ssrRender$3p]]);
+var ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$3w, [["ssrRender", _sfc_ssrRender$3q]]);
 var ResetPassword$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ResetPassword
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3s = {
+const _sfc_main$3v = {
   components: {
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
@@ -5950,7 +5970,7 @@ const _sfc_main$3s = {
     }
   }
 };
-function _sfc_ssrRender$3o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_authentication_card = vue.resolveComponent("jet-authentication-card");
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   const _component_jet_validation_errors = vue.resolveComponent("jet-validation-errors");
@@ -6109,18 +6129,18 @@ function _sfc_ssrRender$3o(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3s = _sfc_main$3s.setup;
-_sfc_main$3s.setup = (props, ctx) => {
+const _sfc_setup$3v = _sfc_main$3v.setup;
+_sfc_main$3v.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/TwoFactorChallenge.vue");
-  return _sfc_setup$3s ? _sfc_setup$3s(props, ctx) : void 0;
+  return _sfc_setup$3v ? _sfc_setup$3v(props, ctx) : void 0;
 };
-var TwoFactorChallenge = /* @__PURE__ */ _export_sfc(_sfc_main$3s, [["ssrRender", _sfc_ssrRender$3o]]);
+var TwoFactorChallenge = /* @__PURE__ */ _export_sfc(_sfc_main$3v, [["ssrRender", _sfc_ssrRender$3p]]);
 var TwoFactorChallenge$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": TwoFactorChallenge
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3r = {
+const _sfc_main$3u = {
   components: {
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
@@ -6145,7 +6165,7 @@ const _sfc_main$3r = {
     }
   }
 };
-function _sfc_ssrRender$3n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_authentication_card = vue.resolveComponent("jet-authentication-card");
   const _component_jet_authentication_card_logo = vue.resolveComponent("jet-authentication-card-logo");
   const _component_jet_button = vue.resolveComponent("jet-button");
@@ -6241,23 +6261,23 @@ function _sfc_ssrRender$3n(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3r = _sfc_main$3r.setup;
-_sfc_main$3r.setup = (props, ctx) => {
+const _sfc_setup$3u = _sfc_main$3u.setup;
+_sfc_main$3u.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/VerifyEmail.vue");
-  return _sfc_setup$3r ? _sfc_setup$3r(props, ctx) : void 0;
+  return _sfc_setup$3u ? _sfc_setup$3u(props, ctx) : void 0;
 };
-var VerifyEmail = /* @__PURE__ */ _export_sfc(_sfc_main$3r, [["ssrRender", _sfc_ssrRender$3n]]);
+var VerifyEmail = /* @__PURE__ */ _export_sfc(_sfc_main$3u, [["ssrRender", _sfc_ssrRender$3o]]);
 var VerifyEmail$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": VerifyEmail
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3q = {
+const _sfc_main$3t = {
   props: {
     showOnMobile: Boolean
   }
 };
-function _sfc_ssrRender$3m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<aside${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     class: [
       $props.showOnMobile ? "flex flex-col w-full" : "hidden",
@@ -6269,17 +6289,17 @@ function _sfc_ssrRender$3m(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></aside>`);
 }
-const _sfc_setup$3q = _sfc_main$3q.setup;
-_sfc_main$3q.setup = (props, ctx) => {
+const _sfc_setup$3t = _sfc_main$3t.setup;
+_sfc_main$3t.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/PageAside.vue");
-  return _sfc_setup$3q ? _sfc_setup$3q(props, ctx) : void 0;
+  return _sfc_setup$3t ? _sfc_setup$3t(props, ctx) : void 0;
 };
-var PageAside = /* @__PURE__ */ _export_sfc(_sfc_main$3q, [["ssrRender", _sfc_ssrRender$3m]]);
-const _sfc_main$3p = {
+var PageAside = /* @__PURE__ */ _export_sfc(_sfc_main$3t, [["ssrRender", _sfc_ssrRender$3n]]);
+const _sfc_main$3s = {
   props: { href: String, current: Boolean }
 };
-function _sfc_ssrRender$3l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   _push(serverRenderer.ssrRenderComponent(_component_Link, vue.mergeProps({
     href: $props.href,
@@ -6300,14 +6320,14 @@ function _sfc_ssrRender$3l(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3p = _sfc_main$3p.setup;
-_sfc_main$3p.setup = (props, ctx) => {
+const _sfc_setup$3s = _sfc_main$3s.setup;
+_sfc_main$3s.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Links/AsideLink.vue");
-  return _sfc_setup$3p ? _sfc_setup$3p(props, ctx) : void 0;
+  return _sfc_setup$3s ? _sfc_setup$3s(props, ctx) : void 0;
 };
-var AsideLink = /* @__PURE__ */ _export_sfc(_sfc_main$3p, [["ssrRender", _sfc_ssrRender$3l]]);
-const _sfc_main$3o = {
+var AsideLink = /* @__PURE__ */ _export_sfc(_sfc_main$3s, [["ssrRender", _sfc_ssrRender$3m]]);
+const _sfc_main$3r = {
   components: {
     PlusIcon: solid.PlusIcon,
     ButtonLink
@@ -6327,7 +6347,7 @@ const _sfc_main$3o = {
     }
   }
 };
-function _sfc_ssrRender$3k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_button_link = vue.resolveComponent("button-link");
   const _component_PlusIcon = vue.resolveComponent("PlusIcon");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({
@@ -6375,14 +6395,14 @@ function _sfc_ssrRender$3k(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$3o = _sfc_main$3o.setup;
-_sfc_main$3o.setup = (props, ctx) => {
+const _sfc_setup$3r = _sfc_main$3r.setup;
+_sfc_main$3r.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/EmptyState.vue");
-  return _sfc_setup$3o ? _sfc_setup$3o(props, ctx) : void 0;
+  return _sfc_setup$3r ? _sfc_setup$3r(props, ctx) : void 0;
 };
-var EmptyState = /* @__PURE__ */ _export_sfc(_sfc_main$3o, [["ssrRender", _sfc_ssrRender$3k]]);
-const _sfc_main$3n = {
+var EmptyState = /* @__PURE__ */ _export_sfc(_sfc_main$3r, [["ssrRender", _sfc_ssrRender$3l]]);
+const _sfc_main$3q = {
   components: {
     PageAside,
     AsideLink,
@@ -6399,7 +6419,7 @@ const _sfc_main$3n = {
     }
   }
 };
-function _sfc_ssrRender$3j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -6618,22 +6638,22 @@ function _sfc_ssrRender$3j(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3n = _sfc_main$3n.setup;
-_sfc_main$3n.setup = (props, ctx) => {
+const _sfc_setup$3q = _sfc_main$3q.setup;
+_sfc_main$3q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/BlocksAside.vue");
-  return _sfc_setup$3n ? _sfc_setup$3n(props, ctx) : void 0;
+  return _sfc_setup$3q ? _sfc_setup$3q(props, ctx) : void 0;
 };
-var BlocksAside = /* @__PURE__ */ _export_sfc(_sfc_main$3n, [["ssrRender", _sfc_ssrRender$3j]]);
+var BlocksAside = /* @__PURE__ */ _export_sfc(_sfc_main$3q, [["ssrRender", _sfc_ssrRender$3k]]);
 var BlocksAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": BlocksAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3m = {
+const _sfc_main$3p = {
   components: { ChevronLeftIcon: solid.ChevronLeftIcon },
   props: { href: String }
 };
-function _sfc_ssrRender$3i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   const _component_ChevronLeftIcon = vue.resolveComponent("ChevronLeftIcon");
   _push(serverRenderer.ssrRenderComponent(_component_Link, vue.mergeProps({
@@ -6664,17 +6684,17 @@ function _sfc_ssrRender$3i(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3m = _sfc_main$3m.setup;
-_sfc_main$3m.setup = (props, ctx) => {
+const _sfc_setup$3p = _sfc_main$3p.setup;
+_sfc_main$3p.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Links/BackLink.vue");
-  return _sfc_setup$3m ? _sfc_setup$3m(props, ctx) : void 0;
+  return _sfc_setup$3p ? _sfc_setup$3p(props, ctx) : void 0;
 };
-var BackLink = /* @__PURE__ */ _export_sfc(_sfc_main$3m, [["ssrRender", _sfc_ssrRender$3i]]);
-const _sfc_main$3l = {
+var BackLink = /* @__PURE__ */ _export_sfc(_sfc_main$3p, [["ssrRender", _sfc_ssrRender$3j]]);
+const _sfc_main$3o = {
   props: { dontShowOnMobile: Boolean }
 };
-function _sfc_ssrRender$3h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<main${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     class: [
       $props.dontShowOnMobile ? "hidden lg:block" : "",
@@ -6684,14 +6704,14 @@ function _sfc_ssrRender$3h(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></main>`);
 }
-const _sfc_setup$3l = _sfc_main$3l.setup;
-_sfc_main$3l.setup = (props, ctx) => {
+const _sfc_setup$3o = _sfc_main$3o.setup;
+_sfc_main$3o.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainArea.vue");
-  return _sfc_setup$3l ? _sfc_setup$3l(props, ctx) : void 0;
+  return _sfc_setup$3o ? _sfc_setup$3o(props, ctx) : void 0;
 };
-var MainArea = /* @__PURE__ */ _export_sfc(_sfc_main$3l, [["ssrRender", _sfc_ssrRender$3h]]);
-const _sfc_main$3k = {
+var MainArea = /* @__PURE__ */ _export_sfc(_sfc_main$3o, [["ssrRender", _sfc_ssrRender$3i]]);
+const _sfc_main$3n = {
   components: {
     BlocksAside,
     AppLayout,
@@ -6707,7 +6727,7 @@ const _sfc_main$3k = {
     }
   }
 };
-function _sfc_ssrRender$3g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -6811,18 +6831,18 @@ function _sfc_ssrRender$3g(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$3k = _sfc_main$3k.setup;
-_sfc_main$3k.setup = (props, ctx) => {
+const _sfc_setup$3n = _sfc_main$3n.setup;
+_sfc_main$3n.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/BlocksLayout.vue");
-  return _sfc_setup$3k ? _sfc_setup$3k(props, ctx) : void 0;
+  return _sfc_setup$3n ? _sfc_setup$3n(props, ctx) : void 0;
 };
-var BlocksLayout = /* @__PURE__ */ _export_sfc(_sfc_main$3k, [["ssrRender", _sfc_ssrRender$3g]]);
+var BlocksLayout = /* @__PURE__ */ _export_sfc(_sfc_main$3n, [["ssrRender", _sfc_ssrRender$3h]]);
 var BlocksLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": BlocksLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3j = {
+const _sfc_main$3m = {
   components: {
     Switch: vue$1.Switch,
     SwitchDescription: vue$1.SwitchDescription,
@@ -6861,7 +6881,7 @@ const _sfc_main$3j = {
     }
   }
 };
-function _sfc_ssrRender$3f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -7161,24 +7181,24 @@ function _sfc_ssrRender$3f(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3j = _sfc_main$3j.setup;
-_sfc_main$3j.setup = (props, ctx) => {
+const _sfc_setup$3m = _sfc_main$3m.setup;
+_sfc_main$3m.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/CreateBlockForm.vue");
-  return _sfc_setup$3j ? _sfc_setup$3j(props, ctx) : void 0;
+  return _sfc_setup$3m ? _sfc_setup$3m(props, ctx) : void 0;
 };
-var CreateBlockForm = /* @__PURE__ */ _export_sfc(_sfc_main$3j, [["ssrRender", _sfc_ssrRender$3f]]);
+var CreateBlockForm = /* @__PURE__ */ _export_sfc(_sfc_main$3m, [["ssrRender", _sfc_ssrRender$3g]]);
 var CreateBlockForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateBlockForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3i = {
+const _sfc_main$3l = {
   components: {
     CreateBlockForm,
     BlocksLayout
   }
 };
-function _sfc_ssrRender$3e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_blocks_layout = vue.resolveComponent("blocks-layout");
   const _component_create_block_form = vue.resolveComponent("create-block-form");
   _push(serverRenderer.ssrRenderComponent(_component_blocks_layout, _attrs, {
@@ -7194,18 +7214,18 @@ function _sfc_ssrRender$3e(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3i = _sfc_main$3i.setup;
-_sfc_main$3i.setup = (props, ctx) => {
+const _sfc_setup$3l = _sfc_main$3l.setup;
+_sfc_main$3l.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/Create.vue");
-  return _sfc_setup$3i ? _sfc_setup$3i(props, ctx) : void 0;
+  return _sfc_setup$3l ? _sfc_setup$3l(props, ctx) : void 0;
 };
-var Create$o = /* @__PURE__ */ _export_sfc(_sfc_main$3i, [["ssrRender", _sfc_ssrRender$3e]]);
+var Create$o = /* @__PURE__ */ _export_sfc(_sfc_main$3l, [["ssrRender", _sfc_ssrRender$3f]]);
 var Create$p = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$o
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3h = {
+const _sfc_main$3k = {
   props: { block: Object },
   components: {
     JetActionSection,
@@ -7231,7 +7251,7 @@ const _sfc_main$3h = {
     }
   }
 };
-function _sfc_ssrRender$3d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -7399,18 +7419,18 @@ function _sfc_ssrRender$3d(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3h = _sfc_main$3h.setup;
-_sfc_main$3h.setup = (props, ctx) => {
+const _sfc_setup$3k = _sfc_main$3k.setup;
+_sfc_main$3k.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/DeleteBlockForm.vue");
-  return _sfc_setup$3h ? _sfc_setup$3h(props, ctx) : void 0;
+  return _sfc_setup$3k ? _sfc_setup$3k(props, ctx) : void 0;
 };
-var DeleteBlockForm = /* @__PURE__ */ _export_sfc(_sfc_main$3h, [["ssrRender", _sfc_ssrRender$3d]]);
+var DeleteBlockForm = /* @__PURE__ */ _export_sfc(_sfc_main$3k, [["ssrRender", _sfc_ssrRender$3e]]);
 var DeleteBlockForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteBlockForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3g = {
+const _sfc_main$3j = {
   components: {
     Switch: vue$1.Switch,
     SwitchDescription: vue$1.SwitchDescription,
@@ -7452,7 +7472,7 @@ const _sfc_main$3g = {
     }
   }
 };
-function _sfc_ssrRender$3c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -7741,18 +7761,18 @@ function _sfc_ssrRender$3c(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3g = _sfc_main$3g.setup;
-_sfc_main$3g.setup = (props, ctx) => {
+const _sfc_setup$3j = _sfc_main$3j.setup;
+_sfc_main$3j.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/UpdateBlockForm.vue");
-  return _sfc_setup$3g ? _sfc_setup$3g(props, ctx) : void 0;
+  return _sfc_setup$3j ? _sfc_setup$3j(props, ctx) : void 0;
 };
-var UpdateBlockForm = /* @__PURE__ */ _export_sfc(_sfc_main$3g, [["ssrRender", _sfc_ssrRender$3c]]);
+var UpdateBlockForm = /* @__PURE__ */ _export_sfc(_sfc_main$3j, [["ssrRender", _sfc_ssrRender$3d]]);
 var UpdateBlockForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateBlockForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3f = {
+const _sfc_main$3i = {
   components: {
     JetActionMessage,
     JetButton,
@@ -7785,7 +7805,7 @@ const _sfc_main$3f = {
     }
   }
 };
-function _sfc_ssrRender$3b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -8020,18 +8040,18 @@ function _sfc_ssrRender$3b(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$3f = _sfc_main$3f.setup;
-_sfc_main$3f.setup = (props, ctx) => {
+const _sfc_setup$3i = _sfc_main$3i.setup;
+_sfc_main$3i.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/Places/CreatePlacesForm.vue");
-  return _sfc_setup$3f ? _sfc_setup$3f(props, ctx) : void 0;
+  return _sfc_setup$3i ? _sfc_setup$3i(props, ctx) : void 0;
 };
-var CreatePlacesForm = /* @__PURE__ */ _export_sfc(_sfc_main$3f, [["ssrRender", _sfc_ssrRender$3b]]);
+var CreatePlacesForm = /* @__PURE__ */ _export_sfc(_sfc_main$3i, [["ssrRender", _sfc_ssrRender$3c]]);
 var CreatePlacesForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreatePlacesForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3e = {
+const _sfc_main$3h = {
   components: {
     JetActionMessage,
     JetButton,
@@ -8072,7 +8092,7 @@ const _sfc_main$3e = {
     }
   }
 };
-function _sfc_ssrRender$3a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -8276,18 +8296,18 @@ function _sfc_ssrRender$3a(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$3e = _sfc_main$3e.setup;
-_sfc_main$3e.setup = (props, ctx) => {
+const _sfc_setup$3h = _sfc_main$3h.setup;
+_sfc_main$3h.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/Places/ChangeNumPlacesInRowForm.vue");
-  return _sfc_setup$3e ? _sfc_setup$3e(props, ctx) : void 0;
+  return _sfc_setup$3h ? _sfc_setup$3h(props, ctx) : void 0;
 };
-var ChangeNumPlacesInRowForm = /* @__PURE__ */ _export_sfc(_sfc_main$3e, [["ssrRender", _sfc_ssrRender$3a]]);
+var ChangeNumPlacesInRowForm = /* @__PURE__ */ _export_sfc(_sfc_main$3h, [["ssrRender", _sfc_ssrRender$3b]]);
 var ChangeNumPlacesInRowForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ChangeNumPlacesInRowForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3d = {
+const _sfc_main$3g = {
   components: {
     DetailsSection,
     CreatePlacesForm,
@@ -8322,7 +8342,7 @@ const _sfc_main$3d = {
     }
   }
 };
-function _sfc_ssrRender$39(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_create_places_form = vue.resolveComponent("create-places-form");
   const _component_change_num_places_in_row_form = vue.resolveComponent("change-num-places-in-row-form");
@@ -8419,18 +8439,18 @@ function _sfc_ssrRender$39(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3d = _sfc_main$3d.setup;
-_sfc_main$3d.setup = (props, ctx) => {
+const _sfc_setup$3g = _sfc_main$3g.setup;
+_sfc_main$3g.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/Places/BlockPlaces.vue");
-  return _sfc_setup$3d ? _sfc_setup$3d(props, ctx) : void 0;
+  return _sfc_setup$3g ? _sfc_setup$3g(props, ctx) : void 0;
 };
-var BlockPlaces = /* @__PURE__ */ _export_sfc(_sfc_main$3d, [["ssrRender", _sfc_ssrRender$39]]);
+var BlockPlaces = /* @__PURE__ */ _export_sfc(_sfc_main$3g, [["ssrRender", _sfc_ssrRender$3a]]);
 var BlockPlaces$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": BlockPlaces
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3c = {
+const _sfc_main$3f = {
   components: {
     BlocksLayout,
     UpdateBlockForm,
@@ -8441,7 +8461,7 @@ const _sfc_main$3c = {
     block: Object
   }
 };
-function _sfc_ssrRender$38(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$39(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_blocks_layout = vue.resolveComponent("blocks-layout");
   const _component_update_block_form = vue.resolveComponent("update-block-form");
   const _component_block_places = vue.resolveComponent("block-places");
@@ -8474,38 +8494,38 @@ function _sfc_ssrRender$38(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3c = _sfc_main$3c.setup;
-_sfc_main$3c.setup = (props, ctx) => {
+const _sfc_setup$3f = _sfc_main$3f.setup;
+_sfc_main$3f.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/Edit.vue");
-  return _sfc_setup$3c ? _sfc_setup$3c(props, ctx) : void 0;
+  return _sfc_setup$3f ? _sfc_setup$3f(props, ctx) : void 0;
 };
-var Edit$2 = /* @__PURE__ */ _export_sfc(_sfc_main$3c, [["ssrRender", _sfc_ssrRender$38]]);
+var Edit$2 = /* @__PURE__ */ _export_sfc(_sfc_main$3f, [["ssrRender", _sfc_ssrRender$39]]);
 var Edit$3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Edit$2
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3b = {
+const _sfc_main$3e = {
   components: {
     BlocksLayout
   }
 };
-function _sfc_ssrRender$37(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$38(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_blocks_layout = vue.resolveComponent("blocks-layout");
   _push(serverRenderer.ssrRenderComponent(_component_blocks_layout, _attrs, null, _parent));
 }
-const _sfc_setup$3b = _sfc_main$3b.setup;
-_sfc_main$3b.setup = (props, ctx) => {
+const _sfc_setup$3e = _sfc_main$3e.setup;
+_sfc_main$3e.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blocks/Index.vue");
-  return _sfc_setup$3b ? _sfc_setup$3b(props, ctx) : void 0;
+  return _sfc_setup$3e ? _sfc_setup$3e(props, ctx) : void 0;
 };
-var Index$s = /* @__PURE__ */ _export_sfc(_sfc_main$3b, [["ssrRender", _sfc_ssrRender$37]]);
-var Index$t = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$v = /* @__PURE__ */ _export_sfc(_sfc_main$3e, [["ssrRender", _sfc_ssrRender$38]]);
+var Index$w = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$s
+  "default": Index$v
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3a = {
+const _sfc_main$3d = {
   components: {
     PageAside,
     AsideLink,
@@ -8517,7 +8537,7 @@ const _sfc_main$3a = {
     categories: Array
   }
 };
-function _sfc_ssrRender$36(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$37(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -8700,18 +8720,18 @@ function _sfc_ssrRender$36(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$3a = _sfc_main$3a.setup;
-_sfc_main$3a.setup = (props, ctx) => {
+const _sfc_setup$3d = _sfc_main$3d.setup;
+_sfc_main$3d.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/CategoriesAside.vue");
-  return _sfc_setup$3a ? _sfc_setup$3a(props, ctx) : void 0;
+  return _sfc_setup$3d ? _sfc_setup$3d(props, ctx) : void 0;
 };
-var CategoriesAside = /* @__PURE__ */ _export_sfc(_sfc_main$3a, [["ssrRender", _sfc_ssrRender$36]]);
+var CategoriesAside = /* @__PURE__ */ _export_sfc(_sfc_main$3d, [["ssrRender", _sfc_ssrRender$37]]);
 var CategoriesAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CategoriesAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$39 = {
+const _sfc_main$3c = {
   components: {
     CategoriesAside,
     AppLayout,
@@ -8727,7 +8747,7 @@ const _sfc_main$39 = {
     }
   }
 };
-function _sfc_ssrRender$35(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$36(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -8825,18 +8845,18 @@ function _sfc_ssrRender$35(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$39 = _sfc_main$39.setup;
-_sfc_main$39.setup = (props, ctx) => {
+const _sfc_setup$3c = _sfc_main$3c.setup;
+_sfc_main$3c.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/CategoriesLayout.vue");
-  return _sfc_setup$39 ? _sfc_setup$39(props, ctx) : void 0;
+  return _sfc_setup$3c ? _sfc_setup$3c(props, ctx) : void 0;
 };
-var CategoriesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$39, [["ssrRender", _sfc_ssrRender$35]]);
+var CategoriesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$3c, [["ssrRender", _sfc_ssrRender$36]]);
 var CategoriesLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CategoriesLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$38 = {
+const _sfc_main$3b = {
   components: {
     JetActionMessage,
     JetButton,
@@ -8865,7 +8885,7 @@ const _sfc_main$38 = {
     }
   }
 };
-function _sfc_ssrRender$34(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$35(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -9007,24 +9027,24 @@ function _sfc_ssrRender$34(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$38 = _sfc_main$38.setup;
-_sfc_main$38.setup = (props, ctx) => {
+const _sfc_setup$3b = _sfc_main$3b.setup;
+_sfc_main$3b.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/CreateCategoryForm.vue");
-  return _sfc_setup$38 ? _sfc_setup$38(props, ctx) : void 0;
+  return _sfc_setup$3b ? _sfc_setup$3b(props, ctx) : void 0;
 };
-var CreateCategoryForm = /* @__PURE__ */ _export_sfc(_sfc_main$38, [["ssrRender", _sfc_ssrRender$34]]);
+var CreateCategoryForm = /* @__PURE__ */ _export_sfc(_sfc_main$3b, [["ssrRender", _sfc_ssrRender$35]]);
 var CreateCategoryForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateCategoryForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$37 = {
+const _sfc_main$3a = {
   components: {
     CategoriesLayout,
     CreateCategoryForm
   }
 };
-function _sfc_ssrRender$33(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$34(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_categories_layout = vue.resolveComponent("categories-layout");
   const _component_create_category_form = vue.resolveComponent("create-category-form");
   _push(serverRenderer.ssrRenderComponent(_component_categories_layout, _attrs, {
@@ -9040,18 +9060,18 @@ function _sfc_ssrRender$33(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$37 = _sfc_main$37.setup;
-_sfc_main$37.setup = (props, ctx) => {
+const _sfc_setup$3a = _sfc_main$3a.setup;
+_sfc_main$3a.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/Create.vue");
-  return _sfc_setup$37 ? _sfc_setup$37(props, ctx) : void 0;
+  return _sfc_setup$3a ? _sfc_setup$3a(props, ctx) : void 0;
 };
-var Create$m = /* @__PURE__ */ _export_sfc(_sfc_main$37, [["ssrRender", _sfc_ssrRender$33]]);
+var Create$m = /* @__PURE__ */ _export_sfc(_sfc_main$3a, [["ssrRender", _sfc_ssrRender$34]]);
 var Create$n = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$m
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$36 = {
+const _sfc_main$39 = {
   props: { category: Object },
   components: {
     JetActionSection,
@@ -9077,7 +9097,7 @@ const _sfc_main$36 = {
     }
   }
 };
-function _sfc_ssrRender$32(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$33(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -9245,38 +9265,38 @@ function _sfc_ssrRender$32(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$36 = _sfc_main$36.setup;
-_sfc_main$36.setup = (props, ctx) => {
+const _sfc_setup$39 = _sfc_main$39.setup;
+_sfc_main$39.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/DeleteCategoryForm.vue");
-  return _sfc_setup$36 ? _sfc_setup$36(props, ctx) : void 0;
+  return _sfc_setup$39 ? _sfc_setup$39(props, ctx) : void 0;
 };
-var DeleteCategoryForm = /* @__PURE__ */ _export_sfc(_sfc_main$36, [["ssrRender", _sfc_ssrRender$32]]);
+var DeleteCategoryForm = /* @__PURE__ */ _export_sfc(_sfc_main$39, [["ssrRender", _sfc_ssrRender$33]]);
 var DeleteCategoryForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteCategoryForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$35 = {
+const _sfc_main$38 = {
   components: {
     CategoriesLayout
   }
 };
-function _sfc_ssrRender$31(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$32(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_categories_layout = vue.resolveComponent("categories-layout");
   _push(serverRenderer.ssrRenderComponent(_component_categories_layout, _attrs, null, _parent));
 }
-const _sfc_setup$35 = _sfc_main$35.setup;
-_sfc_main$35.setup = (props, ctx) => {
+const _sfc_setup$38 = _sfc_main$38.setup;
+_sfc_main$38.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/Index.vue");
-  return _sfc_setup$35 ? _sfc_setup$35(props, ctx) : void 0;
+  return _sfc_setup$38 ? _sfc_setup$38(props, ctx) : void 0;
 };
-var Index$q = /* @__PURE__ */ _export_sfc(_sfc_main$35, [["ssrRender", _sfc_ssrRender$31]]);
-var Index$r = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$t = /* @__PURE__ */ _export_sfc(_sfc_main$38, [["ssrRender", _sfc_ssrRender$32]]);
+var Index$u = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$q
+  "default": Index$t
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$34 = {
+const _sfc_main$37 = {
   components: {
     JetActionMessage,
     JetButton,
@@ -9307,7 +9327,7 @@ const _sfc_main$34 = {
     }
   }
 };
-function _sfc_ssrRender$30(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$31(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -9449,18 +9469,18 @@ function _sfc_ssrRender$30(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$34 = _sfc_main$34.setup;
-_sfc_main$34.setup = (props, ctx) => {
+const _sfc_setup$37 = _sfc_main$37.setup;
+_sfc_main$37.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/UpdateCategoryForm.vue");
-  return _sfc_setup$34 ? _sfc_setup$34(props, ctx) : void 0;
+  return _sfc_setup$37 ? _sfc_setup$37(props, ctx) : void 0;
 };
-var UpdateCategoryForm = /* @__PURE__ */ _export_sfc(_sfc_main$34, [["ssrRender", _sfc_ssrRender$30]]);
+var UpdateCategoryForm = /* @__PURE__ */ _export_sfc(_sfc_main$37, [["ssrRender", _sfc_ssrRender$31]]);
 var UpdateCategoryForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateCategoryForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$33 = {
+const _sfc_main$36 = {
   props: ["price"],
   components: {
     JetConfirmationModal,
@@ -9487,7 +9507,7 @@ const _sfc_main$33 = {
     }
   }
 };
-function _sfc_ssrRender$2$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$30(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_TrashIcon = vue.resolveComponent("TrashIcon");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -9578,18 +9598,18 @@ function _sfc_ssrRender$2$(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$33 = _sfc_main$33.setup;
-_sfc_main$33.setup = (props, ctx) => {
+const _sfc_setup$36 = _sfc_main$36.setup;
+_sfc_main$36.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Pricing/DeletePrice.vue");
-  return _sfc_setup$33 ? _sfc_setup$33(props, ctx) : void 0;
+  return _sfc_setup$36 ? _sfc_setup$36(props, ctx) : void 0;
 };
-var DeletePrice = /* @__PURE__ */ _export_sfc(_sfc_main$33, [["ssrRender", _sfc_ssrRender$2$]]);
+var DeletePrice = /* @__PURE__ */ _export_sfc(_sfc_main$36, [["ssrRender", _sfc_ssrRender$30]]);
 var DeletePrice$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeletePrice
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$32 = {
+const _sfc_main$35 = {
   components: {
     JetButton,
     JetInput,
@@ -9620,7 +9640,7 @@ const _sfc_main$32 = {
     }
   }
 };
-function _sfc_ssrRender$2_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
   const _component_jet_input_error = vue.resolveComponent("jet-input-error");
@@ -9675,19 +9695,19 @@ function _sfc_ssrRender$2_(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   _push(serverRenderer.ssrRenderComponent(_component_DeletePrice, { price: $props.price }, null, _parent));
   _push(`</td></tr>`);
 }
-const _sfc_setup$32 = _sfc_main$32.setup;
-_sfc_main$32.setup = (props, ctx) => {
+const _sfc_setup$35 = _sfc_main$35.setup;
+_sfc_main$35.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Pricing/UpdatePrice.vue");
-  return _sfc_setup$32 ? _sfc_setup$32(props, ctx) : void 0;
+  return _sfc_setup$35 ? _sfc_setup$35(props, ctx) : void 0;
 };
-var UpdatePrice = /* @__PURE__ */ _export_sfc(_sfc_main$32, [["ssrRender", _sfc_ssrRender$2_]]);
+var UpdatePrice = /* @__PURE__ */ _export_sfc(_sfc_main$35, [["ssrRender", _sfc_ssrRender$2$]]);
 var UpdatePrice$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdatePrice
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$31 = {};
-function _sfc_ssrRender$2Z(_ctx, _push, _parent, _attrs) {
+const _sfc_main$34 = {};
+function _sfc_ssrRender$2_(_ctx, _push, _parent, _attrs) {
   _push(`<th${serverRenderer.ssrRenderAttrs(vue.mergeProps({
     scope: "col",
     class: "px-4 py-3 text-xs uppercase tracking-wider text-left whitespace-nowrap"
@@ -9695,14 +9715,14 @@ function _sfc_ssrRender$2Z(_ctx, _push, _parent, _attrs) {
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</th>`);
 }
-const _sfc_setup$31 = _sfc_main$31.setup;
-_sfc_main$31.setup = (props, ctx) => {
+const _sfc_setup$34 = _sfc_main$34.setup;
+_sfc_main$34.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Tables/TableH.vue");
-  return _sfc_setup$31 ? _sfc_setup$31(props, ctx) : void 0;
+  return _sfc_setup$34 ? _sfc_setup$34(props, ctx) : void 0;
 };
-var TableH = /* @__PURE__ */ _export_sfc(_sfc_main$31, [["ssrRender", _sfc_ssrRender$2Z]]);
-const _sfc_main$30 = {
+var TableH = /* @__PURE__ */ _export_sfc(_sfc_main$34, [["ssrRender", _sfc_ssrRender$2_]]);
+const _sfc_main$33 = {
   components: {
     UpdatePrice,
     TableH
@@ -9711,7 +9731,7 @@ const _sfc_main$30 = {
     prices: Array
   }
 };
-function _sfc_ssrRender$2Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_TableH = vue.resolveComponent("TableH");
   const _component_UpdatePrice = vue.resolveComponent("UpdatePrice");
   if ($props.prices.length) {
@@ -9765,18 +9785,18 @@ function _sfc_ssrRender$2Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _push(`<!---->`);
   }
 }
-const _sfc_setup$30 = _sfc_main$30.setup;
-_sfc_main$30.setup = (props, ctx) => {
+const _sfc_setup$33 = _sfc_main$33.setup;
+_sfc_main$33.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Pricing/PriceTable.vue");
-  return _sfc_setup$30 ? _sfc_setup$30(props, ctx) : void 0;
+  return _sfc_setup$33 ? _sfc_setup$33(props, ctx) : void 0;
 };
-var PriceTable = /* @__PURE__ */ _export_sfc(_sfc_main$30, [["ssrRender", _sfc_ssrRender$2Y]]);
+var PriceTable = /* @__PURE__ */ _export_sfc(_sfc_main$33, [["ssrRender", _sfc_ssrRender$2Z]]);
 var PriceTable$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PriceTable
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2$ = {
+const _sfc_main$32 = {
   components: {
     Switch: vue$1.Switch,
     SwitchDescription: vue$1.SwitchDescription,
@@ -9829,7 +9849,7 @@ const _sfc_main$2$ = {
     }
   }
 };
-function _sfc_ssrRender$2X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_select_box = vue.resolveComponent("select-box");
@@ -10181,18 +10201,18 @@ function _sfc_ssrRender$2X(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$2$ = _sfc_main$2$.setup;
-_sfc_main$2$.setup = (props, ctx) => {
+const _sfc_setup$32 = _sfc_main$32.setup;
+_sfc_main$32.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Pricing/CreatePrice.vue");
-  return _sfc_setup$2$ ? _sfc_setup$2$(props, ctx) : void 0;
+  return _sfc_setup$32 ? _sfc_setup$32(props, ctx) : void 0;
 };
-var CreatePrice = /* @__PURE__ */ _export_sfc(_sfc_main$2$, [["ssrRender", _sfc_ssrRender$2X]]);
+var CreatePrice = /* @__PURE__ */ _export_sfc(_sfc_main$32, [["ssrRender", _sfc_ssrRender$2Y]]);
 var CreatePrice$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreatePrice
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2_ = {
+const _sfc_main$31 = {
   props: { product: Object, category: Object },
   components: {
     JetSectionTitle: SectionTitle,
@@ -10205,7 +10225,7 @@ const _sfc_main$2_ = {
     };
   }
 };
-function _sfc_ssrRender$2W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_CreatePrice = vue.resolveComponent("CreatePrice");
   const _component_PriceTable = vue.resolveComponent("PriceTable");
@@ -10298,18 +10318,18 @@ function _sfc_ssrRender$2W(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$2_ = _sfc_main$2_.setup;
-_sfc_main$2_.setup = (props, ctx) => {
+const _sfc_setup$31 = _sfc_main$31.setup;
+_sfc_main$31.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Pricing/ProductPricing.vue");
-  return _sfc_setup$2_ ? _sfc_setup$2_(props, ctx) : void 0;
+  return _sfc_setup$31 ? _sfc_setup$31(props, ctx) : void 0;
 };
-var ProductPricing = /* @__PURE__ */ _export_sfc(_sfc_main$2_, [["ssrRender", _sfc_ssrRender$2W]]);
+var ProductPricing = /* @__PURE__ */ _export_sfc(_sfc_main$31, [["ssrRender", _sfc_ssrRender$2X]]);
 var ProductPricing$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ProductPricing
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2Z = {
+const _sfc_main$30 = {
   components: {
     CategoriesLayout,
     UpdateCategoryForm,
@@ -10320,7 +10340,7 @@ const _sfc_main$2Z = {
     category: Object
   }
 };
-function _sfc_ssrRender$2V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_categories_layout = vue.resolveComponent("categories-layout");
   const _component_update_category_form = vue.resolveComponent("update-category-form");
   const _component_ProductPricing = vue.resolveComponent("ProductPricing");
@@ -10346,31 +10366,31 @@ function _sfc_ssrRender$2V(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2Z = _sfc_main$2Z.setup;
-_sfc_main$2Z.setup = (props, ctx) => {
+const _sfc_setup$30 = _sfc_main$30.setup;
+_sfc_main$30.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Categories/Show.vue");
-  return _sfc_setup$2Z ? _sfc_setup$2Z(props, ctx) : void 0;
+  return _sfc_setup$30 ? _sfc_setup$30(props, ctx) : void 0;
 };
-var Show$q = /* @__PURE__ */ _export_sfc(_sfc_main$2Z, [["ssrRender", _sfc_ssrRender$2V]]);
+var Show$q = /* @__PURE__ */ _export_sfc(_sfc_main$30, [["ssrRender", _sfc_ssrRender$2W]]);
 var Show$r = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$q
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2Y = {};
-function _sfc_ssrRender$2U(_ctx, _push, _parent, _attrs) {
+const _sfc_main$2$ = {};
+function _sfc_ssrRender$2V(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "p-4 tabs" }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div>`);
 }
-const _sfc_setup$2Y = _sfc_main$2Y.setup;
-_sfc_main$2Y.setup = (props, ctx) => {
+const _sfc_setup$2$ = _sfc_main$2$.setup;
+_sfc_main$2$.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TabContainer.vue");
-  return _sfc_setup$2Y ? _sfc_setup$2Y(props, ctx) : void 0;
+  return _sfc_setup$2$ ? _sfc_setup$2$(props, ctx) : void 0;
 };
-var TabContainer = /* @__PURE__ */ _export_sfc(_sfc_main$2Y, [["ssrRender", _sfc_ssrRender$2U]]);
-const _sfc_main$2X = {
+var TabContainer = /* @__PURE__ */ _export_sfc(_sfc_main$2$, [["ssrRender", _sfc_ssrRender$2V]]);
+const _sfc_main$2_ = {
   props: {
     current: Boolean,
     type: { type: String, default: "underline" },
@@ -10386,7 +10406,7 @@ const _sfc_main$2X = {
     }
   }
 };
-function _sfc_ssrRender$2T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2U(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   serverRenderer.ssrRenderVNode(_push, vue.createVNode(vue.resolveDynamicComponent($props.as), vue.mergeProps({ class: $options.classes }, _attrs), {
     default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -10400,20 +10420,20 @@ function _sfc_ssrRender$2T(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }), _parent);
 }
-const _sfc_setup$2X = _sfc_main$2X.setup;
-_sfc_main$2X.setup = (props, ctx) => {
+const _sfc_setup$2_ = _sfc_main$2_.setup;
+_sfc_main$2_.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Links/TabLink.vue");
-  return _sfc_setup$2X ? _sfc_setup$2X(props, ctx) : void 0;
+  return _sfc_setup$2_ ? _sfc_setup$2_(props, ctx) : void 0;
 };
-var TabLink = /* @__PURE__ */ _export_sfc(_sfc_main$2X, [["ssrRender", _sfc_ssrRender$2T]]);
-const _sfc_main$2W = {
+var TabLink = /* @__PURE__ */ _export_sfc(_sfc_main$2_, [["ssrRender", _sfc_ssrRender$2U]]);
+const _sfc_main$2Z = {
   components: {
     TabContainer,
     TabLink
   }
 };
-function _sfc_ssrRender$2S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_tab_container = vue.resolveComponent("tab-container");
   const _component_tab_link = vue.resolveComponent("tab-link");
   _push(serverRenderer.ssrRenderComponent(_component_tab_container, vue.mergeProps({ class: "tabs-boxed px-2" }, _attrs), {
@@ -10479,27 +10499,27 @@ function _sfc_ssrRender$2S(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2W = _sfc_main$2W.setup;
-_sfc_main$2W.setup = (props, ctx) => {
+const _sfc_setup$2Z = _sfc_main$2Z.setup;
+_sfc_main$2Z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/InventoryTabs.vue");
-  return _sfc_setup$2W ? _sfc_setup$2W(props, ctx) : void 0;
+  return _sfc_setup$2Z ? _sfc_setup$2Z(props, ctx) : void 0;
 };
-var InventoryTabs = /* @__PURE__ */ _export_sfc(_sfc_main$2W, [["ssrRender", _sfc_ssrRender$2S]]);
-const _sfc_main$2V = {};
-function _sfc_ssrRender$2R(_ctx, _push, _parent, _attrs) {
+var InventoryTabs = /* @__PURE__ */ _export_sfc(_sfc_main$2Z, [["ssrRender", _sfc_ssrRender$2T]]);
+const _sfc_main$2Y = {};
+function _sfc_ssrRender$2S(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "bg-white shadow sm:rounded-lg" }, _attrs))}><div class="px-4 py-5 sm:p-6">`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div>`);
 }
-const _sfc_setup$2V = _sfc_main$2V.setup;
-_sfc_main$2V.setup = (props, ctx) => {
+const _sfc_setup$2Y = _sfc_main$2Y.setup;
+_sfc_main$2Y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Card.vue");
-  return _sfc_setup$2V ? _sfc_setup$2V(props, ctx) : void 0;
+  return _sfc_setup$2Y ? _sfc_setup$2Y(props, ctx) : void 0;
 };
-var Card = /* @__PURE__ */ _export_sfc(_sfc_main$2V, [["ssrRender", _sfc_ssrRender$2R]]);
-const _sfc_main$2U = {
+var Card = /* @__PURE__ */ _export_sfc(_sfc_main$2Y, [["ssrRender", _sfc_ssrRender$2S]]);
+const _sfc_main$2X = {
   components: {
     SectionTitle,
     JetInput,
@@ -10575,7 +10595,7 @@ const _sfc_main$2U = {
     }
   }
 };
-function _sfc_ssrRender$2Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_InventoryTabs = vue.resolveComponent("InventoryTabs");
@@ -10946,18 +10966,18 @@ function _sfc_ssrRender$2Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2U = _sfc_main$2U.setup;
-_sfc_main$2U.setup = (props, ctx) => {
+const _sfc_setup$2X = _sfc_main$2X.setup;
+_sfc_main$2X.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ClearLocations/Index.vue");
-  return _sfc_setup$2U ? _sfc_setup$2U(props, ctx) : void 0;
+  return _sfc_setup$2X ? _sfc_setup$2X(props, ctx) : void 0;
 };
-var Index$o = /* @__PURE__ */ _export_sfc(_sfc_main$2U, [["ssrRender", _sfc_ssrRender$2Q]]);
-var Index$p = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$r = /* @__PURE__ */ _export_sfc(_sfc_main$2X, [["ssrRender", _sfc_ssrRender$2R]]);
+var Index$s = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$o
+  "default": Index$r
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2T = {
+const _sfc_main$2W = {
   components: {
     JetActionMessage,
     JetButton,
@@ -11007,7 +11027,7 @@ const _sfc_main$2T = {
     }
   }
 };
-function _sfc_ssrRender$2P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -11419,18 +11439,18 @@ function _sfc_ssrRender$2P(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$2T = _sfc_main$2T.setup;
-_sfc_main$2T.setup = (props, ctx) => {
+const _sfc_setup$2W = _sfc_main$2W.setup;
+_sfc_main$2W.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Contacts/CreateContactComponent.vue");
-  return _sfc_setup$2T ? _sfc_setup$2T(props, ctx) : void 0;
+  return _sfc_setup$2W ? _sfc_setup$2W(props, ctx) : void 0;
 };
-var CreateContactComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2T, [["ssrRender", _sfc_ssrRender$2P]]);
+var CreateContactComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2W, [["ssrRender", _sfc_ssrRender$2Q]]);
 var CreateContactComponent$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateContactComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2S = {
+const _sfc_main$2V = {
   props: ["contact"],
   components: {
     JetActionSection,
@@ -11461,7 +11481,7 @@ const _sfc_main$2S = {
     }
   }
 };
-function _sfc_ssrRender$2O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -11559,18 +11579,18 @@ function _sfc_ssrRender$2O(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$2S = _sfc_main$2S.setup;
-_sfc_main$2S.setup = (props, ctx) => {
+const _sfc_setup$2V = _sfc_main$2V.setup;
+_sfc_main$2V.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Contacts/DeleteContactComponent.vue");
-  return _sfc_setup$2S ? _sfc_setup$2S(props, ctx) : void 0;
+  return _sfc_setup$2V ? _sfc_setup$2V(props, ctx) : void 0;
 };
-var DeleteContactComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2S, [["ssrRender", _sfc_ssrRender$2O]]);
+var DeleteContactComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2V, [["ssrRender", _sfc_ssrRender$2P]]);
 var DeleteContactComponent$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteContactComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2R = {
+const _sfc_main$2U = {
   components: {
     JetActionMessage,
     JetButton,
@@ -11622,7 +11642,7 @@ const _sfc_main$2R = {
     }
   }
 };
-function _sfc_ssrRender$2N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_delete_contact_component = vue.resolveComponent("delete-contact-component");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -12031,18 +12051,18 @@ function _sfc_ssrRender$2N(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$2R = _sfc_main$2R.setup;
-_sfc_main$2R.setup = (props, ctx) => {
+const _sfc_setup$2U = _sfc_main$2U.setup;
+_sfc_main$2U.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Contacts/UpdateContactComponent.vue");
-  return _sfc_setup$2R ? _sfc_setup$2R(props, ctx) : void 0;
+  return _sfc_setup$2U ? _sfc_setup$2U(props, ctx) : void 0;
 };
-var UpdateContactComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2R, [["ssrRender", _sfc_ssrRender$2N]]);
+var UpdateContactComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2U, [["ssrRender", _sfc_ssrRender$2O]]);
 var UpdateContactComponent$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateContactComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2Q = {
+const _sfc_main$2T = {
   props: { contacts: Array, contactableType: String, contactableId: Number },
   components: {
     JetSectionTitle: SectionTitle,
@@ -12050,7 +12070,7 @@ const _sfc_main$2Q = {
     UpdateContactComponent
   }
 };
-function _sfc_ssrRender$2M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_create_contact_component = vue.resolveComponent("create-contact-component");
   const _component_update_contact_component = vue.resolveComponent("update-contact-component");
@@ -12105,19 +12125,19 @@ function _sfc_ssrRender$2M(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div></div></div>`);
 }
-const _sfc_setup$2Q = _sfc_main$2Q.setup;
-_sfc_main$2Q.setup = (props, ctx) => {
+const _sfc_setup$2T = _sfc_main$2T.setup;
+_sfc_main$2T.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Contacts/ContactAside.vue");
-  return _sfc_setup$2Q ? _sfc_setup$2Q(props, ctx) : void 0;
+  return _sfc_setup$2T ? _sfc_setup$2T(props, ctx) : void 0;
 };
-var ContactAside = /* @__PURE__ */ _export_sfc(_sfc_main$2Q, [["ssrRender", _sfc_ssrRender$2M]]);
+var ContactAside = /* @__PURE__ */ _export_sfc(_sfc_main$2T, [["ssrRender", _sfc_ssrRender$2N]]);
 var ContactAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ContactAside
 }, Symbol.toStringTag, { value: "Module" }));
 var SearchInput_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _sfc_main$2P = {
+const _sfc_main$2S = {
   components: {
     JetInput,
     SearchIcon: SearchIcon__default["default"]
@@ -12153,7 +12173,7 @@ const _sfc_main$2P = {
     }
   }
 };
-function _sfc_ssrRender$2L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_SearchIcon = vue.resolveComponent("SearchIcon");
   const _component_jet_input = vue.resolveComponent("jet-input");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "flex space-x-4" }, _attrs))} data-v-287c75ee><div class="flex-1 min-w-0" data-v-287c75ee><label for="search" class="sr-only" data-v-287c75ee>Search</label><div class="relative rounded-md shadow-sm" data-v-287c75ee><div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" data-v-287c75ee>`);
@@ -12180,14 +12200,14 @@ function _sfc_ssrRender$2L(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }), null, _parent));
   _push(`</div></div></div>`);
 }
-const _sfc_setup$2P = _sfc_main$2P.setup;
-_sfc_main$2P.setup = (props, ctx) => {
+const _sfc_setup$2S = _sfc_main$2S.setup;
+_sfc_main$2S.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/SearchInput.vue");
-  return _sfc_setup$2P ? _sfc_setup$2P(props, ctx) : void 0;
+  return _sfc_setup$2S ? _sfc_setup$2S(props, ctx) : void 0;
 };
-var SearchInput = /* @__PURE__ */ _export_sfc(_sfc_main$2P, [["ssrRender", _sfc_ssrRender$2L], ["__scopeId", "data-v-287c75ee"]]);
-const _sfc_main$2O = {
+var SearchInput = /* @__PURE__ */ _export_sfc(_sfc_main$2S, [["ssrRender", _sfc_ssrRender$2M], ["__scopeId", "data-v-287c75ee"]]);
+const _sfc_main$2R = {
   components: {
     PageAside,
     AsideLink,
@@ -12225,7 +12245,7 @@ const _sfc_main$2O = {
     }
   }
 };
-function _sfc_ssrRender$2K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -12519,18 +12539,18 @@ function _sfc_ssrRender$2K(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2O = _sfc_main$2O.setup;
-_sfc_main$2O.setup = (props, ctx) => {
+const _sfc_setup$2R = _sfc_main$2R.setup;
+_sfc_main$2R.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/CustomersAside.vue");
-  return _sfc_setup$2O ? _sfc_setup$2O(props, ctx) : void 0;
+  return _sfc_setup$2R ? _sfc_setup$2R(props, ctx) : void 0;
 };
-var CustomersAside = /* @__PURE__ */ _export_sfc(_sfc_main$2O, [["ssrRender", _sfc_ssrRender$2K]]);
+var CustomersAside = /* @__PURE__ */ _export_sfc(_sfc_main$2R, [["ssrRender", _sfc_ssrRender$2L]]);
 var CustomersAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CustomersAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2N = {
+const _sfc_main$2Q = {
   components: {
     CustomersAside,
     AppLayout,
@@ -12546,7 +12566,7 @@ const _sfc_main$2N = {
     }
   }
 };
-function _sfc_ssrRender$2J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -12679,18 +12699,18 @@ function _sfc_ssrRender$2J(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$2N = _sfc_main$2N.setup;
-_sfc_main$2N.setup = (props, ctx) => {
+const _sfc_setup$2Q = _sfc_main$2Q.setup;
+_sfc_main$2Q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/CustomersLayout.vue");
-  return _sfc_setup$2N ? _sfc_setup$2N(props, ctx) : void 0;
+  return _sfc_setup$2Q ? _sfc_setup$2Q(props, ctx) : void 0;
 };
-var CustomersLayout = /* @__PURE__ */ _export_sfc(_sfc_main$2N, [["ssrRender", _sfc_ssrRender$2J]]);
+var CustomersLayout = /* @__PURE__ */ _export_sfc(_sfc_main$2Q, [["ssrRender", _sfc_ssrRender$2K]]);
 var CustomersLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CustomersLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2M = {
+const _sfc_main$2P = {
   props: ["customer"],
   components: {
     JetActionSection,
@@ -12716,7 +12736,7 @@ const _sfc_main$2M = {
     }
   }
 };
-function _sfc_ssrRender$2I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -12884,18 +12904,18 @@ function _sfc_ssrRender$2I(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2M = _sfc_main$2M.setup;
-_sfc_main$2M.setup = (props, ctx) => {
+const _sfc_setup$2P = _sfc_main$2P.setup;
+_sfc_main$2P.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/RestoreCustomerForm.vue");
-  return _sfc_setup$2M ? _sfc_setup$2M(props, ctx) : void 0;
+  return _sfc_setup$2P ? _sfc_setup$2P(props, ctx) : void 0;
 };
-var RestoreCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2M, [["ssrRender", _sfc_ssrRender$2I]]);
+var RestoreCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2P, [["ssrRender", _sfc_ssrRender$2J]]);
 var RestoreCustomerForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": RestoreCustomerForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2L = {
+const _sfc_main$2O = {
   components: {
     PaperClipIcon: solid.PaperClipIcon,
     CustomersLayout,
@@ -12904,7 +12924,7 @@ const _sfc_main$2L = {
   },
   props: { customer: Object }
 };
-function _sfc_ssrRender$2H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_customers_layout = vue.resolveComponent("customers-layout");
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_restore_customer_form = vue.resolveComponent("restore-customer-form");
@@ -12981,18 +13001,18 @@ function _sfc_ssrRender$2H(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2L = _sfc_main$2L.setup;
-_sfc_main$2L.setup = (props, ctx) => {
+const _sfc_setup$2O = _sfc_main$2O.setup;
+_sfc_main$2O.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/ArchivedShow.vue");
-  return _sfc_setup$2L ? _sfc_setup$2L(props, ctx) : void 0;
+  return _sfc_setup$2O ? _sfc_setup$2O(props, ctx) : void 0;
 };
-var ArchivedShow$4 = /* @__PURE__ */ _export_sfc(_sfc_main$2L, [["ssrRender", _sfc_ssrRender$2H]]);
+var ArchivedShow$4 = /* @__PURE__ */ _export_sfc(_sfc_main$2O, [["ssrRender", _sfc_ssrRender$2I]]);
 var ArchivedShow$5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ArchivedShow$4
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2K = {
+const _sfc_main$2N = {
   components: {
     JetActionMessage,
     JetButton,
@@ -13074,7 +13094,7 @@ const _sfc_main$2K = {
     }
   }
 };
-function _sfc_ssrRender$2G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -14109,24 +14129,24 @@ function _sfc_ssrRender$2G(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2K = _sfc_main$2K.setup;
-_sfc_main$2K.setup = (props, ctx) => {
+const _sfc_setup$2N = _sfc_main$2N.setup;
+_sfc_main$2N.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/CreateCustomerForm.vue");
-  return _sfc_setup$2K ? _sfc_setup$2K(props, ctx) : void 0;
+  return _sfc_setup$2N ? _sfc_setup$2N(props, ctx) : void 0;
 };
-var CreateCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2K, [["ssrRender", _sfc_ssrRender$2G]]);
+var CreateCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2N, [["ssrRender", _sfc_ssrRender$2H]]);
 var CreateCustomerForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateCustomerForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2J = {
+const _sfc_main$2M = {
   components: {
     CreateCustomerForm,
     CustomersLayout
   }
 };
-function _sfc_ssrRender$2F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_customers_layout = vue.resolveComponent("customers-layout");
   const _component_create_customer_form = vue.resolveComponent("create-customer-form");
   _push(serverRenderer.ssrRenderComponent(_component_customers_layout, _attrs, {
@@ -14142,18 +14162,18 @@ function _sfc_ssrRender$2F(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2J = _sfc_main$2J.setup;
-_sfc_main$2J.setup = (props, ctx) => {
+const _sfc_setup$2M = _sfc_main$2M.setup;
+_sfc_main$2M.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/Create.vue");
-  return _sfc_setup$2J ? _sfc_setup$2J(props, ctx) : void 0;
+  return _sfc_setup$2M ? _sfc_setup$2M(props, ctx) : void 0;
 };
-var Create$k = /* @__PURE__ */ _export_sfc(_sfc_main$2J, [["ssrRender", _sfc_ssrRender$2F]]);
+var Create$k = /* @__PURE__ */ _export_sfc(_sfc_main$2M, [["ssrRender", _sfc_ssrRender$2G]]);
 var Create$l = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$k
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2I = {
+const _sfc_main$2L = {
   props: ["customer"],
   components: {
     JetActionSection,
@@ -14179,7 +14199,7 @@ const _sfc_main$2I = {
     }
   }
 };
-function _sfc_ssrRender$2E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -14347,38 +14367,38 @@ function _sfc_ssrRender$2E(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2I = _sfc_main$2I.setup;
-_sfc_main$2I.setup = (props, ctx) => {
+const _sfc_setup$2L = _sfc_main$2L.setup;
+_sfc_main$2L.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/DeleteCustomerForm.vue");
-  return _sfc_setup$2I ? _sfc_setup$2I(props, ctx) : void 0;
+  return _sfc_setup$2L ? _sfc_setup$2L(props, ctx) : void 0;
 };
-var DeleteCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2I, [["ssrRender", _sfc_ssrRender$2E]]);
+var DeleteCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2L, [["ssrRender", _sfc_ssrRender$2F]]);
 var DeleteCustomerForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteCustomerForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2H = {
+const _sfc_main$2K = {
   components: {
     CustomersLayout
   }
 };
-function _sfc_ssrRender$2D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_customers_layout = vue.resolveComponent("customers-layout");
   _push(serverRenderer.ssrRenderComponent(_component_customers_layout, _attrs, null, _parent));
 }
-const _sfc_setup$2H = _sfc_main$2H.setup;
-_sfc_main$2H.setup = (props, ctx) => {
+const _sfc_setup$2K = _sfc_main$2K.setup;
+_sfc_main$2K.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/Index.vue");
-  return _sfc_setup$2H ? _sfc_setup$2H(props, ctx) : void 0;
+  return _sfc_setup$2K ? _sfc_setup$2K(props, ctx) : void 0;
 };
-var Index$m = /* @__PURE__ */ _export_sfc(_sfc_main$2H, [["ssrRender", _sfc_ssrRender$2D]]);
-var Index$n = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$p = /* @__PURE__ */ _export_sfc(_sfc_main$2K, [["ssrRender", _sfc_ssrRender$2E]]);
+var Index$q = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$m
+  "default": Index$p
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2G = {
+const _sfc_main$2J = {
   components: {
     JetActionMessage,
     JetButton,
@@ -14429,7 +14449,7 @@ const _sfc_main$2G = {
     }
   }
 };
-function _sfc_ssrRender$2C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -15464,18 +15484,18 @@ function _sfc_ssrRender$2C(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2G = _sfc_main$2G.setup;
-_sfc_main$2G.setup = (props, ctx) => {
+const _sfc_setup$2J = _sfc_main$2J.setup;
+_sfc_main$2J.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/UpdateCustomerForm.vue");
-  return _sfc_setup$2G ? _sfc_setup$2G(props, ctx) : void 0;
+  return _sfc_setup$2J ? _sfc_setup$2J(props, ctx) : void 0;
 };
-var UpdateCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2G, [["ssrRender", _sfc_ssrRender$2C]]);
+var UpdateCustomerForm = /* @__PURE__ */ _export_sfc(_sfc_main$2J, [["ssrRender", _sfc_ssrRender$2D]]);
 var UpdateCustomerForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateCustomerForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2F = {
+const _sfc_main$2I = {
   components: {
     CustomersLayout,
     UpdateCustomerForm,
@@ -15487,7 +15507,7 @@ const _sfc_main$2F = {
     customer: Object
   }
 };
-function _sfc_ssrRender$2B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_customers_layout = vue.resolveComponent("customers-layout");
   const _component_update_customer_form = vue.resolveComponent("update-customer-form");
   const _component_contact_aside = vue.resolveComponent("contact-aside");
@@ -15529,18 +15549,18 @@ function _sfc_ssrRender$2B(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2F = _sfc_main$2F.setup;
-_sfc_main$2F.setup = (props, ctx) => {
+const _sfc_setup$2I = _sfc_main$2I.setup;
+_sfc_main$2I.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Customers/Show.vue");
-  return _sfc_setup$2F ? _sfc_setup$2F(props, ctx) : void 0;
+  return _sfc_setup$2I ? _sfc_setup$2I(props, ctx) : void 0;
 };
-var Show$o = /* @__PURE__ */ _export_sfc(_sfc_main$2F, [["ssrRender", _sfc_ssrRender$2B]]);
+var Show$o = /* @__PURE__ */ _export_sfc(_sfc_main$2I, [["ssrRender", _sfc_ssrRender$2C]]);
 var Show$p = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$o
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2E = {
+const _sfc_main$2H = {
   components: {
     PageAside,
     AsideLink,
@@ -15552,7 +15572,7 @@ const _sfc_main$2E = {
     features: Array
   }
 };
-function _sfc_ssrRender$2A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -15735,18 +15755,18 @@ function _sfc_ssrRender$2A(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2E = _sfc_main$2E.setup;
-_sfc_main$2E.setup = (props, ctx) => {
+const _sfc_setup$2H = _sfc_main$2H.setup;
+_sfc_main$2H.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/FeaturesAside.vue");
-  return _sfc_setup$2E ? _sfc_setup$2E(props, ctx) : void 0;
+  return _sfc_setup$2H ? _sfc_setup$2H(props, ctx) : void 0;
 };
-var FeaturesAside = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["ssrRender", _sfc_ssrRender$2A]]);
+var FeaturesAside = /* @__PURE__ */ _export_sfc(_sfc_main$2H, [["ssrRender", _sfc_ssrRender$2B]]);
 var FeaturesAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": FeaturesAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2D = {
+const _sfc_main$2G = {
   components: {
     FeaturesAside,
     AppLayout,
@@ -15762,7 +15782,7 @@ const _sfc_main$2D = {
     }
   }
 };
-function _sfc_ssrRender$2z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -15860,18 +15880,18 @@ function _sfc_ssrRender$2z(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$2D = _sfc_main$2D.setup;
-_sfc_main$2D.setup = (props, ctx) => {
+const _sfc_setup$2G = _sfc_main$2G.setup;
+_sfc_main$2G.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/FeaturesLayout.vue");
-  return _sfc_setup$2D ? _sfc_setup$2D(props, ctx) : void 0;
+  return _sfc_setup$2G ? _sfc_setup$2G(props, ctx) : void 0;
 };
-var FeaturesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["ssrRender", _sfc_ssrRender$2z]]);
+var FeaturesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$2G, [["ssrRender", _sfc_ssrRender$2A]]);
 var FeaturesLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": FeaturesLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2C = {
+const _sfc_main$2F = {
   components: {
     JetActionMessage,
     JetButton,
@@ -15899,7 +15919,7 @@ const _sfc_main$2C = {
     }
   }
 };
-function _sfc_ssrRender$2y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -16009,24 +16029,24 @@ function _sfc_ssrRender$2y(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2C = _sfc_main$2C.setup;
-_sfc_main$2C.setup = (props, ctx) => {
+const _sfc_setup$2F = _sfc_main$2F.setup;
+_sfc_main$2F.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/CreateFeatureForm.vue");
-  return _sfc_setup$2C ? _sfc_setup$2C(props, ctx) : void 0;
+  return _sfc_setup$2F ? _sfc_setup$2F(props, ctx) : void 0;
 };
-var CreateFeatureForm = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["ssrRender", _sfc_ssrRender$2y]]);
+var CreateFeatureForm = /* @__PURE__ */ _export_sfc(_sfc_main$2F, [["ssrRender", _sfc_ssrRender$2z]]);
 var CreateFeatureForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateFeatureForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2B = {
+const _sfc_main$2E = {
   components: {
     FeaturesLayout,
     CreateFeatureForm
   }
 };
-function _sfc_ssrRender$2x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_features_layout = vue.resolveComponent("features-layout");
   const _component_create_feature_form = vue.resolveComponent("create-feature-form");
   _push(serverRenderer.ssrRenderComponent(_component_features_layout, _attrs, {
@@ -16042,18 +16062,18 @@ function _sfc_ssrRender$2x(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2B = _sfc_main$2B.setup;
-_sfc_main$2B.setup = (props, ctx) => {
+const _sfc_setup$2E = _sfc_main$2E.setup;
+_sfc_main$2E.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/Create.vue");
-  return _sfc_setup$2B ? _sfc_setup$2B(props, ctx) : void 0;
+  return _sfc_setup$2E ? _sfc_setup$2E(props, ctx) : void 0;
 };
-var Create$i = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["ssrRender", _sfc_ssrRender$2x]]);
+var Create$i = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["ssrRender", _sfc_ssrRender$2y]]);
 var Create$j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$i
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2A = {
+const _sfc_main$2D = {
   props: { feature: Object },
   components: {
     JetActionSection,
@@ -16079,7 +16099,7 @@ const _sfc_main$2A = {
     }
   }
 };
-function _sfc_ssrRender$2w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -16247,38 +16267,38 @@ function _sfc_ssrRender$2w(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2A = _sfc_main$2A.setup;
-_sfc_main$2A.setup = (props, ctx) => {
+const _sfc_setup$2D = _sfc_main$2D.setup;
+_sfc_main$2D.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/DeleteFeatureForm.vue");
-  return _sfc_setup$2A ? _sfc_setup$2A(props, ctx) : void 0;
+  return _sfc_setup$2D ? _sfc_setup$2D(props, ctx) : void 0;
 };
-var DeleteFeatureForm = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["ssrRender", _sfc_ssrRender$2w]]);
+var DeleteFeatureForm = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["ssrRender", _sfc_ssrRender$2x]]);
 var DeleteFeatureForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteFeatureForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2z = {
+const _sfc_main$2C = {
   components: {
     FeaturesLayout
   }
 };
-function _sfc_ssrRender$2v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_features_layout = vue.resolveComponent("features-layout");
   _push(serverRenderer.ssrRenderComponent(_component_features_layout, _attrs, null, _parent));
 }
-const _sfc_setup$2z = _sfc_main$2z.setup;
-_sfc_main$2z.setup = (props, ctx) => {
+const _sfc_setup$2C = _sfc_main$2C.setup;
+_sfc_main$2C.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/Index.vue");
-  return _sfc_setup$2z ? _sfc_setup$2z(props, ctx) : void 0;
+  return _sfc_setup$2C ? _sfc_setup$2C(props, ctx) : void 0;
 };
-var Index$k = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["ssrRender", _sfc_ssrRender$2v]]);
-var Index$l = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$n = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["ssrRender", _sfc_ssrRender$2w]]);
+var Index$o = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$k
+  "default": Index$n
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2y = {
+const _sfc_main$2B = {
   components: {
     JetActionMessage,
     JetButton,
@@ -16308,7 +16328,7 @@ const _sfc_main$2y = {
     }
   }
 };
-function _sfc_ssrRender$2u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -16418,18 +16438,18 @@ function _sfc_ssrRender$2u(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2y = _sfc_main$2y.setup;
-_sfc_main$2y.setup = (props, ctx) => {
+const _sfc_setup$2B = _sfc_main$2B.setup;
+_sfc_main$2B.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/UpdateFeatureForm.vue");
-  return _sfc_setup$2y ? _sfc_setup$2y(props, ctx) : void 0;
+  return _sfc_setup$2B ? _sfc_setup$2B(props, ctx) : void 0;
 };
-var UpdateFeatureForm = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["ssrRender", _sfc_ssrRender$2u]]);
+var UpdateFeatureForm = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["ssrRender", _sfc_ssrRender$2v]]);
 var UpdateFeatureForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateFeatureForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2x = {
+const _sfc_main$2A = {
   components: {
     FeaturesLayout,
     UpdateFeatureForm,
@@ -16439,7 +16459,7 @@ const _sfc_main$2x = {
     feature: Object
   }
 };
-function _sfc_ssrRender$2t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_features_layout = vue.resolveComponent("features-layout");
   const _component_update_feature_form = vue.resolveComponent("update-feature-form");
   const _component_delete_feature_form = vue.resolveComponent("delete-feature-form");
@@ -16464,18 +16484,18 @@ function _sfc_ssrRender$2t(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2x = _sfc_main$2x.setup;
-_sfc_main$2x.setup = (props, ctx) => {
+const _sfc_setup$2A = _sfc_main$2A.setup;
+_sfc_main$2A.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Features/Show.vue");
-  return _sfc_setup$2x ? _sfc_setup$2x(props, ctx) : void 0;
+  return _sfc_setup$2A ? _sfc_setup$2A(props, ctx) : void 0;
 };
-var Show$m = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["ssrRender", _sfc_ssrRender$2t]]);
+var Show$m = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["ssrRender", _sfc_ssrRender$2u]]);
 var Show$n = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$m
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2w = {
+const _sfc_main$2z = {
   components: {
     JetButton,
     JetInput,
@@ -16506,7 +16526,7 @@ const _sfc_main$2w = {
     this.updateLoadingState();
   }
 };
-function _sfc_ssrRender$2s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_SearchInput = vue.resolveComponent("SearchInput");
   const _component_jet_button = vue.resolveComponent("jet-button");
   _push(`<form${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "flex items-center space-x-2 max-w-lg" }, _attrs))}>`);
@@ -16539,44 +16559,44 @@ function _sfc_ssrRender$2s(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</form>`);
 }
-const _sfc_setup$2w = _sfc_main$2w.setup;
-_sfc_main$2w.setup = (props, ctx) => {
+const _sfc_setup$2z = _sfc_main$2z.setup;
+_sfc_main$2z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/SearchInventory.vue");
-  return _sfc_setup$2w ? _sfc_setup$2w(props, ctx) : void 0;
+  return _sfc_setup$2z ? _sfc_setup$2z(props, ctx) : void 0;
 };
-var SearchInventory = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["ssrRender", _sfc_ssrRender$2s]]);
+var SearchInventory = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["ssrRender", _sfc_ssrRender$2t]]);
 var SearchInventory$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": SearchInventory
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2v = {};
-function _sfc_ssrRender$2r(_ctx, _push, _parent, _attrs) {
+const _sfc_main$2y = {};
+function _sfc_ssrRender$2s(_ctx, _push, _parent, _attrs) {
   _push(`<table${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "table-auto bg-white sm:rounded-lg min-w-full overflow-auto" }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</table>`);
 }
-const _sfc_setup$2v = _sfc_main$2v.setup;
-_sfc_main$2v.setup = (props, ctx) => {
+const _sfc_setup$2y = _sfc_main$2y.setup;
+_sfc_main$2y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Tables/TableTable.vue");
-  return _sfc_setup$2v ? _sfc_setup$2v(props, ctx) : void 0;
+  return _sfc_setup$2y ? _sfc_setup$2y(props, ctx) : void 0;
 };
-var TableTable = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["ssrRender", _sfc_ssrRender$2r]]);
-const _sfc_main$2u = {};
-function _sfc_ssrRender$2q(_ctx, _push, _parent, _attrs) {
+var TableTable = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["ssrRender", _sfc_ssrRender$2s]]);
+const _sfc_main$2x = {};
+function _sfc_ssrRender$2r(_ctx, _push, _parent, _attrs) {
   _push(`<thead${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "sticky top-0 z-10 bg-white border-b border-gray-100" }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</thead>`);
 }
-const _sfc_setup$2u = _sfc_main$2u.setup;
-_sfc_main$2u.setup = (props, ctx) => {
+const _sfc_setup$2x = _sfc_main$2x.setup;
+_sfc_main$2x.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Tables/TableHead.vue");
-  return _sfc_setup$2u ? _sfc_setup$2u(props, ctx) : void 0;
+  return _sfc_setup$2x ? _sfc_setup$2x(props, ctx) : void 0;
 };
-var TableHead = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["ssrRender", _sfc_ssrRender$2q]]);
-const _sfc_main$2t = {
+var TableHead = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["ssrRender", _sfc_ssrRender$2r]]);
+const _sfc_main$2w = {
   props: {
     items: {
       type: Object
@@ -16593,7 +16613,7 @@ const _sfc_main$2t = {
     console.log(this.items.links);
   }
 };
-function _sfc_ssrRender$2p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = vue.resolveComponent("Link");
   if ($props.items.links.length > 3) {
     _push(`<nav${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "border-t border-gray-200 px-4 flex items-center justify-between sm:px-0" }, _attrs))}><div class="-mt-px w-0 flex-1 flex">`);
@@ -16695,27 +16715,27 @@ function _sfc_ssrRender$2p(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _push(`<!---->`);
   }
 }
-const _sfc_setup$2t = _sfc_main$2t.setup;
-_sfc_main$2t.setup = (props, ctx) => {
+const _sfc_setup$2w = _sfc_main$2w.setup;
+_sfc_main$2w.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Pagination.vue");
-  return _sfc_setup$2t ? _sfc_setup$2t(props, ctx) : void 0;
+  return _sfc_setup$2w ? _sfc_setup$2w(props, ctx) : void 0;
 };
-var Pagination = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["ssrRender", _sfc_ssrRender$2p]]);
-const _sfc_main$2s = {};
-function _sfc_ssrRender$2o(_ctx, _push, _parent, _attrs) {
+var Pagination = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["ssrRender", _sfc_ssrRender$2q]]);
+const _sfc_main$2v = {};
+function _sfc_ssrRender$2p(_ctx, _push, _parent, _attrs) {
   _push(`<td${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "px-4 py-4 whitespace-nowrap text-sm text-gray-700" }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</td>`);
 }
-const _sfc_setup$2s = _sfc_main$2s.setup;
-_sfc_main$2s.setup = (props, ctx) => {
+const _sfc_setup$2v = _sfc_main$2v.setup;
+_sfc_main$2v.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Tables/TableD.vue");
-  return _sfc_setup$2s ? _sfc_setup$2s(props, ctx) : void 0;
+  return _sfc_setup$2v ? _sfc_setup$2v(props, ctx) : void 0;
 };
-var TableD = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["ssrRender", _sfc_ssrRender$2o]]);
-const _sfc_main$2r = {
+var TableD = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["ssrRender", _sfc_ssrRender$2p]]);
+const _sfc_main$2u = {
   components: {
     TableD
   },
@@ -16735,7 +16755,7 @@ const _sfc_main$2r = {
     }
   }
 };
-function _sfc_ssrRender$2n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_table_d = vue.resolveComponent("table-d");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_checkbox = vue.resolveComponent("jet-checkbox");
@@ -16939,18 +16959,18 @@ function _sfc_ssrRender$2n(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</tr>`);
 }
-const _sfc_setup$2r = _sfc_main$2r.setup;
-_sfc_main$2r.setup = (props, ctx) => {
+const _sfc_setup$2u = _sfc_main$2u.setup;
+_sfc_main$2u.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/InventoryLineItem.vue");
-  return _sfc_setup$2r ? _sfc_setup$2r(props, ctx) : void 0;
+  return _sfc_setup$2u ? _sfc_setup$2u(props, ctx) : void 0;
 };
-var InventoryLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$2r, [["ssrRender", _sfc_ssrRender$2n]]);
+var InventoryLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["ssrRender", _sfc_ssrRender$2o]]);
 var InventoryLineItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryLineItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2q = {
+const _sfc_main$2t = {
   components: {
     ExternalLinkIcon: outline.ExternalLinkIcon,
     ArrowDownIcon: outline.ArrowDownIcon,
@@ -17046,7 +17066,7 @@ const _sfc_main$2q = {
     }
   }
 };
-function _sfc_ssrRender$2m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_search_input = vue.resolveComponent("search-input");
   const _component_table_table = vue.resolveComponent("table-table");
@@ -17570,18 +17590,18 @@ function _sfc_ssrRender$2m(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$2q = _sfc_main$2q.setup;
-_sfc_main$2q.setup = (props, ctx) => {
+const _sfc_setup$2t = _sfc_main$2t.setup;
+_sfc_main$2t.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/InventoryList.vue");
-  return _sfc_setup$2q ? _sfc_setup$2q(props, ctx) : void 0;
+  return _sfc_setup$2t ? _sfc_setup$2t(props, ctx) : void 0;
 };
-var InventoryList = /* @__PURE__ */ _export_sfc(_sfc_main$2q, [["ssrRender", _sfc_ssrRender$2m]]);
+var InventoryList = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["ssrRender", _sfc_ssrRender$2n]]);
 var InventoryList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryList
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2p = {
+const _sfc_main$2s = {
   components: {
     AppLayout,
     MainArea,
@@ -17600,7 +17620,7 @@ const _sfc_main$2p = {
     }
   }
 };
-function _sfc_ssrRender$2l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_InventoryTabs = vue.resolveComponent("InventoryTabs");
@@ -17679,18 +17699,18 @@ function _sfc_ssrRender$2l(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2p = _sfc_main$2p.setup;
-_sfc_main$2p.setup = (props, ctx) => {
+const _sfc_setup$2s = _sfc_main$2s.setup;
+_sfc_main$2s.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Index.vue");
-  return _sfc_setup$2p ? _sfc_setup$2p(props, ctx) : void 0;
+  return _sfc_setup$2s ? _sfc_setup$2s(props, ctx) : void 0;
 };
-var Index$i = /* @__PURE__ */ _export_sfc(_sfc_main$2p, [["ssrRender", _sfc_ssrRender$2l]]);
-var Index$j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$l = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["ssrRender", _sfc_ssrRender$2m]]);
+var Index$m = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$i
+  "default": Index$l
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2o = {
+const _sfc_main$2r = {
   components: {
     JetLabel,
     JetButton,
@@ -17801,7 +17821,7 @@ const _sfc_main$2o = {
     }
   }
 };
-function _sfc_ssrRender$2k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_select_box = vue.resolveComponent("select-box");
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -17917,18 +17937,18 @@ function _sfc_ssrRender$2k(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   });
   _push(`<!--]--></div></div>`);
 }
-const _sfc_setup$2o = _sfc_main$2o.setup;
-_sfc_main$2o.setup = (props, ctx) => {
+const _sfc_setup$2r = _sfc_main$2r.setup;
+_sfc_main$2r.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/InventorySizeUpdate.vue");
-  return _sfc_setup$2o ? _sfc_setup$2o(props, ctx) : void 0;
+  return _sfc_setup$2r ? _sfc_setup$2r(props, ctx) : void 0;
 };
-var InventorySizeUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$2o, [["ssrRender", _sfc_ssrRender$2k]]);
+var InventorySizeUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$2r, [["ssrRender", _sfc_ssrRender$2l]]);
 var InventorySizeUpdate$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventorySizeUpdate
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2n = {
+const _sfc_main$2q = {
   components: { JetInput, JetLabel },
   props: {
     inventory: Object
@@ -17944,7 +17964,7 @@ const _sfc_main$2n = {
     }
   }
 };
-function _sfc_ssrRender$2j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_JetLabel = vue.resolveComponent("JetLabel");
   const _component_jet_input = vue.resolveComponent("jet-input");
   if ($props.inventory.type == "group") {
@@ -17977,18 +17997,18 @@ function _sfc_ssrRender$2j(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _push(`<!---->`);
   }
 }
-const _sfc_setup$2n = _sfc_main$2n.setup;
-_sfc_main$2n.setup = (props, ctx) => {
+const _sfc_setup$2q = _sfc_main$2q.setup;
+_sfc_main$2q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/InventoryQuantityUpdate.vue");
-  return _sfc_setup$2n ? _sfc_setup$2n(props, ctx) : void 0;
+  return _sfc_setup$2q ? _sfc_setup$2q(props, ctx) : void 0;
 };
-var InventoryQuantityUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["ssrRender", _sfc_ssrRender$2j]]);
+var InventoryQuantityUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$2q, [["ssrRender", _sfc_ssrRender$2k]]);
 var InventoryQuantityUpdate$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryQuantityUpdate
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2m = {
+const _sfc_main$2p = {
   components: {
     ChevronLeftIcon: ChevronLeftIcon__default["default"],
     ChevronRightIcon: ChevronRightIcon__default["default"],
@@ -18234,7 +18254,7 @@ const _sfc_main$2m = {
     }
   }
 };
-function _sfc_ssrRender$2i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_EditIcon = vue.resolveComponent("EditIcon");
   const _component_ChevronLeftIcon = vue.resolveComponent("ChevronLeftIcon");
@@ -18702,37 +18722,37 @@ function _sfc_ssrRender$2i(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$2m = _sfc_main$2m.setup;
-_sfc_main$2m.setup = (props, ctx) => {
+const _sfc_setup$2p = _sfc_main$2p.setup;
+_sfc_main$2p.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/InventoryLocationUpdate.vue");
-  return _sfc_setup$2m ? _sfc_setup$2m(props, ctx) : void 0;
+  return _sfc_setup$2p ? _sfc_setup$2p(props, ctx) : void 0;
 };
-var InventoryLocationUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$2m, [["ssrRender", _sfc_ssrRender$2i]]);
+var InventoryLocationUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$2p, [["ssrRender", _sfc_ssrRender$2j]]);
 var InventoryLocationUpdate$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryLocationUpdate
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2l = {
+const _sfc_main$2o = {
   components: {
     PrinterIcon: outline.PrinterIcon
   }
 };
-function _sfc_ssrRender$2h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_PrinterIcon = vue.resolveComponent("PrinterIcon");
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "btn btn-sm btn-outline pl-2 flex items-center" }, _attrs))}>`);
   _push(serverRenderer.ssrRenderComponent(_component_PrinterIcon, { class: "w-6 h-6 stroke-current mr-2" }, null, _parent));
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</button>`);
 }
-const _sfc_setup$2l = _sfc_main$2l.setup;
-_sfc_main$2l.setup = (props, ctx) => {
+const _sfc_setup$2o = _sfc_main$2o.setup;
+_sfc_main$2o.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/PrintButton.vue");
-  return _sfc_setup$2l ? _sfc_setup$2l(props, ctx) : void 0;
+  return _sfc_setup$2o ? _sfc_setup$2o(props, ctx) : void 0;
 };
-var PrintButton = /* @__PURE__ */ _export_sfc(_sfc_main$2l, [["ssrRender", _sfc_ssrRender$2h]]);
-const _sfc_main$2k = {
+var PrintButton = /* @__PURE__ */ _export_sfc(_sfc_main$2o, [["ssrRender", _sfc_ssrRender$2i]]);
+const _sfc_main$2n = {
   components: {
     XCircleIcon: solid.XCircleIcon
   },
@@ -18747,7 +18767,7 @@ const _sfc_main$2k = {
     }
   }
 };
-function _sfc_ssrRender$2g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_XCircleIcon = vue.resolveComponent("XCircleIcon");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "rounded-md bg-red-50 p-4" }, _attrs))}><div class="flex"><div class="flex-shrink-0">`);
   _push(serverRenderer.ssrRenderComponent(_component_XCircleIcon, {
@@ -18762,14 +18782,14 @@ function _sfc_ssrRender$2g(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div></div></div>`);
 }
-const _sfc_setup$2k = _sfc_main$2k.setup;
-_sfc_main$2k.setup = (props, ctx) => {
+const _sfc_setup$2n = _sfc_main$2n.setup;
+_sfc_main$2n.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ErrorMessage.vue");
-  return _sfc_setup$2k ? _sfc_setup$2k(props, ctx) : void 0;
+  return _sfc_setup$2n ? _sfc_setup$2n(props, ctx) : void 0;
 };
-var ErrorMessage = /* @__PURE__ */ _export_sfc(_sfc_main$2k, [["ssrRender", _sfc_ssrRender$2g]]);
-const _sfc_main$2j = {
+var ErrorMessage = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["ssrRender", _sfc_ssrRender$2h]]);
+const _sfc_main$2m = {
   components: {
     PrintButton,
     DialogModal: JetDialogModal,
@@ -18808,7 +18828,7 @@ const _sfc_main$2j = {
     }
   }
 };
-function _sfc_ssrRender$2f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_DialogModal = vue.resolveComponent("DialogModal");
   const _component_jet_input = vue.resolveComponent("jet-input");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -18936,18 +18956,18 @@ function _sfc_ssrRender$2f(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$2j = _sfc_main$2j.setup;
-_sfc_main$2j.setup = (props, ctx) => {
+const _sfc_setup$2m = _sfc_main$2m.setup;
+_sfc_main$2m.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/ReprintTag.vue");
-  return _sfc_setup$2j ? _sfc_setup$2j(props, ctx) : void 0;
+  return _sfc_setup$2m ? _sfc_setup$2m(props, ctx) : void 0;
 };
-var ReprintTag = /* @__PURE__ */ _export_sfc(_sfc_main$2j, [["ssrRender", _sfc_ssrRender$2f]]);
+var ReprintTag = /* @__PURE__ */ _export_sfc(_sfc_main$2m, [["ssrRender", _sfc_ssrRender$2g]]);
 var ReprintTag$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ReprintTag
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2i = {
+const _sfc_main$2l = {
   components: {
     AppLayout,
     Card,
@@ -18979,7 +18999,7 @@ const _sfc_main$2i = {
     }
   }
 };
-function _sfc_ssrRender$2e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_AppLayout = vue.resolveComponent("AppLayout");
   const _component_MainArea = vue.resolveComponent("MainArea");
   const _component_Card = vue.resolveComponent("Card");
@@ -19141,18 +19161,18 @@ function _sfc_ssrRender$2e(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2i = _sfc_main$2i.setup;
-_sfc_main$2i.setup = (props, ctx) => {
+const _sfc_setup$2l = _sfc_main$2l.setup;
+_sfc_main$2l.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Show.vue");
-  return _sfc_setup$2i ? _sfc_setup$2i(props, ctx) : void 0;
+  return _sfc_setup$2l ? _sfc_setup$2l(props, ctx) : void 0;
 };
-var Show$k = /* @__PURE__ */ _export_sfc(_sfc_main$2i, [["ssrRender", _sfc_ssrRender$2e]]);
+var Show$k = /* @__PURE__ */ _export_sfc(_sfc_main$2l, [["ssrRender", _sfc_ssrRender$2f]]);
 var Show$l = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$k
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2h = {
+const _sfc_main$2k = {
   components: {
     JetActionMessage,
     JetButton,
@@ -19185,7 +19205,7 @@ const _sfc_main$2h = {
     }
   }
 };
-function _sfc_ssrRender$2d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -19474,18 +19494,18 @@ function _sfc_ssrRender$2d(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2h = _sfc_main$2h.setup;
-_sfc_main$2h.setup = (props, ctx) => {
+const _sfc_setup$2k = _sfc_main$2k.setup;
+_sfc_main$2k.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/CreateLocationForm.vue");
-  return _sfc_setup$2h ? _sfc_setup$2h(props, ctx) : void 0;
+  return _sfc_setup$2k ? _sfc_setup$2k(props, ctx) : void 0;
 };
-var CreateLocationForm = /* @__PURE__ */ _export_sfc(_sfc_main$2h, [["ssrRender", _sfc_ssrRender$2d]]);
+var CreateLocationForm = /* @__PURE__ */ _export_sfc(_sfc_main$2k, [["ssrRender", _sfc_ssrRender$2e]]);
 var CreateLocationForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateLocationForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2g = {
+const _sfc_main$2j = {
   components: {
     PageAside,
     AsideLink,
@@ -19502,7 +19522,7 @@ const _sfc_main$2g = {
     }
   }
 };
-function _sfc_ssrRender$2c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -19685,18 +19705,18 @@ function _sfc_ssrRender$2c(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2g = _sfc_main$2g.setup;
-_sfc_main$2g.setup = (props, ctx) => {
+const _sfc_setup$2j = _sfc_main$2j.setup;
+_sfc_main$2j.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/LocationsAside.vue");
-  return _sfc_setup$2g ? _sfc_setup$2g(props, ctx) : void 0;
+  return _sfc_setup$2j ? _sfc_setup$2j(props, ctx) : void 0;
 };
-var LocationsAside = /* @__PURE__ */ _export_sfc(_sfc_main$2g, [["ssrRender", _sfc_ssrRender$2c]]);
+var LocationsAside = /* @__PURE__ */ _export_sfc(_sfc_main$2j, [["ssrRender", _sfc_ssrRender$2d]]);
 var LocationsAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": LocationsAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2f = {
+const _sfc_main$2i = {
   components: {
     LocationsAside,
     AppLayout,
@@ -19712,7 +19732,7 @@ const _sfc_main$2f = {
     }
   }
 };
-function _sfc_ssrRender$2b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -19816,24 +19836,24 @@ function _sfc_ssrRender$2b(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$2f = _sfc_main$2f.setup;
-_sfc_main$2f.setup = (props, ctx) => {
+const _sfc_setup$2i = _sfc_main$2i.setup;
+_sfc_main$2i.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/LocationsLayout.vue");
-  return _sfc_setup$2f ? _sfc_setup$2f(props, ctx) : void 0;
+  return _sfc_setup$2i ? _sfc_setup$2i(props, ctx) : void 0;
 };
-var LocationsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$2f, [["ssrRender", _sfc_ssrRender$2b]]);
+var LocationsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$2i, [["ssrRender", _sfc_ssrRender$2c]]);
 var LocationsLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": LocationsLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2e = {
+const _sfc_main$2h = {
   components: {
     CreateLocationForm,
     LocationsLayout
   }
 };
-function _sfc_ssrRender$2a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_locations_layout = vue.resolveComponent("locations-layout");
   const _component_create_location_form = vue.resolveComponent("create-location-form");
   _push(serverRenderer.ssrRenderComponent(_component_locations_layout, _attrs, {
@@ -19849,18 +19869,18 @@ function _sfc_ssrRender$2a(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2e = _sfc_main$2e.setup;
-_sfc_main$2e.setup = (props, ctx) => {
+const _sfc_setup$2h = _sfc_main$2h.setup;
+_sfc_main$2h.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/Create.vue");
-  return _sfc_setup$2e ? _sfc_setup$2e(props, ctx) : void 0;
+  return _sfc_setup$2h ? _sfc_setup$2h(props, ctx) : void 0;
 };
-var Create$g = /* @__PURE__ */ _export_sfc(_sfc_main$2e, [["ssrRender", _sfc_ssrRender$2a]]);
+var Create$g = /* @__PURE__ */ _export_sfc(_sfc_main$2h, [["ssrRender", _sfc_ssrRender$2b]]);
 var Create$h = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$g
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2d = {
+const _sfc_main$2g = {
   props: { location: Object },
   components: {
     JetActionSection,
@@ -19886,7 +19906,7 @@ const _sfc_main$2d = {
     }
   }
 };
-function _sfc_ssrRender$29(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -20054,18 +20074,18 @@ function _sfc_ssrRender$29(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2d = _sfc_main$2d.setup;
-_sfc_main$2d.setup = (props, ctx) => {
+const _sfc_setup$2g = _sfc_main$2g.setup;
+_sfc_main$2g.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/DeleteLocationForm.vue");
-  return _sfc_setup$2d ? _sfc_setup$2d(props, ctx) : void 0;
+  return _sfc_setup$2g ? _sfc_setup$2g(props, ctx) : void 0;
 };
-var DeleteLocationForm = /* @__PURE__ */ _export_sfc(_sfc_main$2d, [["ssrRender", _sfc_ssrRender$29]]);
+var DeleteLocationForm = /* @__PURE__ */ _export_sfc(_sfc_main$2g, [["ssrRender", _sfc_ssrRender$2a]]);
 var DeleteLocationForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteLocationForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2c = {
+const _sfc_main$2f = {
   components: {
     JetActionMessage,
     JetButton,
@@ -20101,7 +20121,7 @@ const _sfc_main$2c = {
     }
   }
 };
-function _sfc_ssrRender$28(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$29(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_button_link = vue.resolveComponent("button-link");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -20411,18 +20431,18 @@ function _sfc_ssrRender$28(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2c = _sfc_main$2c.setup;
-_sfc_main$2c.setup = (props, ctx) => {
+const _sfc_setup$2f = _sfc_main$2f.setup;
+_sfc_main$2f.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/UpdateLocationForm.vue");
-  return _sfc_setup$2c ? _sfc_setup$2c(props, ctx) : void 0;
+  return _sfc_setup$2f ? _sfc_setup$2f(props, ctx) : void 0;
 };
-var UpdateLocationForm = /* @__PURE__ */ _export_sfc(_sfc_main$2c, [["ssrRender", _sfc_ssrRender$28]]);
+var UpdateLocationForm = /* @__PURE__ */ _export_sfc(_sfc_main$2f, [["ssrRender", _sfc_ssrRender$29]]);
 var UpdateLocationForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateLocationForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2b = {
+const _sfc_main$2e = {
   components: {
     LocationsLayout,
     UpdateLocationForm,
@@ -20432,7 +20452,7 @@ const _sfc_main$2b = {
     location: Object
   }
 };
-function _sfc_ssrRender$27(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$28(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_locations_layout = vue.resolveComponent("locations-layout");
   const _component_update_location_form = vue.resolveComponent("update-location-form");
   const _component_delete_location_form = vue.resolveComponent("delete-location-form");
@@ -20455,45 +20475,45 @@ function _sfc_ssrRender$27(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$2b = _sfc_main$2b.setup;
-_sfc_main$2b.setup = (props, ctx) => {
+const _sfc_setup$2e = _sfc_main$2e.setup;
+_sfc_main$2e.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/Edit.vue");
-  return _sfc_setup$2b ? _sfc_setup$2b(props, ctx) : void 0;
+  return _sfc_setup$2e ? _sfc_setup$2e(props, ctx) : void 0;
 };
-var Edit = /* @__PURE__ */ _export_sfc(_sfc_main$2b, [["ssrRender", _sfc_ssrRender$27]]);
+var Edit = /* @__PURE__ */ _export_sfc(_sfc_main$2e, [["ssrRender", _sfc_ssrRender$28]]);
 var Edit$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Edit
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2a = {
+const _sfc_main$2d = {
   components: {
     LocationsLayout
   }
 };
-function _sfc_ssrRender$26(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$27(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_locations_layout = vue.resolveComponent("locations-layout");
   _push(serverRenderer.ssrRenderComponent(_component_locations_layout, _attrs, null, _parent));
 }
-const _sfc_setup$2a = _sfc_main$2a.setup;
-_sfc_main$2a.setup = (props, ctx) => {
+const _sfc_setup$2d = _sfc_main$2d.setup;
+_sfc_main$2d.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/Index.vue");
-  return _sfc_setup$2a ? _sfc_setup$2a(props, ctx) : void 0;
+  return _sfc_setup$2d ? _sfc_setup$2d(props, ctx) : void 0;
 };
-var Index$g = /* @__PURE__ */ _export_sfc(_sfc_main$2a, [["ssrRender", _sfc_ssrRender$26]]);
-var Index$h = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$j = /* @__PURE__ */ _export_sfc(_sfc_main$2d, [["ssrRender", _sfc_ssrRender$27]]);
+var Index$k = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$g
+  "default": Index$j
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$29 = {
+const _sfc_main$2c = {
   components: {
     ButtonLink,
     DetailsSection
   },
   props: { location: Object }
 };
-function _sfc_ssrRender$25(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$26(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_button_link = vue.resolveComponent("button-link");
   _push(serverRenderer.ssrRenderComponent(_component_details_section, _attrs, {
@@ -20551,18 +20571,18 @@ function _sfc_ssrRender$25(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$29 = _sfc_main$29.setup;
-_sfc_main$29.setup = (props, ctx) => {
+const _sfc_setup$2c = _sfc_main$2c.setup;
+_sfc_main$2c.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/LocationDetails.vue");
-  return _sfc_setup$29 ? _sfc_setup$29(props, ctx) : void 0;
+  return _sfc_setup$2c ? _sfc_setup$2c(props, ctx) : void 0;
 };
-var LocationDetails = /* @__PURE__ */ _export_sfc(_sfc_main$29, [["ssrRender", _sfc_ssrRender$25]]);
+var LocationDetails = /* @__PURE__ */ _export_sfc(_sfc_main$2c, [["ssrRender", _sfc_ssrRender$26]]);
 var LocationDetails$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": LocationDetails
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$28 = {
+const _sfc_main$2b = {
   components: {
     LocationsLayout,
     LocationDetails
@@ -20571,7 +20591,7 @@ const _sfc_main$28 = {
     location: Object
   }
 };
-function _sfc_ssrRender$24(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$25(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_locations_layout = vue.resolveComponent("locations-layout");
   const _component_LocationDetails = vue.resolveComponent("LocationDetails");
   _push(serverRenderer.ssrRenderComponent(_component_locations_layout, _attrs, {
@@ -20591,18 +20611,18 @@ function _sfc_ssrRender$24(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$28 = _sfc_main$28.setup;
-_sfc_main$28.setup = (props, ctx) => {
+const _sfc_setup$2b = _sfc_main$2b.setup;
+_sfc_main$2b.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NurseryLocations/Show.vue");
-  return _sfc_setup$28 ? _sfc_setup$28(props, ctx) : void 0;
+  return _sfc_setup$2b ? _sfc_setup$2b(props, ctx) : void 0;
 };
-var Show$i = /* @__PURE__ */ _export_sfc(_sfc_main$28, [["ssrRender", _sfc_ssrRender$24]]);
+var Show$i = /* @__PURE__ */ _export_sfc(_sfc_main$2b, [["ssrRender", _sfc_ssrRender$25]]);
 var Show$j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$i
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$27 = {
+const _sfc_main$2a = {
   components: {
     AppLayout,
     BackLink,
@@ -20614,7 +20634,7 @@ const _sfc_main$27 = {
     }
   }
 };
-function _sfc_ssrRender$23(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$24(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -20709,19 +20729,19 @@ function _sfc_ssrRender$23(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$27 = _sfc_main$27.setup;
-_sfc_main$27.setup = (props, ctx) => {
+const _sfc_setup$2a = _sfc_main$2a.setup;
+_sfc_main$2a.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/OrdersLayout.vue");
-  return _sfc_setup$27 ? _sfc_setup$27(props, ctx) : void 0;
+  return _sfc_setup$2a ? _sfc_setup$2a(props, ctx) : void 0;
 };
-var OrdersLayout = /* @__PURE__ */ _export_sfc(_sfc_main$27, [["ssrRender", _sfc_ssrRender$23]]);
+var OrdersLayout = /* @__PURE__ */ _export_sfc(_sfc_main$2a, [["ssrRender", _sfc_ssrRender$24]]);
 var OrdersLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrdersLayout
 }, Symbol.toStringTag, { value: "Module" }));
 var SearchSelectBox_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _sfc_main$26 = {
+const _sfc_main$29 = {
   components: {
     CheckIcon: solid.CheckIcon,
     SelectorIcon: solid.SelectorIcon,
@@ -20806,7 +20826,7 @@ const _sfc_main$26 = {
     }
   }
 };
-function _sfc_ssrRender$22(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$23(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
   const _component_XCircleIcon = vue.resolveComponent("XCircleIcon");
@@ -20881,14 +20901,14 @@ function _sfc_ssrRender$22(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   });
   _push(`<!--]--><div tabindex="0" class="focus:text-white cursor-default relative py-2 pl-3 pr-9 focus:bg-gray-500 active:outline-none focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500" data-v-fb661e32>${serverRenderer.ssrInterpolate(`Add ${_ctx.search}?`)}</div></div></div></div>`);
 }
-const _sfc_setup$26 = _sfc_main$26.setup;
-_sfc_main$26.setup = (props, ctx) => {
+const _sfc_setup$29 = _sfc_main$29.setup;
+_sfc_main$29.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/SearchSelectBox.vue");
-  return _sfc_setup$26 ? _sfc_setup$26(props, ctx) : void 0;
+  return _sfc_setup$29 ? _sfc_setup$29(props, ctx) : void 0;
 };
-var SearchSelectBox = /* @__PURE__ */ _export_sfc(_sfc_main$26, [["ssrRender", _sfc_ssrRender$22], ["__scopeId", "data-v-fb661e32"]]);
-const _sfc_main$25 = {
+var SearchSelectBox = /* @__PURE__ */ _export_sfc(_sfc_main$29, [["ssrRender", _sfc_ssrRender$23], ["__scopeId", "data-v-fb661e32"]]);
+const _sfc_main$28 = {
   props: {
     modelValue: {},
     errorMessage: {
@@ -20911,7 +20931,7 @@ const _sfc_main$25 = {
   },
   emits: ["update:modelValue"]
 };
-function _sfc_ssrRender$21(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$22(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_input_error = vue.resolveComponent("jet-input-error");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "col-span-2 justify-self-end" }, _attrs))}><div class="form-control"><label class="cursor-pointer label"><span class="label-text mr-4">${serverRenderer.ssrInterpolate($options.holdInventoryLabel)}</span><input id="hold_inventory" type="checkbox" class="toggle"${serverRenderer.ssrIncludeBooleanAttr(Array.isArray($options.proxyChecked) ? serverRenderer.ssrLooseContain($options.proxyChecked, null) : $options.proxyChecked) ? " checked" : ""}></label></div>`);
   _push(serverRenderer.ssrRenderComponent(_component_jet_input_error, {
@@ -20920,38 +20940,38 @@ function _sfc_ssrRender$21(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$25 = _sfc_main$25.setup;
-_sfc_main$25.setup = (props, ctx) => {
+const _sfc_setup$28 = _sfc_main$28.setup;
+_sfc_main$28.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/QuoteHoldInventoryCheckmark.vue");
-  return _sfc_setup$25 ? _sfc_setup$25(props, ctx) : void 0;
+  return _sfc_setup$28 ? _sfc_setup$28(props, ctx) : void 0;
 };
-var QuoteHoldInventoryCheckmark = /* @__PURE__ */ _export_sfc(_sfc_main$25, [["ssrRender", _sfc_ssrRender$21]]);
+var QuoteHoldInventoryCheckmark = /* @__PURE__ */ _export_sfc(_sfc_main$28, [["ssrRender", _sfc_ssrRender$22]]);
 var QuoteHoldInventoryCheckmark$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": QuoteHoldInventoryCheckmark
 }, Symbol.toStringTag, { value: "Module" }));
 var LoadingState_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _sfc_main$24 = {
+const _sfc_main$27 = {
   props: {
     loading: Boolean
   }
 };
-function _sfc_ssrRender$20(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$21(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   if ($props.loading) {
     _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "flex justify-center items-center p-6" }, _attrs))} data-v-4be81afa><div class="spinner-border animate-spin inline-block w-8 h-8 border-2 border-gray-700 rounded-full" data-v-4be81afa></div></div>`);
   } else {
     _push(`<!---->`);
   }
 }
-const _sfc_setup$24 = _sfc_main$24.setup;
-_sfc_main$24.setup = (props, ctx) => {
+const _sfc_setup$27 = _sfc_main$27.setup;
+_sfc_main$27.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/LoadingState.vue");
-  return _sfc_setup$24 ? _sfc_setup$24(props, ctx) : void 0;
+  return _sfc_setup$27 ? _sfc_setup$27(props, ctx) : void 0;
 };
-var LoadingState = /* @__PURE__ */ _export_sfc(_sfc_main$24, [["ssrRender", _sfc_ssrRender$20], ["__scopeId", "data-v-4be81afa"]]);
-const _sfc_main$23 = {
+var LoadingState = /* @__PURE__ */ _export_sfc(_sfc_main$27, [["ssrRender", _sfc_ssrRender$21], ["__scopeId", "data-v-4be81afa"]]);
+const _sfc_main$26 = {
   components: {
     DetailsSection,
     EmptyState,
@@ -20996,7 +21016,7 @@ const _sfc_main$23 = {
     }
   }
 };
-function _sfc_ssrRender$1$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$20(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_loading_state = vue.resolveComponent("loading-state");
   const _component_empty_state = vue.resolveComponent("empty-state");
@@ -21123,18 +21143,18 @@ function _sfc_ssrRender$1$(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$23 = _sfc_main$23.setup;
-_sfc_main$23.setup = (props, ctx) => {
+const _sfc_setup$26 = _sfc_main$26.setup;
+_sfc_main$26.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/CompanyOpenOrders.vue");
-  return _sfc_setup$23 ? _sfc_setup$23(props, ctx) : void 0;
+  return _sfc_setup$26 ? _sfc_setup$26(props, ctx) : void 0;
 };
-var CompanyOpenOrders = /* @__PURE__ */ _export_sfc(_sfc_main$23, [["ssrRender", _sfc_ssrRender$1$]]);
+var CompanyOpenOrders = /* @__PURE__ */ _export_sfc(_sfc_main$26, [["ssrRender", _sfc_ssrRender$20]]);
 var CompanyOpenOrders$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CompanyOpenOrders
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$22 = {
+const _sfc_main$25 = {
   components: {
     JetSectionTitle: SectionTitle,
     JetButton,
@@ -21238,7 +21258,7 @@ const _sfc_main$22 = {
     }
   }
 };
-function _sfc_ssrRender$1_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_modal = vue.resolveComponent("modal");
   const _component_create_customer_form = vue.resolveComponent("create-customer-form");
@@ -21596,25 +21616,25 @@ function _sfc_ssrRender$1_(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$22 = _sfc_main$22.setup;
-_sfc_main$22.setup = (props, ctx) => {
+const _sfc_setup$25 = _sfc_main$25.setup;
+_sfc_main$25.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/OrderCreate.vue");
-  return _sfc_setup$22 ? _sfc_setup$22(props, ctx) : void 0;
+  return _sfc_setup$25 ? _sfc_setup$25(props, ctx) : void 0;
 };
-var OrderCreate = /* @__PURE__ */ _export_sfc(_sfc_main$22, [["ssrRender", _sfc_ssrRender$1_]]);
+var OrderCreate = /* @__PURE__ */ _export_sfc(_sfc_main$25, [["ssrRender", _sfc_ssrRender$1$]]);
 var OrderCreate$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrderCreate
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$21 = {
+const _sfc_main$24 = {
   components: {
     OrdersLayout,
     OrderCreate
   },
   props: ["customers"]
 };
-function _sfc_ssrRender$1Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_orders_layout = vue.resolveComponent("orders-layout");
   const _component_OrderCreate = vue.resolveComponent("OrderCreate");
   _push(serverRenderer.ssrRenderComponent(_component_orders_layout, _attrs, {
@@ -21630,18 +21650,18 @@ function _sfc_ssrRender$1Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$21 = _sfc_main$21.setup;
-_sfc_main$21.setup = (props, ctx) => {
+const _sfc_setup$24 = _sfc_main$24.setup;
+_sfc_main$24.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Create.vue");
-  return _sfc_setup$21 ? _sfc_setup$21(props, ctx) : void 0;
+  return _sfc_setup$24 ? _sfc_setup$24(props, ctx) : void 0;
 };
-var Create$e = /* @__PURE__ */ _export_sfc(_sfc_main$21, [["ssrRender", _sfc_ssrRender$1Z]]);
+var Create$e = /* @__PURE__ */ _export_sfc(_sfc_main$24, [["ssrRender", _sfc_ssrRender$1_]]);
 var Create$f = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$e
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$20 = {
+const _sfc_main$23 = {
   components: {
     ExternalLinkIcon: outline.ExternalLinkIcon,
     ArrowDownIcon: outline.ArrowDownIcon,
@@ -21723,7 +21743,7 @@ const _sfc_main$20 = {
     }
   }
 };
-function _sfc_ssrRender$1Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_search_input = vue.resolveComponent("search-input");
   const _component_table_table = vue.resolveComponent("table-table");
@@ -22306,25 +22326,25 @@ function _sfc_ssrRender$1Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$20 = _sfc_main$20.setup;
-_sfc_main$20.setup = (props, ctx) => {
+const _sfc_setup$23 = _sfc_main$23.setup;
+_sfc_main$23.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/OrdersView.vue");
-  return _sfc_setup$20 ? _sfc_setup$20(props, ctx) : void 0;
+  return _sfc_setup$23 ? _sfc_setup$23(props, ctx) : void 0;
 };
-var ViewOrders = /* @__PURE__ */ _export_sfc(_sfc_main$20, [["ssrRender", _sfc_ssrRender$1Y]]);
+var ViewOrders = /* @__PURE__ */ _export_sfc(_sfc_main$23, [["ssrRender", _sfc_ssrRender$1Z]]);
 var OrdersView = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ViewOrders
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1$ = {
+const _sfc_main$22 = {
   components: {
     OrdersLayout,
     ButtonLink,
     DetailsSection,
     HeadingOne,
-    CompletedOrdersCard,
-    ActiveQuotesCard,
+    CompletedOrdersCard: _sfc_main$3S,
+    ActiveQuotesCard: _sfc_main$3R,
     ViewOrders
   },
   props: {
@@ -22336,7 +22356,7 @@ const _sfc_main$1$ = {
     }
   }
 };
-function _sfc_ssrRender$1X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_orders_layout = vue.resolveComponent("orders-layout");
   const _component_heading_one = vue.resolveComponent("heading-one");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -22413,18 +22433,18 @@ function _sfc_ssrRender$1X(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1$ = _sfc_main$1$.setup;
-_sfc_main$1$.setup = (props, ctx) => {
+const _sfc_setup$22 = _sfc_main$22.setup;
+_sfc_main$22.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Index.vue");
-  return _sfc_setup$1$ ? _sfc_setup$1$(props, ctx) : void 0;
+  return _sfc_setup$22 ? _sfc_setup$22(props, ctx) : void 0;
 };
-var Index$e = /* @__PURE__ */ _export_sfc(_sfc_main$1$, [["ssrRender", _sfc_ssrRender$1X]]);
-var Index$f = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$h = /* @__PURE__ */ _export_sfc(_sfc_main$22, [["ssrRender", _sfc_ssrRender$1Y]]);
+var Index$i = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$e
+  "default": Index$h
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1_ = {
+const _sfc_main$21 = {
   props: {
     as: {
       type: String,
@@ -22432,7 +22452,7 @@ const _sfc_main$1_ = {
     }
   }
 };
-function _sfc_ssrRender$1W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   serverRenderer.ssrRenderVNode(_push, vue.createVNode(vue.resolveDynamicComponent($props.as), vue.mergeProps({ class: "flex items-center justify-between hover:bg-gray-100 uppercase text-sm p-2 cursor-pointer" }, _attrs), {
     default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -22446,14 +22466,14 @@ function _sfc_ssrRender$1W(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }), _parent);
 }
-const _sfc_setup$1_ = _sfc_main$1_.setup;
-_sfc_main$1_.setup = (props, ctx) => {
+const _sfc_setup$21 = _sfc_main$21.setup;
+_sfc_main$21.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Lists/SmallLineItem.vue");
-  return _sfc_setup$1_ ? _sfc_setup$1_(props, ctx) : void 0;
+  return _sfc_setup$21 ? _sfc_setup$21(props, ctx) : void 0;
 };
-var SmallLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$1_, [["ssrRender", _sfc_ssrRender$1W]]);
-const _sfc_main$1Z = {
+var SmallLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$21, [["ssrRender", _sfc_ssrRender$1X]]);
+const _sfc_main$20 = {
   components: {
     SmallLineItem
   },
@@ -22484,7 +22504,7 @@ const _sfc_main$1Z = {
     }
   }
 };
-function _sfc_ssrRender$1V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_SmallLineItem = vue.resolveComponent("SmallLineItem");
   _push(serverRenderer.ssrRenderComponent(_component_SmallLineItem, vue.mergeProps({ onClick: $options.viewOrder }, _attrs), {
     default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
@@ -22511,18 +22531,18 @@ function _sfc_ssrRender$1V(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1Z = _sfc_main$1Z.setup;
-_sfc_main$1Z.setup = (props, ctx) => {
+const _sfc_setup$20 = _sfc_main$20.setup;
+_sfc_main$20.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ProductHoldItem.vue");
-  return _sfc_setup$1Z ? _sfc_setup$1Z(props, ctx) : void 0;
+  return _sfc_setup$20 ? _sfc_setup$20(props, ctx) : void 0;
 };
-var ProductHoldItem = /* @__PURE__ */ _export_sfc(_sfc_main$1Z, [["ssrRender", _sfc_ssrRender$1V]]);
+var ProductHoldItem = /* @__PURE__ */ _export_sfc(_sfc_main$20, [["ssrRender", _sfc_ssrRender$1W]]);
 var ProductHoldItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ProductHoldItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1Y = {
+const _sfc_main$1$ = {
   components: {
     TabContainer,
     TabLink,
@@ -22621,7 +22641,7 @@ const _sfc_main$1Y = {
     }
   }
 };
-function _sfc_ssrRender$1U(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_tab_container = vue.resolveComponent("tab-container");
   const _component_tab_link = vue.resolveComponent("tab-link");
   const _component_ErrorMessage = vue.resolveComponent("ErrorMessage");
@@ -22737,29 +22757,29 @@ function _sfc_ssrRender$1U(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div></div>`);
 }
-const _sfc_setup$1Y = _sfc_main$1Y.setup;
-_sfc_main$1Y.setup = (props, ctx) => {
+const _sfc_setup$1$ = _sfc_main$1$.setup;
+_sfc_main$1$.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ProductHoldView.vue");
-  return _sfc_setup$1Y ? _sfc_setup$1Y(props, ctx) : void 0;
+  return _sfc_setup$1$ ? _sfc_setup$1$(props, ctx) : void 0;
 };
-var ProductHoldView = /* @__PURE__ */ _export_sfc(_sfc_main$1Y, [["ssrRender", _sfc_ssrRender$1U]]);
+var ProductHoldView = /* @__PURE__ */ _export_sfc(_sfc_main$1$, [["ssrRender", _sfc_ssrRender$1V]]);
 var ProductHoldView$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ProductHoldView
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1X = {};
-function _sfc_ssrRender$1T(_ctx, _push, _parent, _attrs) {
+const _sfc_main$1_ = {};
+function _sfc_ssrRender$1U(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "alert alert-info" }, _attrs))}><div class="flex-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><label>Loading...</label></div></div>`);
 }
-const _sfc_setup$1X = _sfc_main$1X.setup;
-_sfc_main$1X.setup = (props, ctx) => {
+const _sfc_setup$1_ = _sfc_main$1_.setup;
+_sfc_main$1_.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Messages/Loading.vue");
-  return _sfc_setup$1X ? _sfc_setup$1X(props, ctx) : void 0;
+  return _sfc_setup$1_ ? _sfc_setup$1_(props, ctx) : void 0;
 };
-var Loading = /* @__PURE__ */ _export_sfc(_sfc_main$1X, [["ssrRender", _sfc_ssrRender$1T]]);
-const _sfc_main$1W = {
+var Loading = /* @__PURE__ */ _export_sfc(_sfc_main$1_, [["ssrRender", _sfc_ssrRender$1U]]);
+const _sfc_main$1Z = {
   components: { ErrorMessage, Loading },
   props: {
     product: Object | Boolean,
@@ -22827,7 +22847,7 @@ const _sfc_main$1W = {
     }
   }
 };
-function _sfc_ssrRender$1S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_ErrorMessage = vue.resolveComponent("ErrorMessage");
   const _component_Loading = vue.resolveComponent("Loading");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -22861,18 +22881,18 @@ function _sfc_ssrRender$1S(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div>`);
 }
-const _sfc_setup$1W = _sfc_main$1W.setup;
-_sfc_main$1W.setup = (props, ctx) => {
+const _sfc_setup$1Z = _sfc_main$1Z.setup;
+_sfc_main$1Z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/InventoryDetail.vue");
-  return _sfc_setup$1W ? _sfc_setup$1W(props, ctx) : void 0;
+  return _sfc_setup$1Z ? _sfc_setup$1Z(props, ctx) : void 0;
 };
-var InventoryDetail$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1W, [["ssrRender", _sfc_ssrRender$1S]]);
+var InventoryDetail$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1Z, [["ssrRender", _sfc_ssrRender$1T]]);
 var InventoryDetail$3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryDetail$2
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1V = {
+const _sfc_main$1Y = {
   components: {
     JetConfirmationModal
   },
@@ -22912,7 +22932,7 @@ const _sfc_main$1V = {
     }
   }
 };
-function _sfc_ssrRender$1R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
   const _component_jet_button = vue.resolveComponent("jet-button");
@@ -22995,18 +23015,18 @@ function _sfc_ssrRender$1R(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1V = _sfc_main$1V.setup;
-_sfc_main$1V.setup = (props, ctx) => {
+const _sfc_setup$1Y = _sfc_main$1Y.setup;
+_sfc_main$1Y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ItemConfirmQuantity.vue");
-  return _sfc_setup$1V ? _sfc_setup$1V(props, ctx) : void 0;
+  return _sfc_setup$1Y ? _sfc_setup$1Y(props, ctx) : void 0;
 };
-var ItemConfirmQuantity = /* @__PURE__ */ _export_sfc(_sfc_main$1V, [["ssrRender", _sfc_ssrRender$1R]]);
+var ItemConfirmQuantity = /* @__PURE__ */ _export_sfc(_sfc_main$1Y, [["ssrRender", _sfc_ssrRender$1S]]);
 var ItemConfirmQuantity$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ItemConfirmQuantity
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1U = {
+const _sfc_main$1X = {
   components: {
     Switch: vue$1.Switch,
     SwitchDescription: vue$1.SwitchDescription,
@@ -23125,7 +23145,7 @@ const _sfc_main$1U = {
     }
   }
 };
-function _sfc_ssrRender$1Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_PlusIcon = vue.resolveComponent("PlusIcon");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
@@ -23578,37 +23598,37 @@ function _sfc_ssrRender$1Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1U = _sfc_main$1U.setup;
-_sfc_main$1U.setup = (props, ctx) => {
+const _sfc_setup$1X = _sfc_main$1X.setup;
+_sfc_main$1X.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ItemCreate.vue");
-  return _sfc_setup$1U ? _sfc_setup$1U(props, ctx) : void 0;
+  return _sfc_setup$1X ? _sfc_setup$1X(props, ctx) : void 0;
 };
-var CreateOrderItem = /* @__PURE__ */ _export_sfc(_sfc_main$1U, [["ssrRender", _sfc_ssrRender$1Q]]);
+var CreateOrderItem = /* @__PURE__ */ _export_sfc(_sfc_main$1X, [["ssrRender", _sfc_ssrRender$1R]]);
 var ItemCreate = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateOrderItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1T = {};
-function _sfc_ssrRender$1P(_ctx, _push, _parent, _attrs) {
+const _sfc_main$1W = {};
+function _sfc_ssrRender$1Q(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "relative md:flex md:space-x-6 py-4 px-4 items-center justify-between cursor-pointer border-b border-gray-50 last:border-transparent hover:border-black" }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div>`);
 }
-const _sfc_setup$1T = _sfc_main$1T.setup;
-_sfc_main$1T.setup = (props, ctx) => {
+const _sfc_setup$1W = _sfc_main$1W.setup;
+_sfc_main$1W.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Lists/LineItem.vue");
-  return _sfc_setup$1T ? _sfc_setup$1T(props, ctx) : void 0;
+  return _sfc_setup$1W ? _sfc_setup$1W(props, ctx) : void 0;
 };
-var LineItem = /* @__PURE__ */ _export_sfc(_sfc_main$1T, [["ssrRender", _sfc_ssrRender$1P]]);
-const _sfc_main$1S = {
+var LineItem = /* @__PURE__ */ _export_sfc(_sfc_main$1W, [["ssrRender", _sfc_ssrRender$1Q]]);
+const _sfc_main$1V = {
   props: { size: { default: 4 } },
   components: {
     EditIcon: EditIcon__default["default"]
   }
 };
-function _sfc_ssrRender$1O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_EditIcon = vue.resolveComponent("EditIcon");
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "hover:opacity-50 transition p-2" }, _attrs))}>`);
   _push(serverRenderer.ssrRenderComponent(_component_EditIcon, {
@@ -23616,14 +23636,14 @@ function _sfc_ssrRender$1O(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, null, _parent));
   _push(`</button>`);
 }
-const _sfc_setup$1S = _sfc_main$1S.setup;
-_sfc_main$1S.setup = (props, ctx) => {
+const _sfc_setup$1V = _sfc_main$1V.setup;
+_sfc_main$1V.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/EditButton.vue");
-  return _sfc_setup$1S ? _sfc_setup$1S(props, ctx) : void 0;
+  return _sfc_setup$1V ? _sfc_setup$1V(props, ctx) : void 0;
 };
-var EditButton = /* @__PURE__ */ _export_sfc(_sfc_main$1S, [["ssrRender", _sfc_ssrRender$1O]]);
-const _sfc_main$1R = {
+var EditButton = /* @__PURE__ */ _export_sfc(_sfc_main$1V, [["ssrRender", _sfc_ssrRender$1P]]);
+const _sfc_main$1U = {
   components: {
     Switch: vue$1.Switch,
     SwitchDescription: vue$1.SwitchDescription,
@@ -23751,7 +23771,7 @@ const _sfc_main$1R = {
     }
   }
 };
-function _sfc_ssrRender$1N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_edit_button = vue.resolveComponent("edit-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_jet_button = vue.resolveComponent("jet-button");
@@ -24150,24 +24170,24 @@ function _sfc_ssrRender$1N(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1R = _sfc_main$1R.setup;
-_sfc_main$1R.setup = (props, ctx) => {
+const _sfc_setup$1U = _sfc_main$1U.setup;
+_sfc_main$1U.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ItemEdit.vue");
-  return _sfc_setup$1R ? _sfc_setup$1R(props, ctx) : void 0;
+  return _sfc_setup$1U ? _sfc_setup$1U(props, ctx) : void 0;
 };
-var EditOrderItem = /* @__PURE__ */ _export_sfc(_sfc_main$1R, [["ssrRender", _sfc_ssrRender$1N]]);
+var EditOrderItem = /* @__PURE__ */ _export_sfc(_sfc_main$1U, [["ssrRender", _sfc_ssrRender$1O]]);
 var ItemEdit = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": EditOrderItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1Q = {
+const _sfc_main$1T = {
   props: { size: { default: 4 } },
   components: {
     DeleteIcon: TrashIcon__default["default"]
   }
 };
-function _sfc_ssrRender$1M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_DeleteIcon = vue.resolveComponent("DeleteIcon");
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "hover:opacity-50 transition p-2" }, _attrs))}>`);
   _push(serverRenderer.ssrRenderComponent(_component_DeleteIcon, {
@@ -24175,14 +24195,14 @@ function _sfc_ssrRender$1M(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, null, _parent));
   _push(`</button>`);
 }
-const _sfc_setup$1Q = _sfc_main$1Q.setup;
-_sfc_main$1Q.setup = (props, ctx) => {
+const _sfc_setup$1T = _sfc_main$1T.setup;
+_sfc_main$1T.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/DeleteButton.vue");
-  return _sfc_setup$1Q ? _sfc_setup$1Q(props, ctx) : void 0;
+  return _sfc_setup$1T ? _sfc_setup$1T(props, ctx) : void 0;
 };
-var DeleteButton = /* @__PURE__ */ _export_sfc(_sfc_main$1Q, [["ssrRender", _sfc_ssrRender$1M]]);
-const _sfc_main$1P = {
+var DeleteButton = /* @__PURE__ */ _export_sfc(_sfc_main$1T, [["ssrRender", _sfc_ssrRender$1N]]);
+const _sfc_main$1S = {
   props: ["item"],
   components: {
     JetConfirmationModal,
@@ -24215,7 +24235,7 @@ const _sfc_main$1P = {
     }
   }
 };
-function _sfc_ssrRender$1L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_DeleteButton = vue.resolveComponent("DeleteButton");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -24306,18 +24326,18 @@ function _sfc_ssrRender$1L(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$1P = _sfc_main$1P.setup;
-_sfc_main$1P.setup = (props, ctx) => {
+const _sfc_setup$1S = _sfc_main$1S.setup;
+_sfc_main$1S.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ItemDelete.vue");
-  return _sfc_setup$1P ? _sfc_setup$1P(props, ctx) : void 0;
+  return _sfc_setup$1S ? _sfc_setup$1S(props, ctx) : void 0;
 };
-var DeleteOrderItem = /* @__PURE__ */ _export_sfc(_sfc_main$1P, [["ssrRender", _sfc_ssrRender$1L]]);
+var DeleteOrderItem = /* @__PURE__ */ _export_sfc(_sfc_main$1S, [["ssrRender", _sfc_ssrRender$1M]]);
 var ItemDelete = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteOrderItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1O = {
+const _sfc_main$1R = {
   components: {
     Check: Check__default["default"],
     LineItem,
@@ -24351,7 +24371,7 @@ const _sfc_main$1O = {
     }
   }
 };
-function _sfc_ssrRender$1K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_LineItem = vue.resolveComponent("LineItem");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_checkbox = vue.resolveComponent("jet-checkbox");
@@ -24515,18 +24535,18 @@ function _sfc_ssrRender$1K(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1O = _sfc_main$1O.setup;
-_sfc_main$1O.setup = (props, ctx) => {
+const _sfc_setup$1R = _sfc_main$1R.setup;
+_sfc_main$1R.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ItemLine.vue");
-  return _sfc_setup$1O ? _sfc_setup$1O(props, ctx) : void 0;
+  return _sfc_setup$1R ? _sfc_setup$1R(props, ctx) : void 0;
 };
-var OrderLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$1O, [["ssrRender", _sfc_ssrRender$1K]]);
+var OrderLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$1R, [["ssrRender", _sfc_ssrRender$1L]]);
 var ItemLine = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrderLineItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1N = {
+const _sfc_main$1Q = {
   props: { order: Object },
   components: {
     JetCheckbox: JetCheckBox,
@@ -24574,7 +24594,7 @@ const _sfc_main$1N = {
     }
   }
 };
-function _sfc_ssrRender$1J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_create_order_item = vue.resolveComponent("create-order-item");
   const _component_order_line_item = vue.resolveComponent("order-line-item");
@@ -24623,18 +24643,18 @@ function _sfc_ssrRender$1J(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div></div>`);
 }
-const _sfc_setup$1N = _sfc_main$1N.setup;
-_sfc_main$1N.setup = (props, ctx) => {
+const _sfc_setup$1Q = _sfc_main$1Q.setup;
+_sfc_main$1Q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/Items.vue");
-  return _sfc_setup$1N ? _sfc_setup$1N(props, ctx) : void 0;
+  return _sfc_setup$1Q ? _sfc_setup$1Q(props, ctx) : void 0;
 };
-var OrderItems = /* @__PURE__ */ _export_sfc(_sfc_main$1N, [["ssrRender", _sfc_ssrRender$1J]]);
+var OrderItems = /* @__PURE__ */ _export_sfc(_sfc_main$1Q, [["ssrRender", _sfc_ssrRender$1K]]);
 var Items = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrderItems
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1M = {
+const _sfc_main$1P = {
   props: ["discount"],
   components: {
     JetConfirmationModal,
@@ -24666,7 +24686,7 @@ const _sfc_main$1M = {
     }
   }
 };
-function _sfc_ssrRender$1I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -24767,18 +24787,18 @@ function _sfc_ssrRender$1I(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1M = _sfc_main$1M.setup;
-_sfc_main$1M.setup = (props, ctx) => {
+const _sfc_setup$1P = _sfc_main$1P.setup;
+_sfc_main$1P.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/DiscountDelete.vue");
-  return _sfc_setup$1M ? _sfc_setup$1M(props, ctx) : void 0;
+  return _sfc_setup$1P ? _sfc_setup$1P(props, ctx) : void 0;
 };
-var DiscountDelete = /* @__PURE__ */ _export_sfc(_sfc_main$1M, [["ssrRender", _sfc_ssrRender$1I]]);
+var DiscountDelete = /* @__PURE__ */ _export_sfc(_sfc_main$1P, [["ssrRender", _sfc_ssrRender$1J]]);
 var DiscountDelete$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DiscountDelete
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1L = {
+const _sfc_main$1O = {
   props: { discount: Object, show: Boolean },
   components: {
     JetDialogModal,
@@ -24830,7 +24850,7 @@ const _sfc_main$1L = {
     }
   }
 };
-function _sfc_ssrRender$1H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_text_area_input = vue.resolveComponent("text-area-input");
@@ -25135,18 +25155,18 @@ function _sfc_ssrRender$1H(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1L = _sfc_main$1L.setup;
-_sfc_main$1L.setup = (props, ctx) => {
+const _sfc_setup$1O = _sfc_main$1O.setup;
+_sfc_main$1O.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/DiscountEdit.vue");
-  return _sfc_setup$1L ? _sfc_setup$1L(props, ctx) : void 0;
+  return _sfc_setup$1O ? _sfc_setup$1O(props, ctx) : void 0;
 };
-var EditDiscountItem = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["ssrRender", _sfc_ssrRender$1H]]);
+var EditDiscountItem = /* @__PURE__ */ _export_sfc(_sfc_main$1O, [["ssrRender", _sfc_ssrRender$1I]]);
 var DiscountEdit = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": EditDiscountItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1K = {
+const _sfc_main$1N = {
   components: {
     LineItem,
     EditDiscountItem
@@ -25179,7 +25199,7 @@ const _sfc_main$1K = {
     }
   }
 };
-function _sfc_ssrRender$1G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_LineItem = vue.resolveComponent("LineItem");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_checkbox = vue.resolveComponent("jet-checkbox");
@@ -25268,18 +25288,18 @@ function _sfc_ssrRender$1G(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1K = _sfc_main$1K.setup;
-_sfc_main$1K.setup = (props, ctx) => {
+const _sfc_setup$1N = _sfc_main$1N.setup;
+_sfc_main$1N.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/DiscountItem.vue");
-  return _sfc_setup$1K ? _sfc_setup$1K(props, ctx) : void 0;
+  return _sfc_setup$1N ? _sfc_setup$1N(props, ctx) : void 0;
 };
-var DiscountItem = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["ssrRender", _sfc_ssrRender$1G]]);
+var DiscountItem = /* @__PURE__ */ _export_sfc(_sfc_main$1N, [["ssrRender", _sfc_ssrRender$1H]]);
 var DiscountItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DiscountItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1J = {
+const _sfc_main$1M = {
   props: { order: Object },
   components: {
     JetDialogModal,
@@ -25320,7 +25340,7 @@ const _sfc_main$1J = {
     }
   }
 };
-function _sfc_ssrRender$1F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_PlusIcon = vue.resolveComponent("PlusIcon");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
@@ -25612,18 +25632,18 @@ function _sfc_ssrRender$1F(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1J = _sfc_main$1J.setup;
-_sfc_main$1J.setup = (props, ctx) => {
+const _sfc_setup$1M = _sfc_main$1M.setup;
+_sfc_main$1M.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/DiscountCreate.vue");
-  return _sfc_setup$1J ? _sfc_setup$1J(props, ctx) : void 0;
+  return _sfc_setup$1M ? _sfc_setup$1M(props, ctx) : void 0;
 };
-var CreateOrderDiscount = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["ssrRender", _sfc_ssrRender$1F]]);
+var CreateOrderDiscount = /* @__PURE__ */ _export_sfc(_sfc_main$1M, [["ssrRender", _sfc_ssrRender$1G]]);
 var DiscountCreate = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateOrderDiscount
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1I = {
+const _sfc_main$1L = {
   name: "Discounts",
   components: {
     DiscountItem,
@@ -25671,7 +25691,7 @@ const _sfc_main$1I = {
     }
   }
 };
-function _sfc_ssrRender$1E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_create_order_discount = vue.resolveComponent("create-order-discount");
   const _component_loading_state = vue.resolveComponent("loading-state");
@@ -25721,18 +25741,18 @@ function _sfc_ssrRender$1E(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }
   _push(`</div></div>`);
 }
-const _sfc_setup$1I = _sfc_main$1I.setup;
-_sfc_main$1I.setup = (props, ctx) => {
+const _sfc_setup$1L = _sfc_main$1L.setup;
+_sfc_main$1L.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/Discounts.vue");
-  return _sfc_setup$1I ? _sfc_setup$1I(props, ctx) : void 0;
+  return _sfc_setup$1L ? _sfc_setup$1L(props, ctx) : void 0;
 };
-var Discounts = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["ssrRender", _sfc_ssrRender$1E]]);
+var Discounts = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["ssrRender", _sfc_ssrRender$1F]]);
 var Discounts$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Discounts
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1H = {
+const _sfc_main$1K = {
   components: { MoneyInput },
   props: {
     order: {
@@ -25812,7 +25832,7 @@ const _sfc_main$1H = {
     }
   }
 };
-function _sfc_ssrRender$1D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_select_box = vue.resolveComponent("select-box");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -26019,18 +26039,18 @@ function _sfc_ssrRender$1D(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`<p class="text-black text-lg">${serverRenderer.ssrInterpolate(_ctx.formatMoney($props.order.grand_total))}</p></div></div></div></div>`);
 }
-const _sfc_setup$1H = _sfc_main$1H.setup;
-_sfc_main$1H.setup = (props, ctx) => {
+const _sfc_setup$1K = _sfc_main$1K.setup;
+_sfc_main$1K.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/Totals.vue");
-  return _sfc_setup$1H ? _sfc_setup$1H(props, ctx) : void 0;
+  return _sfc_setup$1K ? _sfc_setup$1K(props, ctx) : void 0;
 };
-var Totals = /* @__PURE__ */ _export_sfc(_sfc_main$1H, [["ssrRender", _sfc_ssrRender$1D]]);
+var Totals = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["ssrRender", _sfc_ssrRender$1E]]);
 var Totals$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Totals
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1G = {
+const _sfc_main$1J = {
   components: {
     SearchSelectBox,
     TextAreaInput,
@@ -26167,7 +26187,7 @@ const _sfc_main$1G = {
     }
   }
 };
-function _sfc_ssrRender$1C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_search_select_box = vue.resolveComponent("search-select-box");
   const _component_jet_input_error = vue.resolveComponent("jet-input-error");
@@ -26485,18 +26505,18 @@ function _sfc_ssrRender$1C(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1G = _sfc_main$1G.setup;
-_sfc_main$1G.setup = (props, ctx) => {
+const _sfc_setup$1J = _sfc_main$1J.setup;
+_sfc_main$1J.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/OrderUpdate.vue");
-  return _sfc_setup$1G ? _sfc_setup$1G(props, ctx) : void 0;
+  return _sfc_setup$1J ? _sfc_setup$1J(props, ctx) : void 0;
 };
-var OrderUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$1G, [["ssrRender", _sfc_ssrRender$1C]]);
+var OrderUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["ssrRender", _sfc_ssrRender$1D]]);
 var OrderUpdate$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrderUpdate
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1F = {
+const _sfc_main$1I = {
   props: ["order"],
   components: {
     JetActionSection,
@@ -26524,7 +26544,7 @@ const _sfc_main$1F = {
     }
   }
 };
-function _sfc_ssrRender$1B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -26683,18 +26703,18 @@ function _sfc_ssrRender$1B(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1F = _sfc_main$1F.setup;
-_sfc_main$1F.setup = (props, ctx) => {
+const _sfc_setup$1I = _sfc_main$1I.setup;
+_sfc_main$1I.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/OrderDelete.vue");
-  return _sfc_setup$1F ? _sfc_setup$1F(props, ctx) : void 0;
+  return _sfc_setup$1I ? _sfc_setup$1I(props, ctx) : void 0;
 };
-var OrderDelete = /* @__PURE__ */ _export_sfc(_sfc_main$1F, [["ssrRender", _sfc_ssrRender$1B]]);
+var OrderDelete = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["ssrRender", _sfc_ssrRender$1C]]);
 var OrderDelete$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrderDelete
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1E = {
+const _sfc_main$1H = {
   components: {
     RadioGroup: vue$1.RadioGroup,
     RadioGroupDescription: vue$1.RadioGroupDescription,
@@ -26738,7 +26758,7 @@ const _sfc_main$1E = {
     }
   }
 };
-function _sfc_ssrRender$1A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_RadioGroup = vue.resolveComponent("RadioGroup");
   const _component_RadioGroupLabel = vue.resolveComponent("RadioGroupLabel");
   const _component_RadioGroupOption = vue.resolveComponent("RadioGroupOption");
@@ -26943,14 +26963,14 @@ function _sfc_ssrRender$1A(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1E = _sfc_main$1E.setup;
-_sfc_main$1E.setup = (props, ctx) => {
+const _sfc_setup$1H = _sfc_main$1H.setup;
+_sfc_main$1H.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Forms/RadioListSelect.vue");
-  return _sfc_setup$1E ? _sfc_setup$1E(props, ctx) : void 0;
+  return _sfc_setup$1H ? _sfc_setup$1H(props, ctx) : void 0;
 };
-var RadioListSelect = /* @__PURE__ */ _export_sfc(_sfc_main$1E, [["ssrRender", _sfc_ssrRender$1A]]);
-const _sfc_main$1D = {
+var RadioListSelect = /* @__PURE__ */ _export_sfc(_sfc_main$1H, [["ssrRender", _sfc_ssrRender$1B]]);
+const _sfc_main$1G = {
   props: {
     archivedItem: Object,
     order: Object,
@@ -27019,7 +27039,7 @@ const _sfc_main$1D = {
     }
   }
 };
-function _sfc_ssrRender$1z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_dialog_modal = vue.resolveComponent("dialog-modal");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -27463,18 +27483,18 @@ function _sfc_ssrRender$1z(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</span>`);
 }
-const _sfc_setup$1D = _sfc_main$1D.setup;
-_sfc_main$1D.setup = (props, ctx) => {
+const _sfc_setup$1G = _sfc_main$1G.setup;
+_sfc_main$1G.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/InventoryItem.vue");
-  return _sfc_setup$1D ? _sfc_setup$1D(props, ctx) : void 0;
+  return _sfc_setup$1G ? _sfc_setup$1G(props, ctx) : void 0;
 };
-var InventoryItem = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["ssrRender", _sfc_ssrRender$1z]]);
+var InventoryItem = /* @__PURE__ */ _export_sfc(_sfc_main$1G, [["ssrRender", _sfc_ssrRender$1A]]);
 var InventoryItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1C = {
+const _sfc_main$1F = {
   components: {
     ExclamationCircleIcon: outline.ExclamationCircleIcon,
     CheckCircleIcon: outline.CheckCircleIcon,
@@ -27491,7 +27511,7 @@ const _sfc_main$1C = {
     }
   }
 };
-function _sfc_ssrRender$1y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_CheckCircleIcon = vue.resolveComponent("CheckCircleIcon");
   const _component_ExclamationCircleIcon = vue.resolveComponent("ExclamationCircleIcon");
   const _component_inventory_item = vue.resolveComponent("inventory-item");
@@ -27522,18 +27542,18 @@ function _sfc_ssrRender$1y(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   });
   _push(`<!--]--></div>`);
 }
-const _sfc_setup$1C = _sfc_main$1C.setup;
-_sfc_main$1C.setup = (props, ctx) => {
+const _sfc_setup$1F = _sfc_main$1F.setup;
+_sfc_main$1F.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/InventoryMatchedList.vue");
-  return _sfc_setup$1C ? _sfc_setup$1C(props, ctx) : void 0;
+  return _sfc_setup$1F ? _sfc_setup$1F(props, ctx) : void 0;
 };
-var InventoryMatchedList = /* @__PURE__ */ _export_sfc(_sfc_main$1C, [["ssrRender", _sfc_ssrRender$1y]]);
+var InventoryMatchedList = /* @__PURE__ */ _export_sfc(_sfc_main$1F, [["ssrRender", _sfc_ssrRender$1z]]);
 var InventoryMatchedList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryMatchedList
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1B = {
+const _sfc_main$1E = {
   components: {
     SearchInput,
     LoadingState,
@@ -27711,7 +27731,7 @@ const _sfc_main$1B = {
     }
   }
 };
-function _sfc_ssrRender$1x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_jet_input_error = vue.resolveComponent("jet-input-error");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -28485,37 +28505,37 @@ function _sfc_ssrRender$1x(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1B = _sfc_main$1B.setup;
-_sfc_main$1B.setup = (props, ctx) => {
+const _sfc_setup$1E = _sfc_main$1E.setup;
+_sfc_main$1E.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/InventoryAdd.vue");
-  return _sfc_setup$1B ? _sfc_setup$1B(props, ctx) : void 0;
+  return _sfc_setup$1E ? _sfc_setup$1E(props, ctx) : void 0;
 };
-var InventoryAdd = /* @__PURE__ */ _export_sfc(_sfc_main$1B, [["ssrRender", _sfc_ssrRender$1x]]);
+var InventoryAdd = /* @__PURE__ */ _export_sfc(_sfc_main$1E, [["ssrRender", _sfc_ssrRender$1y]]);
 var InventoryAdd$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryAdd
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1A = {
+const _sfc_main$1D = {
   components: {
     SparklesIcon: outline.SparklesIcon
   }
 };
-function _sfc_ssrRender$1w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_SparklesIcon = vue.resolveComponent("SparklesIcon");
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "btn btn-sm btn-outline pl-2 flex items-center" }, _attrs))}>`);
   _push(serverRenderer.ssrRenderComponent(_component_SparklesIcon, { class: "w-6 h-6 stroke-current mr-2" }, null, _parent));
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</button>`);
 }
-const _sfc_setup$1A = _sfc_main$1A.setup;
-_sfc_main$1A.setup = (props, ctx) => {
+const _sfc_setup$1D = _sfc_main$1D.setup;
+_sfc_main$1D.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/ActionButton.vue");
-  return _sfc_setup$1A ? _sfc_setup$1A(props, ctx) : void 0;
+  return _sfc_setup$1D ? _sfc_setup$1D(props, ctx) : void 0;
 };
-var ActionButton = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["ssrRender", _sfc_ssrRender$1w]]);
-const _sfc_main$1z = {
+var ActionButton = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["ssrRender", _sfc_ssrRender$1x]]);
+const _sfc_main$1C = {
   components: {
     ActionButton,
     DialogModal: JetDialogModal,
@@ -28567,7 +28587,7 @@ const _sfc_main$1z = {
     }
   }
 };
-function _sfc_ssrRender$1v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_ActionButton = vue.resolveComponent("ActionButton");
   const _component_dialog_modal = vue.resolveComponent("dialog-modal");
   const _component_ErrorMessage = vue.resolveComponent("ErrorMessage");
@@ -28721,18 +28741,18 @@ function _sfc_ssrRender$1v(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$1z = _sfc_main$1z.setup;
-_sfc_main$1z.setup = (props, ctx) => {
+const _sfc_setup$1C = _sfc_main$1C.setup;
+_sfc_main$1C.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ConvertSale.vue");
-  return _sfc_setup$1z ? _sfc_setup$1z(props, ctx) : void 0;
+  return _sfc_setup$1C ? _sfc_setup$1C(props, ctx) : void 0;
 };
-var ConvertSale = /* @__PURE__ */ _export_sfc(_sfc_main$1z, [["ssrRender", _sfc_ssrRender$1v]]);
+var ConvertSale = /* @__PURE__ */ _export_sfc(_sfc_main$1C, [["ssrRender", _sfc_ssrRender$1w]]);
 var ConvertSale$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ConvertSale
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1y = {
+const _sfc_main$1B = {
   components: {
     PrintButton,
     ConvertSale
@@ -28763,7 +28783,7 @@ const _sfc_main$1y = {
     }
   }
 };
-function _sfc_ssrRender$1u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_PrintButton = vue.resolveComponent("PrintButton");
   const _component_convert_sale = vue.resolveComponent("convert-sale");
   if ($options.show) {
@@ -28792,18 +28812,18 @@ function _sfc_ssrRender$1u(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _push(`<!---->`);
   }
 }
-const _sfc_setup$1y = _sfc_main$1y.setup;
-_sfc_main$1y.setup = (props, ctx) => {
+const _sfc_setup$1B = _sfc_main$1B.setup;
+_sfc_main$1B.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/ActionCard.vue");
-  return _sfc_setup$1y ? _sfc_setup$1y(props, ctx) : void 0;
+  return _sfc_setup$1B ? _sfc_setup$1B(props, ctx) : void 0;
 };
-var ActionCard = /* @__PURE__ */ _export_sfc(_sfc_main$1y, [["ssrRender", _sfc_ssrRender$1u]]);
+var ActionCard = /* @__PURE__ */ _export_sfc(_sfc_main$1B, [["ssrRender", _sfc_ssrRender$1v]]);
 var ActionCard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ActionCard
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1x = {
+const _sfc_main$1A = {
   components: {
     DetailsSection,
     SmallLineItem,
@@ -28838,7 +28858,7 @@ const _sfc_main$1x = {
     }
   }
 };
-function _sfc_ssrRender$1t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_LoadingState = vue.resolveComponent("LoadingState");
   const _component_SmallLineItem = vue.resolveComponent("SmallLineItem");
@@ -28925,18 +28945,18 @@ function _sfc_ssrRender$1t(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1x = _sfc_main$1x.setup;
-_sfc_main$1x.setup = (props, ctx) => {
+const _sfc_setup$1A = _sfc_main$1A.setup;
+_sfc_main$1A.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/LinkedQuoteCard.vue");
-  return _sfc_setup$1x ? _sfc_setup$1x(props, ctx) : void 0;
+  return _sfc_setup$1A ? _sfc_setup$1A(props, ctx) : void 0;
 };
-var LinkedQuoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["ssrRender", _sfc_ssrRender$1t]]);
+var LinkedQuoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["ssrRender", _sfc_ssrRender$1u]]);
 var LinkedQuoteCard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": LinkedQuoteCard
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1w = {
+const _sfc_main$1z = {
   components: {
     DetailsSection,
     SmallLineItem,
@@ -28979,7 +28999,7 @@ const _sfc_main$1w = {
     }
   }
 };
-function _sfc_ssrRender$1s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_SmallLineItem = vue.resolveComponent("SmallLineItem");
   const _component_EmptyState = vue.resolveComponent("EmptyState");
@@ -29071,18 +29091,18 @@ function _sfc_ssrRender$1s(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1w = _sfc_main$1w.setup;
-_sfc_main$1w.setup = (props, ctx) => {
+const _sfc_setup$1z = _sfc_main$1z.setup;
+_sfc_main$1z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/RelatedOrdersCard.vue");
-  return _sfc_setup$1w ? _sfc_setup$1w(props, ctx) : void 0;
+  return _sfc_setup$1z ? _sfc_setup$1z(props, ctx) : void 0;
 };
-var RelatedOrdersCard = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["ssrRender", _sfc_ssrRender$1s]]);
+var RelatedOrdersCard = /* @__PURE__ */ _export_sfc(_sfc_main$1z, [["ssrRender", _sfc_ssrRender$1t]]);
 var RelatedOrdersCard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": RelatedOrdersCard
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1v = {
+const _sfc_main$1y = {
   components: {
     OrdersLayout,
     OrderUpdate,
@@ -29104,7 +29124,7 @@ const _sfc_main$1v = {
     };
   }
 };
-function _sfc_ssrRender$1r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_OrdersLayout = vue.resolveComponent("OrdersLayout");
   const _component_OrderUpdate = vue.resolveComponent("OrderUpdate");
   const _component_ActionCard = vue.resolveComponent("ActionCard");
@@ -29165,18 +29185,18 @@ function _sfc_ssrRender$1r(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1v = _sfc_main$1v.setup;
-_sfc_main$1v.setup = (props, ctx) => {
+const _sfc_setup$1y = _sfc_main$1y.setup;
+_sfc_main$1y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Show.vue");
-  return _sfc_setup$1v ? _sfc_setup$1v(props, ctx) : void 0;
+  return _sfc_setup$1y ? _sfc_setup$1y(props, ctx) : void 0;
 };
-var Show$g = /* @__PURE__ */ _export_sfc(_sfc_main$1v, [["ssrRender", _sfc_ssrRender$1r]]);
+var Show$g = /* @__PURE__ */ _export_sfc(_sfc_main$1y, [["ssrRender", _sfc_ssrRender$1s]]);
 var Show$h = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$g
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1u = {
+const _sfc_main$1x = {
   components: {
     PageAside,
     AsideLink,
@@ -29188,7 +29208,7 @@ const _sfc_main$1u = {
     priceLevels: Array
   }
 };
-function _sfc_ssrRender$1q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -29377,18 +29397,18 @@ function _sfc_ssrRender$1q(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1u = _sfc_main$1u.setup;
-_sfc_main$1u.setup = (props, ctx) => {
+const _sfc_setup$1x = _sfc_main$1x.setup;
+_sfc_main$1x.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/PriceLevelsAside.vue");
-  return _sfc_setup$1u ? _sfc_setup$1u(props, ctx) : void 0;
+  return _sfc_setup$1x ? _sfc_setup$1x(props, ctx) : void 0;
 };
-var PriceLevelsAside = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["ssrRender", _sfc_ssrRender$1q]]);
+var PriceLevelsAside = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["ssrRender", _sfc_ssrRender$1r]]);
 var PriceLevelsAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PriceLevelsAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1t = {
+const _sfc_main$1w = {
   components: {
     PriceLevelsAside,
     AppLayout,
@@ -29404,7 +29424,7 @@ const _sfc_main$1t = {
     }
   }
 };
-function _sfc_ssrRender$1p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -29502,18 +29522,18 @@ function _sfc_ssrRender$1p(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$1t = _sfc_main$1t.setup;
-_sfc_main$1t.setup = (props, ctx) => {
+const _sfc_setup$1w = _sfc_main$1w.setup;
+_sfc_main$1w.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/PriceLevelsLayout.vue");
-  return _sfc_setup$1t ? _sfc_setup$1t(props, ctx) : void 0;
+  return _sfc_setup$1w ? _sfc_setup$1w(props, ctx) : void 0;
 };
-var PriceLevelsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$1t, [["ssrRender", _sfc_ssrRender$1p]]);
+var PriceLevelsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["ssrRender", _sfc_ssrRender$1q]]);
 var PriceLevelsLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PriceLevelsLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1s = {
+const _sfc_main$1v = {
   components: {
     JetActionMessage,
     JetButton,
@@ -29543,7 +29563,7 @@ const _sfc_main$1s = {
     }
   }
 };
-function _sfc_ssrRender$1o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -29719,24 +29739,24 @@ function _sfc_ssrRender$1o(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1s = _sfc_main$1s.setup;
-_sfc_main$1s.setup = (props, ctx) => {
+const _sfc_setup$1v = _sfc_main$1v.setup;
+_sfc_main$1v.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/CreatePriceLevelForm.vue");
-  return _sfc_setup$1s ? _sfc_setup$1s(props, ctx) : void 0;
+  return _sfc_setup$1v ? _sfc_setup$1v(props, ctx) : void 0;
 };
-var createPriceLevelForm = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["ssrRender", _sfc_ssrRender$1o]]);
+var createPriceLevelForm = /* @__PURE__ */ _export_sfc(_sfc_main$1v, [["ssrRender", _sfc_ssrRender$1p]]);
 var CreatePriceLevelForm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": createPriceLevelForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1r = {
+const _sfc_main$1u = {
   components: {
     PriceLevelsLayout,
     createPriceLevelForm
   }
 };
-function _sfc_ssrRender$1n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_price_levels_layout = vue.resolveComponent("price-levels-layout");
   const _component_create_price_level_form = vue.resolveComponent("create-price-level-form");
   _push(serverRenderer.ssrRenderComponent(_component_price_levels_layout, _attrs, {
@@ -29752,18 +29772,18 @@ function _sfc_ssrRender$1n(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1r = _sfc_main$1r.setup;
-_sfc_main$1r.setup = (props, ctx) => {
+const _sfc_setup$1u = _sfc_main$1u.setup;
+_sfc_main$1u.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/Create.vue");
-  return _sfc_setup$1r ? _sfc_setup$1r(props, ctx) : void 0;
+  return _sfc_setup$1u ? _sfc_setup$1u(props, ctx) : void 0;
 };
-var Create$c = /* @__PURE__ */ _export_sfc(_sfc_main$1r, [["ssrRender", _sfc_ssrRender$1n]]);
+var Create$c = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["ssrRender", _sfc_ssrRender$1o]]);
 var Create$d = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$c
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1q = {
+const _sfc_main$1t = {
   props: { priceLevel: Object },
   components: {
     JetActionSection,
@@ -29792,7 +29812,7 @@ const _sfc_main$1q = {
     }
   }
 };
-function _sfc_ssrRender$1m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -29960,38 +29980,38 @@ function _sfc_ssrRender$1m(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1q = _sfc_main$1q.setup;
-_sfc_main$1q.setup = (props, ctx) => {
+const _sfc_setup$1t = _sfc_main$1t.setup;
+_sfc_main$1t.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/DeletePriceLevelForm.vue");
-  return _sfc_setup$1q ? _sfc_setup$1q(props, ctx) : void 0;
+  return _sfc_setup$1t ? _sfc_setup$1t(props, ctx) : void 0;
 };
-var DeletePriceLevelForm = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["ssrRender", _sfc_ssrRender$1m]]);
+var DeletePriceLevelForm = /* @__PURE__ */ _export_sfc(_sfc_main$1t, [["ssrRender", _sfc_ssrRender$1n]]);
 var DeletePriceLevelForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeletePriceLevelForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1p = {
+const _sfc_main$1s = {
   components: {
     PriceLevelsLayout
   }
 };
-function _sfc_ssrRender$1l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_price_levels_layout = vue.resolveComponent("price-levels-layout");
   _push(serverRenderer.ssrRenderComponent(_component_price_levels_layout, _attrs, null, _parent));
 }
-const _sfc_setup$1p = _sfc_main$1p.setup;
-_sfc_main$1p.setup = (props, ctx) => {
+const _sfc_setup$1s = _sfc_main$1s.setup;
+_sfc_main$1s.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/Index.vue");
-  return _sfc_setup$1p ? _sfc_setup$1p(props, ctx) : void 0;
+  return _sfc_setup$1s ? _sfc_setup$1s(props, ctx) : void 0;
 };
-var Index$c = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["ssrRender", _sfc_ssrRender$1l]]);
-var Index$d = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$f = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["ssrRender", _sfc_ssrRender$1m]]);
+var Index$g = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$c
+  "default": Index$f
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1o = {
+const _sfc_main$1r = {
   components: {
     JetActionMessage,
     JetButton,
@@ -30025,7 +30045,7 @@ const _sfc_main$1o = {
     }
   }
 };
-function _sfc_ssrRender$1k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -30201,18 +30221,18 @@ function _sfc_ssrRender$1k(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1o = _sfc_main$1o.setup;
-_sfc_main$1o.setup = (props, ctx) => {
+const _sfc_setup$1r = _sfc_main$1r.setup;
+_sfc_main$1r.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/UpdatePriceLevelForm.vue");
-  return _sfc_setup$1o ? _sfc_setup$1o(props, ctx) : void 0;
+  return _sfc_setup$1r ? _sfc_setup$1r(props, ctx) : void 0;
 };
-var UpdatePriceLevelForm = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["ssrRender", _sfc_ssrRender$1k]]);
+var UpdatePriceLevelForm = /* @__PURE__ */ _export_sfc(_sfc_main$1r, [["ssrRender", _sfc_ssrRender$1l]]);
 var UpdatePriceLevelForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdatePriceLevelForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1n = {
+const _sfc_main$1q = {
   components: {
     PriceLevelsLayout,
     UpdatePriceLevelForm,
@@ -30222,7 +30242,7 @@ const _sfc_main$1n = {
     priceLevel: Object
   }
 };
-function _sfc_ssrRender$1j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_price_levels_layout = vue.resolveComponent("price-levels-layout");
   const _component_update_price_level_form = vue.resolveComponent("update-price-level-form");
   const _component_delete_price_level_form = vue.resolveComponent("delete-price-level-form");
@@ -30247,18 +30267,18 @@ function _sfc_ssrRender$1j(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1n = _sfc_main$1n.setup;
-_sfc_main$1n.setup = (props, ctx) => {
+const _sfc_setup$1q = _sfc_main$1q.setup;
+_sfc_main$1q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PriceLevels/Show.vue");
-  return _sfc_setup$1n ? _sfc_setup$1n(props, ctx) : void 0;
+  return _sfc_setup$1q ? _sfc_setup$1q(props, ctx) : void 0;
 };
-var Show$e = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["ssrRender", _sfc_ssrRender$1j]]);
+var Show$e = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["ssrRender", _sfc_ssrRender$1k]]);
 var Show$f = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$e
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1m = {
+const _sfc_main$1p = {
   components: {
     PageAside,
     AsideLink,
@@ -30293,7 +30313,7 @@ const _sfc_main$1m = {
     }
   }
 };
-function _sfc_ssrRender$1i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -30587,18 +30607,18 @@ function _sfc_ssrRender$1i(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1m = _sfc_main$1m.setup;
-_sfc_main$1m.setup = (props, ctx) => {
+const _sfc_setup$1p = _sfc_main$1p.setup;
+_sfc_main$1p.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/ProductsAside.vue");
-  return _sfc_setup$1m ? _sfc_setup$1m(props, ctx) : void 0;
+  return _sfc_setup$1p ? _sfc_setup$1p(props, ctx) : void 0;
 };
-var ProductsAside = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["ssrRender", _sfc_ssrRender$1i]]);
+var ProductsAside = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["ssrRender", _sfc_ssrRender$1j]]);
 var ProductsAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ProductsAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1l = {
+const _sfc_main$1o = {
   components: {
     ProductsAside,
     AppLayout,
@@ -30611,7 +30631,7 @@ const _sfc_main$1l = {
     }
   }
 };
-function _sfc_ssrRender$1h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -30748,22 +30768,22 @@ function _sfc_ssrRender$1h(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 3
   }, _parent));
 }
-const _sfc_setup$1l = _sfc_main$1l.setup;
-_sfc_main$1l.setup = (props, ctx) => {
+const _sfc_setup$1o = _sfc_main$1o.setup;
+_sfc_main$1o.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/ProductsLayout.vue");
-  return _sfc_setup$1l ? _sfc_setup$1l(props, ctx) : void 0;
+  return _sfc_setup$1o ? _sfc_setup$1o(props, ctx) : void 0;
 };
-var ProductsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["ssrRender", _sfc_ssrRender$1h]]);
+var ProductsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["ssrRender", _sfc_ssrRender$1i]]);
 var ProductsLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ProductsLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1k = {
+const _sfc_main$1n = {
   components: { DetailsSection },
   props: ["product"]
 };
-function _sfc_ssrRender$1g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   _push(serverRenderer.ssrRenderComponent(_component_details_section, _attrs, {
     title: vue.withCtx((_, _push2, _parent2, _scopeId) => {
@@ -30809,18 +30829,18 @@ function _sfc_ssrRender$1g(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1k = _sfc_main$1k.setup;
-_sfc_main$1k.setup = (props, ctx) => {
+const _sfc_setup$1n = _sfc_main$1n.setup;
+_sfc_main$1n.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/Components/ProductDetails.vue");
-  return _sfc_setup$1k ? _sfc_setup$1k(props, ctx) : void 0;
+  return _sfc_setup$1n ? _sfc_setup$1n(props, ctx) : void 0;
 };
-var ProductDetails = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["ssrRender", _sfc_ssrRender$1g]]);
+var ProductDetails = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["ssrRender", _sfc_ssrRender$1h]]);
 var ProductDetails$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ProductDetails
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1j = {
+const _sfc_main$1m = {
   props: ["product"],
   components: {
     JetActionSection,
@@ -30846,7 +30866,7 @@ const _sfc_main$1j = {
     }
   }
 };
-function _sfc_ssrRender$1f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -31014,18 +31034,18 @@ function _sfc_ssrRender$1f(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1j = _sfc_main$1j.setup;
-_sfc_main$1j.setup = (props, ctx) => {
+const _sfc_setup$1m = _sfc_main$1m.setup;
+_sfc_main$1m.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/RestoreProductForm.vue");
-  return _sfc_setup$1j ? _sfc_setup$1j(props, ctx) : void 0;
+  return _sfc_setup$1m ? _sfc_setup$1m(props, ctx) : void 0;
 };
-var RestoreProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["ssrRender", _sfc_ssrRender$1f]]);
+var RestoreProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["ssrRender", _sfc_ssrRender$1g]]);
 var RestoreProductForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": RestoreProductForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1i = {
+const _sfc_main$1l = {
   components: {
     PaperClipIcon: solid.PaperClipIcon,
     ProductsLayout,
@@ -31034,7 +31054,7 @@ const _sfc_main$1i = {
   },
   props: { product: Object }
 };
-function _sfc_ssrRender$1e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_products_layout = vue.resolveComponent("products-layout");
   const _component_product_details = vue.resolveComponent("product-details");
   const _component_restore_product_form = vue.resolveComponent("restore-product-form");
@@ -31059,18 +31079,18 @@ function _sfc_ssrRender$1e(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1i = _sfc_main$1i.setup;
-_sfc_main$1i.setup = (props, ctx) => {
+const _sfc_setup$1l = _sfc_main$1l.setup;
+_sfc_main$1l.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/ArchivedShow.vue");
-  return _sfc_setup$1i ? _sfc_setup$1i(props, ctx) : void 0;
+  return _sfc_setup$1l ? _sfc_setup$1l(props, ctx) : void 0;
 };
-var ArchivedShow$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["ssrRender", _sfc_ssrRender$1e]]);
+var ArchivedShow$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["ssrRender", _sfc_ssrRender$1f]]);
 var ArchivedShow$3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ArchivedShow$2
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1h = {
+const _sfc_main$1k = {
   components: {
     SelectBox
   },
@@ -31089,7 +31109,7 @@ const _sfc_main$1h = {
     });
   }
 };
-function _sfc_ssrRender$1d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_select_box = vue.resolveComponent("select-box");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "grid gap-4 col-span-3" }, _attrs))}>`);
   _push(serverRenderer.ssrRenderComponent(_component_select_box, {
@@ -31100,21 +31120,21 @@ function _sfc_ssrRender$1d(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1h = _sfc_main$1h.setup;
-_sfc_main$1h.setup = (props, ctx) => {
+const _sfc_setup$1k = _sfc_main$1k.setup;
+_sfc_main$1k.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/CategorySelector.vue");
-  return _sfc_setup$1h ? _sfc_setup$1h(props, ctx) : void 0;
+  return _sfc_setup$1k ? _sfc_setup$1k(props, ctx) : void 0;
 };
-var CategorySelector = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["ssrRender", _sfc_ssrRender$1d]]);
+var CategorySelector = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["ssrRender", _sfc_ssrRender$1e]]);
 var CategorySelector$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CategorySelector
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1g = {
+const _sfc_main$1j = {
   components: { ChevronLeftIcon: solid.ChevronLeftIcon }
 };
-function _sfc_ssrRender$1c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_ChevronLeftIcon = vue.resolveComponent("ChevronLeftIcon");
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "-ml-1 inline-flex items-center space-x-3 text-sm text-blue-gray-900" }, _attrs))}>`);
   _push(serverRenderer.ssrRenderComponent(_component_ChevronLeftIcon, {
@@ -31125,13 +31145,13 @@ function _sfc_ssrRender$1c(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</span></button>`);
 }
-const _sfc_setup$1g = _sfc_main$1g.setup;
-_sfc_main$1g.setup = (props, ctx) => {
+const _sfc_setup$1j = _sfc_main$1j.setup;
+_sfc_main$1j.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/BackButton.vue");
-  return _sfc_setup$1g ? _sfc_setup$1g(props, ctx) : void 0;
+  return _sfc_setup$1j ? _sfc_setup$1j(props, ctx) : void 0;
 };
-var BackButton = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["ssrRender", _sfc_ssrRender$1c]]);
+var BackButton = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["ssrRender", _sfc_ssrRender$1d]]);
 const types$1 = [
   {
     name: "Plant",
@@ -31154,7 +31174,7 @@ const types$1 = [
     description: "Services are not tangible items that are sold, but services to a customer. Ex: planting"
   }
 ];
-const _sfc_main$1f = {
+const _sfc_main$1i = {
   components: {
     JetActionMessage,
     JetButton,
@@ -31238,7 +31258,7 @@ const _sfc_main$1f = {
     }
   }
 };
-function _sfc_ssrRender$1b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_back_button = vue.resolveComponent("back-button");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -32144,24 +32164,24 @@ function _sfc_ssrRender$1b(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1f = _sfc_main$1f.setup;
-_sfc_main$1f.setup = (props, ctx) => {
+const _sfc_setup$1i = _sfc_main$1i.setup;
+_sfc_main$1i.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/CreateProductForm.vue");
-  return _sfc_setup$1f ? _sfc_setup$1f(props, ctx) : void 0;
+  return _sfc_setup$1i ? _sfc_setup$1i(props, ctx) : void 0;
 };
-var CreateProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["ssrRender", _sfc_ssrRender$1b]]);
+var CreateProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["ssrRender", _sfc_ssrRender$1c]]);
 var CreateProductForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateProductForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1e = {
+const _sfc_main$1h = {
   components: {
     ProductsLayout,
     CreateProductForm
   }
 };
-function _sfc_ssrRender$1a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_products_layout = vue.resolveComponent("products-layout");
   const _component_create_product_form = vue.resolveComponent("create-product-form");
   _push(serverRenderer.ssrRenderComponent(_component_products_layout, _attrs, {
@@ -32177,18 +32197,18 @@ function _sfc_ssrRender$1a(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1e = _sfc_main$1e.setup;
-_sfc_main$1e.setup = (props, ctx) => {
+const _sfc_setup$1h = _sfc_main$1h.setup;
+_sfc_main$1h.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/Create.vue");
-  return _sfc_setup$1e ? _sfc_setup$1e(props, ctx) : void 0;
+  return _sfc_setup$1h ? _sfc_setup$1h(props, ctx) : void 0;
 };
-var Create$a = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["ssrRender", _sfc_ssrRender$1a]]);
+var Create$a = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["ssrRender", _sfc_ssrRender$1b]]);
 var Create$b = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$a
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1d = {
+const _sfc_main$1g = {
   props: ["product"],
   components: {
     JetActionSection,
@@ -32214,7 +32234,7 @@ const _sfc_main$1d = {
     }
   }
 };
-function _sfc_ssrRender$19(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -32382,38 +32402,38 @@ function _sfc_ssrRender$19(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$1d = _sfc_main$1d.setup;
-_sfc_main$1d.setup = (props, ctx) => {
+const _sfc_setup$1g = _sfc_main$1g.setup;
+_sfc_main$1g.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/DeleteProductForm.vue");
-  return _sfc_setup$1d ? _sfc_setup$1d(props, ctx) : void 0;
+  return _sfc_setup$1g ? _sfc_setup$1g(props, ctx) : void 0;
 };
-var DeleteProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["ssrRender", _sfc_ssrRender$19]]);
+var DeleteProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["ssrRender", _sfc_ssrRender$1a]]);
 var DeleteProductForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteProductForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1c = {
+const _sfc_main$1f = {
   components: {
     ProductsLayout
   }
 };
-function _sfc_ssrRender$18(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$19(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_products_layout = vue.resolveComponent("products-layout");
   _push(serverRenderer.ssrRenderComponent(_component_products_layout, _attrs, null, _parent));
 }
-const _sfc_setup$1c = _sfc_main$1c.setup;
-_sfc_main$1c.setup = (props, ctx) => {
+const _sfc_setup$1f = _sfc_main$1f.setup;
+_sfc_main$1f.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/Index.vue");
-  return _sfc_setup$1c ? _sfc_setup$1c(props, ctx) : void 0;
+  return _sfc_setup$1f ? _sfc_setup$1f(props, ctx) : void 0;
 };
-var Index$a = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["ssrRender", _sfc_ssrRender$18]]);
-var Index$b = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$d = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["ssrRender", _sfc_ssrRender$19]]);
+var Index$e = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$a
+  "default": Index$d
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1b = {
+const _sfc_main$1e = {
   components: {
     JetButton,
     JetFormSection,
@@ -32439,7 +32459,7 @@ const _sfc_main$1b = {
     }
   }
 };
-function _sfc_ssrRender$17(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$18(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   var _a;
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -32566,18 +32586,18 @@ function _sfc_ssrRender$17(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _push(`<!---->`);
   }
 }
-const _sfc_setup$1b = _sfc_main$1b.setup;
-_sfc_main$1b.setup = (props, ctx) => {
+const _sfc_setup$1e = _sfc_main$1e.setup;
+_sfc_main$1e.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/PlantFeatures.vue");
-  return _sfc_setup$1b ? _sfc_setup$1b(props, ctx) : void 0;
+  return _sfc_setup$1e ? _sfc_setup$1e(props, ctx) : void 0;
 };
-var PlantFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["ssrRender", _sfc_ssrRender$17]]);
+var PlantFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["ssrRender", _sfc_ssrRender$18]]);
 var PlantFeatures$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PlantFeatures
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1a = {
+const _sfc_main$1d = {
   components: {
     JetActionMessage,
     JetButton,
@@ -32637,7 +32657,7 @@ const _sfc_main$1a = {
     }
   }
 };
-function _sfc_ssrRender$16(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$17(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -33230,18 +33250,18 @@ function _sfc_ssrRender$16(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$1a = _sfc_main$1a.setup;
-_sfc_main$1a.setup = (props, ctx) => {
+const _sfc_setup$1d = _sfc_main$1d.setup;
+_sfc_main$1d.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/UpdateProductForm.vue");
-  return _sfc_setup$1a ? _sfc_setup$1a(props, ctx) : void 0;
+  return _sfc_setup$1d ? _sfc_setup$1d(props, ctx) : void 0;
 };
-var UpdateProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["ssrRender", _sfc_ssrRender$16]]);
+var UpdateProductForm = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["ssrRender", _sfc_ssrRender$17]]);
 var UpdateProductForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateProductForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$19 = {
+const _sfc_main$1c = {
   components: {
     JetButton,
     ProductsLayout,
@@ -33264,7 +33284,7 @@ const _sfc_main$19 = {
     }
   }
 };
-function _sfc_ssrRender$15(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$16(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_products_layout = vue.resolveComponent("products-layout");
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_update_product_form = vue.resolveComponent("update-product-form");
@@ -33376,18 +33396,18 @@ function _sfc_ssrRender$15(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$19 = _sfc_main$19.setup;
-_sfc_main$19.setup = (props, ctx) => {
+const _sfc_setup$1c = _sfc_main$1c.setup;
+_sfc_main$1c.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Products/Show.vue");
-  return _sfc_setup$19 ? _sfc_setup$19(props, ctx) : void 0;
+  return _sfc_setup$1c ? _sfc_setup$1c(props, ctx) : void 0;
 };
-var Show$c = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["ssrRender", _sfc_ssrRender$15]]);
+var Show$c = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["ssrRender", _sfc_ssrRender$16]]);
 var Show$d = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$c
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$18 = {
+const _sfc_main$1b = {
   components: {
     JetActionSection,
     JetDangerButton,
@@ -33423,7 +33443,7 @@ const _sfc_main$18 = {
     }
   }
 };
-function _sfc_ssrRender$14(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$15(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
@@ -33631,18 +33651,18 @@ function _sfc_ssrRender$14(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$18 = _sfc_main$18.setup;
-_sfc_main$18.setup = (props, ctx) => {
+const _sfc_setup$1b = _sfc_main$1b.setup;
+_sfc_main$1b.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/DeleteUserForm.vue");
-  return _sfc_setup$18 ? _sfc_setup$18(props, ctx) : void 0;
+  return _sfc_setup$1b ? _sfc_setup$1b(props, ctx) : void 0;
 };
-var DeleteUserForm = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["ssrRender", _sfc_ssrRender$14]]);
+var DeleteUserForm = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["ssrRender", _sfc_ssrRender$15]]);
 var DeleteUserForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteUserForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$17 = {
+const _sfc_main$1a = {
   props: ["sessions"],
   components: {
     JetActionMessage,
@@ -33680,7 +33700,7 @@ const _sfc_main$17 = {
     }
   }
 };
-function _sfc_ssrRender$13(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$14(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_action_message = vue.resolveComponent("jet-action-message");
@@ -33996,18 +34016,18 @@ function _sfc_ssrRender$13(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$17 = _sfc_main$17.setup;
-_sfc_main$17.setup = (props, ctx) => {
+const _sfc_setup$1a = _sfc_main$1a.setup;
+_sfc_main$1a.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/LogoutOtherBrowserSessionsForm.vue");
-  return _sfc_setup$17 ? _sfc_setup$17(props, ctx) : void 0;
+  return _sfc_setup$1a ? _sfc_setup$1a(props, ctx) : void 0;
 };
-var LogoutOtherBrowserSessionsForm = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["ssrRender", _sfc_ssrRender$13]]);
+var LogoutOtherBrowserSessionsForm = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["ssrRender", _sfc_ssrRender$14]]);
 var LogoutOtherBrowserSessionsForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": LogoutOtherBrowserSessionsForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$16 = {
+const _sfc_main$19 = {
   emits: ["confirmed"],
   props: {
     title: {
@@ -34068,7 +34088,7 @@ const _sfc_main$16 = {
     }
   }
 };
-function _sfc_ssrRender$12(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$13(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_jet_input = vue.resolveComponent("jet-input");
   const _component_jet_input_error = vue.resolveComponent("jet-input-error");
@@ -34183,14 +34203,14 @@ function _sfc_ssrRender$12(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
   }, _parent));
   _push(`</span>`);
 }
-const _sfc_setup$16 = _sfc_main$16.setup;
-_sfc_main$16.setup = (props, ctx) => {
+const _sfc_setup$19 = _sfc_main$19.setup;
+_sfc_main$19.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/ConfirmsPassword.vue");
-  return _sfc_setup$16 ? _sfc_setup$16(props, ctx) : void 0;
+  return _sfc_setup$19 ? _sfc_setup$19(props, ctx) : void 0;
 };
-var JetConfirmsPassword = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["ssrRender", _sfc_ssrRender$12]]);
-const _sfc_main$15 = {
+var JetConfirmsPassword = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["ssrRender", _sfc_ssrRender$13]]);
+const _sfc_main$18 = {
   components: {
     JetActionSection,
     JetButton,
@@ -34251,7 +34271,7 @@ const _sfc_main$15 = {
     }
   }
 };
-function _sfc_ssrRender$11(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$12(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_confirms_password = vue.resolveComponent("jet-confirms-password");
   const _component_jet_button = vue.resolveComponent("jet-button");
@@ -34554,18 +34574,18 @@ function _sfc_ssrRender$11(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$15 = _sfc_main$15.setup;
-_sfc_main$15.setup = (props, ctx) => {
+const _sfc_setup$18 = _sfc_main$18.setup;
+_sfc_main$18.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/TwoFactorAuthenticationForm.vue");
-  return _sfc_setup$15 ? _sfc_setup$15(props, ctx) : void 0;
+  return _sfc_setup$18 ? _sfc_setup$18(props, ctx) : void 0;
 };
-var TwoFactorAuthenticationForm = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["ssrRender", _sfc_ssrRender$11]]);
+var TwoFactorAuthenticationForm = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["ssrRender", _sfc_ssrRender$12]]);
 var TwoFactorAuthenticationForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": TwoFactorAuthenticationForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$14 = {
+const _sfc_main$17 = {
   components: {
     JetActionMessage,
     JetButton,
@@ -34603,7 +34623,7 @@ const _sfc_main$14 = {
     }
   }
 };
-function _sfc_ssrRender$10(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$11(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -34804,18 +34824,18 @@ function _sfc_ssrRender$10(_ctx, _push, _parent, _attrs, $props, $setup, $data, 
     _: 1
   }, _parent));
 }
-const _sfc_setup$14 = _sfc_main$14.setup;
-_sfc_main$14.setup = (props, ctx) => {
+const _sfc_setup$17 = _sfc_main$17.setup;
+_sfc_main$17.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/UpdatePasswordForm.vue");
-  return _sfc_setup$14 ? _sfc_setup$14(props, ctx) : void 0;
+  return _sfc_setup$17 ? _sfc_setup$17(props, ctx) : void 0;
 };
-var UpdatePasswordForm = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["ssrRender", _sfc_ssrRender$10]]);
+var UpdatePasswordForm = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["ssrRender", _sfc_ssrRender$11]]);
 var UpdatePasswordForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdatePasswordForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$13 = {
+const _sfc_main$16 = {
   components: {
     JetActionMessage,
     JetButton,
@@ -34878,7 +34898,7 @@ const _sfc_main$13 = {
     }
   }
 };
-function _sfc_ssrRender$$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$10(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -35149,18 +35169,18 @@ function _sfc_ssrRender$$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$13 = _sfc_main$13.setup;
-_sfc_main$13.setup = (props, ctx) => {
+const _sfc_setup$16 = _sfc_main$16.setup;
+_sfc_main$16.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/UpdateProfileInformationForm.vue");
-  return _sfc_setup$13 ? _sfc_setup$13(props, ctx) : void 0;
+  return _sfc_setup$16 ? _sfc_setup$16(props, ctx) : void 0;
 };
-var UpdateProfileInformationForm = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["ssrRender", _sfc_ssrRender$$]]);
+var UpdateProfileInformationForm = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["ssrRender", _sfc_ssrRender$10]]);
 var UpdateProfileInformationForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateProfileInformationForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$12 = {
+const _sfc_main$15 = {
   props: ["sessions"],
   components: {
     AppLayout,
@@ -35172,7 +35192,7 @@ const _sfc_main$12 = {
     UpdateProfileInformationForm
   }
 };
-function _sfc_ssrRender$_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$$(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_update_profile_information_form = vue.resolveComponent("update-profile-information-form");
   const _component_jet_section_border = vue.resolveComponent("jet-section-border");
@@ -35266,18 +35286,18 @@ function _sfc_ssrRender$_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$12 = _sfc_main$12.setup;
-_sfc_main$12.setup = (props, ctx) => {
+const _sfc_setup$15 = _sfc_main$15.setup;
+_sfc_main$15.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Show.vue");
-  return _sfc_setup$12 ? _sfc_setup$12(props, ctx) : void 0;
+  return _sfc_setup$15 ? _sfc_setup$15(props, ctx) : void 0;
 };
-var Show$a = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["ssrRender", _sfc_ssrRender$_]]);
+var Show$a = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["ssrRender", _sfc_ssrRender$$]]);
 var Show$b = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$a
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$11 = {
+const _sfc_main$14 = {
   components: {
     AppLayout,
     BackLink,
@@ -35289,7 +35309,7 @@ const _sfc_main$11 = {
     }
   }
 };
-function _sfc_ssrRender$Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$_(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -35388,18 +35408,18 @@ function _sfc_ssrRender$Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$11 = _sfc_main$11.setup;
-_sfc_main$11.setup = (props, ctx) => {
+const _sfc_setup$14 = _sfc_main$14.setup;
+_sfc_main$14.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/PurchasesLayout.vue");
-  return _sfc_setup$11 ? _sfc_setup$11(props, ctx) : void 0;
+  return _sfc_setup$14 ? _sfc_setup$14(props, ctx) : void 0;
 };
-var PurchasesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["ssrRender", _sfc_ssrRender$Z]]);
+var PurchasesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["ssrRender", _sfc_ssrRender$_]]);
 var PurchasesLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PurchasesLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$10 = {
+const _sfc_main$13 = {
   components: {
     JetButton,
     JetFormSection,
@@ -35439,7 +35459,7 @@ const _sfc_main$10 = {
     }
   }
 };
-function _sfc_ssrRender$Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$Z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -35604,24 +35624,24 @@ function _sfc_ssrRender$Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$10 = _sfc_main$10.setup;
-_sfc_main$10.setup = (props, ctx) => {
+const _sfc_setup$13 = _sfc_main$13.setup;
+_sfc_main$13.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/CreatePurchaseForm.vue");
-  return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
+  return _sfc_setup$13 ? _sfc_setup$13(props, ctx) : void 0;
 };
-var CreatePurchaseForm = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["ssrRender", _sfc_ssrRender$Y]]);
+var CreatePurchaseForm = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["ssrRender", _sfc_ssrRender$Z]]);
 var CreatePurchaseForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreatePurchaseForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$$ = {
+const _sfc_main$12 = {
   components: {
     PurchasesLayout,
     CreatePurchaseForm
   }
 };
-function _sfc_ssrRender$X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$Y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_purchases_layout = vue.resolveComponent("purchases-layout");
   const _component_create_purchase_form = vue.resolveComponent("create-purchase-form");
   _push(serverRenderer.ssrRenderComponent(_component_purchases_layout, _attrs, {
@@ -35637,18 +35657,18 @@ function _sfc_ssrRender$X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$$ = _sfc_main$$.setup;
-_sfc_main$$.setup = (props, ctx) => {
+const _sfc_setup$12 = _sfc_main$12.setup;
+_sfc_main$12.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Create.vue");
-  return _sfc_setup$$ ? _sfc_setup$$(props, ctx) : void 0;
+  return _sfc_setup$12 ? _sfc_setup$12(props, ctx) : void 0;
 };
-var Create$8 = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["ssrRender", _sfc_ssrRender$X]]);
+var Create$8 = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["ssrRender", _sfc_ssrRender$Y]]);
 var Create$9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$8
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$_ = {
+const _sfc_main$11 = {
   components: {
     ExternalLinkIcon: outline.ExternalLinkIcon,
     ArrowDownIcon: outline.ArrowDownIcon,
@@ -35713,7 +35733,7 @@ const _sfc_main$_ = {
     }
   }
 };
-function _sfc_ssrRender$W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$X(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_search_input = vue.resolveComponent("search-input");
   const _component_table_table = vue.resolveComponent("table-table");
@@ -36166,18 +36186,18 @@ function _sfc_ssrRender$W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$_ = _sfc_main$_.setup;
-_sfc_main$_.setup = (props, ctx) => {
+const _sfc_setup$11 = _sfc_main$11.setup;
+_sfc_main$11.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/PurchasesView.vue");
-  return _sfc_setup$_ ? _sfc_setup$_(props, ctx) : void 0;
+  return _sfc_setup$11 ? _sfc_setup$11(props, ctx) : void 0;
 };
-var PurchasesView = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["ssrRender", _sfc_ssrRender$W]]);
+var PurchasesView = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["ssrRender", _sfc_ssrRender$X]]);
 var PurchasesView$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PurchasesView
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$Z = {
+const _sfc_main$10 = {
   __name: "Index",
   __ssrInlineRender: true,
   props: {
@@ -36255,17 +36275,17 @@ const _sfc_main$Z = {
     };
   }
 };
-const _sfc_setup$Z = _sfc_main$Z.setup;
-_sfc_main$Z.setup = (props, ctx) => {
+const _sfc_setup$10 = _sfc_main$10.setup;
+_sfc_main$10.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Index.vue");
-  return _sfc_setup$Z ? _sfc_setup$Z(props, ctx) : void 0;
+  return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
 };
-var Index$9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$c = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": _sfc_main$Z
+  "default": _sfc_main$10
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$Y = {
+const _sfc_main$$ = {
   components: {
     JetButton,
     JetFormSection,
@@ -36310,7 +36330,7 @@ const _sfc_main$Y = {
     }
   }
 };
-function _sfc_ssrRender$V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$W(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -36468,18 +36488,18 @@ function _sfc_ssrRender$V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$Y = _sfc_main$Y.setup;
-_sfc_main$Y.setup = (props, ctx) => {
+const _sfc_setup$$ = _sfc_main$$.setup;
+_sfc_main$$.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/UpdatePurchaseForm.vue");
-  return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
+  return _sfc_setup$$ ? _sfc_setup$$(props, ctx) : void 0;
 };
-var UpdatePurchaseForm = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["ssrRender", _sfc_ssrRender$V]]);
+var UpdatePurchaseForm = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["ssrRender", _sfc_ssrRender$W]]);
 var UpdatePurchaseForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdatePurchaseForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$X = {
+const _sfc_main$_ = {
   props: ["purchase"],
   components: {
     JetActionSection,
@@ -36505,7 +36525,7 @@ const _sfc_main$X = {
     }
   }
 };
-function _sfc_ssrRender$U(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$V(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -36673,18 +36693,18 @@ function _sfc_ssrRender$U(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$X = _sfc_main$X.setup;
-_sfc_main$X.setup = (props, ctx) => {
+const _sfc_setup$_ = _sfc_main$_.setup;
+_sfc_main$_.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/DeletePurchaseForm.vue");
-  return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
+  return _sfc_setup$_ ? _sfc_setup$_(props, ctx) : void 0;
 };
-var DeletePurchaseForm = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["ssrRender", _sfc_ssrRender$U]]);
+var DeletePurchaseForm = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["ssrRender", _sfc_ssrRender$V]]);
 var DeletePurchaseForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeletePurchaseForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$W = {
+const _sfc_main$Z = {
   components: {
     Switch: vue$1.Switch,
     SwitchDescription: vue$1.SwitchDescription,
@@ -36776,7 +36796,7 @@ const _sfc_main$W = {
     }
   }
 };
-function _sfc_ssrRender$T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$U(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_select_box = vue.resolveComponent("select-box");
@@ -37325,18 +37345,18 @@ function _sfc_ssrRender$T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$W = _sfc_main$W.setup;
-_sfc_main$W.setup = (props, ctx) => {
+const _sfc_setup$Z = _sfc_main$Z.setup;
+_sfc_main$Z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/CreatePurchaseItem.vue");
-  return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
+  return _sfc_setup$Z ? _sfc_setup$Z(props, ctx) : void 0;
 };
-var CreatePurchaseItem = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["ssrRender", _sfc_ssrRender$T]]);
+var CreatePurchaseItem = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["ssrRender", _sfc_ssrRender$U]]);
 var CreatePurchaseItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreatePurchaseItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$V = {
+const _sfc_main$Y = {
   components: {
     Switch: vue$1.Switch,
     SwitchDescription: vue$1.SwitchDescription,
@@ -37406,7 +37426,7 @@ const _sfc_main$V = {
     }
   }
 };
-function _sfc_ssrRender$S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$T(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_edit_button = vue.resolveComponent("edit-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_select_box = vue.resolveComponent("select-box");
@@ -37920,18 +37940,18 @@ function _sfc_ssrRender$S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$V = _sfc_main$V.setup;
-_sfc_main$V.setup = (props, ctx) => {
+const _sfc_setup$Y = _sfc_main$Y.setup;
+_sfc_main$Y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/EditPurchaseItem.vue");
-  return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
+  return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
 };
-var EditPurchaseItem = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["ssrRender", _sfc_ssrRender$S]]);
+var EditPurchaseItem = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["ssrRender", _sfc_ssrRender$T]]);
 var EditPurchaseItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": EditPurchaseItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$U = {
+const _sfc_main$X = {
   props: ["item"],
   components: {
     JetConfirmationModal,
@@ -37958,7 +37978,7 @@ const _sfc_main$U = {
     }
   }
 };
-function _sfc_ssrRender$R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$S(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_DeleteButton = vue.resolveComponent("DeleteButton");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -38046,24 +38066,24 @@ function _sfc_ssrRender$R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$U = _sfc_main$U.setup;
-_sfc_main$U.setup = (props, ctx) => {
+const _sfc_setup$X = _sfc_main$X.setup;
+_sfc_main$X.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/DeletePurchaseItem.vue");
-  return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
+  return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
 };
-var DeletePurchaseItem = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["ssrRender", _sfc_ssrRender$R]]);
+var DeletePurchaseItem = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["ssrRender", _sfc_ssrRender$S]]);
 var DeletePurchaseItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeletePurchaseItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$T = {
+const _sfc_main$W = {
   props: { size: { default: 4 } },
   components: {
     RemoveIcon: RemoveIcon__default["default"]
   }
 };
-function _sfc_ssrRender$Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$R(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_RemoveIcon = vue.resolveComponent("RemoveIcon");
   _push(`<button${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "hover:opacity-50 transition p-2" }, _attrs))}>`);
   _push(serverRenderer.ssrRenderComponent(_component_RemoveIcon, {
@@ -38071,14 +38091,14 @@ function _sfc_ssrRender$Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</button>`);
 }
-const _sfc_setup$T = _sfc_main$T.setup;
-_sfc_main$T.setup = (props, ctx) => {
+const _sfc_setup$W = _sfc_main$W.setup;
+_sfc_main$W.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/RemoveButton.vue");
-  return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
+  return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
 };
-var RemoveButton = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["ssrRender", _sfc_ssrRender$Q]]);
-const _sfc_main$S = {
+var RemoveButton = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["ssrRender", _sfc_ssrRender$R]]);
+const _sfc_main$V = {
   components: {
     JetDangerButton,
     JetDialogModal,
@@ -38112,7 +38132,7 @@ const _sfc_main$S = {
     }
   }
 };
-function _sfc_ssrRender$P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$Q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_RemoveButton = vue.resolveComponent("RemoveButton");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -38228,18 +38248,18 @@ function _sfc_ssrRender$P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$S = _sfc_main$S.setup;
-_sfc_main$S.setup = (props, ctx) => {
+const _sfc_setup$V = _sfc_main$V.setup;
+_sfc_main$V.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/RemoveItemFromInventory.vue");
-  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
+  return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
 };
-var RemoveItemFromInventory = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["ssrRender", _sfc_ssrRender$P]]);
+var RemoveItemFromInventory = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["ssrRender", _sfc_ssrRender$Q]]);
 var RemoveItemFromInventory$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": RemoveItemFromInventory
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$R = {
+const _sfc_main$U = {
   components: {
     Check: Check__default["default"],
     JetCheckBox,
@@ -38269,7 +38289,7 @@ const _sfc_main$R = {
     }
   }
 };
-function _sfc_ssrRender$O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$P(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_check_box = vue.resolveComponent("jet-check-box");
   const _component_RemoveItemFromInventory = vue.resolveComponent("RemoveItemFromInventory");
@@ -38345,13 +38365,13 @@ function _sfc_ssrRender$O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }
   _push(`</div>`);
 }
-const _sfc_setup$R = _sfc_main$R.setup;
-_sfc_main$R.setup = (props, ctx) => {
+const _sfc_setup$U = _sfc_main$U.setup;
+_sfc_main$U.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/PurchaseLineItem.vue");
-  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
+  return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
 };
-var PurchaseLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["ssrRender", _sfc_ssrRender$O]]);
+var PurchaseLineItem = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["ssrRender", _sfc_ssrRender$P]]);
 var PurchaseLineItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PurchaseLineItem
@@ -38368,7 +38388,7 @@ const types = [
     description: "Store items in a group. Items will be sized and given a block location as a whole. Each item will have an matching id tag."
   }
 ];
-const _sfc_main$Q = {
+const _sfc_main$T = {
   components: {
     RadioGroup: vue$1.RadioGroup,
     RadioGroupDescription: vue$1.RadioGroupDescription,
@@ -38435,7 +38455,7 @@ const _sfc_main$Q = {
     }
   }
 };
-function _sfc_ssrRender$N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$O(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_dialog_modal = vue.resolveComponent("jet-dialog-modal");
   const _component_RadioGroup = vue.resolveComponent("RadioGroup");
@@ -39203,18 +39223,18 @@ function _sfc_ssrRender$N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$Q = _sfc_main$Q.setup;
-_sfc_main$Q.setup = (props, ctx) => {
+const _sfc_setup$T = _sfc_main$T.setup;
+_sfc_main$T.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/AddPurchaseItemsToInventory.vue");
-  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
+  return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
 };
-var AddPurchaseItemsToInventory = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["ssrRender", _sfc_ssrRender$N]]);
+var AddPurchaseItemsToInventory = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["ssrRender", _sfc_ssrRender$O]]);
 var AddPurchaseItemsToInventory$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": AddPurchaseItemsToInventory
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$P = {
+const _sfc_main$S = {
   components: {
     PrintButton
   },
@@ -39232,7 +39252,7 @@ const _sfc_main$P = {
     }
   }
 };
-function _sfc_ssrRender$M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$N(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_print_button = vue.resolveComponent("print-button");
   _push(serverRenderer.ssrRenderComponent(_component_print_button, vue.mergeProps({ onClick: $options.printTags }, _attrs), {
     default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
@@ -39247,18 +39267,18 @@ function _sfc_ssrRender$M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$P = _sfc_main$P.setup;
-_sfc_main$P.setup = (props, ctx) => {
+const _sfc_setup$S = _sfc_main$S.setup;
+_sfc_main$S.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/PrintPurchaseItemsInventory.vue");
-  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
+  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
 };
-var PrintPurchaseItemsInventory = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["ssrRender", _sfc_ssrRender$M]]);
+var PrintPurchaseItemsInventory = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["ssrRender", _sfc_ssrRender$N]]);
 var PrintPurchaseItemsInventory$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PrintPurchaseItemsInventory
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$O = {
+const _sfc_main$R = {
   props: { purchase: Object, purchaseItems: Array },
   components: {
     JetActionSection,
@@ -39309,7 +39329,7 @@ const _sfc_main$O = {
     }
   }
 };
-function _sfc_ssrRender$L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$M(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_create_purchase_item = vue.resolveComponent("create-purchase-item");
   const _component_AddPurchaseItemsToInventory = vue.resolveComponent("AddPurchaseItemsToInventory");
@@ -39447,18 +39467,18 @@ function _sfc_ssrRender$L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$O = _sfc_main$O.setup;
-_sfc_main$O.setup = (props, ctx) => {
+const _sfc_setup$R = _sfc_main$R.setup;
+_sfc_main$R.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Components/PurchaseItems.vue");
-  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
+  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
 };
-var PurchaseItems = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["ssrRender", _sfc_ssrRender$L]]);
+var PurchaseItems = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["ssrRender", _sfc_ssrRender$M]]);
 var PurchaseItems$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PurchaseItems
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$N = {
+const _sfc_main$Q = {
   components: {
     PurchasesLayout,
     UpdatePurchaseForm,
@@ -39471,7 +39491,7 @@ const _sfc_main$N = {
     purchaseItems: Array
   }
 };
-function _sfc_ssrRender$K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$L(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_purchases_layout = vue.resolveComponent("purchases-layout");
   const _component_update_purchase_form = vue.resolveComponent("update-purchase-form");
   const _component_purchase_items = vue.resolveComponent("purchase-items");
@@ -39505,18 +39525,18 @@ function _sfc_ssrRender$K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$N = _sfc_main$N.setup;
-_sfc_main$N.setup = (props, ctx) => {
+const _sfc_setup$Q = _sfc_main$Q.setup;
+_sfc_main$Q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Purchases/Show.vue");
-  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
+  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
 };
-var Show$8 = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["ssrRender", _sfc_ssrRender$K]]);
+var Show$8 = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["ssrRender", _sfc_ssrRender$L]]);
 var Show$9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$8
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$M = {
+const _sfc_main$P = {
   components: {
     AppLayout,
     BackLink,
@@ -39528,7 +39548,7 @@ const _sfc_main$M = {
     }
   }
 };
-function _sfc_ssrRender$J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$K(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -39623,25 +39643,25 @@ function _sfc_ssrRender$J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$M = _sfc_main$M.setup;
-_sfc_main$M.setup = (props, ctx) => {
+const _sfc_setup$P = _sfc_main$P.setup;
+_sfc_main$P.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Quotes/QuotesLayout.vue");
-  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
+  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
 };
-var QuotesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["ssrRender", _sfc_ssrRender$J]]);
+var QuotesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["ssrRender", _sfc_ssrRender$K]]);
 var QuotesLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": QuotesLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$L = {
+const _sfc_main$O = {
   components: {
     QuotesLayout,
     OrderCreate
   },
   props: ["customers"]
 };
-function _sfc_ssrRender$I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$J(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_quotes_layout = vue.resolveComponent("quotes-layout");
   const _component_OrderCreate = vue.resolveComponent("OrderCreate");
   _push(serverRenderer.ssrRenderComponent(_component_quotes_layout, _attrs, {
@@ -39663,18 +39683,18 @@ function _sfc_ssrRender$I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$L = _sfc_main$L.setup;
-_sfc_main$L.setup = (props, ctx) => {
+const _sfc_setup$O = _sfc_main$O.setup;
+_sfc_main$O.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Quotes/Create.vue");
-  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
+  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
-var Create$6 = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["ssrRender", _sfc_ssrRender$I]]);
+var Create$6 = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["ssrRender", _sfc_ssrRender$J]]);
 var Create$7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$6
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$K = {
+const _sfc_main$N = {
   components: {
     ExternalLinkIcon: outline.ExternalLinkIcon,
     ArrowDownIcon: outline.ArrowDownIcon,
@@ -39683,8 +39703,8 @@ const _sfc_main$K = {
     ButtonLink,
     DetailsSection,
     HeadingOne,
-    CompletedOrdersCard,
-    ActiveQuotesCard,
+    CompletedOrdersCard: _sfc_main$3S,
+    ActiveQuotesCard: _sfc_main$3R,
     ViewOrders
   },
   props: {
@@ -39696,7 +39716,7 @@ const _sfc_main$K = {
     }
   }
 };
-function _sfc_ssrRender$H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$I(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_quotes_layout = vue.resolveComponent("quotes-layout");
   const _component_heading_one = vue.resolveComponent("heading-one");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -39733,10 +39753,7 @@ function _sfc_ssrRender$H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
           _: 1
         }, _parent2, _scopeId));
         _push2(`</div><div class="grid gap-6 lg:gap-8"${_scopeId}><div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900"${_scopeId}>`);
-        _push2(serverRenderer.ssrRenderComponent(_component_completed_orders_card, {
-          thirtyDaysCompletedOrders: 0,
-          thirtyDaysCompletedSales: 0
-        }, null, _parent2, _scopeId));
+        _push2(serverRenderer.ssrRenderComponent(_component_completed_orders_card, null, null, _parent2, _scopeId));
         _push2(`</div>`);
         _push2(serverRenderer.ssrRenderComponent(_component_view_orders, {
           "are-quotes": true,
@@ -39764,10 +39781,7 @@ function _sfc_ssrRender$H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
           ]),
           vue.createVNode("div", { class: "grid gap-6 lg:gap-8" }, [
             vue.createVNode("div", { class: "grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900" }, [
-              vue.createVNode(_component_completed_orders_card, {
-                thirtyDaysCompletedOrders: 0,
-                thirtyDaysCompletedSales: 0
-              })
+              vue.createVNode(_component_completed_orders_card)
             ]),
             vue.createVNode(_component_view_orders, {
               "are-quotes": true,
@@ -39781,18 +39795,18 @@ function _sfc_ssrRender$H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$K = _sfc_main$K.setup;
-_sfc_main$K.setup = (props, ctx) => {
+const _sfc_setup$N = _sfc_main$N.setup;
+_sfc_main$N.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Quotes/Index.vue");
-  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
 };
-var Index$7 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["ssrRender", _sfc_ssrRender$H]]);
-var Index$8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$a = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["ssrRender", _sfc_ssrRender$I]]);
+var Index$b = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$7
+  "default": Index$a
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$J = {
+const _sfc_main$M = {
   components: {
     DetailsSection,
     SmallLineItem,
@@ -39833,7 +39847,7 @@ const _sfc_main$J = {
     }
   }
 };
-function _sfc_ssrRender$G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$H(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_SmallLineItem = vue.resolveComponent("SmallLineItem");
   const _component_EmptyState = vue.resolveComponent("EmptyState");
@@ -39925,18 +39939,18 @@ function _sfc_ssrRender$G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$J = _sfc_main$J.setup;
-_sfc_main$J.setup = (props, ctx) => {
+const _sfc_setup$M = _sfc_main$M.setup;
+_sfc_main$M.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Quotes/Components/LinkedOrdersCard.vue");
-  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
-var LinkedOrdersCard = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["ssrRender", _sfc_ssrRender$G]]);
+var LinkedOrdersCard = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["ssrRender", _sfc_ssrRender$H]]);
 var LinkedOrdersCard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": LinkedOrdersCard
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$I = {
+const _sfc_main$L = {
   components: {
     QuotesLayout,
     OrderUpdate,
@@ -39956,7 +39970,7 @@ const _sfc_main$I = {
     };
   }
 };
-function _sfc_ssrRender$F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_QuotesLayout = vue.resolveComponent("QuotesLayout");
   const _component_OrderUpdate = vue.resolveComponent("OrderUpdate");
   const _component_ActionCard = vue.resolveComponent("ActionCard");
@@ -39998,18 +40012,182 @@ function _sfc_ssrRender$F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$I = _sfc_main$I.setup;
-_sfc_main$I.setup = (props, ctx) => {
+const _sfc_setup$L = _sfc_main$L.setup;
+_sfc_main$L.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Quotes/Show.vue");
-  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
+  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
 };
-var Show$6 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["ssrRender", _sfc_ssrRender$F]]);
+var Show$6 = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["ssrRender", _sfc_ssrRender$G]]);
 var Show$7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$6
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$H = {
+const _sfc_main$K = {
+  __name: "ReportsLayout",
+  __ssrInlineRender: true,
+  setup(__props) {
+    function isIndex() {
+      return route().current("reports.index");
+    }
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(serverRenderer.ssrRenderComponent(AppLayout, _attrs, {
+        default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(serverRenderer.ssrRenderComponent(MainArea, { dontShowOnMobile: false }, {
+              default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  if (!isIndex) {
+                    _push3(`<nav aria-label="Breadcrumb"${_scopeId2}><div class="px-4 md:pb-2"${_scopeId2}>`);
+                    _push3(serverRenderer.ssrRenderComponent(BackLink, {
+                      href: _ctx.route("reports.index")
+                    }, {
+                      default: vue.withCtx((_3, _push4, _parent4, _scopeId3) => {
+                        if (_push4) {
+                          _push4(`Back to all reports`);
+                        } else {
+                          return [
+                            vue.createTextVNode("Back to all reports")
+                          ];
+                        }
+                      }),
+                      _: 1
+                    }, _parent3, _scopeId2));
+                    _push3(`</div></nav>`);
+                  } else {
+                    _push3(`<!---->`);
+                  }
+                  _push3(`<div class="py-2"${_scopeId2}>`);
+                  serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push3, _parent3, _scopeId2);
+                  _push3(`</div>`);
+                } else {
+                  return [
+                    !isIndex ? (vue.openBlock(), vue.createBlock("nav", {
+                      key: 0,
+                      "aria-label": "Breadcrumb"
+                    }, [
+                      vue.createVNode("div", { class: "px-4 md:pb-2" }, [
+                        vue.createVNode(BackLink, {
+                          href: _ctx.route("reports.index")
+                        }, {
+                          default: vue.withCtx(() => [
+                            vue.createTextVNode("Back to all reports")
+                          ]),
+                          _: 1
+                        }, 8, ["href"])
+                      ])
+                    ])) : vue.createCommentVNode("", true),
+                    vue.createVNode("div", { class: "py-2" }, [
+                      vue.renderSlot(_ctx.$slots, "default")
+                    ])
+                  ];
+                }
+              }),
+              _: 3
+            }, _parent2, _scopeId));
+          } else {
+            return [
+              vue.createVNode(MainArea, { dontShowOnMobile: false }, {
+                default: vue.withCtx(() => [
+                  !isIndex ? (vue.openBlock(), vue.createBlock("nav", {
+                    key: 0,
+                    "aria-label": "Breadcrumb"
+                  }, [
+                    vue.createVNode("div", { class: "px-4 md:pb-2" }, [
+                      vue.createVNode(BackLink, {
+                        href: _ctx.route("reports.index")
+                      }, {
+                        default: vue.withCtx(() => [
+                          vue.createTextVNode("Back to all reports")
+                        ]),
+                        _: 1
+                      }, 8, ["href"])
+                    ])
+                  ])) : vue.createCommentVNode("", true),
+                  vue.createVNode("div", { class: "py-2" }, [
+                    vue.renderSlot(_ctx.$slots, "default")
+                  ])
+                ]),
+                _: 3
+              })
+            ];
+          }
+        }),
+        _: 3
+      }, _parent));
+    };
+  }
+};
+const _sfc_setup$K = _sfc_main$K.setup;
+_sfc_main$K.setup = (props, ctx) => {
+  const ssrContext = vue.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Reports/ReportsLayout.vue");
+  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+};
+var ReportsLayout = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  "default": _sfc_main$K
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$J = {
+  __name: "Index",
+  __ssrInlineRender: true,
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(serverRenderer.ssrRenderComponent(_sfc_main$K, _attrs, {
+        default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="flex justify-between items-center w-full pb-9 px-2 lg:px-4"${_scopeId}>`);
+            _push2(serverRenderer.ssrRenderComponent(HeadingOne, null, {
+              default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`Reports`);
+                } else {
+                  return [
+                    vue.createTextVNode("Reports")
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</div><div class="grid gap-6 lg:gap-8"${_scopeId}><div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900"${_scopeId}>`);
+            _push2(serverRenderer.ssrRenderComponent(_sfc_main$3R, null, null, _parent2, _scopeId));
+            _push2(serverRenderer.ssrRenderComponent(_sfc_main$3S, null, null, _parent2, _scopeId));
+            _push2(`</div></div>`);
+          } else {
+            return [
+              vue.createVNode("div", { class: "flex justify-between items-center w-full pb-9 px-2 lg:px-4" }, [
+                vue.createVNode(HeadingOne, null, {
+                  default: vue.withCtx(() => [
+                    vue.createTextVNode("Reports")
+                  ]),
+                  _: 1
+                })
+              ]),
+              vue.createVNode("div", { class: "grid gap-6 lg:gap-8" }, [
+                vue.createVNode("div", { class: "grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900" }, [
+                  vue.createVNode(_sfc_main$3R),
+                  vue.createVNode(_sfc_main$3S)
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+};
+const _sfc_setup$J = _sfc_main$J.setup;
+_sfc_main$J.setup = (props, ctx) => {
+  const ssrContext = vue.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Reports/Index.vue");
+  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+};
+var Index$9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  "default": _sfc_main$J
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$I = {
   components: {
     AppLayout,
     BackLink,
@@ -40021,7 +40199,7 @@ const _sfc_main$H = {
     }
   }
 };
-function _sfc_ssrRender$E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -40116,18 +40294,18 @@ function _sfc_ssrRender$E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$H = _sfc_main$H.setup;
-_sfc_main$H.setup = (props, ctx) => {
+const _sfc_setup$I = _sfc_main$I.setup;
+_sfc_main$I.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ReprintQueue/QueueLayout.vue");
-  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
-var QueueLayout = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["ssrRender", _sfc_ssrRender$E]]);
+var QueueLayout = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["ssrRender", _sfc_ssrRender$F]]);
 var QueueLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": QueueLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$G = {
+const _sfc_main$H = {
   components: {
     PrintButton
   },
@@ -40145,7 +40323,7 @@ const _sfc_main$G = {
     }
   }
 };
-function _sfc_ssrRender$D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_print_button = vue.resolveComponent("print-button");
   _push(serverRenderer.ssrRenderComponent(_component_print_button, vue.mergeProps({ onClick: $options.printTags }, _attrs), {
     default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
@@ -40160,18 +40338,18 @@ function _sfc_ssrRender$D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$G = _sfc_main$G.setup;
-_sfc_main$G.setup = (props, ctx) => {
+const _sfc_setup$H = _sfc_main$H.setup;
+_sfc_main$H.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ReprintQueue/Components/ReprintTagsButton.vue");
-  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
+  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
 };
-var ReprintTagsButton = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["ssrRender", _sfc_ssrRender$D]]);
+var ReprintTagsButton = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["ssrRender", _sfc_ssrRender$E]]);
 var ReprintTagsButton$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ReprintTagsButton
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$F = {
+const _sfc_main$G = {
   components: {
     TableD
   },
@@ -40191,7 +40369,7 @@ const _sfc_main$F = {
     }
   }
 };
-function _sfc_ssrRender$C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_table_d = vue.resolveComponent("table-d");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_checkbox = vue.resolveComponent("jet-checkbox");
@@ -40337,18 +40515,18 @@ function _sfc_ssrRender$C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</tr>`);
 }
-const _sfc_setup$F = _sfc_main$F.setup;
-_sfc_main$F.setup = (props, ctx) => {
+const _sfc_setup$G = _sfc_main$G.setup;
+_sfc_main$G.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ReprintQueue/Components/QueueItem.vue");
-  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
+  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
-var QueueItem = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["ssrRender", _sfc_ssrRender$C]]);
+var QueueItem = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["ssrRender", _sfc_ssrRender$D]]);
 var QueueItem$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": QueueItem
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$E = {
+const _sfc_main$F = {
   components: {
     ExternalLinkIcon: outline.ExternalLinkIcon,
     ArrowDownIcon: outline.ArrowDownIcon,
@@ -40445,7 +40623,7 @@ const _sfc_main$E = {
     }
   }
 };
-function _sfc_ssrRender$B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_search_input = vue.resolveComponent("search-input");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -40970,18 +41148,18 @@ function _sfc_ssrRender$B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$E = _sfc_main$E.setup;
-_sfc_main$E.setup = (props, ctx) => {
+const _sfc_setup$F = _sfc_main$F.setup;
+_sfc_main$F.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ReprintQueue/Components/QueueView.vue");
-  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
 };
-var QueueView = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["ssrRender", _sfc_ssrRender$B]]);
+var QueueView = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["ssrRender", _sfc_ssrRender$C]]);
 var QueueView$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": QueueView
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$D = {
+const _sfc_main$E = {
   components: {
     DialogModal: JetDialogModal
   },
@@ -41007,7 +41185,7 @@ const _sfc_main$D = {
     }
   }
 };
-function _sfc_ssrRender$A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_dialog_modal = vue.resolveComponent("dialog-modal");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -41201,18 +41379,18 @@ function _sfc_ssrRender$A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$D = _sfc_main$D.setup;
-_sfc_main$D.setup = (props, ctx) => {
+const _sfc_setup$E = _sfc_main$E.setup;
+_sfc_main$E.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ReprintQueue/Components/AddToQueue.vue");
-  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
 };
-var AddToQueue = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["ssrRender", _sfc_ssrRender$A]]);
+var AddToQueue = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["ssrRender", _sfc_ssrRender$B]]);
 var AddToQueue$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": AddToQueue
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$C = {
+const _sfc_main$D = {
   components: {
     QueueLayout,
     ButtonLink,
@@ -41229,7 +41407,7 @@ const _sfc_main$C = {
     }
   }
 };
-function _sfc_ssrRender$z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_QueueLayout = vue.resolveComponent("QueueLayout");
   const _component_heading_one = vue.resolveComponent("heading-one");
   const _component_add_to_queue = vue.resolveComponent("add-to-queue");
@@ -41280,18 +41458,18 @@ function _sfc_ssrRender$z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$C = _sfc_main$C.setup;
-_sfc_main$C.setup = (props, ctx) => {
+const _sfc_setup$D = _sfc_main$D.setup;
+_sfc_main$D.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ReprintQueue/Index.vue");
-  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
+  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
 };
-var Index$5 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["ssrRender", _sfc_ssrRender$z]]);
-var Index$6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$7 = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["ssrRender", _sfc_ssrRender$A]]);
+var Index$8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$5
+  "default": Index$7
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$B = {
+const _sfc_main$C = {
   components: {
     JetActionMessage,
     JetButton,
@@ -41319,7 +41497,7 @@ const _sfc_main$B = {
     }
   }
 };
-function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -41429,18 +41607,18 @@ function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$B = _sfc_main$B.setup;
-_sfc_main$B.setup = (props, ctx) => {
+const _sfc_setup$C = _sfc_main$C.setup;
+_sfc_main$C.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Sizes/CreateSizeForm.vue");
-  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
+  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
-var CreateSizeForm = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["ssrRender", _sfc_ssrRender$y]]);
+var CreateSizeForm = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["ssrRender", _sfc_ssrRender$z]]);
 var CreateSizeForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateSizeForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$A = {
+const _sfc_main$B = {
   components: {
     AppLayout,
     MainArea,
@@ -41449,7 +41627,7 @@ const _sfc_main$A = {
   },
   computed: {}
 };
-function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -41528,18 +41706,18 @@ function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$A = _sfc_main$A.setup;
-_sfc_main$A.setup = (props, ctx) => {
+const _sfc_setup$B = _sfc_main$B.setup;
+_sfc_main$B.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Sizes/Create.vue");
-  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
+  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
-var Create$4 = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["ssrRender", _sfc_ssrRender$x]]);
+var Create$4 = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["ssrRender", _sfc_ssrRender$y]]);
 var Create$5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$4
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$z = {
+const _sfc_main$A = {
   props: ["size"],
   components: {
     JetConfirmationModal,
@@ -41566,7 +41744,7 @@ const _sfc_main$z = {
     }
   }
 };
-function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_DeleteButton = vue.resolveComponent("DeleteButton");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
   const _component_jet_secondary_button = vue.resolveComponent("jet-secondary-button");
@@ -41657,18 +41835,18 @@ function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$z = _sfc_main$z.setup;
-_sfc_main$z.setup = (props, ctx) => {
+const _sfc_setup$A = _sfc_main$A.setup;
+_sfc_main$A.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Sizes/DeleteSizeComponent.vue");
-  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
+  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
-var DeleteSizeComponent = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["ssrRender", _sfc_ssrRender$w]]);
+var DeleteSizeComponent = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["ssrRender", _sfc_ssrRender$x]]);
 var DeleteSizeComponent$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteSizeComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$y = {
+const _sfc_main$z = {
   components: {
     JetActionMessage,
     JetButton,
@@ -41711,7 +41889,7 @@ const _sfc_main$y = {
     }
   }
 };
-function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
   const _component_jet_input_error = vue.resolveComponent("jet-input-error");
@@ -41746,19 +41924,19 @@ function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</td><!--]-->`);
 }
-const _sfc_setup$y = _sfc_main$y.setup;
-_sfc_main$y.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Sizes/UpdateSizeForm.vue");
-  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
-var UpdateSizeForm = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$v]]);
+var UpdateSizeForm = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["ssrRender", _sfc_ssrRender$w]]);
 var UpdateSizeForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateSizeForm
 }, Symbol.toStringTag, { value: "Module" }));
 var SizeList_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$x = {
+const _sfc_main$y = {
   components: {
     EmptyState,
     UpdateSizeForm,
@@ -41798,7 +41976,7 @@ const _sfc_main$x = {
     }
   }
 };
-function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_table_table = vue.resolveComponent("table-table");
   const _component_table_h = vue.resolveComponent("table-h");
   const _component_draggable = vue.resolveComponent("draggable");
@@ -42035,18 +42213,18 @@ function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }, _attrs), null, _parent));
   }
 }
-const _sfc_setup$x = _sfc_main$x.setup;
-_sfc_main$x.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Sizes/SizeList.vue");
-  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
-var SizeList = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["ssrRender", _sfc_ssrRender$u]]);
+var SizeList = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$v]]);
 var SizeList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": SizeList
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$w = {
+const _sfc_main$x = {
   components: {
     AppLayout,
     MainArea,
@@ -42055,7 +42233,7 @@ const _sfc_main$w = {
   },
   computed: {}
 };
-function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -42134,23 +42312,23 @@ function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$w = _sfc_main$w.setup;
-_sfc_main$w.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Sizes/Index.vue");
-  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-var Index$3 = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["ssrRender", _sfc_ssrRender$t]]);
-var Index$4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$5 = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["ssrRender", _sfc_ssrRender$u]]);
+var Index$6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$3
+  "default": Index$5
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$v = {
+const _sfc_main$w = {
   components: {
     JetSectionTitle: SectionTitle
   }
 };
-function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "md:grid md:gap-6" }, _attrs))}><div class="mt-5 md:mt-0 md:col-span-2"><div class="px-4 py-5 bg-white sm:p-6 shadow">`);
   _push(serverRenderer.ssrRenderComponent(_component_jet_section_title, { class: "col-span-6" }, {
@@ -42177,14 +42355,14 @@ function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div></div>`);
 }
-const _sfc_setup$v = _sfc_main$v.setup;
-_sfc_main$v.setup = (props, ctx) => {
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Jetstream/Section.vue");
-  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-var JetSection = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$s]]);
-const _sfc_main$u = {
+var JetSection = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["ssrRender", _sfc_ssrRender$t]]);
+const _sfc_main$v = {
   __name: "Loader",
   __ssrInlineRender: true,
   props: { loading: Boolean },
@@ -42203,13 +42381,13 @@ const _sfc_main$u = {
     };
   }
 };
-const _sfc_setup$u = _sfc_main$u.setup;
-_sfc_main$u.setup = (props, ctx) => {
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Loader.vue");
-  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const _sfc_main$t = {
+const _sfc_main$u = {
   __name: "ConnectAccounting",
   __ssrInlineRender: true,
   props: ["team"],
@@ -42271,11 +42449,11 @@ const _sfc_main$t = {
               }, {
                 default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(serverRenderer.ssrRenderComponent(_sfc_main$u, { loading: isLoading.value }, null, _parent3, _scopeId2));
+                    _push3(serverRenderer.ssrRenderComponent(_sfc_main$v, { loading: isLoading.value }, null, _parent3, _scopeId2));
                     _push3(` Connect now `);
                   } else {
                     return [
-                      vue.createVNode(_sfc_main$u, { loading: isLoading.value }, null, 8, ["loading"]),
+                      vue.createVNode(_sfc_main$v, { loading: isLoading.value }, null, 8, ["loading"]),
                       vue.createTextVNode(" Connect now ")
                     ];
                   }
@@ -42293,11 +42471,11 @@ const _sfc_main$t = {
               }, {
                 default: vue.withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(serverRenderer.ssrRenderComponent(_sfc_main$u, { loading: isLoading.value }, null, _parent3, _scopeId2));
+                    _push3(serverRenderer.ssrRenderComponent(_sfc_main$v, { loading: isLoading.value }, null, _parent3, _scopeId2));
                     _push3(` Disconnect now `);
                   } else {
                     return [
-                      vue.createVNode(_sfc_main$u, { loading: isLoading.value }, null, 8, ["loading"]),
+                      vue.createVNode(_sfc_main$v, { loading: isLoading.value }, null, 8, ["loading"]),
                       vue.createTextVNode(" Disconnect now ")
                     ];
                   }
@@ -42316,7 +42494,7 @@ const _sfc_main$t = {
                 onClick: connect
               }, {
                 default: vue.withCtx(() => [
-                  vue.createVNode(_sfc_main$u, { loading: isLoading.value }, null, 8, ["loading"]),
+                  vue.createVNode(_sfc_main$v, { loading: isLoading.value }, null, 8, ["loading"]),
                   vue.createTextVNode(" Connect now ")
                 ]),
                 _: 1
@@ -42328,7 +42506,7 @@ const _sfc_main$t = {
                 onClick: ($event) => isDisconnectModalOpen.value = true
               }, {
                 default: vue.withCtx(() => [
-                  vue.createVNode(_sfc_main$u, { loading: isLoading.value }, null, 8, ["loading"]),
+                  vue.createVNode(_sfc_main$v, { loading: isLoading.value }, null, 8, ["loading"]),
                   vue.createTextVNode(" Disconnect now ")
                 ]),
                 _: 1
@@ -42419,17 +42597,17 @@ const _sfc_main$t = {
     };
   }
 };
-const _sfc_setup$t = _sfc_main$t.setup;
-_sfc_main$t.setup = (props, ctx) => {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Teams/ConnectAccounting.vue");
-  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
 var ConnectAccounting = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": _sfc_main$t
+  "default": _sfc_main$u
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$s = {
+const _sfc_main$t = {
   components: {
     JetButton,
     JetFormSection,
@@ -42453,7 +42631,7 @@ const _sfc_main$s = {
     }
   }
 };
-function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -42571,24 +42749,24 @@ function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$s = _sfc_main$s.setup;
-_sfc_main$s.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Teams/CreateTeamForm.vue");
-  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-var CreateTeamForm = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["ssrRender", _sfc_ssrRender$r]]);
+var CreateTeamForm = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["ssrRender", _sfc_ssrRender$s]]);
 var CreateTeamForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateTeamForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$r = {
+const _sfc_main$s = {
   components: {
     AppLayout,
     CreateTeamForm
   }
 };
-function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_create_team_form = vue.resolveComponent("create-team-form");
   _push(serverRenderer.ssrRenderComponent(_component_app_layout, _attrs, {
@@ -42619,18 +42797,18 @@ function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$r = _sfc_main$r.setup;
-_sfc_main$r.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Teams/Create.vue");
-  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-var Create$2 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["ssrRender", _sfc_ssrRender$q]]);
+var Create$2 = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["ssrRender", _sfc_ssrRender$r]]);
 var Create$3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create$2
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$q = {
+const _sfc_main$r = {
   props: ["team"],
   components: {
     JetActionSection,
@@ -42656,7 +42834,7 @@ const _sfc_main$q = {
     }
   }
 };
-function _sfc_ssrRender$p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -42824,18 +43002,18 @@ function _sfc_ssrRender$p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Teams/DeleteTeamForm.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-var DeleteTeamForm = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["ssrRender", _sfc_ssrRender$p]]);
+var DeleteTeamForm = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["ssrRender", _sfc_ssrRender$q]]);
 var DeleteTeamForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteTeamForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$p = {
+const _sfc_main$q = {
   components: {
     JetActionMessage,
     JetActionSection,
@@ -42934,7 +43112,7 @@ const _sfc_main$p = {
     }
   }
 };
-function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_section_border = vue.resolveComponent("jet-section-border");
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
@@ -43618,31 +43796,31 @@ function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Teams/TeamMemberManager.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-var TeamMemberManager = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["ssrRender", _sfc_ssrRender$o]]);
+var TeamMemberManager = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["ssrRender", _sfc_ssrRender$p]]);
 var TeamMemberManager$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": TeamMemberManager
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$o = {};
-function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs) {
+const _sfc_main$p = {};
+function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs) {
   _push(`<h2${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "text-2xl font-bold" }, _attrs))}>`);
   serverRenderer.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</h2>`);
 }
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Headings/HeadingTwo.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-var HeadingTwo = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["ssrRender", _sfc_ssrRender$n]]);
-const _sfc_main$n = {
+var HeadingTwo = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["ssrRender", _sfc_ssrRender$o]]);
+const _sfc_main$o = {
   components: {
     JetActionMessage,
     JetButton,
@@ -43696,7 +43874,7 @@ const _sfc_main$n = {
     }
   }
 };
-function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -44211,18 +44389,18 @@ function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     } : void 0
   ]), _parent));
 }
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Teams/UpdateTeamForm.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-var UpdateTeamForm = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$m]]);
+var UpdateTeamForm = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["ssrRender", _sfc_ssrRender$n]]);
 var UpdateTeamForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateTeamForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$m = {
+const _sfc_main$n = {
   props: ["team", "availableRoles", "permissions"],
   components: {
     AppLayout,
@@ -44230,10 +44408,10 @@ const _sfc_main$m = {
     JetSectionBorder,
     TeamMemberManager,
     UpdateTeamForm,
-    ConnectAccounting: _sfc_main$t
+    ConnectAccounting: _sfc_main$u
   }
 };
-function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_connect_accounting = vue.resolveComponent("connect-accounting");
   const _component_jet_section_border = vue.resolveComponent("jet-section-border");
@@ -44308,18 +44486,18 @@ function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Teams/Show.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-var Show$4 = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["ssrRender", _sfc_ssrRender$l]]);
+var Show$4 = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$m]]);
 var Show$5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$4
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$l = {
+const _sfc_main$m = {
   components: {
     PageAside,
     AsideLink,
@@ -44357,7 +44535,7 @@ const _sfc_main$l = {
     }
   }
 };
-function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_button_link = vue.resolveComponent("button-link");
@@ -44645,18 +44823,18 @@ function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/VendorsAside.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
-var VendorsAside = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["ssrRender", _sfc_ssrRender$k]]);
+var VendorsAside = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["ssrRender", _sfc_ssrRender$l]]);
 var VendorsAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": VendorsAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$k = {
+const _sfc_main$l = {
   components: {
     VendorsAside,
     AppLayout,
@@ -44672,7 +44850,7 @@ const _sfc_main$k = {
     }
   }
 };
-function _sfc_ssrRender$j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -44805,18 +44983,18 @@ function _sfc_ssrRender$j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/VendorsLayout.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-var VendorsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["ssrRender", _sfc_ssrRender$j]]);
+var VendorsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["ssrRender", _sfc_ssrRender$k]]);
 var VendorsLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": VendorsLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$j = {
+const _sfc_main$k = {
   props: ["vendor"],
   components: {
     JetActionSection,
@@ -44842,7 +45020,7 @@ const _sfc_main$j = {
     }
   }
 };
-function _sfc_ssrRender$i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_button = vue.resolveComponent("jet-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -45010,18 +45188,18 @@ function _sfc_ssrRender$i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/RestoreVendorForm.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
-var RestoreVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$i]]);
+var RestoreVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["ssrRender", _sfc_ssrRender$j]]);
 var RestoreVendorForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": RestoreVendorForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$i = {
+const _sfc_main$j = {
   components: {
     PaperClipIcon: solid.PaperClipIcon,
     VendorsLayout,
@@ -45030,7 +45208,7 @@ const _sfc_main$i = {
   },
   props: { vendor: Object }
 };
-function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_vendors_layout = vue.resolveComponent("vendors-layout");
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_restore_vendor_form = vue.resolveComponent("restore-vendor-form");
@@ -45107,18 +45285,18 @@ function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/ArchivedShow.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-var ArchivedShow = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$h]]);
+var ArchivedShow = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$i]]);
 var ArchivedShow$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ArchivedShow
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$h = {
+const _sfc_main$i = {
   components: {
     JetActionMessage,
     JetButton,
@@ -45163,7 +45341,7 @@ const _sfc_main$h = {
     }
   }
 };
-function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -45928,24 +46106,24 @@ function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$h = _sfc_main$h.setup;
-_sfc_main$h.setup = (props, ctx) => {
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/CreateVendorForm.vue");
-  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-var CreateVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$g]]);
+var CreateVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$h]]);
 var CreateVendorForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": CreateVendorForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$g = {
+const _sfc_main$h = {
   components: {
     CreateVendorForm,
     VendorsLayout
   }
 };
-function _sfc_ssrRender$f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_vendors_layout = vue.resolveComponent("vendors-layout");
   const _component_create_vendor_form = vue.resolveComponent("create-vendor-form");
   _push(serverRenderer.ssrRenderComponent(_component_vendors_layout, _attrs, {
@@ -45961,18 +46139,18 @@ function _sfc_ssrRender$f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$g = _sfc_main$g.setup;
-_sfc_main$g.setup = (props, ctx) => {
+const _sfc_setup$h = _sfc_main$h.setup;
+_sfc_main$h.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/Create.vue");
-  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
+  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-var Create = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$f]]);
+var Create = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$g]]);
 var Create$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Create
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$f = {
+const _sfc_main$g = {
   props: { vendor: Object },
   components: {
     JetActionSection,
@@ -45998,7 +46176,7 @@ const _sfc_main$f = {
     }
   }
 };
-function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_action_section = vue.resolveComponent("jet-action-section");
   const _component_jet_danger_button = vue.resolveComponent("jet-danger-button");
   const _component_jet_confirmation_modal = vue.resolveComponent("jet-confirmation-modal");
@@ -46166,38 +46344,38 @@ function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$f = _sfc_main$f.setup;
-_sfc_main$f.setup = (props, ctx) => {
+const _sfc_setup$g = _sfc_main$g.setup;
+_sfc_main$g.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/DeleteVendorForm.vue");
-  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-var DeleteVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$e]]);
+var DeleteVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$f]]);
 var DeleteVendorForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": DeleteVendorForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$e = {
+const _sfc_main$f = {
   components: {
     VendorsLayout
   }
 };
-function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_vendors_layout = vue.resolveComponent("vendors-layout");
   _push(serverRenderer.ssrRenderComponent(_component_vendors_layout, _attrs, null, _parent));
 }
-const _sfc_setup$e = _sfc_main$e.setup;
-_sfc_main$e.setup = (props, ctx) => {
+const _sfc_setup$f = _sfc_main$f.setup;
+_sfc_main$f.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/Index.vue");
-  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-var Index$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$d]]);
-var Index$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$3 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$e]]);
+var Index$4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": Index$1
+  "default": Index$3
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$d = {
+const _sfc_main$e = {
   components: {
     JetActionMessage,
     JetButton,
@@ -46243,7 +46421,7 @@ const _sfc_main$d = {
     }
   }
 };
-function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_jet_form_section = vue.resolveComponent("jet-form-section");
   const _component_jet_label = vue.resolveComponent("jet-label");
   const _component_jet_input = vue.resolveComponent("jet-input");
@@ -46999,18 +47177,18 @@ function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$d = _sfc_main$d.setup;
-_sfc_main$d.setup = (props, ctx) => {
+const _sfc_setup$e = _sfc_main$e.setup;
+_sfc_main$e.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/UpdateVendorForm.vue");
-  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-var UpdateVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["ssrRender", _sfc_ssrRender$c]]);
+var UpdateVendorForm = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$d]]);
 var UpdateVendorForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": UpdateVendorForm
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$c = {
+const _sfc_main$d = {
   components: {
     VendorsLayout,
     UpdateVendorForm,
@@ -47022,7 +47200,7 @@ const _sfc_main$c = {
     vendor: Object
   }
 };
-function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_vendors_layout = vue.resolveComponent("vendors-layout");
   const _component_update_vendor_form = vue.resolveComponent("update-vendor-form");
   const _component_contact_aside = vue.resolveComponent("contact-aside");
@@ -47064,18 +47242,18 @@ function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$c = _sfc_main$c.setup;
-_sfc_main$c.setup = (props, ctx) => {
+const _sfc_setup$d = _sfc_main$d.setup;
+_sfc_main$d.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Vendors/Show.vue");
-  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-var Show$2 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["ssrRender", _sfc_ssrRender$b]]);
+var Show$2 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["ssrRender", _sfc_ssrRender$c]]);
 var Show$3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show$2
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$b = {
+const _sfc_main$c = {
   components: {
     AppLayout,
     BackLink,
@@ -47087,7 +47265,7 @@ const _sfc_main$b = {
     }
   }
 };
-function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_app_layout = vue.resolveComponent("app-layout");
   const _component_main_area = vue.resolveComponent("main-area");
   const _component_back_link = vue.resolveComponent("back-link");
@@ -47194,18 +47372,18 @@ function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$b = _sfc_main$b.setup;
-_sfc_main$b.setup = (props, ctx) => {
+const _sfc_setup$c = _sfc_main$c.setup;
+_sfc_main$c.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/ViewLayout.vue");
-  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-var ViewLayout = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender$a]]);
+var ViewLayout = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["ssrRender", _sfc_ssrRender$b]]);
 var ViewLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ViewLayout
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$a = {
+const _sfc_main$b = {
   components: {
     PageAside,
     AsideLink,
@@ -47242,7 +47420,7 @@ const _sfc_main$a = {
     }
   }
 };
-function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_page_aside = vue.resolveComponent("page-aside");
   const _component_jet_section_title = vue.resolveComponent("jet-section-title");
   const _component_search_input = vue.resolveComponent("search-input");
@@ -47402,18 +47580,18 @@ function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$a = _sfc_main$a.setup;
-_sfc_main$a.setup = (props, ctx) => {
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/ViewAside.vue");
-  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-var ViewAside = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", _sfc_ssrRender$9]]);
+var ViewAside = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender$a]]);
 var ViewAside$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ViewAside
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$9 = {
+const _sfc_main$a = {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -47433,17 +47611,17 @@ const _sfc_main$9 = {
     };
   }
 };
-const _sfc_setup$9 = _sfc_main$9.setup;
-_sfc_main$9.setup = (props, ctx) => {
+const _sfc_setup$a = _sfc_main$a.setup;
+_sfc_main$a.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/Index.vue");
-  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
+  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-var Index = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var Index$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  "default": _sfc_main$9
+  "default": _sfc_main$a
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$8 = {
+const _sfc_main$9 = {
   components: {
     SectionTitle,
     TableTable,
@@ -47468,7 +47646,7 @@ const _sfc_main$8 = {
     }
   }
 };
-function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_section_title = vue.resolveComponent("section-title");
   const _component_table_table = vue.resolveComponent("table-table");
   const _component_table_head = vue.resolveComponent("table-head");
@@ -47806,18 +47984,18 @@ function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$8 = _sfc_main$8.setup;
-_sfc_main$8.setup = (props, ctx) => {
+const _sfc_setup$9 = _sfc_main$9.setup;
+_sfc_main$9.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/Components/AvailabilitySection.vue");
-  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-var AvailabilitySection = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", _sfc_ssrRender$8]]);
+var AvailabilitySection = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", _sfc_ssrRender$9]]);
 var AvailabilitySection$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": AvailabilitySection
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$7 = {
+const _sfc_main$8 = {
   components: {
     SectionTitle,
     TableTable,
@@ -47859,7 +48037,7 @@ const _sfc_main$7 = {
     }
   }
 };
-function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_section_title = vue.resolveComponent("section-title");
   const _component_table_table = vue.resolveComponent("table-table");
   const _component_table_head = vue.resolveComponent("table-head");
@@ -48107,18 +48285,18 @@ function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$7 = _sfc_main$7.setup;
-_sfc_main$7.setup = (props, ctx) => {
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/Components/PricingSection.vue");
-  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-var PricingSection = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["ssrRender", _sfc_ssrRender$7]]);
+var PricingSection = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", _sfc_ssrRender$8]]);
 var PricingSection$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": PricingSection
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$6 = {
+const _sfc_main$7 = {
   components: {
     SectionTitle,
     TableTable,
@@ -48156,7 +48334,7 @@ const _sfc_main$6 = {
     }
   }
 };
-function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_section_title = vue.resolveComponent("section-title");
   const _component_table_table = vue.resolveComponent("table-table");
@@ -48894,18 +49072,18 @@ function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$6 = _sfc_main$6.setup;
-_sfc_main$6.setup = (props, ctx) => {
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/Components/InventoryLocationsSection.vue");
-  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-var InventoryLocationsSection = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender$6]]);
+var InventoryLocationsSection = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["ssrRender", _sfc_ssrRender$7]]);
 var InventoryLocationsSection$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryLocationsSection
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$5 = {
+const _sfc_main$6 = {
   components: {
     DetailsSection,
     SectionTitle,
@@ -48922,7 +49100,7 @@ const _sfc_main$5 = {
     }
   }
 };
-function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_section_title = vue.resolveComponent("section-title");
   const _component_ProductHoldView = vue.resolveComponent("ProductHoldView");
@@ -48967,18 +49145,18 @@ function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$5 = _sfc_main$5.setup;
-_sfc_main$5.setup = (props, ctx) => {
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/Components/ProductOrdersSection.vue");
-  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
-var ProductOrdersSection = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$5]]);
+var ProductOrdersSection = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender$6]]);
 var ProductOrdersSection$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": ProductOrdersSection
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$4 = {
+const _sfc_main$5 = {
   components: {
     DetailsSection,
     AvailabilitySection,
@@ -49005,13 +49183,13 @@ const _sfc_main$4 = {
     }
   }
 };
-function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_availability_section = vue.resolveComponent("availability-section");
   const _component_pricing_section = vue.resolveComponent("pricing-section");
   const _component_ProductOrdersSection = vue.resolveComponent("ProductOrdersSection");
   const _component_inventory_locations_section = vue.resolveComponent("inventory-locations-section");
-  _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "grid gap-6 col-span-6 grid-cols-12 items-start" }, _attrs))}><div class="lg:col-span-7 col-span-12 sticky top-0">`);
+  _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "grid gap-6 col-span-6 grid-cols-12 items-start" }, _attrs))}><div class="lg:col-span-7 col-span-12 top-0">`);
   _push(serverRenderer.ssrRenderComponent(_component_details_section, { class: "h-full" }, {
     default: vue.withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -49062,18 +49240,18 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div></div>`);
 }
-const _sfc_setup$4 = _sfc_main$4.setup;
-_sfc_main$4.setup = (props, ctx) => {
+const _sfc_setup$5 = _sfc_main$5.setup;
+_sfc_main$5.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/Components/InventoryDetail.vue");
-  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
+  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-var InventoryDetail = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$4]]);
+var InventoryDetail = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$5]]);
 var InventoryDetail$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryDetail
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3 = {
+const _sfc_main$4 = {
   components: {
     ProductDetails,
     JetButton,
@@ -49089,7 +49267,7 @@ const _sfc_main$3 = {
     "selectedSize"
   ]
 };
-function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_view_layout = vue.resolveComponent("view-layout");
   const _component_product_details = vue.resolveComponent("product-details");
   const _component_InventoryDetail = vue.resolveComponent("InventoryDetail");
@@ -49127,18 +49305,18 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$3 = _sfc_main$3.setup;
-_sfc_main$3.setup = (props, ctx) => {
+const _sfc_setup$4 = _sfc_main$4.setup;
+_sfc_main$4.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/View/Show.vue");
-  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
-var Show = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$3]]);
+var Show = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$4]]);
 var Show$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": Show
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2 = {
+const _sfc_main$3 = {
   components: {
     ExternalLinkIcon: outline.ExternalLinkIcon,
     ArrowDownIcon: outline.ArrowDownIcon,
@@ -49201,7 +49379,7 @@ const _sfc_main$2 = {
     }
   }
 };
-function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_details_section = vue.resolveComponent("details-section");
   const _component_search_input = vue.resolveComponent("search-input");
   const _component_table_table = vue.resolveComponent("table-table");
@@ -49606,18 +49784,18 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 3
   }, _parent));
 }
-const _sfc_setup$2 = _sfc_main$2.setup;
-_sfc_main$2.setup = (props, ctx) => {
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Inventory/Components/InventoryView.vue");
-  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
-var InventoryView = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender$2]]);
+var InventoryView = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$3]]);
 var InventoryView$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": InventoryView
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1 = {
+const _sfc_main$2 = {
   components: {
     CalendarIcon: solid.CalendarIcon,
     LocationMarkerIcon: solid.LocationMarkerIcon,
@@ -49632,7 +49810,7 @@ const _sfc_main$1 = {
     formatDate: (value) => moment__default["default"](value).format("MM/DD/YYYY")
   }
 };
-function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_CalendarIcon = vue.resolveComponent("CalendarIcon");
   _push(`<div${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "bg-white shadow overflow-hidden sm:rounded-md" }, _attrs))}><ul role="list" class="divide-y divide-gray-200"><!--[-->`);
   serverRenderer.ssrRenderList($props.orders.data, (order) => {
@@ -49651,18 +49829,18 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   });
   _push(`<!--]--></ul></div>`);
 }
-const _sfc_setup$1 = _sfc_main$1.setup;
-_sfc_main$1.setup = (props, ctx) => {
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/OrdersList.vue");
-  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
-var OrdersList = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender$1]]);
+var OrdersList = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender$2]]);
 var OrdersList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrdersList
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main = {
+const _sfc_main$1 = {
   props: {
     orders: {
       type: Object
@@ -49685,7 +49863,7 @@ const _sfc_main = {
     }
   }
 };
-function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_table_table = vue.resolveComponent("table-table");
   const _component_table_head = vue.resolveComponent("table-head");
   const _component_table_h = vue.resolveComponent("table-h");
@@ -50075,14 +50253,87 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
     _: 1
   }, _parent));
 }
-const _sfc_setup = _sfc_main.setup;
-_sfc_main.setup = (props, ctx) => {
+const _sfc_setup$1 = _sfc_main$1.setup;
+_sfc_main$1.setup = (props, ctx) => {
   const ssrContext = vue.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Orders/Components/OrdersTableList.vue");
-  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-var OrdersTableList = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+var OrdersTableList = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender$1]]);
 var OrdersTableList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   "default": OrdersTableList
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main = {
+  name: "component",
+  data() {
+    return {
+      show: null
+    };
+  },
+  methods: {},
+  mounted() {
+  }
+};
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<body${serverRenderer.ssrRenderAttrs(vue.mergeProps({ class: "flex items-center justify-center py-8 px-2" }, _attrs))}><div class="w-full sm:px-6"><div class="px-4 md:px-10 py-4 md:py-7 bg-gray-100 rounded-tl-lg rounded-tr-lg"><div class="sm:flex items-center justify-between"><p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800"> Projects </p><div><button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 inline-flex sm:ml-3 mt-4 sm:mt-0 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded"><p class="text-sm font-medium leading-none text-white"> New Project </p></button></div></div></div><div class="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto"><table class="w-full whitespace-nowrap"><thead><tr tabindex="0" class="focus:outline-none h-16 w-full text-sm leading-none text-gray-800"><th class="font-normal text-left pl-4">Project</th><th class="font-normal text-left pl-12"> Progress </th><th class="font-normal text-left pl-12">Tasks</th><th class="font-normal text-left pl-20">Budget</th><th class="font-normal text-left pl-20"> Deadline </th><th class="font-normal text-left pl-16">Members</th></tr></thead><tbody class="w-full"><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects.png" alt="UX Design and Visual Strategy"></div><div class="pl-4"><p class="font-medium"> UX Design &amp; Visual Strategy </p><p class="text-xs leading-3 text-gray-600 pt-2"> Herman Group </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 72% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-20 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">32/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="focus:ring-2 rounded-md focus:outline-none ml-7" role="button" aria-label="options"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 0) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 border-b border-t bg-white hover:bg-gray-100 border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(1).png" alt="Branding"></div><div class="pl-4"><p class="font-medium">Branding</p><p class="text-xs leading-3 text-gray-600 pt-2"> Cassin, Bradtke and Jacobson </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 18% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-6 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">09/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="rounded-md focus:outline-none focus:ring-2 ml-7" role="button" aria-label="option"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 1) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 border-b border-t bg-white hover:bg-gray-100 border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(2).png" alt="dev ops"></div><div class="pl-4"><p class="font-medium">Dev Ops</p><p class="text-xs leading-3 text-gray-600 pt-2"> Weissnat Group </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 28% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-8 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">32/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="focus:ring-2 rounded-md focus:outline-none ml-7" role="button" aria-label="options"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 2) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 border-b border-t bg-white hover:bg-gray-100 border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(3).png" alt="backend services"></div><div class="pl-4"><p class="font-medium"> Backend Services </p><p class="text-xs leading-3 text-gray-600 pt-2"> Hoeger - Hirthe </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 94% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-24 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">32/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="focus:ring-2 rounded-md focus:outline-none ml-7" role="button" aria-label="options"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 3) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 border-b border-t bg-white hover:bg-gray-100 border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(4).png" alt="UI design"></div><div class="pl-4"><p class="font-medium">UI Design</p><p class="text-xs leading-3 text-gray-600 pt-2"> Batz - Yundt </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 81% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-20 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">32/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="focus:ring-2 rounded-md focus:outline-none ml-7" role="button" aria-label="options"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 4) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 border-b border-t bg-white hover:bg-gray-100 border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(5).png" alt="UX stradegy"></div><div class="pl-4"><p class="font-medium">UX Strategy</p><p class="text-xs leading-3 text-gray-600 pt-2"> Erdman Group </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 37% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-14 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">32/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="focus:ring-2 rounded-md focus:outline-none ml-7" role="button" aria-label="options"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 5) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 border-b border-t bg-white hover:bg-gray-100 border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(6).png" alt="Website Development"></div><div class="pl-4"><p class="font-medium"> Website Development </p><p class="text-xs leading-3 text-gray-600 pt-2"> Dickens - Pacocha </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 58% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-16 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">32/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="focus:ring-2 rounded-md focus:outline-none ml-7" role="button" aria-label="options"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 6) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr><tr tabindex="0" class="focus:outline-none h-20 text-sm leading-none text-gray-800 border-b border-t bg-white hover:bg-gray-100 border-gray-100"><td class="pl-4 cursor-pointer"><div class="flex items-center"><div class="w-10 h-10"><img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(7).png" alt="Mobile App Development"></div><div class="pl-4"><p class="font-medium"> Mobile App Development </p><p class="text-xs leading-3 text-gray-600 pt-2"> O&#39;Kon Inc </p></div></div></td><td class="pl-12"><p class="text-sm font-medium leading-none text-gray-800"> 42% </p><div class="w-24 h-3 bg-gray-100 rounded-full mt-2"><div class="w-12 h-3 bg-green-progress rounded-full"></div></div></td><td class="pl-12"><p class="font-medium">32/47</p><p class="text-xs leading-3 text-gray-600 mt-2"> 5 tasks pending </p></td><td class="pl-20"><p class="font-medium">$13,000</p><p class="text-xs leading-3 text-gray-600 mt-2"> $4,200 left </p></td><td class="pl-20"><p class="font-medium">22.12.21</p><p class="text-xs leading-3 text-gray-600 mt-2"> 34 days </p></td><td class="pl-16"><div class="flex items-center"><img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" alt="collaborator 1"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" alt="collaborator 2"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" alt="collaborator 3"><img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" alt="collaborator 4"></div></td><td class="px-7 2xl:px-0"><button class="focus:ring-2 rounded-md focus:outline-none ml-7" role="button" aria-label="options"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`);
+  if ($data.show === 7) {
+    _push(`<div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6"><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Edit</p></div><div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white"><p>Delete</p></div></div>`);
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`</td></tr></tbody></table></div></div></body>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = vue.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Reports/Sales/Index.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+var Index = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+var Index$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  "default": Index
 }, Symbol.toStringTag, { value: "Module" }));

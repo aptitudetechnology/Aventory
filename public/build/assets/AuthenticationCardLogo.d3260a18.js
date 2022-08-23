@@ -1,0 +1,1 @@
+import{_ as o,o as e,J as r}from"./app.fbac1591.js";const s={},t={src:"/logos/awia-for-nurseries-zoomed.png",alt:"Awia for Nurseries",class:"h-20 mb-4 w-auto"};function a(c,n){return e(),r("img",t)}var _=o(s,[["render",a]]);export{_ as J};
