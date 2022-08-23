@@ -1,11 +1,42 @@
+<script setup>
+import DetailsSection from "@/Components/DetailsSection.vue";
+import { ExternalLinkIcon } from "@heroicons/vue/outline";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
+
+import { onMounted, reactive, computed } from "vue";
+import route from "vendor/tightenco/ziggy/src/js";
+
+const completedOrders = reactive({
+    orders: [],
+    loading: true,
+});
+
+const numCompletedOrders = computed(() => completedOrders.orders.length);
+const totalOfCompletedOrders = computed(() => {
+    return completedOrders.orders.reduce((acc, order) => {
+        return acc + order.grand_total;
+    }, 0);
+});
+
+onMounted(() => {
+    axios
+        .get(route("api.orders.completed"))
+        .then((response) => {
+            completedOrders.orders = response.data;
+            completedOrders.loading = false;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+</script>
+
 <template>
     <details-section>
-        <template #title>Completed Orders, 30 Days</template>
+        <template #title>Orders, 30 Days</template>
         <div class="col-span-6">
-            <p class="text-lg mb-2">
-                {{ thirtyDaysCompletedOrders }} Completed Orders
-            </p>
-            <p>${{ thirtyDaysCompletedSales }} in completed sales</p>
+            <p class="text-lg mb-2">{{ thirtyDaysCompletedOrders }} Orders</p>
+            <p>${{ thirtyDaysCompletedSales }} in sales</p>
         </div>
 
         <template #actions>
@@ -13,30 +44,3 @@
         </template>
     </details-section>
 </template>
-
-<script>
-import DetailsSection from "@/Components/DetailsSection.vue";
-import ButtonLink from "@/Components/Links/ButtonLink.vue";
-export default {
-    components: {
-        DetailsSection,
-        ButtonLink,
-    },
-    props: {
-        /**
-         * The number of completed orders.
-         */
-        thirtyDaysCompletedOrders: {
-            type: Number,
-            required: true,
-        },
-        /**
-         * The total amount in dollars of completed sales.
-         */
-        thirtyDaysCompletedSales: {
-            type: Number,
-            required: true,
-        },
-    },
-};
-</script>
