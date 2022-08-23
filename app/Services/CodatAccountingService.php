@@ -5,44 +5,45 @@ namespace App\Services;
 use App\Http\Integrations\Accounting\Requests\CreateCustomerRequest;
 use App\Http\Integrations\Accounting\Requests\UpdateCustomerRequest;
 use App\Models\CodatRecord;
-use App\Models\Customer;
 
 class CodatAccountingService
 {
-    protected function createOrUpdateCustomerResponseReceived(Customer $customer, $response)
-    {
-        $record = new CodatRecord();
-        $record->company_id = $response['companyId'];
-        $record->connection_id = $response['dataConnectionKey'];
-        $record->push_id = $response['pushOperationKey'];
-        $record->push_status = $response['status'];
-        $customer->codatRecord()->save($record);
-    }
-
-    public function sendCreateCustomerRequest(Customer $customer)
+    public function createCustomer($companyId, $connectionId, array $data = [])
     {
         $request = new CreateCustomerRequest(
-            companyId: $customer->team->codat_company_id,
-            connectionId: $customer->team->codat_accounting_connection_id
+            companyId: $companyId,
+            connectionId: $connectionId
         );
+        $request->setData($data);
 
-        $request->setData(['customerName' => $customer->name, 'status' => 'Active']);
-        $response = $request->send()->json();
+        ['pushOperationKey' => $pushId, 'status' => $pushStatus] = $request->send()->json();
 
-        $this->createOrUpdateCustomerResponseReceived($customer, $response);
+        $record = new CodatRecord();
+        $record->company_id = $companyId;
+        $record->connection_id = $connectionId;
+        $record->push_id = $pushId;
+        $record->push_status = $pushStatus;
+
+        return $record;
     }
 
-    public function sendUpdateCustomerRequest(Customer $customer)
+    public function updateCustomer($companyId, $connectionId, $customerId, $data)
     {
         $request = new UpdateCustomerRequest(
-            companyId: $customer->team->codat_company_id,
-            connectionId: $customer->team->codat_accounting_connection_id,
-            customerId: $customer->codat_record_id
+            companyId: $companyId,
+            connectionId: $connectionId,
+            customerId: $customerId
         );
 
-        $request->setData(['customerName' => $customer->name, 'status' => 'Active']);
-        $response = $request->send()->json();
+        $request->setData($data);
 
-        $this->createOrUpdateCustomerResponseReceived($customer, $response);
+        ['pushOperationKey' => $pushId, 'status' => $pushStatus] = $request->send()->json();
+
+        $record = CodatRecord::where(function ($query) use ($connectionId, $customerId) {
+            $query->where('connection_id', $connectionId)->where('record_id', $customerId);
+        })->first();
+        $record->push_id = $pushId;
+        $record->push_status = $pushStatus;
+        $record->save();
     }
 }

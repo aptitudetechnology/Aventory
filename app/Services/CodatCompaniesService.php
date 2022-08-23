@@ -8,18 +8,18 @@ use App\Http\Integrations\Companies\Requests\UpdateCompanyRequest;
 
 class CodatCompaniesService
 {
-    public function create(array $attributes)
+    public function create(array $data)
     {
         $request = new CreateCompanyRequest();
-        $request->setData($attributes);
+        $request->setData($data);
 
         return $request->send()->json();
     }
 
-    public function update($id, array $attributes)
+    public function update($id, array $data)
     {
         $request = new UpdateCompanyRequest($id);
-        $request->setData($attributes);
+        $request->setData($data);
 
         return $request->send()->json();
     }
