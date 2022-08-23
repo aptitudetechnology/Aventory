@@ -9,13 +9,16 @@ use Illuminate\Http\Request;
 class ApiOrdersController extends Controller
 {
     /**
-     * Get orders for past 30 days.
+     * Get orders for past 30 days. 
+     * Formated in json.
+     * Returns, the orders, count, and total in dollars of the past 30 days for a given team.
      * 
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::where('created_at', '>=', now()->subDays(30))->get();
+        $orders = $request->user()->currentTeam
+            ->orders()->where('created_at', '>=', now()->subDays(30))->get();
 
         $response = [
             'orders' => $orders,

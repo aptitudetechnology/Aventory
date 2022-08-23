@@ -1,9 +1,52 @@
+<script setup>
+import DetailsSection from "@/Components/DetailsSection.vue";
+import { ExternalLinkIcon } from "@heroicons/vue/outline";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
+
+import { onMounted, reactive, computed } from "vue";
+
+const activeQuotes = reactive({
+    quotes: [],
+    total: "",
+    count: 0,
+    loading: true,
+});
+
+const headingText = computed(() => {
+    return `${activeQuotes.total} in active quotes`;
+});
+
+const numberQuotesText = computed(() => {
+    return activeQuotes.count > 1 || activeQuotes.count == 0
+        ? `${activeQuotes.count} quotes`
+        : `${activeQuotes.count} quote`;
+});
+
+const totalText = computed(() => {
+    return `There are ${activeQuotes.count} active quotes with a total of ${activeQuotes.total} that could be converted to an order.`;
+});
+
+onMounted(() => {
+    axios
+        .get(route("api.quotes.index"))
+        .then((response) => {
+            activeQuotes.quotes = response.data.quotes;
+            activeQuotes.total = response.data.total_in_dollars;
+            activeQuotes.count = response.data.count;
+            activeQuotes.loading = false;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+</script>
+
 <template>
     <details-section>
-        <template #title>Quotes</template>
+        <template #title>{{ headingText }}</template>
         <div class="col-span-6">
-            <p class="text-lg mb-2">{{ numActiveQuotes }} Active quotes</p>
-            <p>{{ totalActiveQuotes }} in active quotes</p>
+            <p class="text-lg mb-2">{{ numberQuotesText }}</p>
+            <p>{{ totalText }}</p>
         </div>
 
         <template #actions>
@@ -11,43 +54,3 @@
         </template>
     </details-section>
 </template>
-<script>
-import DetailsSection from "@/Components/DetailsSection.vue";
-import { ExternalLinkIcon } from "@heroicons/vue/outline";
-import ButtonLink from "@/Components/Links/ButtonLink.vue";
-export default {
-    components: {
-        DetailsSection,
-        ExternalLinkIcon,
-        ButtonLink,
-    },
-    data() {
-        return {
-            activeQuotes: [],
-        };
-    },
-    mounted() {
-        this.getActiveQuotes();
-    },
-    computed: {
-        numActiveQuotes() {
-            return this.activeQuotes.length;
-        },
-        totalActiveQuotes() {
-            return this.formatMoney(
-                this.activeQuotes.reduce(
-                    (total, quote) => total + quote.grand_total,
-                    0
-                )
-            );
-        },
-    },
-    methods: {
-        getActiveQuotes() {
-            axios.get(route("api.quotes.active")).then((response) => {
-                this.activeQuotes = response.data;
-            });
-        },
-    },
-};
-</script>

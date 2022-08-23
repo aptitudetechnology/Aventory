@@ -17,7 +17,7 @@ const headingText = computed(() => {
 });
 
 const numberOrdersText = computed(() => {
-    return recentOrders.count > 1
+    return recentOrders.count > 1 || recentOrders.count == 0
         ? `${recentOrders.count} orders`
         : `${recentOrders.count} order`;
 });

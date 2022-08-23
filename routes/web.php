@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\ApiActiveQuotesController;
 use App\Http\Controllers\Api\ApiBlocksController;
 use App\Http\Controllers\Api\ApiCategoriesController;
 use App\Http\Controllers\Api\ApiContactsController;
@@ -14,6 +13,7 @@ use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\Api\ApiProductSizesController;
 use App\Http\Controllers\Api\ApiProductsOrdersController;
 use App\Http\Controllers\Api\ApiQuoteOrdersController;
+use App\Http\Controllers\Api\Quotes\ApiQuotesController;
 use App\Http\Controllers\Api\ApiRelatedOrdersController;
 use App\Http\Controllers\Api\ApiSalesController;
 use App\Http\Controllers\Api\Orders\ApiOrdersController;
@@ -162,9 +162,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('orders/{order}/quote', ApiOrderQuoteController::class)->name('orders.quote.show');
         Route::get('orders/{order}/related', ApiRelatedOrdersController::class)->name('orders.related.index');
 
-        Route::get('orders/completed', [ApiOrdersController::class, 'index'])->name('orders.index');
+        Route::get('orders', [ApiOrdersController::class, 'index'])->name('orders.index');
+        Route::get('quotes', [ApiQuotesController::class, 'index'])->name('quotes.index');
 
-        Route::get('quotes/active', ApiActiveQuotesController::class)->name('quotes.active');
+
         Route::get('products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('inventory.quantities');
         Route::get('products/{product}/size/{size}/prices', ApiProductPriceController::class)->name('product.prices');
     });
