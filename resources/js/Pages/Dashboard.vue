@@ -14,10 +14,7 @@
                     <div
                         class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900"
                     >
-                        <completed-orders-card
-                            :thirtyDaysCompletedOrders="0"
-                            :thirtyDaysCompletedSales="0"
-                        />
+                        <completed-orders-card />
                         <active-quotes-card />
                     </div>
                 </div>
