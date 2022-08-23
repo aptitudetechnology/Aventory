@@ -41,6 +41,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseItemController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\RemovePurchaseItemFromInventory;
+use App\Http\Controllers\Reports\ReportsController;
 use App\Http\Controllers\ReprintQueueController;
 use App\Http\Controllers\Sales\ConvertSaleController;
 use App\Http\Controllers\SizeController;
@@ -176,4 +177,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('{contactableType}/{contactableId}/contacts', [ContactController::class, 'store'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.store');
     Route::put('contacts/{contact}', [ContactController::class, 'update'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.update');
     Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.destroy');
+
+    Route::get('reports', [ReportsController::class, 'index'])->name('reports.index');
 });
