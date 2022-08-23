@@ -16,6 +16,15 @@ class ApiOrdersController extends Controller
     public function index()
     {
         $orders = Order::where('created_at', '>=', now()->subDays(30))->get();
-        return response()->json($orders);
+
+        $response = [
+            'orders' => $orders,
+            'count' => $orders->count(),
+            'total_in_dollars' => "$" . number_format($orders->sum('grand_total'), 2),
+            'message' => 'Orders retrieved successfully.',
+
+        ];
+
+        return response()->json($response, 200);
     }
 }
