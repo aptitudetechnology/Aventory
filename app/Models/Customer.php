@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -128,11 +127,6 @@ class Customer extends Model
     public function quotes(): HasMany
     {
         return $this->hasMany(Quote::class);
-    }
-
-    public function codatPushOp()
-    {
-        return $this->morphOne(CodatPushOperation::class, 'pushable');
     }
 
     public function codatRecord()

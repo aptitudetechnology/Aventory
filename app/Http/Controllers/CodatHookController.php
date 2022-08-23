@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Integrations\DataPush\Requests\GetPushOperationRecordRequest;
-use App\Models\CodatPushOperation;
 use App\Models\CodatRecord;
 use Illuminate\Http\Request;
 
