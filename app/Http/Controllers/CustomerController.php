@@ -152,8 +152,13 @@ class CustomerController extends Controller
 
     public function syncWithAccounting(CodatAccountingService $codatAccountingService, Customer $customer)
     {
-        $codatAccountingService->sendCreateCustomerRequest($customer);
-        $customer->fresh();
+        $team = $customer->team;
+        $record = $codatAccountingService->createCustomer(
+            companyId: $team->codat_company_id,
+            connectionId: $team->codat_accounting_connection_id,
+            data: ['customerName' => $customer->name, 'status' => 'Active']
+        );
+        $customer->codatRecord()->save($record);
 
         return redirect(route('customers.show', $customer));
     }

@@ -23,11 +23,9 @@ class CustomerObserver
         $team = $customer->team;
         if ($team->accounting_connected) {
             $record = $this->codatAccountingService->createCustomer(
-                $team->codat_company_id,
-                $team->codat_accounting_connection_id,
-                [
-                    'customerName' => $customer->name, 'status' => 'Active'
-                ]
+                companyId: $team->codat_company_id,
+                connectionId: $team->codat_accounting_connection_id,
+                data: ['customerName' => $customer->name, 'status' => 'Active']
             );
             $customer->codatRecord()->save($record);
         }
@@ -44,10 +42,10 @@ class CustomerObserver
         $team = $customer->team;
         if ($team->accounting_connected) {
             $this->codatAccountingService->updateCustomer(
-                $team->codat_company_id,
-                $team->codat_accounting_connection_id,
-                $customer->codatRecord->record_id,
-                ['customerName' => $customer->name, 'status' => 'Active']
+                companyId: $team->codat_company_id,
+                connectionId: $team->codat_accounting_connection_id,
+                customerId: $customer->codatRecord->record_id,
+                data: ['customerName' => $customer->name, 'status' => 'Active']
             );
         }
     }
