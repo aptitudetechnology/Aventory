@@ -1,0 +1,1 @@
+import{_ as s,o,J as c,a as e}from"./app.fbac1591.js";const r={},t={class:"hidden sm:block"},a=e("div",{class:"py-8"},[e("div",{class:"border-t border-gray-200"})],-1),_=[a];function d(n,i){return o(),c("div",t,_)}var f=s(r,[["render",d]]);export{f as J};

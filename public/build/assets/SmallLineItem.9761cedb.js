@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as r,w as o,P as n,ad as c}from"./app.fbac1591.js";const p={props:{as:{type:String,default:"div"}}};function i(e,l,t,f,d,m){return a(),r(c(t.as),{class:"flex items-center justify-between hover:bg-gray-100 uppercase text-sm p-2 cursor-pointer"},{default:o(()=>[n(e.$slots,"default")]),_:3})}var _=s(p,[["render",i]]);export{_ as S};

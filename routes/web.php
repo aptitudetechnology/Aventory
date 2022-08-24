@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\ApiActiveQuotesController;
 use App\Http\Controllers\Api\ApiBlocksController;
 use App\Http\Controllers\Api\ApiCategoriesController;
 use App\Http\Controllers\Api\ApiContactsController;
@@ -14,8 +13,10 @@ use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\Api\ApiProductSizesController;
 use App\Http\Controllers\Api\ApiProductsOrdersController;
 use App\Http\Controllers\Api\ApiQuoteOrdersController;
+use App\Http\Controllers\Api\Quotes\ApiQuotesController;
 use App\Http\Controllers\Api\ApiRelatedOrdersController;
 use App\Http\Controllers\Api\ApiSalesController;
+use App\Http\Controllers\Api\Orders\ApiOrdersController;
 use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
@@ -41,6 +42,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseItemController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\RemovePurchaseItemFromInventory;
+use App\Http\Controllers\Reports\ReportsController;
 use App\Http\Controllers\ReprintQueueController;
 use App\Http\Controllers\Sales\ConvertSaleController;
 use App\Http\Controllers\SizeController;
@@ -159,11 +161,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('quotes/{quote}/orders', ApiQuoteOrdersController::class)->name('quotes.orders.index');
         Route::get('orders/{order}/quote', ApiOrderQuoteController::class)->name('orders.quote.show');
         Route::get('orders/{order}/related', ApiRelatedOrdersController::class)->name('orders.related.index');
+
+        Route::get('orders', [ApiOrdersController::class, 'index'])->name('orders.index');
+        Route::get('quotes', [ApiQuotesController::class, 'index'])->name('quotes.index');
+
+
+        Route::get('products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('inventory.quantities');
+        Route::get('products/{product}/size/{size}/prices', ApiProductPriceController::class)->name('product.prices');
     });
 
-    Route::get('api/quotes/active', ApiActiveQuotesController::class)->name('api.quotes.active');
-    Route::get('api/products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('api.inventory.quantities');
-    Route::get('api/products/{product}/size/{size}/prices', ApiProductPriceController::class)->name('api.product.prices');
 
     // Reprint Queue
     Route::resource('reprint-queue', ReprintQueueController::class)->only('index', 'store', 'update', 'destroy');
@@ -176,4 +182,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('{contactableType}/{contactableId}/contacts', [ContactController::class, 'store'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.store');
     Route::put('contacts/{contact}', [ContactController::class, 'update'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.update');
     Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.destroy');
+
+    Route::get('reports', [ReportsController::class, 'index'])->name('reports.index');
 });

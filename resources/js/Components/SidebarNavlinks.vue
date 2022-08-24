@@ -143,6 +143,11 @@
                 >Reprint Labels</nav-link
             >
         </sidebar-dropdown>
+        <nav-link
+            :href="route('reports.index')"
+            :current="route().current('reports.*')"
+            >Reports</nav-link
+        >
     </nav>
 </template>
 <script>

@@ -1,0 +1,1 @@
+import{_ as s,o,J as a,a as r,P as t}from"./app.fbac1591.js";const c={},d={class:"bg-white shadow sm:rounded-lg"},n={class:"px-4 py-5 sm:p-6"};function _(e,l){return o(),a("div",d,[r("div",n,[t(e.$slots,"default")])])}var p=s(c,[["render",_]]);export{p as C};

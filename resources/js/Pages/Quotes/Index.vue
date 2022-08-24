@@ -6,10 +6,7 @@
         </div>
         <div class="grid gap-6 lg:gap-8">
             <div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900">
-                <completed-orders-card
-                    :thirtyDaysCompletedOrders="0"
-                    :thirtyDaysCompletedSales="0"
-                />
+                <completed-orders-card />
             </div>
             <view-orders
                 :are-quotes="true"
