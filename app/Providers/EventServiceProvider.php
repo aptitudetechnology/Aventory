@@ -3,8 +3,19 @@
 namespace App\Providers;
 
 use App\Models\Customer;
+use App\Models\InventoryArchive;
+use App\Models\Order;
+use App\Models\OrderDiscount;
+use App\Models\OrderItem;
+use App\Models\Product;
+use App\Models\Quote;
 use App\Models\Team;
 use App\Observers\CustomerObserver;
+use App\Observers\InventoryArchiveObserver;
+use App\Observers\OrderDiscountObserver;
+use App\Observers\OrderItemObserver;
+use App\Observers\OrderObserver;
+use App\Observers\QuoteObserver;
 use App\Observers\TeamObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -31,6 +42,11 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Team::observe(TeamObserver::class);
+        Quote::observe(QuoteObserver::class);
+        Order::observe(OrderObserver::class);
+        OrderItem::observe(OrderItemObserver::class);
+        OrderDiscount::observe(OrderDiscountObserver::class);
+        InventoryArchive::observe(InventoryArchiveObserver::class);
         Customer::observe(CustomerObserver::class);
     }
 }

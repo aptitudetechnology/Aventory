@@ -11,7 +11,7 @@ class CodatCompaniesService
     public function create(array $data)
     {
         $request = new CreateCompanyRequest();
-        $request->setData($data);
+        $request->mergeData($data);
 
         return $request->send()->json();
     }
@@ -19,7 +19,7 @@ class CodatCompaniesService
     public function update($id, array $data)
     {
         $request = new UpdateCompanyRequest($id);
-        $request->setData($data);
+        $request->mergeData($data);
 
         return $request->send()->json();
     }

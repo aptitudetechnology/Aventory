@@ -156,7 +156,7 @@ class CustomerController extends Controller
         $record = $codatAccountingService->createCustomer(
             companyId: $team->codat_company_id,
             connectionId: $team->codat_accounting_connection_id,
-            data: ['customerName' => $customer->name, 'status' => 'Active']
+            data: ['customerName' => $customer->name]
         );
         $customer->codatRecord()->save($record);
 

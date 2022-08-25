@@ -25,7 +25,7 @@ class CustomerObserver
             $record = $this->codatAccountingService->createCustomer(
                 companyId: $team->codat_company_id,
                 connectionId: $team->codat_accounting_connection_id,
-                data: ['customerName' => $customer->name, 'status' => 'Active']
+                data: ['customerName' => $customer->name]
             );
             $customer->codatRecord()->save($record);
         }
@@ -45,7 +45,7 @@ class CustomerObserver
                 companyId: $team->codat_company_id,
                 connectionId: $team->codat_accounting_connection_id,
                 customerId: $customer->codatRecord->record_id,
-                data: ['customerName' => $customer->name, 'status' => 'Active']
+                data: ['customerName' => $customer->name]
             );
         }
     }

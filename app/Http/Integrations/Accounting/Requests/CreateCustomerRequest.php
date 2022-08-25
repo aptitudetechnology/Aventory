@@ -31,6 +31,13 @@ class CreateCustomerRequest extends SaloonRequest
     ) {
     }
 
+    public function defaultData(): array
+    {
+        return [
+            'status' => 'Active'
+        ];
+    }
+
     /**
      * The endpoint of the request.
      *

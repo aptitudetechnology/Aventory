@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Integrations\Accounting\Requests\CreateCustomerRequest;
+use App\Http\Integrations\Accounting\Requests\CreateItemRequest;
 use App\Http\Integrations\Accounting\Requests\UpdateCustomerRequest;
 use App\Models\CodatRecord;
 
@@ -14,7 +15,7 @@ class CodatAccountingService
             companyId: $companyId,
             connectionId: $connectionId
         );
-        $request->setData($data);
+        $request->mergeData($data);
 
         ['pushOperationKey' => $pushId, 'status' => $pushStatus] = $request->send()->json();
 
@@ -35,7 +36,7 @@ class CodatAccountingService
             customerId: $customerId
         );
 
-        $request->setData($data);
+        $request->mergeData($data);
 
         ['pushOperationKey' => $pushId, 'status' => $pushStatus] = $request->send()->json();
 
@@ -45,5 +46,24 @@ class CodatAccountingService
         $record->push_id = $pushId;
         $record->push_status = $pushStatus;
         $record->save();
+    }
+
+    public function createItem($companyId, $connectionId, array $data = [])
+    {
+        $request = new CreateItemRequest(
+            companyId: $companyId,
+            connectionId: $connectionId
+        );
+        $request->mergeData($data);
+
+        ['pushOperationKey' => $pushId, 'status' => $pushStatus] = $request->send()->json();
+
+        $record = new CodatRecord();
+        $record->company_id = $companyId;
+        $record->connection_id = $connectionId;
+        $record->push_id = $pushId;
+        $record->push_status = $pushStatus;
+
+        return $record;
     }
 }
