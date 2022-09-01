@@ -1,6 +1,24 @@
 <template>
     <jet-form-section @submitted="updateCustomer">
-        <template #title>{{ customer.name }}</template>
+        <template #title>
+            {{ customer.name }}
+        </template>
+
+        <template #aside>
+            <div class="flex flex-col">
+                <span class="font-bold text-gray-500">
+                    {{ customer.codat_record?.push_status }}
+                </span>
+                <jet-button
+                    type="button"
+                    class="btn-sm btn-success"
+                    v-if="customer.codat_record?.push_status !== 'Success'"
+                    @click="syncWithAccounting()"
+                >
+                    Sync now
+                </jet-button>
+            </div>
+        </template>
 
         <template #description>
             Update {{ customer.name }} by editing the form fields and clicking
@@ -452,6 +470,12 @@ export default {
                     preserveScroll: false,
                     preserveState: true,
                 }
+            );
+        },
+
+        syncWithAccounting() {
+            this.$inertia.patch(
+                route("customers.sync-with-accounting", this.customer)
             );
         },
     },

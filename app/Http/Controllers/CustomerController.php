@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
+use App\Services\CodatAccountingService;
 use Illuminate\Support\Facades\Gate;
 
 class CustomerController extends Controller
@@ -147,5 +148,18 @@ class CustomerController extends Controller
                 ]
             );
         }
+    }
+
+    public function syncWithAccounting(CodatAccountingService $codatAccountingService, Customer $customer)
+    {
+        $team = $customer->team;
+        $record = $codatAccountingService->createCustomer(
+            companyId: $team->codat_company_id,
+            connectionId: $team->codat_accounting_connection_id,
+            data: ['customerName' => $customer->name]
+        );
+        $customer->codatRecord()->save($record);
+
+        return redirect(route('customers.show', $customer));
     }
 }

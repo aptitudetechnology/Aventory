@@ -22,7 +22,7 @@
                 </div>
             </main-area>
             <!-- Start secondary column (hidden on smaller screens) -->
-            <customers-aside :customers="customers" />
+            <customers-aside />
         </div>
     </app-layout>
 </template>
@@ -41,9 +41,6 @@ export default {
         MainArea,
     },
     computed: {
-        customers() {
-            return this.$page.props.customers;
-        },
         isIndex() {
             return (
                 route().current("customers.index") ||

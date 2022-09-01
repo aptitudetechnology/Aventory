@@ -22,6 +22,7 @@ use App\Http\Controllers\ArchivedVendorsController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClearLocationController;
+use App\Http\Controllers\CodatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerPriceLevelController;
@@ -78,6 +79,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('customer-price-levels', CustomerPriceLevelController::class);
 
+    Route::patch('customers/{customer}/sync-with-accounting', [CustomerController::class, 'syncWithAccounting'])->name('customers.sync-with-accounting');
     Route::resource('customers', CustomerController::class);
     Route::get('customers/{customer}/contacts', [ApiContactsController::class, 'index'])->name('customers.contacts.index');
 
@@ -169,9 +171,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('reprint-queue', ReprintQueueController::class)->only('index', 'store', 'update', 'destroy');
     Route::get('reprint-tags', PrintInventoryTagsController::class)->name('reprint-tags');
 
-    Route::post('teams/{team}/connect', [TeamController::class, 'connect'])->name('teams.connect');
-    Route::delete('teams/{team}/disconnect', [TeamController::class, 'disconnect'])->name('teams.disconnect');
-    Route::post('teams/{team}/logo', [TeamController::class, 'updateLogo'])->name('teams.logo');
+    Route::post('teams/logo', [TeamController::class, 'updateLogo'])->name('teams.logo');
+    Route::get('codat-accounting/link', [CodatController::class, 'link']);
+    Route::patch('codat-accounting/disconnect', [CodatController::class, 'disconnect'])->name('codat.disconnect');
 
     Route::post('{contactableType}/{contactableId}/contacts', [ContactController::class, 'store'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.store');
     Route::put('contacts/{contact}', [ContactController::class, 'update'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.update');
