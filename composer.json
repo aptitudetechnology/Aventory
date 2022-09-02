@@ -18,6 +18,7 @@
         "laravel/sanctum": "^2.15.1",
         "laravel/tinker": "^2.7",
         "laraveldaily/laravel-invoices": "^3.0",
+        "sammyjo20/saloon": "^1.4",
         "tightenco/ziggy": "^1.4.6"
     },
     "require-dev": {
@@ -26,6 +27,7 @@
         "jasonmccreary/laravel-test-assertions": "^2.1.1",
         "laracasts/cypress": "2.2.1",
         "laravel/pint": "^1.1",
+        "laravel/sail": "^1.15",
         "mockery/mockery": "^1.5.0",
         "nunomaduro/collision": "^6.2.1",
         "phpunit/phpunit": "^9.5",
@@ -36,7 +38,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Database\\Seeders\\Customers\\": "database/seeders/customers/"
         }
     },
     "autoload-dev": {

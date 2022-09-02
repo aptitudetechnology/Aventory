@@ -75,10 +75,15 @@ class ProductController extends Controller
     public function show(Request $request, Product $product)
     {
         Gate::authorize('view', $product);
-
+        if ($product->type == 'plant') {
+            $product->load('plant');
+        }
+        $product->load('prices');
+        $product->load('sizes');
         $products = $this->getProducts();
         $categories = $this->getCategories();
         $category = $product->category;
+        $category->load('prices');
         $sizes = $request->user()->currentTeam->sizes;
         $features = $request->user()->currentTeam->features;
 

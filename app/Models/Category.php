@@ -38,8 +38,6 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $with = ['prices'];
-
     /**
      * The attributes that are mass assignable.
      *

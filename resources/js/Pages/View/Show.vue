@@ -5,8 +5,13 @@
                 <product-details :product="product"></product-details>
             </div>
 
-            <InventoryDetail :product="product" :productQuantities="productQuantities" :inventorySizes="inventorySizes"
-                :inventory="inventory" :priceLevels="priceLevels" />
+            <InventoryDetail
+                :product="product"
+                :productQuantities="productQuantities"
+                :inventorySizes="inventorySizes"
+                :inventory="inventory"
+                :priceLevels="priceLevels"
+            />
         </div>
     </view-layout>
 </template>
@@ -22,6 +27,13 @@ export default {
         ViewLayout,
         InventoryDetail,
     },
-    props: ['products', 'product', 'productQuantities', 'inventorySizes', 'inventory', 'priceLevels', 'selectedSize'],
+    props: [
+        "product",
+        "productQuantities",
+        "inventorySizes",
+        "inventory",
+        "priceLevels",
+        "selectedSize",
+    ],
 };
 </script>
