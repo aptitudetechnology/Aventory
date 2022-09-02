@@ -1,1 +1,0 @@
-import{_ as o,o as t,J as s,P as n}from"./app.fbac1591.js";const r={},a={class:"text-4xl font-bold"};function c(e,_){return t(),s("h1",a,[n(e.$slots,"default")])}var d=o(r,[["render",c]]);export{d as H};
