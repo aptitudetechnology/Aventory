@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\UploadedFile;
@@ -103,13 +104,10 @@ class Team extends JetstreamTeam
      */
     protected $appends = [
         'logo_url',
+        'codat_company_link',
+        'accounting_connected'
     ];
 
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
     protected $dispatchesEvents = [
         'created' => TeamCreated::class,
         'updated' => TeamUpdated::class,
@@ -215,6 +213,13 @@ class Team extends JetstreamTeam
             : $this->defaultLogoUrl();
     }
 
+    protected function accountingConnected(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => !is_null($attributes['codat_accounting_connection_id'])
+        );
+    }
+
     /**
      * Get the default logo URL if no logo has been uploaded.
      *
@@ -226,7 +231,7 @@ class Team extends JetstreamTeam
             return mb_substr($segment, 0, 1);
         })->join(' '));
 
-        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF';
     }
 
     public function updateLogo(UploadedFile $logo)
@@ -269,5 +274,10 @@ class Team extends JetstreamTeam
     protected function logoDisk()
     {
         return config('jetstream.team_logo_disk', 'public');
+    }
+
+    public function getCodatCompanyLinkAttribute()
+    {
+        return "https://link.codat.io/company/" . $this->codat_company_id;
     }
 }

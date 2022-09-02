@@ -8,22 +8,19 @@
         <template v-slot:header>
             <jet-section-title>
                 <template #title>Customer Directory</template>
-                <template v-if="customersLength > 0" #description
-                    >Search {{ customersLength }}
-                    {{
-                        customersLength > 1 ? "Customers" : "Customer"
-                    }}</template
-                >
+                <template v-if="customersLength > 0" #description>
+                    Search {{ customersLength }}
+                    {{ customersLength > 1 ? "Customers" : "Customer" }}
+                </template>
 
-                <template #aside
-                    ><button-link :href="route('customers.create')"
-                        >New Customer</button-link
-                    ></template
-                >
+                <template #aside>
+                    <button-link :href="route('customers.create')">
+                        New Customer
+                    </button-link>
+                </template>
             </jet-section-title>
             <search-input
                 v-model="search"
-                @input="updateCustomers"
                 placeholder="Search by customer name or state."
             />
         </template>
@@ -33,13 +30,15 @@
                 <tab-link
                     :href="route('customers.index')"
                     :current="route().current('customers.*')"
-                    >Active</tab-link
                 >
+                    Active
+                </tab-link>
                 <tab-link
                     :href="route('archived-customers.index')"
                     :current="route().current('archived-customers.*')"
-                    >Archived</tab-link
                 >
+                    Archived
+                </tab-link>
             </tab-container>
             <ul class="divide-y divide-gray-200">
                 <li
@@ -68,9 +67,18 @@
                                     class="absolute inset-0"
                                     aria-hidden="true"
                                 />
-                                <p class="text-sm text-gray-900">
-                                    {{ customer.name }}
-                                </p>
+                                <div class="flex justify-between items-center">
+                                    <p class="text-sm text-gray-900">
+                                        {{ customer.name }}
+                                    </p>
+                                    <span
+                                        class="inline-flex justify-center items-center w-3 h-3 text-xs font-bold text-white rounded-full border-2 border-white dark:border-gray-900"
+                                        :class="statusClass(customer)"
+                                        :title="
+                                            customer.codat_record?.push_status
+                                        "
+                                    ></span>
+                                </div>
                                 <p
                                     v-if="customer.state"
                                     class="text-sm text-gray-500 truncate"
@@ -116,19 +124,11 @@ export default {
         customers: Array,
     },
     computed: {
-        customersLength: function () {
-            return this.customers.length;
+        customersLength() {
+            return this.$page.props.length;
         },
-    },
-    data() {
-        return {
-            search: "",
-            filteredCustomers: this.customers,
-        };
-    },
-    methods: {
-        updateCustomers() {
-            this.filteredCustomers = this.customers.filter((customer) => {
+        filteredCustomers() {
+            return this.$page.props.customers.filter((customer) => {
                 if (
                     customer.name
                         .toLowerCase()
@@ -142,6 +142,24 @@ export default {
                     return false;
                 }
             });
+        },
+    },
+    data() {
+        return {
+            search: "",
+        };
+    },
+    methods: {
+        statusClass(customer) {
+            if (customer.codat_record?.push_status === "Pending") {
+                return "bg-warning";
+            } else if (customer.codat_record?.push_status === "Success") {
+                return "bg-success";
+            } else if (customer.codat_record?.push_status === "Failed") {
+                return "bg-error";
+            } else {
+                return "bg-primary";
+            }
         },
     },
 };

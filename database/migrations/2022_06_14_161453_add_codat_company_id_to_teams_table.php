@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('teams', function (Blueprint $table) {
-            $table->string('codat_company_id')->after('user_id')->nullable()->index();
+            $table->uuid('codat_company_id')->after('user_id')->nullable()->index();
         });
     }
 
