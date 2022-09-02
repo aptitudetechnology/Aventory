@@ -29,7 +29,7 @@ class CodatConnector extends SaloonConnector
     public function defaultHeaders(): array
     {
         return [
-            'Authorization' => 'Basic ' . config('app.codat_api_key'),
+            'Authorization' => config('app.codat_auth_header'),
             'Content-Type' => 'application/json',
         ];
     }
