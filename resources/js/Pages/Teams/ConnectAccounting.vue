@@ -58,6 +58,8 @@ import { Inertia } from "@inertiajs/inertia";
 
 const isDisconnectModalOpen = ref(false);
 
+defineProps(["team"]);
+
 function disconnect() {
     isDisconnectModalOpen.value = false;
     Inertia.patch(route("codat.disconnect"));
