@@ -322,7 +322,7 @@ export default {
 
             this.isLogoUploading = true;
             axios
-                .post(route("teams.logo", this.team), formData, config)
+                .post(route("teams.logo"), formData, config)
                 .then(({ data }) => {
                     this.logoUrl = data.logo_url;
                 })

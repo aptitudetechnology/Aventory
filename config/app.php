@@ -66,7 +66,7 @@ return [
 
     'codat_url' => env('CODAT_URL', 'https://api.codat.io'),
 
-    // Must be a base64 encoded string of the api key. Not the api key itself.
+    // Codat auth header.
     'codat_auth_header' => env('CODAT_AUTH_HEADER', 'DEFINE IN ENV'),
 
     /*
