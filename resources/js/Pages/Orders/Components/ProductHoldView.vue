@@ -84,7 +84,7 @@ export default {
     },
     data() {
         return {
-            loading: true,
+            loading: false,
             error: false,
             onHoldInventoryQuoteItems: [],
             soldProductOrderItems: [],
