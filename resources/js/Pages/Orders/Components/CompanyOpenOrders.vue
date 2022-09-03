@@ -80,9 +80,6 @@ export default {
             this.getOrders();
         },
     },
-    mounted() {
-        this.getOrders();
-    },
     methods: {
         getOrders() {
             this.loading = true;
