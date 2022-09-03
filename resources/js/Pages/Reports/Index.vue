@@ -4,20 +4,21 @@ import ReportsLayout from "./ReportsLayout.vue";
 import ActiveQuotesCard from "../Quotes/Components/ActiveQuotesCard.vue";
 import OrdersView from "../Orders/Components/OrdersView.vue";
 import CompletedOrdersCard from "../Orders/Components/CompletedOrdersCard.vue";
+import ContainerCards from "@/Components/Structure/ContainerCards.vue";
+import ContainerSpaceBetween from "../../Components/Structure/ContainerSpaceBetween.vue";
+import ContainerPaddingX from "../../Components/Structure/ContainerPaddingX.vue";
 </script>
 
 <template>
     <ReportsLayout>
-        <div class="flex justify-between items-center w-full pb-9 px-2 lg:px-4">
-            <heading-one>Reports</heading-one>
-        </div>
-
-        <div class="grid gap-6 lg:gap-8">
-            <div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900">
+        <ContainerSpaceBetween>
+            <ContainerPaddingX>
+                <heading-one>Reports</heading-one>
+            </ContainerPaddingX>
+            <ContainerCards>
                 <ActiveQuotesCard />
-
                 <CompletedOrdersCard />
-            </div>
-        </div>
+            </ContainerCards>
+        </ContainerSpaceBetween>
     </ReportsLayout>
 </template>
