@@ -6,6 +6,8 @@ import ContainerSpaceBetween from "@/Components/Structure/ContainerSpaceBetween.
 import ContainerPaddingX from "@/Components/Structure/ContainerPaddingX.vue";
 import ContainerFlexHorizontal from "../Components/Structure/ContainerFlexHorizontal.vue";
 import BirdsEyeReports from "./Reports/Components/BirdsEyeReports.vue";
+import ButtonLink from "@/Components/Links/ButtonLink.vue";
+import NewOrderNewQuote from "@/Components/Navigation/NewOrderNewQuote.vue";
 </script>
 
 <template>
@@ -15,6 +17,7 @@ import BirdsEyeReports from "./Reports/Components/BirdsEyeReports.vue";
                 <container-padding-x>
                     <container-flex-horizontal>
                         <heading-one>Dashboard</heading-one>
+                        <new-order-new-quote />
                     </container-flex-horizontal>
                 </container-padding-x>
                 <birds-eye-reports />
