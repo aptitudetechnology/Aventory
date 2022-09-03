@@ -5,9 +5,7 @@
             <button-link :href="route('orders.create')">New Order</button-link>
         </div>
         <div class="grid gap-6 lg:gap-8">
-            <div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900">
-                <active-quotes-card />
-            </div>
+            <birds-eye-reports />
             <view-orders :orders="orders" :filters="filters" />
         </div>
     </orders-layout>
@@ -21,6 +19,7 @@ import HeadingOne from "@/Components/Headings/HeadingOne.vue";
 import CompletedOrdersCard from "./Components/CompletedOrdersCard.vue";
 import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";
 import ViewOrders from "./Components/OrdersView.vue";
+import BirdsEyeReports from "../Reports/Components/BirdsEyeReports.vue";
 export default {
     components: {
         OrdersLayout,
@@ -30,6 +29,7 @@ export default {
         CompletedOrdersCard,
         ActiveQuotesCard,
         ViewOrders,
+        BirdsEyeReports,
     },
     props: {
         orders: {
