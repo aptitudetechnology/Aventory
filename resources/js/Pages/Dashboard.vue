@@ -1,43 +1,24 @@
+<script setup>
+import AppLayout from "@/Layouts/AppLayout.vue";
+import MainArea from "@/Components/MainArea.vue";
+import HeadingOne from "@/Components/Headings/HeadingOne.vue";
+import ContainerSpaceBetween from "@/Components/Structure/ContainerSpaceBetween.vue";
+import ContainerPaddingX from "@/Components/Structure/ContainerPaddingX.vue";
+import ContainerFlexHorizontal from "../Components/Structure/ContainerFlexHorizontal.vue";
+import BirdsEyeReports from "./Reports/Components/BirdsEyeReports.vue";
+</script>
+
 <template>
     <app-layout>
-        <div class="py-4">
-            <div
-                class="flex justify-between items-center w-full pb-9 px-4 lg:px-8"
-            >
-                <heading-one>Dashboard</heading-one>
-                <button-link :href="route('orders.create')"
-                    >New Order</button-link
-                >
-            </div>
-            <div class="grid gap-6 lg:gap-8">
-                <div class="sm:px-6 lg:px-8">
-                    <div
-                        class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900"
-                    >
-                        <completed-orders-card />
-                        <active-quotes-card />
-                    </div>
-                </div>
-            </div>
-        </div>
+        <main-area :dontShowOnMobile="false">
+            <container-space-between>
+                <container-padding-x>
+                    <container-flex-horizontal>
+                        <heading-one>Dashboard</heading-one>
+                    </container-flex-horizontal>
+                </container-padding-x>
+                <birds-eye-reports />
+            </container-space-between>
+        </main-area>
     </app-layout>
 </template>
-
-<script>
-import AppLayout from "@/Layouts/AppLayout.vue";
-import HeadingOne from "@/Components/Headings/HeadingOne.vue";
-import ButtonLink from "@/Components/Links/ButtonLink.vue";
-
-import CompletedOrdersCard from "@/Pages/Orders/Components/CompletedOrdersCard.vue";
-import ActiveQuotesCard from "@/Pages/Quotes/Components/ActiveQuotesCard.vue";
-
-export default {
-    components: {
-        AppLayout,
-        HeadingOne,
-        ButtonLink,
-        CompletedOrdersCard,
-        ActiveQuotesCard,
-    },
-};
-</script>
