@@ -320,9 +320,7 @@
             </nav>
             <jet-banner />
             <!-- Page Content -->
-            <div class="py-6">
-                <slot></slot>
-            </div>
+            <slot></slot>
         </div>
     </div>
 </template>
