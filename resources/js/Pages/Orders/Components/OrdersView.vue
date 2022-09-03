@@ -1,3 +1,109 @@
+<script>
+import {
+    ExternalLinkIcon,
+    ArrowUpIcon,
+    ArrowDownIcon,
+} from "@heroicons/vue/outline";
+import DetailsSection from "@/Components/DetailsSection.vue";
+import TableTable from "@/Components/Tables/TableTable.vue";
+import TableHead from "@/Components/Tables/TableHead.vue";
+import TableH from "@/Components/Tables/TableH.vue";
+import TableD from "@/Components/Tables/TableD.vue";
+import Pagination from "@/Components/Pagination.vue";
+import SearchInput from "@/Components/Forms/SearchInput.vue";
+import TabContainer from "@/Components/TabContainer.vue";
+import TabLink from "@/Components/Links/TabLink.vue";
+import _debounce from "lodash/debounce";
+import moment from "moment";
+export default {
+    components: {
+        ExternalLinkIcon,
+        ArrowDownIcon,
+        ArrowUpIcon,
+        DetailsSection,
+        TableTable,
+        TableHead,
+        TableH,
+        TableD,
+        SearchInput,
+        Pagination,
+        TabContainer,
+        TabLink,
+    },
+    props: {
+        orders: {
+            type: Object,
+        },
+        areQuotes: {
+            type: Boolean,
+            default: false,
+        },
+        filters: {
+            type: Object,
+        },
+    },
+    data() {
+        return {
+            search: this.filters.search || "",
+            orderBy: this.filters.orderBy || "",
+            orderByDirection: this.filters.orderByDirection || "",
+        };
+    },
+    watch: {
+        search: _debounce(function (value) {
+            this.updateSearch();
+        }, 200),
+    },
+    methods: {
+        formatDate: (value) => moment(value).format("MM/DD/YYYY"),
+        updateOrderBy(value) {
+            if (this.orderBy === value) {
+                this.orderByDirection =
+                    this.orderByDirection === "desc" ? "asc" : "desc";
+            } else {
+                this.orderBy = value;
+                this.orderByDirection = "desc";
+            }
+            this.updateSearch();
+        },
+        updateSearch() {
+            if (this.areQuotes) {
+                this.$inertia.get(
+                    this.route("quotes.index"),
+                    {
+                        search: this.search,
+                        orderBy: this.orderBy,
+                        orderByDirection: this.orderByDirection,
+                    },
+                    {
+                        preserveState: true,
+                        replace: true,
+                    }
+                );
+            } else {
+                this.$inertia.get(
+                    this.route("orders.index"),
+                    {
+                        search: this.search,
+                        orderBy: this.orderBy,
+                        orderByDirection: this.orderByDirection,
+                    },
+                    {
+                        preserveState: true,
+                        replace: true,
+                    }
+                );
+            }
+        },
+        showOrder(order) {
+            order.is_quote
+                ? this.$inertia.get(route("quotes.show", order))
+                : this.$inertia.get(route("orders.show", order));
+        },
+    },
+};
+</script>
+
 <template>
     <details-section>
         <template #title
@@ -9,6 +115,18 @@
         <template #aside
             ><search-input v-model="search"></search-input
         ></template>
+        <tab-container>
+            <tab-link
+                :href="route('orders.index')"
+                :current="route().current('orders.*')"
+                >Orders</tab-link
+            >
+            <tab-link
+                :href="route('quotes.index')"
+                :current="route().current('quotes.*')"
+                >Quotes</tab-link
+            >
+        </tab-container>
         <div class="col-span-6 overflow-auto">
             <table-table class="text-left">
                 <table-head>
@@ -96,105 +214,3 @@
         </div>
     </details-section>
 </template>
-
-<script>
-import {
-    ExternalLinkIcon,
-    ArrowUpIcon,
-    ArrowDownIcon,
-} from "@heroicons/vue/outline";
-import DetailsSection from "@/Components/DetailsSection.vue";
-import TableTable from "@/Components/Tables/TableTable.vue";
-import TableHead from "@/Components/Tables/TableHead.vue";
-import TableH from "@/Components/Tables/TableH.vue";
-import TableD from "@/Components/Tables/TableD.vue";
-import Pagination from "@/Components/Pagination.vue";
-import SearchInput from "@/Components/Forms/SearchInput.vue";
-import _debounce from "lodash/debounce";
-import moment from "moment";
-export default {
-    components: {
-        ExternalLinkIcon,
-        ArrowDownIcon,
-        ArrowUpIcon,
-        DetailsSection,
-        TableTable,
-        TableHead,
-        TableH,
-        TableD,
-        SearchInput,
-        Pagination,
-    },
-    props: {
-        orders: {
-            type: Object,
-        },
-        areQuotes: {
-            type: Boolean,
-            default: false,
-        },
-        filters: {
-            type: Object,
-        },
-    },
-    data() {
-        return {
-            search: this.filters.search || "",
-            orderBy: this.filters.orderBy || "",
-            orderByDirection: this.filters.orderByDirection || "",
-        };
-    },
-    watch: {
-        search: _debounce(function (value) {
-            this.updateSearch();
-        }, 200),
-    },
-    methods: {
-        formatDate: (value) => moment(value).format("MM/DD/YYYY"),
-        updateOrderBy(value) {
-            if (this.orderBy === value) {
-                this.orderByDirection =
-                    this.orderByDirection === "desc" ? "asc" : "desc";
-            } else {
-                this.orderBy = value;
-                this.orderByDirection = "desc";
-            }
-            this.updateSearch();
-        },
-        updateSearch() {
-            if (this.areQuotes) {
-                this.$inertia.get(
-                    this.route("quotes.index"),
-                    {
-                        search: this.search,
-                        orderBy: this.orderBy,
-                        orderByDirection: this.orderByDirection,
-                    },
-                    {
-                        preserveState: true,
-                        replace: true,
-                    }
-                );
-            } else {
-                this.$inertia.get(
-                    this.route("orders.index"),
-                    {
-                        search: this.search,
-                        orderBy: this.orderBy,
-                        orderByDirection: this.orderByDirection,
-                    },
-                    {
-                        preserveState: true,
-                        replace: true,
-                    }
-                );
-            }
-        },
-        showOrder(order) {
-            order.is_quote
-                ? this.$inertia.get(route("quotes.show", order))
-                : this.$inertia.get(route("orders.show", order));
-        },
-    },
-};
-</script>

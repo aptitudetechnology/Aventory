@@ -6,23 +6,13 @@
             >Dashboard</nav-link
         >
 
-        <sidebar-dropdown
-            dropdown_text="Orders & Quotes"
+        <nav-link
+            :href="route('quotes.index')"
             :current="
-                route().current('orders.*') || route().current('quotes.*')
+                route().current('quotes.*') || route().current('orders.*')
             "
+            >Orders & Quotes</nav-link
         >
-            <nav-link
-                :href="route('orders.index')"
-                :current="route().current('orders.*')"
-                >Orders</nav-link
-            >
-            <nav-link
-                :href="route('quotes.index')"
-                :current="route().current('quotes.*')"
-                >Quotes</nav-link
-            >
-        </sidebar-dropdown>
         <sidebar-dropdown
             dropdown_text="Customers"
             :current="
