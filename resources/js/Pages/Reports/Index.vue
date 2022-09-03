@@ -1,23 +1,21 @@
 <script setup>
 import HeadingOne from "@/Components/Headings/HeadingOne.vue";
 import ReportsLayout from "./ReportsLayout.vue";
-import ActiveQuotesCard from "../Quotes/Components/ActiveQuotesCard.vue";
-import OrdersView from "../Orders/Components/OrdersView.vue";
-import CompletedOrdersCard from "../Orders/Components/CompletedOrdersCard.vue";
+import ContainerSpaceBetween from "../../Components/Structure/ContainerSpaceBetween.vue";
+import ContainerPaddingX from "../../Components/Structure/ContainerPaddingX.vue";
+import ContainerFlexHorizontal from "@/Components/Structure/ContainerFlexHorizontal.vue";
+import BirdsEyeReports from "./Components/BirdsEyeReports.vue";
 </script>
 
 <template>
-    <ReportsLayout>
-        <div class="flex justify-between items-center w-full pb-9 px-2 lg:px-4">
-            <heading-one>Reports</heading-one>
-        </div>
-
-        <div class="grid gap-6 lg:gap-8">
-            <div class="grid gap-4 lg:gap-6 md:grid-cols-3 text-gray-900">
-                <ActiveQuotesCard />
-
-                <CompletedOrdersCard />
-            </div>
-        </div>
-    </ReportsLayout>
+    <reports-layout>
+        <container-space-between>
+            <container-padding-x>
+                <container-flex-horizontal>
+                    <heading-one>Reports</heading-one>
+                </container-flex-horizontal>
+            </container-padding-x>
+            <birds-eye-reports />
+        </container-space-between>
+    </reports-layout>
 </template>

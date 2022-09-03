@@ -146,7 +146,7 @@
                     type="submit"
                     :class="{ 'opacity-25': order.processing }"
                     :disabled="order.processing"
-                    >New {{ isQuote ? "quote" : "order" }}</jet-button
+                    >Create {{ isQuote ? "quote" : "order" }}</jet-button
                 >
             </template>
         </jet-form-section>
