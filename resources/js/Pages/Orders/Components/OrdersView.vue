@@ -108,25 +108,26 @@ export default {
     <details-section>
         <template #title
             ><slot name="title"
-                >Recent {{ areQuotes ? "Quotes" : "Orders" }}
+                >{{ areQuotes ? "Quotes" : "Orders" }}
                 {{ search ? "for " + search : "" }}</slot
-            ></template
-        >
+            >
+            <tab-container class="px-0">
+                <tab-link
+                    :href="route('orders.index')"
+                    :current="route().current('orders.*')"
+                    >Orders</tab-link
+                >
+                <tab-link
+                    :href="route('quotes.index')"
+                    :current="route().current('quotes.*')"
+                    >Quotes</tab-link
+                >
+            </tab-container>
+        </template>
         <template #aside
             ><search-input v-model="search"></search-input
         ></template>
-        <tab-container>
-            <tab-link
-                :href="route('orders.index')"
-                :current="route().current('orders.*')"
-                >Orders</tab-link
-            >
-            <tab-link
-                :href="route('quotes.index')"
-                :current="route().current('quotes.*')"
-                >Quotes</tab-link
-            >
-        </tab-container>
+
         <div class="col-span-6 overflow-auto">
             <table-table class="text-left">
                 <table-head>

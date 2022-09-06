@@ -30,7 +30,6 @@ defineProps({
                     <new-order-new-quote />
                 </container-flex-horizontal>
             </container-padding-x>
-            <birds-eye-reports />
             <view-orders
                 :are-quotes="true"
                 :orders="quotes"

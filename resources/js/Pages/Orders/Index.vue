@@ -25,7 +25,6 @@ defineProps({
             <new-order-new-quote />
         </div>
         <div class="grid gap-6 lg:gap-8">
-            <birds-eye-reports />
             <view-orders :orders="orders" :filters="filters" />
         </div>
     </orders-layout>
