@@ -107,7 +107,7 @@ class Inventory extends Model
         if ($this->updated_at == $this->created_at) {
             return 'Never Inventoried';
         } else {
-            return $this->updated_at->diffForHumans();
+            return $this->updated_at?->diffForHumans() ?? 'Never Inventoried';
         }
     }
 
@@ -164,7 +164,7 @@ class Inventory extends Model
     public function getPlaceNameAttribute()
     {
         if ($this->place) {
-            return 'Row: '.$this->place->row_number.'- #'.$this->place->plant_number;
+            return 'Row: ' . $this->place->row_number . '- #' . $this->place->plant_number;
         }
         if ($this->type == 'group') {
             return 'Located in Group';
