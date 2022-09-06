@@ -153,7 +153,7 @@ class Product extends Model
     public function allSizes()
     {
         if ($this->category) {
-            return $this->category->sizes()->union($this->sizes);
+            return $this->category->sizes();
         } else {
             return $this->sizes();
         }

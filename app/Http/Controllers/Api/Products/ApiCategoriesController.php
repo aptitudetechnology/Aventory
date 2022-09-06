@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Products;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ApiProductsController extends Controller
+class ApiCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ApiProductsController extends Controller
      */
     public function index()
     {
-        return auth()->user()->currentTeam->products;
+        return auth()->user()->currentTeam->categories;
     }
 
     /**
@@ -32,12 +31,12 @@ class ApiProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        return $product;
+        //
     }
 
     /**

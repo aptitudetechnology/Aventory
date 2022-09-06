@@ -1,22 +1,20 @@
 <?php
 
-use App\Http\Controllers\Api\ApiBlocksController;
-use App\Http\Controllers\Api\ApiCategoriesController;
-use App\Http\Controllers\Api\ApiContactsController;
-use App\Http\Controllers\Api\ApiDiscountsController;
-use App\Http\Controllers\Api\ApiInventoryArchiveController;
-use App\Http\Controllers\Api\ApiInventoryQuantitiesController;
-use App\Http\Controllers\Api\ApiOrderInventoryController;
-use App\Http\Controllers\Api\ApiOrderQuoteController;
-use App\Http\Controllers\Api\ApiProductPriceController;
-use App\Http\Controllers\Api\ApiProductsController;
-use App\Http\Controllers\Api\ApiProductSizesController;
-use App\Http\Controllers\Api\ApiProductsOrdersController;
-use App\Http\Controllers\Api\ApiQuoteOrdersController;
-use App\Http\Controllers\Api\Quotes\ApiQuotesController;
-use App\Http\Controllers\Api\ApiRelatedOrdersController;
-use App\Http\Controllers\Api\ApiSalesController;
+use App\Http\Controllers\Api\Inventory\ApiInventoryQuantitiesController;
+use App\Http\Controllers\Api\Locations\ApiBlocksController;
+use App\Http\Controllers\Api\Orders\ApiDiscountsController;
+use App\Http\Controllers\Api\Orders\ApiOrderInventoryController;
+use App\Http\Controllers\Api\Orders\ApiOrderQuoteController;
 use App\Http\Controllers\Api\Orders\ApiOrdersController;
+use App\Http\Controllers\Api\Orders\ApiQuoteOrdersController;
+use App\Http\Controllers\Api\Orders\ApiRelatedOrdersController;
+use App\Http\Controllers\Api\Orders\ApiSalesController;
+use App\Http\Controllers\Api\Products\ApiCategoriesController;
+use App\Http\Controllers\Api\Products\ApiProductPriceController;
+use App\Http\Controllers\Api\Products\ApiProductsController;
+use App\Http\Controllers\Api\Products\ApiProductSizesController;
+use App\Http\Controllers\Api\Products\ApiProductsOrdersController;
+use App\Http\Controllers\Api\Quotes\ApiQuotesController;
 use App\Http\Controllers\ArchivedCustomersController;
 use App\Http\Controllers\ArchivedProductsController;
 use App\Http\Controllers\ArchivedVendorsController;
@@ -98,11 +96,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/products/archived/{productId}', [ArchivedProductsController::class, 'store'])->name('archived-products.restore');
 
     Route::resource('products', ProductController::class)->except(['edit']);
-    Route::get('api/products/{product}/orders', [ApiProductsOrdersController::class, 'index'])->name('api.products.orders.index');
     Route::resource('features', FeatureController::class);
-    Route::get('api/products/{product}', [ApiProductsController::class, 'show'])->name('api.products.show');
-    // Route to get a list of product sizes
-    Route::get('api/products/{product}/sizes', [ApiProductSizesController::class, 'index'])->name('api.products.sizes.index');
 
     Route::resource('categories', CategoryController::class);
 
@@ -112,9 +106,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::put('size-order', [SizeController::class, 'updateOrder'])->name('sizes.updateOrder');
 
     Route::resource('prices', PriceController::class)->only(['store', 'update', 'destroy']);
-
-    Route::get('api/products', [ApiProductsController::class, 'index'])->name('api.products');
-    Route::get('api/categories', [ApiCategoriesController::class, 'index'])->name('api.categories');
 
     Route::resource('purchases.purchase-item', PurchaseItemController::class)->only(['store', 'update', 'destroy'])->shallow();
 
@@ -135,8 +126,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('blocks', BlockController::class);
 
-    Route::get('api/{nursery}/blocks', [ApiBlocksController::class, 'index'])->name('api.blocks.index');
-    Route::get('api/{block}/places/', [PlaceController::class, 'index'])->name('api.places.index');
     Route::post('places', [PlaceController::class, 'store'])->name('places.store');
     Route::patch('places', [PlaceController::class, 'update'])->name('places.update');
 
@@ -155,23 +144,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return response()->json(['message' => "No Inventory Found for ID: {$request['inventory']}"], 200);
         });
 
-    Route::apiResource('inventory-archive', ApiInventoryArchiveController::class);
-
-    Route::name('api.')->prefix('api')->group(function () {
-        Route::apiResource('sales', ApiSalesController::class)->only(['index', 'show']);
-
-        Route::get('quotes/{quote}/orders', ApiQuoteOrdersController::class)->name('quotes.orders.index');
-        Route::get('orders/{order}/quote', ApiOrderQuoteController::class)->name('orders.quote.show');
-        Route::get('orders/{order}/related', ApiRelatedOrdersController::class)->name('orders.related.index');
-
-        Route::get('orders', [ApiOrdersController::class, 'index'])->name('orders.index');
-        Route::get('quotes', [ApiQuotesController::class, 'index'])->name('quotes.index');
-
-
-        Route::get('products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('inventory.quantities');
-        Route::get('products/{product}/size/{size}/prices', ApiProductPriceController::class)->name('product.prices');
-    });
-
 
     // Reprint Queue
     Route::resource('reprint-queue', ReprintQueueController::class)->only('index', 'store', 'update', 'destroy');
@@ -186,4 +158,36 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->whereIn('contactableType', ['customers', 'vendors'])->name('contacts.destroy');
 
     Route::get('reports', [ReportsController::class, 'index'])->name('reports.index');
+
+
+
+    //API Routes
+    Route::apiResource('inventory-archive', ApiInventoryArchiveController::class);
+
+    Route::name('api.')->prefix('api')->group(function () {
+        Route::apiResource('sales', ApiSalesController::class)->only(['index', 'show']);
+
+        Route::get('quotes/{quote}/orders', ApiQuoteOrdersController::class)->name('quotes.orders.index');
+        Route::get('orders/{order}/quote', ApiOrderQuoteController::class)->name('orders.quote.show');
+        Route::get('orders/{order}/related', ApiRelatedOrdersController::class)->name('orders.related.index');
+
+        Route::get('orders', [ApiOrdersController::class, 'index'])->name('orders.index');
+        Route::get('quotes', [ApiQuotesController::class, 'index'])->name('quotes.index');
+
+        Route::get('{nursery}/blocks', [ApiBlocksController::class, 'index'])->name('blocks.index');
+        Route::get('{block}/places/', [PlaceController::class, 'index'])->name('places.index');
+
+        Route::get('categories', [ApiCategoriesController::class, 'index'])->name('categories');
+
+
+        Route::get('products', [ApiProductsController::class, 'index'])->name('products');
+        Route::get('products/{product}', [ApiProductsController::class, 'show'])->name('products.show');
+
+        Route::get('products/{product}/orders', [ApiProductsOrdersController::class, 'index'])->name('products.orders.index');
+
+        // Route to get a list of product sizes
+        Route::get('products/{product}/sizes', [ApiProductSizesController::class, 'index'])->name('products.sizes.index');
+        Route::get('products/{product}/size/{size}/quantities', ApiInventoryQuantitiesController::class)->name('inventory.quantities');
+        Route::get('products/{product}/size/{size}/prices', ApiProductPriceController::class)->name('product.prices');
+    });
 });
