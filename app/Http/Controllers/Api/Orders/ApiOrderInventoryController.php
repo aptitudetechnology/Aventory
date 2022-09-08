@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InventoryArchiveStoreRequest;
@@ -71,7 +71,7 @@ class ApiOrderInventoryController extends Controller
 
         $match = $items->find($request->input('order_item_id'));
 
-        if (! $match) {
+        if (!$match) {
             $match = $sale->items()->create([
                 'product_id' => $inventory->product_id,
                 'size_id' => $inventory->size_id,
@@ -103,7 +103,7 @@ class ApiOrderInventoryController extends Controller
             );
         }
 
-        if (! $match->is_matched) {
+        if (!$match->is_matched) {
             return back()->banner('Inventory matched to order items.');
         } else {
             $match->update([

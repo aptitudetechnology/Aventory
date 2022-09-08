@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class ApiOrderQuoteController extends Controller
+class ApiRelatedOrdersController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -19,6 +19,6 @@ class ApiOrderQuoteController extends Controller
     {
         Gate::authorize('view', $order);
 
-        return $order->quote;
+        return $order->relatedOrders;
     }
 }

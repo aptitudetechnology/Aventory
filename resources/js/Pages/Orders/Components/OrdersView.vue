@@ -15,6 +15,7 @@ import TabContainer from "@/Components/TabContainer.vue";
 import TabLink from "@/Components/Links/TabLink.vue";
 import _debounce from "lodash/debounce";
 import moment from "moment";
+import TableRow from "@/Components/Tables/TableRow.vue";
 export default {
     components: {
         ExternalLinkIcon,
@@ -29,6 +30,7 @@ export default {
         Pagination,
         TabContainer,
         TabLink,
+        TableRow,
     },
     props: {
         orders: {
@@ -108,25 +110,26 @@ export default {
     <details-section>
         <template #title
             ><slot name="title"
-                >Recent {{ areQuotes ? "Quotes" : "Orders" }}
+                >{{ areQuotes ? "Quotes" : "Orders" }}
                 {{ search ? "for " + search : "" }}</slot
-            ></template
-        >
+            >
+            <tab-container class="px-0">
+                <tab-link
+                    :href="route('orders.index')"
+                    :current="route().current('orders.*')"
+                    >Orders</tab-link
+                >
+                <tab-link
+                    :href="route('quotes.index')"
+                    :current="route().current('quotes.*')"
+                    >Quotes</tab-link
+                >
+            </tab-container>
+        </template>
         <template #aside
             ><search-input v-model="search"></search-input
         ></template>
-        <tab-container>
-            <tab-link
-                :href="route('orders.index')"
-                :current="route().current('orders.*')"
-                >Orders</tab-link
-            >
-            <tab-link
-                :href="route('quotes.index')"
-                :current="route().current('quotes.*')"
-                >Quotes</tab-link
-            >
-        </tab-container>
+
         <div class="col-span-6 overflow-auto">
             <table-table class="text-left">
                 <table-head>
@@ -184,11 +187,10 @@ export default {
                     <table-h>Total</table-h>
                 </table-head>
                 <tbody>
-                    <tr
+                    <TableRow
                         v-for="order in orders.data"
                         :key="order.id"
                         tabindex="0"
-                        class="px-2 border-b border-gray-50 last:border-transparent hover:border-black focus:border-black transition cursor-pointer"
                         @click="showOrder(order)"
                     >
                         <table-d>{{ order.id }}</table-d>
@@ -200,7 +202,7 @@ export default {
                                 : order.deliveryStatus?.name
                         }}</table-d>
                         <table-d>{{ formatMoney(order.grand_total) }}</table-d>
-                    </tr>
+                    </TableRow>
                 </tbody>
             </table-table>
             <div v-if="orders.data.length < 1" class="p-4">

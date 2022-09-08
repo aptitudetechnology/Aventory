@@ -78,7 +78,6 @@ export default {
 <style scoped>
 input[type="search"]::-webkit-search-cancel-button {
     cursor: pointer;
-    -webkit-appearance: none;
     padding: 0.5em;
     height: 1.5em;
     width: 1.5em;

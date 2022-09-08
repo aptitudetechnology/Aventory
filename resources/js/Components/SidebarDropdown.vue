@@ -1,3 +1,29 @@
+<script setup>
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
+import { Inertia } from "@inertiajs/inertia";
+
+const props = defineProps({
+    dropdown_text: {
+        type: String,
+        required: true,
+    },
+    current: {
+        type: Boolean,
+        required: true,
+    },
+    route_name: {
+        type: String,
+        required: false,
+    },
+});
+
+function dropdownClicked() {
+    if (props.route_name) {
+        Inertia.get(route(props.route_name));
+    }
+}
+</script>
+
 <template>
     <Disclosure
         as="div"
@@ -6,6 +32,7 @@
         :defaultOpen="current"
     >
         <DisclosureButton
+            @click="dropdownClicked"
             :class="[
                 current ? 'bg-gray-50' : 'hover:bg-gray-50 hover:text-gray-900',
                 'text-gray-600 text-large group flex justify-between items-center px-2 py-2 text-base rounded-md w-full',
@@ -28,14 +55,3 @@
         </DisclosurePanel>
     </Disclosure>
 </template>
-<script>
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-export default {
-    components: {
-        Disclosure,
-        DisclosureButton,
-        DisclosurePanel,
-    },
-    props: ["dropdown_text", "current"],
-};
-</script>

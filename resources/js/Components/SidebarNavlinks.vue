@@ -6,15 +6,28 @@
             >Dashboard</nav-link
         >
 
-        <nav-link
-            :href="route('quotes.index')"
+        <sidebar-dropdown
+            dropdown_text="Orders & Quotes"
+            route_name="orders.index"
             :current="
-                route().current('quotes.*') || route().current('orders.*')
+                route().current('orders.*') || route().current('quotes.*')
             "
-            >Orders & Quotes</nav-link
         >
+            <nav-link
+                :href="route('orders.index')"
+                :current="route().current('orders.*')"
+                >Orders</nav-link
+            >
+            <nav-link
+                :href="route('quotes.index')"
+                :current="route().current('quotes.*')"
+                >Quotes</nav-link
+            >
+        </sidebar-dropdown>
+
         <sidebar-dropdown
             dropdown_text="Customers"
+            route_name="customers.index"
             :current="
                 route().current('customers.*') ||
                 route().current('archived-customers.*') ||
@@ -38,6 +51,7 @@
 
         <sidebar-dropdown
             dropdown_text="Products & Pricing"
+            route_name="products.index"
             :current="
                 route().current('products.*') ||
                 route().current('plants.*') ||
@@ -70,6 +84,7 @@
 
         <sidebar-dropdown
             dropdown_text="Inventory In"
+            route_name="purchases.index"
             :current="
                 route().current('vendors.*') ||
                 route().current('archived-vendors.*') ||
@@ -93,6 +108,7 @@
 
         <sidebar-dropdown
             dropdown_text="Locations"
+            route_name="locations.index"
             :current="
                 route().current('locations.*') || route().current('blocks.*')
             "
@@ -110,6 +126,7 @@
         </sidebar-dropdown>
         <sidebar-dropdown
             dropdown_text="Inventory"
+            route_name="inventory.index"
             :current="
                 route().current('inventory.*') ||
                 route().current('view.*') ||

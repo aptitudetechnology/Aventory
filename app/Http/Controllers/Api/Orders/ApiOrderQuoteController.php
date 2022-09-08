@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Orders;
 
 use App\Http\Controllers\Controller;
-use App\Models\Quote;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class ApiQuoteOrdersController extends Controller
+class ApiOrderQuoteController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,10 +15,10 @@ class ApiQuoteOrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, Quote $quote)
+    public function __invoke(Request $request, Order $order)
     {
-        Gate::authorize('view', $quote);
+        Gate::authorize('view', $order);
 
-        return $quote->orders;
+        return $order->quote;
     }
 }

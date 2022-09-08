@@ -12,12 +12,6 @@
                     Search {{ customersLength }}
                     {{ customersLength > 1 ? "Customers" : "Customer" }}
                 </template>
-
-                <template #aside>
-                    <button-link :href="route('customers.create')">
-                        New Customer
-                    </button-link>
-                </template>
             </jet-section-title>
             <search-input
                 v-model="search"
