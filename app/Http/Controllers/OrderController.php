@@ -25,10 +25,10 @@ class OrderController extends Controller
 
         $orders = auth()->user()->currentTeam->orders()
             ->when($request->search, function ($query) use ($request) {
-                $query->whereHas('customer', function ($query) use ($request) {
-                    $query->where('name', 'like', "%{$request->search}%");
-                })
-                    ->orWhere('id', 'like', "%{$request->search}%");
+                $query->where('id', 'like', "%{$request->search}%")
+                    ->orWhereHas('customer', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%");
+                    });
             })
             ->when($request->orderBy, function ($query) use ($request) {
                 if ($request->orderBy == 'customer') {
