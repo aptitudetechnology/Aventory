@@ -149,6 +149,13 @@ The backup has been proceed successfully. => app/backups/backup_20220808.sql
  > 0
 ```
 
+## Testing the application visually
+
+In order to test the application, make sure that you have migrated the data with the above command and have followed all appropriate set up steps. 
+Then, you will want to login with the credentials below:
+Username: teststuff@gmail.com   
+Password: password
+
 ## Technologies
 
 - MySQL
