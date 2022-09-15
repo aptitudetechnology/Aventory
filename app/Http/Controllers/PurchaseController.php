@@ -20,9 +20,10 @@ class PurchaseController extends Controller
         Gate::authorize('viewAny', Purchase::class);
         $purchases = auth()->user()->currentTeam->purchases()
             ->when($request->search, function ($query) use ($request) {
-                $query->where('id', $request->search)->orWhereHas('vendor', function ($query) use ($request) {
-                    $query->where('name', 'like', "%{$request->search}%");
-                });
+                $query->where('id', 'like', "%{$request->search}%")
+                    ->orWhereHas('vendor', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%");
+                    });
             })
             ->when($request->orderBy, function ($query) use ($request) {
                 if ($request->orderBy == 'vendor') {

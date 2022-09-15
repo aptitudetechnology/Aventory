@@ -21,16 +21,19 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         Gate::authorize('viewAny', Order::class);
+
+
         $orders = auth()->user()->currentTeam->orders()
             ->when($request->search, function ($query) use ($request) {
-                $query->where('id', $request->search)->orWhereHas('customer', function ($query) use ($request) {
-                    $query->where('name', 'like', "%{$request->search}%");
-                });
+                $query->where('id', 'like', "%{$request->search}%")
+                    ->orWhereHas('customer', function ($query) use ($request) {
+                        $query->where('name', 'like', "%{$request->search}%");
+                    });
             })
             ->when($request->orderBy, function ($query) use ($request) {
                 if ($request->orderBy == 'customer') {
                     $query->addSelect(['customer_name' => Customer::select('name')
-                        ->whereColumn('id', 'orders.customer_id'), ])->orderBy('customer_name', $request->orderByDirection);
+                        ->whereColumn('id', 'orders.customer_id'),])->orderBy('customer_name', $request->orderByDirection);
                 } else {
                     $query->orderBy($request->orderBy, $request->orderByDirection);
                 }
