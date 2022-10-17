@@ -173,4 +173,4 @@ Password: password
 
 ## License
 
-This project is confidential and is not open source. Do not distribute or publish any part of the source code or architecture without prior written consent.
+We're using the apache 2.0 license. Full license details is in the LICENSE.md file.
