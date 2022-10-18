@@ -2,6 +2,9 @@
 
 Awia for Nurseries is a web application to help nurseries manage their plant and product inventory, create and manage invoices, and view reports.
 
+## How to get on the Sponsor list
+Make one significant contribution for free. That's it.
+
 ## Screenshots
 
 ![Login Screen](./.screenshots/login.png)
