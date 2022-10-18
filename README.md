@@ -176,4 +176,4 @@ Password: password
 
 ## License
 
-We're using the apache 2.0 license. Full license details is in the LICENSE.md file.
+We're using the apache 2.0 license. Full license details is in the [LICENSE](LICENSE.md) file.
