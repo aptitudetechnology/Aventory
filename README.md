@@ -1,4 +1,4 @@
-# Awia Inventory
+# Awia Inventory (Used to be Awia for Nurseries)
 
 Awia Inventory is a web application that integrates with popular accounting platforms like QuickBooks Online and Xero. It makes the task of managing inventory on your nursery or other business simple and easy to approach.
 
