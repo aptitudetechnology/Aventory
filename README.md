@@ -74,7 +74,7 @@ https://laravel.com/docs/9.x/installation#getting-started-on-windows
 Ensure you clone the repository into your linux or macOS filesystem.
 
 ```bash
-git clone https://github.com/cwray-tech/Awia-For-Nurseries.git
+git clone https://github.com/awia-co/Aventory.git
 ```
 
 ### Install packages
