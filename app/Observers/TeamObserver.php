@@ -19,20 +19,20 @@ class TeamObserver
      */
     public function created(Team $team)
     {
-        $response = $this->codatCompaniesService->create(['name' => $team->name]);
-        $team->codat_company_id = $response['id'];
-        $team->saveQuietly();
+        // $response = $this->codatCompaniesService->create(['name' => $team->name]);
+        // $team->codat_company_id = $response['id'];
+        // $team->saveQuietly();
     }
 
     public function updated(Team $team)
     {
-        if ($team->codat_company_id) {
-            $this->codatCompaniesService->update($team->codat_company_id, ['name' => $team->name]);
-        } else {
-            $response = $this->codatCompaniesService->create(['name' => $team->name]);
-            $team->codat_company_id = $response['id'];
-            $team->saveQuietly();
-        }
+        // if ($team->codat_company_id) {
+        //     $this->codatCompaniesService->update($team->codat_company_id, ['name' => $team->name]);
+        // } else {
+        //     $response = $this->codatCompaniesService->create(['name' => $team->name]);
+        //     $team->codat_company_id = $response['id'];
+        //     $team->saveQuietly();
+        // }
     }
 
     public function deleted(Team $team)
