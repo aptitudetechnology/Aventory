@@ -5,13 +5,13 @@
                 <jet-label class="sr-only" :for="'item-selected' + form.id"
                     >Select</jet-label
                 >
-                <jet-checkbox
+                <jet-CheckIconbox
                     :id="'item-selected' + form.id"
                     @change="$emit('selected')"
                     :value="form.id"
                     v-model="selected"
-                    :checked="selected"
-                ></jet-checkbox>
+                    :CheckIconed="selected"
+                ></jet-CheckIconbox>
             </div>
             <div class="w-full md:w-auto">
                 <div title="Product Name" class="card-title mb-2">
@@ -38,13 +38,13 @@
                             :for="'no_discount' + form.id"
                             >No Discount
                         </jet-label>
-                        <jet-checkbox
+                        <jet-CheckIconbox
                             :id="'no_discount' + form.id"
                             @change="updateItem"
                             v-model="form.no_discount"
                             color="gray"
-                            :checked="form.no_discount"
-                        ></jet-checkbox>
+                            :CheckIconed="form.no_discount"
+                        ></jet-CheckIconbox>
                     </div>
                 </div>
             </div>
@@ -78,13 +78,13 @@
 </template>
 
 <script>
-import Check from "@heroicons/vue/outline/CheckIcon";
+import { CheckIcon } from "@heroicons/vue/20/solid";
 import LineItem from "@/Components/Lists/LineItem.vue";
 import EditOrderItem from "./ItemEdit.vue";
 import DeleteOrderItem from "./ItemDelete.vue";
 export default {
     components: {
-        Check,
+        CheckIcon,
         LineItem,
         EditOrderItem,
         DeleteOrderItem,

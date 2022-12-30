@@ -65,11 +65,7 @@
 </template>
 
 <script>
-import {
-    ExternalLinkIcon,
-    ArrowUpIcon,
-    ArrowDownIcon,
-} from "@heroicons/vue/outline";
+import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/vue/24/outline";
 import DetailsSection from "@/Components/DetailsSection.vue";
 import TableTable from "@/Components/Tables/TableTable.vue";
 import TableHead from "@/Components/Tables/TableHead.vue";
@@ -83,7 +79,6 @@ import QueueItem from "./QueueItem.vue";
 import ButtonLink from "@/Components/Links/ButtonLink.vue";
 export default {
     components: {
-        ExternalLinkIcon,
         ArrowDownIcon,
         ArrowUpIcon,
         DetailsSection,

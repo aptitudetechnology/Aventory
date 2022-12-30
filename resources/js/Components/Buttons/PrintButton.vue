@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { PrinterIcon } from "@heroicons/vue/outline";
+import { PrinterIcon } from "@heroicons/vue/24/outline";
 export default {
     components: {
         PrinterIcon,

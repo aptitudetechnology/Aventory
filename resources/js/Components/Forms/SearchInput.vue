@@ -6,7 +6,7 @@
                 <div
                     class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
                 >
-                    <SearchIcon
+                    <MagnifyingGlassIcon
                         class="h-5 w-5 text-gray-400"
                         aria-hidden="true"
                     />
@@ -34,12 +34,12 @@
 
 <script>
 import JetInput from "@/Jetstream/Input.vue";
-import SearchIcon from "@heroicons/vue/solid/SearchIcon";
+import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 
 export default {
     components: {
         JetInput,
-        SearchIcon,
+        MagnifyingGlassIcon,
     },
     props: {
         modelValue: String,

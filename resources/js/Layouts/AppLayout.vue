@@ -48,7 +48,7 @@
                                     @click="sidebarOpen = false"
                                 >
                                     <span class="sr-only">Close sidebar</span>
-                                    <XIcon
+                                    <XMarkIcon
                                         class="h-6 w-6 text-white"
                                         aria-hidden="true"
                                     />
@@ -101,7 +101,7 @@
                     @click="sidebarOpen = true"
                 >
                     <span class="sr-only">Open sidebar</span>
-                    <MenuAlt2Icon class="h-6 w-6" aria-hidden="true" />
+                    <Bars3Icon class="h-6 w-6" aria-hidden="true" />
                 </button>
                 <!-- Profile and Teams settings menu -->
                 <div class="flex justify-between h-16 px-4">
@@ -336,8 +336,6 @@ import {
     TransitionChild,
     TransitionRoot,
 } from "@headlessui/vue";
-import { BellIcon, MenuAlt2Icon, XIcon } from "@heroicons/vue/outline";
-import { SearchIcon } from "@heroicons/vue/solid";
 import JetApplicationMark from "@/Jetstream/ApplicationMark.vue";
 import JetBanner from "@/Jetstream/Banner.vue";
 import JetDropdown from "@/Jetstream/Dropdown.vue";
@@ -345,6 +343,7 @@ import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
 import JetNavLink from "@/Jetstream/NavLink.vue";
 import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink.vue";
 import SidebarNavlinks from "@/Components/SidebarNavlinks.vue";
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/20/solid";
 
 export default {
     components: {
@@ -356,10 +355,6 @@ export default {
         MenuItems,
         TransitionChild,
         TransitionRoot,
-        BellIcon,
-        MenuAlt2Icon,
-        SearchIcon,
-        XIcon,
         JetApplicationMark,
         JetBanner,
         JetDropdown,
@@ -367,6 +362,8 @@ export default {
         JetNavLink,
         JetResponsiveNavLink,
         SidebarNavlinks,
+        Bars3Icon,
+        XMarkIcon,
     },
 
     data() {

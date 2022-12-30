@@ -2,19 +2,7 @@
     <div class="">
         <div v-for="orderItem in inventory" :key="orderItem.id" class="min-w-0">
             <div
-                class="
-                    flex
-                    items-center
-                    space-x-2
-                    tracking-wider
-                    uppercase
-                    text-gray-900
-                    px-1
-                    my-2
-                    py-2
-                    border-b border-t
-                    min-w-0
-                "
+                class="flex items-center space-x-2 tracking-wider uppercase text-gray-900 px-1 my-2 py-2 border-b border-t min-w-0"
             >
                 <div
                     :data-tip="`${
@@ -62,7 +50,10 @@
 </template>
 
 <script>
-import { ExclamationCircleIcon, CheckCircleIcon } from "@heroicons/vue/outline";
+import {
+    ExclamationCircleIcon,
+    CheckCircleIcon,
+} from "@heroicons/vue/20/solid";
 import InventoryItem from "./InventoryItem.vue";
 export default {
     components: {

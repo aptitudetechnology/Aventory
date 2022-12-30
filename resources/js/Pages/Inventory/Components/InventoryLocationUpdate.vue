@@ -5,7 +5,7 @@
             <jet-button
                 @click="editingInventoryLocation = true"
                 class="ml-auto pl-2"
-                ><EditIcon class="w-4 h-4 mr-2"></EditIcon> Edit</jet-button
+                ><PencilIcon class="w-4 h-4 mr-2"></PencilIcon> Edit</jet-button
             >
         </div>
 
@@ -65,17 +65,7 @@
                             type="radio"
                             v-bind:value="false"
                             v-model="locationData.autoLocateToNext"
-                            class="
-                                ml-2
-                                border-gray-300
-                                shadow-sm
-                                focus:border-none
-                                focus:ring-1
-                                focus:ring-current
-                                focus:ring-opacity-50
-                                cursor-pointer
-                                text-green-600
-                            "
+                            class="ml-2 border-gray-300 shadow-sm focus:border-none focus:ring-1 focus:ring-current focus:ring-opacity-50 cursor-pointer text-green-600"
                         />
                     </jet-label>
                     <jet-label
@@ -84,17 +74,7 @@
                             type="radio"
                             v-bind:value="true"
                             v-model="locationData.autoLocateToNext"
-                            class="
-                                ml-2
-                                border-gray-300
-                                shadow-sm
-                                focus:border-none
-                                focus:ring-1
-                                focus:ring-current
-                                focus:ring-opacity-50
-                                cursor-pointer
-                                text-green-600
-                            "
+                            class="ml-2 border-gray-300 shadow-sm focus:border-none focus:ring-1 focus:ring-current focus:ring-opacity-50 cursor-pointer text-green-600"
                         />
                     </jet-label>
                 </div>
@@ -220,9 +200,11 @@
 </template>
 
 <script>
-import EditIcon from "@heroicons/vue/outline/PencilIcon";
-import ChevronLeftIcon from "@heroicons/vue/outline/ChevronLeftIcon";
-import ChevronRightIcon from "@heroicons/vue/outline/ChevronRightIcon";
+import {
+    PencilIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
+} from "@heroicons/vue/20/solid";
 import JetButton from "@/Jetstream/Button.vue";
 import JetLabel from "@/Jetstream/Label.vue";
 import JetInputError from "@/Jetstream/InputError.vue";
@@ -237,7 +219,7 @@ export default {
         ChevronRightIcon,
         JetDialogModal,
         JetConfirmationModal,
-        EditIcon,
+        PencilIcon,
         JetInputError,
         JetLabel,
         JetCheckbox,

@@ -38,11 +38,7 @@
 </template>
 
 <script>
-import {
-    ExternalLinkIcon,
-    ArrowUpIcon,
-    ArrowDownIcon,
-} from "@heroicons/vue/outline";
+import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/vue/20/solid";
 import DetailsSection from "@/Components/DetailsSection.vue";
 import TableTable from "@/Components/Tables/TableTable.vue";
 import TableHead from "@/Components/Tables/TableHead.vue";
@@ -53,7 +49,6 @@ import SearchInput from "@/Components/Forms/SearchInput.vue";
 import _debounce from "lodash/debounce";
 export default {
     components: {
-        ExternalLinkIcon,
         ArrowDownIcon,
         ArrowUpIcon,
         DetailsSection,

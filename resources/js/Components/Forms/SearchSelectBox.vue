@@ -1,147 +1,84 @@
 <template>
-    <div class="form-control">
+    <!-- <div class="form-control">
         <jet-label v-if="showLabel" for="items-input">{{
             labelValue
         }}</jet-label>
-        <div
-            v-if="isOpen"
-            class="fixed inset-0 z-10"
-            @click="isOpen = false"
-        ></div>
-        <div class="relative z-20">
-            <jet-input
-                type="text"
-                autocomplete="off"
-                @keydown.enter.prevent="updateItem(searchItems[0])"
-                @click="isOpen = true"
-                @keydown="openIfNotEnter"
-                id="items-input"
-                :placeholder="'Select ' + labelValue"
-                v-model="search"
-                class="w-full"
-            />
-            <span
-                class="absolute inset-y-0 right-0 flex items-center pr-2"
-                :class="isOpen && search.length ? '' : 'pointer-events-none'"
-            >
-                <XCircleIcon
-                    @click="clearSearch"
-                    v-if="search.length && isOpen"
-                    :class="[
-                        'h-5 w-5',
-                        isOpen ? 'text-gray-900' : 'text-gray-500',
-                    ]"
-                />
-                <SelectorIcon
-                    v-else
-                    class="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                />
-            </span>
-            <div
-                v-show="isOpen"
-                id="items-list"
-                class="
-                    absolute
-                    z-10
-                    mt-1
-                    w-full
-                    bg-white
-                    shadow-lg
-                    max-h-60
-                    rounded-md
-                    py-1
-                    text-base
-                    ring-1 ring-gray-700 ring-opacity-5
-                    overflow-auto
-                    focus:outline-none
-                    sm:text-sm
-                    group
-                "
-            >
+        <Combobox v-model="selected">
+            <div class="relative mt-1">
                 <div
-                    v-for="(item, index) in searchItems"
-                    key="item.id"
-                    @click="updateItem(item)"
-                    @keydown.enter="updateItem(item)"
-                    :tabindex="isOpen ? '0' : '-1'"
-                    class="
-                        group
-                        text-gray-900
-                        cursor-default
-                        relative
-                        py-2
-                        pl-3
-                        pr-9
-                        bg-white
-                        active:outline-none
-                        focus:outline-none
-                        focus:ring-1
-                        focus:ring-gray-500
-                        focus:border-gray-500
-                        focus:bg-gray-500
-                        focus:text-white
-                    "
-                    :class="[
-                        isSelected(item) ? 'font-semibold' : 'font-normal',
-                        'block truncate',
-                    ]"
+                    class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm"
                 >
-                    {{ item[nameValue] }}
-                    <span
-                        v-if="isSelected(item)"
-                        class="
-                            group-focus:text-white
-                            text-gray-500
-                            absolute
-                            inset-y-0
-                            right-0
-                            flex
-                            items-center
-                            pr-4
-                        "
+                    <ComboboxInput
+                        class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+                        @change="search = $event.target.value"
+                        :displayValue="(selected) => selected.name"
+                    />
+                    <ComboboxButton
+                        class="absolute inset-y-0 right-0 flex items-center pr-2"
                     >
-                        <CheckIcon class="h-5 w-5" aria-hidden="true" />
-                    </span>
+                        <ChevronUpDownIcon
+                            class="h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                        />
+                    </ComboboxButton>
                 </div>
-                <div
-                    @click="addItem"
-                    @keydown.enter="addItem"
-                    tabindex="0"
-                    class="
-                        focus:text-white
-                        cursor-default
-                        relative
-                        py-2
-                        pl-3
-                        pr-9
-                        focus:bg-gray-500
-                        active:outline-none
-                        focus:outline-none
-                        focus:ring-1
-                        focus:ring-gray-500
-                        focus:border-gray-500
-                    "
+                <TransitionRoot
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                    @after-leave="search = ''"
                 >
-                    {{ `Add ${search}?` }}
-                </div>
+                    <ComboboxOptions
+                        class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                    >
+                        <div
+                            v-if="searchItems.length === 0 && search !== ''"
+                            class="relative cursor-default select-none py-2 px-4 text-gray-700"
+                        >
+                            Nothing found.
+                        </div>
+                        <ComboboxOption
+                            v-for="item in searchItems"
+                            :key="item.id"
+                            :value="item"
+                            as="template"
+                            v-slot="{ selected, active }"
+                        >
+                            {{ item.name }}
+                        </ComboboxOption>
+                    </ComboboxOptions>
+                </TransitionRoot>
             </div>
-        </div>
-    </div>
+        </Combobox>
+    </div> -->
 </template>
 
 <script>
-import { CheckIcon, SelectorIcon, XCircleIcon } from "@heroicons/vue/solid";
+import {
+    CheckIcon,
+    XCircleIcon,
+    ChevronUpDownIcon,
+} from "@heroicons/vue/20/solid";
 import JetInput from "@/Jetstream/Input.vue";
 import JetLabel from "@/Jetstream/Label.vue";
+import {
+    Combobox,
+    ComboboxInput,
+    ComboboxOptions,
+    ComboboxOption,
+} from "@headlessui/vue";
 
 export default {
     components: {
         CheckIcon,
-        SelectorIcon,
         XCircleIcon,
+        ChevronUpDownIcon,
         JetInput,
         JetLabel,
+        Combobox,
+        ComboboxInput,
+        ComboboxOption,
+        ComboboxOptions,
     },
     props: {
         items: Array,
@@ -175,7 +112,7 @@ export default {
             }
         },
         addItem() {
-            if (this.search.length) {
+            if (this.search.length > 1) {
                 this.$emit("add", this.search);
                 this.isOpen = false;
             }
