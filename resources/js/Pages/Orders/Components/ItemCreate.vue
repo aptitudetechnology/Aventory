@@ -28,11 +28,12 @@
                         <div class="grid gap-4">
                             <div class="grid gap-4 sm:grid-cols-2">
                                 <div class="sm:col-span-2 min-w-0">
-                                    <select-box
+                                    <search-select-box
                                         labelValue="Product"
                                         :items="products"
                                         :selectedItem="selectedProduct"
-                                        v-model="selectedProduct"
+                                        @update="updateProduct"
+                                        :canAdd="false"
                                     />
                                     <jet-input-error
                                         v-if="!form.product_id"
@@ -193,11 +194,12 @@ import {
     SwitchLabel,
 } from "@headlessui/vue";
 
-import { PlusIcon } from "@heroicons/vue/outline";
+import { PlusIcon } from "@heroicons/vue/24/outline";
 
 import ProductHoldView from "./ProductHoldView.vue";
 import InventoryDetail from "./InventoryDetail.vue";
 import ItemConfirmQuantity from "./ItemConfirmQuantity.vue";
+import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 export default {
     components: {
         Switch,
@@ -210,6 +212,7 @@ export default {
         ProductHoldView,
         InventoryDetail,
         ItemConfirmQuantity,
+        SearchSelectBox,
     },
     props: { order: Object },
 
@@ -247,7 +250,7 @@ export default {
             this.getProductPrice();
         },
         "form.original_quantity"(value) {
-            this.form.quantity = value;
+            this.form.quantity = parseInt(value);
         },
         selectedSize(size) {
             if (size) {
@@ -260,6 +263,11 @@ export default {
     },
 
     methods: {
+        updateProduct(id) {
+            this.selectedProduct = this.products.find(
+                (product) => product.id == id
+            );
+        },
         getProductPrice() {
             if (this.selectedProduct && this.selectedSize) {
                 axios

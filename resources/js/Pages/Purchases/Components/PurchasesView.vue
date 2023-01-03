@@ -85,11 +85,7 @@
 </template>
 
 <script>
-import {
-    ExternalLinkIcon,
-    ArrowUpIcon,
-    ArrowDownIcon,
-} from "@heroicons/vue/outline";
+import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/vue/24/outline";
 import DetailsSection from "@/Components/DetailsSection.vue";
 import TableTable from "@/Components/Tables/TableTable.vue";
 import TableHead from "@/Components/Tables/TableHead.vue";
@@ -101,7 +97,6 @@ import _debounce from "lodash/debounce";
 import moment from "moment";
 export default {
     components: {
-        ExternalLinkIcon,
         ArrowDownIcon,
         ArrowUpIcon,
         DetailsSection,

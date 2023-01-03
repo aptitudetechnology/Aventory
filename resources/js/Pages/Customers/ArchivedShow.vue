@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { PaperClipIcon } from "@heroicons/vue/solid";
+import { PaperClipIcon } from "@heroicons/vue/20/solid";
 import CustomersLayout from "./CustomersLayout.vue";
 import DetailsSection from "@/Components/DetailsSection.vue";
 import RestoreCustomerForm from "./RestoreCustomerForm.vue";

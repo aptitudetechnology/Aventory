@@ -83,7 +83,7 @@ class ProductController extends Controller
         $products = $this->getProducts();
         $categories = $this->getCategories();
         $category = $product->category;
-        $category->load('prices');
+        $category?->load('prices');
         $sizes = $request->user()->currentTeam->sizes;
         $features = $request->user()->currentTeam->features;
 

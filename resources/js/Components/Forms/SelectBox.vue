@@ -8,17 +8,9 @@
                 <span v-if="selected">{{ selected[nameValue] }}</span>
                 <span v-else>Select</span>
                 <span
-                    class="
-                        absolute
-                        inset-y-0
-                        right-0
-                        flex
-                        items-center
-                        pr-2
-                        pointer-events-none
-                    "
+                    class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
                 >
-                    <SelectorIcon
+                    <ChevronUpDownIcon
                         class="h-5 w-5 text-gray-400"
                         aria-hidden="true"
                     />
@@ -31,34 +23,11 @@
                 leave-to-class="opacity-0"
             >
                 <ListboxOptions
-                    class="
-                        absolute
-                        z-10
-                        mt-1
-                        w-full
-                        bg-white
-                        shadow-lg
-                        max-h-60
-                        rounded-md
-                        py-1
-                        text-base
-                        ring-1 ring-black ring-opacity-5
-                        overflow-auto
-                        focus:outline-none
-                        sm:text-sm
-                    "
+                    class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
                 >
                     <ListboxOption as="template">
                         <li
-                            class="
-                                text-gray-900
-                                cursor-default
-                                select-none
-                                relative
-                                py-2
-                                pl-3
-                                pr-9
-                            "
+                            class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9"
                         >
                             <span class="font-normal block truncate">
                                 Clear selected
@@ -114,8 +83,8 @@ import {
     ListboxOption,
     ListboxOptions,
 } from "@headlessui/vue";
-import { CheckIcon, SelectorIcon } from "@heroicons/vue/solid";
 
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 export default {
     components: {
         Listbox,
@@ -124,7 +93,7 @@ export default {
         ListboxOption,
         ListboxOptions,
         CheckIcon,
-        SelectorIcon,
+        ChevronUpDownIcon,
     },
     props: {
         items: Array,

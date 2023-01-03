@@ -32,7 +32,7 @@
                         isOpen ? 'text-gray-900' : 'text-gray-500',
                     ]"
                 />
-                <SelectorIcon
+                <ChevronUpDownIcon
                     v-else
                     class="h-5 w-5 text-gray-400"
                     aria-hidden="true"
@@ -41,23 +41,7 @@
             <div
                 v-show="isOpen"
                 id="items-list"
-                class="
-                    absolute
-                    z-10
-                    mt-1
-                    w-full
-                    bg-white
-                    shadow-lg
-                    max-h-60
-                    rounded-md
-                    py-1
-                    text-base
-                    ring-1 ring-gray-700 ring-opacity-5
-                    overflow-auto
-                    focus:outline-none
-                    sm:text-sm
-                    group
-                "
+                class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-gray-700 ring-opacity-5 overflow-auto focus:outline-none sm:text-sm group"
             >
                 <div
                     v-for="(item, index) in searchItems"
@@ -65,23 +49,7 @@
                     @click="updateItem(item)"
                     @keydown.enter="updateItem(item)"
                     :tabindex="isOpen ? '0' : '-1'"
-                    class="
-                        group
-                        text-gray-900
-                        cursor-default
-                        relative
-                        py-2
-                        pl-3
-                        pr-9
-                        bg-white
-                        active:outline-none
-                        focus:outline-none
-                        focus:ring-1
-                        focus:ring-gray-500
-                        focus:border-gray-500
-                        focus:bg-gray-500
-                        focus:text-white
-                    "
+                    class="group text-gray-900 cursor-default relative py-2 pl-3 pr-9 bg-white active:outline-none focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500 focus:bg-gray-500 focus:text-white"
                     :class="[
                         isSelected(item) ? 'font-semibold' : 'font-normal',
                         'block truncate',
@@ -90,38 +58,17 @@
                     {{ item[nameValue] }}
                     <span
                         v-if="isSelected(item)"
-                        class="
-                            group-focus:text-white
-                            text-gray-500
-                            absolute
-                            inset-y-0
-                            right-0
-                            flex
-                            items-center
-                            pr-4
-                        "
+                        class="group-focus:text-white text-gray-500 absolute inset-y-0 right-0 flex items-center pr-4"
                     >
                         <CheckIcon class="h-5 w-5" aria-hidden="true" />
                     </span>
                 </div>
                 <div
+                    v-if="canAddCustom"
                     @click="addItem"
                     @keydown.enter="addItem"
                     tabindex="0"
-                    class="
-                        focus:text-white
-                        cursor-default
-                        relative
-                        py-2
-                        pl-3
-                        pr-9
-                        focus:bg-gray-500
-                        active:outline-none
-                        focus:outline-none
-                        focus:ring-1
-                        focus:ring-gray-500
-                        focus:border-gray-500
-                    "
+                    class="focus:text-white cursor-default relative py-2 pl-3 pr-9 focus:bg-gray-500 active:outline-none focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500"
                 >
                     {{ `Add ${search}?` }}
                 </div>
@@ -131,14 +78,15 @@
 </template>
 
 <script>
-import { CheckIcon, SelectorIcon, XCircleIcon } from "@heroicons/vue/solid";
+import { ChevronUpDownIcon, XCircleIcon } from "@heroicons/vue/20/solid";
+import { CheckIcon } from "@heroicons/vue/20/solid";
 import JetInput from "@/Jetstream/Input.vue";
 import JetLabel from "@/Jetstream/Label.vue";
 
 export default {
     components: {
         CheckIcon,
-        SelectorIcon,
+        ChevronUpDownIcon,
         XCircleIcon,
         JetInput,
         JetLabel,
@@ -149,6 +97,7 @@ export default {
         labelValue: { type: String, default: "Select Option" },
         showLabel: { type: Boolean, default: true },
         nameValue: { type: String, default: "name" },
+        canAdd: { type: Boolean, default: true },
     },
     data: function () {
         return {
@@ -175,7 +124,7 @@ export default {
             }
         },
         addItem() {
-            if (this.search.length) {
+            if (this.canAddCustom) {
                 this.$emit("add", this.search);
                 this.isOpen = false;
             }
@@ -192,6 +141,15 @@ export default {
         },
         isSelected(item) {
             return this.selected && this.selected.id === item.id;
+        },
+    },
+    computed: {
+        canAddCustom() {
+            return (
+                this.canAdd &&
+                this.search.length > 1 &&
+                this.searchItems.length == 0
+            );
         },
     },
     watch: {

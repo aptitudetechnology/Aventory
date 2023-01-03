@@ -97,7 +97,7 @@
 
 <script>
 import JetDialogModal from "@/Jetstream/DialogModal.vue";
-import { PlusIcon } from "@heroicons/vue/outline";
+import { PlusIcon } from "@heroicons/vue/24/outline";
 
 export default {
     props: { order: Object },

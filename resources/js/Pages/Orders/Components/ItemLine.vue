@@ -10,7 +10,7 @@
                     @change="$emit('selected')"
                     :value="form.id"
                     v-model="selected"
-                    :checked="selected"
+                    :CheckIconed="selected"
                 ></jet-checkbox>
             </div>
             <div class="w-full md:w-auto">
@@ -43,7 +43,7 @@
                             @change="updateItem"
                             v-model="form.no_discount"
                             color="gray"
-                            :checked="form.no_discount"
+                            :CheckIconed="form.no_discount"
                         ></jet-checkbox>
                     </div>
                 </div>
@@ -78,13 +78,13 @@
 </template>
 
 <script>
-import Check from "@heroicons/vue/outline/CheckIcon";
+import { CheckIcon } from "@heroicons/vue/20/solid";
 import LineItem from "@/Components/Lists/LineItem.vue";
 import EditOrderItem from "./ItemEdit.vue";
 import DeleteOrderItem from "./ItemDelete.vue";
 export default {
     components: {
-        Check,
+        CheckIcon,
         LineItem,
         EditOrderItem,
         DeleteOrderItem,

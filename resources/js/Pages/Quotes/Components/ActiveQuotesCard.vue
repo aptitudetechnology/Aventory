@@ -1,6 +1,5 @@
 <script setup>
 import DetailsSection from "@/Components/DetailsSection.vue";
-import { ExternalLinkIcon } from "@heroicons/vue/outline";
 import ButtonLink from "@/Components/Links/ButtonLink.vue";
 
 import { onMounted, reactive, computed } from "vue";

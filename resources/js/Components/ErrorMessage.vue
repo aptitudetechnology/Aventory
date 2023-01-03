@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { XCircleIcon } from "@heroicons/vue/solid";
+import { XCircleIcon } from "@heroicons/vue/20/solid";
 
 export default {
     components: {

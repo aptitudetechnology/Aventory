@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { PaperClipIcon } from "@heroicons/vue/solid";
+import { PaperClipIcon } from "@heroicons/vue/20/solid";
 import ProductsLayout from "./ProductsLayout.vue";
 import ProductDetails from "./Components/ProductDetails.vue";
 import RestoreProductForm from "./RestoreProductForm.vue";

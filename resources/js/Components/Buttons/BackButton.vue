@@ -10,7 +10,8 @@
     </button>
 </template>
 <script>
-import { ChevronLeftIcon } from "@heroicons/vue/solid";
+import { ChevronLeftIcon } from "@heroicons/vue/20/solid";
+
 export default {
     components: { ChevronLeftIcon },
 };

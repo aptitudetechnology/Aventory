@@ -11,7 +11,7 @@ export default {
     computed: {
         classes() {
             if (this.type == "pill") {
-                return [this.current ? "tab-active" : "", "tab"];
+                return [this.current ? "" : "tab-active", "tab"];
             } else if (this.type == "underline") {
                 return [this.current ? "tab-active" : "", "tab tab-bordered"];
             }

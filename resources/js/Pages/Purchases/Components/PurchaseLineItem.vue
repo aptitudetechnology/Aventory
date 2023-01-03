@@ -30,14 +30,7 @@
         </div>
 
         <div
-            class="
-                px-1
-                hidden
-                md:block
-                text-sm text-gray-500
-                tracking-wider
-                uppercase
-            "
+            class="px-1 hidden md:block text-sm text-gray-500 tracking-wider uppercase"
             title="Unit Price"
         >
             $ {{ form.unit_price }}
@@ -76,7 +69,6 @@
 </template>
 
 <script>
-import Check from "@heroicons/vue/outline/CheckIcon";
 import JetCheckBox from "@/Jetstream/Checkbox.vue";
 import JetLabel from "@/Jetstream/Label.vue";
 
@@ -85,8 +77,6 @@ import DeletePurchaseItem from "./DeletePurchaseItem.vue";
 import RemoveItemFromInventory from "./RemoveItemFromInventory.vue";
 export default {
     components: {
-        Check,
-
         JetCheckBox,
         JetLabel,
 

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { PaperClipIcon } from "@heroicons/vue/solid";
+import { PaperClipIcon } from "@heroicons/vue/20/solid";
 import VendorsLayout from "./VendorsLayout.vue";
 import DetailsSection from "@/Components/DetailsSection.vue";
 import RestoreVendorForm from "./RestoreVendorForm.vue";
