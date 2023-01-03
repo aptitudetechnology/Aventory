@@ -5,13 +5,13 @@
                 <jet-label class="sr-only" :for="'item-selected' + form.id"
                     >Select</jet-label
                 >
-                <jet-CheckIconbox
+                <jet-checkbox
                     :id="'item-selected' + form.id"
                     @change="$emit('selected')"
                     :value="form.id"
                     v-model="selected"
                     :CheckIconed="selected"
-                ></jet-CheckIconbox>
+                ></jet-checkbox>
             </div>
             <div class="w-full md:w-auto">
                 <div title="Product Name" class="card-title mb-2">
@@ -38,13 +38,13 @@
                             :for="'no_discount' + form.id"
                             >No Discount
                         </jet-label>
-                        <jet-CheckIconbox
+                        <jet-checkbox
                             :id="'no_discount' + form.id"
                             @change="updateItem"
                             v-model="form.no_discount"
                             color="gray"
                             :CheckIconed="form.no_discount"
-                        ></jet-CheckIconbox>
+                        ></jet-checkbox>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@
                                         labelValue="Product"
                                         :items="products"
                                         :selectedItem="selectedProduct"
-                                        v-model="selectedProduct"
+                                        @update="updateProduct"
                                         :canAdd="false"
                                     />
                                     <jet-input-error
@@ -250,7 +250,7 @@ export default {
             this.getProductPrice();
         },
         "form.original_quantity"(value) {
-            this.form.quantity = value;
+            this.form.quantity = parseInt(value);
         },
         selectedSize(size) {
             if (size) {
@@ -263,6 +263,11 @@ export default {
     },
 
     methods: {
+        updateProduct(id) {
+            this.selectedProduct = this.products.find(
+                (product) => product.id == id
+            );
+        },
         getProductPrice() {
             if (this.selectedProduct && this.selectedSize) {
                 axios

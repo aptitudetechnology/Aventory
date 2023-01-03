@@ -29,11 +29,12 @@
                         <div class="grid gap-4">
                             <div class="grid gap-4 sm:grid-cols-2 items-center">
                                 <div class="sm:col-span-2 min-w-0">
-                                    <select-box
+                                    <search-select-box
                                         labelValue="Product"
                                         :items="products"
                                         :selectedItem="selectedProduct"
-                                        v-model="selectedProduct"
+                                        @update="updateProduct"
+                                        :canAdd="false"
                                     />
                                     <jet-input-error
                                         :message="form.errors.product_id"
@@ -177,7 +178,7 @@ import ProductHoldView from "@/Pages/Orders/Components/ProductHoldView.vue";
 import MoneyInput from "@/Components/Forms/MoneyInput.vue";
 import InventoryDetail from "./InventoryDetail.vue";
 import ItemConfirmQuantity from "@/Pages/Orders/Components/ItemConfirmQuantity.vue";
-
+import SearchSelectBox from "@/Components/Forms/SearchSelectBox.vue";
 export default {
     components: {
         Switch,
@@ -191,6 +192,7 @@ export default {
         MoneyInput,
         InventoryDetail,
         ItemConfirmQuantity,
+        SearchSelectBox,
     },
 
     props: {
@@ -240,6 +242,11 @@ export default {
     },
 
     methods: {
+        updateProduct(id) {
+            this.selectedProduct = this.products.find(
+                (product) => product.id == id
+            );
+        },
         getProductPrice() {
             if (this.selectedProduct && this.selectedSize) {
                 axios
