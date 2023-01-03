@@ -29,15 +29,11 @@
                             <div class="grid gap-4 sm:grid-cols-2">
                                 <div class="sm:col-span-2 min-w-0">
                                     <search-select-box
-                                        :items="products"
-                                        :selectedItem="selectedProduct"
-                                        v-model="selectedProduct"
-                                    />
-                                    <select-box
                                         labelValue="Product"
                                         :items="products"
                                         :selectedItem="selectedProduct"
                                         v-model="selectedProduct"
+                                        :canAdd="false"
                                     />
                                     <jet-input-error
                                         v-if="!form.product_id"
