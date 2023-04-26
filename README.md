@@ -73,7 +73,7 @@ Make one significant contribution for free. That's it.
 To ensure your machine is ready for development, make sure that your machine is ready for Laravel development. 
 This is not ready for public deployment. If you prefer to work on a virtual machine please made sure it has a desktop interface such as Xubuntu https://xubuntu.org/
 
-This can easy be setup to remote in using X2go which does not support the Gnome version used in Ubuntu. XFCE is a nigh light window manager for use on your server. You can open a web browser such as firefox in XCFE and view the application from http://localhost
+This can easy be setup to remote in using X2Go which does not support the Gnome version used in Ubuntu. XFCE is a nice and light window manager for use on your server. You can open a web browser such as firefox in XCFE and view the application from http://localhost
 
 
 **From the Laravel Docs:**
