@@ -126,6 +126,15 @@ sail up -d
 - Generate App key : `sail artisan key:generate`
 - Migrate all tables : `sail artisan migrate`
 
+
+### Install vite:
+
+```bash
+apt-get install npm
+npm install 
+npm run dev
+```
+
 ### Visit the application:
 - Open your browser and navigate to http://localhost
 - You should see the login page.
