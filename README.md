@@ -71,6 +71,10 @@ Make one significant contribution for free. That's it.
 ### Clone and Setup
 
 To ensure your machine is ready for development, make sure that your machine is ready for Laravel development. 
+This is not ready for public deployment. If you prefer to work on a virtual machine please made sure it has a desktop interface such as Xubuntu https://xubuntu.org/
+
+This can easy be setup to remote in using X2go which does not support the Gnome version used in Ubuntu. XFCE is a nigh light window manager for use on your server. You can open a web browser such as firefox in XCFE and view the application from http://localhost
+
 
 **From the Laravel Docs:**
 "Before creating your first Laravel project, you should ensure that your local machine has PHP and Composer installed. If you are developing on macOS (or WSL), PHP and Composer can be installed via Homebrew. In addition, we recommend installing Node and NPM."
@@ -84,6 +88,9 @@ https://laravel.com/docs/9.x/installation#laravel-and-docker
 
 You must use WSL with Docker desktop. Ensure you clone the git repo into your linux filesystem.
 https://laravel.com/docs/9.x/installation#getting-started-on-windows
+
+Please note if you are a Windows user and require support please see the main project.
+https://github.com/awia-co/
 
 ### Clone the Repository 
 
