@@ -1,3 +1,19 @@
+# This fork will integrate an API
+   
+   1. Determine the technology stack
+
+   2.  Define the API endpoints: Define the endpoints that the API will expose. This includes the HTTP methods (GET, POST, PUT, DELETE) and the resource URLs. For example, if you want to add a new purchase, the endpoint might be /api/purchases/add.
+
+   3. Choose a framework
+
+   4. Implement the API endpoints
+
+   5. Test the API
+   6. Secure the API
+
+   7. Document the API
+
+
 # Aventory (Previously Awia for Nurseries)
 
 Aventory is a web application that integrates with popular accounting platforms like QuickBooks Online and Xero. It makes the task of managing inventory on your nursery or other business simple and easy to approach.
