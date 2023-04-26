@@ -141,6 +141,11 @@ npm run dev
 - Create an account by visiting http://localhost/register
 - Login to your account by visiting http://localhost/login
 - You should see the dashboard after logging in.
+
+
+### Acessing pgweb
+-Open your browser and nagivate to http://www.localhost:8081
+
 ## Autogenerate documentation
 
 You can update model block docs by running the following command:
