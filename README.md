@@ -201,7 +201,7 @@ Password: password
 
 ## Technologies
 
-- MySQL
+- PostreSQL
 - PHP
 - Javascript
 - HTML
@@ -210,6 +210,7 @@ Password: password
 - VueJS
 - Laravel
 - InertiaJS
+- Vite
 
 ## License
 
