@@ -24,6 +24,7 @@ services:
             - sail
         depends_on:
             - pgsql
+            - pgweb
     pgsql:
         image: 'postgres:14'
         ports:
@@ -42,6 +43,14 @@ services:
             test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
             retries: 3
             timeout: 5s
+    pgweb:
+        image: sosedoff/pgweb:latest
+        ports:
+            - '${PGWEB_PORT:-8081}:8081'
+        environment:
+            PGWEB_SESSION_SECRET: 'supersecret'
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
